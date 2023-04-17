@@ -11,6 +11,8 @@ struct person
     char lname[20];
 };
 
+
+
 int main()
 {
   printf("Day la mot bai mau");
