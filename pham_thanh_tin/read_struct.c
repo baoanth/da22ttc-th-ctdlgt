@@ -11,3 +11,10 @@ struct person
     char lname[20];
 };
 
+
+
+int main()
+{
+  printf("Day la mot bai mau");
+  printf("Day la bai ao thoi");
+};
