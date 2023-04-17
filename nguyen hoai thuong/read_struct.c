@@ -10,3 +10,12 @@ struct person
     char fname[20];
     char lname[20];
 };
+
+int main()
+{
+
+  printf("xin chao");
+  printf("hello"); 
+
+ return ;
+}
