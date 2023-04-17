@@ -13,8 +13,8 @@ struct person
 
 int main()
 {
-	struct person per1 = {1, "Nguyen", "An" };
-	struct person per2 = {2, "Le", "Binh" };
+	struct person per1 = {1, "Khac", "Nguyen" };
+	struct person per2 = {2, "Hoang", "Phuoc" };
 	
 	FILE* outfile = fopen("person.dat", "w");
 	
@@ -26,5 +26,6 @@ int main()
 	else
 		printf("ERROR! Write file unsuccessfully");
 	fclose(outfile);   
+   
 
 }

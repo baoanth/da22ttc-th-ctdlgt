@@ -10,9 +10,11 @@ struct person
     char fname[20];
     char lname[20];
 };
-
 int main()
 {
-    printf("hello word");
-    printf("toi la Nguyen");
+    printf"hello";
+printf"xinh chao";
+
+
+
 }
