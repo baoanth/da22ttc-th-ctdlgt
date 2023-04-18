@@ -21,8 +21,8 @@ int main()
 	fwrite(&per2, sizeof(struct person), 2, outfile);	
 	
 	if (fwrite!=0)
-	  printf("Write file successfully");
+	  printf("Da Ghi file Thanh Cong");
 	else
-	  printf("ERROR! Write file unsuccessfully");
+	  printf("Khong Thanh Cong ");
 	fclose(outfile);    
 }
