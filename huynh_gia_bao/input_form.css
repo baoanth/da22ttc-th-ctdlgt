@@ -1,31 +1,31 @@
-form {
+/* Khai báo font chữ */
+body {
     font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin: 20px;
+  }
+  
+  /* Thiết lập kích thước và khoảng cách giữa các phần tử */
+  form {
+    width: 50%;
+    margin: 0 auto;
   }
   
   label {
     display: block;
     margin-bottom: 10px;
-    font-weight: bold;
   }
   
   input[type="text"] {
-    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
     box-sizing: border-box;
     margin-bottom: 20px;
   }
   
   input[type="submit"] {
     background-color: #4CAF50;
-    color: white;
+    color: #fff;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
