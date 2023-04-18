@@ -10,10 +10,3 @@ struct person
     char fname[20];
     char lname[20];
 };
-
-//ham main
-
-int main()
-{
-    printf("Chua biet lam gi")
-}
