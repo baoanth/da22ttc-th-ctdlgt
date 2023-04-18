@@ -10,3 +10,6 @@ struct person
     char fname[20];
     char lname[20];
 };
+person
+    File* f; clrscr();
+    f= outfile
