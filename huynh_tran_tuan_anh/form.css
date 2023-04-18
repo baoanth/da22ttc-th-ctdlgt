@@ -1,0 +1,15 @@
+#fname{
+    border-radius: 20px;
+    border-color: aqua;
+
+}
+
+#lname{
+    border-radius: 20px;
+    border-color: aqua;
+}
+
+label{
+    color: red;
+}
+
