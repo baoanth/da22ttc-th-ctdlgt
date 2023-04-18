@@ -10,11 +10,10 @@ struct person
     char fname[20];
     char lname[20];
 };
-
 int main()
 {
-	struct person per1 = {1, "Xuan", "Truong"};
-	struct person per2 = {1, "Hue", "Trinh"};
+    struct person per1 = {1, "Nguyen", "Vinh"};
+	struct person per2 = {1, "abc", "Phu"};
 	
 	
 	FILE *outfile;
@@ -24,9 +23,10 @@ int main()
 	fwrite(&per2, sizeof(struct person), 1, outfile);
 	
 	if(outfile!=0)
-	   printf("Ghi file thanh cong!");
+	   printf("Write file successfully");
 	else 
-	   printf("Loi! Ghi file khong thanh cong");
+	   printf("ERROR! Write file successfully");
 	   
 	   fclose(outfile);
+	
 }
