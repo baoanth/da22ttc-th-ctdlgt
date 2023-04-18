@@ -22,10 +22,10 @@ FILE *f;
 f= fopen("person.dat","w");
 if(f!=NULL){
 printf("da mo duoc file");
-fprintf(f," ho per1 \n", per1.fname);
-fprintf(f," ten per1 \n", per1.lname);
-fprintf(f," ho per2 \n", per2.fname);
-fprintf(f," ten per2 \n", per2.lname);
+fprintf(f," ho per1 %s\n", per1.fname);
+fprintf(f," ten per1 %s\n", per1.lname);
+fprintf(f," ho per2 %s\n", per2.fname);
+fprintf(f," ten per2 %s\n", per2.lname);
 }
 close(f);
 
