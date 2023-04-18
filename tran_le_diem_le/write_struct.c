@@ -16,4 +16,6 @@ struct person
 int main()
 {
     printf("Chua biet lam gi");
+    printf("Chua biet lam gi lan 2");
+    printf("Chua biet lam gi lan 3");
 }
