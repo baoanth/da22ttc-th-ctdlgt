@@ -35,9 +35,9 @@ int main()
 	fwrite(&per2, sizeof(struct person), 1, outfile);	
 	
 	if (fwrite!=0)
-		printf("Ghi file thanh cong roi!");
+		printf("Success!! Ghi file thanh cong!");
 	else
-		printf("LOI!! Ghi file KHONG thanh cong!");	
+		printf("Faile!! Ghi file khong thanh cong!");	
 	
 	fclose(outfile); 
    return 0; 
