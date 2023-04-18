@@ -1,0 +1,40 @@
+/* Định dạng cho toàn bộ form */
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Định dạng cho các nhãn (label) */
+  label {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Định dạng cho các input text */
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Định dạng cho nút đăng ký */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Định dạng cho nút đăng ký khi được di chuột qua */
+  button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
