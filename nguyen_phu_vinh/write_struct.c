@@ -23,9 +23,9 @@ int main()
 	fwrite(&per2, sizeof(struct person), 1, outfile);
 	
 	if(outfile!=0)
-	   printf("Write file successfully");
+	   printf("Ghi file thành cong");
 	else 
-	   printf("ERROR! Write file successfully");
+	   printf("Loi! ghi file không thành công");
 	   
 	   fclose(outfile);
 	
