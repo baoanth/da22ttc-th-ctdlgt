@@ -1,0 +1,38 @@
+/* Định dạng cho phần tử form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 1.2em;
+  }
+  
+  /* Định dạng cho phần tử label */
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Định dạng cho phần tử input */
+  input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 250px;
+  }
+  
+  /* Định dạng cho phần tử input[type="submit"] */
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Định dạng cho phần tử input[type="submit"] khi rê chuột qua */
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
