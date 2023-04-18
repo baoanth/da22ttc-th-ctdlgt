@@ -13,3 +13,8 @@ label{
     color: red;
 }
 
+input[type = "submit"]{
+    background-color: green;
+    color: whitesmoke;
+    border-radius: 10px;
+}
