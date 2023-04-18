@@ -15,7 +15,19 @@ struct person
 
 int main()
 {
-    printf("Chua biet lam gi");
-    printf("Chua biet lam gi lan 2");
-    printf("Chua biet lam gi lan 3");
+	struct person per1 = {1, "An" , "Nguyen" };
+	struct person per2 = {2, "Binh" , "Tran" };	
+	
+	FILE *outfile = fopen("person.dat", "w");	
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);	
+	
+	if (fwrite!=0)
+		printf("Ghi file thanh cong roi!");
+	else
+		printf("LOI!! Ghi file KHONG thanh cong!");	
+	
+	fclose(outfile); 
 }
+
