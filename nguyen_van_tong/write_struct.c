@@ -5,29 +5,26 @@
 #include<string.h>
 
 // struct person with 3 fields
-struct person
+typedef struct 
 {
     int id;
     char fname[20];
     char lname[20];
-};
+}person;
 int main(){
-person per1 , per2;
-
-strcpy("Nguyen", per1.fname);
-strcpy("A",per1.lname);
-strcpy("LE",per2.fname );
-strcpy("B",per2.lname);
-FILE *f;
-f= fopen("person.dat","w");
-if(f!=NULL){
-printf("da mo duoc file");
-fprintf(f," ho per1 \n", per1.fname);
-fprintf(f," ten per1 \n", per1.lname);
-fprintf(f," ho per2 \n", per2.fname);
-fprintf(f," ten per2 \n", per2.lname);
-}
-close(f);
-
+	person per1 = {1,"nguyen", "An"};
+	person per2 = {2,"Le", "Vinh"};
+	
+	FILE *outfile = fopen("person.dat","w");
+	
+	fwrite(&per1,sizeof(person),1,outfile);
+	fwrite(&per2,sizeof(person),1,outfile);
+	
+	if(fwrite != 0)
+		printf("ghi file thanh cong");
+	else 
+		printf("ghi file KHONG thanh cong");
+		
+	fclose (outfile);
     return 0;
 }
