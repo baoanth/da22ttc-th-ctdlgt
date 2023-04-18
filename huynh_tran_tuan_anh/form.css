@@ -1,0 +1,20 @@
+#fname{
+    border-radius: 20px;
+    border-color: aqua;
+
+}
+
+#lname{
+    border-radius: 20px;
+    border-color: aqua;
+}
+
+label{
+    color: red;
+}
+
+input[type = "submit"]{
+    background-color: green;
+    color: whitesmoke;
+    border-radius: 10px;
+}
