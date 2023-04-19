@@ -13,25 +13,25 @@ struct person
 
 int main()
 {
-	FILE *infile = fopen("person.dat", "rb");
+	FILE * infile = fopen("person.dat", "rb");
 	struct person perA;
 	
-	printf("%5s%12s%13s\n", "ID" ,"First Name", "Last Name");	
 	
-	//thu doc 1 person 
-	fread(&perA, sizeof(struct person), 1, infile );
+	
+	printf("%5d%12s%13s\n", "ID", "First Name", "Last Name");
+	
+	fread(&perA, sizeof(struct person), 1, infile);
 	
 
-	//Duyet file cho den khi gap EOF
 	while(!feof(infile))
-	{	//In perA ra man hinh
-		printf("%5d%12s%13s\n", perA.id ,perA.fname, perA.lname);	
+	{
+		printf("%5d%12s%13s\n", perA.id, perA.fname, perA.lname);
 		
-		//Doc mot cau truc person dua vao perA		
-		fread(&perA, sizeof(struct person), 1, infile );
+		fread(&perA, sizeof(struct person), 1, infile);
 	}
 	
-	fclose(infile);
+	fclose(infile);	
+	return 0;
 	
 }
 
