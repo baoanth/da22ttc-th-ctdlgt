@@ -1,4 +1,3 @@
-
 // C program for reading
 // struct from a file
 #include <stdio.h>
@@ -11,3 +10,4 @@ struct person
     char fname[20];
     char lname[20];
 };
+ 
