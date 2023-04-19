@@ -15,12 +15,12 @@ int main()
 {
 	struct person per1 = {1, "Khac", "Nguyen" };
 	struct person per2 = {2, "Hoang", "Phuoc" };
-	
+	struct person per3 = {3, "Nhut", "Thien" };
 	FILE* outfile = fopen("person.dat", "w");
 	
 	fwrite(&per1, sizeof(struct person), 1, outfile);
 	fwrite(&per2, sizeof(struct person), 1, outfile);
-	
+	fwrite(&per3, sizeof(struct person), 1, outfile);
 	if (fwrite!=0)
 		printf("Write file successfully");
 	else
