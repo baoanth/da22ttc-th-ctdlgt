@@ -15,15 +15,17 @@ int main(){
     struct person per1 ={1, "Phuoc", "Tho"};
     struct person per2 ={2, "Tra", "Vinh"};
 
-    FILE* outfile = fopen ("person.dat","w");
+    FILE* outfile;
+	outfile = fopen ("person.dat", "w");
 
-    fwiter(&per1 , sizeof(struct person), 1 , outfile);
-    fwiter(&per2 , sizeof(struct person), 2 , outfile);
+    fwrite(&per1, sizeof(struct person), 1, outfile);
+    fwrite(&per2, sizeof(struct person), 1, outfile);
 
-    if (fwrite !=0)
-    printf("write file successfully");
+    if (outfile!=0)
+    	printf("write file successfully");
     else
-    printf("EROR! write file unsuccessfully");
-    fclose(outfile);
+    	printf("EROR! write file unsuccessfully");
+    	
+    	fclose(outfile);
 
 }
