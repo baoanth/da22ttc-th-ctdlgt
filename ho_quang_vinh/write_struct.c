@@ -13,22 +13,21 @@ struct person
 
 int main()
 {
-struct person pre1 ={1, "quang", "vinh"};
-struct person pre1 ={2, "tra", "vinh"};
+    struct person per1 ={1, "quang", "vinh"};
+    struct person per2 ={2, "tra", "vinh"};
+	struct person per3 ={3, "ho", "vinh"};
+	FILE* outfile = fopen("person.dat", "w");
 
-FILE* outfile = fopen ("person.dat", "w");
-
-fwiter(&per1, sizeof(struct person), 1, outfile);
-fwiter(&per2, sizeof(struct person), 2, outfile);
-
-if (fwrite !=0)
-printf("write file successfully");
-else
-printf("EROR! write file successfully");
-fclose(outfile);
-
-
-
+    fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	fwrite(&per3, sizeof(struct person), 1, outfile);
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	
+	if (fwrite !=0)
+	printf("write file successfully");
+	else
+	printf("EROR! write file successfully");
+	fclose(outfile);
 
 }
 
