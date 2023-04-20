@@ -16,7 +16,7 @@ int main()
     FILE *infile = fopen("person.dat", "rb");
     struct person perA;
     
-    printf("%5s%12s%13s\n", "ID", "First Name", "Last name");
+    printf("%5s | %12s | %13s\n", "ID", "First Name", "Last name");
     
     //doc 1 person
     
@@ -24,7 +24,7 @@ int main()
     
     while(!feof(infile))
     {
-    	printf("%5s%12s%13s\n",perA.id, perA.fname, perA.lname);
+    	printf("%5d | %12s | %13s\n", perA.id, perA.fname, perA.lname);
     	
     	//Doc 1 cau truc person
     	 
