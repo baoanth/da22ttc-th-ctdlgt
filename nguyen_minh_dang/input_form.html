@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css"> 
+        <script src="js/bootstrap.min.js"></script> 
+    </head>
 <body>
 <h2>HTML Forms</h2>
 <form action="/action_page.php">
@@ -8,7 +12,8 @@
 value="John"><br>
 <label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"
 value="Doe"><br><br>
-<input type="submit" value="Submit">
+<button type="button" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary">Close</button>
 </form>
 <p>If you click the "Submit" button, the form-data
 will be sent to a page called "/action_page.php".</p>
