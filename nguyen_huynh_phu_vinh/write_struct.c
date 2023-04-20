@@ -13,13 +13,16 @@ struct person
 };
 
 int main(){
-    struct person per1 = {1, "Vinh", "Nguyen"};
-    struct person per2 = {2, "Hung", "Tran"};
+    struct person per1 = {1, "Nguyen", "Vinh"};
+    struct person per2 = {2, "Tran", "Hung"};
+    struct person per3 = {3, "Pho", "Ngoc"};
+    
     
     FILE *outfile = fopen("person.dat", "w");
     
     fwrite(&per1, sizeof(struct person), 1, outfile);
     fwrite(&per2, sizeof(struct person), 1, outfile);
+    fwrite(&per3, sizeof(struct person), 1, outfile);
     
     if(fwrite != 0)   
     	printf("Da ghi file thanh cong!");
