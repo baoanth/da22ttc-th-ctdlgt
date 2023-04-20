@@ -15,10 +15,8 @@ void input_text_file(char * filename)
    {
    		fgets(input_str, MAX_LINE_LENGTH, stdin);
    
-   		if (strncmp(input_str, "EXIT", 4)==0){
+   		if (strncmp(input_str, "EXIT", 4)==0)
    			break;
-   		}
-   			
    			
    	    fputs(input_str, outfile);   	      	    
   
@@ -32,3 +30,5 @@ int main()
 	input_text_file("mydocument1.txt");
 	return 0;
 }
+
+
