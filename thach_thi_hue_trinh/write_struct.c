@@ -14,7 +14,7 @@ struct person
 int main()
 {
 	struct person per1 = { 1, "Trinh" , "Thach" };
-	struct person per2 = { 1, " Hoa"  , " Tran" };
+	struct person per2 = { 2, " Hoa"  , " Tran" };
 	
 	FILE *outfile = fopen("person.dat", "w");
 	
