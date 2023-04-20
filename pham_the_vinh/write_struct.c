@@ -14,7 +14,7 @@ struct person
 int main()
 {   
 	struct person per1 = {1, "Vinh", "Pham"};
-	struct person per2 = {2, "Vinh", "Nguyen"};
+	struct person per2 = {2, "An", "Nguyen"};
 	
 	FILE *outfile = fopen("person.dat", "w");
 
@@ -27,6 +27,5 @@ int main()
 		printf("Ghi file khong thanh cong");
 	}
 	
-	fclose(outfile);
-	
+	fclose(outfile);	
 }
