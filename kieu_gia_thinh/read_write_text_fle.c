@@ -1,32 +1,26 @@
 #include<stdio.h>
-#include<stdlib.h>
-#define GIA_THINH 1301
+#include<string.h>
 
-
-void input_text_file(char *filename)
+void input_text_file(char *name)
 {
-	FILE *outfile;
-	char input_str[GIA_THINH];  
-
-	outfile = fopen(filename, "w");
-	printf("Nhap vao van ban ma ban muon nhap, an EXIT de dung nhap:\n");   
-   
+	printf("Nhap vao van ban, nhan EXIT de thoat:\n");
 	while(1)
 	{
-   		fgets(input_str, GIA_THINH, stdin);
-   
-   		if(strncmp(input_str, "EXIT", 4)==0)
-   			break;
-   			
-   	    fputs(input_str, outfile);   	      	    
-  
+		FILE *outfile = fopen(name, "w");
+		char input_str[1301];
+		
+		fgets(input_str, 1301, stdin);
+		if(strncmp(input_str, "EXIT", 4)==0)
+		{
+			break;
+		}
+		fputs(input_str, outfile);
 	}
-   
-	fclose(outfile);   
-   
 }
+
 int main()
 {
 	input_text_file("giathinh.txt");
+	
 	return 0;
 }
