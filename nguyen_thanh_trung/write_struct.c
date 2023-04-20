@@ -14,7 +14,7 @@ struct person
  int main()
 {
     struct person per1 = {1, "Nguyen", "trung"};
-	struct person per2 = {1, "abc", "thanh"};
+	struct person per2 = {2, "abc", "thanh"};
 
 
 	FILE *outfile;
@@ -29,6 +29,6 @@ struct person
 	   printf("Loi!!ghi file khong thanh cong");
 
 	   fclose(outfile);
-
+return 0;
 }
  

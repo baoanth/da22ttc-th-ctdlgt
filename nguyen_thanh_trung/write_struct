@@ -29,8 +29,6 @@ struct person
 	   printf("Loi!!ghi file khong thanh cong");
 
 	   fclose(outfile);
-
+ return 0;
 }
  
-
-	
