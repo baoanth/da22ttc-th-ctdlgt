@@ -17,10 +17,10 @@ int main()
 {
 	struct person per1 = {1,"Thu" , "Nguyen"};
 	struct person per2 = {2,"Minh" , "Vo"};
-	FILE *outfile = fopen("person.dat.dat","w");
+	FILE *outfile = fopen("person.dat","wb");
 	
 	fwrite(&per1, sizeof(struct person), 1, outfile);
-	fwrite(&per2, sizeof(struct person), 2, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
 	
 	if (fwrite!=0)
 		printf("Ghi file thanh cong roi!");
