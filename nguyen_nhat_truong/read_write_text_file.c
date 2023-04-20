@@ -5,7 +5,7 @@
 void input_text_file(char * FileName)
 {
 
-printf("Nhap van ban, nhap EXIT de thoat:");
+printf("Nhap van ban, nhap EXIT de thoat:\n");
 while(1)
  {
 	FILE *outfile = fopen(FileName,"w");
