@@ -1,5 +1,3 @@
-// C program for reading
-// struct from a file
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,9 +11,9 @@ struct person
 //Ham main
 int main()
 {
-    struct person per1 ={1,"Vinh", "Pham"};
-    struct person per2 ={2,"Quang", "Duy"};
-     struct person per3 ={3,"Nguyen", "Huy"};
+    struct person per1 ={1,"Huynh", "Lac"};
+    struct person per2 ={2,"Hoai", "Thuong"};
+     struct person per3 ={3,"Cam", "Lan"};
     FILE *outfile = fopen("person.dat","w");
     fwrite(&per1, sizeof(struct person),1,outfile);
     fwrite(&per2, sizeof(struct person),1,outfile);
