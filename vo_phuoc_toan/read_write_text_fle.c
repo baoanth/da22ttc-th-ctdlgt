@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_LINE_LENGTH 1000
+#define IAMTOAN 1000
 
 
 void input_text_file(char * filename)
 {
     FILE *outfile;
-   char input_str[MAX_LINE_LENGTH];  
+   char input_str[IAMTOAN];  
 
    outfile = fopen(filename, "w");
    printf("Nhap van ban vao ben duoi, an EXIT de dung nhap:\n");   
    
    while (1)
    {
-   		fgets(input_str, MAX_LINE_LENGTH, stdin);
+   		fgets(input_str, IAMTOAN, stdin);
    
    		if (strncmp(input_str, "EXIT", 4)==0)
    			break;
@@ -21,14 +21,14 @@ void input_text_file(char * filename)
    	    fputs(input_str, outfile);   	      	    
   
    }
-   printf("Chuong trinh ket thuc!");
+   printf("Chuong trinh ket thuc, da luu vao vo_phuoc_toan");
    
    fclose(outfile);   
    
 }
 int main()
 {
-	input_text_file("read_write_text_fle.txt");
+	input_text_file("vo_phuoc_toan.txt");
 	return 0;
 }
 
