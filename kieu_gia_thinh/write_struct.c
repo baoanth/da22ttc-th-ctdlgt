@@ -15,12 +15,14 @@ struct person
 int main()
 {
 	struct person per1 = {1, "Thinh", "Kieu"};
-	struct person per2 = {1, "My", "Nguyen"};
+	struct person per2 = {2, "My", "Nguyen"};
+	struct person per3 = {3, "Tran", "Thanh"};
 	
 	FILE *outfile = fopen("person.dat", "w");
 	
 	fwrite(&per1, sizeof(struct person), 1, outfile);
 	fwrite(&per2, sizeof(struct person), 1, outfile);
+	fwrite(&per3, sizeof(struct person), 1, outfile);
 	
 	if(fwrite!=0) printf("Ghi file thanh cong roi!");
 	else printf("LOI! Gi file KHONG thanh cong!");

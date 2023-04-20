@@ -12,8 +12,8 @@ struct person
 };
 int main()
 {
-    struct person per1 = {1, "Nguyen", "Vinh"};
-	struct person per2 = {1, "abc", "Phu"};
+    struct person per1 = {1, "Tran", "Vu"};
+	struct person per2 = {1, "abc", "Nguyen"};
 	
 	
 	FILE *outfile;
