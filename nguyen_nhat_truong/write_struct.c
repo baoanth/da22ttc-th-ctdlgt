@@ -13,8 +13,8 @@ struct person
 // ham main
 int main()
 {
-	struct person per1={1,"Truong","Nguyen"};
-	struct person per2={1,"Hoi","Nguyen"};
+	struct person per1={1,"Duong","Tam"};
+	struct person per2={1,"Tieu","Vu"};
 	
 	FILE *outfile = fopen("person.dat","w");
 	
