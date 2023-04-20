@@ -14,7 +14,7 @@ int main()
 {
     FILE *infile = fopen("person.dat","rb");
     struct person perA;
-    printf("%5s%12s%13s","ID","First Name","Last Name" );
+    printf("%5s%12s%13s\n","ID","First Name","Last Name" );
     
     fread(&perA,sizeof(struct person),1,infile);
     while(!feof(infile))
