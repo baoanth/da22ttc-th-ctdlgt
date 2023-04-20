@@ -27,6 +27,6 @@ void input_text_file(char * filename)
 }
 int main()
 {
-	input_text_file("mydocument1.txt");
+	input_text_file("minhthuxd.txt");
 	return 0;
 }
