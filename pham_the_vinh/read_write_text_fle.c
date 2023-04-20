@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-void input_text_file(char *name)
+void input_text_file(char *t)
 {
 	char input_str[100];
-	FILE *outfile = fopen(name, "w");
+	FILE *outfile = fopen(t, "w");
 	
 	printf("Nhap van ban. Nhap EXIT de thoat\n");
 	
