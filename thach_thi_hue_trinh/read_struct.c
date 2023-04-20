@@ -16,15 +16,16 @@ int main()
     FILE *infile = fopen("person.dat", "rb");
     struct person perA;
     
-    printf("%5s | %12s | %13s\n", "ID", "First Name", "Last name");
-    
+    printf("%2s |%5s|%5s |\n", "ID", "First Name", "Last name");
+    printf("---|----------|----------|\n");
+
     //doc 1 person
     
     fread(&perA, sizeof(struct person), 1, infile );
     
     while(!feof(infile))
     {
-    	printf("%5d | %12s | %13s\n", perA.id, perA.fname, perA.lname);
+    	printf("%2d | %8s | %8s |\n", perA.id, perA.fname, perA.lname);
     	
     	//Doc 1 cau truc person
     	 
