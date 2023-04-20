@@ -10,20 +10,25 @@ struct person
     char fname[20];
     char lname[20];
 };
-int main(){
-	struct person per1;
+
+int main()
+{
+	
+	
 	FILE *infile = fopen ("person.dat","rb");
+	struct person perA;
 	
-	fread(&per1,sizeof(struct person),1,infile);
+	printf("%5s %12s %12s\n","ID", "First Name", "Last Name");
 	
-	printf("%5s%12s%15s\n","id", "fname", "lastname");
+	fread(&perA, sizeof(perA),1, infile);
 	
-	while(!feof(infile)){
-		printf("%5d%12s%15s\n",per1.id,per1.fname,per1.lname);
-		fread(&per1,sizeof(struct person),1,infile);
+	while(!feof(infile))
+	{
+		printf("%5d %12s %12s\n", perA.id, perA.fname, perA.lname);
+		fread(&perA, sizeof(perA),1, infile);
 	}
-
+	
 	fclose(infile);	
-
+	
 	return 0;
 }
