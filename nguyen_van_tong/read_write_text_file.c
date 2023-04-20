@@ -2,8 +2,9 @@
 #include<string.h>
 void input_text_file(char *name){
 	printf("nhap vao van ban, nhan EXIT de thoat\n");
+	FILE *outfile = fopen(name,"w");
 	while(1){
-		FILE *outfile = fopen(name,"w"); 
+		//FILE *outfile = fopen(name,"w"); 
 		char input_str[1000];
 	
 		fgets(input_str, 1000, stdin);
@@ -11,8 +12,10 @@ void input_text_file(char *name){
 			break;
 		}
 		fputs (input_str, outfile);
+		
 	}
-	
+		fclose(outfile);
+
 }
 
 int main(){
