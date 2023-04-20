@@ -12,14 +12,24 @@ struct person
 };
 
 int main()
-{
-	struct person per1 = { 1, "Trinh" , "Thach" };
-	struct person per2 = { 2, " Hoa"  , " Tran" };
+{  
+	struct person per1 = { 1, "Naruto" , "Uzumaki" };
+	struct person per2 = { 2, "Hinata" , "Uzumaki" };
+	struct person per3 = { 3, "Boruto" , "Uzumaki" };
+	struct person per4 = { 4, "Sasuke" , "Uchiha " };
+	struct person per5 = { 5, "Sakura" , "Uchiha " };
+	struct person per6 = { 6, "Sarada" , "Uchiha " };
+	
 	
 	FILE *outfile = fopen("person.dat", "w");
-	
+    
+    
 	fwrite(&per1, sizeof (struct person), 1, outfile);
 	fwrite(&per2, sizeof (struct person), 1, outfile);
+	fwrite(&per3, sizeof (struct person), 1, outfile);
+	fwrite(&per4, sizeof (struct person), 1, outfile);
+	fwrite(&per5, sizeof (struct person), 1, outfile);
+	fwrite(&per6, sizeof (struct person), 1, outfile);
 	
 	if (fwrite!=0)
 	   printf("Ghi file thanh cong!");
