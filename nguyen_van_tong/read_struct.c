@@ -10,10 +10,3 @@ struct person
     char fname[20];
     char lname[20];
 };
-int main()
-{
-    FILE *infile = fopen("person.dat","rb");
-    struct person per A;
-    printf ("%5s%12s%13s \n","ID" ,"First name", "Last name");
-    fread 
-    
