@@ -17,6 +17,7 @@ int main()
 	struct person per2 = { 1, " Hoa"  , " Tran" };
 	
 	FILE *outfile = fopen("person.dat", "w");
+	
 	fwrite(&per1, sizeof (struct person), 1, outfile);
 	fwrite(&per2, sizeof (struct person), 1, outfile);
 	
