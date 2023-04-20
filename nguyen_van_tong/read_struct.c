@@ -10,4 +10,3 @@ struct person
     char fname[20];
     char lname[20];
 };
-
