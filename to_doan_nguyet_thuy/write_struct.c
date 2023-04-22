@@ -15,7 +15,7 @@ struct person
 int main()
 {
 	struct person per1 = {1, "To", "Thuy"};
-	struct person per2 = {1, "Doan", "Nguyet"};
+	struct person per2 = {2, "Doan", "Nguyet"};
 	
 	
 	FILE *outfile;

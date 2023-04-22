@@ -10,11 +10,22 @@ struct person
     char fname[20];
     char lname[20];
 };
+
+
 int main()
 {
-    printf"hello";
-printf"xinh chao";
-
-
-
+    struct person per1 = {1,"Nguyen","Tran"};
+	struct person per2 = {2,"Nguyen","Tong"};	
+	
+	FILE* outfile = fopen("person.dat","w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);	
+	
+	if (fwrite!=0)
+	  printf("Write file successfully");
+	else
+	  printf("ERROR! Write file unsuccessfully");
+	fclose(outfile);    
 }
+
