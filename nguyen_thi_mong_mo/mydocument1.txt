@@ -1,2 +1,9 @@
-Hom nay troi nhe len cao
-Toi buon khong hieu vi sao toi buon
+<<<<<<< HEAD
+Nguyen Ke Tong
+Nguyen Nhat Truong
+Nguyen Phu Vinh
+Nguyen Thi Huyen Tran
+Kieu Gia Thinh
+Chau Tuyet Tran
+=======
+>>>>>>> 8624d84c8455002665525f1f1fc778eaa5137147
