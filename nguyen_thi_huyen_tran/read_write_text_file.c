@@ -22,7 +22,7 @@ void input_text_file(char *name)
 
 int main()
 {
-	input_text_file("thanhtin.txt");
+	input_text_file("tran.txt");
 	
 	return 0;
 
@@ -55,7 +55,7 @@ char *read_text_file(char *filename)
 int main()
 {
 	
-	char* file_content = read_text_file("thanhtin1.txt");
+	char* file_content = read_text_file("mydocument1.txt");
 	printf("%s", file_content);
 	
 	
@@ -64,9 +64,7 @@ int main()
 	
 	
 }
+	
 
-
-
-
-
-
+    
+ 
