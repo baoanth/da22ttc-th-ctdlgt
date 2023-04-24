@@ -13,6 +13,19 @@ struct person
 
 int main()
 {
-    printf("hello word");
-    printf("toi la Nguyen");
+	struct person per1 = {1, "nguyen ", "thien" };
+	struct person per2 = {2, "thanh", "thien" };
+	struct person per3 = {3, "bao", "tran" };
+	FILE* outfile = fopen("person.dat", "w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	fwrite(&per3, sizeof(struct person), 1, outfile);
+	if (fwrite!=0)
+		printf("da ghi thanh cong");
+	else
+		printf("khong thanh cong");
+	fclose(outfile);   
+   
+
 }
