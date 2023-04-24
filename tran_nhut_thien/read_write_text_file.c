@@ -38,18 +38,18 @@ char* read_text_file(char* filename)
 		return -1;
 	}
 	
-	char line[MAX_LINE_LENGTH];	// Bien tam luu tru noi dung mot dong van ban
-	char* output_str  ;          // Bien Ket qua
+	char line[MAX_LINE_LENGTH];	
+	char* output_str  ;          
 	
-	output_str = (char*) malloc(MAX_FILE_LENGTH); // Cap phat vung nho cho bien ket qua
+	output_str = (char*) malloc(MAX_FILE_LENGTH); 
 	
 		
-	fgets(line, sizeof(line), infile); //Doc dong dau tien trong file
-	strcpy(output_str, line);        //Dua vao bien output_str
+	fgets(line, sizeof(line), infile); 
+	strcpy(output_str, line);        
 	
 	
-	while (fgets(line, sizeof(line), infile)) 	// Khi con doc duoc
-		strcat(output_str, line);               // Noi dong moi vao bien ket qua	
+	while (fgets(line, sizeof(line), infile)) 	
+		strcat(output_str, line);               
 	
 	fclose(infile);
 	
