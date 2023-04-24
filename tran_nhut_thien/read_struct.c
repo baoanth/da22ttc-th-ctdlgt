@@ -1,5 +1,3 @@
-// C program for reading
-// struct from a file
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +8,21 @@ struct person
     char fname[20];
     char lname[20];
 };
-int main(){
-printf("tui la nhut thien");
-printf("lop da22ttc");
+ int main()
+{
+  FILE *infile = fopen("person.dat" , "rb");
+   struct person perA;
+   fread(&perA, sizeof(struct person ) ,1 ,infile);
+   while (!feof(infile))
+
+{
+	printf("%5d", perA.id);
+	printf("%12s", perA .fname);
+	printf("%13s\n", perA .lname);
+	fread(&perA, sizeof(struct person ) ,1 ,infile);
+	
+}
+
+  fclose(infile);
+
 }

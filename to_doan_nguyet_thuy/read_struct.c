@@ -11,10 +11,28 @@ struct person
     char lname[20];
 };
 
-
 int main()
 {
- printf("day la mot bai mau");
- printf("day chi la ao");
+	struct person perA;
+    FILE *infile;
+    infile=fopen("person.dat", "rb");
+    
+    printf("%5s%13s%13s\n","ID","Fist Name","Last Name");
+    fread(&perA,sizeof(struct person),1,infile);
+    while(!feof(infile))
+    {
+    	
+    	printf("%5d%13s%13s\n", perA.id,perA.fname,perA.lname);
+    	fread(&perA,sizeof(struct person),1,infile);
+    
+	}
+     fclose(infile);
+    
+	         
+	   
+	   
+	
 
-};
+
+
+}

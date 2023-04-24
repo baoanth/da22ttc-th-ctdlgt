@@ -13,7 +13,20 @@ struct person
 
 int main()
 {
-    printf("Day la ham doc file");
-    printf("Day la ket qua ao thoi");
+	struct person per1 = {1, "Nguyen", "Le Hoa Binh" };
+	struct person per2 = {2, "Le", "Binh" };
+	struct person per3 = {3, "Tran", "Hoa" };
+	
+	FILE* outfile = fopen("person.dat", "w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	fwrite(&per3, sizeof(struct person), 1, outfile);
+	
+	if (fwrite!=0)
+		printf("Write file successfully");
+	else
+		printf("ERROR! Write file unsuccessfully");
+	fclose(outfile);   
 
 }
