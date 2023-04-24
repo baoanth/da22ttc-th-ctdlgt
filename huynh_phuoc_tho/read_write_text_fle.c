@@ -66,3 +66,5 @@ input_text_file("mydocument1.txt");
 	
 	return 0;
 }
+
+//lam xong
