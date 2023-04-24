@@ -58,11 +58,13 @@ char* read_text_file(char* filename)
 
 int main()
 {
-input_text_file("mydocument1.txt");
+input_text_file("HuynhPhuocTho.txt");
 	
-	char* file_content = read_text_file("mydocument1.txt");
+	char* file_content = read_text_file("HuynhPhuocTho.txt");
 	printf("%s", file_content);
 	
 	
 	return 0;
 }
+
+//lam xong

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_LINE_LENGTH 10
+#define MAX_LINE_LENGTH 1000
 #define MAX_FILE_LENGTH 10000
 
 
