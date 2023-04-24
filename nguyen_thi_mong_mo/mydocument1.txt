@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-Nguyen Ke Tong
-Nguyen Nhat Truong
-Nguyen Phu Vinh
-Nguyen Thi Huyen Tran
-Kieu Gia Thinh
-Chau Tuyet Tran
-=======
->>>>>>> 8624d84c8455002665525f1f1fc778eaa5137147
+Sao anh khong ve choi Thon Vi
+Nhin nang hang cau nang moi len
+Vuon ai muot qua xanh nhu ngoc
+La truc che ngang mat chu dien
+(HAN MAC TU)

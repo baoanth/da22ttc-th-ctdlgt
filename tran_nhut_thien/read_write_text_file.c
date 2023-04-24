@@ -34,7 +34,7 @@ char* read_text_file(char* filename)
 	FILE *infile = fopen(filename, "r");	
 
 	if(!infile){
-		printf("\n Khong the mo file : %s ", filename);
+		printf("\n Unable to open : %s ", filename);
 		return -1;
 	}
 	
@@ -45,7 +45,7 @@ char* read_text_file(char* filename)
 	
 		
 	fgets(line, sizeof(line), infile); 
-	strcpy(output_str, line);       
+	strcpy(output_str, line);        
 	
 	
 	while (fgets(line, sizeof(line), infile)) 	
@@ -58,9 +58,9 @@ char* read_text_file(char* filename)
 
 int main()
 {
-	input_text_file("outfile.txt");
+	input_text_file("mydocument1.txt");
 	
-	char* file_content = read_text_file("outfile.txt");
+	char* file_content = read_text_file("mydocument1.txt");
 	printf("%s", file_content);
 	
 	
