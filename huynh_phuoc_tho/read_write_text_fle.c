@@ -1,66 +1,68 @@
-
-// C program for reading
-// struct from afile
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_LINE_LENGTH 10
+#define MAX_FILE_LENGTH 10000
 
-// struct person with 3 fields
-struct person
+
+void input_text_file(char * filename)
 {
-    int id;
-    char fname[20];
-    char lname[20];
-};
-<<<<<<< HEAD
-<<<<<<<< HEAD:huynh_phuoc_tho/write_struct.c
+    FILE *outfile;
+   char input_str[MAX_LINE_LENGTH];  
+
+   outfile = fopen(filename, "w");
+   printf("Nhap van ban vao ben duoi, an EXIT de dung nhap:\n");   
+   
+   while (1)
+   {
+   		fgets(input_str, MAX_LINE_LENGTH, stdin);
+   
+   		if (strncmp(input_str, "EXIT", 4)==0){
+   			break;
+   		}
+   			
+   			
+   	    fputs(input_str, outfile);   	      	    
+  
+   }
+   
+   fclose(outfile);   
+   
+}
+
+char* read_text_file(char* filename)
+{
+	FILE *infile = fopen(filename, "r");	
+
+	if(!infile){
+		printf("\n Unable to open : %s ", filename);
+		return -1;
+	}
+	
+	char line[MAX_LINE_LENGTH];	
+	char* output_str  ;          
+	
+	output_str = (char*) malloc(MAX_FILE_LENGTH);
+	
+		
+	fgets(line, sizeof(line), infile); 
+	strcpy(output_str, line);        
+	
+	
+	while (fgets(line, sizeof(line), infile)) 	
+		strcat(output_str, line);               	
+	
+	fclose(infile);
+	
+	return output_str;	
+}
+
 int main()
 {
- printf("day la mot bai mau ");
- printf("day chi la ao");
-
-
-};
-========
-
-int main(){
-	struct person perA;
-    FILE* infile = fopen ("person.dat","rb");
-    
-   
-    fread(&perA , sizeof(struct person), 1 , infile);
-    printf("%d %13s %10s\n", "ID", "FNAME", "LNAME");
-    
-    while (!feof(infile))
-    {
-    	printf("%d %13s %10s\n", perA.id, perA.fname, perA.lname);
-		fread(&perA, sizeof(struct person),1, infile);
-		
-			
-    	
-    	
-    	
-    }
-    fclose(infile);
-   	
-}
->>>>>>>> c7306080c141a68bbdf308ec6014b070f997f62c:huynh_phuoc_tho/read_struct.c
-=======
-
-int main(){
-    struct person per1 ={1, "Phuoc", "Tho"};
-    struct person per2 ={2, "Tra", "Vinh"};
-
-    FILE* outfile;
-	outfile = fopen ("person.dat", "w");
-
-    fwrite(&per1, sizeof(struct person), 1, outfile);
-    fwrite(&per2, sizeof(struct person), 1, outfile);
-
-    if (outfile!=0)
-    	printf("write file successfully");
-    else
-    	printf("EROR! write file unsuccessfully");
-    	
-    	fclose(outfile);
-
+input_text_file("mydocument1.txt");
+	
+	char* file_content = read_text_file("mydocument1.txt");
+	printf("%s", file_content);
+	
+	
+	return 0;
 }
