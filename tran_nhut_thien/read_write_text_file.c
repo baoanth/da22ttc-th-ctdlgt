@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_LINE_LENGTH 10
+#define MAX_LINE_LENGTH 1000
 #define MAX_FILE_LENGTH 10000
 
 
@@ -41,7 +41,7 @@ char* read_text_file(char* filename)
 	char line[MAX_LINE_LENGTH];	
 	char* output_str  ;          
 	
-	output_str = (char*) malloc(MAX_FILE_LENGTH);
+	output_str = (char*) malloc(MAX_FILE_LENGTH); 
 	
 		
 	fgets(line, sizeof(line), infile); 
@@ -49,7 +49,7 @@ char* read_text_file(char* filename)
 	
 	
 	while (fgets(line, sizeof(line), infile)) 	
-		strcat(output_str, line);               	
+		strcat(output_str, line);               
 	
 	fclose(infile);
 	
@@ -58,13 +58,11 @@ char* read_text_file(char* filename)
 
 int main()
 {
-input_text_file("HuynhPhuocTho.txt");
+	input_text_file("mydocument1.txt");
 	
-	char* file_content = read_text_file("HuynhPhuocTho.txt");
+	char* file_content = read_text_file("mydocument1.txt");
 	printf("%s", file_content);
 	
 	
 	return 0;
 }
-
-//lam xong
