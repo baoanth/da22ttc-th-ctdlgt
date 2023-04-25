@@ -16,7 +16,10 @@ int main()
 {
 	struct person per1 = {1, "Thinh", "Kieu"};
 	struct person per2 = {2, "My", "Nguyen"};
+<<<<<<< HEAD
+=======
 	struct person per3 = {3, "Tran", "Thanh"};
+>>>>>>> 2ccda85e250682fc684a97beba05a896435c7109
 	
 	FILE *outfile = fopen("person.dat", "w");
 	
