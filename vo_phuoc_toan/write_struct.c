@@ -13,7 +13,18 @@ struct person
 // ham main
 int main()
 {
-printf("chua co du lieu");
-
-
+	struct person per1 = {1, "Toan", "Vo"};
+	struct person per2 = {2, "Trung", "Vuong"};
+	
+	FILE *outfile = fopen("person.that", "w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	
+	if(fwrite!=0)
+	   printf("Ghi file thanh cong");
+	else
+	   printf("Ghi file khong thanh cong!");
+	
+	fclose(outfile);
 }
