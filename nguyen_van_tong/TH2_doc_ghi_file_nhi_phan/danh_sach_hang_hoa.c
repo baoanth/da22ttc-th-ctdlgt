@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 
 typedef struct HangHoa{
     char mahang[5];
@@ -9,18 +10,18 @@ typedef struct HangHoa{
 HangHoa * read_DMHH(char * filename, int *n){
 
     HangHoa* hh_array; 
-    hh_array =(HangHoa*) malloc (200*sizeof(HangHoa));
+    hh_array = (HangHoa*) malloc(200*sizeof(HangHoa));
 
     FILE *infile = fopen(filename,"rb");
     struct HangHoa hh;
     int cnt = 0;
-    //printf("%15s%20s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+    
     fread(&hh, sizeof(HangHoa), 1, infile );
     hh_array[cnt]=hh;
 
 	while(!feof(infile))
 	{
-	//	printf("%15s%20s%10d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.gia, hh.thanhtien);		
+	
 		cnt++;
 		fread(&hh, sizeof(HangHoa), 1, infile );        
         hh_array[cnt]=hh;
@@ -46,6 +47,7 @@ void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
 	for(i = 0;i<n;i++){
 		if(strcmp(mahang,hh_array[i].mahang)==0){
 			in_DMHH(&hh_array[i],1);
+            c++;
 		} 
 		if(c == 0) printf("khong tim thay");	
 			
@@ -76,7 +78,6 @@ int main(){
 	printf("nhap ma hang can tim \n");
 	char ma[20];
 	gets(ma);
-	//in_DMHH(find_HH_by_ma(ma,mydmhh,n),n);
 	find_HH_by_ma(ma,mydmhh,n);
     return 0;
 }
