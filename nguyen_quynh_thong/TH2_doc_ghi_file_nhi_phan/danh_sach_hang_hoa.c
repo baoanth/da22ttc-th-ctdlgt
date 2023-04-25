@@ -1,3 +1,6 @@
+
+ 
+
 #include <stdio.h>
 #include <string.h>
 #define MAX_SIZE 1000
@@ -39,10 +42,10 @@ HangHoa* read_DMHH(char* filename, int* count){
 
 int main()
 {
-	HangHoa hh1 = {1, "A1010", "Ps1", 167, 2500, hh1.soluong*hh1.dongia};
-    HangHoa hh2 = {2, "A1011", "Ps2", 286, 5000, hh2.soluong*hh2.dongia};
-    HangHoa hh3 = {3, "A1012", "Ps3", 965, 8500, hh3.soluong*hh3.dongia};
-    HangHoa hh4 = {4, "A1013", "Ps4", 5790, 15000, hh4.soluong*hh4.dongia};
+	HangHoa hh1 = {1, "A1010", "banh mi", 100, 5000, 500000};
+    HangHoa hh2 = {2, "A1011", "com tam", 100, 2500, 250000};
+    HangHoa hh3 = {3, "A1012", "bun bo hue", 100, 8500, 850000};
+    HangHoa hh4 = {4, "A1013", "pho", 100, 15000, 1500000};
 	FILE* outfile = fopen("dmhh.dat", "w");
 	
 	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
@@ -59,3 +62,9 @@ int main()
     printf("\nDa nhap thanh cong %d hang hoa", count);
 	return 0;
 }
+
+
+
+
+
+
