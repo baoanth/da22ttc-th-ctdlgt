@@ -46,11 +46,15 @@ int main()
 {
      HangHoa hh1 = {01,"A0101","Tao", 20, 5000, 100000};
      HangHoa hh2 = {02,"B0101","Le", 10, 4000, 40000};
+     HangHoa hh3 = {03,"C0101","Nho", 50, 2000, 100000};
+     HangHoa hh4 = {04,"D0101","Buoi", 5, 10000, 50000};
      
      FILE *outfile = fopen("DMHH.DAT","wb");
      
      fwrite(&hh1, sizeof(HangHoa), 1, outfile);
 	 fwrite(&hh2, sizeof(HangHoa), 1, outfile);	
+	 fwrite(&hh3, sizeof(HangHoa), 1, outfile);	
+	 fwrite(&hh4, sizeof(HangHoa), 1, outfile);	
 	
 	 if (fwrite!=0)
 		 printf("Success!! Ghi file thanh cong!\n");
@@ -62,6 +66,8 @@ int main()
 	  int n=0; 
 	
 	 HangHoa* myhh = read_DMHH("DMHH.DAT", &n);
+	 
+	 printf("Da nhap thanh cong %d hang hoa",n);
 
    
 
