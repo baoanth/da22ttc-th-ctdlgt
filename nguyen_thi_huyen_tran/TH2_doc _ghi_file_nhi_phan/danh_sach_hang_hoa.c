@@ -3,43 +3,91 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_ANOUNT 200;
+ 
+typedef struct{
+    char mahang[5] ;
+    char tenhang[20];
+    int soluong;
+    float gia;
+    float thanhtien;
+}HangHoa;
 
- typedef struct
- {
- 	char mahang[20];
- 	char tenhang[20];
- 	int soluong;
- 	float gia;
- 	float thanhtien;
- } Hanghoa;
-   
-	Hanghoa* read_DMHH (char* filname, int n);
-	{
-		Hanghoa hh array[MAX_DMHH]
-		FILE* infile = fopen(filname, "rb");
-		Hanghoa hhA;
-		n=0
-		
-    printf("%5s%20s%13s%13s%13s\n","mahang" ,"tenhang" ,"soluong" , "gia", "thanhtien");
-    fread(&hhA, sizeof(Hanghoa),1, infile);
+//Ham doc danh sach hang hoa tu filename
+//So luong mau tin doc duoc  duoc luu tru trong bien n
+HangHoa * read_DMHH(char* filename, int *n)
+{
+    HangHoa*  hh_array;
     
+    hh_array =  (HangHoa*) malloc(200* sizeof(HangHoa));
+    
+    FILE *infile = fopen(filename, "rb");
+	HangHoa hhA;
+	int count =0;
+	
+	printf("%15s%20s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	//thu doc 1 person 
+	fread(&hhA, sizeof(HangHoa), 1, infile );
+	hh_array[count]=hhA;
+
+	//Duyet file cho den khi gap EOF
 	while(!feof(infile))
-	{
-		 printf("%5d%20s%13d%13f%13f\n", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.gia, hha.thanhtien);
-		  fread(&hhA, sizeof(Hanghoa),1, infile);
-		  n++;
-		  
+	{	//In perA ra man hinh
+		printf("%15s%20s%10d%12f%12f\n", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.gia, hhA.thanhtien);	
+		
+		//Doc mot cau truc person dua vao perA		
+		count++;
+		fread(&hhA, sizeof(HangHoa), 1, infile );        
+        hh_array[count]=hhA;
 	}
-	printf("danh sach co %d hang hoa");
-	fclose (infile);
-	return hh_array;
+	
+	fclose(infile);
+	*n = count;
+    return hh_array;
 }
+
+// Ham in n mau tin trong danh sach hang hoa ra man hinh
+void print_DMHH(HangHoa* hh, int n)
+{
+	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	int i;
+	for (i=0; i<n; i++)
+	{
+		printf("%10s%25s%10d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);	
+	}
+}
+
+
+void input_DMHH(char* filename)
+{
+	int count;
+	//my_dmhh = read_DMHH("DMHH", &count);
+	
+}
+
 int main()
 {
-	Hanghoa h1 = ("01", "xoai", "5", "10", "50");
-	Hanghoa h2 = ("02", "xoai", "5", "10", "50");
-	Hanghoa h3 = ("03", "xoai", "5", "10", "50");
-}
 
+	HangHoa h1 = {"01", "xoai", 5, 50, 25};
+    HangHoa h2 = {"02", "man", 5, 10, 50};
+    HangHoa h3 = {"03", "tao", 5, 50, 50};
+	FILE* outfile = fopen("DMHH.DAT", "w");
 	
+	fwrite(&h1, sizeof(HangHoa), 1, outfile);
+	fwrite(&h2, sizeof(HangHoa), 1, outfile);
+    fwrite(&h3, sizeof(HangHoa), 1, outfile);
+	
+	if (fwrite!=0)
+		printf("Write file successfully\n");
+	else
+		printf("ERROR! Write file unsuccessfully\n");
+	fclose(outfile);   
+
+    int n=0;
+    HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
+	
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+	print_DMHH(mydmhh, n);
+	return 0;
+
+}
 
