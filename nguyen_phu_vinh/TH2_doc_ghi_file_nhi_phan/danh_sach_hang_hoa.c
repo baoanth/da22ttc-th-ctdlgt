@@ -44,14 +44,14 @@ HangHoa* read_DMHH(char *filename, int *count)
 
 int main()
 {
-     HangHoa hh1 = {01,"A0101","Tao", 20, 5000, 100000};
-     HangHoa hh2 = {02,"B0101","Le", 10, 4000, 40000};
-     
+     HangHoa hh1 = {01,"A0101","Keo", 20, 5000, 100000};
+     HangHoa hh2 = {02,"B0101","Banh", 10, 4000, 40000};
+     HangHoa hh3 = {03,"C0101","Muc", 10, 6000, 60000};
      FILE *outfile = fopen("DMHH.DAT","wb");
      
      fwrite(&hh1, sizeof(HangHoa), 1, outfile);
 	 fwrite(&hh2, sizeof(HangHoa), 1, outfile);	
-	
+	 fwrite(&hh3, sizeof(HangHoa), 1, outfile);	
 	 if (fwrite!=0)
 		 printf("Success!! Ghi file thanh cong!\n");
 	 else

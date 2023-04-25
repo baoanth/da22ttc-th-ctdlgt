@@ -2,7 +2,7 @@
 // struct from a file
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_AMOUNT() 200
+#define MAX_AMOUNT 200
 
 typedef struct{
     char mahang[5] ;
@@ -95,3 +95,4 @@ int main()
 	return 0;
 
 }
+
