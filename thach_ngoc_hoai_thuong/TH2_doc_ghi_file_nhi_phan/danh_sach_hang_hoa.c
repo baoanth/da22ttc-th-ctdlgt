@@ -42,10 +42,8 @@ HangHoa * read_DMHH(char* filename, int *n)
 	
 	fclose(infile);
 	*n = count;
-    return hh_array;
-}
-
-// Ham in n mau tin trong danh sach hang hoa ra man hinh
+}return hh_array
+    // Ham in n mau tin trong danh sach hang hoa ra man hinh
 void print_DMHH(HangHoa* hh, int n)
 {
 	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
