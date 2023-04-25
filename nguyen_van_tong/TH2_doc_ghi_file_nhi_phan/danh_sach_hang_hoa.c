@@ -33,10 +33,10 @@ HangHoa * read_DMHH(char * filename, int *n){
 }
 void in_DMHH(HangHoa *hh,int n)
 {
-	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
+	printf("%10s%25s%15s%12s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
 	int i;
     for( i = 0; i< n; i++){
-        printf("%10s%25s%10d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
+        printf("%10s%25s%10d%20f%20f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
     }
 		
 }
