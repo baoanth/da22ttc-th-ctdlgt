@@ -19,13 +19,13 @@ HangHoa* read_DMHH(char* filename, int *n)
 	HangHoa hhA;
 	int count= 0;
 	
-	printf("%5s%12s%10s%15s%12s\n", "Ma hang", "Ten hang", "So luong", "Don gia", "Thanh tien");
+	printf("%5s%12s%10s%15s%20s\n", "Ma hang", "Ten hang", "So luong", "Don gia", "Thanh tien");
     fread(&hhA, sizeof(HangHoa), 1, infile);
     hh_array[count]=hhA;
     
 	while(!feof(infile))
 	{
-		printf("%5s%12s%10s%15s%12s\n", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.thanhtien);
+		printf("%5s%12s%10d%20f%20f\n", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.thanhtien);
 		
 		count++;
 		fread(&hhA, sizeof(HangHoa), 1, infile);
@@ -39,18 +39,18 @@ HangHoa* read_DMHH(char* filename, int *n)
 }
 void printf_DMHH(HangHoa* hh, int n)
 {
-	printf("%5s%12s%10s%15s%12s\n", "Ma hang", "Ten hang", "So luong", "Don gia", "Thanh tien");
+	printf("%5s%12s%10s%15s%20s\n", "Ma hang", "Ten hang", "So luong", "Don gia", "Thanh tien");
 	int i;
 	for (i=0; i<n; i++)
 	{
-		printf("%5s%12s%10s%15s%12s\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].thanhtien);
+		printf("%5s%12s%10d%20f%20f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].thanhtien);
 	}	
 }
 	
 void input_DMHH(char* filename)
 {
 	int count;
-	my_dmhh = read_DMHH("DMHH", &count);
+	//my_dmhh = read_DMHH("DMHH", &count);
 	
 }
 
@@ -58,9 +58,9 @@ void input_DMHH(char* filename)
 
 int main()
 {
-	HangHoa h1 = {"A001", "ca chep", 5, 20000, 100000};
+	HangHoa h1 = {"A001", "ca ro", 5, 20000, 100000};
 	HangHoa h2 = {"A002", "ca loc", 3, 30000, 90000};
-	HangHoa h3 = {"A003", "ca ro", 8, 10000, 80000};
+	HangHoa h3 = {"A003", "ca chep", 8, 10000, 80000};
   		
     FILE* outfile = fopen("DMHH.DAT", "w");
     
@@ -69,9 +69,9 @@ int main()
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
     
     if (fwrite!=0)
-        printf("write file successfully");
+        printf("\nwrite file successfully\n");
     else
-	    printf("ERROR! write file unsuccessfully");
+	    printf("\nERROR! write file unsuccessfully\n");
        
      fclose(outfile); 
 	 
