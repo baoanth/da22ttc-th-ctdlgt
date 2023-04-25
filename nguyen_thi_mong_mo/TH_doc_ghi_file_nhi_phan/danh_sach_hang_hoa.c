@@ -2,7 +2,7 @@
 // struct from a file
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_AMOUNT 200
+
 
 typedef struct{
     char mahang[5] ;
@@ -18,7 +18,7 @@ HangHoa * read_DMHH(char* filename, int *n)
 {
     HangHoa*  hh_array;
     
-    hh_array =  malloc(MAX_AMOUNT* sizeof(HangHoa));
+    hh_array =  (HangHoa*) malloc(200* sizeof(HangHoa));
     
     FILE *infile = fopen(filename, "rb");
 	HangHoa hhA;
