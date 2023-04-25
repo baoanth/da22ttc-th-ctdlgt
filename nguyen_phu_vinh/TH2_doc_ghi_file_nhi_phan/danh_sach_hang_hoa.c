@@ -44,35 +44,24 @@ HangHoa* read_DMHH(char *filename, int *count)
 
 int main()
 {
-     HangHoa hh1 = {01,"A0101","Tao", 20, 5000, hh1.sl*hh1.dg};
-     HangHoa hh2 = {02,"B0101","Le", 10, 4000, hh2.sl*hh2.dg};
-     HangHoa hh3 = {03,"C0101","Nho", 50, 2000, hh3.sl*hh3.dg};
-     HangHoa hh4 = {04,"D0101","Buoi", 5, 10000, hh4.sl*hh4.dg};
-     HangHoa hh5 = {05,"E0101","Dua hau", 5, 20000, hh4.sl*hh4.dg};
-     HangHoa hh6 = {06,"F0101","Cam", 20, 3000, hh4.sl*hh4.dg};
-     
-     
+     HangHoa hh1 = {01,"A0101","Keo", 20, 5000, 100000};
+     HangHoa hh2 = {02,"B0101","Banh", 10, 4000, 40000};
+     HangHoa hh3 = {03,"C0101","Muc", 10, 6000, 60000};
      FILE *outfile = fopen("DMHH.DAT","wb");
      
      fwrite(&hh1, sizeof(HangHoa), 1, outfile);
 	 fwrite(&hh2, sizeof(HangHoa), 1, outfile);	
 	 fwrite(&hh3, sizeof(HangHoa), 1, outfile);	
-	 fwrite(&hh4, sizeof(HangHoa), 1, outfile);	
-	 fwrite(&hh5, sizeof(HangHoa), 1, outfile);	
- 	 fwrite(&hh6, sizeof(HangHoa), 1, outfile);	
-	
 	 if (fwrite!=0)
-		 printf("Success!! Ghi file thanh cong!\n");
+		 printf(" Ghi file thanh cong!\n");
 	 else
-		 printf("Faile!! Ghi file khong thanh cong!\n");	
+		 printf(" Ghi file khong thanh cong!\n");	
 		
  	 fclose(outfile);
 	  
 	  int n=0; 
 	
 	 HangHoa* myhh = read_DMHH("DMHH.DAT", &n);
-	 
-	 printf("Da nhap thanh cong %d hang hoa",n);
 
    
 
