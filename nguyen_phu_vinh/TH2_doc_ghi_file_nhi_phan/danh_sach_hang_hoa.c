@@ -53,9 +53,9 @@ int main()
 	 fwrite(&hh2, sizeof(HangHoa), 1, outfile);	
 	 fwrite(&hh3, sizeof(HangHoa), 1, outfile);	
 	 if (fwrite!=0)
-		 printf("Success!! Ghi file thanh cong!\n");
+		 printf(" Ghi file thanh cong!\n");
 	 else
-		 printf("Faile!! Ghi file khong thanh cong!\n");	
+		 printf(" Ghi file khong thanh cong!\n");	
 		
  	 fclose(outfile);
 	  
