@@ -23,7 +23,7 @@ HangHoa* read_DMHH(char* filename, int* count){
 
 	while(!feof(infile))
 	{	
-		printf("%5s %25s %5d %f %f", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);	
+		printf("%5s %5s %5d %f %f", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);	
 		fread(&hhA, sizeof(HangHoa), 1, infile );
         i++;
         dmhh[i] = hhA;
