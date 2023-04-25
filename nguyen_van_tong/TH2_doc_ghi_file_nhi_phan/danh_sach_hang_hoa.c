@@ -36,13 +36,22 @@ void in_DMHH(HangHoa *hh,int n)
 	printf("%10s%25s%15s%12s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
 	int i;
     for( i = 0; i< n; i++){
-        printf("%10s%25s%10d%20f%20f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
+        printf("%10s%25s%10d%16.0f%18.0f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
     }
 		
 }
 
+void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
+	int i,c = 0;
+	for(i = 0;i<n;i++){
+		if(strcmp(mahang,hh_array[i].mahang)==0){
+			in_DMHH(&hh_array[i],1);
+		} 
+		if(c == 0) printf("khong tim thay");	
+			
+	}
 
-
+}
 
 int main(){
     HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
@@ -63,6 +72,11 @@ int main(){
 
     printf("Da doc duoc %d hang hoa\n", n);
     in_DMHH (mydmhh,n);
-
+	
+	printf("nhap ma hang can tim \n");
+	char ma[20];
+	gets(ma);
+	//in_DMHH(find_HH_by_ma(ma,mydmhh,n),n);
+	find_HH_by_ma(ma,mydmhh,n);
     return 0;
 }
