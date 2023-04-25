@@ -13,8 +13,8 @@ struct person
 
 int main ()
 {
-    struct person per1 = (1, "Tran", "Chau");
-    struct person per2 = (2, "Tuan", "Chau");
+    struct person per1 = {1, "Tran", "Chau\n"};
+    struct person per2 = {2, "Tuan", "Chau"};
     
     FILE *outfile = fopen ("person.dat", "w");
     
@@ -23,8 +23,6 @@ int main ()
     
     if (fwrite != 0)
         printf ("Ghi du lieu thanh cong.");
-    else
-        printf ("LOI! Ghi du lieu khong thanh cong.");
-
-    return 0;
+    else 
+        printf ("Loi! Ghi du lieu khong thanh cong");
 }
