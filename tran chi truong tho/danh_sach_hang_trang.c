@@ -1,54 +1,83 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define MAX_AMOUNT 200
-typedef struct Hanghoa{
-	char mahang [5];
-	char tehang [20];
-	int soluong;
-	float dongia;
-	float sotien;
-}Hanghoa;
+#include<stdio.h>
+#include<string.h>
 
-Hanghoa* read_DMHH(char* filename,int *n)
-{
-    Hanghoa* hh_array;
-	hh_array= malloc(MAX_AMOUNT* sizeof(Hanghoa));
-    FILE *infile= fopen(filename, "rb");
-    Hanghoa hhA;
-    int count=0; 
+typedef struct HangHoa{
+    char mahang[5];
+    char tenhang[25];
+    int soluong;
+    float gia, thanhtien;
+}HangHoa;
+HangHoa * read_DMHH(char * filename, int *n){
+
+    HangHoa* hh_array; 
+    hh_array = (HangHoa*) malloc(200*sizeof(HangHoa));
+
+    FILE *infile = fopen(filename,"rb");
+    struct HangHoa hh;
+    int cnt = 0;
     
-    printf("%5s%20s%8s%12s%12s\n","Ma hang","Ten hang","So luong","Don gia","So tien");
-    fread(&hhA, sizeof(Hanghoa),1 ,infile);
-    hh_array[count]=hhA;
+    fread(&hh, sizeof(HangHoa), 1, infile );
+    hh_array[cnt]=hh;
 
-    while(!feof(infile))
-    {
-	    cout++
-    	printf("%5s%20s%8s%12s%12s\n",hhA.mahang,hhA.tenhang,hhA.soluong,hhA.dongia,hhA.sotien);
-    	fread(&hhA, sizeof(Hanghoa),1 ,infile);
-    	hh_array[count]=hhA;
-    	
-    }
-    fclose(infile);
+	while(!feof(infile))
+	{
+	
+		cnt++;
+		fread(&hh, sizeof(HangHoa), 1, infile );        
+        hh_array[cnt]=hh;
+	}
+	
+	fclose(infile);
+	*n = cnt;
     return hh_array;
-}    
-int main()
+
+}
+void in_DMHH(HangHoa *hh,int n)
 {
-	Hanghoa h1 = ("A001","ma 1","2","10","20");
-	Hanghoa h2 = ("A002","ma 2","2","30","40");
-	Hanghoa h3 = ("A003","ma 3","2","50","60");
+	printf("%10s%25s%15s%12s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
+	int i;
+    for( i = 0; i< n; i++){
+        printf("%10s%25s%10d%16.0f%18.0f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
+    }
+		
+}
+
+void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
+	int i,c = 0;
+	for(i = 0;i<n;i++){
+		if(strcmp(mahang,hh_array[i].mahang)==0){
+			in_DMHH(&hh_array[i],1);
+            c++;
+		} 
+		if(c == 0) printf("khong tim thay");	
+			
+	}
+
+}
+
+int main(){
+    HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
+    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
+    HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
+	FILE * outfile = fopen("DSHH.DAT", "w");
 	
-	FILE *outfile;
-	outfile= fopen("DMHH.DAT","w");
+	fwrite(&h1, sizeof(HangHoa), 1, outfile);
+	fwrite(&h2, sizeof(HangHoa), 1, outfile);
+    fwrite(&h3, sizeof(HangHoa), 1, outfile);
+    if(fwrite !=0)
+        printf("mo file thanh cong \n");
+    else 
+        printf("loi mo file");
+    fclose(outfile);
+    int n;
+    HangHoa* mydmhh=  read_DMHH( "DSHH.DAT", &n );
+
+    printf("Da doc duoc %d hang hoa\n", n);
+    in_DMHH (mydmhh,n);
 	
-	fwrite(&h1, sizeof(Hanghoa),1,outfile);
-	fwrite(&h2, sizeof(Hanghoa),1,outfile);
-	fwrite(&h3, sizeof(Hanghoa),1,outfile);
-	
-    if (fwrite!=0)
-	  printf("Write file successfully");
-	else
-	  printf("ERROR! Write file unsuccessfully");
-	  
-	fclose(outfile);    
+	printf("nhap ma hang can tim \n");
+	char ma[20];
+	gets(ma);
+	find_HH_by_ma(ma,mydmhh,n);
+    return 0;
 }
