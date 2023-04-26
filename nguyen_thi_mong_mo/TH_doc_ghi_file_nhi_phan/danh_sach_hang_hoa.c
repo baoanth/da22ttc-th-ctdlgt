@@ -30,6 +30,7 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
     while (fread(&hh, sizeof(HangHoa), 1, file) == 1 && count < MAX_AMOUNT)
 	{
         ds_hanghoa[count++] = hh;
+        //print_HH(hh);
     }
 
     fclose(file);
@@ -41,7 +42,7 @@ void print_DMHH(HangHoa* hh, int n)
 {
 	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
 	int i;
-	for (i=0; i<=n; i++)
+	for (i=0; i<n; i++)
 	{
 		printf("%10s%25s%10d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);	
 	}
@@ -111,6 +112,8 @@ void input_DMHH(char* filename)
 		
 		if (found != -1)
 		{
+			printf("Tim thay ma hang vua nhap tai phan tu thu %d\n", found);
+			
 			printf("\nTen hang: %s\n", hh_temp.tenhang);
 			
 			printf("So luong: "); 
@@ -140,8 +143,11 @@ void input_DMHH(char* filename)
 			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
 			printf("Thanh tien: %f", hh_temp.thanhtien); 
 			
-			count++;
+			
 			my_dmhh[count] = hh_temp; // Noi mon hang moi vao cuoi danh muc hang hoa		
+			count++;
+			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
+			print_DMHH(my_dmhh,count);
 		}
 	}
 	// Ghi danh muc hang hoa vao file
@@ -159,7 +165,6 @@ void input_DMHH(char* filename)
 
 int main()
 {
-
 
 /*	HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
     HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
@@ -179,9 +184,10 @@ int main()
 	else
 		printf("ERROR! Write file unsuccessfully\n");
 	fclose(outfile);   
-
+/*
     int n=0;
-    HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
+    HangHoa* mydmhh;
+	n =  read_DMHH( "DMHH.DAT", mydmhh );
 	
 	printf("\nDanh sach tren co %d mon hang\n", n);	
 	print_DMHH(mydmhh, n);
