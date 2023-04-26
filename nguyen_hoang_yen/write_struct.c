@@ -22,10 +22,11 @@ int main()
 	fwrite(&per2, sizeof(struct person), 1, outfile);
 
 	if (fwrite!=0)
-		printf ("Ghi file thanh cong!");
+		printf ("Ghi file thanh cong roi!");
 	else
 		printf("LOI! Ghi file KHONG thanh cong!");
 		
 	fclose(outfile);		
 
 }	 
+
