@@ -46,7 +46,30 @@ void printf_DMHH(HangHoa* hh, int n)
 		printf("%5s%12s%10d%20f%20f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].thanhtien);
 	}	
 }
-	
+
+void print_HH(HangHoa hh)
+{
+	printf("%5s%12s%10d%20f%20f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.thanhtien);
+
+}
+
+int  find_HH_by_ma(char*mahang, HangHoa*hh_array, int count, HangHoa*hh_kq)
+{
+	int i = 0;
+	while( i< count )
+	{
+		if( strcmp(hh_array[i].mahang, mahang)==0)
+		{
+			*hh_kq = hh_array[i];
+			return 1;
+		}
+		i++;
+	}
+	return 0;
+     
+
+
+}	
 void input_DMHH(char* filename)
 {
 	int count;
@@ -58,15 +81,18 @@ void input_DMHH(char* filename)
 
 int main()
 {
-	HangHoa h1 = {"A001", "ca thoi loi", 5, 20000, 100000};
-	HangHoa h2 = {"A002", "ca long tong", 3, 30000, 90000};
-	HangHoa h3 = {"A003", "ca cha bat", 8, 10000, 80000};
-  		
+	HangHoa h1 = {"A001", "samsung 10", 5, 1000, 5000};
+	HangHoa h2 = {"A002", "samsung11", 5, 2000, 10000};
+	HangHoa h3 = {"A003", "samsung11 pro", 5, 3000, 15000};
+  	HangHoa h4 = {"A004", "samsung11 pro max", 5, 4000, 20000};
+  	HangHoa h5 = {"A005", "samsung12 pro", 5, 5000, 25000};
     FILE* outfile = fopen("DMHH.DAT", "w");
     
     fwrite(&h1, sizeof(HangHoa), 1, outfile);
     fwrite(&h2, sizeof(HangHoa), 1, outfile);
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
+    fwrite(&h4, sizeof(HangHoa), 1, outfile);
+    fwrite(&h5, sizeof(HangHoa), 1, outfile);
     
     if (fwrite!=0)
         printf("\nwrite file successfully\n");
@@ -80,6 +106,33 @@ int main()
 	 
 	 printf("\nDanh sach tren co %d mon hang\n ", n);
 	 printf_DMHH(mydmhh, n);
-	 return 0; 
+
+
+    
+     HangHoa hhX;
+	 char* mahangX = "A004";
+	 int found = find_HH_by_ma(mahangX, mydmhh, n, &hhX);
+	 printf("found = %d \n", found);
+
+     if(found)
+	 {
+
+		printf("Da tim thay hang hoa co ma %s \n ", mahangX);
+	    print_HH(hhX);
+	 }
+	 else 
+	 {
+		printf("Khong tim thay hang hoa co ma %s \n", mahangX);
+
+	 }
+	 return 0;
+
+	 
 		
 }	
+
+
+
+
+
+
