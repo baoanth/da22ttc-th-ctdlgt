@@ -71,7 +71,34 @@ int  find_HH_by_ma(char*mahang, HangHoa*hh_array, int count, HangHoa*hh_kq)
 
 }	
 void input_DMHH(char* filename)
-{
+{   
+    char mahangin[3];
+    HangHoa hh_temp;
+    HangHoa my_dmhh[MAX_AMOUNT];
+    int count = read_DMHH(filename, my_dmhh);
+    printf("nhap hang hoa(EXIT de thoat):\n\n");
+
+    while(1)
+    {
+        printf("mahang");
+        fflush(stdin);
+        gets(mahang_in);
+        if (strncmp(mahang_in, "EXIT", 4)==0) break;
+
+        int found = find_HH_by_ma(mahang_in, my_dmhh, count, &hh_temp);
+
+        if (found !=-1)
+        {
+            printf("tenhang : %s", hh_temp.tenhang);
+            printf("soluong  :");
+            scanf("%d", &hh_temp.soluong);
+
+        }
+
+
+
+    }
+    
 	int count;
 	//my_dmhh = read_DMHH("DMHH", &count);
 	
