@@ -46,7 +46,30 @@ void printf_DMHH(HangHoa* hh, int n)
 		printf("%5s%12s%10d%20f%20f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].thanhtien);
 	}	
 }
-	
+
+void print_HH(HangHoa hh)
+{
+	printf("%5s%12s%10d%20f%20f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.thanhtien);
+
+}
+
+int  find_HH_by_ma(char*mahang, HangHoa*hh_array, int count, HangHoa*hh_kq)
+{
+	int i = 0;
+	while( i< count )
+	{
+		if( strcmp(hh_array[i].mahang, mahang)==0)
+		{
+			*hh_kq = hh_array[i];
+			return 1;
+		}
+		i++;
+	}
+	return 0;
+     
+
+
+}	
 void input_DMHH(char* filename)
 {
 	int count;
@@ -80,9 +103,31 @@ int main()
 	 
 	 printf("\nDanh sach tren co %d mon hang\n ", n);
 	 printf_DMHH(mydmhh, n);
-	 return 0; 
+
+
+    
+     HangHoa hhX;
+	 char* mahangX = "A002";
+	 int found = find_HH_by_ma(mahangX, mydmhh, n, &hhX);
+	 printf("found = %d \n", found);
+
+     if(found)
+	 {
+
+		printf("Da tim thay hang hoa co ma %s \n ", mahangX);
+	    print_HH(hhX);
+	 }
+	 else 
+	 {
+		printf("Khong tim thay hang hoa co ma %s \n", mahangX);
+
+	 }
+	 return 0;
+
+	 
 		
 }	
+
 
 
 

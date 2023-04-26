@@ -44,7 +44,26 @@ void print_DMHH(Hanghoa* hh, int n)
 		printf("%5s%15s%15d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
 	}
 }
-   
+
+void print_HH(Hanghoa hh)
+{
+	printf("%5s%15s%15d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.sotien);	
+}
+int find_HH_by_ma(char* mahang, Hanghoa* hh_array, int count, Hanghoa* hh_kq)
+{
+	int i=0;
+	while (i<count)
+	{
+		if (strcmp(hh_array[i].mahang, mahang)==0)
+		{
+			*hh_kq= hh_array[i];
+			return 1;
+		}
+		i++;
+	}
+	return 0;
+}
+			   
 void input_DMHH(char* filename)
 {
 	int count;
@@ -55,12 +74,16 @@ int main()
 	Hanghoa h1 = {"A001","ma 1",2,10,20};
 	Hanghoa h2 = {"A002","ma 2",2,30,40};
 	Hanghoa h3 = {"A003","ma 3",2,50,60};
+	Hanghoa h4 = {"A004","ma 4",2,70,80};
+
 	
 	FILE* outfile= fopen("DMHH.DAT","w");
 
 	fwrite(&h1, sizeof(Hanghoa),1,outfile);
 	fwrite(&h2, sizeof(Hanghoa),1,outfile);
 	fwrite(&h3, sizeof(Hanghoa),1,outfile);
+	fwrite(&h4, sizeof(Hanghoa),1,outfile);
+
 	
     if (fwrite!=0)
 	  printf("Write file successfully\n");
@@ -74,6 +97,22 @@ int main()
 	
 	printf("\nDanh sach tren co %d mon hang\n", n);	
 	print_DMHH(mydmhh, n);
+	
+	Hanghoa hhX;
+	char* mahangX = "A004";
+	int found=find_HH_by_ma(mahangX, mydmhh, n, &hhX);
+	
+	printf("Found = %d\n",found);
+	if (found)
+	{
+		printf("Da tim thay hang hoa co ma %s\n", mahangX);
+		print_HH(hhX);
+	}
+	else
+	{
+	printf("Khong tim thay hang hoa co ma %s\n",mahangX);
+	}	
+	
 	return 0;
 
 }		
