@@ -1,83 +1,119 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_AMOUNT 200
+typedef struct {
+	char mahang [5];
+	char tenhang [20];
+	int soluong;
+	float dongia;
+	float sotien;
+}Hanghoa;
 
-typedef struct HangHoa{
-    char mahang[5];
-    char tenhang[25];
-    int soluong;
-    float gia, thanhtien;
-}HangHoa;
-HangHoa * read_DMHH(char * filename, int *n){
-
-    HangHoa* hh_array; 
-    hh_array = (HangHoa*) malloc(200*sizeof(HangHoa));
-
-    FILE *infile = fopen(filename,"rb");
-    struct HangHoa hh;
-    int cnt = 0;
-    
-    fread(&hh, sizeof(HangHoa), 1, infile );
-    hh_array[cnt]=hh;
-
-	while(!feof(infile))
-	{
-	
-		cnt++;
-		fread(&hh, sizeof(HangHoa), 1, infile );        
-        hh_array[cnt]=hh;
-	}
-	
-	fclose(infile);
-	*n = cnt;
-    return hh_array;
-
-}
-void in_DMHH(HangHoa *hh,int n)
+Hanghoa* read_DMHH(char* filename,int *n)
 {
-	printf("%10s%25s%15s%12s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
-	int i;
-    for( i = 0; i< n; i++){
-        printf("%10s%25s%10d%16.0f%18.0f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);
+    Hanghoa* hh_array;
+	hh_array= malloc(MAX_AMOUNT* sizeof(Hanghoa));
+    FILE *infile= fopen(filename, "rb");
+    Hanghoa hhA;
+    int count=0; 
+    
+    printf("%5s%15s%15s%12s%12s\n","Ma hang","Ten hang","So luong","Don gia","So tien");
+    fread(&hhA, sizeof(Hanghoa),1 ,infile);
+    hh_array[count]=hhA;
+
+    while(!feof(infile))
+    {
+	    count++;
+    	printf("%5s%20s%20d%12f%12f\n",hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);
+    	fread(&hhA, sizeof(Hanghoa),1 ,infile);
+    	hh_array[count]=hhA;
+    	
     }
-		
-}
+    fclose(infile);
+    *n = count;
+    return hh_array;
+} 
 
-void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
-	int i,c = 0;
-	for(i = 0;i<n;i++){
-		if(strcmp(mahang,hh_array[i].mahang)==0){
-			in_DMHH(&hh_array[i],1);
-            c++;
-		} 
-		if(c == 0) printf("khong tim thay");	
-			
+void print_DMHH(Hanghoa* hh, int n)
+{
+
+	printf("%5s%15s%15s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	int i;
+	for (i=0; i<n; i++)
+	{
+		printf("%5s%20s%20d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
 	}
-
 }
 
-int main(){
-    HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
-    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
-    HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
-	FILE * outfile = fopen("DSHH.DAT", "w");
-	
-	fwrite(&h1, sizeof(HangHoa), 1, outfile);
-	fwrite(&h2, sizeof(HangHoa), 1, outfile);
-    fwrite(&h3, sizeof(HangHoa), 1, outfile);
-    if(fwrite !=0)
-        printf("mo file thanh cong \n");
-    else 
-        printf("loi mo file");
-    fclose(outfile);
-    int n;
-    HangHoa* mydmhh=  read_DMHH( "DSHH.DAT", &n );
-
-    printf("Da doc duoc %d hang hoa\n", n);
-    in_DMHH (mydmhh,n);
-	
-	printf("nhap ma hang can tim \n");
-	char ma[20];
-	gets(ma);
-	find_HH_by_ma(ma,mydmhh,n);
-    return 0;
+void print_HH(Hanghoa hh)
+{
+	printf("%5s%20s%20d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.sotien);	
 }
+int find_HH_by_ma(char* mahang, Hanghoa* hh_array, int count, Hanghoa* hh_kq)
+{
+	int i=0;
+	while (i<count)
+	{
+		if (strcmp(hh_array[i].mahang, mahang)==0)
+		{
+			*hh_kq= hh_array[i];
+			return 1;
+		}
+		i++;
+	}
+	return 0;
+}
+			   
+void input_DMHH(char* filename)
+{
+	int count;
+}
+
+int main()
+{
+	Hanghoa h1 = {"A001","con meo trang",2,10,20};
+	Hanghoa h2 = {"A002","con meo vang",2,30,60};
+	Hanghoa h3 = {"A003","con meo do",2,50,100};
+	Hanghoa h4 = {"A004","con meo den",2,70,140};
+
+	
+	FILE* outfile= fopen("DMHH.DAT","w");
+
+	fwrite(&h1, sizeof(Hanghoa),1,outfile);
+	fwrite(&h2, sizeof(Hanghoa),1,outfile);
+	fwrite(&h3, sizeof(Hanghoa),1,outfile);
+	fwrite(&h4, sizeof(Hanghoa),1,outfile);
+
+	
+    if (fwrite!=0)
+	  printf("Ghi file thanh cong\n");
+	else
+	  printf("Ghi file that bai\n");
+	  
+	fclose(outfile);    
+	
+	int n=0;
+    Hanghoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
+	
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+	print_DMHH(mydmhh, n);
+	
+	Hanghoa hhX;
+	char* mahangX = "A004";
+	int found=find_HH_by_ma(mahangX, mydmhh, n, &hhX);
+	
+	printf("Found = %d\n",found);
+	if (found)
+	{
+		printf("Da tim thay hang hoa co ma %s\n", mahangX);
+		print_HH(hhX);
+	}
+	else
+	{
+	printf("Khong tim thay hang hoa co ma %s\n",mahangX);
+	}	
+	
+	return 0;
+
+}		
+
