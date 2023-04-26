@@ -1,16 +1,16 @@
 #include<stdio.h>
 #include<string.h>
-
+#include<stdlib.h>
 typedef struct HangHoa{
-    char mahang[5];
+    char mahang[10];
     char tenhang[25];
     int soluong;
     float gia, thanhtien;
 }HangHoa;
-HangHoa * read_DMHH(char * filename, int *n){
+HangHoa* read_DMHH(char * filename, int *n){
 
     HangHoa* hh_array; 
-    hh_array = (HangHoa*) malloc(200*sizeof(HangHoa));
+    hh_array = (HangHoa*) malloc(1000*sizeof(HangHoa));
 
     FILE *infile = fopen(filename,"rb");
     struct HangHoa hh;
@@ -19,9 +19,7 @@ HangHoa * read_DMHH(char * filename, int *n){
     fread(&hh, sizeof(HangHoa), 1, infile );
     hh_array[cnt]=hh;
 
-	while(!feof(infile))
-	{
-	
+	while(!feof(infile)){
 		cnt++;
 		fread(&hh, sizeof(HangHoa), 1, infile );        
         hh_array[cnt]=hh;
@@ -48,11 +46,9 @@ void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
 		if(strcmp(mahang,hh_array[i].mahang)==0){
 			in_DMHH(&hh_array[i],1);
             c++;
-		} 
-		if(c == 0) printf("khong tim thay");	
-			
+		} 		
 	}
-
+	if(c == 0) printf("khong tim thay");
 }
 
 int main(){
