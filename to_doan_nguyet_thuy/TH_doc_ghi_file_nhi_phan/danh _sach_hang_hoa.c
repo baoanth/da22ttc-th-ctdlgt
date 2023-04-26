@@ -65,23 +65,91 @@ int  find_HH_by_ma(char*mahang, HangHoa*hh_array, int count, HangHoa*hh_kq)
 		}
 		i++;
 	}
-	return 0;
+	return -1;
      
 
 
 }	
-void input_DMHH(char* filename)
+
+	void input_DMHH(char* filename)
 {
-	int count;
-	//my_dmhh = read_DMHH("DMHH", &count);
-	
+    char mahang_input[5];
+    HangHoa hh_temp;
+
+    HangHoa my_dmhh[MAX_AMOUNT];
+
+    int count = read_DMHH(filename, my_dmhh);
+    printf_DMHH(my_dmhh, count);
+
+    printf("Nhap hang moi: Nhap EXIT de thoat\n\n");
+
+    while (1)
+    {
+        printf("Ma hang : \n");
+        fflush(stdin);
+        gets(mahang_input);
+
+        if (strncmp(mahang_input, "EXIT", 4) == 0)
+        {
+            break;
+        }
+
+        int found = find_HH_by_ma(mahang_input, my_dmhh, count, &hh_temp);
+
+        if (found != 0)
+        {
+            printf("Ten hang : %s\n", hh_temp.tenhang);
+
+            printf("So luong : ");
+            scanf("%d", &hh_temp.soluong);
+
+            printf("Don gia : ");
+            scanf("%f", &hh_temp.dongia);
+
+            hh_temp.thanhtien = hh_temp.soluong * hh_temp.dongia;
+            printf("\nThanh tien : %f", hh_temp.thanhtien);
+
+            my_dmhh[found - 1] = hh_temp;
+        }
+        else
+        {
+            strcpy(hh_temp.mahang, mahang_input);
+            printf("Ten hang: ");
+            fflush(stdin);
+            gets(hh_temp.tenhang);
+
+            printf("So luong : ");
+            scanf("%d", &hh_temp.soluong);
+
+            printf("Don gia : ");
+            scanf("%f", &hh_temp.dongia);
+
+            hh_temp.thanhtien = hh_temp.soluong * hh_temp.dongia;
+            printf("\nThanh tien : %f", hh_temp.thanhtien);
+
+            count++;
+            my_dmhh[count - 1] = hh_temp;
+        }
+    }
+
+    
+
+	int i =0;
+	FILE *outfile = fopen(filename, "w");
+	for( i=0; i< count; i++)
+	{
+		fwrite(&my_dmhh[i], sizeof(HangHoa), 1, outfile);
+		
+	}
+	fclose(outfile);
+
 }
 
 
 
 int main()
 {
-	HangHoa h1 = {"A001", "ca moi 1", 5, 20000, 100000};
+    HangHoa h1 = {"A001", "ca moi 1", 5, 20000, 100000};
 	HangHoa h2 = {"A002", "ca moi 2", 3, 30000, 90000};
 	HangHoa h3 = {"A003", "ca moi 3", 8, 10000, 80000};
   		
