@@ -24,7 +24,7 @@ Hanghoa* read_DMHH(char* filename,int *n)
     while(!feof(infile))
     {
 	    count++;
-    	printf("%5s%15s%15d%12f%12f\n",hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);
+    	printf("%5s%20s%20d%12f%12f\n",hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);
     	fread(&hhA, sizeof(Hanghoa),1 ,infile);
     	hh_array[count]=hhA;
     	
@@ -41,13 +41,13 @@ void print_DMHH(Hanghoa* hh, int n)
 	int i;
 	for (i=0; i<n; i++)
 	{
-		printf("%5s%15s%15d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
+		printf("%5s%20s%20d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
 	}
 }
 
 void print_HH(Hanghoa hh)
 {
-	printf("%5s%15s%15d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.sotien);	
+	printf("%5s%20s%20d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.dongia, hh.sotien);	
 }
 int find_HH_by_ma(char* mahang, Hanghoa* hh_array, int count, Hanghoa* hh_kq)
 {
@@ -71,10 +71,10 @@ void input_DMHH(char* filename)
 
 int main()
 {
-	Hanghoa h1 = {"A001","ma 1",2,10,20};
-	Hanghoa h2 = {"A002","ma 2",2,30,40};
-	Hanghoa h3 = {"A003","ma 3",2,50,60};
-	Hanghoa h4 = {"A004","ma 4",2,70,80};
+	Hanghoa h1 = {"A001","con meo trang",2,10,20};
+	Hanghoa h2 = {"A002","con meo vang",2,30,60};
+	Hanghoa h3 = {"A003","con meo do",2,50,100};
+	Hanghoa h4 = {"A004","con meo den",2,70,140};
 
 	
 	FILE* outfile= fopen("DMHH.DAT","w");
@@ -86,9 +86,9 @@ int main()
 
 	
     if (fwrite!=0)
-	  printf("Write file successfully\n");
+	  printf("Ghi file thanh cong\n");
 	else
-	  printf("ERROR! Write file unsuccessfully\n");
+	  printf("Ghi file that bai\n");
 	  
 	fclose(outfile);    
 	
@@ -116,10 +116,3 @@ int main()
 	return 0;
 
 }		
-
-
-
-
-
-
-
