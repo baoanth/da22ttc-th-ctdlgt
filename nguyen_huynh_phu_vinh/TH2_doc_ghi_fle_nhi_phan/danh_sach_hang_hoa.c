@@ -68,7 +68,7 @@ int main()
     HangHoa hh3 = {3, "A1012", "Ps3", 965, 8500, hh3.soluong*hh3.dongia};
     HangHoa hh4 = {4, "A1013", "Ps4", 5790, 15000, hh4.soluong*hh4.dongia};
     HangHoa hh5 = {5, "A1014", "Ps5", 10790, 50000, hh5.soluong*hh5.dongia};
-	FILE* outfile = fopen("dmhh.dat", "w");
+	FILE* outfile = fopen("dmhh.dat", "wb");
 	
 	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
     fwrite(&hh2, sizeof(HangHoa), 1, outfile);
