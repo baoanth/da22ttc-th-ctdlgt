@@ -102,10 +102,10 @@ void input_DMHH(char* filename)
 
 int main()
 {	
-/*	HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
-    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
-    HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
-    HangHoa h4 = {"A004", "Iphone 14", 5, 1000, 5000};
+	HangHoa h1 = {"A001", "Iphone 11", 5, 500, 2500};
+    HangHoa h2 = {"A002", "ipad", 5, 700, 5500};
+    HangHoa h3 = {"A003", "tay nghe bluetooth", 5, 1000, 5000};
+    HangHoa h4 = {"A004", "may tinh casio", 5, 1000, 5000};
     
     FILE* outfile = fopen("DSHH.dat", "w");
 	
@@ -114,7 +114,7 @@ int main()
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
     fwrite(&h4, sizeof(HangHoa), 1, outfile);
     fclose(outfile);
-*/
+
     int count;
     
     HangHoa* my_dshh = read_DMHH("DSHH.dat", &count);
