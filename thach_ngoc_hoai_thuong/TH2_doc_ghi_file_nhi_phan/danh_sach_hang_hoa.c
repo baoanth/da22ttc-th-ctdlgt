@@ -42,7 +42,9 @@ HangHoa * read_DMHH(char* filename, int *n)
 	
 	fclose(infile);
 	*n = count;
-}return hh_array
+
+return hh_array;
+}
     // Ham in n mau tin trong danh sach hang hoa ra man hinh
 void print_DMHH(HangHoa* hh, int n)
 {
@@ -89,7 +91,7 @@ int main()
     HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
 	
 	printf("\nDanh sach tren co %d mon hang\n", n);	
-	print_DMHH(mydmhh, n);
+	//print_DMHH(mydmhh, n);
 	return 0;
 
 }
