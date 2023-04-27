@@ -1,3 +1,4 @@
+
 // C program for reading
 // struct from a file
 #include <stdio.h>
@@ -44,12 +45,12 @@ void print_DMHH(HangHoa* hh, int n)
 	int i;
 	for (i=0; i<n; i++)
 	{
-		printf("%10s%25s%10d%12f%12f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);	
+		printf("%10s%25s%10d%12.2f%12.2f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].gia, hh[i].thanhtien);	
 	}
 }
 void print_HH(HangHoa hh)
 {
-	printf("%10s%25s%10d%12f%12f\n", hh.mahang, hh.tenhang, hh.soluong, hh.gia, hh.thanhtien);	
+	printf("%10s%25s%10d%12.2f%12.2f\n", hh.mahang, hh.tenhang, hh.soluong, hh.gia, hh.thanhtien);	
 	
 }
 
@@ -166,7 +167,7 @@ void input_DMHH(char* filename)
 int main()
 {
 
-/*	HangHoa h1 = {"A001", "VIVO", 5, 500, 2500};
+	HangHoa h1 = {"A001", "VIVO", 5, 500, 2500};
     HangHoa h2 = {"A002", "OPPO", 5, 700, 5500};
     HangHoa h3 = {"A003", "SAMSUNG", 5, 1000, 5000};
     HangHoa h4 = {"A004", "IPAD", 5, 1300, 6500};
@@ -212,4 +213,5 @@ int main()
 	return 0;
 
 }
+
 
