@@ -20,7 +20,7 @@ Hanghoa* read_DMHH(char* filename,int *n)
     printf("%5s%15s%15s%12s%12s\n","Ma hang","Ten hang","So luong","Don gia","So tien");
     fread(&hhA, sizeof(Hanghoa),1 ,infile);
     hh_array[count]=hhA;
-
+ 
     while(!feof(infile))
     {
 	    count++;
