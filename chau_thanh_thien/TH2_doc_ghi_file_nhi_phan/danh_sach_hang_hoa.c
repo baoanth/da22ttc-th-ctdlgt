@@ -15,7 +15,8 @@ typedef struct{
     float thanhtien;
 }HangHoa;
 
-
+//Ham doc danh sach hang hoa tu filename
+//So luong mau tin doc duoc  duoc luu tru trong bien n
 int read_DMHH(char* filename, HangHoa * ds_hanghoa)
 {
     FILE *file = fopen(filename, "rb");
@@ -36,7 +37,7 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
     return count;
 }
 
-
+// Ham in n mau tin trong danh sach hang hoa ra man hinh
 void print_DMHH(HangHoa* hh, int n)
 {
 	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
@@ -85,19 +86,19 @@ int  find_HH_by_ma(char* mhX, HangHoa * hh_array, int count, HangHoa* hh_kq)
 void input_DMHH(char* filename)
 {
 	
-	char mahang_input[5];      
-	HangHoa hh_temp; 
+	char mahang_input[5];      // Bien tam luu ma hang duoc nhap tu ban phim
+	HangHoa hh_temp; // Bien tam de luu hang hoa moi duoc nhap tu ban phim hoac duoc tim ra tu danh sach;
 	
 	
 	HangHoa my_dmhh[MAX_AMOUNT] ;
 	
-	int count = read_DMHH(filename, my_dmhh ); 
-	print_DMHH(my_dmhh, count);          
+	int count = read_DMHH(filename, my_dmhh ); // Doc danh muc hang hoa vao danh sach
+	print_DMHH(my_dmhh, count);          // In danh muc hang hoa ra de quan sat
 	
 	printf("Moi nhap hang hoa moi (Nhap EXIT cho ma hang de thoat):\n\n") ;	
 
 	
-	while(1) 
+	while(1) // Cho nhap den khi nhap mahang bang EXIT thi dung
 	{
 		printf("\nMa hang: ");
 		fflush(stdin);
@@ -124,7 +125,7 @@ void input_DMHH(char* filename)
 			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
 			printf("\nThanh tien: %f\n", hh_temp.thanhtien); 
 			
-			my_dmhh[found] = hh_temp ;
+			my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
 		}
 		else
 		{
@@ -143,13 +144,13 @@ void input_DMHH(char* filename)
 			printf("Thanh tien: %f", hh_temp.thanhtien); 
 			
 			
-			my_dmhh[count] = hh_temp; 		
+			my_dmhh[count] = hh_temp; // Noi mon hang moi vao cuoi danh muc hang hoa		
 			count++;
 			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
 			print_DMHH(my_dmhh,count);
 		}
 	}
-
+	// Ghi danh muc hang hoa vao file
 	int i = 0;
 	FILE * outfile = fopen(filename, "w");
 	for (i=0; i<count; i++)
@@ -165,11 +166,11 @@ void input_DMHH(char* filename)
 int main()
 {
 
-/*	HangHoa h1 = {"A001", "tra sua", 5, 500, 2500};
-    HangHoa h2 = {"A002", "banh mi", 5, 700, 5500};
-    HangHoa h3 = {"A003", "pho", 5, 1000, 5000};
-    HangHoa h4 = {"A004", "bun bo hue", 5, 1300, 6500};
-    HangHoa h5 = {"A005", "hu tieu", 5, 1500, 7500};
+/*	HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
+    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
+    HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
+    HangHoa h4 = {"A004", "Iphone 14 pro", 5, 1300, 6500};
+    HangHoa h5 = {"A005", "Iphone 14 pro max", 5, 1500, 7500};
 	FILE* outfile = fopen("DMHH.DAT", "w");
 	
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
@@ -211,5 +212,3 @@ int main()
 	return 0;
 
 }
-
-

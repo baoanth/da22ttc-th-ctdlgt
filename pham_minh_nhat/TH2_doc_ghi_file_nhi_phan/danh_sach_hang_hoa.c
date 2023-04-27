@@ -1,60 +1,71 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#define MAX_SIZE 1000
+#define MAX 200
 
-typedef struct HangHoa{
-    char mahang[5];
-    char tenhang[20];
-    int soluong;
-    float dongia;
-    float sotien;
+typedef struct
+{
+	int stt;
+    char mh[10];
+    char th[10];
+    int sl;
+    float dg;
+    float st;
 }HangHoa;
 
-HangHoa* read_DMHH(char* filename, int* count){
-    FILE *infile = fopen(filename, "rb");
-    HangHoa hhA;
-    HangHoa *dmhh;
-    int i = 0;
-
-    dmhh = malloc(sizeof(HangHoa)*MAX_SIZE);
-    dmhh[i] = hhA;
-
-	fread(&hhA, sizeof(HangHoa), 1, infile );
-
+HangHoa* read_DMHH(char *filename, int *count)
+{
+	HangHoa*  hh_array;
+    
+    hh_array =  malloc(MAX* sizeof(HangHoa));
+    
+   	FILE *infile = fopen (filename,"rb");
+	HangHoa hhA;
+	int dem=0;
+	
+	printf("%5s %10s %15s %15s %20s %20s\n","STT", "Ma Hang", "Ten Hang", "So Luong", "Don Gia", "So Tien");
+	
+	fread(&hhA, sizeof(HangHoa),1, infile);
+	hh_array[dem]=hhA;
+	
 	while(!feof(infile))
-	{	
-		printf("%5s %5s %5d %f %f", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);	
-		fread(&hhA, sizeof(HangHoa), 1, infile );
-        i++;
-        dmhh[i] = hhA;
+	{
+		printf("%5d %10s %15s %15d %20.2f %20.2f\n", hhA.stt, hhA.mh, hhA.th, hhA.sl, hhA.dg, hhA.st);
+		dem++;
+		fread(&hhA, sizeof(HangHoa),1, infile);
+		hh_array[dem]=hhA;
 	}
-
-	fclose(infile);
-
-    *count = i;
-    return dmhh;
+	
+	
+	fclose(infile);	
+	*count=dem;
+	return hh_array;
 }
 
 int main()
 {
-	HangHoa hh1 = {"A1010", "Ps1", 10, 100, 1000};
-    HangHoa hh2 = {"A1011", "Ps2", 10, 200, 2000};
-    HangHoa hh3 = {"A1012", "Ps3", 10, 300, 3000};
-    HangHoa hh4 = {"A1013", "Ps4", 10, 400, 4000};
-	FILE* outfile = fopen("dmhh.dat", "w");
+     HangHoa hh1 = {01,"A0101","vang", 20, 5000, 100000};
+     HangHoa hh2 = {02,"B0101","kim cuong ", 10, 4000, 40000};
+     HangHoa hh3 = {03,"C0101","sat ", 10, 6000, 60000};
+     FILE *outfile = fopen("DMHH.DAT","wb");
+     
+     fwrite(&hh1, sizeof(HangHoa), 1, outfile);
+	 fwrite(&hh2, sizeof(HangHoa), 1, outfile);	
+	 fwrite(&hh3, sizeof(HangHoa), 1, outfile);	
+	 if (fwrite!=0)
+		 printf(" Ghi file thanh cong!\n");
+	 else
+		 printf(" Ghi file khong thanh cong!\n");	
+		
+ 	 fclose(outfile);
+	  
+	  int n=0; 
 	
-	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
-    fwrite(&hh2, sizeof(HangHoa), 1, outfile);
-    fwrite(&hh3, sizeof(HangHoa), 1, outfile);
-    fwrite(&hh4, sizeof(HangHoa), 1, outfile);
-	
-	fclose(outfile);
+	 HangHoa* myhh = read_DMHH("DMHH.DAT", &n);
+
+   
+
     
-    int count;
-
-    HangHoa* myhh = read_DMHH("dmhh.dat", &count);
-
-    printf("\nDa nhap thanh cong %d hang hoa", count);
-	return 0;
+    return 0;
 }
 
