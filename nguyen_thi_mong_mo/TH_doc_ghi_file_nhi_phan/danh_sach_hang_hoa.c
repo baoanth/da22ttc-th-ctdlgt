@@ -97,6 +97,70 @@ void input_DMHH(char* filename)
 
    // Luu toan bo my_dmhh vao outfile, dong outfile
 
+<<<<<<< HEAD
+=======
+	
+	while(1) // Cho nhap den khi nhap mahang bang EXIT thi dung
+	{
+		printf("\nMa hang: ");
+		fflush(stdin);
+		gets(mahang_input);
+		
+		if (strncmp(mahang_input, "EXIT", 4)==0){
+   			break;
+   		}
+		
+		int found = find_HH_by_ma(mahang_input, my_dmhh, count, &hh_temp);
+		
+		if (found != -1)
+		{
+			printf("Tim thay ma hang vua nhap tai phan tu thu %d\n", found);
+			
+			printf("\nTen hang: %s\n", hh_temp.tenhang);
+			
+			printf("So luong: "); 
+			scanf("%d", &hh_temp.soluong);
+			
+			printf("Don gia: "); 
+			scanf("%f", &hh_temp.gia);
+			
+			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
+			printf("\nThanh tien: %f\n", hh_temp.thanhtien); 
+			
+			*my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
+		}
+		else
+		{
+			strcpy(hh_temp.mahang, mahang_input);
+			
+			printf("Ten hang: "); 
+			gets(hh_temp.tenhang);
+			
+			printf("So luong: "); 
+			scanf("%d", &hh_temp.soluong);
+			
+			printf("Don gia: "); 
+			scanf("%f", &hh_temp.gia);
+			
+			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
+			printf("Thanh tien: %f", hh_temp.thanhtien); 
+			
+			
+			my_dmhh[count] = hh_temp; // Noi mon hang moi vao cuoi danh muc hang hoa		
+			count++;
+			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
+			print_DMHH(my_dmhh,count);
+		}
+	}
+	// Ghi danh muc hang hoa vao file
+	int i = 0;
+	FILE * outfile = fopen(filename, "w");
+	for (i=0; i<count; i++)
+	{ 
+		fwrite(&my_dmhh[i], sizeof(HangHoa), 1, outfile);
+	}
+	fclose(outfile);	
+>>>>>>> 893882678ca3d9ebd0c2458946bbc6a081f257c1
 }
 
 
