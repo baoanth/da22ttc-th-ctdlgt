@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_AMOUNT 1000
@@ -201,7 +202,7 @@ int main()
 
     char* mahang = "A003";
     HangHoa hang_kq;
-    int found  = find_HH_by_ma(mahang, my_dshh,count, &hang_kq);
+    int found  = find_HH_by_ma(mahang, my_dshh, count, &hang_kq);
     
     if (found)
     
