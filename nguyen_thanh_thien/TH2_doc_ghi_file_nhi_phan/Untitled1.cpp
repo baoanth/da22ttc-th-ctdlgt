@@ -157,13 +157,15 @@ int main()
 	HangHoa h1 = {"A0101", "trung", 5, 300, 1500};
     HangHoa h2 = {"A0102", "banh", 5, 200, 1000};
     HangHoa h3 = {"A0103", "sua", 5, 100, 500};
-    
+    HangHoa h4 = {"A0104", "tao", 5, 500, 2500};
+    HangHoa h5 = {"A0105", "dua", 5, 400, 2000};
 	FILE* outfile = fopen("DMHH.DAT", "w");
 	
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
 	fwrite(&h2, sizeof(HangHoa), 1, outfile);
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
-    
+    fwrite(&h4, sizeof(HangHoa), 1, outfile);
+    fwrite(&h5, sizeof(HangHoa), 1, outfile);
 	
 	if (fwrite!=0)
 		printf("da ghi thanh cong\n");
