@@ -40,16 +40,17 @@ void in_DMHH(HangHoa *hh,int n)
 		
 }
 
-void find_HH_by_ma(char * mahang,HangHoa* hh_array,int n ){
-	int i,c = 0;
+int find_HH_by_ma(char * mahang,HangHoa* hh_array,int n,HangHoa*kq ){
+	int i;
 	for(i = 0;i<n;i++){
 		if(strcmp(mahang,hh_array[i].mahang)==0){
-			in_DMHH(&hh_array[i],1);
-            c++;
+			kq = hh_array[i];
+            return 1;
 		} 		
 	}
-	if(c == 0) printf("khong tim thay");
+	return -1;
 }
+
 
 int main(){
     HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
