@@ -17,9 +17,21 @@ void input_text_file(char *name){
 		fclose(outfile);
 
 }
+char *text(FILE *infile){
+	char out_str[1000],line[1000];
+	infile = fopen ("tailieu.txt", "r");
+	while (!feof(infile)){
+		fgets(&line,1000,infile);
+		strcat(out_str,line);
+			
+	}
+	return out_str;
+}
+
 
 int main(){
+	FILE *out_file;
 	input_text_file("tailieu.txt");
-		
+	printf("%s", text(out_file));	
 	return 0;
 }
