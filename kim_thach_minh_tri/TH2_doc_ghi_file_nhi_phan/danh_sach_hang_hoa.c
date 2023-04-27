@@ -42,6 +42,21 @@ HangHoa* read_DMHH(char *filename, int *count)
 	return hh_array;
 }
 
+void print_DMHH(HangHoa* hh, int n)
+{
+	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	int i;
+	for (i=0; i<n; i++)
+	{
+		printf("%10s%25s%10d%12f%12f\n", hh[i].mh, hh[i].th, hh[i].sl, hh[i].dg, hh[i].st);	
+	}
+}
+void print_HH(HangHoa hhA)
+{
+	printf("%10s%25s%10d%12f%12f\n", hhA.mh, hhA.th, hhA.sl, hhA.dg, hhA.st);	
+	
+}
+
 int main()
 {
      HangHoa hh1 = {01,"A0101","Tao", 20, 5000, hh1.sl*hh1.dg};
@@ -74,7 +89,9 @@ int main()
 	 
 	 printf("Da nhap thanh cong %d hang hoa",n);
 
-   
+    void print_DMHH(HangHoa* hh, int n);
+    
+    void print_HH(HangHoa hhA);
 
     
     return 0;

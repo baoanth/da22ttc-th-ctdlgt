@@ -37,6 +37,30 @@ HangHoa* read_DMHH(char* filename, int* count){
     return dmhh;
 }
 
+void print_HH(HangHoa h)
+{
+    printf("\n%10s%15s%10d%20.2f%20.2f", h.mahang, h.tenhang, h.soluong, h.dongia, h.sotien);	
+}
+
+int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
+{
+    
+    int i=0;
+    
+    while (i<count)
+    {
+		printf("\nMa hang: %s ", hh_array[i].mahang);
+    	
+        if( strcmp(hh_array[i].mahang, mahang )==0)        
+        {
+        	*kq= hh_array[i];
+        	return i;
+        }             
+        i++;
+	}
+	return  -1;
+}
+
 int main()
 {
 	HangHoa hh1 = {1, "A1010", "PsP", 167, 2500, hh1.soluong*hh1.dongia};
@@ -59,5 +83,16 @@ int main()
     HangHoa* myhh = read_DMHH("dmhh.dat", &count);
 
     printf("\nDa nhap thanh cong %d hang hoa", count);
+
+    char* mahang = "A1010";
+    HangHoa hang_kq;
+    int found  = find_HH_by_ma(mahang, myhh, count, &hang_kq);
+    
+    if (found)
+    
+        print_HH(hang_kq);
+    else
+        printf("Tim khong thay hang hoa co ma %s\n", mahang);
+
 	return 0;
 }
