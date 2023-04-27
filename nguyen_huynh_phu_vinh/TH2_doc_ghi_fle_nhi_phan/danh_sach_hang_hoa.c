@@ -39,22 +39,26 @@ HangHoa* read_DMHH(char* filename, int* count){
 
 void print_HH(HangHoa h)
 {
-    printf("%10s%25s%10d%12f%12f\n", h.mahang, h.tenhang, h.soluong, h.dongia, h.sotien);	
+    printf("\n%10s%15s%10d%20.2f%20.2f", h.mahang, h.tenhang, h.soluong, h.dongia, h.sotien);	
 }
 
-int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa *hh_kq){
-    int i = 0;
-    while(i<count)
+int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
+{
+    
+    int i=0;
+    
+    while (i<count)
     {
-        printf("Ma hang : %s \n", hh_array[i]);
-        if (strcmp(hh_array[i].mahang, mahang) == 0)
+		printf("\nMa hang: %s ", hh_array[i].mahang);
+    	
+        if( strcmp(hh_array[i].mahang, mahang )==0)        
         {
-            *hh_kq = hh_array[i];
-            return 1;
-        }
+        	*kq= hh_array[i];
+        	return i;
+        }             
         i++;
-    }
-    return -1;
+	}
+	return  -1;
 }
 
 int main()
@@ -64,7 +68,7 @@ int main()
     HangHoa hh3 = {3, "A1012", "Ps3", 965, 8500, hh3.soluong*hh3.dongia};
     HangHoa hh4 = {4, "A1013", "Ps4", 5790, 15000, hh4.soluong*hh4.dongia};
     HangHoa hh5 = {5, "A1014", "Ps5", 10790, 50000, hh5.soluong*hh5.dongia};
-	FILE* outfile = fopen("dmhh.dat", "w");
+	FILE* outfile = fopen("dmhh.dat", "wb");
 	
 	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
     fwrite(&hh2, sizeof(HangHoa), 1, outfile);
@@ -80,9 +84,8 @@ int main()
 
     printf("\nDa nhap thanh cong %d hang hoa", count);
 
-    char *mahang = "A1010";
+    char* mahang = "A1010";
     HangHoa hang_kq;
-
     int found  = find_HH_by_ma(mahang, myhh, count, &hang_kq);
     
     if (found)

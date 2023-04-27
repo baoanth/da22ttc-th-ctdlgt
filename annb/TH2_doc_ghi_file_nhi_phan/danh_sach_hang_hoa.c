@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_AMOUNT 1000
@@ -134,3 +136,4 @@ int main()
 
     return 0;
 }
+>>>>>>> ef10d75c6ea0cdce12c21e20a79c2a139d38b6d6
