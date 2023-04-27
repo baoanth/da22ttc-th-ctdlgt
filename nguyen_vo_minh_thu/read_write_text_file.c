@@ -30,3 +30,4 @@ int main()
 	input_text_file("minhthuxd.txt");
 	return 0;
 }
+
