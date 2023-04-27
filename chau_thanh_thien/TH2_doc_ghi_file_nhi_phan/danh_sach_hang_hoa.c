@@ -58,9 +58,9 @@ void input_DMHH(char* filename)
 
 int main()
 {
-	HangHoa h1 = {"A001", "Meo Ai cap", 5, 10, 50 };
-    HangHoa h2 = {"A002", "Meo Anh long ngan", 2, 30, 60 };
-    HangHoa h3 = {"A003", "Meo Han Quoc", 7, 20, 140};
+	HangHoa h1 = {"A001", "Cho Alaska", 5, 10, 50 };
+    HangHoa h2 = {"A002", "Cho Shiba", 2, 30, 60 };
+    HangHoa h3 = {"A003", "Cho Husky", 7, 20, 140};
 	FILE* outfile = fopen("DMHH.DAT", "w");
 
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
