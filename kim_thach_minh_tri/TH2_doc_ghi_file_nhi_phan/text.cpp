@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_AMOUNT 1000
@@ -20,7 +18,7 @@ HangHoa* read_DMHH(char * filename, int* count)
     int i =0; // dem so hang hoa doc duoc
 	HangHoa* res_dmhh; //danh muc hang 
     
-    res_dmhh = malloc(sizeof(HangHoa)*MAX_AMOUNT); //Cap phat vung nho cho danh sach hang hoa
+    res_dmhh = malloc(*MAX_AMOUNT sizeof(HangHoa)); //Cap phat vung nho cho danh sach hang hoa
 
     FILE *infile = fopen(filename, "rb");
 	HangHoa hhA;
@@ -61,12 +59,6 @@ void print_HH(HangHoa h)
     printf("%10s%25s%10d%12f%12f\n", h.mahang, h.tenhang, h.soluong, h.gia, h.thanhtien);	
 }
 
-/*
-Ham tim kiem mot mahang trong danh sach hh_array
-Tim thay thi tra chi so cua mon hang trong hh_array
-Khong tim thay tra ve -1
-Mon hang duoc tim thay luu trong *kq
-*/
 int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
 {
     
@@ -79,27 +71,13 @@ int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
         if( strcmp(hh_array[i].mahang, mahang )==0)        
         {
         	*kq= hh_array[i];
-        	return i;
+        	return 1;
         }             
         i++;
 	}
-	return  -1;
+	return  0;
 }
 
-void input_DMHH(char* filename) 
-{
-   //Mo file doc noi dung dua vao mot mang my_dmhh
-
-   //Lap cho den khi nhap ma = EXIT
-   // Nhap mahang_tam 
-   // Neu mahang_tam == EXIT thi break
-   // Tim trong my_dmhh xem mahang_tam co chua, neu chua thif nhap binh thuong, neu da co thi in ra ten hang.
-   // Nhap gia, soluong, tinh thanhtien = soluong*dongia
-   // Dua mon hang vua nhap vao my_dmhh
-
-   // Luu toan bo my_dmhh vao outfile, dong outfile
-
-}
 
 
 int main()
@@ -126,7 +104,7 @@ int main()
 
     char* mahang = "A003";
     HangHoa hang_kq;
-    int found  = find_HH_by_ma(mahang, my_dshh, count, &hang_kq);
+    int found  = find_HH_by_ma(mahang, my_dshh,count, &hang_kq);
     
     if (found)
     
@@ -136,4 +114,4 @@ int main()
 
     return 0;
 }
->>>>>>> ef10d75c6ea0cdce12c21e20a79c2a139d38b6d6
+
