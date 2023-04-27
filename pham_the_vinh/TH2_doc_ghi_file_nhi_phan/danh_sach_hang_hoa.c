@@ -53,19 +53,99 @@ void print_DMHH(HangHoa* hh, int n)
 	}
 }
 
-void find_HH_by_ma(char * mahang,HangHoa* hhct,int n ){
-	int i,dem = 0;
-	for(i = 0;i<n;i++){
-		if(strcmp(hhct[i].mahang, mahang)==0){
-			dem++;
-		
-			printf("\n--- Da tim thay hang hoa co ma %s ---\n", mahang);
-			print_DMHH(&hhct[i],1); 
-		} 			
+
+int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
+{
+    int i=0;
+    while (i<count)
+    {
+        if(strcmp(hh_array[i].mahang, mahang)==0)        
+        {
+        	*kq= hh_array[i];
+        	
+        	return i;
+        }             
+        i++;
 	}
-	
-	if(dem == 0) printf("--- Khong tim thay hang hoa co ma %s ---", mahang);
+	return  -1;
 }
+void input_DMHH(char* filename)
+{
+	
+	char mahang_input[5]; 
+	HangHoa hh_temp; 
+	
+	
+	HangHoa my_dmhh[MaxAmount] ;
+	
+	int count = read_DMHH(filename, my_dmhh ); 
+	print_DMHH(my_dmhh, count);          
+	
+	printf("Moi nhap hang hoa moi (Nhap EXIT cho ma hang de thoat):\n\n") ;	
+
+	
+	while(1)
+	{
+		printf("\nMa hang: ");
+		fflush(stdin);
+		gets(mahang_input);
+		
+		if (strncmp(mahang_input, "EXIT", 4)==0){
+   			break;
+   		}
+		
+		int found = find_HH_by_ma(mahang_input, my_dmhh, count, &hh_temp);
+		
+		if (found != -1)
+		{
+			printf("Tim thay ma hang vua nhap tai phan tu thu %d\n", found);
+			
+			printf("\nTen hang: %s\n", hh_temp.tenhang);
+			
+			printf("So luong: "); 
+			scanf("%d", &hh_temp.soluong);
+			
+			printf("Don gia: "); 
+			scanf("%f", &hh_temp.dongia);
+			
+			hh_temp.sotien = hh_temp.soluong * hh_temp.dongia ;
+			printf("\nThanh tien: %f\n", hh_temp.sotien); 
+			
+			my_dmhh[found] = hh_temp ;	
+		}
+		else
+		{
+			strcpy(hh_temp.mahang, mahang_input);
+			
+			printf("Ten hang: "); 
+			gets(hh_temp.tenhang);
+			
+			printf("So luong: "); 
+			scanf("%d", &hh_temp.soluong);
+			
+			printf("Don gia: "); 
+			scanf("%f", &hh_temp.dongia);
+			
+			hh_temp.sotien = hh_temp.soluong * hh_temp.dongia ;
+			printf("Thanh tien: %f", hh_temp.sotien); 
+			
+			
+			my_dmhh[count] = hh_temp; 		
+			count++;
+			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
+			print_DMHH(my_dmhh,count);
+		}
+	}
+
+	int i = 0;
+	FILE * outfile = fopen(filename, "w");
+	for (i=0; i<count; i++)
+	{ 
+		fwrite(&my_dmhh[i], sizeof(HangHoa), 1, outfile);
+	}
+	fclose(outfile);	
+}
+
 
 int main()
 {
@@ -93,11 +173,16 @@ int main()
 
 	print_DMHH(mydmhh, n);
 	
-	char mahang[10];
-	printf("\nNhap ma hang can tim ");
-	gets(mahang);
+	char* mahang = "A0002";
 	
-	find_HH_by_ma(mahang,mydmhh,n);
+    HangHoa hang_kq;
+    
+    int found = find_HH_by_ma(mahang, mydmhh, n, &hang_kq);
+    
+    if (found)
+        print_DMHH(hang_kq);
+    else
+        printf("Khong tim thay hang hoa co ma %s\n", mahang);
 	
 	return 0;
 }
