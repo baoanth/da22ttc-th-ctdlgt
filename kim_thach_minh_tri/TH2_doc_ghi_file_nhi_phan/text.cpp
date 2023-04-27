@@ -18,7 +18,7 @@ HangHoa* read_DMHH(char * filename, int* count)
     int i =0; // dem so hang hoa doc duoc
 	HangHoa* res_dmhh; //danh muc hang 
     
-    res_dmhh = malloc(*MAX_AMOUNT sizeof(HangHoa)); //Cap phat vung nho cho danh sach hang hoa
+    res_dmhh = malloc( sizeof(HangHoa) *MAX_AMOUNT ); //Cap phat vung nho cho danh sach hang hoa
 
     FILE *infile = fopen(filename, "rb");
 	HangHoa hhA;
@@ -28,6 +28,7 @@ HangHoa* read_DMHH(char * filename, int* count)
 	//thu doc 1 person 
 	fread(&hhA, sizeof(HangHoa), 1, infile );
 	res_dmhh[i] =hhA;
+	i++
 
 	//Duyet file cho den khi gap EOF
 	while(!feof(infile))
@@ -36,8 +37,9 @@ HangHoa* read_DMHH(char * filename, int* count)
 		
 		//Doc mot cau truc person dua vao perA		
 		fread(&hhA, sizeof(HangHoa), 1, infile );
-        i++;
+       
         res_dmhh[i] =hhA;
+         i++;
 	}
 	
 	fclose(infile);
@@ -66,7 +68,7 @@ int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
     
     while (i<count)
     {
-		printf("Ma hang: %s \n ", hh_array[i])   ;
+		printf("Ma hang: %s \n ", hh_array[i].mahang)   ;
     	
         if( strcmp(hh_array[i].mahang, mahang )==0)        
         {
