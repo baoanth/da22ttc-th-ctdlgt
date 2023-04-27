@@ -165,6 +165,7 @@ void input_DMHH(char* filename)
 
 
 int main()
+<<<<<<< HEAD
 {	
 	HangHoa h1 = {"A001", "Macbook Pro", 5, 500, 5500};
     HangHoa h2 = {"A002", "Macbook Air", 5, 700, 5000};
@@ -178,6 +179,54 @@ int main()
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
     fwrite(&h4, sizeof(HangHoa), 1, outfile);
     fclose(outfile);
+=======
+{
+
+/*		HangHoa hh1 = {1, "A1010", "banh mi", 100, 5000, 500000};
+    HangHoa hh2 = {2, "A1011", "com tam", 100, 2500, 250000};
+    HangHoa hh3 = {3, "A1012", "bun bo hue", 100, 8500, 850000};
+    HangHoa hh4 = {4, "A1013", "pho", 100, 15000, 1500000};
+	FILE* outfile = fopen("dmhh.dat", "w");
+	
+	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
+    fwrite(&hh2, sizeof(HangHoa), 1, outfile);
+    fwrite(&hh3, sizeof(HangHoa), 1, outfile);
+    fwrite(&hh4, sizeof(HangHoa), 1, outfile);
+	
+	fclose(outfile);
+	
+	if (fwrite!=0)
+		printf("Write file successfully\n");
+	else
+		printf("ERROR! Write file unsuccessfully\n");
+	fclose(outfile);   
+/*
+    int n=0;
+    HangHoa* mydmhh;
+	n =  read_DMHH( "DMHH.DAT", mydmhh );
+	
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+	print_DMHH(mydmhh, n);
+	
+	HangHoa hhX;
+	char* mahangX = "A005";
+	int found = find_HH_by_ma(mahangX, mydmhh, n, &hhX);
+	
+	printf("Found = %d\n ", found);
+	if (found)
+	{
+		printf("Da tim thay hang hoa co ma %s\n", mahangX );
+		print_HH(hhX);
+	}
+	else
+	{
+		printf("KHONG tim thay hang hoa co ma %s\n", mahangX );
+	}
+*/
+	input_DMHH("DMHH.DAT");
+	
+	return 0;
+>>>>>>> 6ba633f8cf2be49d8667d9874ff7bce7b3db580a
 
     int count;
     
