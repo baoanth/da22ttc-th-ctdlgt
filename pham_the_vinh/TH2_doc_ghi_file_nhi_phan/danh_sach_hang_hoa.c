@@ -154,7 +154,7 @@ void input_DMHH(char* filename)
     		
     	  	strcpy( hh_tam.mahang , mahang_tam) ;
 			
-            //print_HH(hh_tam);
+//         	print_HH(hh_tam);
             
             my_dmhh[count] = hh_tam;
             
