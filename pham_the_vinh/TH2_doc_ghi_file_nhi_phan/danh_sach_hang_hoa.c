@@ -122,7 +122,7 @@ void input_DMHH(char* filename)
     		
     		printf("Thanh tien: %.0f\n", my_dmhh[found_i].thanhtien);
 			
-			printf("\n\nDanh sach hang hoa da duoc cap nhat\n");			    		
+			printf("\nDanh sach hang hoa da duoc cap nhat\n");			    		
     	}
 		else
 		{			
@@ -148,9 +148,9 @@ void input_DMHH(char* filename)
 
             hh_tam.thanhtien = hh_tam.soluong * hh_tam.dongia;
             
-    		printf("Thanh tien: %.0f", hh_tam.thanhtien);	
+    		printf("Thanh tien: %.0f\n", hh_tam.thanhtien);	
     		
-    		printf("\n\nDanh sach hang hoa da duoc cap nhat\n");
+    		printf("\nDanh sach hang hoa da duoc cap nhat\n");
     		
     	  	strcpy( hh_tam.mahang , mahang_tam) ;
 			
