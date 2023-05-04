@@ -99,37 +99,41 @@ int main()
 	int my_array[] = {50,12,84,62,7,24,2,9,35,41};
 	
 	xuatmang(my_array, N);
-		
+
+while(1)
+{		
+	int my_array[] = {50,12,84,62,7,24,2,9,35,41};
 	printf("\nChon cac lua chon sau:\n0.Exit\n1.SelectionSort\n2.InsertionSort\n3.InterchangeSort\n4.BubleSort\n");
-	scanf("%c",&c);
-	
-	switch(c)
-	{
-		case '0':
-				break;
-				
-		case '1':
+	scanf("%d",&c);
+
+	if(c==0)	break;
+		else if(c==1)
+		{
 			printf("\n1.SelectionSort\n\n");
 			SelectionSort(my_array, N);
-			break;
-			
-		case '2':
-			printf("\n2.SelectionSort\n\n");
+			printf("\n------------\n");
+		}
+		else if(c==2)
+		{
+		 	printf("\n2.SelectionSort\n\n");
 			InsertionSort(my_array, N);
-			break;	
-			
-		case '3':
-			printf("\n3.InterchangeSort\n\n");
+			printf("\n------------\n");
+		}
+		else if(c==3)
+		{
+		 	printf("\n3.InterchangeSort\n\n");
 			InterchangeSort(my_array, N);
-			break;	
-			
-		case '4':
+			printf("\n------------\n");
+		}
+		else if(c==4)
+		{
 			printf("\n4.BubleSort\n\n");
 			BubleSort(my_array, N);
-			break;	
-	}
-	
-	return 0;
-}
+			printf("\n------------\n");
+		}
 
+}
+	return 0;
+
+}
 

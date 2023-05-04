@@ -90,6 +90,7 @@ int main()
 		printf("2. Chon truc tiep\n");
 		printf("3. Doi cho truc tiep\n");
 		printf("4. Noi bot\n");
+		printf("\n");
 		printf("Moi chon chuc nang: ");
 		scanf("%d", &lc);
 		
