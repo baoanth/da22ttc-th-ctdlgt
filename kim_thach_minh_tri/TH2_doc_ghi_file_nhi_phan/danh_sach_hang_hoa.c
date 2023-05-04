@@ -170,8 +170,8 @@ int main()
 	HangHoa h1 = {"A001", "VIVO", 5, 500, 2500};
     HangHoa h2 = {"A002", "OPPO", 5, 700, 5500};
     HangHoa h3 = {"A003", "SAMSUNG", 5, 1000, 5000};
-    HangHoa h4 = {"A004", "IPAD", 5, 1300, 6500};
- //   HangHoa h4 = {"A004", "IPHONE", 5, 1500, 7500};//
+   // HangHoa h4 = {"A004", "IPAD", 5, 1300, 6500};//
+    HangHoa h4 = {"A004", "IPHONE", 5, 1500, 7500};
 	FILE* outfile = fopen("DMHH.DAT", "w");
 	
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
