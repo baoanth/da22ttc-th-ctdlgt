@@ -125,7 +125,7 @@ void input_DMHH(char* filename)
 			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
 			printf("\nThanh tien: %f\n", hh_temp.thanhtien); 
 			
-			*my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
+			my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
 		}
 		else
 		{

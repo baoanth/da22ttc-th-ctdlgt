@@ -51,7 +51,7 @@ int find_HH_by_ma(char * mahang,HangHoa* hh_array,int n,HangHoa*kq ){
 	return -1;
 }
 void input_DMHH(char* filename,HangHoa * array,int count){
-	FILE *outfile = fopen(filename,"rb");
+	
 
 	while(1){
 		char mahang_input[10];
@@ -136,16 +136,18 @@ int main(){
 //    else 
 //        printf("loi mo file");
 //  fclose(outfile);
-    int n;
+   int n;
     HangHoa* mydmhh=  read_DMHH( "DSHH.DAT", &n );
 
    printf("Da doc duoc %d hang hoa\n", n);
    in_DMHH (mydmhh,n);
-	
+
 //	printf("nhap ma hang can tim \n");
 //	char ma[20];
 //	gets(ma);
 	//int n = find_HH_by_ma(ma,mydmhh,n);
 	input_DMHH("DSHH.DAT",mydmhh,n);
+	 HangHoa* mydahh=  read_DMHH( "DaHH.DAT", &n );
+	in_DMHH (mydahh,n);
     return 0;
 }
