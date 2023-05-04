@@ -73,7 +73,8 @@ void interchangeSort(int a[100],int n)
 				swap(a[i],a[j]);
 				
 			}
-		}in(a,n);
+		}
+		in(a,n);
 	}
 }
 
