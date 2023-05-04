@@ -44,6 +44,13 @@ int find_HH_by_ma(char * mahang,HangHoa* hh_array,int n,HangHoa*kq ){
 	int i;
 	for(i = 0;i<n;i++){
 		if(strcmp(mahang,hh_array[i].mahang)==0){
+<<<<<<< HEAD
+			kq = hh_array[i];
+            return 1;
+		} 		
+	}
+	return -1;
+=======
 			*kq = hh_array[i];
             return i;
 		} 		
@@ -120,7 +127,9 @@ void input_DMHH(char* filename,HangHoa * array,int count){
 	}
 	fclose(outfile);	
 		
+>>>>>>> e9a173f44c16d4048e38879c67d634069149ab8c
 }
+
 
 int main(){
 //    HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
