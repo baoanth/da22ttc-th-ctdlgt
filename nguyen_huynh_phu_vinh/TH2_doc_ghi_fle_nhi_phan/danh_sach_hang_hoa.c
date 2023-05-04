@@ -40,6 +40,24 @@ HangHoa* read_DMHH(char* filename, int* count){
 
 void print_HH(HangHoa h)
 {
+<<<<<<< HEAD
+    printf("%10s%25s%10d%12f%12f\n", h.mahang, h.tenhang, h.soluong, h.dongia, h.sotien);	
+}
+
+int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa *hh_kq){
+    int i = 0;
+    while(i<count)
+    {
+        printf("Ma hang : %s \n", hh_array[i]);
+        if (strcmp(hh_array[i].mahang, mahang) == 0)
+        {
+            *hh_kq = hh_array[i];
+            return 1;
+        }
+        i++;
+    }
+    return -1;
+=======
     printf("\n%10s%15s%10d%20.2f%20.2f", h.mahang, h.tenhang, h.soluong, h.dongia, h.sotien);	
 }
 
@@ -60,6 +78,7 @@ int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
         i++;
 	}
 	return  -1;
+>>>>>>> e9a173f44c16d4048e38879c67d634069149ab8c
 }
 
 int main()
@@ -85,8 +104,14 @@ int main()
 
     printf("\nDa nhap thanh cong %d hang hoa", count);
 
+<<<<<<< HEAD
+    char *mahang = "A1010";
+    HangHoa hang_kq;
+
+=======
     char* mahang = "A1010";
     HangHoa hang_kq;
+>>>>>>> e9a173f44c16d4048e38879c67d634069149ab8c
     int found  = find_HH_by_ma(mahang, myhh, count, &hang_kq);
     
     if (found)
