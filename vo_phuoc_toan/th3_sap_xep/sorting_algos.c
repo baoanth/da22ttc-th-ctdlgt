@@ -89,10 +89,10 @@ int main()
 		int my_arr[] = {78,87,68,86,54,45,38,83,12,21};	 
     	int lc; 
 		printf("0. EXIT\n");
-		printf("1. sap xep chen truc tiep \n");
-		printf("2. sap xep chon truc tiep \n");
-		printf("3. sap xep noi bot \n");
-		printf("4. sap xep doi cho truc tiep \n");
+		printf("1. Sap xep chen truc tiep (Insertion Sort)\n");
+		printf("2. Sap xep chon truc tiep (Selection Sort) \n");
+		printf("3. Sap xep doi cho truc tiep (Interchange Sort)\n");
+		printf("4. Sap xep noi bot (Bubble Sort)\n");
 		printf("-----------------------------------\n");
 		printf("moi chon chuc nang \n");
 		scanf("%d", &lc);
