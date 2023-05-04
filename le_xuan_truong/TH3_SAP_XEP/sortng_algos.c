@@ -67,9 +67,9 @@ void InsertionSort(int a[], int n)
 void InterchangeSort(int a[], int n )
 { 
 	int i, j;
-	for (i = 0 ; i<n-1 ; i++)
+	for (i = 0 ; i<n ; i++)
 	{
-		for (j =i+1; j <= n ; j++)
+		for (j =i+1; j < n ; j++)
 		{
 			if(a[j]< a[i])
 			Hoanvi(&a[i],&a[j]);	
@@ -96,7 +96,7 @@ int main()
 {
 
 	int c;
-	int my_array[] = {54,12,68,46,23,1,85,79,38,5};
+	int my_array[] = {50,12,84,62,7,24,2,9,35,41};
 	
 	xuatmang(my_array, N);
 		
