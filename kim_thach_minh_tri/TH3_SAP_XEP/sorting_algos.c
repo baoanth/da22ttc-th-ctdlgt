@@ -10,7 +10,7 @@ void in_mang(int a[], int n)
 	
 	for (i=0; i<n; i++)
 	{
-		printf("%5d",a[i]);
+		printf("%5d",a[i]); 
 	}
 	printf("\n");
 }
