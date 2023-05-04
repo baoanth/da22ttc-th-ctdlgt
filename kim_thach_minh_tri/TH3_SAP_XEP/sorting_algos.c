@@ -113,7 +113,7 @@ int main()
 	
 	while(1)
 	{
-		int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 26, 24};
+		int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 26, 24, 50};
 	
 		printf("Mang ban dau :");
 		in_mang(my_array,N);
