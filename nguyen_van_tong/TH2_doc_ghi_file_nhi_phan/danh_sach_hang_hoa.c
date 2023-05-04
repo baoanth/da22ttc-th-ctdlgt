@@ -44,6 +44,13 @@ int find_HH_by_ma(char * mahang,HangHoa* hh_array,int n,HangHoa*kq ){
 	int i;
 	for(i = 0;i<n;i++){
 		if(strcmp(mahang,hh_array[i].mahang)==0){
+<<<<<<< HEAD
+			kq = hh_array[i];
+            return 1;
+		} 		
+	}
+	return -1;
+=======
 			*kq = hh_array[i];
             return i;
 		} 		
@@ -120,7 +127,9 @@ void input_DMHH(char* filename,HangHoa * array,int count){
 	}
 	fclose(outfile);	
 		
+>>>>>>> e9a173f44c16d4048e38879c67d634069149ab8c
 }
+
 
 int main(){
 //    HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
@@ -136,6 +145,14 @@ int main(){
 //    else 
 //        printf("loi mo file");
 //  fclose(outfile);
+<<<<<<< HEAD
+   int n;
+    HangHoa* mydmhh=  read_DMHH( "DSHH.DAT", &n );
+
+   printf("Da doc duoc %d hang hoa\n", n);
+   in_DMHH (mydmhh,n);
+
+=======
 
 	int n;
 	HangHoa* mydmhh =  read_DMHH( "DSHH.DAT", &n );
@@ -143,10 +160,13 @@ int main(){
 	printf("Da doc duoc %d hang hoa\n", n);
 	in_DMHH (mydmhh,n);
 	
+>>>>>>> e83868d7239dcb3298d896b87e3a8165c1cb0ec9
 //	printf("nhap ma hang can tim \n");
 //	char ma[20];
 //	gets(ma);
 
 	input_DMHH("DSHH.DAT",mydmhh,n);
+	 HangHoa* mydahh=  read_DMHH( "DaHH.DAT", &n );
+	in_DMHH (mydahh,n);
     return 0;
 }
