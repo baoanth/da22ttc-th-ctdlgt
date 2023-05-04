@@ -100,11 +100,14 @@ int main()
 	
 	xuatmang(my_array, N);
 		
-	printf("\nChon 1 trong 4 cach sap xep sau:\n1.SelectionSort\n2.InsertionSort\n3.InterchangeSort\n4.BubleSort\n");
+	printf("\nChon cac lua chon sau:\n0.Exit\n1.SelectionSort\n2.InsertionSort\n3.InterchangeSort\n4.BubleSort\n");
 	scanf("%c",&c);
 	
 	switch(c)
 	{
+		case '0':
+				break;
+				
 		case '1':
 			printf("\n1.SelectionSort\n\n");
 			SelectionSort(my_array, N);
