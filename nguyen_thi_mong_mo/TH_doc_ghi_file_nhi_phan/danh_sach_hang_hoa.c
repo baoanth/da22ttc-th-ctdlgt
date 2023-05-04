@@ -126,11 +126,14 @@ void input_DMHH(char* filename)
 			
 			hang_tam.thanhtien = hang_tam.gia*hang_tam.soluong;
 			
+<<<<<<< HEAD
+=======
 			array[count] = hang_tam;
 			count++;
 			
 			printf("da them mon hang vao vi tri thu %d\n",count);
 			
+>>>>>>> e83868d7239dcb3298d896b87e3a8165c1cb0ec9
 			my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
 		}
 		else
