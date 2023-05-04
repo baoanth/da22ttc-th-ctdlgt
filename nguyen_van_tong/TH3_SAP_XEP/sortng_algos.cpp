@@ -101,7 +101,7 @@ int main()
 	{
 		 
     	int lc; 
-		
+		cout << "0. EXIT\n";
 		cout << "1. sap xep chen truc tiep \n";
 		cout << "2. sap xep chon truc tiep \n";
 		cout << "3. sap xep doi cho truc tiep \n";
