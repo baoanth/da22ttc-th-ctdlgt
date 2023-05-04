@@ -72,13 +72,16 @@ void InterchangeSort(int a[], int n )
  
 	for (i = 0 ; i<n-1 ; i++)
 	{
-		for (j =i+1; j <= n ; j++)
+		for (j =i+1; j < n ; j++)
 		{
 			if(a[j ]< a[i])
+			{
 				Hoanvi(&a[i],&a[j]);
-			
+				in_mang(a,n);
+			}
+				
 		}
-		in_mang(a,n);	
+			
 	}
 		
 }
@@ -93,10 +96,13 @@ int i, j;
 		for (j =n-1; j >i ; j --)
 		{
 			if(a[j]< a[j-1])
-			Hoanvi(&a[j],&a[j-1]);
+			{
+				Hoanvi(&a[j],&a[j-1]);
+				in_mang(a,n);
+			}
 			
 		}
-		in_mang(a,n);	
+			
 	}
 		
 }
@@ -104,49 +110,50 @@ int i, j;
 
 int main()
 {
-	int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 26, 24};
 	
-	printf("Mang ban dau :");
-	in_mang(my_array,N);
 	while(1)
 	{
+		int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 26, 24};
+	
+		printf("Mang ban dau :");
+		in_mang(my_array,N);
 		int chon;
-    printf("Vui long chon so tuong ung de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-    printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n");
-    scanf("%d",&chon);
+    	printf("Vui long chon so tuong ung de chon thuat toan sap xep, Nhap 0 de thoat :\n");
+    	printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n");
+    	scanf("%d",&chon);
     
-	switch(chon)
+		switch(chon)
 	{
-		case '1':
+		case 1:
 			{
 				printf("==> SX chon truc tiep:\n");
-				IntertionSort(my_array,N);
-				break;
-			}
-			
-		
-		case '2':
-			{
-				printf("==> SX chen truc tiep:\n");
 				SelectionSort(my_array,N);
 				break;
 			}
 			
-		case '3':
+		
+		case 2:
+			{
+				printf("==> SX chen truc tiep:\n");
+				IntertionSort(my_array,N);
+				break;
+			}
+			
+		case 3:
 			{
 				printf("==> SX doi cho truc tiep:\n");
 				InterchangeSort(my_array,N);
 				break;
 			}
 			
-		case '4':
+		case 4:
 			{
 				printf("==> SX noi bot:\n");
 				BubleSort(my_array,N);
 				break;
 			}
 		
-		case '0':
+		case 0:
 			return 0;
 			
 			

@@ -92,6 +92,27 @@ void bubbleSort(int a[100],int n)
 	}	
 }
 
+void quickSort(int a[100], int l , int r)
+{
+	int i, j, x;
+	x = a[(l+r)/2];
+	i = l; j = r;
+	do
+	{
+		while (a[i]<x) i++;
+		while (a[j]>x) j--;
+		if(i<=j)
+		{
+			swap(a[i],a[j]);
+			i++;j--;
+		}
+	}while(i<j);
+	if(l<j)
+		quickSort(a,l,j);
+	if(i<r)
+		quickSort(a,i,r);
+	in(a,10);
+}
 int main()
 {
 	int a[]={6,2,4,9,1,8,3,5,10,7};
@@ -106,6 +127,7 @@ int main()
 		cout << "2. sap xep chon truc tiep \n";
 		cout << "3. sap xep doi cho truc tiep \n";
 		cout << "4. sap xep noi bot \n";
+		cout << "5. quickSort \n";
 		cout << "-----------------------------------\n";
 		cout << "moi chon chuc nang \n";
 		cin>> lc;
@@ -132,7 +154,9 @@ int main()
 		{
     		bubbleSort(a,n);
 		}
-		
+		else 
+			quickSort(a,0,n-1);
+			in(a,n);
 		
 	}
 
