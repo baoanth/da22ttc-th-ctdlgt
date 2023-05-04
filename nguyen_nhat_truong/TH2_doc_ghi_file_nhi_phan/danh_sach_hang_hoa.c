@@ -68,16 +68,18 @@ int main()
  HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
     HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
     HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
+
  FILE* outfile = fopen("DMHH.DAT", "w");
  
- fwrite(&h1, sizeof(HangHoa), 1, outfile);
- fwrite(&h2, sizeof(HangHoa), 1, outfile);
-    fwrite(&h3, sizeof(HangHoa), 1, outfile);
+     fwrite(&h1, sizeof(HangHoa), 1, outfile);
+     fwrite(&h2, sizeof(HangHoa), 1, outfile);
+     fwrite(&h3, sizeof(HangHoa), 1, outfile);
  
  if (fwrite!=0)
   printf("Viet tap tin thanh cong\n");
  else
   printf("LOI! Viet tap tin khong thanh cong\n");
+  
  fclose(outfile);   
 
     int n=0;
@@ -87,4 +89,5 @@ int main()
  print_DMHH(mydmhh, n);
     
  return 0;
+
 }

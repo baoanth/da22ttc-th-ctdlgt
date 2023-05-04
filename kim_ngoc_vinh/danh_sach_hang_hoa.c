@@ -18,7 +18,7 @@ HangHoa* read_DMHH(char * filename, int* count)
     int i =0; // dem so hang hoa doc duoc
 	HangHoa* res_dmhh; //danh muc hang 
     
-    res_dmhh = malloc(*MAX_AMOUNT sizeof(HangHoa)); //Cap phat vung nho cho danh sach hang hoa
+    res_dmhh = malloc(sizeof(HangHoa)*MAX_AMOUNT); //Cap phat vung nho cho danh sach hang hoa
 
     FILE *infile = fopen(filename, "rb");
 	HangHoa hhA;
@@ -59,6 +59,12 @@ void print_HH(HangHoa h)
     printf("%10s%25s%10d%12f%12f\n", h.mahang, h.tenhang, h.soluong, h.gia, h.thanhtien);	
 }
 
+/*
+Ham tim kiem mot mahang trong danh sach hh_array
+Tim thay thi tra chi so cua mon hang trong hh_array
+Khong tim thay tra ve -1
+Mon hang duoc tim thay luu trong *kq
+*/
 int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
 {
     
@@ -71,21 +77,35 @@ int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
         if( strcmp(hh_array[i].mahang, mahang )==0)        
         {
         	*kq= hh_array[i];
-        	return 1;
+        	return i;
         }             
         i++;
 	}
-	return  0;
+	return  -1;
 }
 
+void input_DMHH(char* filename) 
+{
+   //Mo file doc noi dung dua vao mot mang my_dmhh
+
+   //Lap cho den khi nhap ma = EXIT
+   // Nhap mahang_tam 
+   // Neu mahang_tam == EXIT thi break
+   // Tim trong my_dmhh xem mahang_tam co chua, neu chua thif nhap binh thuong, neu da co thi in ra ten hang.
+   // Nhap gia, soluong, tinh thanhtien = soluong*dongia
+   // Dua mon hang vua nhap vao my_dmhh
+
+   // Luu toan bo my_dmhh vao outfile, dong outfile
+
+}
 
 
 int main()
 {	
-/*	HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
-    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
-    HangHoa h3 = {"A003", "Iphone 14", 5, 1000, 5000};
-    HangHoa h4 = {"A004", "Iphone 14", 5, 1000, 5000};
+	HangHoa h1 = {"A001", "Quan evisu", 5, 500, 2500};
+    HangHoa h2 = {"A002", "Giay Balenciaga", 5, 700, 5500};
+    HangHoa h3 = {"A003", "ao Luonvuitoi", 5, 1000, 5000};
+    HangHoa h4 = {"A004", "Tui xach guchi ", 5, 1000, 5000};
     
     FILE* outfile = fopen("DSHH.dat", "w");
 	
@@ -94,7 +114,7 @@ int main()
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
     fwrite(&h4, sizeof(HangHoa), 1, outfile);
     fclose(outfile);
-*/
+
     int count;
     
     HangHoa* my_dshh = read_DMHH("DSHH.dat", &count);
@@ -104,14 +124,13 @@ int main()
 
     char* mahang = "A003";
     HangHoa hang_kq;
-    int found  = find_HH_by_ma(mahang, my_dshh,count, &hang_kq);
+    int found  = find_HH_by_ma(mahang, my_dshh, count, &hang_kq);
     
     if (found)
     
         print_HH(hang_kq);
     else
         printf("Tim khong thay hang hoa co ma %s\n", mahang);
-
+ 
     return 0;
 }
-
