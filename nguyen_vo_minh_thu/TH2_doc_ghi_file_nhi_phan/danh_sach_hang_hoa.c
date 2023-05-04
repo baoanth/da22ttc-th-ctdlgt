@@ -32,7 +32,7 @@ HangHoa* read_DMHH(char * filename, int* count)
 	//Duyet file cho den khi gap EOF
 	while(!feof(infile))
 	{	//In hhA ra man hinh
-		printf("%5s  %15s %d %f %f \n", hhA.mahang, hhA.tenhang, hhA.soluong,hhA.gia, hhA.thanhtien );	
+		printf("%5s%15s%d%f%f\n", hhA.mahang, hhA.tenhang, hhA.soluong,hhA.gia, hhA.thanhtien );	
 		
 		//Doc mot cau truc person dua vao perA		
 		fread(&hhA, sizeof(HangHoa), 1, infile );
@@ -47,7 +47,7 @@ HangHoa* read_DMHH(char * filename, int* count)
 
 void print_DMHH(HangHoa* hh, int n)
 {
-	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	printf("%10s%25s%10s%12s%12s\n","Ma Hang","Ten hang","So luong","Don gia","So tien");	
 	int i;
 	for (i=0; i<n; i++)
 	{
