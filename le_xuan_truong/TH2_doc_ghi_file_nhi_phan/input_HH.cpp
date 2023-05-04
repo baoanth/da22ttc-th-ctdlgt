@@ -68,16 +68,16 @@ int  find_HH_by_ma(char* mhX, HangHoa * hh_array, int count, HangHoa* hh_kq)
 void input_DMHH(char* filename)
 {
 	
-	char mahang_input[5];      
-	HangHoa hh_temp;
+	char mahang_input[5];   
+	HangHoa hh_temp; 
 	
 	
 	HangHoa my_dmhh[MAX_AMOUNT] ;
 	
 	int count = read_DMHH(filename, my_dmhh ); 
-	print_DMHH(my_dmhh, count);         
+	print_DMHH(my_dmhh, count);          
 	
-	printf("Moi nhap hang hoa moi (Nhap EXIT cho ma hang de thoat):\n") ;	
+	printf("Moi nhap hang hoa moi (Nhap EXIT cho ma hang de thoat):\n\n") ;	
 
 	
 	while(1) 
@@ -94,7 +94,7 @@ void input_DMHH(char* filename)
 		
 		if (found != -1)
 		{
-			printf("\nTim thay ma hang vua nhap tai phan tu thu %d\n", found);
+			printf("Tim thay ma hang vua nhap tai phan tu thu %d\n", found);
 			
 			printf("\nTen hang: %s\n", hh_temp.tenhang);
 			
@@ -105,9 +105,9 @@ void input_DMHH(char* filename)
 			scanf("%f", &hh_temp.gia);
 			
 			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
-			printf("\nThanh tien: %.0f\n", hh_temp.thanhtien); 
+			printf("\nThanh tien: %f\n", hh_temp.thanhtien); 
 			
-			my_dmhh[found] = hh_temp ;	
+			my_dmhh[found] = hh_temp ;
 		}
 		else
 		{
@@ -123,23 +123,27 @@ void input_DMHH(char* filename)
 			scanf("%f", &hh_temp.gia);
 			
 			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
-			printf("\nThanh tien: %.0f\n", hh_temp.thanhtien); 
+			printf("Thanh tien: %f", hh_temp.thanhtien); 
 			
 			
-			my_dmhh[count] = hh_temp; 
+			my_dmhh[count] = hh_temp;		
 			count++;
-			printf("\nThem mon hang moi vao vi tri thu %d\n", count);
+			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
 			print_DMHH(my_dmhh,count);
 		}
 	}
+	
 	int i = 0;
+	
 	FILE * outfile = fopen(filename, "w");
+	
 	for (i=0; i<count; i++)
 	{ 
 		fwrite(&my_dmhh[i], sizeof(HangHoa), 1, outfile);
 	}
 	fclose(outfile);	
 }
+
 
 
 
