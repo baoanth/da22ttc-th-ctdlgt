@@ -104,52 +104,53 @@ int i, j;
 
 int main()
 {
-	int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 27, 19, 50, 32};
+	int my_array []={12, 2, 8, 5, 1, 6, 4, 15, 26, 24};
 	
 	printf("Mang ban dau :");
 	in_mang(my_array,N);
-	
-    int chon;
+	while(1)
+	{
+		int chon;
     printf("Vui long chon so tuong ung de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-    printf("1. SX chen truc tiep\n2. SX chon truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n");
+    printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n");
     scanf("%d",&chon);
     
 	switch(chon)
 	{
-		case 1:
+		case '1':
 			{
-				printf("==> SX chen truc tiep:\n");
+				printf("==> SX chon truc tiep:\n");
 				IntertionSort(my_array,N);
 				break;
 			}
 			
 		
-		case 2:
+		case '2':
 			{
-				printf("==> SX chon truc tiep:\n");
+				printf("==> SX chen truc tiep:\n");
 				SelectionSort(my_array,N);
 				break;
 			}
 			
-		case 3:
+		case '3':
 			{
 				printf("==> SX doi cho truc tiep:\n");
 				InterchangeSort(my_array,N);
 				break;
 			}
 			
-		case 4:
+		case '4':
 			{
 				printf("==> SX noi bot:\n");
 				BubleSort(my_array,N);
 				break;
 			}
 		
-		case 0:
+		case '0':
 			return 0;
 			
 			
 	}
-	
+	}
 	return 0;
 }
