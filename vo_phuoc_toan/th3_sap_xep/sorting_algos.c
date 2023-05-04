@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define N 10
+#define N 100
 
 void print_array(int a[], int n)
 {
@@ -121,4 +121,3 @@ int main()
 	return 0;
 	
 }
-
