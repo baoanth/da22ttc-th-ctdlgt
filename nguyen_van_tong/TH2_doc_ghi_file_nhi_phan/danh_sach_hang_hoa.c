@@ -122,6 +122,7 @@ void input_DMHH(char* filename,HangHoa * array,int count){
 		
 }
 
+
 int main(){
 //    HangHoa h1 = {"A001", "Iphone 12", 5, 500, 2500};
 //    HangHoa h2 = {"A002", "Iphone 13", 5, 700, 5500};
