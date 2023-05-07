@@ -142,12 +142,12 @@ void input_DMHH(char* filename)
             hh_tam.thanhtien = hh_tam.soluong * hh_tam.gia;
     		printf("Thanh tien: %f", hh_tam.thanhtien);	
     		
-    		strcpy( hh_tam.mahang , mahang_tam) ;
+    	//	strcpy( hh_tam.mahang , mahang_tam) ;
 			
             print_HH(hh_tam);
             
-            my_dmhh[count] = hh_tam;
-            count++;
+         //   my_dmhh[count] = hh_tam;
+           // count++;
 			
 		}
 		
