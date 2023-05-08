@@ -99,7 +99,7 @@ int main()
         print_array(my_array, N);
         printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
         printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n");
-        lua_chon = getch(); // Ham nhap ky tu tu ban phim cua thu vien conio.h
+        lua_chon = getch(); 
         switch (lua_chon)
         {
             case '1':
@@ -126,6 +126,7 @@ int main()
                 BubleSort(my_array, N);
                 break;
             } 
+            
             case '0': return 0;
         }
         
