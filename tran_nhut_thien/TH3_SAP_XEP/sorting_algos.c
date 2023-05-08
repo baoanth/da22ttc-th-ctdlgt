@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
+#include <stdlib.h>
 #define N 15
 
 void print_array(int a[ ], int n)
