@@ -126,10 +126,10 @@ int main()
                 BubleSort(my_array, N);
                 break;
             } 
-            
             case '0': return 0;
         }
         
     }
 	return 0;
 }
+
