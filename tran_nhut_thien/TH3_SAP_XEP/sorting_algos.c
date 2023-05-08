@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-#define N 10
+#define N 15
 
 void print_array(int a[ ], int n)
 {
@@ -12,12 +12,12 @@ void print_array(int a[ ], int n)
 	printf("\n");
 }
 
-void hoan_vi(int *a, int *b)
+void Hoanvi(int *a, int *b)
 {
-	int tam;
-	tam = *a;
+	int temp;
+	temp = *a;
 	*a = *b;
-	*b = tam;
+	*b = temp;
 }
 
 void SelectionSort(int a[ ], int n)
@@ -34,7 +34,7 @@ void SelectionSort(int a[ ], int n)
 				min = j;
 			}
 		}
-		hoan_vi(&a[min], &a[i]);
+		Hoanvi(&a[min], &a[i]);
         print_array(a, n);
 	}
 }
@@ -66,14 +66,14 @@ void InterchangeSort(int a[ ], int n)
 		{
 			if(a[j] < a[i])
 			{
-				hoan_vi(&a[i], &a[j]);
+				Hoanvi(&a[i], &a[j]);
 				print_array(a,n);
 			}
 		}
 	}
 }
 
-void BubleSort(int a[ ], int n)
+void BubbleSort(int a[ ], int n)
 {
 	int i, j;
 	for(i = 0; i < n-1; i++)
@@ -82,23 +82,26 @@ void BubleSort(int a[ ], int n)
 		{
 			if(a[j] < a[j-1])
 			{
-				hoan_vi(&a[j], &a[j-1]);
+				Hoanvi(&a[j], &a[j-1]);
 				print_array(a,n);
 			}
 		}
 	}
 }
 
+
 int main()
 {
     while (1)
     {
         char lua_chon;
-        int my_array[N] = {12, 2, 8, 5, 1, 6, 4, 15, 14, 20};
-        printf("Mang Ban Dau: ");
+        int my_array[N] = {3,50,9,6,32,16,92,4,12,16,39,56,48,10};
+        printf("Mang Nguyen Thuy: ");
         print_array(my_array, N);
-        printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
-        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n");
+       
+   		printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n5. QuickSsort\n");
+      
         lua_chon = getch(); 
         switch (lua_chon)
         {
@@ -123,13 +126,15 @@ int main()
              case '4':
             {
                 printf("-> Noi bot: \n");
-                BubleSort(my_array, N);
+                BubbleSort(my_array, N);
                 break;
             } 
+			
             
             case '0': return 0;
         }
         
-    }
+	}
 	return 0;
 }
+
