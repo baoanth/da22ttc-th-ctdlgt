@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+#include <stdio.h>
+#include <stdlib.h>
+
+void input_text_file(char*filename)
+{
+	FILE *outfile
+	char input_tr[MAX_LINE_LENGTH];
+	
+	
+	otfile =  fopen(filename, "w");
+	printf("Nhap van ban, an EXIT ngung nhap:\n ");
+	
+	
+	while(1)
+	{
+		fgets(input_tr, _MAX_LINE_LENGTH, stdin);
+		
+		
+		
+	
+	}
+
+    fclose(outfile);
+}
+
+
+
+	
+
+
+
+
+}
+=======
 #include<stdio.h>
 #include <stdlib.h>
 #define MAX_LINE_LENGTH 1000
@@ -29,38 +64,45 @@ int main()
 }
 
 
-char *read_text_file(char *filename)
+char* read_text_file(char* filename)
 {
-	FILE *infile = fopen(filename, "r");
-	if(!infile)
-	{
-		printf("\n unable to open : %s ", filename );
+	FILE *infile = fopen(filename, "r");	
+
+	if(!infile){
+		printf("\n Unable to open : %s ", filename);
 		return -1;
-	
 	}
-	char line[MAX_LINE_LENGTH];
-	char *output_str ;
-	output_str = (char*) malloc(MAX_FILE_LENGTH);
 	
-	fgets(line, sizeof(line), infile);
-	strcpy(output_str, line);
+	char line[MAX_LINE_LENGTH];	
+	char* output_str  ;          
 	
-	while (fgets(line, sizeof(line), infile))
-	strcat(output_str, line);
+	output_str = (char*) malloc(MAX_FILE_LENGTH); 
+	
+		
+	fgets(line, sizeof(line), infile); 
+	strcpy(output_str, line);       
+	
+	
+	while (fgets(line, sizeof(line), infile)) 	
+		strcat(output_str, line);               
 	
 	fclose(infile);
-	return output_str;
 	
-	
+	return output_str;	
+
+
 int main()
 {
+	
 	
 	char* file_content = read_text_file("mydocument1.txt");
 	printf("%s", file_content);
 	
 	
 	return 0;
+}
+
 }	
 	
-	
-}
+
+>>>>>>> 7009da1b691ddc8d280bb1fbde18c69aa0927f80

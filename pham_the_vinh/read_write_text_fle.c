@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #define l 1000
 
-void input_text_file(char *t)
+void input_text_file(char *o)
 {
 	char input_str[l];
-	FILE *outfile = fopen(t, "w");
+	FILE *outfile = fopen(o, "w");
 	
 	printf("Nhap van ban. Nhap EXIT de thoat\n");
 	
@@ -19,7 +19,6 @@ void input_text_file(char *t)
 	}
 	
 	fclose(outfile);
-	
 }
 
 int main()
