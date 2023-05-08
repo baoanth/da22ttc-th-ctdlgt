@@ -61,11 +61,13 @@ void InsertionSort (int a[], int n)
 void InterchangeSort(int a[], int n)
 {
     int i,j;
-    for (i =1 ; i<n ; i++)
-    	for (j = i+1 ; j<= n ; j++)
+    for (i =0 ; i<n ; i++)
+    {
+    	for (j = i+1 ; j< n ; j++)
             if(a[j] < a[i])
                 Hoanvi(&a[i], &a[j]);
         print_array(a, n);
+    }
     
 
 }
@@ -73,11 +75,13 @@ void InterchangeSort(int a[], int n)
 void BubbleSort(int a[], int n)
 {
     int i, j;
-    for (i = 1; i<n-1 ;i++ )
+    for (i = 0; i<n-1 ;i++ )
+    {
         for (j = n-1 ; j>i ; j --)
             if(a[j]<a[j-1])
                 Hoanvi(&a[j],&a[j-1]);
         print_array(a, n);
+    }
     
     
 }
@@ -112,26 +116,23 @@ int main()
         printf("chon mot trong nhung cach tren:\n");
         scanf("%d", &select);
 
-        if(select == 0)
+        switch (select)
         {
+            case 1:
+                SelectionSort(my_array, N);
+            case 2:
+                InsertionSort(my_array, N);
+            case 3:
+                InterchangeSort(my_array, N);
+            case 4:
+                BubbleSort(my_array, N);
+
+            default:
+            	
             break;
+        
         }
-        else if (select == 1)
-        {
-            SelectionSort(my_array, N);
-        }
-        else if (select == 2)
-        {
-            InsertionSort(my_array, N);
-        }
-        else if(select == 3)
-        {
-            InterchangeSort(my_array, N);
-        }
-        else if(select == 4)
-        {
-            BubbleSort(my_array, N);
-        }
+
     }
 
     return 0;
