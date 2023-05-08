@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define N 12
+
+
+     int main()
+     {
+     	int my_array[] = {3,5,6,68,8,90,6,5,54,45,34,23};
+     }
+    
+     	
+
