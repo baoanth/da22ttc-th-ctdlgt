@@ -1,123 +1,135 @@
-#include<stdio.h>
-#include<stdlib.h>
-
+#include <stdio.h>
+#include <conio.h>
 #define N 10
 
-void print_array(int a[], int n)
+void print_array(int a[ ], int n)
 {
 	int i;
-	for (i=0; i<n; i++)
+    for(i = 0; i < n; i++) 
 	{
 		printf("%5d", a[i]);
 	}
 	printf("\n");
 }
 
-void hoanvi (int* a, int* b)
+void hoan_vi(int *a, int *b)
 {
-	int temp;
-	temp = *a;
+	int tam;
+	tam = *a;
 	*a = *b;
-	*b = temp;
+	*b = tam;
 }
 
-void InsertionSort (int a[], int n)
+void SelectionSort(int a[ ], int n)
 {
-	int pos, x,  i;
-	for( i=1 ; i<N ; i++)
+	int min;
+	int i, j;
+	for(i = 0; i < n-1; i++)
 	{
-		x = a[i] ; pos = i-1;
-		while((pos>=0)&&(a[pos]>x))
+		min = i;
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[min])
+			{
+				min = j;
+			}
+		}
+		hoan_vi(&a[min], &a[i]);
+        print_array(a, n);
+	}
+}
+
+void InsertionSort(int a[ ], int n)
+{
+	int pos, i;
+	int x;
+	for(i = 1; i < n; i++)
+	{
+		x = a[i];
+		pos = i-1;
+		while((pos >= 0) && (a[pos] > x))
 		{
 			a[pos+1] = a[pos];
 			pos--;
 		}
 		a[pos+1] = x;
-		print_array(a, n);
+		print_array(a,n);
 	}
 }
 
-void SelectionSort (int a[], int n)
+void InterchangeSort(int a[ ], int n)
 {
-	int min;
-	for (int i = 0; i<n-1; i++)
+	int i, j;
+	for(i = 0; i < n-1; i++)
 	{
-		min = i;
-		for(int j = i+1; j<n; j++)
-			if (a[j]<a[min])
-			min=j;
-		hoanvi(&a[min], &a[i]);	
-		print_array(a, n);
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[i])
+			{
+				hoan_vi(&a[i], &a[j]);
+				print_array(a,n);
+			}
+		}
 	}
 }
 
-void BubbleSort (int a[], int n)
+void BubleSort(int a[ ], int n)
 {
-	int i,j;
-	for(i = 0; i<n-1; i++)
+	int i, j;
+	for(i = 0; i < n-1; i++)
 	{
-	for(int j = n-1; j>i; j--)
-		if(a[j]<a[j-1])
-			hoanvi(&a[j], &a[j-1]);
-		print_array(a, n);
-	}		
+		for(j = n-1; j > i; j--)
+		{
+			if(a[j] < a[j-1])
+			{
+				hoan_vi(&a[j], &a[j-1]);
+				print_array(a,n);
+			}
+		}
+	}
 }
-		
-
-void InterchangeSort (int a[], int n)
-{
-	int i,j;
-	for(i = 0; i<n-1; i++)
-	{
-		for(int j = i+1; j<n; j++)
-			if(a[j]<a[i])
-				hoanvi(&a[i], &a[j]);
-			print_array(a, n);	
-	}		
-}
-
 
 int main()
 {
-	int my_arr[] = {99,96,69,54,45,39,33,27,21,9};
-	print_array(my_arr, N);
-//	InsertionSort(my_arr, N);
-//	print_array(my_arr, N);
-	
-	while(1)
-	{
-		int my_arr[] = {99,96,69,54,45,39,33,27,21,9};	 
-    	int lc; 
-		printf("0. EXIT\n");
-		printf("1. sap xep chen truc tiep \n");
-		printf("2. sap xep chon truc tiep \n");
-		printf("3. sap xep noi bot \n");
-		printf("4. sap xep doi cho truc tiep \n");
-		printf("-----------------------------------\n");
-		printf("moi chon chuc nang \n");
-		scanf("%d", &lc);
-		if(lc == 0)
-		{
-			break;
-		}
-		else if(lc == 1)
-		{		
-			InsertionSort(my_arr, N);	
-		}
-		else if(lc == 2)
-		{
-			SelectionSort(my_arr, N);	
-		}
-		else if (lc == 3)
-		{		
-			BubbleSort(my_arr, N);
-		}
-		else if(lc == 4)
-		{
-    		InterchangeSort(my_arr, N);
-		}
-		
-	}
+    while (1)
+    {
+        char lua_chon;
+        int my_array[N] = {12, 2, 8, 5, 1, 6, 4, 15, 14, 20};
+        printf("Mang Ban Dau: ");
+        print_array(my_array, N);
+        printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n");
+        lua_chon = getch(); 
+        switch (lua_chon)
+        {
+            case '1':
+            {
+                printf("-> Chon truc tiep: \n");
+                SelectionSort(my_array, N);
+                break;
+            } 
+            case '2':
+            {
+                printf("-> Chen truc tiep: \n");
+                InsertionSort(my_array, N);
+                break;
+            }
+             case '3':
+            {
+                printf("-> Doi cho truc tiep: \n");
+                InterchangeSort(my_array, N);
+                break;
+            } 
+             case '4':
+            {
+                printf("-> Noi bot: \n");
+                BubleSort(my_array, N);
+                break;
+            } 
+            case '0': return 0;
+        }
+        
+    }
 	return 0;
-	
 }
+
