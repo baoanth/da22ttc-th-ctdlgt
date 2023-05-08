@@ -40,8 +40,8 @@ void Selection_Sort(int a[], int n)
 
 void Insertion_Sort(int a[], int n)
 {
-	int pos, i  ;     
-	int x;
+	int pos, i;
+	int  x;
 
 	for(i = 1; i < n; i++)
 	{
@@ -102,5 +102,5 @@ int main()
 	printf("4.BubleSort\n");
 	Buble_Sort(my_array, N);
 
-	return  0;
+	return 0;
 }
