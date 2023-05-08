@@ -43,7 +43,7 @@ void SelectionSort(int a[ ], int n)
 int main()
 {
     int my_array[] = {1,5,3,9,7,21,15,23,12,18};
-    printf("Mang nguyen thuy:\n");
+    printf("Mang tien su:\n");
     printf_array(my_array, N);
 
 
