@@ -98,10 +98,92 @@ void BubleSort(int a[],int n)
 	
 }
 
+// heapsort
+void Shift(int a[], int l, int r)
+{
+	int x, i, j;
+	i = l;
+	j = 2 * i + 1; 
+	x = a[i];
+	while (j <= r)
+	{
+		if (j < r) 
+			if (a[j] < a[j + 1])
+			
+				j = j + 1;
+		if (a[j] < x)
+			break; 
+		else
+		{
+			a[i] = a[j];
+			i = j;
+		
+			j = 2 * i +1;
+			a[i] = x;
+		}
+	}
+}
+
+void CreateHeap(int a[], int n)
+{
+	int l;
+	l = n / 2; 
+	while (l >= 0)
+	{
+		Shift(a, l, n);
+		l = l - 1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a, n-1);
+		r = n-1; 
+	while (r > 0)
+	{
+		Hoanvi(&a[0], &a[r]);
+		In_mang(a,n);
+		r = r - 1;
+		Shift(a, 0, r);
+	}
+}
+
+
+void QuickSort(int a[],int l,int r)
+{
+	int i,j;
+	int x;
+	x=a[(l+r)/2];
+	i=l;
+	j=r;
+	do
+	{
+		while(a[i]<x)
+		 i++;
+		while(a[j]>x) 
+		j--;
+		if(i<=j)
+		{
+			Hoanvi(&a[i],&a[j]);
+			In_mang(a,N);
+			i++;
+			j--;
+				
+		}
+		
+	}while(i<j);
+	if(l<j)
+	QuickSort(a,l,j);
+	if(i<r)
+	QuickSort(a,i,r);
+	
+}
 
 
 int main ()
 {
+		
 	while(1)
 	{
 		int n,i;
@@ -110,7 +192,7 @@ int main ()
 		In_mang(my_array,N);
 		char chon;
 	    printf("Vui long chon so de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-	    printf("1. Sap xep chon truc tiep\n2. Sap xep chen truc tiep\n3. Sap xep doi cho truc tiep\n4. Sap xep noi bot\n");
+	    printf("1. Sap xep chon truc tiep\n2. Sap xep chen truc tiep\n3. Sap xep doi cho truc tiep\n4. Sap xep noi bot\n5. Sap xep HeapSort\n6. Sap xep QuickSort:\n");
 	    chon=getch();
 	    
 		switch(chon)
@@ -144,7 +226,18 @@ int main ()
 					BubleSort(my_array,N);
 					break;
 				}
-			
+			case '5':
+				{
+					printf("==> 5. Sap xep HeapSort:\n");
+					HeapSort(my_array,N-1);
+					break;
+				}
+			case '6':
+				{
+					printf("==> 6. Sap xep QuickSort:\n");
+					QuickSort(my_array,0,N-1);
+					break;
+				}
 			case '0':
 				return 0;
 				
@@ -154,8 +247,4 @@ int main ()
 	}
    
 }
-
-
-
-
 
