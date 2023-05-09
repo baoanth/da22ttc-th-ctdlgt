@@ -179,8 +179,6 @@ void QuickSort(int a[],int l,int r)
 	QuickSort(a,i,r);
 	
 }
-
-
 int main ()
 {
 		
@@ -192,7 +190,7 @@ int main ()
 		In_mang(my_array,N);
 		char chon;
 	    printf("Vui long chon so de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-	    printf("1. Sap xep chon truc tiep\n2. Sap xep chen truc tiep\n3. Sap xep doi cho truc tiep\n4. Sap xep noi bot\n5. Sap xep HeapSort\n6. Sap xep QuickSort:\n");
+	    printf("1. Sap xep chon truc tiep\n2. Sap xep chen truc tiep\n3. Sap xep doi cho truc tiep\n4. Sap xep noi bot\n5. Sap xep HeapSort\n6. Sap xep QuickSort:\n7\n");
 	    chon=getch();
 	    
 		switch(chon)
@@ -241,8 +239,6 @@ int main ()
 			case '0':
 				return 0;
 				
-				
-	
 		}
 	}
    
