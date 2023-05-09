@@ -5,7 +5,7 @@
 typedef struct
 {
     char mahang[10] ;
-    char tenhang[30];
+    char tenhang[20];
     int soluong;
     float dongia;
     float sotien;
@@ -55,6 +55,12 @@ void print_DMHH(HangHoa* hh, int n)
 	{
 		printf("%10s%25s%15d%15f%15f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
 	}
+}
+
+HangHoa find_HH_by_ma(char* mahang, HangHoa* dmhh)
+{
+
+
 }
 
 void input_DMHH(char* filename)
