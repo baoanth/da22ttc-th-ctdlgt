@@ -35,31 +35,33 @@ void SelectionSort(int a[], int n)
 		print_array(a, n);
 	}
 }
+
+
+
 void Shift(int a[], int l, int r)
 {
 	int x, i, j;
 	i = l;
-	j = 2 * i + 1; // (ai , aj ), (ai , aj+1) l� c�c ph?n t? li�n d?i
+	j = 2 * i+1; // (ai , aj ), (ai , aj+1) là các phần tử liên đới
 	x = a[i];
 	while (j <= r)
 	{
-		if (j < r) // n?u c� d? 2 ph?n t? li�n d?i
+		if (j < r) // nếu có đủ 2 phần tử liên đới
 			if (a[j] < a[j + 1])
-				// x�c d?nh ph?n t? li�n d?i l?n nh?t
+				// xác định phần tử liên đới lớn nhất
 				j = j + 1;
 		if (a[j] < x)
-			break; // tho? quan h? li�n d?i, d?ng
+			break; // thoả quan hệ liên đới, dừng
 		else
 		{
 			a[i] = a[j];
 			i = j;
-			// x�t ti?p kh? nang hi?u ch?nh lan truy?n
-			j = 2 * i + 1;
+			// xét tiếp khả năng hiệu chỉnh lan truyền
+			j = 2 * i+1;
 			a[i] = x;
 		}
 	}
 }
-
 void CreateHeap(int a[], int n)
 {
 	int l;
@@ -70,27 +72,25 @@ void CreateHeap(int a[], int n)
 		l = l - 1;
 	}
 }
-
 void HeapSort(int a[], int n)
 {
 	int r;
 	CreateHeap(a, n-1);
-
-	printf("\n ==========Heap===========\n");
-	print_array(a, n);
-	printf(" =========================\n");
+	printf("\n===========Heap=========\n");
+	print_array(a,n);
+	printf("=======================\n");
 
 	r = n-1; // r là vị trí đúng cho phần tử nhỏ nhất
-
+	
 	while (r > 0)
 	{
+		
 		hoan_vi(&a[0], &a[r]);
+		print_array(a,n);
 		r = r - 1;
 		Shift(a, 0, r);
-		print_array(a, n);
 	}
 }
-
 int main()
 {
 	int my_arr[] = {6, 7, 8, 4, 15, 23, 11, 27, 17, 50, 22, 66};

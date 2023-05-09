@@ -155,7 +155,7 @@ void QuickSort(int a[], int l, int r)
 			
 		if(i<=j)
 		{
-			printf("Hoan vi %4d <-> %2d", a[i], a[j]);
+			printf("Hoan vi %4d <-> %2d:", a[i], a[j]);
 			HoanVi(&a[i], &a[j]);
 			print_array(a, N);
 			i++;
