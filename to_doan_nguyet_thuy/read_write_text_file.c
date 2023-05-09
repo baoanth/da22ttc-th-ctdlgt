@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+#include <stdio.h>
+#include <stdlib.h>
+
+void input_text_file(char*filename)
+{
+	FILE *outfile
+	char input_tr[MAX_LINE_LENGTH];
+	
+	
+	otfile =  fopen(filename, "w");
+	printf("Nhap van ban, an EXIT ngung nhap:\n ");
+	
+	
+	while(1)
+	{
+		fgets(input_tr, _MAX_LINE_LENGTH, stdin);
+		
+		
+		
+	
+	}
+
+    fclose(outfile);
+}
+
+
+
+	
+
+
+
+
+}
+=======
 #include<stdio.h>
 #include <stdlib.h>
 #define MAX_LINE_LENGTH 1000
@@ -70,3 +105,4 @@ int main()
 }	
 	
 
+>>>>>>> 7009da1b691ddc8d280bb1fbde18c69aa0927f80

@@ -28,7 +28,7 @@ HangHoa * read_DMHH(char* filename, int *n)
 
 	while(!feof(infile))
 	{	
-		printf("%10s | %20s | %10d | %10.f | %10.f\n", hhA.mahang, hhA.tenhang, hhA.sl, hhA.dg, hhA.tt);	
+		printf("%10s | %20s | %10d | %10.0f | %10.3f\n", hhA.mahang, hhA.tenhang, hhA.sl, hhA.dg, hhA.tt);	
 
 		dem++;
 		fread(&hhA, sizeof(HangHoa), 1, infile );        
@@ -46,7 +46,7 @@ void print_DMHH(HangHoa* hh, int n)
 	int i;
 	for (i=0; i<n; i++)
 	{
-		printf("%10s | %20s | %10d | %10.f | %10.f\n", hh[i].mahang, hh[i].tenhang, hh[i].sl, hh[i].dg, hh[i].tt);	
+		printf("%10s | %20s | %10d | %10.0f | %10.3f\n", hh[i].mahang, hh[i].tenhang, hh[i].sl, hh[i].dg, hh[i].tt);	
 	}
 }
 
@@ -58,9 +58,9 @@ void input_DMHH(char* filename)
 
 int main()
 {
-	HangHoa h1 = {"A001", "Meo Ai cap", 5, 20000, 100000};
-    HangHoa h2 = {"A002", "Meo Anh long ngan", 2, 30000, 60000};
-    HangHoa h3 = {"A003", "Meo Han Quoc", 7, 20000, 140000};
+	HangHoa h1 = {"A001", "Meo Ai cap", 5, 10, 50 };
+    HangHoa h2 = {"A002", "Meo Anh long ngan", 2, 30, 60 };
+    HangHoa h3 = {"A003", "Meo Han Quoc", 7, 20, 140};
 	FILE* outfile = fopen("DMHH.DAT", "w");
 
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
@@ -79,5 +79,10 @@ int main()
 	printf("\nDanh sach tren co %d mon hang\n", n);	
 	print_DMHH(mydmhh, n);
 	return 0;
+	  
+	  
+	
+	
+	
 
 }

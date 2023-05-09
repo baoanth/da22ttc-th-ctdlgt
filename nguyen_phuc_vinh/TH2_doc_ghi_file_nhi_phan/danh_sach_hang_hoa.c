@@ -56,9 +56,28 @@ void input_DMHH(char* filename)
 {
 	int count;
 	
+	FILE* outfile = fopen("DMHH.dat", "rb");
+	
+	while(1)
+	{
+		char mahang_tam[100];
+		
+		scanf("%s", &mahang_tam);
+		
+		if(strcmp(mahang_tam, "EXIT, 4"))
+		{
+			
+		}
+		
+	}
 }
 
-
+int find_HH_by_ma(char*mahang, HangHoa* hh_array, HangHoa* hh_kq)
+{
+	
+	
+	
+}
 
 int main()
 {
