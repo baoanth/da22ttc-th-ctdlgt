@@ -122,6 +122,7 @@ int main()
 	{
 		int a[]={6,2,4,9,1,8,3,5,10,7}; 
     	int lc; 
+    	cout << "-----------------------------------\n";
 		cout << "0. EXIT\n";
 		cout << "1. sap xep chen truc tiep \n";
 		cout << "2. sap xep chon truc tiep \n";
