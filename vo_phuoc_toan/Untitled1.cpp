@@ -71,10 +71,10 @@ int main() {
                 doc_in_va_noi_them();
                 break;
             case 'q':
-                printf("Chuong trình ket thuc.\n");
+                printf("Chuong trinh ket thuc.\n");
                 return 0;
             default:
-                printf("Lua chon khong hop le. Vui lòng chon lai.\n");
+                printf("Lua chon khong hop le. Vui long chon lai.\n");
                 break;
         }
     }
