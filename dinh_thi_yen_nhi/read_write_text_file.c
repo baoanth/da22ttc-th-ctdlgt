@@ -51,6 +51,46 @@ int main()
 	
 	return 0;
 
+<<<<<<< HEAD
+}
+
+
+char *read_text_file(char *filename)
+{
+	FILE *infile = fopen(filename, "r");
+	if(!infile)
+	{
+		printf("\n unable to open : %s ", filename );
+		return -1;
+	
+	}
+	char line[MAX_LINE_LENGTH];
+	char *output_str ;
+	output_str = (char*) malloc(MAX_FILE_LENGTH);
+	
+	fgets(line, sizeof(line), infile);
+	strcpy(output_str, line);
+	
+	while (fgets(line, sizeof(line), infile))
+	strcat(output_str, line);
+	
+	fclose(infile);
+	return output_str;
+	
+	
+int main()
+{
+	
+	char* file_content = read_text_file("mydocument1.txt");
+	printf("%s", file_content);
+	
+	
+	return 0;
+}	
+	
+	
+=======
+>>>>>>> eb893d8ccdfec659b3c96c365067a3c715a84e1e
 }
 
 

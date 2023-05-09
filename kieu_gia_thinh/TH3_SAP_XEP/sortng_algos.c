@@ -14,6 +14,16 @@ void print_array(int a[], int n)
 	printf("\n");
 }
 
+void print_array1(int a[], int n)
+{
+	int i;
+	
+	for(i = 1; i<=n; i++)
+	{
+		printf("%5d", a[i]);
+	}
+	printf("\n");
+}
 void Hoanvi(int *a, int *b)
 {
 	int tam;
@@ -75,7 +85,7 @@ void Buble_Sort(int a[], int n)
 { 
 	int i, j;
 	
-	for (i = 1 ; i<n-1 ; i++)
+	for (i = 0 ; i<n-1 ; i++)
 	{
 		for (j =n-1; j >i ; j --)
 		{
@@ -85,11 +95,145 @@ void Buble_Sort(int a[], int n)
 		}
 	}
 }
+//Heap Sort
+void Shift (int a[], int l, int r)
+{
+	int x, i, j;
+	i=l;
+	j=2*i;
+	x=a[i];
+	
+	while(j<=r)
+	{
+		if(j<r)
+			if(a[j]<a[j+1])
+				j = j+1;
+			if(a[j]<x)
+				break;
+			else
+			{
+				a[i] = a[j];
+				i = j;
+				j = 2 * i;
+				a[i] = x;
+				
+			}		
+	}
+}
+
+void CreateHeap(int a[], int n)
+{
+	int l;
+	l = n/2;
+	while(l>0)
+	{
+		Shift(a, l, n);
+		l = l - 1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a, n);
+	r = n;
+	while(r>0)
+	{
+		Hoanvi(&a[1], &a[r]);
+		r = r-1;
+		Shift(a, 1, r);
+		print_array1(a, n);
+	}
+}
+//Quick Sort
+
+void QuickSort(int a[], int l, int r)
+{
+	int i, j;
+	int x;
+	x = a[(l+r)/2];
+	i = l; j = r;
+	do
+	{
+		while(a[i]<x) 
+		i++;
+		while(a[j]>x)
+		j--;
+		
+		if(i<=j)
+		{
+			Hoanvi(&a[i], &a[j]);
+			i++, j--;
+			
+		}
+	} while(i<j);
+	if(l<j)
+		QuickSort(a, l, j);
+	if(i<r)
+		QuickSort(a, i, r);
+	print_array(a, N);
+}
 
 int main()
 {
+	int tam[N],i;
 	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
 	print_array(my_array, N);
+<<<<<<< HEAD
+=======
+	for( i = 0; i<N;i++)
+	{
+		tam[i+1] = my_array[i]; 	
+	}
+	
+	while(1)
+	{
+		int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
+		int lc;
+		
+		printf("0. EXIT\n");
+		printf("1. Selection Sort\n");
+		printf("2. Insertion Sort\n");
+		printf("3. Interchange Sort\n");
+		printf("4. Buble Sort\n");
+		printf("5. Heap Sort\n");
+		printf("6. Quick Sort\n");
+		printf("--------------------------\n");
+		printf("Nhap vao lua chon\n");
+		scanf("%d", &lc);
+		
+		if(lc==0)
+		{
+			break;
+		}
+		else if(lc==1)
+		{
+			Selection_Sort(my_array, N);
+		}
+		else if(lc==2)
+		{
+			Insertion_Sort(my_array, N);
+		}
+		else if(lc==3)
+		{
+			Interchange_Sort(my_array, N);	
+		}
+		else if(lc==4)
+		{
+			Buble_Sort(my_array, N);
+		}
+		else if(lc==5)
+		{
+			HeapSort( tam, N);
+		}
+		else if(lc==6)
+		{
+			QuickSort(my_array, 0, N-1);
+		}
+	}
+	
+	
+>>>>>>> f74513dbd376928e87b394e099674840d3ece655
 //	printf("1. SelectionSort\n");
 //	Selection_Sort(my_array, N);
 //	
@@ -101,6 +245,7 @@ int main()
 //	
 //	printf("4.BubleSort\n");
 //	Buble_Sort(my_array, N);
+<<<<<<< HEAD
 	while(1)
 	{
 		int lc;
@@ -123,6 +268,8 @@ int main()
 
 
 
+=======
+>>>>>>> f74513dbd376928e87b394e099674840d3ece655
 	
 	return  0;
 }

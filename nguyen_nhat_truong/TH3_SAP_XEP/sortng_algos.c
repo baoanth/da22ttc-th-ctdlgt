@@ -8,12 +8,12 @@ void print_array(int a[], int n)
 	int i;
 	for (i=0; i<n; i++)
 	{
-		printf("%4d",a[i]);
+		printf("%5d", a[i]);
 	}
 	printf("\n");
 }
 
-void HoanVi(int *a, int *b)
+void hoanvi(int* a, int* b)
 {
 	int temp;
 	temp = *a;
@@ -21,116 +21,173 @@ void HoanVi(int *a, int *b)
 	*b = temp;
 }
 
-// chon truc tiep
-void SelectionSort (int a[100], int n)
+void SelectionSort (int a[], int n)
 {
 	int min;
 	int i,j;
-	for (i=0 ; i <n-1 ;i++)
+	for (i=0; i<n-1; i++)
 	{
-	    min = i;
-	for (j=i+1 ; j<n ;j++)
-	if (a[j] < a[min])
-		min = j;
-		HoanVi (&a[min],&a[i]);	  
-		print_array(a,n);
-    }
+		min = i;
+		for( j=i+1; j<n; j++)
+		   if(a[j]< a[min])
+		     min = j;
+		
+		hoanvi(&a[min], &a[i]);
+		print_array(a, n);
+	}
+	
 }
 
-// chen truc tiep
-void InsertionSort(int a[],int n)
+void InsertionSort(int a[], int n)
 {
-	int pos ,i;
-	int x;
+	int pos, i, x;
 	for (i=1; i<n; i++)
 	{
-		x=a[i]; pos = i-1;
-    
-	while((pos>=0)&&(a[pos]>x))	
-    {
-	    a[pos+1]=a[pos];
-	    pos--;
-    }
-	    a[pos+1]=x;
-	    print_array(a,n);
-}
+		x=a[i];
+		pos=i-1;
+		while((pos>=0) && (a[pos]>x))
+		{
+			a[pos+1] = a[pos];
+			pos--;
+		}
+		a[pos+1] = x;
+		print_array(a, n);
+	}
 }
 
-//doi cho truc tiep
 void InterchangeSort(int a[], int n)
 {
-	int i, j;
-	for (i=1; i<n; i++)
+	int i,j;
+	for(i=1; i<n; i++)
 	{
-	for (j=i+1; j<n; j++)
-	if (a[j]<a[i])
-	    HoanVi(&a[i],&a[j]);
+	    for(j=i+1; j<n; j++)
+	    if(a[j]<a[i])
+		hoanvi(&a[i],&a[j]);
 		print_array(a,n);
-    }
+	}
+        
 }
 
-//noi bot
 void BubleSort(int a[], int n)
 {
-	int i,j;
-	for (i=1; i<n-1; i++)
+	int i, j;
+	for(i=1; i<n-1; i++)
 	{
-	for (j=n-1; j>i; j--)
-	    if (a[j]<a[j-1])
-	    HoanVi (&a[j],&a[j-1]);
-	    print_array(a,n);
+	    for(j = n-1; j>i; j--)
+		if(a[j]<a[j-1])
+		hoanvi(&a[j],&a[j-1]);
+		print_array(a,n);
+	}
+	
+}
+
+void Shift (int a[ ], int l, int r )
+{ 
+    int x, i, j;
+    i = l;
+    j =2*i+1; 
+    x = a[i];
+    while (j<=r)
+    {
+        if (j<r) 
+        if (a[j]<a[j+1])
+        j = j+1;
+        if (a[j]<x)
+           break; 
+        else
+        { 
+            a[i] = a[j];
+            i = j;
+            j = 2*i+1;
+            a[i] = x;
+        }
     }
 }
 
-// ham main
+void CreateHeap(int a[], int n)
+{
+	int l;
+	l= n/2;
+	while(l>=0)
+	{
+		Shift(a,l,n);
+        l = l-1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a,n-1);
+	printf("\n-----Heap-----\n");
+	print_array(a,n);
+	printf("--------------\n");
+	
+	r = n-1;
+	
+	while(r>0)
+	{
+		hoanvi(&a[0],&a[r]);
+		print_array(a,n);
+		r = r-1;
+		Shift(a,0,r);
+		
+	}
+}
+
 int main()
 {
-	int my_array[]= {5,8,3,1,4,6,9,2,7,10};
-	print_array(my_array,N);
-	/*printf("1.SelectionSort\n");
-	SelectionSort(my_array,N);
-	printf("2.InsertionSort\n");
-	InsertionSort(my_array,N);
-	printf("3.InterchangeSort\n");
-	InterchangeSort(my_array,N);
-	printf("4.BubleSort\n");
-	BubleSort(my_array,N);*/
-	
+	int my_arr[] = {12,4,26,10,97,1,9,30,13,95};
+	print_array(my_arr,N);
 	while(1)
 	{
-		int my_array[]={5,8,3,1,4,6,9,2,7,10};
-		int select;
-		
-		printf("0.EXIT\n");
-		printf("1.SelectionSort\n");
-		printf("2.InsertionSort\n");
-		printf("3.InterchangeSort\n");
-		printf("4.BubleSort\n");
-		printf("__________Chon chuc nang di bo teo:__________\n");
-		scanf("%d",&select);
-		
-		if(select==0)
+		int my_arr[] = {12,4,26,10,97,1,9,30,13,95};
+		int lc;
+		printf("0. EXIT\n");
+		printf("1. Selection sort\n");
+		printf("2.Insertion sort\n");
+		printf("3.Interchange sort\n");
+		printf("4.Buble sort\n");
+		printf("5.Heap sort\n");
+		printf("...\n");
+		printf("chon chuc nang\n");
+		scanf("%d", &lc);
+		if(lc == 0)
 		{
 			break;
 		}
-		else if (select==1)
+		else if(lc == 1)
 		{
-			SelectionSort(my_array,N);
+			SelectionSort(my_arr, N);
 		}
-		else if (select==2)
+		else if(lc == 2)
 		{
-			InsertionSort(my_array,N);
+			InsertionSort(my_arr, N);
 		}
-		else if (select==3)
+		else if(lc == 3)
 		{
-			InterchangeSort(my_array,N);
+		    InterchangeSort(my_arr, N);	
 		}
-		else if (select==4)
+		else if(lc == 4)
 		{
-			BubleSort(my_array,N);
+			BubleSort(my_arr, N);
+		}
+		else if(lc == 5)
+		{
+			HeapSort(my_arr, N);
 		}
 	}
+	/*printf("1. Selection sort\n");
+	SelectionSort(my_arr, N);
+	printf("2.Insertion sort\n");
+	InsertionSort(my_arr, N);
+	printf("3.Interchange sort\n");
+	InterchangeSort(my_arr, N);
+	printf("4.Buble sort\n");
+	BubleSort(my_arr, N);*/
 	
-return 0;	
+	
+	return 0;
 }
+
 

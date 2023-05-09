@@ -12,6 +12,15 @@ void print_array(int a[],int n)
 	}
 	printf("\n");
 }
+void print_array1(int a[],int n)
+{
+	int i;
+	for (i=1; i<n; i++)
+	{
+		printf("%5d", a[i]);
+	}
+	printf("\n");
+}
 
 void hoan_vi(int* a,int* b)
 {
@@ -80,7 +89,7 @@ void InterchangeSort(int a[], int n)
 void BubleSort(int a[], int n)
 {
 	int i,j;
-	for(i=1; i<n-1; i++)
+	for(i=0; i<n-1; i++)
 	{
 		for(j=N-1; j>i; j--)
 			if(a[j] < a[j-1])
@@ -89,22 +98,98 @@ void BubleSort(int a[], int n)
 	}
 }
 
+void Shift (int a[],int l,int r)
+{
+	int x, i, j;
+	i = l;
+	j = 2*i+1;
+	x = a[i];
+	while (j<=r)
+	{
+		if (j<r)
+			if (a[j]<a[j+1])
+			j = j+1;
+			if (a[j]<x)
+				break;
+			else
+			{
+				a[i] = a[j];
+				i = j;
+				j = 2*i+1;
+				a[i] = x;
+			}
+	}
+}
+
+void CreateHeap (int a[], int n)
+{
+	int l;
+	l = n/2; 
+	while (l >= 0)
+	{
+		Shift(a,l,n);
+		l = l -1;
+		
+	}
+}
+
+void HeapSort (int a[], int n)
+{
+	int r;
+	CreateHeap(a,n-1);
+	r = n-1;
+	while(r > 0)
+	{
+		hoan_vi(&a[0],&a[r]);
+		r = r -1;
+		Shift(a,0,r);
+		print_array1(a,n);
+	}
+}
+
+void QuickSort(int a[], int l,int r)
+{
+	int i,j;
+	int x;
+	x = a[(l+r)/2];
+	i = l; j = r;
+	do 
+	{
+		while(a[i] < x) i++;
+		while(a[j] > x) j--;
+		if(i <= j)
+		{
+			hoan_vi(&a[i],&a[j]);
+			print_array(a,N);
+			i++ ; j-- ;
+			
+		}
+	}	while(i < j);
+	if(l < j)
+		QuickSort(a,l,j);
+	if(i < r)
+		QuickSort(a,i,r);
+		
+}
+
 
 
 int main()
 {
-	int my_arr[] = {60,68,18,16,54,35,37,27,25,21,18,10};
-	print_array(my_arr,N);
+	int my_arr[] = {60,68,18,16,54,35,37,27,25,21,13,10};
+	print_array1(my_arr,N);
 	
 	while(1)
 	{
-		int my_arr[] = {60,68,18,16,54,35,37,27,25,21,18,10};
+		int my_arr[] = {60,68,18,16,54,35,37,27,25,21,13,10};
 		int lc;
 		printf("0. EXIT\n");
 		printf("1. sap xep chen truc tiep \n");
 		printf("2. sap xep chon truc tiep \n");
 		printf("3. sap xep doi cho truc tiep \n");
 		printf("4. sap xep noi bot \n");
+		printf("5. sap xep cay \n");
+		printf("6. sap xep phan hoach \n");
 		printf("--------------------------------\n");
 		printf("moi chon chuc nang \n");
 		scanf("%d",&lc);
@@ -133,7 +218,15 @@ int main()
 			BubleSort(my_arr,N);
 			
 		}
-
+		else if(lc == 5)
+		{
+			HeapSort(my_arr,N);
+		
+		}
+		else if(lc == 6)
+		{
+			QuickSort(my_arr,0,N-1);
+		}
 
 
 
