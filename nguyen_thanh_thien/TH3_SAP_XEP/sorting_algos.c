@@ -186,49 +186,49 @@ int main()
 
 		int chon;
 		printf("Vui long chon so tuong ung de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-		printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n5. SX cay\n6. SX pham hoach\n");
+		printf("1.  chon truc tiep\n2. SX chen truc tiep\n3.  doi cho truc tiep\n4.  noi bot\n5.  cay\n6.  pham hoach\n");
 		scanf("%d", &chon);
 
 		switch (chon)
 		{
 		case 1:
 		{
-			printf("==> SX chon truc tiep:\n");
+			printf("==>  chon truc tiep:\n");
 			SelectionSort(my_array, N);
 			break;
 		}
 
 		case 2:
 		{
-			printf("==> SX chen truc tiep:\n");
+			printf("==>  chen truc tiep:\n");
 			IntertionSort(my_array, N);
 			break;
 		}
 
 		case 3:
 		{
-			printf("==> SX doi cho truc tiep:\n");
+			printf("==>  doi cho truc tiep:\n");
 			InterchangeSort(my_array, N);
 			break;
 		}
 
 		case 4:
 		{
-			printf("==> SX noi bot:\n");
+			printf("==>  noi bot:\n");
 			BubleSort(my_array, N);
 			break;
 		}
 
 		case 5:
 		{
-			printf("==> SX cay:\n");
+			printf("==>  cay:\n");
 			HeapSort(my_array, N);
 			break;
 		}
 
 		case 6:
 		{
-			printf("==> SX phan hoach:\n");
+			printf("==>  phan hoach:\n");
 			QuickSort(my_array, 0, N - 1);
 			break;
 		}
@@ -239,3 +239,4 @@ int main()
 	}
 	return 0;
 }
+
