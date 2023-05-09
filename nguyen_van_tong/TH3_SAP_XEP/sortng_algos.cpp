@@ -19,6 +19,15 @@ void in(int a[100],int n)
     cout<< "\n";
 }
 
+void in1(int a[100],int n)
+{
+    for(int i = 1; i<= n; i++)
+	{
+        cout << a[i] << " ";
+
+    }
+    cout<< "\n";
+}
 void nhap (int a[100],int n){
     for(int i = 0; i< n; i++){
         cin >> a[i];
@@ -113,6 +122,57 @@ void quickSort(int a[100], int l , int r)
 		quickSort(a,i,r);
 	in(a,10);
 }
+
+void Shift(int a[100], int l , int r)
+{
+	int x, i , j;
+	i = l; 
+	j = 2*i;
+	x =a[i];
+
+	while(j<=r)
+	{	
+		if(j<r)
+			if(a[j]<a[j+1])
+				j++;
+			if(a[j]<x)
+				break;
+			else 
+			{
+				a[i] = a[j];
+				i =j;
+				j =2*i;
+				a[i] = x;
+			}		
+	}
+}
+
+void CreHeap(int a[100], int n)
+{
+	int l = n/2;
+	while(l>0)
+	{
+		Shift(a,l,n);
+		l--;
+	}
+}
+
+void heapSort(int a[100], int n)
+{
+	CreHeap(a,n);
+	int r = n;
+	while(r>0)
+	{
+	//	printf("%d\n",r);
+		swap(a[1],a[r]);
+		in1(a,n);
+		r--;
+		Shift(a,1,r);
+	//	printf("%d\n",r);
+	}
+	//printf("ket thuc heapsort");
+}
+
 int main()
 {
 	int a[]={6,2,4,9,1,8,3,5,10,7};
@@ -128,6 +188,7 @@ int main()
 		cout << "3. sap xep doi cho truc tiep \n";
 		cout << "4. sap xep noi bot \n";
 		cout << "5. quickSort \n";
+		cout << "6. HeapSort \n";
 		cout << "-----------------------------------\n";
 		cout << "moi chon chuc nang \n";
 		cin>> lc;
@@ -154,9 +215,17 @@ int main()
 		{
     		bubbleSort(a,n);
 		}
-		else 
+		else if(lc == 5)
+		{
 			quickSort(a,0,n-1);
 			in(a,n);
+		}
+		else if (lc == 6)
+		{
+			heapSort(a,n);
+		
+		}
+			
 		
 	}
 
