@@ -127,7 +127,7 @@ void Shift(int a[100], int l , int r)
 {
 	int x, i , j;
 	i = l; 
-	j = 2*i;
+	j = 2*i+1;
 	x =a[i];
 
 	while(j<=r)
@@ -141,7 +141,7 @@ void Shift(int a[100], int l , int r)
 			{
 				a[i] = a[j];
 				i =j;
-				j =2*i;
+				j =2*i+1;
 				a[i] = x;
 			}		
 	}
@@ -150,7 +150,7 @@ void Shift(int a[100], int l , int r)
 void CreHeap(int a[100], int n)
 {
 	int l = n/2;
-	while(l>0)
+	while(l>=0)
 	{
 		Shift(a,l,n);
 		l--;
@@ -159,15 +159,17 @@ void CreHeap(int a[100], int n)
 
 void heapSort(int a[100], int n)
 {
-	CreHeap(a,n);
-	int r = n;
+	CreHeap(a,n-1);
+	in(a,n);
+	printf("=====");
+	int r = n-1;
 	while(r>0)
 	{
 	//	printf("%d\n",r);
-		swap(a[1],a[r]);
-		in1(a,n);
+		swap(a[0],a[r]);
+		in(a,n);
 		r--;
-		Shift(a,1,r);
+		Shift(a,0,r);
 	//	printf("%d\n",r);
 	}
 	//printf("ket thuc heapsort");
