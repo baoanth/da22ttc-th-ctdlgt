@@ -81,10 +81,93 @@ void BubleSort(int a[], int n)
 	}
 }
 
+void Shift(int a[], int l, int r)
+{
+	int x, i, j;
+	i=l;
+	j=2*i;
+	x=a[i];
+	
+	while(j<=r)
+	{
+		if(j<r)
+			if(a[j]<a[j+1])
+				j=j+1;
+			if(a[j]<x)
+				break;
+			else
+			{
+				a[i]=a[j];
+				i=j;
+				j=2*i;
+				a[i]=x;
+			}	
+	}
+	
+}
+
+void CreateHeap(int a[], int n)
+{
+	int l;
+	l=n/2;
+	
+	while(l>0)
+	{
+		Shift(a, l, n);
+		l=l-1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a, n);
+	r=n;
+	
+	while(r>0)
+	{
+		HoanVi(&a[1], &a[r]);
+		print_array(a, n);
+		r=r-1;
+		Shift(a, 1, r);	
+	}
+}
+
+void QuickSort(int a[], int l, int r)
+{
+	int i, j , x;
+	
+	x=a[(l+r)/2];
+	i=l;
+	j=r;
+	
+	do
+	{
+		while(a[i]<x)
+			i++;
+		while(a[j]>x)
+			j--;
+		if(i<=j)
+		{
+			HoanVi(&a[i], &a[j]);
+			i++;
+			j--;
+		}
+		
+	} while(i<j);
+	
+	if(l<j)
+		QuickSort(a, l, j);
+	if(i<r)
+		QuickSort(a, i, r);
+		
+	print_array(a, N);
+}
+
 int main()
 {
 	int x;
-	int my_array[]={3, 2, 4, 1, 6, 9 , 8, 7, 5, 10};
+	int my_array[]={31, 21, 41, 11, 61, 91 , 81, 71, 51, 1};
 	
 	printf("Mang ban dau:\n");
 	print_array(my_array, N);
@@ -94,11 +177,13 @@ int main()
 	printf("2. Insertion Sort\n");
 	printf("3. Interchange Sort\n");
 	printf("4. Buble Sort\n");
-
+	printf("5. Heap Sort\n");
+	printf("6. Quick Sort\n");
+	
 	while(1)
 	{
-		int my_array[]={3, 2, 4, 1, 6, 9 , 8, 7, 5, 10};
-		printf("\nNhap so thu tu cua thuat toan sap xep can dung: ");
+		int my_array[]={31, 21, 41, 11, 61, 91 , 81, 71, 51, 1};
+		printf("\nNhap so thu tu cua thuat toan sap xep can dung(Nhap 0 de dung): ");
 		scanf("%d", &x);
 		
 		if(x==0)
@@ -129,8 +214,19 @@ int main()
 			printf("4. Buble Sort:\n");
 			BubleSort(my_array, N);
 		}
-
+		
+		if(x==5)
+		{
+			printf("5. Heap Sort:\n");
+			HeapSort(my_array, N);
+		}
+		
+		if(x==6)
+		{
+			printf("6. Quick Sort:\n");
+			QuickSort(my_array, 0, N);
+		}
 	}
-
+		
 	return 0;
 }
