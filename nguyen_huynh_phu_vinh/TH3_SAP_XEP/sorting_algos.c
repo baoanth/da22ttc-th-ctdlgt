@@ -89,50 +89,54 @@ void BubleSort(int a[ ], int n)
 	}
 }
 
-void Shift(int a[100], int l , int r)
+void Shift(int a[ ], int l , int r)
 {
-	int x, i , j;
+	int x, i, j;
 	i = l; 
 	j = 2*i+1;
-	x =a[i];
+	x = a[i];
 
-	while(j<=r)
+	while(j <= r)
 	{	
-		if(j<r)
-			if(a[j]<a[j+1])
+		if(j < r)
+			if(a[j] < a[j+1])
 				j++;
-			if(a[j]<x)
+			if(a[j] < x)
 				break;
 			else 
 			{
 				a[i] = a[j];
-				i =j;
-				j =2*i+1;
+				i = j;
+				j = 2*i+1;
 				a[i] = x;
 			}		
 	}
 }
 
-void CreHeap(int a[100], int n)
+void CreateHeap(int a[ ], int n)
 {
 	int l = n/2;
-	while(l>=0)
+	while(l >= 0)
 	{
-		Shift(a,l,n);
+		Shift(a, l, n);
 		l--;
 	}
 }
 
-void HeapSort(int a[100], int n)
+void HeapSort(int a[ ], int n)
 {
-	CreHeap(a,n-1);
-	int r = n-1;
-	while(r>0)
+	CreateHeap(a, n-1);
+	printf("=========================Heap=========================\n");
+	print_array(a,N);
+	printf("======================================================\n");
+	int r;
+	r = n-1;
+	while(r > 0)
 	{
-		hoan_vi(&a[0],&a[r]);
-		print_array(a,n);
-		r--;
-		Shift(a,0,r);
+		hoan_vi(&a[0], &a[r]);
+		print_array(a, n);
+		r = r - 1;
+		Shift(a, 0, r);
 	}
 }
 
