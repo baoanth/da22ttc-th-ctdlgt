@@ -74,7 +74,6 @@ int main()
     HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
 	
 	printf("\nDanh sach tren co %d mon hang\n", n);	
-	print_DMHH(mydmhh, n);
 	return 0;
 
 }
