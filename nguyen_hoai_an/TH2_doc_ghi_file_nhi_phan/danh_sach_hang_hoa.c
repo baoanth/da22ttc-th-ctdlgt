@@ -50,6 +50,15 @@ void print_DMHH(Hanghoa* hh, int n)
 	}
 }
 
+void find_HH_by_ma(char * mahang, *HangHoa hh_array,int n)
+      {
+	     int i;
+	     for(i=0;i<n;i++){
+		    if(strcmp(mahang,hh_array[i].mahang)==0)
+		    in_DMHH(&hh_array[i],1)
+		 }
+      }
+
 void input_DMHH(char* filename)
 {
 	int count;
@@ -79,4 +88,5 @@ int main()
 	printf("\nDanh sach tren co %d mon hang\n", n);	
 	print_DMHH(mydmhh, n);
 	return 0;
+	
 }
