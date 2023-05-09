@@ -181,9 +181,18 @@ int main()
     fwrite(&h4, sizeof(HangHoa), 1, outfile);
     fclose(outfile);
 
+<<<<<<< HEAD
+    int n=0;
+    HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
+	
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+//	print_DMHH(mydmhh, n);
+	return 0;
+=======
     int count;
     
     HangHoa* my_dshh = read_DMHH("DSHH.dat", &count);
+>>>>>>> 1b6b937c7c8a0d1972e9a42bd2b4457776de332b
 
     printf("Da doc duoc %d hang hoa\n", count);
     print_DMHH(my_dshh, count);
