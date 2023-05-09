@@ -90,17 +90,39 @@ int main()
 {
 	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
 	print_array(my_array, N);
-	printf("1. SelectionSort\n");
-	Selection_Sort(my_array, N);
-	
-	printf("2. InsertionSort\n");
-	Insertion_Sort(my_array, N);
-	
-	printf("3. InterchangeSort\n");
-	Interchange_Sort(my_array, N);
-	
-	printf("4.BubleSort\n");
-	Buble_Sort(my_array, N);
+//	printf("1. SelectionSort\n");
+//	Selection_Sort(my_array, N);
+//	
+//	printf("2. InsertionSort\n");
+//	Insertion_Sort(my_array, N);
+//	
+//	printf("3. InterchangeSort\n");
+//	Interchange_Sort(my_array, N);
+//	
+//	printf("4.BubleSort\n");
+//	Buble_Sort(my_array, N);
+	while(1)
+	{
+		int lc;
+		printf("Nhap vao chuc nang ma ban muon\n");
+		scanf("%d", &lc);
+		
+		if(lc==0)
+		{
+			printf("1. EXIT\n");
+		} 
+		else if(lc==1)
+		{
+			printf("1. SelectionSort\n");
+			Selection_Sort(my_array, N);
+		}
+	}
+
+
+
+
+
+
 	
 	return  0;
 }
