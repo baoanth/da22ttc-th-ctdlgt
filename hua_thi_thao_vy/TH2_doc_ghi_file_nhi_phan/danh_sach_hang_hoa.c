@@ -63,13 +63,13 @@ void input_DMHH(char* filename)
 int main()
 {
 
- HangHoa h1 = {"A001", "nhattruong1", 5, 500, 2500};
+    HangHoa h1 = {"A001", "nhattruong1", 5, 500, 2500};
     HangHoa h2 = {"A002", "nhattruong2", 5, 700, 5500};
     HangHoa h3 = {"A003", "nhattruong3", 5, 1000, 5000};
  FILE* outfile = fopen("DMHH.DAT", "w");
  
- fwrite(&h1, sizeof(HangHoa), 1, outfile);
- fwrite(&h2, sizeof(HangHoa), 1, outfile);
+    fwrite(&h1, sizeof(HangHoa), 1, outfile);
+    fwrite(&h2, sizeof(HangHoa), 1, outfile);
     fwrite(&h3, sizeof(HangHoa), 1, outfile);
  
  if (fwrite!=0)
