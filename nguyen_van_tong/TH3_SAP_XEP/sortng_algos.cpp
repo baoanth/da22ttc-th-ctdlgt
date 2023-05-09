@@ -101,7 +101,7 @@ void bubbleSort(int a[100],int n)
 	}	
 }
 
-void quickSort(int a[100], int l , int r)
+void quickSort(int a[100], int l , int r,int n)
 {
 	int i, j, x;
 	x = a[(l+r)/2];
@@ -117,10 +117,10 @@ void quickSort(int a[100], int l , int r)
 		}
 	}while(i<j);
 	if(l<j)
-		quickSort(a,l,j);
+		quickSort(a,l,j,n);
 	if(i<r)
-		quickSort(a,i,r);
-	in(a,10);
+		quickSort(a,i,r,n);
+	in(a,n);
 }
 
 void Shift(int a[100], int l , int r)
@@ -217,7 +217,7 @@ int main()
 		}
 		else if(lc == 5)
 		{
-			quickSort(a,0,n-1);
+			quickSort(a,0,n-1,n);
 			in(a,n);
 		}
 		else if (lc == 6)
