@@ -18,7 +18,7 @@ HangHoa* read_DMHH(char* filename, int* count){
     int i = 0;
 
     dmhh = malloc(sizeof(HangHoa)*MAX_SIZE);
-    dmhh[i] = hhA;
+    dmhh[i] = hhA; 
 
 	fread(&hhA, sizeof(HangHoa), 1, infile );
 	
