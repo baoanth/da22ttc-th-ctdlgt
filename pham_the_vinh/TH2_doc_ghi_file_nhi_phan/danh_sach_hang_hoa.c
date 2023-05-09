@@ -1,62 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MaxAmount 1000
+#define MAX_AMOUNT 1000
 
 typedef struct
 {
+<<<<<<< HEAD
     char mahang[10] ;
     char tenhang[20];
+=======
+    char mahang[5];
+    char tenhang[25];
+>>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
     int soluong;
     float dongia;
-    float sotien;
+    float thanhtien;
 }HangHoa;
 
-HangHoa *read_DMHH(char* filename, int *n)
+HangHoa* read_DMHH(char *filename, int *count)
 {
-    HangHoa *dmhh = malloc(MaxAmount* sizeof(HangHoa));
+    int i =0; 
     
-    FILE *infile = fopen(filename, "rb");
-
-	HangHoa hhA;
-
-	int count =0;
+	HangHoa *res_dmhh = malloc(sizeof(HangHoa)*MAX_AMOUNT);
 	
-	printf("%10s%25s%15s%15s%15s\n","MA HANG", "TEN HANG", "SO LUONG", "DON GIA", "SO TIEN");	
-
-	fread(&hhA, sizeof(HangHoa), 1, infile);
-
-	dmhh[count]=hhA;
+    FILE *infile = fopen(filename, "rb");
+    
+	HangHoa hhA;	
+	
+	fread(&hhA, sizeof(HangHoa), 1, infile );
+	
+	res_dmhh[i] =hhA;
 
 	while(!feof(infile))
 	{	
-		printf("%10s%25s%15d%15f%15f\n", hhA.mahang, hhA.tenhang, hhA.soluong, hhA.dongia, hhA.sotien);	
-
-		count++;
+		fread(&hhA, sizeof(HangHoa), 1, infile );
 		
-		fread(&hhA, sizeof(HangHoa), 1, infile);   
-
-        dmhh[count]=hhA;
+        i++;
+        
+        res_dmhh[i] =hhA;
 	}
-	
 	fclose(infile);
-
-	*n = count;
-
-    return dmhh;
+	
+    *count = i;
+    
+    return res_dmhh;
 }
 
 void print_DMHH(HangHoa* hh, int n)
 {
-	printf("%10s%25s%15s%15s%15s\n","MA HANG", "TEN HANG", "SO LUONG", "DON GIA", "SO TIEN");	
-
+	printf("%10s%20s%20s%20s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "Thanh tien");	
+	
 	int i;
-
+	
 	for (i=0; i<n; i++)
 	{
-		printf("%10s%25s%15d%15f%15f\n", hh[i].mahang, hh[i].tenhang, hh[i].soluong, hh[i].dongia, hh[i].sotien);	
+		print_HH(hh[i]);
 	}
 }
 
+<<<<<<< HEAD
 HangHoa find_HH_by_ma(char* mahang, HangHoa* dmhh)
 {
 
@@ -64,35 +65,171 @@ HangHoa find_HH_by_ma(char* mahang, HangHoa* dmhh)
 }
 
 void input_DMHH(char* filename)
+=======
+void print_HH(HangHoa h)
+>>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
 {
-	int count;	
+    printf("%10s%20s%20d%20.0f%20.0f\n", h.mahang, h.tenhang, h.soluong, h.dongia, h.thanhtien);	
+}
+
+int find_HH_by_ma(char* mahang, HangHoa* hh_array, int count, HangHoa* kq)
+{
+    int i=0;
+    
+    while (i<count)
+	{
+        if( strcmp(hh_array[i].mahang, mahang )==0)
+		{
+        	*kq= hh_array[i];
+        	
+        	return i;
+        }             
+        i++;
+	}
+	return  -1;
+}
+
+void input_DMHH(char* filename) 
+{
+    int count;
+    
+    char mahang_tam[5];
+    
+    HangHoa hh_tam;
+    
+    HangHoa*  my_dmhh =  read_DMHH( filename,  &count);
+    
+    printf("Danh sach hang hoa\n");
+	 
+    print_DMHH(my_dmhh, count);
+    
+    while (1)
+    {
+    	printf("\nNhap ma hang: ");
+    	
+    	scanf("%s", &mahang_tam);
+    	
+    	if( strncmp(mahang_tam, "EXIT", 4)==0)   
+    	{
+    		break;    		
+    	}
+    	int found_i = find_HH_by_ma(mahang_tam, my_dmhh, count, &hh_tam);
+    	
+    	if (found_i !=-1)
+    	{
+    		printf("Da tim thay ma hang %s\n", mahang_tam);
+    		
+    		printf("Ten hang: %s\n", my_dmhh[found_i].tenhang);
+    		
+			fflush(stdin);
+			
+			printf("Nhap so luong: ");	
+					
+    		scanf("%d", &my_dmhh[found_i].soluong);
+    		
+    		fflush(stdin);
+    		
+			printf("Nhap don gia: "); 	
+					
+    		scanf("%f", &my_dmhh[found_i].dongia);
+    		
+    		my_dmhh[found_i].thanhtien = my_dmhh[found_i].soluong * my_dmhh[found_i].dongia;
+    		
+    		printf("Thanh tien: %.0f\n", my_dmhh[found_i].thanhtien);
+			
+			printf("\nDanh sach hang hoa da duoc cap nhat\n");			    		
+    	}
+		else
+		{			
+			printf("Khong tim thay ma hang %s\n", mahang_tam);
+			
+			fflush(stdin);
+			
+			printf("Nhap ten hang: "); 
+			
+			gets(hh_tam.tenhang);
+            
+            fflush(stdin);
+            
+			printf("Nhap so luong: ");
+			
+    		scanf("%d", &hh_tam.soluong);
+    		
+    		fflush(stdin);
+    		
+			printf("Nhap don gia: ");
+			
+    		scanf("%f", &hh_tam.dongia);
+
+            hh_tam.thanhtien = hh_tam.soluong * hh_tam.dongia;
+            
+    		printf("Thanh tien: %.0f\n", hh_tam.thanhtien);	
+    		
+    		printf("\nDanh sach hang hoa da duoc cap nhat\n");
+    		
+    	  	strcpy( hh_tam.mahang , mahang_tam) ;
+			
+//         	print_HH(hh_tam);
+            
+            my_dmhh[count] = hh_tam;
+            
+            count++;	
+		}
+		print_DMHH(my_dmhh, count);
+    }
+	FILE* outfile = fopen(filename, "w");
+	
+	int i;
+	
+	for (i = 0; i<count; i++)	
+	{	
+		fwrite(&my_dmhh[i], sizeof(HangHoa), 1, outfile);  
+	}
+	fclose(outfile);
 }
 
 int main()
-{
-	HangHoa hh1 = {"A0001", "But chi", 5, 2000, 10000};
-	HangHoa hh2 = {"A0002", "But muc", 10, 5000, 50000};
-	HangHoa hh3 = {"A0003", "But long", 20, 10000, 200000};
+{	
+	char* filename ="DSHH.dat";
 	
-	FILE* outfile = fopen("DMHH.dat", "wb");
+  	HangHoa hh1 = {"H001", "Exciter 125", 1, 20000000, 20000000};
+    HangHoa hh2 = {"H002", "Exciter 135", 1, 30000000, 30000000};
+    HangHoa hh3 = {"H003", "Exciter 150", 1, 40000000, 40000000};
+    HangHoa hh4 = {"H004", "Exciter 155", 1, 45000000, 45000000};
+    
+    FILE* outfile = fopen(filename, "w");
 	
 	fwrite(&hh1, sizeof(HangHoa), 1, outfile);
 	fwrite(&hh2, sizeof(HangHoa), 1, outfile);
-	fwrite(&hh3, sizeof(HangHoa), 1, outfile);
+    fwrite(&hh3, sizeof(HangHoa), 1, outfile);
+    fwrite(&hh4, sizeof(HangHoa), 1, outfile);
+    
+    fclose(outfile);
+
+/*  int count;
+    
+    HangHoa* my_dshh = read_DMHH("DSHH.dat", &count);
+
+    printf("Da doc duoc %d hang hoa\n", count);
+    
+    print_DMHH(my_dshh, count);
+    
+	char* mahang = "A003";
+    
+    HangHoa hang_kq;
+    
+    int found  = find_HH_by_ma(mahang, my_dshh, count, &hang_kq);
+    
+    if (found)
+    {
+    	 print_HH(hang_kq);
+	}   
+    else
+    {
+    	printf("Tim khong thay hang hoa co ma %s\n", mahang);
+	} 
+*/
+	input_DMHH(filename);
 	
-	if (fwrite!=0)
-		printf("--- Ghi file thanh cong ---\n");
-	else
-		printf("--- Loi. Ghi file khong thanh cong ---\n");
-	fclose(outfile);   
-
-    int n=0;
-
-    HangHoa* mydmhh=  read_DMHH( "DMHH.dat", &n);
-	
-	printf("\n\nDanh sach co %d mon hang\n", n);	
-
-	print_DMHH(mydmhh, n);
-
-	return 0;
+    return 0;
 }
