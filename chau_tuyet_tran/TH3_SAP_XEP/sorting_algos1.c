@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 10
+#define N 12
 
 void InsertionSort(int a[], int n)
 {
@@ -60,6 +60,79 @@ void BubbleSort(int a[], int n)
 	}
 }
 
+void Shift(int a[], int l, int r)
+{
+	int x, i, j;
+	i = l;
+	j = 2 * i; // (ai , aj ), (ai , aj+1) là các phần tử liên đới
+	x = a[i];
+	while (j <= r)
+	{
+		if (j < r) // nếu có đủ 2 phần tử liên đới
+			if (a[j] < a[j + 1])
+				j = j + 1;
+		if (a[j] < x)
+			break;
+		else
+		{
+			a[i] = a[j];
+			i = j;
+			j = 2 * i;
+			a[i] = x;
+		}
+	}
+}
+
+void CreateHeap(int a[], int N)
+{
+	int l;
+	l = N / 2; 
+	while (l > 0)
+	{
+		Shift(a, l, N);
+		l = l - 1;
+	}
+}
+
+void HeapSort(int a[], int N)
+{
+	int r;
+	CreateHeap(a, N)
+		r = N; // r là vị trí đúng cho phần tử nhỏ nhất
+	while (r > 0)
+	{
+		Hoanvi(a[1], a[r]);
+		r = r - 1;
+		Shift(a, 1, r);
+	}
+}
+
+void QuickSort(int a[], int l, int r)
+{
+	int i, j;
+	int x;
+	x = a[(l + r) / 2]; // chọn phần tử giữa làm giá trị mốc
+	i = l;
+	j = r;
+	do
+	{
+		while (a[i] < x)
+			i++;
+		while (a[j] > x)
+			j--;
+		if (i <= j)
+		{
+			Hoanvi(a[i], a[j]);
+			i++;
+			j--;
+		}
+	} while (i < j);
+	if (l < j)
+		QuickSort(a, l, j);
+	if (i < r)
+		QuickSort(a, i, r);
+}
+
 void Hoanvi(int *a, int *b)
 {
 	int temp;
@@ -95,6 +168,8 @@ int main()
 		printf("2.SelectionSort\n");
 		printf("3.InterchangeSort\n");
 		printf("4.BubbleSort\n");
+		printf("5.HeapSort\n");
+		printf("6.QuickSort\n");
 		printf("=============================\n");
 		printf("_Chon chuc nang: ");
 		scanf("%d", &select);
@@ -119,6 +194,14 @@ int main()
 		{
 			BubbleSort(my_array, N);
 		}
+		else if (select == 5)
+		{
+			HeapSort(my_array, N);
+		}
+		else if (select == 6)
+		{
+			QuickSort(my_array, N);
+		}
 	}
 	return 0;
 }
@@ -142,6 +225,12 @@ int smain()
 
 	printf("4. noi bot(Bubble Sort)\n");
 	BubbleSort(my_array, N);
+
+	printf("5. (Heap Sort)\n");
+	HeapSort(my_array, N);
+
+	printf("6. sap xep phan hach(Quick Sort)\n");
+	QuickSort(my_array, N);
 
 	return 0;
 }
