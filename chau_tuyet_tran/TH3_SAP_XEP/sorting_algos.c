@@ -132,15 +132,15 @@ int smain()
     
     printf("1. chen truc tiep(Insertion Sort)\n");
     //InsertionSort(my_array, N);
+
+    printf("2. chon truc tiep (Selection Sort)\n");
+    SelectionSort(my_array,N);
     
-    printf("2. doi cho truc tiep(Interchange Sort)\n");
+    printf("3. doi cho truc tiep(Interchange Sort)\n");
     //InterchangeSort(my_array,N);
     
-    printf("3. noi bot(Bubble Sort)\n");
+    printf("4. noi bot(Bubble Sort)\n");
     BubbleSort(my_array,N);
-    
-    printf("4. chon truc tiep (Selection Sort)\n");
-    SelectionSort(my_array,N);
     
     return 0;
 }

@@ -12,6 +12,17 @@ void xuatmang(int a[], int n)
 	
 	printf("\n");
 }
+void xuatmang1(int a[], int n)
+{
+	int i;
+	
+	for(i=1;i<=n;i++)
+	{
+		printf("%4d",a[i]);
+	}
+	
+	printf("\n");
+}
 
 
 void Hoanvi(int *a, int *b)
@@ -92,18 +103,72 @@ void BubleSort(int a[], int n )
 	}
 }
 
+void Shift (int a[ ], int l, int r )
+{
+	int x,i,j;
+	i=l;
+	j=2*i;
+	x=a[i];
+	while(j<=r)
+	{
+		if (j<r)
+		if (a[j]<a[j+1])
+		    j=j+1;
+		if (a[j]<x)
+		    break;
+	    else
+	    {
+	    	a[i] = a[j];
+	    	i = j;
+	    	j = 2*i;
+	    	a[i] = x;
+	    }
+	}
+}
+
+void CreateHeap (int a[], int n)
+{
+	int l;
+	l=n/2;
+	while(l>0)
+	{
+		Shift(a,l,n);
+		l=l-1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a,n);
+	r=n;
+	while(r>0)
+	{
+		Hoanvi(&a[1],&a[r]);
+		r=r-1;
+		Shift(a,1,r);
+		xuatmang1(a, n);
+	}
+	
+}
+
 int main()
 {
-
+    int tam[N];
+    int i;
 	int c;
 	int my_array[] = {50,12,84,62,7,24,2,9,35,41};
-	
+	xuatmang(my_array, N);
+	for (i=0; i<N; i++)
+	{
+		tam[i+1] = my_array[i];
+	}
 	xuatmang(my_array, N);
 
 while(1)
 {		
 	int my_array[] = {50,12,84,62,7,24,2,9,35,41};
-	printf("\nChon cac lua chon sau:\n0.Exit\n1.SelectionSort\n2.InsertionSort\n3.InterchangeSort\n4.BubleSort\n");
+	printf("\nChon cac lua chon sau:\n0.Exit\n1.SelectionSort\n2.InsertionSort\n3.InterchangeSort\n4.BubleSort\n5.HeapSort\n");
 	scanf("%d",&c);
 
 	if(c==0)	break;
@@ -129,6 +194,12 @@ while(1)
 		{
 			printf("\n4.BubleSort\n\n");
 			BubleSort(my_array, N);
+			printf("\n------------\n");
+		}
+		else if(c==5)
+		{
+			printf("\n5.HeapSort\n\n");
+			HeapSort(tam, N);
 			printf("\n------------\n");
 		}
 
