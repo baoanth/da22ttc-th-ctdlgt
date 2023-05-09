@@ -109,16 +109,23 @@ int main()
     printf("Da doc duoc %d hang hoa\n", count);
     print_DMHH(my_dshh, count);
 
-    char* mahang = "A02";
-    HangHoa hang_kq;
-    int found  = find_HH_by_ma(mahang, my_dshh, count, &hang_kq);
-    
-    if (found)
-    
-        print_HH(hang_kq);
-    else
-        printf("Tim khong thay hang hoa co ma %s\n", mahang);
+   	if (fwrite!=0)
+		printf("Ghi tep thanh cong\n");
+	else
+		printf("Loi! Ghi tep khong thanh cong\n");
+	fclose(outfile);   
 
-    return 0;
+    int n=0;
+    HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
+
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+	print_DMHH(mydmhh, n);
+	return 0;
+<<<<<<< HEAD
+	
+=======
+
+
+>>>>>>> 2a6cc9d28d0868de704f20d61e7d04b785145baf
 }
 

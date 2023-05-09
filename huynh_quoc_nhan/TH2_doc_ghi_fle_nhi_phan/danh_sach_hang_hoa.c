@@ -25,6 +25,10 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
         return -1;
     }
 
+<<<<<<< HEAD
+    dmhh = malloc(sizeof(HangHoa)*MAX_SIZE);
+    dmhh[i] = hhA; 
+=======
     int count = 0;
     HangHoa hh;
     while (fread(&hh, sizeof(HangHoa), 1, file) == 1 && count < MAX_AMOUNT)
@@ -32,6 +36,7 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
         ds_hanghoa[count++] = hh;
         //print_HH(hh);
     }
+>>>>>>> b640963d82e268e095796dbfbc000901101a3da2
 
     fclose(file);
     return count;
@@ -166,7 +171,7 @@ void input_DMHH(char* filename)
 int main()
 {
 
-	HangHoa h1 = {"A001", "tra sua", 5, 500, 2500};
+/*	HangHoa h1 = {"A001", "tra sua", 5, 500, 2500};
     HangHoa h2 = {"A002", "sua tuoi", 5, 700, 5500};
     HangHoa h3 = {"A003", "hong tra", 5, 1000, 5000};
     HangHoa h4 = {"A004", "tra dao", 5, 1300, 6500};
@@ -184,7 +189,7 @@ int main()
 	else
 		printf("ERROR! Write file unsuccessfully\n");
 	fclose(outfile);   
-
+/*
     int n=0;
     HangHoa* mydmhh;
 	n =  read_DMHH( "DMHH.DAT", mydmhh );
@@ -206,7 +211,7 @@ int main()
 	{
 		printf("KHONG tim thay hang hoa co ma %s\n", mahangX );
 	}
-
+*/
 	input_DMHH("DMHH.DAT");
 	
 	return 0;

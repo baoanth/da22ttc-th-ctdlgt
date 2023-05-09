@@ -103,7 +103,7 @@ int main()
     printf("Da doc duoc %d hang hoa\n", count);
     print_DMHH(my_dshh, count);
 
-    char* mahang = "A006";
+    char* mahang = "A005  ";
     HangHoa hang_kq;
     int found  = find_HH_by_ma(mahang, my_dshh,count, &hang_kq);
     
