@@ -161,7 +161,7 @@ void heapSort(int a[100], int n)
 {
 	CreHeap(a,n-1);
 	in(a,n);
-	printf("=====");
+	//printf("=====");
 	int r = n-1;
 	while(r>0)
 	{
@@ -227,8 +227,6 @@ int main()
 			heapSort(a,n);
 		
 		}
-			
-		
 	}
 
 
