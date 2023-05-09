@@ -1,0 +1,140 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 15
+
+void print_array(int a[ ], int n)
+{
+	int i;
+    for(i = 0; i < n; i++) 
+	{
+		printf("%5d", a[i]);
+	}
+	printf("\n");
+}
+
+void Hoanvi(int *a, int *b)
+{
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void SelectionSort(int a[ ], int n)
+{
+	int min;
+	int i, j;
+	for(i = 0; i < n-1; i++)
+	{
+		min = i;
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[min])
+			{
+				min = j;
+			}
+		}
+		Hoanvi(&a[min], &a[i]);
+        print_array(a, n);
+	}
+}
+
+void InsertionSort(int a[ ], int n)
+{
+	int pos, i;
+	int x;
+	for(i = 1; i < n; i++)
+	{
+		x = a[i];
+		pos = i-1;
+		while((pos >= 0) && (a[pos] > x))
+		{
+			a[pos+1] = a[pos];
+			pos--;
+		}
+		a[pos+1] = x;
+		print_array(a,n);
+	}
+}
+
+void InterchangeSort(int a[ ], int n)
+{
+	int i, j;
+	for(i = 0; i < n-1; i++)
+	{
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[i])
+			{
+				Hoanvi(&a[i], &a[j]);
+				print_array(a,n);
+			}
+		}
+	}
+}
+
+void BubbleSort(int a[ ], int n)
+{
+	int i, j;
+	for(i = 0; i < n-1; i++)
+	{
+		for(j = n-1; j > i; j--)
+		{
+			if(a[j] < a[j-1])
+			{
+				Hoanvi(&a[j], &a[j-1]);
+				print_array(a,n);
+			}
+		}
+	}
+}
+
+
+int main()
+{
+    while (1)
+    {
+        char lua_chon;
+        int my_array[N] = {3,50,9,6,32,16,92,4,12,16,39,56,48,10};
+        printf("Mang Nguyen Thuy: ");
+        print_array(my_array, N);
+       
+   		printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n5. QuickSsort\n");
+      
+        lua_chon = getch(); 
+        switch (lua_chon)
+        {
+            case '1':
+            {
+                printf("-> Chon truc tiep: \n");
+                SelectionSort(my_array, N);
+                break;
+            } 
+            case '2':
+            {
+                printf("-> Chen truc tiep: \n");
+                InsertionSort(my_array, N);
+                break;
+            }
+             case '3':
+            {
+                printf("-> Doi cho truc tiep: \n");
+                InterchangeSort(my_array, N);
+                break;
+            } 
+             case '4':
+            {
+                printf("-> Noi bot: \n");
+                BubbleSort(my_array, N);
+                break;
+            } 
+			
+            
+            case '0': return 0;
+        }
+        
+	}
+	return 0;
+}
+

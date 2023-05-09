@@ -21,6 +21,19 @@ void input_text_file(char *text)
 		fclose(outfile);
 }
 
+char *read_text_file(FILE *infile)
+{
+	char *output_str;
+	char *line;
+	infile = fopen("tailieunhap.txt", "rb");
+	
+	while(!feof(infile))
+	{	
+		fgets(&line, )
+	}
+} 
+
+
 int main()
 {
 	input_text_file("tailieunhap.txt");
