@@ -100,7 +100,7 @@ void Shift(int a[], int l, int r)
 {
 	int x, i, j;
 	i = l;
-	j = 2 * i; 
+	j = 2 * i + 1; 
 	x = a[i];
 	while (j <= r)
 	{
@@ -115,7 +115,7 @@ void Shift(int a[], int l, int r)
 			a[i] = a[j];
 			i = j;
 		
-			j = 2 * i;
+			j = 2 * i +1;
 			a[i] = x;
 		}
 	}
@@ -125,7 +125,7 @@ void CreateHeap(int a[], int n)
 {
 	int l;
 	l = n / 2; 
-	while (l > 0)
+	while (l >= 0)
 	{
 		Shift(a, l, n);
 		l = l - 1;
@@ -135,14 +135,14 @@ void CreateHeap(int a[], int n)
 void HeapSort(int a[], int n)
 {
 	int r;
-	CreateHeap(a, n);
-		r = n; 
+	CreateHeap(a, n-1);
+		r = n-1; 
 	while (r > 0)
 	{
-		Hoanvi(&a[1], &a[r]);
+		Hoanvi(&a[0], &a[r]);
 		in_mang(a,n);
 		r = r - 1;
-		Shift(a, 1, r);
+		Shift(a, 0, r);
 	}
 }
 
