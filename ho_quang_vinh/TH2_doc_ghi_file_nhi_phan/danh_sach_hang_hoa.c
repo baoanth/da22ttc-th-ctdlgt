@@ -84,7 +84,7 @@ void input_DMHH(char* filename)
 	char mahang_input[3];
 	HangHoa hh_temp;
 	HangHoa my_dmhh[MAX_AMOUNT];
-	int count = read_DMHH(filename, my_dmhh);
+	int count = &fread_DMHH(filename, my_dmhh);
 	print_DMHH(my_dmhh, count);
 	
 	printf("moi nhap hang hoa moi(Nhap EXIT cho ma hang de thoat):\n\n");
@@ -177,9 +177,10 @@ int main()
 	 else 
 	 {
 		printf("Khong tim thay hang hoa co ma %s \n", mahangX);
+		print_HH(hhX);
 
 	 }
-	 return 0;		
+	 return -1;		
 }
 
 	
