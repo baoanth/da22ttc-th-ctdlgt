@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 20
+#define N 10
 void hoan_vi ( int* a, int* b)
 {
 	int temp; 
@@ -144,7 +144,7 @@ void QuickSort ( int a[], int l, int r)
 	do
 	{
 		while (a[i] < x)  i++;
-		while (a[j] > x)  j++;
+		while (a[j] > x)  j--;
 		if ( i <= j)
 		{
 			hoan_vi (&a[i], &a[j]);
@@ -157,9 +157,8 @@ void QuickSort ( int a[], int l, int r)
 	if ( l < j )
 		QuickSort (a, l, j);
 	if ( i < r )
-		QuickSort (a, l, r);
-	
-	print_array( a, r);
+		QuickSort (a, i, r);
+	print_array( a, N);
 }
 
 
