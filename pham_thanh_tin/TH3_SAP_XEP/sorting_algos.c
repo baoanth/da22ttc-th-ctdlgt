@@ -75,6 +75,78 @@ void Bubblesort(int a[], int n)
 	}		    
 }
 
+// sap xep cay
+void Shift(int a[], int l, int r)
+{
+    int x, i, j;
+    i=l;
+    j=2*i+1;
+    x=a[i];
+    while(j<=r)
+    {
+	    if(j<r)
+	        if(a[j]<a[j+1])
+	            j++;
+	        if(a[j]<x)
+	            break;
+	        else
+	        {
+	        	a[i]=a[j];
+	            i=j;
+	            j=2*i+1;
+	            a[i]=x;
+			}
+	}
+}
+
+void CreateHeap(int a[], int n)
+{
+    int l;
+    l = n/2;
+    while(l >= 0)
+    {
+	    Shift(a,l,n);
+	    l = l-1;
+	}
+}
+
+void Heapsort(int a[], int n)
+{
+    int r;
+    CreateHeap(a,n-1);
+    r=n-1;
+    while(r>0)
+    {
+	    Hoanvi(&a[0], &a[r]);
+	    r = r-1;
+	    Shift(a, 0, r);
+	    print_array(a, n);
+	}
+}
+
+//phan hoach
+void Quicksort(int a[], int l, int r)
+{
+    int x, i, j;
+    x = a[(l+r)/2];
+    i=l;
+    j=r;
+    do 
+    {
+	    while(a[i] < x) i++;
+	    while(a[j] > x) j--;
+		if(i<=j)
+		{
+		    Hoanvi(&a[i], &a[j]);
+		    i++; j--;
+		}	
+	}while(i<j);
+	if(l<j)
+	    Quicksort(a, l, j);
+	if(i<r)
+	    Quicksort(a, i, r); 
+	    print_array(a, N);
+}
 
 int main()
 {
@@ -102,23 +174,51 @@ while(1)
     printf("2. Insertion sort\n");
     printf("3. Interchange sort\n");
     printf("4. Bubble sort\n");
+    printf("5. Heap sort\n");
+    printf("6. Quick sort\n");
     printf("Nhap 0 exit\n");
     printf("Moi nhap phuong phap sap xep tren: \n");
     scanf("%d", &select);
     
+    if(!select)
+        break;
     switch(select)
     {
 	    case 1:
+	    	printf("\n-----Selection Sort-----\n");
+	    	printf("Begin\n");
 	        Selectionsort(my_array, N);
+	        printf("End\n");
 	        break;
 	    case 2:
+	    	printf("\n-----Insertion Sort-----\n");
+	    	printf("Begin\n");
 	        Insertionsort(my_array, N);
+	        printf("End\n");
 	        break;
 	    case 3:
+	    	printf("\n-----Interchange Sort-----\n");
+	    	printf("Begin\n");
 	        Interchangesort(my_array, N);
+	        printf("End\n");
 	        break;
 	    case 4:
+	    	printf("\n-----Bubble Sort-----\n");
+	    	printf("Begin\n");
 	        Bubblesort(my_array, N);
+	        printf("End\n");
+	        break;
+	    case 5:
+	    	printf("\n-----Heap Sort-----\n");
+	    	printf("Begin\n");
+	        Heapsort(my_array, N);
+	        printf("End\n");
+	        break;
+	    case 6:
+	    	printf("\n-----Quick Sort-----\n");
+	    	printf("Begin\n");
+	        Quicksort(my_array, 0, N-1);
+	        printf("End\n");
 	        break;
 	    default:
 	        break;

@@ -59,6 +59,85 @@ void BubbleSort(int a[], int n)
     }
 }
 
+void Shift(int a[], int l, int r)
+{
+	int x, i, j;
+	i=l;
+	j=2*i+1;
+	x=a[i];
+	while(j<=r)
+	{
+		if(j<r)
+		  if(a[j]<a[j+1])
+		  j=j+1;
+		  if(a[j]<x)
+		    break;
+		else
+		  {
+		  	a[i]=a[j];
+		  	i=j;
+		  	j=2*i+1;
+		  	a[i]=x;
+		  }
+		        
+	}
+}
+
+void CreateHeap(int a[], int n)
+{
+	int l;
+	l=n/2;
+	while (l>=0)
+	{
+		Shift(a,l,n);
+		l= l-1;
+	}
+}
+
+void HeapSort(int a[], int n)
+{
+	int r;
+	CreateHeap(a,n-1);
+	
+	print_array(a, n);
+	
+	r =n-1;
+	while(r>0)
+	{
+		Hoanvi(&a[0],&a[r]);
+		r=r-1;
+		Shift(a,0,r);
+		print_array(a,n);
+	}
+}
+
+void QuickSort(int a[], int l, int r)
+{
+	int i,j;
+	int x;
+	x= a[(l+r)/2];
+	i=l;
+	j=r;
+	do
+	{
+		while (a[i]<x)i++;
+		while (a[j]>x)j--;
+		if(i<=j)
+		{
+			Hoanvi(&a[i],&a[j]);
+			i++;
+			j--;
+		}
+	}
+	    while(i<j);
+	if(l<j)
+	    QuickSort(a,l,j);
+	if(i<r)
+	    QuickSort(a,i,r);
+	print_array(a,N);
+}
+
+
 void Hoanvi(int* a, int* b)	
 {
     int temp;
@@ -86,37 +165,60 @@ int main()
     
     while(1)
 	{
-		int my_array[]={5,8,3,1,4,6,9,2,7,10};
+		int my_array[]={1,2,12,6,4,8,9,7,3,5};
 		int select;    
 	    printf("0.EXIT\n");
-		printf("1.SelectionSort\n");
-		printf("2.InsertionSort\n");
+		printf("1.InsertionSort\n");
+		printf("2.SelectionSort\n");
 		printf("3.InterchangeSort\n");
 		printf("4.BubleSort\n");
+		printf("5.HeapSort\n");
+		printf("6.QuickSort\n");
 		printf("_Chon chuc nang: \n");
 		scanf("%d",&select);
 		
-		if(select==0)
-		{
-			break;
-		}
-		else if (select==1)
-		{
-			SelectionSort(my_array,N);
-		}
-		else if (select==2)
-		{
-			InsertionSort(my_array,N);
-		}
-		else if (select==3)
-		{
-			InterchangeSort(my_array,N);
-		}
-		else if (select==4)
-		{
-			BubbleSort(my_array,N);
-		}
-	}
+		if(!select)
+		    break;
+		switch (select)
+        {
+            case 1:
+            	printf("____InsertionSort____\n");
+                InsertionSort(my_array, N);
+              	printf("____End____\n");
+                break;
+            case 2:
+            	printf("____SelectionSort____\n");
+                SelectionSort(my_array, N);
+                printf("____End____\n");
+                break;
+            case 3:
+            	printf("____InterchangeSort____\n");
+                InterchangeSort(my_array, N);
+                printf("____End____\n");
+                break;
+            case 4:
+            	printf("____BubbleSort____\n");
+                BubbleSort(my_array, N);
+                printf("____End____\n");
+                break;
+            case 5:
+            	printf("____HeapSort____\n");
+			    HeapSort(my_array, N);
+			    printf("____End____\n");
+			    break;
+			case 6:
+            	printf("____QuickSort____\n");
+			    QuickSort(my_array,0,N-1);
+			    printf("____End____\n");
+			    break;
+			    
+            default:
+            	
+            break;
+        
+        }
+    }
    return 0;
 }
+
 
