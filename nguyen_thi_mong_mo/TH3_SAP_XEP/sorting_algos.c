@@ -74,13 +74,13 @@ void CreateHeap(int a[], int n)
 void HeapSort(int a[], int n)
 {
 	int r;
-	CreateHeap(a, n-1);
+	CreateHeap(a, n - 1);
 
 	printf("\n ==========Heap===========\n");
 	print_array(a, n);
 	printf(" =========================\n");
 
-	r = n-1; // r là vị trí đúng cho phần tử nhỏ nhất
+	r = n - 1; // r là vị trí đúng cho phần tử nhỏ nhất
 
 	while (r > 0)
 	{
@@ -94,11 +94,42 @@ void HeapSort(int a[], int n)
 int main()
 {
 	int my_arr[] = {6, 7, 8, 4, 15, 23, 11, 27, 17, 50, 22, 66};
+
 	print_array(my_arr, N);
 	printf("1. Selection sort\n");
-	printf("2. Heap sort\n");
-	// SelectionSort(my_arr, N);
-	HeapSort(my_arr, N);
+	printf("2. Insertiontion sort\n");
+	printf("3. Interchange sort\n");
+	printf("4. Bubble sort\n");
+	printf("5. Heap sort\n");
+	printf("6. Quick sort\n");
+	int chon = 1;
+	
+
+	while (1)
+	{
+		printf("Nhap lua chon cua ban, nhap 0 de THOAT: ");
+		scanf("%d", &chon);
+		if (!chon)
+			break;
+		switch (chon)
+		{
+		case 1:
+			printf("\n***Selection Sort Begin***\n");
+			SelectionSort(my_arr, N);
+			printf("\n***Selection Sort End***\n");
+			break;
+
+		case 5:
+			printf("\n***Heap Sort Begin***\n");
+			HeapSort(my_arr, N);
+			printf("\n***Heap Sort End***\n");
+
+		default:
+			break;
+		}
+	}
 
 	return 0;
 }
+// SelectionSort(my_arr, N);
+// HeapSort(my_arr, N);
