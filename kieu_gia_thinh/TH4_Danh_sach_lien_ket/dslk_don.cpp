@@ -78,6 +78,66 @@ void PrintList(List &l)
 	}
 }
 
+//Viet ham them nut vao cuoi danh sach
+//void AddAfter(List &l, Node*q, Node* new_ele)
+//{
+//	Node* p = q->pNext;
+//	if(q != NULL)
+//	{
+//		new_ele->pNext = p;
+//		new_ele->pPrev = q;
+//		q->pNext = new_ele;
+//		
+//		if(p != NULL)
+//			p->pPrev = new_ele;
+//		if(q==l.pTail)
+//			l.pTail = new_ele;
+//	}
+//	else
+//	AddFirst(l, new_ele);
+//}
+
+//Tao ham void InserAfter
+//void InserAfter(List &l, Node *q, Person x)
+//{
+//	Node *p = q->pNext;
+//	Node* new_ele  = GetNode(x);
+//	
+//	if(new_ele ==NULL)
+//	return NULL;
+//	
+//	if(q!=NULL)
+//	{
+//		new_ele->pNext = p;
+//		new_ele->pPrev = q;
+//		q->pNext = new_ele;
+//		
+//		if(p!=NULL)
+//			p->pPrev = new_ele;
+//			
+//		if(q==l.pTail)
+//			l.pTail = new_ele;
+//	}
+//	else
+//		AddFirst(l, new_ele);
+//}
+
+// Viet ham AddTail
+void AddTail(List &l, Node *new_ele)
+{
+	if(l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
+
 
 //Ham main
 int main()
@@ -89,14 +149,26 @@ int main()
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+   
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+  //  AddFist(my_list, new_ele1);
+  //  AddFist(my_list, new_ele2);
+   AddFist(my_list, new_ele3);
+    
+    
+    AddTail(my_list, new_ele1);
+    AddTail(my_list, new_ele2);
+   // AddTail(my_list, new_ele3);
     
     PrintList(my_list);
+//    int idx;
+//    printf("\nNhap id can tim: ");
+//    scanf("%d", idx);
+//    
+//    Node *node
+//    
 
 }
 
