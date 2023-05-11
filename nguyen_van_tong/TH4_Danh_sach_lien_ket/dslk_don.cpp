@@ -90,7 +90,11 @@ void addLast(node& a, node p)
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+<<<<<<< HEAD
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 node FindbyID(node a,int idx)
 {
     node p = a;
@@ -127,19 +131,33 @@ void addNodeAfter(node &a, node tmp, int idx)
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+<<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+<<<<<<< HEAD
 =======
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 int main()
 {
     node Head = NULL;
@@ -148,6 +166,12 @@ int main()
 	Person per3 = {3,"Nguyen", "Tong"};
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
+<<<<<<< HEAD
 <<<<<<< HEAD
     Person per4 = {4,"Nguyen", "Vinh"};
 =======
@@ -175,19 +199,37 @@ int main()
 =======
 >>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+=======
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
     Person per4 = {4,"Nguyen", "Vinh"};
 =======
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -209,11 +251,18 @@ int main()
 >>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+<<<<<<< HEAD
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
     node p4 = getnode(per4);
 
    addLast(Head,p1);
@@ -230,14 +279,20 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 =======
 
     addFirst(Head, p1);
@@ -246,6 +301,12 @@ int main()
 
     print_List(Head);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
 =======
@@ -258,11 +319,22 @@ int main()
 =======
 >>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+<<<<<<< HEAD
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
     return 0;
 }

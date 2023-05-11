@@ -53,12 +53,6 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -76,25 +70,13 @@ void PrintList(List &l)
 		}		
 	}
 }
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
-=======
->>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
->>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Thong" };
-	struct Person per2 = {2, "Huynh", "Nhan" };
-	struct Person per3 = {3, "Pham", "Vinh" };
+    struct Person per1 = {1, "Vu", "Thien" };
+	struct Person per2 = {2, "Nguyen", "Ku ti" };
+	struct Person per3 = {3, "Tran", "Hoa" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -106,42 +88,9 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
-<<<<<<< HEAD
     PrintList(my_list);
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-} 
-=======
-<<<<<<< HEAD
-    PrintList(my_list);
-
-=======
-    PrintList(my_list);
-
->>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
->>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
     return 0;
 
 
 }
-=======
-
-} 
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
-=======
->>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
->>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
