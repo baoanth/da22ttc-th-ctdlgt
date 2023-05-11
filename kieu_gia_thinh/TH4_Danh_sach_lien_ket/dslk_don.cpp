@@ -9,25 +9,34 @@ typedef struct Person
     char lname[20];
 }Person;
 
+//Khai bao Node voi Info la kieu Person
 typedef struct Node
 {
     Person Info;
     Node* pNext;    
 }Node;
 
+//Khai bao danh sach lien ket don List voi thanh phan la Node 
 typedef struct List
 {
     Node* pHead;
     Node* pTail;
 }List;
 
+//Viet ham khoi tao danh sach lien ket 
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
+}
+
+//Viet ham tao mot Node moi tu cau truc x kieu  Person
 Node* GetNode(Person x)
 {
     Node *p;
     p = new Node;
     if (p==NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi"); 
+        printf("Khong du bo nho de cap phat cho nut moi");
         return 0;
     }
     p->Info = x;
@@ -35,6 +44,7 @@ Node* GetNode(Person x)
     return p;
 }
 
+//Viet ham them mot Node mo vao dau danh sach
 void AddFist(List &l, Node* new_ele)
 {
     if (l.pHead ==NULL)
@@ -48,42 +58,45 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
-void Init(List &l)
+
+//Ham duyet va in dannh sach ra man hinh
+void PrintList(List &l)
 {
-    l.pHead = l.pTail = NULL;
-}
-void PrintList(List l)
-{
-    Node* ptr = l.pHead;
-    while (ptr != NULL)
-    {
-        printf("%d %s %s\n", ptr->Info.id, ptr->Info.fname, ptr->Info.lname);
-        ptr = ptr->pNext;
-    }
+	if(l.pHead == NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else 
+	{
+		Node *p;
+		p = l.pHead;
+		while(p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;	
+		}
+	}
 }
 
 
+//Ham main
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le" };
-	struct Person per2 = {2, "Duy", "Quang" };
-	struct Person per3 = {3, "Pham", "Vinh" };
+    struct Person per1 = {1, "Kieu", "Gia Thinh"};
+	struct Person per2 = {2, "Nguyen Thi", "Tra My"};
+	struct Person per3 = {3, "Con", "Vit"};
     
-    List my_list;
-    Init(my_list);
-
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    List my_list;
+    Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-
-
+    
     PrintList(my_list);
-    return 0;
+
 }
-
-
 
