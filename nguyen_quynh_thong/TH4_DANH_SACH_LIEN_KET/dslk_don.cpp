@@ -58,7 +58,16 @@ void Init(List &l)
 =======
 <<<<<<< HEAD
 =======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -79,6 +88,11 @@ void PrintList(List &l)
 =======
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -120,6 +134,10 @@ void PrintList(List &l)
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 
 
 int main()
@@ -140,8 +158,14 @@ int main()
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+    PrintList(my_list);
+
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 <<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
@@ -196,6 +220,7 @@ int main()
 <<<<<<< HEAD
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
@@ -205,6 +230,8 @@ int main()
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     return 0;
 
@@ -215,6 +242,11 @@ int main()
 } 
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -256,3 +288,7 @@ int main()
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
