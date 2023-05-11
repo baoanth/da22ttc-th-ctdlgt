@@ -53,6 +53,23 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+void PrintList(List &l)
+{
+	if (l.pHead ==NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+			p = p->pNext;
+		}		
+	}
+}
 
 
 int main()
@@ -70,6 +87,10 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+
+    PrintList(my_list);
+
+    return 0;
 
 
 }
