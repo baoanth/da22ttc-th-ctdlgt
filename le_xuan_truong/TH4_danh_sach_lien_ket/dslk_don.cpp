@@ -62,9 +62,25 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
+Node* FindNodeByID(List l, int idx)
+{
+	Node *p;
+	p= l.pHead;
+	
+	while((p != NULL) && (p->Info.id != idx))
+		p= p-> pNext;
+		
+	return p;
+}
+
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
+}
+
+void PrintNode(Node *p)
+{
+	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 void PrintList(List &l)
@@ -97,6 +113,16 @@ int main()
     AddTail(my_list, new_ele3);
     
 	PrintList(my_list);
+	
+	int idx;
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(my_list, idx);
+	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);	
 	
 	return 0;
 }

@@ -80,6 +80,7 @@ void addLast(node& a, node p)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -88,6 +89,8 @@ void addLast(node& a, node p)
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 node FindbyID(node a,int idx)
 {
     node p = a;
@@ -113,6 +116,7 @@ void addNodeAfter(node &a, node tmp, int idx)
     q ->Next = tmp; 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -132,6 +136,10 @@ void addNodeAfter(node &a, node tmp, int idx)
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 int main()
 {
     node Head = NULL;
@@ -140,6 +148,7 @@ int main()
 	Person per3 = {3,"Nguyen", "Tong"};
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     Person per4 = {4,"Nguyen", "Vinh"};
 =======
 =======
@@ -169,10 +178,16 @@ int main()
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+    Person per4 = {4,"Nguyen", "Vinh"};
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -197,6 +212,8 @@ int main()
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
     node p4 = getnode(per4);
 
    addLast(Head,p1);
@@ -211,6 +228,7 @@ int main()
 
    
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -219,12 +237,15 @@ int main()
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 =======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
 
     addFirst(Head, p1);
     addFirst(Head, p2);
     addLast(Head, p3);
 
     print_List(Head);
+<<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
 =======
@@ -240,5 +261,8 @@ int main()
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
     return 0;
 }
