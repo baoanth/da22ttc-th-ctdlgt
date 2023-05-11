@@ -62,6 +62,20 @@ void PrintList(List l)
 	}
 	
 }
+void AddTail (List &l,Node *new_ele)
+{
+	if (l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail-> pNext = new_ele;
+		l.pTail = new_ele;
+	}
+	
+}
 
 
 int main()
@@ -69,17 +83,27 @@ int main()
     struct Person per1 = {1, "Nguyen", "Vinh" };
 	struct Person per2 = {2, "Phu", "Vinh" };
 	struct Person per3 = {3, "Vinh", "Phu" };
+    struct Person per4 = {4, "vinh", "nguyen" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    Node* new_ele4 = GetNode(per4);
     List my_list;
     Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+    
+//	PrintList(my_list);
+	
+//	AddTail(my_list, new_ele1);
+//   AddTail(my_list, new_ele2);
+
+
+    AddTail(my_list, new_ele4);
 	PrintList(my_list);
-
+	
+	return 0;
 }
-

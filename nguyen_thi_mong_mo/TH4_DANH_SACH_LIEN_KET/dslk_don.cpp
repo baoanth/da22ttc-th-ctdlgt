@@ -81,11 +81,15 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
 void PrintNode(Node *p)
 {
     printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
 }
 
+=======
+<<<<<<< HEAD
+>>>>>>> 0c281b7846b87694a39cb32b4f8c6d9e0b7e1017
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -103,6 +107,8 @@ void PrintList(List &l)
 		}		
 	}
 }
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 
 int main()
@@ -126,6 +132,7 @@ int main()
     //AddTail(my_list, new_ele2);
     //AddTail(my_list, new_ele3);
 
+<<<<<<< HEAD
     PrintList(my_list);
     int idx;
     printf("\nNhap id can tim ");
@@ -138,5 +145,7 @@ int main()
 
     return 0;
 
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 }
