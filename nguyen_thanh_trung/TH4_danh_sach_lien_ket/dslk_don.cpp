@@ -71,11 +71,12 @@ void PrintList(List &l)
 	}
 }
 
+
 int main()
 {
-    struct Person per1 = {1, "Cho", "Shinba" };
-	struct Person per2 = {2, "Cho", "Alaska" };
-	struct Person per3 = {3, "Cho", "BigBull" };
+    struct Person per1 = {1, "Nguyen", "Trung" };
+	struct Person per2 = {2, "Thanh", "trung" };
+	struct Person per3 = {3, "Trung", "Thanh" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -87,23 +88,9 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
-	PrintList(my_list);
+    PrintList(my_list);
 
-	return 0;
+    return 0;
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

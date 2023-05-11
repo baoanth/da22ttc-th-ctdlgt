@@ -48,6 +48,19 @@ void AddFirst(List &l, Node* new_ele)
 	}
 }
 
+void AddTail(List &l, Node *new_ele)
+{
+	if(l.pHead==NULL)
+	{
+		l.pHead=new_ele;
+		l.pTail= l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext =new_ele;
+		l.pTail=new_ele;
+	}
+} 
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -65,10 +78,11 @@ void PrintList(List &l)
 	}
 }
 
+
 int main()
 {
 	struct person per1 = { 3, "Naruto" , "Uzumaki" };
-	struct person per2 = { 2, "Hinata" , "Uzumaki" };
+	struct person per2 = { 2, "Hinata" , "Huyga" };
 	struct person per3 = { 1, "Boruto" , "Uzumaki" };
 
 	Node*new_ele1= GetNode(per1);
@@ -79,8 +93,8 @@ int main()
 	Init (my_list);
 
 	AddFirst(my_list,new_ele1);
-	AddFirst(my_list,new_ele2);
-	AddFirst(my_list,new_ele3);
+	AddTail(my_list,new_ele2);
+	AddTail(my_list,new_ele3);
 	
 	PrintList(my_list) ;
 
