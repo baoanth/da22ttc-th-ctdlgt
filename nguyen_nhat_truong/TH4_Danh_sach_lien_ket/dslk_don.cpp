@@ -55,14 +55,30 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
 	if (l.pHead == NULL)
+=======
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+	if (l.pHead == NULL)
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 	{
 		printf("Danh sach rong\n");
 	}
 	else
 	{
 		Node *p;
+<<<<<<< HEAD
 		p = l.pHead;
+=======
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+		p = l.pHead;
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -75,6 +91,7 @@ int main()
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b8140ab904ab6152d12532e648e1379e71b9184d
 	struct Person per1={1,"Tieu","Vy"};
@@ -85,6 +102,11 @@ int main()
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);

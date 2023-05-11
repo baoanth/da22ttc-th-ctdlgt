@@ -80,17 +80,23 @@ void PrintList(List &l)
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 =======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 <<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 
 
 int main()
@@ -112,13 +118,19 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
     PrintList(my_list);
 
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 
 } 
 =======
@@ -130,9 +142,13 @@ int main()
 
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
     return 0;
 
 
@@ -143,14 +159,20 @@ int main()
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 =======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 <<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
