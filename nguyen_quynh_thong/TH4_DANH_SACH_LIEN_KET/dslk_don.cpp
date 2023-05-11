@@ -53,6 +53,38 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+void PrintList(List &l)
+{
+	if (l.pHead ==NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+			p = p->pNext;
+		}		
+	}
+}
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 
 
 int main()
@@ -71,5 +103,36 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    PrintList(my_list);
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 } 
+=======
+<<<<<<< HEAD
+    PrintList(my_list);
+
+=======
+    PrintList(my_list);
+
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+    return 0;
+
+
+}
+=======
+
+} 
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
