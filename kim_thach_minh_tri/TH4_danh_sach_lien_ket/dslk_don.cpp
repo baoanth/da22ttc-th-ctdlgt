@@ -1,17 +1,13 @@
 #include <stdio.h>
-<<<<<<< HEAD
-#include <stdlib.h>
-
-=======
 #include <conio.h>
 #include <string.h>
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 // struct person with 3 fields
 typedef struct Person
 {
     int id;
     char fname[20];
     char lname[20];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 } Person;
@@ -29,10 +25,17 @@ typedef struct Person
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+} Person;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 
 typedef struct Node
 {
     Person Info;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     Node* pNext;
@@ -68,6 +71,8 @@ void AddFirst(List &l, Node* new_ele)
 =======
 }List;
 =======
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
     Node *pNext;
 } Node;
 
@@ -78,6 +83,10 @@ typedef struct List
 } List;
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
@@ -85,6 +94,11 @@ typedef struct List
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 
 Node *GetNode(Person x)
 {
@@ -103,6 +117,7 @@ Node *GetNode(Person x)
 void AddFist(List &l, Node *new_ele)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (l.pHead ==NULL)
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 =======
@@ -116,12 +131,19 @@ void AddFist(List &l, Node *new_ele)
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+    if (l.pHead == NULL)
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         new_ele->pNext == l.pHead;
@@ -141,6 +163,12 @@ void AddFist(List &l, Node *new_ele)
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+        new_ele->pNext = l.pHead;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
         l.pHead = new_ele;
     }
 }
@@ -149,6 +177,7 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
@@ -162,6 +191,11 @@ void Init(List &l)
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -176,6 +210,7 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 void AddAfter(List &l,Node *q, Node* new_ele)
@@ -231,6 +266,11 @@ void Output(List l)
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 void PrintList(List l)
 {
     Node *p = l.pHead;
@@ -263,6 +303,7 @@ Node *FindNodeByID(List l, int idx)
 
 int main()
 {
+<<<<<<< HEAD
     struct Person per1 = {1, "Kim" , "Tri" };
 <<<<<<< HEAD
 	struct Person per2 = {2, "Thach" , "Minh" };
@@ -290,6 +331,8 @@ int main()
 =======
 int main()
 {
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
     struct Person per1 = {1, "Kim", "Tri"};
     struct Person per2 = {2, "Thach", "Minh"};
     struct Person per3 = {3, "Kim", "Minh"};
@@ -301,6 +344,10 @@ int main()
     Node *new_ele4 = GetNode(per4);
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
@@ -308,6 +355,11 @@ int main()
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 
     List my_list;
     Init(my_list);
@@ -348,6 +400,10 @@ int main()
    {
     printf("Khong tim thay id %d",idx);
    }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 >>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 
 <<<<<<< HEAD
@@ -371,5 +427,11 @@ int main()
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
     return 0;
 }

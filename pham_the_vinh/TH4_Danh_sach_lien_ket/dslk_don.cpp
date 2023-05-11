@@ -88,6 +88,7 @@ void PrintList(List &l)
 	}
 }
 
+<<<<<<< HEAD
 Node *FindNodeByID(List l, int idx)
 {
 	Node *p;
@@ -96,12 +97,23 @@ Node *FindNodeByID(List l, int idx)
 		p = p->pNext;
 	return p;
 }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 
 void PrintNode(Node *p)
 {
 	printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 int main()
 {
     struct Person per1 = {1, "Vinh", "Pham"};

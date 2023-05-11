@@ -111,6 +111,14 @@ int main()
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -140,6 +148,10 @@ int main()
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 	struct Person per1={1,"Tieu","Vy"};
 	struct Person per2={1,"Thao","Di"};
 	struct Person per3={1,"Han","Tin"};

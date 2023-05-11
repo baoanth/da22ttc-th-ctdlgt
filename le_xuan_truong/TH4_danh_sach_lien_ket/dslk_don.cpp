@@ -55,6 +55,11 @@ void AddFirst(List &l, Node* new_ele)
 =======
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
+=======
 =======
 <<<<<<< HEAD
 =======
@@ -67,6 +72,10 @@ void AddFirst(List &l, Node* new_ele)
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -83,6 +92,15 @@ void AddTail(List &l, Node *new_ele)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -92,6 +110,10 @@ void AddTail(List &l, Node *new_ele)
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -125,6 +147,10 @@ int main()
     Node* new_ele2  = GetNode(per2);
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
@@ -134,7 +160,12 @@ int main()
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+<<<<<<< HEAD
 >>>>>>> 485a3608a901c6191aa6824ff821287f8c706fce
+=======
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 	struct person per3 = {3, "Le Thach Hue", "Meo"};
 
 	 
@@ -142,6 +173,10 @@ int main()
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -155,18 +190,30 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
 >>>>>>> 485a3608a901c6191aa6824ff821287f8c706fce
+=======
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
    
     List my_list;
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
     AddTail(my_list, new_ele2);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -178,10 +225,18 @@ int main()
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
     AddFirst(my_list, new_ele2);
 =======
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -192,9 +247,17 @@ int main()
 <<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
