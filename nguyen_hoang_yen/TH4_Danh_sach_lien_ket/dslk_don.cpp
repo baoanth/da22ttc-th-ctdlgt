@@ -47,10 +47,47 @@ void AddFist(List &l, Node* new_ele)
 		new_ele->pNext = l.pHead;
 		l.pHead = new_ele;
 	}
+void AddTail(List &l, Node new_ele)
+{
+	if(l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.Head;	
+	}
+	else
+	{
+		l.pTail->pNext = new_ele
+	}	
 }
+Node* FindNodeByID(list l, int idx)
+{
+	Node *p;
+	p =l.pHead;
+	while( p!=NULL) &&(p-> Infoi.id !=idx)
+	p= p-> pNext;
+	return p;
+}
+
 void Init(List &l)
 {
 	l. pHead = l.pTail = NULL;
+}
+void PrintList(List &l)
+{
+	if (l. pHead ==NULL)
+	{
+		printf(" Danh sach trong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext; 
+		}
+	}
 }
 int main()
 {
@@ -64,5 +101,12 @@ int main()
 	
 	AddFist(my_list, new_ele1);
 	AddFist(my_list, new_ele2);
+	
+	PrintList(my_list);
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+return 0;
 }
+
+
 
