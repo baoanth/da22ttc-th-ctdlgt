@@ -73,6 +73,7 @@ void addLast(node& a, node p)
     }
 }
 
+<<<<<<< HEAD
 node FindbyID(node a,int idx)
 {
     node p = a;
@@ -97,17 +98,23 @@ void addNodeAfter(node &a, node tmp, int idx)
     tmp->Next = q->Next;
     q ->Next = tmp; 
 }
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 int main()
 {
     node Head = NULL;
     Person per1 = {1,"nguyen", "An"};
 	Person per2 = {2,"Le", "Vinh"};
 	Person per3 = {3,"Nguyen", "Tong"};
+<<<<<<< HEAD
     Person per4 = {4,"Nguyen", "Vinh"};
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
+<<<<<<< HEAD
     node p4 = getnode(per4);
 
    addLast(Head,p1);
@@ -121,5 +128,13 @@ int main()
     print_List(Head);
 
    
+=======
+
+    addFirst(Head, p1);
+    addFirst(Head, p2);
+    addLast(Head, p3);
+
+    print_List(Head);
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
     return 0;
 }
