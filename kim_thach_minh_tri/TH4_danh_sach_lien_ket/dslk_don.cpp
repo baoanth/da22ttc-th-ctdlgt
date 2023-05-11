@@ -21,10 +21,14 @@ typedef struct Person
 =======
 } Person;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
 typedef struct Node
 {
@@ -73,10 +77,14 @@ typedef struct List
     Node *pTail;
 } List;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
 Node *GetNode(Person x)
 {
@@ -100,10 +108,14 @@ void AddFist(List &l, Node *new_ele)
 =======
     if (l.pHead == NULL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
@@ -121,10 +133,14 @@ void AddFist(List &l, Node *new_ele)
 =======
         new_ele->pNext = l.pHead;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
         l.pHead = new_ele;
     }
 }
@@ -138,10 +154,14 @@ void Init(List &l)
 
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -203,10 +223,14 @@ void Output(List l)
 
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 void PrintList(List l)
 {
     Node *p = l.pHead;
@@ -254,9 +278,12 @@ int main()
     struct Person per2 = {2, "Thach" , "Minh" };
     struct Person per3 = {3, "Kim" , "Minh" };
 <<<<<<< HEAD
+<<<<<<< HEAD
     struct Person per4 = {4, "Thach" , "Tri" };
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 int main()
 {
@@ -270,10 +297,14 @@ int main()
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
     List my_list;
     Init(my_list);
@@ -313,9 +344,16 @@ int main()
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     return 0;
 }

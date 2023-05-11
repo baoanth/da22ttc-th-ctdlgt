@@ -82,6 +82,7 @@ void Init(List &l)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void PrintNode(Node *p)
 {
     printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
@@ -90,6 +91,8 @@ void PrintNode(Node *p)
 =======
 <<<<<<< HEAD
 >>>>>>> 0c281b7846b87694a39cb32b4f8c6d9e0b7e1017
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -127,6 +130,7 @@ int main()
     AddFirst(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
 
+<<<<<<< HEAD
 	
     AddTail(my_list, new_ele1);
     //AddTail(my_list, new_ele2);
@@ -142,6 +146,10 @@ int main()
         PrintNode(node_kq);
     else   
         printf("Tim khong thay node co id %d", idx);
+=======
+<<<<<<< HEAD
+    PrintList(my_list);
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
     return 0;
 
