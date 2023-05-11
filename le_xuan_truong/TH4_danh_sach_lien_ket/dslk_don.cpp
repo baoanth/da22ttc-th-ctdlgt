@@ -125,9 +125,16 @@ int main()
     Node* new_ele2  = GetNode(per2);
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+>>>>>>> 485a3608a901c6191aa6824ff821287f8c706fce
 	struct person per3 = {3, "Le Thach Hue", "Meo"};
 
 	 
@@ -136,13 +143,24 @@ int main()
   	Node* new_ele3  = GetNode(per3);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 485a3608a901c6191aa6824ff821287f8c706fce
 
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+>>>>>>> 485a3608a901c6191aa6824ff821287f8c706fce
    
     List my_list;
     Init(my_list);
@@ -164,6 +182,11 @@ int main()
 =======
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 <<<<<<< HEAD
 <<<<<<< HEAD

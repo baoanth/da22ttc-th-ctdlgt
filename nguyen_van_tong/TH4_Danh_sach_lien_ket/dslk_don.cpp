@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 struct Person
 {
@@ -13,7 +13,7 @@ struct Node
     Node *Next;
 };
 
-typedef struct  Node* node;
+typedef struct Node *node;
 
 node getnode(Person x)
 {
@@ -23,9 +23,9 @@ node getnode(Person x)
     return p;
 }
 
-void addFirst(node &a,node new_ele)
+void addFirst(node &a, node new_ele)
 {
-    if(a == NULL)
+    if (a == NULL)
     {
         a = new_ele;
     }
@@ -34,7 +34,6 @@ void addFirst(node &a,node new_ele)
         new_ele->Next = a;
         a = new_ele;
     }
-    
 }
 
 void in(Person per)
@@ -46,38 +45,33 @@ void in(Person per)
 
 void print_List(node a)
 {
-    while(a!= NULL)
+    while (a != NULL)
     {
         in(a->data);
         a = a->Next;
     }
-
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 
-void addLast(node& a, node p)
+void addLast(node &a, node p)
 {
-    if(a == NULL )
+    if (a == NULL)
     {
         a = p;
     }
     else
     {
-    	node q = a;
-        while(q->Next != NULL)
+        node q = a;
+        while (q->Next != NULL)
         {
-            q= q->Next;
+            q = q->Next;
         }
-    	q ->Next = p; 
-        
-        
+        q->Next = p;
     }
 }
 
+<<<<<<< HEAD
+node FindbyID(node a, int idx)
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -119,29 +113,72 @@ void addLast(node& a, node p)
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 node FindbyID(node a,int idx)
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 {
     node p = a;
-    while(p != NULL)
+    while (p != NULL)
     {
-        if(p->data.id == idx) 
+        if (p->data.id == idx)
         {
             return p;
             break;
         }
         p = p->Next;
-    } 
-	return NULL;
-   
+    }
+    return NULL;
 }
 
 void addNodeAfter(node &a, node tmp, int idx)
 {
     node p = a;
     node q = FindbyID(p, idx);
-
-    tmp->Next = q->Next;
-    q ->Next = tmp; 
+    if (q != NULL)
+    {
+        tmp->Next = q->Next;
+        q->Next = tmp;
+    }
+    else
+    {
+        addLast(a, tmp);
+    }
 }
+
+void RemoveHead(node &a)
+{
+    a = a->Next;
+}
+
+void RemoveLast(node &a)
+{
+    node p = a;
+    while (p->Next->Next != NULL)
+    {
+        p = p->Next;
+    }
+    node q = p->Next;
+    p->Next = NULL;
+    delete (q);
+}
+
+void RemoveNode(node &a, int idx)
+{
+    node p = a;
+    node tmp = FindbyID(p,idx);
+   
+    if(tmp == NULL) cout << "khong tim thay ";
+    else
+    {
+    	node q =a;
+   		while (q ->Next != tmp)
+   		{
+   			q = q->Next;
+   		}
+   		q->Next = tmp->Next;
+    }
+   
+}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -246,9 +283,17 @@ void addNodeAfter(node &a, node tmp, int idx)
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 int main()
 {
+	
     node Head = NULL;
+<<<<<<< HEAD
+    Person per1 = {1, "nguyen", "An"};
+    Person per2 = {2, "Le", "Vinh"};
+    Person per3 = {3, "Nguyen", "Tong"};
+    Person per4 = {4, "Nguyen", "Vinh"};
+=======
     Person per1 = {1,"nguyen", "An"};
 	Person per2 = {2,"Le", "Vinh"};
 	Person per3 = {3,"Nguyen", "Tong"};
@@ -372,6 +417,7 @@ int main()
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
@@ -467,8 +513,13 @@ int main()
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
     node p4 = getnode(per4);
 
+<<<<<<< HEAD
+    addLast(Head, p1);
+    addLast(Head, p2);
+=======
    addLast(Head,p1);
    addLast(Head,p2);
    addLast(Head,p3);
@@ -531,9 +582,20 @@ int main()
 
     addFirst(Head, p1);
     addFirst(Head, p2);
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
     addLast(Head, p3);
+    addLast(Head, p4);
+    print_List(Head);
+    int idx;
+    cout << "nhap vao id can xoa ";
+    cin >> idx;
+
+   RemoveNode(Head,idx);
 
     print_List(Head);
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -614,5 +676,6 @@ int main()
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
     return 0;
 }
