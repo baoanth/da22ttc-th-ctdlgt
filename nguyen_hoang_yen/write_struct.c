@@ -11,11 +11,6 @@ struct person
     char lname[20];
 };
 // Ham main
-int main()
-{
-	struct person per1 = {1, "yen", "nguyen" };
-	struct person per2 = {1, "hong", "tran" };
-
 	FILE *outfile = fopen("person.dat", "w");
 	
 	fwrite(&per1, sizeof(struct person), 1, outfile);

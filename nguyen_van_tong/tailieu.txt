@@ -1,1 +1,8 @@
-HOM NAY TOI BUON
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+hello
+hi
+=======
+>>>>>>> 3a7d60b27fa0df8effd1b64660ea0f7d59b33c32
+>>>>>>> eb893d8ccdfec659b3c96c365067a3c715a84e1e
