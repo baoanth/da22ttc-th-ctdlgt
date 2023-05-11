@@ -53,6 +53,26 @@ void print_List(node a)
     }
 
 }
+
+void addLast(node& a, node p)
+{
+    if(a == NULL )
+    {
+        a = p;
+    }
+    else
+    {
+    	node q = a;
+        while(q->Next != NULL)
+        {
+            q= q->Next;
+        }
+    	q ->Next = p; 
+        
+        
+    }
+}
+
 int main()
 {
     node Head = NULL;
@@ -66,7 +86,7 @@ int main()
 
     addFirst(Head, p1);
     addFirst(Head, p2);
-    addFirst(Head, p3);
+    addLast(Head, p3);
 
     print_List(Head);
     return 0;
