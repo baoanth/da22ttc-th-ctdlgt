@@ -74,8 +74,11 @@ void PrintList(List &l)
 	}
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 int main()
 {
     struct Person per1 = {1, "Vinh", "Pham"};
