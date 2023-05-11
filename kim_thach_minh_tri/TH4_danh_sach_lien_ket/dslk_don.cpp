@@ -80,7 +80,26 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
-x
+void ProcessList (List &l)
+{	
+	Node	*p;	
+	p = l.pHead;
+	while (p!= NULL){ 
+     ProcessNode(p); // xử lý cụ thể tùy ứng dụng
+     p = p->pNext;
+	}
+}
+
+void Output(List l)
+{
+		Node* p=l.pHead;
+		while(p!=NULL)
+		{
+			//In các thành phần của 
+			p=p ->pNext;
+		}
+} 
+
 
 int main()
 {
@@ -89,29 +108,14 @@ int main()
 
     List* my_list;
     Init(&l);
-    Node* node1 = GetNode(per1);
+
+    Node* new_ele1 = GetNode(per1);
     AddFirst(my_list, node1);
 
-    // Add an element after the first
-    Node* node2 = GetNode(per2);
-    AddAfter(my_list, my_list.pHead, node2);
+    Node* node1 = GetNode(per2);
+    AddFirst(my_list, node2);
 
-    // Add an element to the end of the list
-    Node* node3 = GetNode(per3);
-    AddTail(my_list, node3);
-
-    // Add an element after the second
-    Node* node4 = GetNode(per4);
-    AddAfter(my_list, my_list.pHead->pNext, node4);
-
-    // Print the list
-    Node* node = my_list.pHead;
-    while (node != NULL) {
-        printf("%d %s %s\n", node->Info.id, node->Info.fname, node->Info.lname);
-        node = node->pNext;
-    }
-
-
+    
 
     return 0;
 }
