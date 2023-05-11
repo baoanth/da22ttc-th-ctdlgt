@@ -55,14 +55,22 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
 	if (l.pTail == NULL)
+=======
+	if (l.pHead == NULL)
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
 	{
 		printf("Danh sach rong\n");
 	}
 	else
 	{
 		Node *p;
+<<<<<<< HEAD
 		p = l.pTail;
+=======
+		p = l.pHead;
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
