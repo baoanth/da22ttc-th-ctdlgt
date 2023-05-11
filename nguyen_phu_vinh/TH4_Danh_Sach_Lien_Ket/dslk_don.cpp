@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+
 typedef struct Person
 {
     int id;
@@ -27,7 +27,7 @@ Node* GetNode(Person x)
     p = new Node;
     if (p==NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");  
+        printf("Khong du bo nho de cap phat cho nut moi");
         return 0;
     }
     p->Info = x;
@@ -54,36 +54,32 @@ void Init(List &l)
 }
 void PrintList(List l)
 {
-    Node* ptr = l.pHead;
-    while (ptr != NULL)
-    {
-        printf("%d %s %s\n", ptr->Info.id, ptr->Info.fname, ptr->Info.lname);
-        ptr = ptr->pNext;
-    }
+	Node* p=l.pHead;
+	while(p!=NULL)
+	{
+		printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
+		p=p->pNext;
+	}
+	
 }
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le" };
-	struct Person per2 = {2, "Duy", "Quang" };
-	struct Person per3 = {3, "Pham", "Vinh" };
+    struct Person per1 = {1, "Nguyen", "Vinh" };
+	struct Person per2 = {2, "Phu", "Vinh" };
+	struct Person per3 = {3, "Vinh", "Phu" };
     
-    List my_list;
-    Init(my_list);
-
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    List my_list;
+    Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+	PrintList(my_list);
 
-
-    PrintList(my_list);
-    return 0;
 }
-
-
 
