@@ -25,6 +25,10 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
         return -1;
     }
 
+<<<<<<< HEAD
+    dmhh = malloc(sizeof(HangHoa)*MAX_SIZE);
+    dmhh[i] = hhA; 
+=======
     int count = 0;
     HangHoa hh;
     while (fread(&hh, sizeof(HangHoa), 1, file) == 1 && count < MAX_AMOUNT)
@@ -32,6 +36,7 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
         ds_hanghoa[count++] = hh;
         //print_HH(hh);
     }
+>>>>>>> b640963d82e268e095796dbfbc000901101a3da2
 
     fclose(file);
     return count;
