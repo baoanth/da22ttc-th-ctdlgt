@@ -53,6 +53,29 @@ void print_List(node a)
     }
 
 }
+<<<<<<< HEAD
+=======
+
+void addLast(node& a, node p)
+{
+    if(a == NULL )
+    {
+        a = p;
+    }
+    else
+    {
+    	node q = a;
+        while(q->Next != NULL)
+        {
+            q= q->Next;
+        }
+    	q ->Next = p; 
+        
+        
+    }
+}
+
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 int main()
 {
     node Head = NULL;
@@ -66,7 +89,11 @@ int main()
 
     addFirst(Head, p1);
     addFirst(Head, p2);
+<<<<<<< HEAD
     addFirst(Head, p3);
+=======
+    addLast(Head, p3);
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
     print_List(Head);
     return 0;
