@@ -48,11 +48,6 @@ void AddFirst(List &l, Node* new_ele)
 	}
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -67,7 +62,6 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
-<<<<<<< HEAD
 Node* FindNodeByID(List l, int idx)
 {
 	Node *p;
@@ -79,12 +73,6 @@ Node* FindNodeByID(List l, int idx)
 	return p;
 }
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
->>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -111,42 +99,18 @@ int main()
 {
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	
-	 
- 	Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-=======
->>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
 	struct person per3 = {3, "Le Thach Hue", "Meo"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
-<<<<<<< HEAD
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
-   
+
     List my_list;
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
-<<<<<<< HEAD
-    AddTail(my_list, new_ele2);
-=======
-<<<<<<< HEAD
-    AddFirst(my_list, new_ele2);
-=======
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
-<<<<<<< HEAD
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
->>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
     
 	PrintList(my_list);
 	
