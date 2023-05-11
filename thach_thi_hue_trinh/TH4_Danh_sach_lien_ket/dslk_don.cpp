@@ -65,6 +65,20 @@ void PrintList(List &l)
 	}
 }
 
+void AddTail(List &l, Node *new_ele)
+{
+	if(l.pHead= NULL)
+	{
+		l.pHead= new_ele;
+		l.pTail= l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext= new_ele;
+		l.pTail= new_ele;
+	}
+}
+
 int main()
 {
 	struct person per1 = { 3, "Naruto" , "Uzumaki" };
