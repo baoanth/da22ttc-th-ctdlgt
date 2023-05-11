@@ -75,10 +75,13 @@ void PrintList(List &l)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 int main()
 {
     struct Person per1 = {1, "Vinh", "Pham"};
