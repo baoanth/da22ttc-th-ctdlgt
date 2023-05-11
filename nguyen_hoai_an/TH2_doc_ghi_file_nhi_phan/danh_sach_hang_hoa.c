@@ -123,11 +123,35 @@ void input_DMHH(char* filename,HangHoa * array,int count){
 		
 }
 
+<<<<<<< HEAD
+void find_HH_by_ma(char * mahang, *HangHoa hh_array,int n)
+      {
+	     int i;
+	     for(i=0;i<n;i++){
+		    if(strcmp(mahang,hh_array[i].mahang)==0)
+		    in_DMHH(&hh_array[i],1)
+		 }
+      }
+
+void input_DMHH(char* filename)
+{
+	int count;
+
+}
+
+int main()
+{
+	Hanghoa h1 = {"A0101","Sua Co gai Ha Lan", 10, 20000, 200000};
+    Hanghoa h2 = {"B0101", "Sua Ong Tho", 15, 10000, 150000};
+
+	FILE* outfile = fopen("DMHH.DAT", "wb");
+=======
 int main(){
     HangHoa h1 = {"A001", "Kem chuoi", 5, 5000, 25000};
     HangHoa h2 = {"A002", "Kem dau", 5, 7000, 35000};
     HangHoa h3 = {"A003", "Kem bac ha", 5, 10000, 50000};
 	FILE * outfile = fopen("DSHH.DAT", "wt");
+>>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
 	
 	fwrite(&h1, sizeof(HangHoa), 1, outfile);
 	fwrite(&h2, sizeof(HangHoa), 1, outfile);
@@ -143,6 +167,13 @@ int main(){
    printf("Da doc duoc %d hang hoa.\n", n);
    in_DMHH (mydmhh,n);
 	
+<<<<<<< HEAD
+	printf("\nDanh sach tren co %d mon hang\n", n);	
+	print_DMHH(mydmhh, n);
+	return 0;
+	
+}
+=======
 //	printf("nhap ma hang can tim \n");
 //	char ma[20];
 //	gets(ma);
@@ -150,3 +181,4 @@ int main(){
 	input_DMHH("DSHH.DAT",mydmhh,n);
     return 0;
 }
+>>>>>>> f1753be805e9556774760784a8f41b2ccab284a9

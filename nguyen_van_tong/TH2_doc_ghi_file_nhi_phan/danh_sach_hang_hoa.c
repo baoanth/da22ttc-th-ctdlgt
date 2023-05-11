@@ -152,7 +152,7 @@ int main(){
    printf("Da doc duoc %d hang hoa\n", n);
    in_DMHH (mydmhh,n);
 
-=======
+======
 
 	int n;
 	HangHoa* mydmhh =  read_DMHH( "DSHH.DAT", &n );
