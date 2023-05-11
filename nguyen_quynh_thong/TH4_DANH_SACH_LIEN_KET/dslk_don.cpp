@@ -55,6 +55,7 @@ void Init(List &l)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -62,6 +63,8 @@ void Init(List &l)
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -82,6 +85,7 @@ void PrintList(List &l)
 =======
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -94,6 +98,8 @@ void PrintList(List &l)
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 
 
 int main()
@@ -114,6 +120,7 @@ int main()
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     PrintList(my_list);
 
 =======
@@ -138,6 +145,10 @@ int main()
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+    PrintList(my_list);
+
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
     return 0;
 
 
@@ -146,6 +157,7 @@ int main()
 
 } 
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -159,3 +171,5 @@ int main()
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d

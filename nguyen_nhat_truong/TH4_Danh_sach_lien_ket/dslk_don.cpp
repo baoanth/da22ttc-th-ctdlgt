@@ -74,6 +74,7 @@ void PrintList(List &l)
 int main()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 	struct Person per1 = {1, "Thao" , "Di" };
@@ -81,6 +82,8 @@ int main()
 	struct Person per3 = {3, "Han" , "Tin" };
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 	struct Person per1={1,"Tieu","Vy"};
 	struct Person per2={1,"Thao","Di"};
 	struct Person per3={1,"Han","Tin"};

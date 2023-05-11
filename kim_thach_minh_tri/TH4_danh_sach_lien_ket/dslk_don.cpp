@@ -14,6 +14,7 @@ typedef struct Person
     char lname[20];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
@@ -27,10 +28,14 @@ typedef struct Person
 } Person;
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+} Person;
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 
 typedef struct Node
 {
     Person Info;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -50,11 +55,21 @@ typedef struct List
 <<<<<<< HEAD
 } List;
 <<<<<<< HEAD
+=======
+    Node *pNext;
+} Node;
 
-Node* GetNode(Person x)
+typedef struct List
+{
+    Node *pHead;
+    Node *pTail;
+} List;
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+
+Node *GetNode(Person x)
 {
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
         printf("Khong du bo nho !");
         return NULL;
@@ -118,6 +133,7 @@ Node *GetNode(Person x)
 void AddFist(List &l, Node *new_ele)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (l.pHead ==NULL)
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 <<<<<<< HEAD
@@ -126,12 +142,16 @@ void AddFist(List &l, Node *new_ele)
     if (l.pHead == NULL)
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+    if (l.pHead == NULL)
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
     else
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -146,6 +166,9 @@ void AddFist(List &l, Node *new_ele)
 =======
         new_ele->pNext = l.pHead;
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+        new_ele->pNext = l.pHead;
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
         l.pHead = new_ele;
     }
 }
@@ -155,6 +178,7 @@ void Init(List &l)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
@@ -162,6 +186,8 @@ void Init(List &l)
 
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -176,6 +202,7 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -226,6 +253,8 @@ void Output(List l)
 
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 void PrintList(List l)
 {
     Node *p = l.pHead;
@@ -236,6 +265,7 @@ void PrintList(List l)
     }
 }
 
+<<<<<<< HEAD
 Node *FindNodeByID(List l, int id)
 {
     Node *node = l.pHead;
@@ -248,6 +278,12 @@ Node *FindNodeByID(List l, int id)
         node = node->pNext;
     }
     return NULL;
+=======
+void PrintNode(Node* p)
+{
+	printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+    p = p->pNext;
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 }
 
 <<<<<<< HEAD
@@ -256,8 +292,19 @@ Node *FindNodeByID(List l, int id)
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
+Node *FindNodeByID(List l, int idx)
+{
+    Node *p = l.pHead;
+    while ((p != NULL) && (p->Info.id != idx))
+    {
+        p = p->pNext;
+    }
+    return p;
+}
+
 int main()
 {
+<<<<<<< HEAD
     struct Person per1 = {1, "Kim" , "Tri" };
 <<<<<<< HEAD
 	struct Person per2 = {2, "Thach" , "Minh" };
@@ -278,6 +325,8 @@ int main()
 =======
 int main()
 {
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
     struct Person per1 = {1, "Kim", "Tri"};
     struct Person per2 = {2, "Thach", "Minh"};
     struct Person per3 = {3, "Kim", "Minh"};
@@ -287,21 +336,29 @@ int main()
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
+<<<<<<< HEAD
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
+    AddFist(my_list, new_ele1);  
     AddFist(my_list, new_ele3);
+<<<<<<< HEAD
 
+=======
+    
+	AddTail(my_list, new_ele2);
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
     AddTail(my_list, new_ele4);
 
     PrintList(my_list);
 
     printf("**************************************************************\n");
 	
+<<<<<<< HEAD
 	int id;
 	printf("Nhap id :");
 	scanf("%d",&id);
@@ -321,6 +378,22 @@ int main()
 <<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+	int idx;
+	printf("Nhap id :");
+	scanf("%d",&idx);
+	
+   Node* node_kq =
+    FindNodeByID(my_list, idx);
+   if(node_kq != NULL)
+   {
+    PrintNode(node_kq);
+   }
+   else
+   {
+    printf("Khong tim thay id %d",idx);
+   }
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204

@@ -51,10 +51,13 @@ void AddFirst(List &l, Node* new_ele)
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -70,10 +73,14 @@ void AddTail(List &l, Node *new_ele)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -96,15 +103,21 @@ int main()
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 	
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 =======
 	struct person per3 = {3, "Le Thach Hue", "Meo"};
 	 
@@ -112,7 +125,10 @@ int main()
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+<<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
    
     List my_list;
     Init(my_list);
@@ -121,6 +137,7 @@ int main()
 <<<<<<< HEAD
     AddFirst(my_list, new_ele2);
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
     AddTail(my_list, new_ele2);
 =======
@@ -132,6 +149,11 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+    AddTail(my_list, new_ele2);
+    AddTail(my_list, new_ele3);
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
     
 	PrintList(my_list);
 	
