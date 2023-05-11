@@ -121,7 +121,7 @@ int main()
         printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
     }
     else
-    {
+    { 
         printf("Node not found!\n");
     }
 
