@@ -28,6 +28,9 @@ typedef struct Person
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 =======
 } Person;
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 
@@ -87,7 +90,11 @@ typedef struct List
     Node *pHead;
     Node *pTail;
 } List;
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 
 Node *GetNode(Person x)
 {
@@ -116,6 +123,9 @@ void AddFist(List &l, Node *new_ele)
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 =======
     if (l.pHead == NULL)
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
     {
@@ -140,7 +150,11 @@ void AddFist(List &l, Node *new_ele)
         new_ele ->pNext = l.pHead;    
 =======
         new_ele->pNext = l.pHead;
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
         l.pHead = new_ele;
     }
 }
@@ -154,7 +168,11 @@ void Init(List &l)
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 
 =======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -256,7 +274,11 @@ void Output(List l)
 
 
 =======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 void PrintList(List l)
 {
     Node *p = l.pHead;
@@ -311,6 +333,10 @@ int main()
 =======
     struct Person per2 = {2, "Thach" , "Minh" };
     struct Person per3 = {3, "Kim" , "Minh" };
+<<<<<<< HEAD
+    struct Person per4 = {4, "Thach" , "Tri" };
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 int main()
 {
@@ -323,7 +349,11 @@ int main()
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 
     List my_list;
     Init(my_list);
@@ -348,15 +378,28 @@ int main()
         printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
     }
     else
-    {
+    { 
         printf("Node not found!\n");
-    }
+<<<<<<< HEAD
+    }*/
 
 <<<<<<< HEAD
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+<<<<<<< HEAD
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+=======
+    }
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 12873f93a066a8eddcaa685309c27dac913e12da
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
     return 0;
 }
