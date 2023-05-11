@@ -13,14 +13,19 @@ typedef struct Person
     char fname[20];
     char lname[20];
 <<<<<<< HEAD
+<<<<<<< HEAD
 } Person;
 =======
 }Person;
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+} Person;
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 
 typedef struct Node
 {
     Person Info;
+<<<<<<< HEAD
 <<<<<<< HEAD
     Node* pNext;
 } Node;
@@ -54,12 +59,22 @@ void AddFirst(List &l, Node* new_ele)
     if (l.pHead == NULL)
 =======
 }List;
+=======
+    Node *pNext;
+} Node;
 
-Node* GetNode(Person x)
+typedef struct List
+{
+    Node *pHead;
+    Node *pTail;
+} List;
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+
+Node *GetNode(Person x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
         printf("Khong du bo nho de cap phat cho nut moi");
         return 0;
@@ -69,10 +84,14 @@ Node* GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node* new_ele)
+void AddFist(List &l, Node *new_ele)
 {
+<<<<<<< HEAD
     if (l.pHead ==NULL)
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+    if (l.pHead == NULL)
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
@@ -80,12 +99,16 @@ void AddFist(List &l, Node* new_ele)
     else
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         new_ele->pNext == l.pHead;
         l.pHead = new_ele;
     }
 }
 =======
         new_ele ->pNext = l.pHead;    
+=======
+        new_ele->pNext = l.pHead;
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
         l.pHead = new_ele;
     }
 }
@@ -94,21 +117,26 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 void AddTail(List &l, Node *new_ele)
 {
-    if(l.pHead==NULL)
+    if (l.pHead == NULL)
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
-    else{
+    else
+    {
         l.pTail->pNext = new_ele;
         l.pTail = new_ele;
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void AddAfter(List &l,Node *q, Node* new_ele)
 {
@@ -153,9 +181,11 @@ void Output(List l)
 
 
 
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 void PrintList(List l)
 {
-    Node* p = l.pHead;
+    Node *p = l.pHead;
     while (p != NULL)
     {
         printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -163,11 +193,9 @@ void PrintList(List l)
     }
 }
 
-
-
-Node* SearchList(List l, int id)
+Node *FindNodeByID(List l, int id)
 {
-    Node* node = l.pHead;
+    Node *node = l.pHead;
     while (node != NULL)
     {
         if (node->Info.id == id)
@@ -179,6 +207,7 @@ Node* SearchList(List l, int id)
     return NULL;
 }
 
+<<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 int main()
@@ -201,12 +230,20 @@ int main()
     struct Person per2 = {2, "Thach" , "Minh" };
     struct Person per3 = {3, "Kim" , "Minh" };
     struct Person per4 = {4, "Thach" , "Tri" };
+=======
+int main()
+{
+    struct Person per1 = {1, "Kim", "Tri"};
+    struct Person per2 = {2, "Thach", "Minh"};
+    struct Person per3 = {3, "Kim", "Minh"};
+    struct Person per4 = {4, "Thach", "Tri"};
 
-    Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
-    Node* new_ele4  = GetNode(per4);
-    
+    Node *new_ele1 = GetNode(per1);
+    Node *new_ele2 = GetNode(per2);
+    Node *new_ele3 = GetNode(per3);
+    Node *new_ele4 = GetNode(per4);
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+
     List my_list;
     Init(my_list);
 
@@ -216,9 +253,15 @@ int main()
 
     AddTail(my_list, new_ele4);
 
-   PrintList(my_list);
+    PrintList(my_list);
 
- /* Node* found_node = SearchList(my_list, 2);
+    printf("**************************************************************\n");
+	
+	int id;
+	printf("Nhap id :");
+	scanf("%d",&id);
+	
+    Node *found_node = FindNodeByID(my_list, id);
     if (found_node != NULL)
     {
         printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
@@ -226,9 +269,13 @@ int main()
     else
     { 
         printf("Node not found!\n");
+<<<<<<< HEAD
     }*/
 
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+    }
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 
     return 0;
 }

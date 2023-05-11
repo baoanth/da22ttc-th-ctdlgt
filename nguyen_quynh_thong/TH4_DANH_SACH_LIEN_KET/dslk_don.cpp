@@ -82,6 +82,7 @@ void PrintList(List &l)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
@@ -103,6 +104,8 @@ void PrintList(List &l)
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 
 
 int main()
@@ -121,6 +124,7 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -146,6 +150,8 @@ int main()
 
 } 
 =======
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
     PrintList(my_list);
 
@@ -177,6 +183,7 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
@@ -198,3 +205,5 @@ int main()
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
