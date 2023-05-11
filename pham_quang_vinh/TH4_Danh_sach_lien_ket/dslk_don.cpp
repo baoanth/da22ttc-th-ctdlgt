@@ -52,6 +52,7 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
+<<<<<<< HEAD
 void PrintList(List l)
 {
     Node* ptr = l.pHead;
@@ -61,6 +62,10 @@ void PrintList(List l)
         ptr = ptr->pNext;
     }
 }
+=======
+
+
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 int main()
 {
@@ -68,18 +73,31 @@ int main()
 	struct Person per2 = {2, "Duy", "Quang" };
 	struct Person per3 = {3, "Pham", "Vinh" };
     
+<<<<<<< HEAD
     List my_list;
     Init(my_list);
 
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+=======
+    Node* new_ele1  = GetNode(per1);
+    Node* new_ele2  = GetNode(per2);
+    Node* new_ele3  = GetNode(per3);
+    List my_list;
+    Init(my_list);
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
+<<<<<<< HEAD
     PrintList(my_list);
     return 0;
 }
 
+=======
+
+}
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d

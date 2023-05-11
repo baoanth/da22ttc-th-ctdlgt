@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+
 typedef struct Person
 {
     int id;
@@ -52,79 +52,34 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
-
-
-void AddTail(List &l, Node *new_ele)
-{
-    if(l.pHead==NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else{
-        l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
-    }
-}
-
-
-
-
 void PrintList(List l)
 {
-    Node* p = l.pHead;
-    while (p != NULL)
-    {
-        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-        p = p->pNext;
-    }
-}
-
-Node* SearchList(List l, int id)
-{
-    Node* node = l.pHead;
-    while (node != NULL)
-    {
-        if (node->Info.id == id)
-        {
-            return node;
-        }
-        node = node->pNext;
-    }
-    return NULL;
+	Node* p=l.pHead;
+	while(p!=NULL)
+	{
+		printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
+		p=p->pNext;
+	}
+	
 }
 
 
 int main()
 {
-    struct Person per1 = {1, "Kim" , "Tri" };
-    struct Person per2 = {2, "Thach" , "Minh" };
-    struct Person per3 = {3, "Kim" , "Minh" };
-
+    struct Person per1 = {1, "Nguyen", "Vinh" };
+	struct Person per2 = {2, "Phu", "Vinh" };
+	struct Person per3 = {3, "Vinh", "Phu" };
+    
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
-    
     List my_list;
     Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+	PrintList(my_list);
 
-
-    PrintList(my_list);
-
-    Node* found_node = SearchList(my_list, 2);
-    if (found_node != NULL)
-    {
-        printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
-    }
-    else
-    {
-        printf("Node not found!\n");
-    }
-
-
-    return 0;
 }
+
