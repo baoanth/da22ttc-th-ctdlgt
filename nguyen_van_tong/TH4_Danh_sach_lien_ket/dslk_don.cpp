@@ -51,11 +51,6 @@ void print_List(node a)
         a = a->Next;
     }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 
 void addLast(node &a, node p)
 {
@@ -80,7 +75,13 @@ node FindbyID(node a, int idx)
 =======
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+node FindbyID(node a, int idx)
+=======
+<<<<<<< HEAD
+=======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -155,6 +156,9 @@ void addNodeAfter(node &a, node tmp, int idx)
     }
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 
 void RemoveHead(node &a)
 {
@@ -190,9 +194,12 @@ void RemoveNode(node &a, int idx)
     }
    
 }
+<<<<<<< HEAD
+=======
 =======
 <<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -216,9 +223,16 @@ void RemoveNode(node &a, int idx)
 =======
 <<<<<<< HEAD
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
+=======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 =======
 =======
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
@@ -309,13 +323,20 @@ void RemoveNode(node &a, int idx)
 <<<<<<< HEAD
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
 >>>>>>> 9e98f717cf1d1b9f2bbe93ca23465c1bb3a250e4
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
 int main()
 {
 	
@@ -359,6 +380,9 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
@@ -368,15 +392,21 @@ int main()
 <<<<<<< HEAD
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
 =======
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 =======
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
 =======
 =======
@@ -387,8 +417,11 @@ int main()
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     Person per4 = {4,"Nguyen", "Vinh"};
 =======
@@ -396,6 +429,9 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -408,12 +444,15 @@ int main()
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
 =======
 >>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 =======
 <<<<<<< HEAD
 >>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
@@ -493,13 +532,20 @@ int main()
 <<<<<<< HEAD
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
 =======
 <<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
 >>>>>>> 9e98f717cf1d1b9f2bbe93ca23465c1bb3a250e4
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
@@ -513,11 +559,14 @@ int main()
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
 =======
 <<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
@@ -585,6 +634,10 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
 =======
@@ -621,7 +674,11 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -630,7 +687,11 @@ int main()
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
 >>>>>>> 9e98f717cf1d1b9f2bbe93ca23465c1bb3a250e4
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
     node p4 = getnode(per4);
 
 <<<<<<< HEAD
@@ -725,6 +786,11 @@ int main()
     print_List(Head);
 <<<<<<< HEAD
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -743,7 +809,11 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+<<<<<<< HEAD
 >>>>>>> 9e98f717cf1d1b9f2bbe93ca23465c1bb3a250e4
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
 =======
 <<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
@@ -829,7 +899,11 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 2923fb8293bd51162c7c4592d26ce9e03f8061a2
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -838,6 +912,10 @@ int main()
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
 >>>>>>> 9e98f717cf1d1b9f2bbe93ca23465c1bb3a250e4
+=======
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+>>>>>>> 29dc8d166e4f5ef6238a5198531361a3353f4dbe
     return 0;
 }
