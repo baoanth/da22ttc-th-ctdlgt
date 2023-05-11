@@ -53,21 +53,73 @@ void print_List(node a)
     }
 
 }
+
+void addLast(node& a, node p)
+{
+    if(a == NULL )
+    {
+        a = p;
+    }
+    else
+    {
+    	node q = a;
+        while(q->Next != NULL)
+        {
+            q= q->Next;
+        }
+    	q ->Next = p; 
+        
+        
+    }
+}
+
+node FindbyID(node a,int idx)
+{
+    node p = a;
+    while(p != NULL)
+    {
+        if(p->data.id == idx) 
+        {
+            return p;
+            break;
+        }
+        p = p->Next;
+    } 
+	return NULL;
+   
+}
+
+void addNodeAfter(node &a, node tmp, int idx)
+{
+    node p = a;
+    node q = FindbyID(p, idx);
+
+    tmp->Next = q->Next;
+    q ->Next = tmp; 
+}
 int main()
 {
     node Head = NULL;
     Person per1 = {1,"nguyen", "An"};
 	Person per2 = {2,"Le", "Vinh"};
 	Person per3 = {3,"Nguyen", "Tong"};
+    Person per4 = {4,"Nguyen", "Vinh"};
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
+    node p4 = getnode(per4);
 
-    addFirst(Head, p1);
-    addFirst(Head, p2);
-    addFirst(Head, p3);
-
+   addLast(Head,p1);
+   addLast(Head,p2);
+   addLast(Head,p3);
+	
+    int idx;
+    cout << "nhap vao id can chen"; cin >> idx;
+    addNodeAfter(Head,p4,idx);
+    
     print_List(Head);
+
+   
     return 0;
 }
