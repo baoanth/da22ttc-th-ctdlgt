@@ -35,7 +35,7 @@ Node* GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node* new_ele)
+void AddFirst(List &l, Node* new_ele)
 {
     if (l.pHead ==NULL)
     {
@@ -48,9 +48,42 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
+
+void AddTail(List &l, Node* new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+Node* FindNodeByID(List l, int idx)
+{
+    Node *p;
+    p =l.pHead;
+
+    while ((p!=NULL) && (p->Info.id !=idx))
+        p = p->pNext;
+
+    return p;
+}
+
+
+
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
+}
+
+void PrintNode(Node *p)
+{
+    printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
 }
 
 void PrintList(List &l)
@@ -84,11 +117,24 @@ int main()
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+	//AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
+
+	
+    AddTail(my_list, new_ele1);
+    //AddTail(my_list, new_ele2);
+    //AddTail(my_list, new_ele3);
 
     PrintList(my_list);
+    int idx;
+    printf("\nNhap id can tim ");
+    scanf("%d", &idx);
+    Node *node_kq  = FindNodeByID(my_list, idx);
+    if (node_kq!=NULL)
+        PrintNode(node_kq);
+    else   
+        printf("Tim khong thay node co id %d", idx);
 
     return 0;
 
