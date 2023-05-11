@@ -53,7 +53,6 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
-<<<<<<< HEAD
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -71,15 +70,12 @@ void PrintList(List &l)
 		}		
 	}
 }
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Cho", "Shinba" };
+	struct Person per2 = {2, "Cho", "Alaska" };
+	struct Person per3 = {3, "Cho", "BigBull" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -91,12 +87,23 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
-<<<<<<< HEAD
-    PrintList(my_list);
+	PrintList(my_list);
 
-    return 0;
-
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-
+	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

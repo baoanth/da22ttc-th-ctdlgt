@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+
 typedef struct Person
 {
     int id;
@@ -52,51 +52,58 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
-
-<<<<<<< HEAD
-void PrintList(List &l)
+void PrintList(List l)
 {
-	if (l.pHead ==NULL)
+	Node* p=l.pHead;
+	while(p!=NULL)
 	{
-		printf("Danh sach rong\n");
+		printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
+		p=p->pNext;
+	}
+	
+}
+void AddTail (List &l,Node *new_ele)
+{
+	if (l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
 	}
 	else
 	{
-		Node *p;
-		p = l.pHead ;
-		while (p!=NULL)
-		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
-			p = p->pNext;
-		}		
+		l.pTail-> pNext = new_ele;
+		l.pTail = new_ele;
 	}
+	
 }
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Nguyen", "Vinh" };
+	struct Person per2 = {2, "Phu", "Vinh" };
+	struct Person per3 = {3, "Vinh", "Phu" };
+    struct Person per4 = {4, "vinh", "nguyen" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    Node* new_ele4 = GetNode(per4);
     List my_list;
     Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+    
+//	PrintList(my_list);
+	
+//	AddTail(my_list, new_ele1);
+//   AddTail(my_list, new_ele2);
 
-<<<<<<< HEAD
-    PrintList(my_list);
 
-    return 0;
-
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-
+    AddTail(my_list, new_ele4);
+	PrintList(my_list);
+	
+	return 0;
 }

@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+using namespace std;
+
 typedef struct Person
 {
     int id;
@@ -53,7 +54,6 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
-<<<<<<< HEAD
 void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
@@ -71,9 +71,6 @@ void PrintList(List &l)
 		}		
 	}
 }
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-
 
 int main()
 {
@@ -90,13 +87,8 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-
-<<<<<<< HEAD
     PrintList(my_list);
 
     return 0;
-
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 }
