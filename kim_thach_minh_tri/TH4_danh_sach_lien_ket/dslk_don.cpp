@@ -193,18 +193,21 @@ void PrintList(List l)
     }
 }
 
-Node *FindNodeByID(List l, int id)
+void PrintNode(Node* p)
 {
-    Node *node = l.pHead;
-    while (node != NULL)
+	printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+    p = p->pNext;
+}
+
+
+Node *FindNodeByID(List l, int idx)
+{
+    Node *p = l.pHead;
+    while ((p != NULL) && (p->Info.id != idx))
     {
-        if (node->Info.id == id)
-        {
-            return node;
-        }
-        node = node->pNext;
+        p = p->pNext;
     }
-    return NULL;
+    return p;
 }
 
 <<<<<<< HEAD
@@ -246,29 +249,30 @@ int main()
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
+    AddFist(my_list, new_ele1);  
     AddFist(my_list, new_ele3);
-
+    
+	AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
 
     PrintList(my_list);
 
     printf("**************************************************************\n");
 	
-	int id;
+	int idx;
 	printf("Nhap id :");
-	scanf("%d",&id);
+	scanf("%d",&idx);
 	
-    Node *found_node = FindNodeByID(my_list, id);
-    if (found_node != NULL)
-    {
-        printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
-    }
-    else
-    {
-        printf("Node not found!\n");
-    }
+   Node* node_kq =
+    FindNodeByID(my_list, idx);
+   if(node_kq != NULL)
+   {
+    PrintNode(node_kq);
+   }
+   else
+   {
+    printf("Khong tim thay id %d",idx);
+   }
 
 <<<<<<< HEAD
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
