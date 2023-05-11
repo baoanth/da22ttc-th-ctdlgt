@@ -9,18 +9,27 @@ typedef struct Person
     char lname[20];
 }Person;
 
+//Khai bao Node voi Info la kieu Person
 typedef struct Node
 {
     Person Info;
     Node* pNext;    
 }Node;
 
+//Khai bao danh sach lien ket don List voi thanh phan la Node 
 typedef struct List
 {
     Node* pHead;
     Node* pTail;
 }List;
 
+//Viet ham khoi tao danh sach lien ket 
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
+}
+
+//Viet ham tao mot Node moi tu cau truc x kieu  Person
 Node* GetNode(Person x)
 {
     Node *p;
@@ -35,6 +44,7 @@ Node* GetNode(Person x)
     return p;
 }
 
+//Viet ham them mot Node mo vao dau danh sach
 void AddFist(List &l, Node* new_ele)
 {
     if (l.pHead ==NULL)
@@ -48,38 +58,33 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
-void Init(List &l)
-{
-    l.pHead = l.pTail = NULL;
-}
 
-<<<<<<< HEAD
+//Ham duyet va in dannh sach ra man hinh
 void PrintList(List &l)
 {
-	if (l.pHead ==NULL)
+	if(l.pHead == NULL)
 	{
 		printf("Danh sach rong\n");
 	}
-	else
+	else 
 	{
 		Node *p;
-		p = l.pHead ;
-		while (p!=NULL)
+		p = l.pHead;
+		while(p!=NULL)
 		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
-			p = p->pNext;
-		}		
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;	
+		}
 	}
 }
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
 
+//Ham main
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Kieu", "Gia Thinh"};
+	struct Person per2 = {2, "Nguyen Thi", "Tra My"};
+	struct Person per3 = {3, "Con", "Vit"};
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -90,13 +95,8 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-
-<<<<<<< HEAD
+    
     PrintList(my_list);
 
-    return 0;
-
-=======
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-
 }
+
