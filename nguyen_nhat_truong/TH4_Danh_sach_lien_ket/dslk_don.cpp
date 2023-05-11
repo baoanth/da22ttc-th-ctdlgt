@@ -55,8 +55,8 @@ void Init(List &l)
 
 int main()
 {
-	struct Person per1={1,"Duong","Tam"};
-	struct Person per2={1,"Tieu","Vu"};
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
 	struct Person per3={1,"Han","Tin"};
 	
 	Node* new_ele1 = GetNode(per1);
