@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+using namespace std;
+
 typedef struct Person
 {
     int id;
@@ -52,38 +53,23 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
-void PrintList(List l)
-{
-    Node* ptr = l.pHead;
-    while (ptr != NULL)
-    {
-        printf("%d %s %s\n", ptr->Info.id, ptr->Info.fname, ptr->Info.lname);
-        ptr = ptr->pNext;
-    }
-}
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le" };
-	struct Person per2 = {2, "Duy", "Quang" };
-	struct Person per3 = {3, "Pham", "Vinh" };
+    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
+	struct Person per2 = {2, "Le", "Binh" };
+	struct Person per3 = {3, "Tran", "Hoa" };
     
-    List my_list;
-    Init(my_list);
-
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    List my_list;
+    Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
 
-    PrintList(my_list);
-    return 0;
 }
-
-
-
