@@ -59,7 +59,7 @@ int main()
 {
     struct Person per1 = {1, "Gia", "Lac" };
 	struct Person per2 = {2, "Hoai", "Thuong" };
-	struct Person per3 = {3, "Ngo", "Ha" };
+	struct Person per3 = {3, "Cuoi", "Met" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
