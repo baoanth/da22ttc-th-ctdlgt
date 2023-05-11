@@ -77,7 +77,7 @@ void PrintList(List l)
     }
 }
 
-Node *SearchList(List l, int id)
+Node *FindNodeByID(List l, int id)
 {
     Node *node = l.pHead;
     while (node != NULL)
@@ -120,7 +120,7 @@ int main()
 	printf("Nhap id :");
 	scanf("%d",&id);
 	
-    Node *found_node = SearchList(my_list, id);
+    Node *found_node = FindNodeByID(my_list, id);
     if (found_node != NULL)
     {
         printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
