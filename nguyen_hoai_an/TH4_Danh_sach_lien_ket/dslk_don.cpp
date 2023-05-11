@@ -27,7 +27,7 @@ Node* GetNode(Person x)
     p = new Node;
     if (p==NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
+        printf("Khong du bo nho de cap phat. ");
         return 0;
     }
     p->Info = x;
@@ -35,7 +35,7 @@ Node* GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node* new_ele)
+void AddFirst(List &l, Node* new_ele)
 {
     if (l.pHead ==NULL)
     {
@@ -52,34 +52,47 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
+
 void PrintList(List l)
 {
-	Node* p=l.pHead;
-	while(p!=NULL)
+	if (l.pHead == NULL)
 	{
-		printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
-		p=p->pNext;
+		printf("Trong rong.");
 	}
-	
+	else
+	{
+		Node *p;
+		p = l.pHead;
+		while(p!=NULL)
+		{
+			printf("%5d %20s %10s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;
+		}
+	}
 }
-
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Vinh" };
-	struct Person per2 = {2, "Phu", "Vinh" };
-	struct Person per3 = {3, "Vinh", "Phu" };
+    struct Person per1 = {1, "An", "Nguyen" };
+	struct Person per2 = {2, "Vinh", "Pham" };
+	struct Person per3 = {3, "Vinh", "Nguyen" };
+	struct Person per4 = {4, "Tong", "Nguyen" };
+
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    Node* new_ele4  = GetNode(per4);
+    
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
-	PrintList(my_list);
-
+    AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
+    AddFirst(my_list, new_ele4);
+    
+    PrintList(my_list);
+    
+    return 0;
 }
-
