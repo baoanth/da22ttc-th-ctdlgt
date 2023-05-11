@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+
 typedef struct Person
 {
     int id;
@@ -52,31 +52,23 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
-
-void PrintList(List &l)
+void PrintList(List l)
 {
-	if (l.pHead ==NULL)
+	Node* p=l.pHead;
+	while(p!=NULL)
 	{
-		printf("Danh sach rong\n");
+		printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
+		p=p->pNext;
 	}
-	else
-	{
-		Node *p;
-		p = l.pHead ;
-		while (p!=NULL)
-		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
-			p = p->pNext;
-		}		
-	}
+	
 }
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Nguyen", "Vinh" };
+	struct Person per2 = {2, "Phu", "Vinh" };
+	struct Person per3 = {3, "Vinh", "Phu" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -87,10 +79,7 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-
-    PrintList(my_list);
-
-    return 0;
-
+	PrintList(my_list);
 
 }
+
