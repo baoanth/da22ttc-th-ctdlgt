@@ -50,6 +50,12 @@ void AddFirst(List &l, Node* new_ele)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -64,7 +70,14 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
+<<<<<<< HEAD
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -104,11 +117,21 @@ int main()
 
     AddFirst(my_list, new_ele1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    AddTail(my_list, new_ele2);
+=======
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     AddFirst(my_list, new_ele2);
 =======
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
     
 	PrintList(my_list);
 	

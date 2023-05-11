@@ -73,13 +73,24 @@ void AddTail (List &l,Node *new_ele)
 	{
 		l.pTail-> pNext = new_ele;
 		l.pTail = new_ele;
-	}
-	
+	}	
 }
-
+void PrintfNode(Node *p)
+{
+	printf("%d %s %s\n",p->Info.id,p->Info.fname,p->Info.lname);
+}
+Node* FindNodeByID(List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	while((p!=NULL)&&(p->Info.id !=idx))
+	p=p->pNext;
+	return p;
+}
 
 int main()
 {
+	int idx;
     struct Person per1 = {1, "Nguyen", "Vinh" };
 	struct Person per2 = {2, "Phu", "Vinh" };
 	struct Person per3 = {3, "Vinh", "Phu" };
@@ -95,7 +106,7 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-    
+   
 //	PrintList(my_list);
 	
 //	AddTail(my_list, new_ele1);
@@ -104,6 +115,9 @@ int main()
 
     AddTail(my_list, new_ele4);
 	PrintList(my_list);
+	
+	printf("\nnhap id can tim:");
+	scanf("%d",&idx);
 	
 	return 0;
 }
