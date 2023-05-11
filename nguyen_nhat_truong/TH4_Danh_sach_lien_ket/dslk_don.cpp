@@ -55,14 +55,14 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
-	if (l.pTail == NULL)
+	if (l.pHead == NULL)
 	{
 		printf("Danh sach rong\n");
 	}
 	else
 	{
 		Node *p;
-		p = l.pTail;
+		p = l.pHead;
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
