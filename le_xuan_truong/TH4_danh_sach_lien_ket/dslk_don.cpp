@@ -83,16 +83,18 @@ int main()
 {
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
-	
+	struct person per3 = {3, "Thach Thi Hue", "Meo"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
+  	Node* new_ele3  = GetNode(per3);
    
     List my_list;
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
     
 	PrintList(my_list);
 	
