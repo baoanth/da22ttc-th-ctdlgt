@@ -53,6 +53,24 @@ void Init(List &l)
 	l.pHead = l.pTail = NULL;
 }
 
+void PrintList(List &l)
+{
+	if (l.pTail == NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pTail;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;
+		}
+	}
+}
+
 int main()
 {
 	struct Person per1 = {1, "Vy" , "Hua" };
@@ -68,6 +86,9 @@ int main()
 	
 	AddFirst(mylist, new_ele1);
 	AddFirst(mylist, new_ele2);
-	AddFirst(mylist, new_ele3);
+	AddFirst(mylist, new_ele3);	
 	
+	PrintList(mylist);
+	
+	return 0;
 }
