@@ -56,14 +56,20 @@ void Init(List &l)
 void PrintList(List &l)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (l.pHead == NULL)
 =======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 <<<<<<< HEAD
 	if (l.pTail == NULL)
 =======
 	if (l.pHead == NULL)
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 	{
 		printf("Danh sach rong\n");
 	}
@@ -71,14 +77,20 @@ void PrintList(List &l)
 	{
 		Node *p;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		p = l.pHead;
 =======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 <<<<<<< HEAD
 		p = l.pTail;
 =======
 		p = l.pHead;
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -89,6 +101,7 @@ void PrintList(List &l)
 
 int main()
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -107,6 +120,11 @@ int main()
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);

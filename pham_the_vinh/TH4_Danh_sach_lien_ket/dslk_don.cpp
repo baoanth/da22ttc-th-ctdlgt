@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-using namespace std;
 
 typedef struct Person
 {
@@ -26,13 +25,15 @@ Node* GetNode(Person x)
 {
     Node *p;
     p = new Node;
+    
     if (p==NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
+        printf("Khong du bo nho de cap phat");
         return 0;
     }
     p->Info = x;
     p->pNext = NULL;
+    
     return p;
 }
 
@@ -49,6 +50,7 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
+
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
@@ -58,7 +60,7 @@ void PrintList(List &l)
 {
 	if (l.pHead ==NULL)
 	{
-		printf("Danh sach rong\n");
+		printf("Danh sach rong");
 	}
 	else
 	{
@@ -66,7 +68,7 @@ void PrintList(List &l)
 		p = l.pHead ;
 		while (p!=NULL)
 		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+			printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
 			p = p->pNext;
 		}		
 	}
@@ -74,21 +76,22 @@ void PrintList(List &l)
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Vinh", "Pham"};
+	struct Person per2 = {2, "An", "Nguyen"};
+	struct Person per3 = {3, "Tong", "Nguyen"};
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    
     List my_list;
     Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+
     PrintList(my_list);
 
     return 0;
-
 }
