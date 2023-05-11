@@ -48,6 +48,33 @@ void AddFirst(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
+
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead == NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
+Node* FindNodeByID(List l, int idx)
+{
+	Node *p;
+	p = l.pHead;
+	while((p!=NULL) && (p->Info != idx))
+	p = p->pNext;
+	
+	return p;
+} 
+
+
+
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
@@ -93,6 +120,11 @@ int main()
     AddFirst(my_list, new_ele4);
     
     PrintList(my_list);
+    
+    printf("Nhap id can tim: ");
+    scanf("%d", &idx);
+    
+    Node *Node_kq = Node* FindNodeByID(my_list, idx);
     
     return 0;
 }
