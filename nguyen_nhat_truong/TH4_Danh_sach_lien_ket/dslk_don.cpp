@@ -105,6 +105,7 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b8140ab904ab6152d12532e648e1379e71b9184d
 	struct Person per1={1,"Tieu","Vy"};
@@ -125,6 +126,16 @@ int main()
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+=======
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
+	struct Person per3={1,"Han","Tin"};
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);

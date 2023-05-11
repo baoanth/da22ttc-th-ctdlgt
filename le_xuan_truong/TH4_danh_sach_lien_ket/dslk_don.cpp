@@ -49,10 +49,17 @@ void AddFirst(List &l, Node* new_ele)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
 =======
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 void AddTail(List &l, Node *new_ele)
 {
@@ -69,7 +76,10 @@ void AddTail(List &l, Node *new_ele)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
@@ -121,8 +131,11 @@ int main()
     AddFirst(my_list, new_ele1);
 <<<<<<< HEAD
     AddTail(my_list, new_ele2);
+<<<<<<< HEAD
     AddTail(my_list, new_ele3);
    
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 <<<<<<< HEAD
     AddFirst(my_list, new_ele2);
@@ -130,6 +143,10 @@ int main()
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
     
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 	PrintList(my_list);
