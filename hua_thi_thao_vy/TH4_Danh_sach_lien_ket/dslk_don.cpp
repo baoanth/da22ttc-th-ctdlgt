@@ -73,9 +73,9 @@ void PrintList(List &l)
 
 int main()
 {
-	struct Person per1 = {1, "Thao" , "Di" };
-	struct Person per2 = {2, "Tieu" , "Vy" };
-	struct Person per3 = {3, "Han" , "Tin" };
+	struct Person per1 = {1, "Vy" , "Hua" };
+	struct Person per2 = {2, "Truong" , "Nguyen" };
+	struct Person per3 = {3, "Hoi" , "Nguyen" };
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);
