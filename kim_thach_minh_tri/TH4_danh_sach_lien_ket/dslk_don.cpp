@@ -163,6 +163,8 @@ void PrintList(List l)
     }
 }
 
+
+
 Node* SearchList(List l, int id)
 {
     Node* node = l.pHead;
@@ -198,10 +200,12 @@ int main()
 =======
     struct Person per2 = {2, "Thach" , "Minh" };
     struct Person per3 = {3, "Kim" , "Minh" };
+    struct Person per4 = {4, "Thach" , "Tri" };
 
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+    Node* new_ele4  = GetNode(per4);
     
     List my_list;
     Init(my_list);
@@ -210,18 +214,19 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
+    AddTail(my_list, new_ele4);
 
-    PrintList(my_list);
+   PrintList(my_list);
 
-    Node* found_node = SearchList(my_list, 2);
+ /* Node* found_node = SearchList(my_list, 2);
     if (found_node != NULL)
     {
         printf("%d %s %s\n", found_node->Info.id, found_node->Info.fname, found_node->Info.lname);
     }
     else
-    { 
+    {
         printf("Node not found!\n");
-    }
+    }*/
 
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
