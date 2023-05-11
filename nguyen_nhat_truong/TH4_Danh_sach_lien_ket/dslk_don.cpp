@@ -70,6 +70,20 @@ void PrintList(List &l)
 		}
 	}
 }
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = new_ele;
+	}
+	else
+	{
+		l.pTail ->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
 
 int main()
 {
@@ -84,9 +98,13 @@ int main()
 	List mylist;
 	Init(mylist);
 	
-	AddFirst(mylist, new_ele1);
+	/*AddFirst(mylist, new_ele1);
 	AddFirst(mylist, new_ele2);
-	AddFirst(mylist, new_ele3);	
+	AddFirst(mylist, new_ele3);	*/
+	
+	AddTail(mylist, new_ele1);
+	AddTail(mylist, new_ele2);
+	AddTail(mylist, new_ele3);	
 	
 	PrintList(mylist);
 	
