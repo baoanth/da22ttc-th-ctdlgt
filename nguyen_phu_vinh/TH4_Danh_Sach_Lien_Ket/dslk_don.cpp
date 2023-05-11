@@ -62,6 +62,7 @@ void PrintList(List l)
 	}
 	
 }
+<<<<<<< HEAD
 void AddTail (List &l,Node *new_ele)
 {
 	if (l.pHead==NULL)
@@ -76,6 +77,8 @@ void AddTail (List &l,Node *new_ele)
 	}
 	
 }
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 
 
 int main()
@@ -83,18 +86,25 @@ int main()
     struct Person per1 = {1, "Nguyen", "Vinh" };
 	struct Person per2 = {2, "Phu", "Vinh" };
 	struct Person per3 = {3, "Vinh", "Phu" };
+<<<<<<< HEAD
     struct Person per4 = {4, "vinh", "nguyen" };
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+<<<<<<< HEAD
     Node* new_ele4 = GetNode(per4);
+=======
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
     List my_list;
     Init(my_list);
 
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+<<<<<<< HEAD
     
 //	PrintList(my_list);
 	
@@ -106,5 +116,9 @@ int main()
 	PrintList(my_list);
 	
 	return 0;
+=======
+	PrintList(my_list);
+
+>>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
 }
 
