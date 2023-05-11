@@ -75,7 +75,7 @@ void Buble_Sort(int a[], int n)
 { 
 	int i, j;
 	
-	for (i = 1 ; i<n-1 ; i++)
+	for (i = 0 ; i<n-1 ; i++)
 	{
 		for (j =n-1; j >i ; j --)
 		{
@@ -89,18 +89,53 @@ void Buble_Sort(int a[], int n)
 int main()
 {
 	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
-	print_array(my_array, N);
-	printf("1. SelectionSort\n");
-	Selection_Sort(my_array, N);
+//	print_array(my_array, N);
+//	printf("1. SelectionSort\n");
+//	Selection_Sort(my_array, N);
+//	
+//	printf("2. InsertionSort\n");
+//	Insertion_Sort(my_array, N);
+//	
+//	printf("3. InterchangeSort\n");
+//	Interchange_Sort(my_array, N);
+//	
+//	printf("4.BubleSort\n");
+//	Buble_Sort(my_array, N);
+while(1)
+{
+	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
+		
+	int lc;
+	printf("0. EXIT\n");
+	printf("1. Sap xep chen truc tiep\n");
+	printf("2. Sap xep chon truc tiep\n");
+	printf("3. Sap xep doi cho truc tiep\n");
+	printf("4. Sap xep noi bot\n");
+	printf("--------------------------------\n");
+	printf("Moi luc chon chuc nang\n");
+	scanf("%d", &lc);
 	
-	printf("2. InsertionSort\n");
-	Insertion_Sort(my_array, N);
-	
-	printf("3. InterchangeSort\n");
-	Interchange_Sort(my_array, N);
-	
-	printf("4.BubleSort\n");
-	Buble_Sort(my_array, N);
+	if(lc == 0)
+	{
+		break;
+	}
+	else if (lc == 1)
+	{
+		Selection_Sort(my_array, N);
+	}
+	else if (lc == 2)
+	{
+		Insertion_Sort(my_array, N);
+	}
+	else if (lc == 3)
+	{
+		Interchange_Sort(my_array, N);
+	}
+	else if (lc == 4)
+	{
+		Buble_Sort(my_array, N);
+	}
+}
 	
 	return  0;
 }
