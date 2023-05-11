@@ -78,6 +78,7 @@ void PrintList(List &l)
 	}
 }
 
+<<<<<<< HEAD
 //Viet ham them nut vao cuoi danh sach
 //void AddAfter(List &l, Node*q, Node* new_ele)
 //{
@@ -138,6 +139,8 @@ void AddTail(List &l, Node *new_ele)
 }
 
 
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
 //Ham main
 int main()
@@ -149,6 +152,7 @@ int main()
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
     Node* new_ele3  = GetNode(per3);
+<<<<<<< HEAD
    
     List my_list;
     Init(my_list);
@@ -169,6 +173,16 @@ int main()
 //    
 //    Node *node
 //    
+=======
+    List my_list;
+    Init(my_list);
+
+    AddFist(my_list, new_ele1);
+    AddFist(my_list, new_ele2);
+    AddFist(my_list, new_ele3);
+    
+    PrintList(my_list);
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 
 }
 
