@@ -136,7 +136,9 @@ void HeapSort(int a[], int n)
 {
 	int r;
 	CreateHeap(a, n - 1);
-	printf("======Heap=====\n");
+	printf(" = = = = = = = = = = = =Heap= = = = = = = = = = =\n");
+	in_mang(a,n);
+	printf("= = = = = = = = = = = = = = = = = = = = = = = = =\n");
 	r = n - 1;
 	while (r > 0)
 	{
