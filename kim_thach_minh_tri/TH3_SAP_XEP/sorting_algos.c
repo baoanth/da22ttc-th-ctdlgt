@@ -117,7 +117,7 @@ void Shift(int a[], int l, int r)
 
 			j = 2 * i + 1;
 			a[i] = x;
-		}
+		}w
 	}
 }
 
@@ -136,7 +136,9 @@ void HeapSort(int a[], int n)
 {
 	int r;
 	CreateHeap(a, n - 1);
-	printf("======Heap=====\n");
+	printf(" = = = = = = = = = = = =Heap= = = = = =ww = = = = =\n");
+	in_mang(a,n);
+	printf("= = = = = = = = = = = = = = = = = = = = = = = = =\n");
 	r = n - 1;
 	while (r > 0)
 	{
