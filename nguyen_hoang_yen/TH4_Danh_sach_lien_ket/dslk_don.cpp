@@ -1,4 +1,4 @@
-#include <stdio.h>
+  #include <stdio.h>
 #include <conio.h>
 #include <string.h>
 // struct person with 3 fields
@@ -47,24 +47,27 @@ void AddFist(List &l, Node* new_ele)
 		new_ele->pNext = l.pHead;
 		l.pHead = new_ele;
 	}
-void AddTail(List &l, Node new_ele)
+}
+void AddTail(List &l, Node* new_ele)
 {
 	if(l.pHead==NULL)
 	{
 		l.pHead = new_ele;
-		l.pTail = l.Head;	
+		l.pTail = l.pHead;	
 	}
 	else
 	{
-		l.pTail->pNext = new_ele
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
 	}	
 }
-Node* FindNodeByID(list l, int idx)
+
+Node* FindNodeByID(List l, int idx)
 {
 	Node *p;
 	p =l.pHead;
-	while( p!=NULL) &&(p-> Infoi.id !=idx)
-	p= p-> pNext;
+	while((p!=NULL) && ( p->Info.id !=idx ))
+	p = p-> pNext;
 	return p;
 }
 
@@ -72,6 +75,12 @@ void Init(List &l)
 {
 	l. pHead = l.pTail = NULL;
 }
+
+void PrintNode(Node *p)
+{
+	printf("%5d  %20s  %20s\n",p->Info.id, p->Info.fname, p->Info.lname);
+}
+
 void PrintList(List &l)
 {
 	if (l. pHead ==NULL)
@@ -99,14 +108,29 @@ int main()
 	List my_list;
 	Init(my_list);
 	
-	AddFist(my_list, new_ele1);
-	AddFist(my_list, new_ele2);
-	
-	PrintList(my_list);
 	AddTail(my_list, new_ele1);
 	AddTail(my_list, new_ele2);
-return 0;
+	
+	PrintList(my_list);
+	
+	int idx;
+	scanf("%d", &idx);
+   	printf("\n nhap id can tim  ");
+	printf("\n");
+    Node* kq = FindNodeByID( my_list, idx);
+	if ( kq != NULL)
+    	PrintNode(kq);
+	else 
+		printf("Tim khong thay node co id \n  %d",idx);   
+	
+    return 0;
 }
+
+
+	
+
+
+
 
 
 
