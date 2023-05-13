@@ -99,7 +99,6 @@ void addNodeAfter(node &a, node tmp, int idx)
     }
 }
 
-
 void RemoveHead(node &a)
 {
     a = a->Next;
@@ -120,52 +119,48 @@ void RemoveLast(node &a)
 void RemoveNode(node &a, int idx)
 {
     node p = a;
-    node tmp = FindbyID(p,idx);
-   
-    if(tmp == NULL) cout << "khong tim thay ";
+    node tmp = FindbyID(p, idx);
+
+    if (tmp == NULL)
+        cout << "khong tim thay ";
     else
     {
-    	node q =a;
-   		while (q ->Next != tmp)
-   		{
-   			q = q->Next;
-   		}
-   		q->Next = tmp->Next;
+        node q = a;
+        while (q->Next != tmp)
+        {
+            q = q->Next;
+        }
+        q->Next = tmp->Next;
     }
-   
 }
 
 int main()
 {
-	
+
     node Head = NULL;
-    Person per1 = {1, "nguyen", "An"};
-    Person per2 = {2, "Le", "Vinh"};
+    Person per1 = {1, "Nguyen", "An"};
+    Person per2 = {2, "Pham", "Vinh"};
     Person per3 = {3, "Nguyen", "Tong"};
     Person per4 = {4, "Nguyen", "Vinh"};
-
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
-	node p4 = getnode(per4);
+    node p4 = getnode(per4);
 
     addLast(Head, p1);
     addLast(Head, p2);
     addLast(Head, p3);
-	addLast(Head, p4);
+    addLast(Head, p4);
     print_List(Head);
-	
+
     int idx;
-    cout << "nhap vao id can chen"; cin >> idx;
-    
+    cout << "nhap vao id can chen";
+    cin >> idx;
+
     print_List(Head);
 
-   
-
-
-  
-   RemoveNode(Head,idx);
+    RemoveNode(Head, idx);
 
     print_List(Head);
 
