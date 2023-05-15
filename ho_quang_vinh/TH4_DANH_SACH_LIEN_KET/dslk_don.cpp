@@ -77,6 +77,13 @@ void AddTail(List &l, Node *new_ele)
         l.pTail = new_ele;
     }
 }
+Node *FindNodeById(List l, int idx)
+{
+    Node *p = l.pHead;
+    while (p != NULL && p->Info.id != idx)
+        p = p->pNext;
+    return p;
+}
 
 int main()
 {
@@ -94,6 +101,16 @@ int main()
     AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
     PrintList(my_list);
+    int idx;
+    printf("\nNhap id can tim: ");
+    scanf("%d", &idx);
+    Node *tim_kiem = FindNodeById(my_list, idx);
+    if (tim_kiem != NULL)
+        PrintNode(tim_kiem);
+    else
+        printf("Khong tim thay nut co id %d", idx);
+    return 0;
+
 }
     
     

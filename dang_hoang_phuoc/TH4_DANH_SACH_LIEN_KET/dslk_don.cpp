@@ -66,22 +66,52 @@ void PrintList(List l)
         p = p->pNext;
     }
 }
+void AddTail(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+Node *FindNodeById(List l, int idx)
+{
+    Node *p = l.pHead;
+    while (p != NULL && p->Info.id != idx)
+        p = p->pNext;
+    return p;
+}
+
 int main()
 {
-    struct Person per1 = {1, "Dang", "Phuoc"};
-    struct Person per2 = {2, "Tran", "Tho"};
-    struct Person per3 = {3, "Chau", "Qui"};
-    Node *new_ele0 = GetNode(per1);
+    struct Person per1 = {1, "Dang Hoang", "Phuoc"};
+    struct Person per2 = {2, "Tran Chi", "Truong Tho"};
+    struct Person per3 = {3, "Chau The", "Qui"};
+   
+    
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     List my_list;
     Init(my_list);
 
-    
+    AddFirst(my_list, new_ele1);
+    AddTail(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
     PrintList(my_list);
-
-  
-
+    int idx;
+    printf("\nNhap id can tim: ");
+    scanf("%d", &idx);
+    Node *tim_kiem = FindNodeById(my_list, idx);
+    if (tim_kiem != NULL)
+        PrintNode(tim_kiem);
+    else
+        printf("Khong tim thay ten co id %d", idx);
     return 0;
 }
