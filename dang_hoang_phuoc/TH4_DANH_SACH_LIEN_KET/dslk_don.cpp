@@ -66,12 +66,13 @@ void PrintList(List l)
         p = p->pNext;
     }
 }
+
 int main()
 {
-    struct Person per1 = {1, "Dang", "Phuoc"};
-    struct Person per2 = {2, "Tran", "Tho"};
-    struct Person per3 = {3, "Chau", "Qui"};
-    Node *new_ele0 = GetNode(per1);
+    struct Person per1 = {1, "Dang Hoang", "Phuoc"};
+    struct Person per2 = {2, "Tran Chi", "Truong Tho"};
+    struct Person per3 = {3, "Chau The", "Qui"};
+   
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
@@ -79,9 +80,10 @@ int main()
     Init(my_list);
 
     
+    AddFirst(my_list, new_ele1);
+   AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
     PrintList(my_list);
-
-  
-
+   
     return 0;
 }
