@@ -93,9 +93,9 @@ Node *FindNodeById(List l, int idx)
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Vinh"};
-    struct Person per2 = {2, "Tran", "Hung"};
-    struct Person per3 = {3, "Pho", "Ngoc"};
+    struct Person per1 = {1, "Chau", "Qui"};
+    struct Person per2 = {2, "Tran", "Tho"};
+    struct Person per3 = {3, "Dang", "Phuoc"};
     Node *new_ele0 = GetNode(per1);
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
