@@ -101,6 +101,51 @@ int main()
 
 	printf("4.BubleSort\n");
 	Buble_Sort(my_array, N);
+	
+	int main()
+{
+    while (1)
+    {
+        char lua_chon;
+        int my_array[N] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
+        printf("Mang Ban Dau: ");
+        print_array(my_array, N);
+        printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n");
+        lua_chon = getch(); 
+        switch (lua_chon)
+        {
+            case '1':
+            {
+                printf("-> Chon truc tiep: \n");
+                SelectionSort(my_array, N);
+                break;
+            } 
+            case '2':
+            {
+                printf("-> Chen truc tiep: \n");
+                InsertionSort(my_array, N);
+                break;
+            }
+             case '3':
+            {
+                printf("-> Doi cho truc tiep: \n");
+                InterchangeSort(my_array, N);
+                break;
+            } 
+             case '4':
+            {
+                printf("-> Noi bot: \n");
+                BubleSort(my_array, N);
+                break;
+            } 
+            case '0': return 0;
+        }
+        
+    }
+	return 0;
+}
+
 
 	return 0;
 }
