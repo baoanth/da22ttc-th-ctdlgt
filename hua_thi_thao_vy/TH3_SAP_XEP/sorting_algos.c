@@ -135,6 +135,34 @@ void HeapSort(int a[], int n)
 	}
 }
 
+void QuickSort(int a[], int l, int r)
+{
+	int i,j;
+	int x;
+	x = a[(l+r)/2];
+	i =l;
+	j=r;
+	do 
+	{
+		while(a[i] < x) 
+		    i++;
+		while(a[j] > x) 
+		    j--;
+		if(i<=j)
+		{
+			printf("hoan vi %2d <-> %2d", a[i], a[j]);
+			hoanvi(&a[i],&a[j]);
+			print_array(a, N);
+			i++;
+			j--;
+		}
+	}while (i <= j);
+	
+	if(l<j)
+	   QuickSort(a, l, j);
+    if(i<r);
+       QuickSort(a, i, r);
+}
 int main()
 {
 	int my_arr[] = {12,4,26,10,97,1,9,30,13,95};
@@ -149,6 +177,7 @@ int main()
 		printf("3.Interchange sort\n");
 		printf("4.Buble sort\n");
 		printf("5.Heap sort\n");
+		printf("6.Quick sort\n");
 		printf("...\n");
 		printf("chon chuc nang\n");
 		scanf("%d", &lc);
@@ -175,6 +204,10 @@ int main()
 		else if(lc == 5)
 		{
 			HeapSort(my_arr, N);
+		}
+		else if(lc == 6)
+		{
+			QuickSort(my_arr,0, N-1);
 		}
 	}
 	/*printf("1. Selection sort\n");

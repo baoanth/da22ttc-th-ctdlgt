@@ -117,7 +117,7 @@ void Shift(int a[], int l, int r)
 
 			j = 2 * i + 1;
 			a[i] = x;
-		}
+		}w
 	}
 }
 
@@ -136,6 +136,9 @@ void HeapSort(int a[], int n)
 {
 	int r;
 	CreateHeap(a, n - 1);
+	printf(" = = = = = = = = = = = =Heap= = = = = =ww = = = = =\n");
+	in_mang(a,n);
+	printf("= = = = = = = = = = = = = = = = = = = = = = = = =\n");
 	r = n - 1;
 	while (r > 0)
 	{
@@ -161,6 +164,7 @@ void QuickSort(int a[], int l, int r)
 			j--;
 		if (i <= j)
 		{
+			printf("Hoan vi %4d <==> %2d :",a[i],a[j]);
 			Hoanvi(&a[i], &a[j]);
 			in_mang(a, 10);
 			i++;
@@ -234,7 +238,6 @@ void RadixSort(int a[], int n)
 	int i;
 	int b[n], m = a[0], exp = 1;
 
-	
 	for (i = 0; i < n; i++)
 	{
 		if (a[i] > m)
@@ -243,7 +246,6 @@ void RadixSort(int a[], int n)
 		}
 	}
 
-	
 	while (m / exp > 0)
 	{
 		int bucket[10] = {0};
@@ -272,6 +274,38 @@ void RadixSort(int a[], int n)
 	}
 }
 
+void CountingSort(int a[], int n)
+{
+	int i;
+	int b[n], c[101] = {0};
+
+	
+	for (i = 0; i < n; i++)
+	{
+		c[a[i]]++;
+	}
+
+	
+	for (i = 1; i <= 100; i++)
+	{
+		c[i] += c[i - 1];
+	}
+
+	
+	for (i = n - 1; i >= 0; i--)
+	{
+		b[c[a[i]] - 1] = a[i];
+		c[a[i]]--;
+	}
+
+	
+	for (i = 0; i < n; i++)
+	{
+		a[i] = b[i];
+		in_mang(a, n);
+	}
+}
+
 int main()
 {
 
@@ -284,7 +318,7 @@ int main()
 
 		int chon;
 		printf("Vui long chon so tuong ung de chon thuat toan sap xep, Nhap 0 de thoat :\n");
-		printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n5. SX cay\n6. SX phan hoach\n7. SX tron\n8. SX theo co so\n");
+		printf("1. SX chon truc tiep\n2. SX chen truc tiep\n3. SX doi cho truc tiep\n4. SX noi bot\n5. SX cay\n6. SX phan hoach\n7. SX tron\n8. SX theo co so\n9. SX dem\n");
 		printf("Nhap lua chon: ");
 		scanf("%d", &chon);
 
@@ -343,6 +377,13 @@ int main()
 		{
 			printf("==> SX theo co so:\n");
 			RadixSort(my_array, N);
+			break;
+		}
+
+		case 9:
+		{
+			printf("==> SX dem:\n");
+			CountingSort(my_array, N);
 			break;
 		}
 
