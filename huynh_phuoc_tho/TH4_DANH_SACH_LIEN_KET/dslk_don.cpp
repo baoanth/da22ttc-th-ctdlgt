@@ -53,6 +53,19 @@ void AddFirst(List &l, Node* new_ele)
 	}
 }
 
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead == NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
 
 void PrintList(List &l)
 {
@@ -79,11 +92,13 @@ int main()
 	
 	List my_list;
 	
+	
 	 
-	AddFirst(my_list, new_ele3);
-	AddFirst(my_list, new_ele2);
 	AddFirst(my_list, new_ele1);
-	//PrintList(my_list);
+	AddFirst(my_list, new_ele2);
+	AddFirst(my_list, new_ele3);
+	
+	PrintList(my_list);
 		
 		
 
