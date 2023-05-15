@@ -82,6 +82,23 @@ void printList(List &l)
         }
     }
 }
+void output(List &l)
+{
+    Node* p= l.pHead;
+    if(p!= NULL)
+    {
+        printf("%3d%10s%10s\n", p->info.id, p->info.fname , p->info.lname);
+            p= p->pNext;
+    }
+}
+//tim kiem
+Node* FindNodeByID(List l, int idx)
+{
+    Node* p = l.pHead;
+    while(p!= NULL && p->info.id!= idx)
+         p = p-> pNext;
+    return p;
+}
 int main()
 {
     struct Person per1 = {1, "To", "Thuy" };
@@ -94,17 +111,21 @@ int main()
     List my_list;
     Init(my_list);
 
+    int idx;
+
     AddFist(my_list, new_ele1);
+    AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-    
-    AddTail(my_list, new_ele2);
-    
-   
-
-    
-
-
     printList(my_list);
+
+
+    printf("Nhap id can tim\n");
+    scanf("%d", &idx);
+    
+    Node* new_ele = FindNodeByID(my_list,idx);
+    output(my_list);
+
+
 
 
 
