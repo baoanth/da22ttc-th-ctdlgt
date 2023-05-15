@@ -183,6 +183,16 @@ int main()
 	AddFirst(my_list, new_ele3);
 	
 	PrintList(my_list);
+	
+	int idx;
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(my_list, idx);
+/*	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);	*/
 	return 0;
     
 }
