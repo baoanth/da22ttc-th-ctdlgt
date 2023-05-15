@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
 typedef struct Person
 {
 int id;
@@ -9,20 +8,17 @@ char fname[20];
 char lname[20];
 }Person;
 
-
 typedef struct Node
 {
     Person Info;
     Node* pNext;
 }Node;
 
-
 typedef struct List
 {
     Node* pHead;
     Node* pTail;
 }List;
-
 
 Node* GetNode(Person x)
 {
@@ -37,7 +33,6 @@ Node* GetNode(Person x)
 	p->pNext = NULL;
 	return p; 
 }
-
 
 void AddFirst(List &l, Node* new_ele)
 {
@@ -67,6 +62,32 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
+Node* FindNodeByID (List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	
+	while ((p!=NULL)&& (p->Info.id !=idx))
+		p=p->pNext;
+	
+	return p;	
+	
+}
+
+void AddNodeAfter(List &l, int idx,  Node* new_ele)
+{
+	Node* p=FindNodeByID(l,idx);
+	if(p==NULL)
+	{
+		printf("Node with ID %d not found\n", idx);
+		return;
+	}
+/*	if(p==l.Tail)
+	{
+		AddLast(l.new_ele);
+	}*/
+}
+
 void PrintList(List &l)
 {
 	Node *p;
@@ -79,7 +100,6 @@ void PrintList(List &l)
 	}
 }
 
-
 int main()
 {
     struct Person per1 = {1, "Phuoc", "Tho"};
@@ -91,18 +111,12 @@ int main()
   	Node* new_ele3  = GetNode(per3);
 	
 	List my_list;
-	
-	
-	 
+		 
 	AddFirst(my_list, new_ele1);
 	AddFirst(my_list, new_ele2);
 	AddFirst(my_list, new_ele3);
 	
 	PrintList(my_list);
-		
-		
-
-
 	return 0;
     
 }
