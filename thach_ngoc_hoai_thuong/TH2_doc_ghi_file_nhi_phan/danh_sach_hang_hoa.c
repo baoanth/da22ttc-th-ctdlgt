@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+<<<<<<< HEAD
+#define MAX_AMOUNT() 200
+=======
 #define MAX_AMOUNT 1000
+>>>>>>> 1b6b937c7c8a0d1972e9a42bd2b4457776de332b
 
 // struct person with 3 fields
 typedef struct 
@@ -41,10 +45,18 @@ HangHoa* read_DMHH(char * filename, int* count)
 	}
 	
 	fclose(infile);
+<<<<<<< HEAD
+	*n = count;
+    return hh_array;
+}
+
+// Ham in n mau tin trong danh sach hang hoa ra man hinh
+=======
     *count = i;
     return res_dmhh;
 }
 
+>>>>>>> 1b6b937c7c8a0d1972e9a42bd2b4457776de332b
 void print_DMHH(HangHoa* hh, int n)
 {
 	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	

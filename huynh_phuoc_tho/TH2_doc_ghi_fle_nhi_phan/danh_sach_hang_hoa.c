@@ -150,9 +150,10 @@ int main()
 		printf("Khong tim thay hang hoa co ma %s \n", mahangX);
 
 	 }
+	 printf("OK");
 	 return 0;
-
-	 
+     
+	 // Ok
 		
 }	
 
