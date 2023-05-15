@@ -121,7 +121,11 @@ int main()
 	printf("\nDanh sach tren co %d mon hang\n", n);	
 	print_DMHH(mydmhh, n);
 	return 0;
+<<<<<<< HEAD
+	
+=======
 
 
+>>>>>>> 2a6cc9d28d0868de704f20d61e7d04b785145baf
 }
 
