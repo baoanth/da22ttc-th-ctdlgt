@@ -100,6 +100,72 @@ void PrintList(List &l)
 	}
 }
 
+void RemoveHead(List &l)
+{
+/*	if(l.Head==NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	if(l.Head==l.Tail)
+	{
+		free(l.Head);
+		l.Head=NULL;
+		l.Tail=NULl;
+	}
+	else
+	{
+		Node* p=l.Head;
+		l.Head=l.Head->next;
+		free(p);
+	}*/
+}
+
+void RemoveLast(List &l)
+{
+/*	if(l.Head=NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	if(l.Head==l.Tail)
+	{
+		free(l.Head);
+		l.Head=NULL;
+		l.Tail=NULl;
+	}
+	else
+	{
+		Node* p=l.Head;
+		while(p->next!=l.Tail)
+		{
+			p=p->next;
+		}
+		free(l.Tail);
+		l.Tail = p;
+		l.Tail -> next = NULL;
+	}*/
+}
+
+void RemoveNode(List &l, int idx)
+{
+/*	if(l.Head=NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	if(l.Head->info.id  == idx)
+	{
+		RemoveHead(l);
+		return;
+	}
+		Node* p=l.Head;
+		while(p->next!=NULL && p->next->info.id !=idx)
+		{
+			p=p
+		}*/
+}
+
 int main()
 {
     struct Person per1 = {1, "Phuoc", "Tho"};
