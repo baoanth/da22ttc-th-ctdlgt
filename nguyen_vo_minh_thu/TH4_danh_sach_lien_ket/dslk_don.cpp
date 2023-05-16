@@ -134,7 +134,7 @@ int RemoveNode(List &l, int idx)
 	Node *q = NULL;
 	while(p != NULL)
 	{
-		if(p->Info == k) break;
+		if(p->Info.id == idx) break;
 		q = p; p = p->pNext;
 	}
 		if (p == NULL) return 0;
@@ -173,7 +173,7 @@ int main()
    
 	PrintList(my_list);
 	
-	int idx;
+int idx;
 	printf("\nNhap ID can tim : ");
 	scanf("%d",&idx);
 	printf("\n");
