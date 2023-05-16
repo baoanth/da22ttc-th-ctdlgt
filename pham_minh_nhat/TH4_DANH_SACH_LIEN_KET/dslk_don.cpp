@@ -7,27 +7,27 @@ typedef struct Person
     int id;
     char fname[20];
     char lname[20];
-}Person;
+} Person;
 
 typedef struct Node
 {
     Person Info;
-    Node* pNext;    
-}Node;
+    Node *pNext;
+} Node;
 
 typedef struct List
 {
-    Node* pHead;
-    Node* pTail;
-}List;
+    Node *pHead;
+    Node *pTail;
+} List;
 
-Node* GetNode(Person x)
+Node *GetNode(Person x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");  
+        printf("Khong du bo nho de cap phat nut");
         return 0;
     }
     p->Info = x;
@@ -35,36 +35,40 @@ Node* GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node* new_ele)
+void AddFist(List &l, Node *new_ele)
 {
-    if (l.pHead ==NULL)
+    if (l.pHead == NULL)
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
     else
     {
-        new_ele ->pNext = l.pHead;    
+        new_ele->pNext = l.pHead;
         l.pHead = new_ele;
     }
 }
+
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
-void PrintList(List l)
-{
-    Node* ptr = l.pHead;
-    while (ptr != NULL)
-    {
-        printf("%d %s %s\n", ptr->Info.id, ptr->Info.fname, ptr->Info.lname);
-        ptr = ptr->pNext;
-    }
-}
+
 void PrintNode(Node *p)
 {
     printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
+
+void PrintList(List l)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+        p = p->pNext;
+    }
+}
+
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -78,6 +82,7 @@ void AddTail(List &l, Node *new_ele)
         l.pTail = new_ele;
     }
 }
+
 Node *FindNodeById(List l, int idx)
 {
     Node *p = l.pHead;
@@ -85,30 +90,12 @@ Node *FindNodeById(List l, int idx)
         p = p->pNext;
     return p;
 }
-void AddNodeAfter(List &l, int idx, Person new_info)
-{
-    Node *prev_node = FindNodeById(l, idx);
-    if (prev_node == NULL) 
-	{
-        printf("Khong tim thay nut co ID = %d\n", idx);
-        return;
-    }
 
-    Node *new_node = GetNode(new_info);
-    new_node->pNext = prev_node->pNext;
-    prev_node->pNext = new_node;
-
-    if (l.pTail == prev_node) 
-	{
-        l.pTail = new_node;
-    }
-}          
 int main()
 {
-    struct Person per1 = {1, "Gia", "Lac" };
-	struct Person per2 = {2, "Hoai", "Thuong" };
-	struct Person per3 = {3, "Pham", "Vinh" };
-    
+    struct Person per1 = {1, "Nguyen", "Vinh"};
+    struct Person per2 = {2, "Tran", "Hung"};
+    struct Person per3 = {3, "Pho", "Ngoc"};
     Node *new_ele0 = GetNode(per1);
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
