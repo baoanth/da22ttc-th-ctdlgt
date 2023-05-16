@@ -252,7 +252,6 @@ int main()
 #include <conio.h>
 #include <string.h>
 // struct person with 3 fields
-
 typedef struct Person
 {
     int id;
@@ -498,4 +497,3 @@ int main()
 
     return 0;
 }
-
