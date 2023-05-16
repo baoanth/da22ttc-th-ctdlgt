@@ -157,8 +157,8 @@ int RemoveNode(List &l, int idx)
 int main()
 {
 	struct person per1 = {1, "Nguyen", "Vo Minh Thu"};
-	struct person per2 = {2, "Vo", "Thu"};
-	struct person per3 = {3, "Nguyen", "Minh"};
+	struct person per2 = {2, "lam", "Vinh Loc"};
+	struct person per3 = {3, "Nguyen", "Lam"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
