@@ -245,7 +245,7 @@ int main()
     printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
-    PrintList(my_list);
+    PrintList(my_list); 
      
 
     return 0;
