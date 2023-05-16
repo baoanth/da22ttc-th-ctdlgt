@@ -214,10 +214,11 @@ int main()
     List my_list;
     Init(my_list);
 
-/*    AddFirst(my_list, new_ele1);
+/*  AddFirst(my_list, new_ele1);
     AddFirst(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
 */
+
 	AddTail(my_list, new_ele1);
 	AddTail(my_list, new_ele2);
 	AddTail(my_list, new_ele3);
