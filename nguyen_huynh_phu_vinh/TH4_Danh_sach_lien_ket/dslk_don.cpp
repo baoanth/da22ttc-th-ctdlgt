@@ -35,7 +35,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node *new_ele)
+void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -103,7 +103,7 @@ void AddNodeAfter(List &l, int idx, Node *new_ele4)
             l.pTail = new_ele4;
     }
     else
-        AddFist(l, new_ele4);
+        AddFirst(l, new_ele4);
 }
 
 void RemoveHead(List &l)
@@ -122,9 +122,17 @@ void RemoveLast(List &l)
     if (l.pTail != NULL)
     {
         Node *p = l.pTail;
-        l.pTail = p;
-        l.pTail = p->pNext;
-        if(l.pTail == NULL) l.pHead == NULL;
+        Node *q = NULL;
+        while (p->pNext != NULL)
+        {
+            q = p;
+            p = p->pNext;
+        }
+        if (q != NULL)
+            q->pNext = NULL;
+        else
+            l.pHead = NULL;
+        l.pTail = q;
         delete p;
     }
 }
@@ -165,6 +173,24 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
+void InputNode(List &l)
+{
+    struct Person new_per;
+    printf("\nVui long nhap id: ");
+    scanf("%d", &new_per.id);
+    printf("\nVui long nhap fname: ");
+    scanf("%s", &new_per.fname);
+    printf("\nVui long nhap lname: ");
+    scanf("%s", &new_per.lname);
+    
+    Node *new_ele = GetNode(new_per);
+    int vi_tri;
+    printf("\nCan them vao vi tri nao: ");
+    scanf("%d", &vi_tri);
+    AddNodeAfter(l, vi_tri, new_ele);
+
+}
+
 int main()
 {
     struct Person per1 = {1, "Nguyen", "Vinh"};
@@ -186,6 +212,7 @@ int main()
 
     PrintList(my_list);
 
+    /*
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
@@ -215,5 +242,10 @@ int main()
     int kq = RemoveNode(my_list,idx);
     if(kq == 1)
     PrintList(my_list);
+    */
+
+    InputNode(my_list);
+    PrintList(my_list);
+
     return 0;
 }
