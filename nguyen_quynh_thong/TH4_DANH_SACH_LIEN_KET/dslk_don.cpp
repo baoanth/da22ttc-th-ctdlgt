@@ -197,12 +197,12 @@ int main()
     struct Person per1 = {1, "Nguyen", "Thong"};
     struct Person per2 = {2, "Huynh", "Nhan"};
     struct Person per3 = {3, "Pham", "Vinh"};
-    struct Person per4 = {4, "Hoai", "Thuong"};
+    
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
-    Node *new_ele4 = GetNode(per4);
+   
 
     List my_list;
     Init(my_list);
@@ -210,6 +210,7 @@ int main()
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
+   
 
     PrintList(my_list);
 
@@ -250,6 +251,9 @@ int main()
 
     return 0;
 }
+
+
+
 
 
 
