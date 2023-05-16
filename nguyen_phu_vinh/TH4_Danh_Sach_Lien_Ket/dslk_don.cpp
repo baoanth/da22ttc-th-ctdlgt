@@ -108,7 +108,7 @@ void RemoveHead(List &l)
 {
     if (l.pHead == NULL)
     {
-        printf("Error: the list is empty\n");
+        printf("loi: danh sach rong\n");
     }
     else if (l.pHead->pNext == NULL)
     {
@@ -126,7 +126,7 @@ void RemoveLast(List &l)
 {
     if (l.pHead == NULL)
     {
-        printf("Error: the list is empty\n");
+        printf("loi: danh sach rong\n");
     }
     else if (l.pHead->pNext == NULL)
     {
@@ -175,11 +175,19 @@ void RemoveNode(List &l, int idx)
         }
         else
         {
-            printf("Loi: khong tim thay nut co id %d\n", idx);
+            printf("Loi: khong tim thay nut cuoi de xoa %d\n", idx);
         }
     }
 }
-
+void InputNode(List &l)
+{
+    struct Person new_per;
+    Node *new_ele = GetNode(new_per);
+    int vi_tri;
+    printf("\nCan them vao vi tri nao: ");
+    scanf("%d", &vi_tri);
+    AddNodeAfter(l, vi_tri, new_ele);
+}
 
 
 	
@@ -236,12 +244,22 @@ int main()
     
 	RemoveLast(my_list);
     printf("***********************************\n");
-    printf("sau khi xoa node dau va node cuoi:\n");
+    printf("sau khi xoa node cuoi:\n");
     PrintList(my_list); 
 
     RemoveNode(my_list,idx);
     printf("***********************************\n");
-    printf("sau khi xoa node dau, node cuoi, node co idx\n ");
-	PrintList(my_list);      
+    printf("sau khi xoa node dau cuoi va node thu idx\n");
+    PrintList(my_list);
+
+    printf("nhap struct person moi\n");
+    printf("nhap id:");
+    scanf("%d",idx);
+    printf("nhap fname:");
+    scanf("%s",new_per.fname);
+    
+
+
+
 	return 0;
 }
