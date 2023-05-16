@@ -88,7 +88,27 @@ void BubbleSort(int a[ ], int n)
 		}
 	}
 }
-
+void QuickSort(int a[50], int l , int r)
+{
+	int i, j, x;
+	x = a[(l+r)/2];
+	i = l; j = r;
+	do
+	{
+		while (a[i]<x) i++;
+		while (a[j]>x) j--;
+		if(i<=j)
+		{
+			Hoanvi(&a[i],&a[j]);
+			i++;j--;
+		}
+	}while(i<j);
+	if(l<j)
+		quickSort(a,l,j);
+	if(i<r)
+		quickSort(a,i,r);
+	print_array(a,14);
+}
 
 int main()
 {
@@ -100,7 +120,7 @@ int main()
         print_array(my_array, N);
        
    		printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
-        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n5. QuickSort");
       
         lua_chon = getch(); 
         switch (lua_chon)
@@ -127,6 +147,13 @@ int main()
             {
                 printf("-> Noi bot: \n");
                 BubbleSort(my_array, N);
+                break;
+            } 
+             case '5':
+            {
+                printf("-> QuickSort : \n");
+                QuickSort(my_array,0, N-1);
+                print_array(a,n);
                 break;
             } 
 			
