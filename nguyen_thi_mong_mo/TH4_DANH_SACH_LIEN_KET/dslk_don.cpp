@@ -40,7 +40,7 @@ void AddFirst(List &l, Node* new_ele)
     if (l.pHead ==NULL)
     {
         l.pHead = new_ele;
-        l.pTail = l.pHead;
+        l.pTail = l.pHead;      
     }
     else
     {
@@ -108,7 +108,7 @@ void PrintList(List &l)
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
 			p = p->pNext;
 		}		
-	}
+	}   
 }
 =======
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
