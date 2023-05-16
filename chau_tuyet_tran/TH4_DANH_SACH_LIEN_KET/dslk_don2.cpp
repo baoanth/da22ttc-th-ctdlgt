@@ -123,7 +123,7 @@ void Init(List &l)
 
 void PrintNode(Node *p)
 {
-	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
+	printf("| %3d | %20s | %10s |\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 void PrintList(List &l)
@@ -133,7 +133,7 @@ void PrintList(List &l)
 	
 	while (p!= NULL)
 	{
-		printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
+		printf("| %3d | %20s | %10s |\n",p->Info.id, p->Info.fname, p->Info.lname);
 		p = p->pNext;
 	}
 }
