@@ -235,6 +235,7 @@ int main()
     printf("\n");
 
     PrintList(my_list);
+    
 
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
