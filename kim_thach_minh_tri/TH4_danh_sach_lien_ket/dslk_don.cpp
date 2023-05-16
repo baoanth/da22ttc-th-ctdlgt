@@ -237,8 +237,7 @@ int main()
         printf("**************************************************************\n");
     }
 
-    
-    AddNodeAfter(my_list, idx, new_ele5);
+        AddNodeAfter(my_list, idx, new_ele5);
 
     printf("Sau khi them nut : \n");
     printf("\n");
