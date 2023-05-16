@@ -217,28 +217,26 @@ int main()
 
     Node *new_ele5 = GetNode(per5);
     AddNodeAfter(my_list, idx, new_ele5);
-    
+
     printf("Sau khi them nut : \n");
     printf("\n");
     PrintList(my_list);
-    
-    
+
     RemoveHead(my_list);
     printf("**************************************************************\n");
     printf("Sau khi xoa nut dau : \n");
     printf("\n");
-   
+
     PrintList(my_list);
 
     RemoveLast(my_list);
     printf("**************************************************************\n");
     printf("Sau khi xoa nut cuoi : \n");
     printf("\n");
-   
+
     PrintList(my_list);
 
-    
-	printf("Nhap id can xoa:");
+    printf("Nhap id can xoa:");
     scanf("%d", &idx);
     RemoveNode(my_list, idx);
     printf("**************************************************************\n");
@@ -246,5 +244,5 @@ int main()
     printf("\n");
     PrintList(my_list);
 
-        return 0;
+    return 0;
 }
