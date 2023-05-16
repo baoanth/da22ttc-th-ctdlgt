@@ -243,6 +243,7 @@ int main()
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
+    
 
     return 0;
 }
