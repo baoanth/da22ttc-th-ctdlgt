@@ -79,8 +79,6 @@ void Add_First(List &l, Node* new_ele)
 	}
 }
 
-//new_ele = Get_Node(x);
-
 void Add_Tail(List &l, Node* new_ele)
 {
 	if(l.pHead==NULL)
@@ -187,6 +185,19 @@ int RemoveNode(List &l, int idx)
 			l.pTail=NULL;
 	}
 	return 1;
+}
+
+void InputNode(List &l)
+{
+	Person p;
+	
+	printf("NHAP THONG TIN PERSON:\n");
+	printf("Nhap First Name: ");
+	gets(p.fname);
+	printf("Nhap Last Name: ");
+	gets(p.lname);
+	printf("Ban muon them vao vi tri so: ");
+	scanf("%d", &p.id);
 }
 
 int main()

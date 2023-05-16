@@ -35,7 +35,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node *new_ele)
+void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -93,19 +93,19 @@ Node *FindNodeByID(List l, int idx)
     return p;
 }
 
-void AddNodeAfter(List &l, int idx, Node *new_ele)
+void AddNodeAfter(List &l, int idx, Node *new_ele5)
 {
     Node *q = FindNodeByID(l, idx);
 
-    if (q != NULL && new_ele != NULL)
+    if (q != NULL && new_ele5 != NULL)
     {
-        new_ele->pNext = q->pNext;
-        q->pNext = new_ele;
+        new_ele5->pNext = q->pNext;
+        q->pNext = new_ele5;
         if (q == l.pTail)
-            l.pTail = new_ele;
+            l.pTail = new_ele5;
     }
-    //	else
-    //	AddFirst(l, new_ele);
+    else
+        AddFirst(l, new_ele5);
 }
 
 void RemoveHead(List &l)
@@ -205,12 +205,13 @@ int main()
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
+    Node *new_ele5 = GetNode(per5);
 
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele3);
+    AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele3);
 
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
@@ -219,54 +220,55 @@ int main()
 
     printf("**************************************************************\n");
 
-        int idx;
-        printf("Nhap id :");
-        scanf("%d", &idx);
-    
-        Node *node_kq =
-            FindNodeByID(my_list, idx);
-        if (node_kq != NULL)
-        {
-            PrintNode(node_kq);
-            printf("**************************************************************\n");
-        }
-        else
-        {
-            printf("Khong tim thay id %d\n", idx);
-            printf("**************************************************************\n");
-        }
-    
-        Node *new_ele5 = GetNode(per5);
+    int idx;
+    printf("Nhap id :");
+    scanf("%d", &idx);
+
+    Node *node_kq =
+        FindNodeByID(my_list, idx);
+    if (node_kq != NULL)
+    {
+        PrintNode(node_kq);
+        printf("**************************************************************\n");
+    }
+    else
+    {
+        printf("Khong tim thay id %d\n", idx);
+        printf("**************************************************************\n");
+    }
+
         AddNodeAfter(my_list, idx, new_ele5);
-    
-        printf("Sau khi them nut : \n");
-        printf("\n");
-        PrintList(my_list);
-    
-        RemoveHead(my_list);
-        printf("**************************************************************\n");
-        printf("Sau khi xoa nut dau : \n");
-        printf("\n");
-    
-        PrintList(my_list);
-    
-        RemoveLast(my_list);
-        printf("**************************************************************\n");
-        printf("Sau khi xoa nut cuoi : \n");
-        printf("\n");
-    
-        PrintList(my_list);
-    
-    
-        printf("Nhap id can xoa:");
-        scanf("%d", &idx);
-        RemoveNode(my_list, idx);
-        printf("**************************************************************\n");
-        printf("Sau khi thuc hien thao tac : \n");
-        printf("\n");
-        PrintList(my_list);
+
+    printf("Sau khi them nut : \n");
+    printf("\n");
+    PrintList(my_list);
+
+    RemoveHead(my_list);
+    printf("**************************************************************\n");
+    printf("Sau khi xoa nut dau : \n");
+    printf("\n");
+
+    PrintList(my_list);
+
+    RemoveLast(my_list);
+    printf("**************************************************************\n");
+    printf("Sau khi xoa nut cuoi : \n");
+    printf("\n");
+
+    PrintList(my_list);
+
+    printf("Nhap id can xoa:");
+    scanf("%d", &idx);
+    RemoveNode(my_list, idx);
+    printf("**************************************************************\n");
+    printf("Sau khi thuc hien thao tac : \n");
+    printf("\n");
+    PrintList(my_list);
 
     InputNode(my_list);
+    printf("**************************************************************\n");
+    printf("Sau khi thuc hien thao tac : \n");
+    printf("\n");
     PrintList(my_list);
 
     return 0;

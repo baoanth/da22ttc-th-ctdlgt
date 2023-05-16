@@ -37,7 +37,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node *new_ele)
+void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -163,6 +163,44 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+	Node *q = FindNodeByID(l, idx);
+	 
+	if(q!=NULL)
+	{
+		new_ele->pNext=q->pNext;
+		q->pNext=new_ele;
+		if(q==l.pTail)
+			l.pTail=new_ele;
+	}
+	else
+		AddFirst(l, new_ele);
+}
+
+void InputNode(List &l)
+{
+    Person p;
+    printf("Nhap id: ");
+    scanf("%d", &p.id);
+    fflush(stdin);
+
+    printf("Nhap first name: ");
+    gets(p.fname);
+    fflush(stdin);
+
+    printf("Nhap last name: ");
+    gets(p.lname);
+
+    Node *new_node = GetNode(p);
+
+    int idx;
+    printf("Nhap vi tri Node can them: ");
+    scanf("%d", &idx);
+
+    AddNodeAfter(l, idx-1, new_node);
+}
+
 int main()
 {
     struct Person per1 = {1, "C", "AB"};
@@ -176,9 +214,9 @@ int main()
     List my_list;
     Init(my_list);
 
-//  AddFist(my_list, new_ele1);
-//  AddFist(my_list, new_ele2);
-//  AddFist(my_list, new_ele3);
+    //  AddFist(my_list, new_ele1);
+    //  AddFist(my_list, new_ele2);
+    //  AddFist(my_list, new_ele3);
 
     AddTail(my_list, new_ele1);
     AddTail(my_list, new_ele2);
@@ -196,15 +234,20 @@ int main()
         PrintNode(Node_kq);
     else
         printf("Khong tim thay ID %d", idx);
+	
+	printf("\n*** Them Node ***\n");
+    InputNode(my_list);
+    printf("\nDanh sach sau khi them Node\n");
+	PrintList(my_list);
+	
+    /*	RemoveHead(my_list);
+        printf("\nDanh sach sau khi xoa phan tu dau\n");
+        PrintList(my_list);
 
-/*	RemoveHead(my_list);
-    printf("\nDanh sach sau khi xoa phan tu dau\n");
-    PrintList(my_list);
-
-    RemoveAfter(my_list, );
-    printf("\nDanh sach sau khi xoa phan tu cuoi\n");
-    PrintList(my_list);
-*/
+        RemoveAfter(my_list, );
+        printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+        PrintList(my_list);
+    */
     printf("\nNhap id can xoa: ");
     scanf("%d", &idx);
 
@@ -217,6 +260,6 @@ int main()
 
     printf("\nDanh sach sau khi xoa Node\n");
     PrintList(my_list);
-
+    
     return 0;
 }
