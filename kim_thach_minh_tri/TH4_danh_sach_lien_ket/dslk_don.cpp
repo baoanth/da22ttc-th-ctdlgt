@@ -169,6 +169,31 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
+void AddPerson(List &l)
+{
+    Person p;
+    printf("Nhap thong tin nguoi:\n");
+    printf("ID: ");
+    scanf("%d", &p.id);
+     fflush(stdin);
+    printf("First name: ");
+    gets(p.fname);
+    fflush(stdin);
+    printf("Last name: ");
+    gets(p.lname);
+
+    Node *new_node = GetNode(p);
+
+    int idx;
+    printf("Nhap vi tri can them: ");
+    scanf("%d", &idx);
+
+    AddNodeAfter(l, idx-1, new_node);
+
+    printf("Da them nguoi vao danh sach!\n");
+}
+
+
 int main()
 {
     struct Person per1 = {1, "Kim", "Tri"};
@@ -176,10 +201,7 @@ int main()
     struct Person per3 = {3, "Kim", "Minh"};
     struct Person per4 = {4, "Thach", "Tri"};
     struct Person per5 = {5, "Kim", "MinhTri"};
-    {
-        /* data */
-    };
-
+   
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
@@ -235,7 +257,7 @@ int main()
     printf("\n");
 
     PrintList(my_list);
-    
+
 
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
@@ -245,6 +267,8 @@ int main()
     printf("\n");
     PrintList(my_list);
     
+    AddPerson(my_list);
+    PrintList(my_list);
 
     return 0;
 }
