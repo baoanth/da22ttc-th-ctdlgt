@@ -203,9 +203,9 @@ void InputNode(List &l)
 
 int main()
 {
-    struct Person per1 = {1, "C", "AB"};
-    struct Person per2 = {2, "F", "DE"};
-    struct Person per3 = {3, "I", "GH"};
+    struct Person per1 = {1, "Vinh", "Pham The"};
+    struct Person per2 = {2, "An", "Nguyen Hoai"};
+    struct Person per3 = {3, "Tong", "Nguyen Van"};
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
@@ -214,13 +214,14 @@ int main()
     List my_list;
     Init(my_list);
 
-    //  AddFist(my_list, new_ele1);
-    //  AddFist(my_list, new_ele2);
-    //  AddFist(my_list, new_ele3);
+/*  AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
+*/
 
-    AddTail(my_list, new_ele1);
-    AddTail(my_list, new_ele2);
-    AddTail(my_list, new_ele3);
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+	AddTail(my_list, new_ele3);
 
     PrintList(my_list);
 
@@ -240,14 +241,14 @@ int main()
     printf("\nDanh sach sau khi them Node\n");
 	PrintList(my_list);
 	
-    /*	RemoveHead(my_list);
-        printf("\nDanh sach sau khi xoa phan tu dau\n");
-        PrintList(my_list);
+/*	RemoveHead(my_list);
+    printf("\nDanh sach sau khi xoa phan tu dau\n");
+    PrintList(my_list);
 
-        RemoveAfter(my_list, );
-        printf("\nDanh sach sau khi xoa phan tu cuoi\n");
-        PrintList(my_list);
-    */
+    RemoveAfter(my_list, );
+    printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+    PrintList(my_list);
+*/
     printf("\nNhap id can xoa: ");
     scanf("%d", &idx);
 
