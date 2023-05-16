@@ -169,7 +169,7 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
-void AddPerson(List &l)
+void InputNode(List &l)
 {
     Person p;
     printf("Nhap thong tin nguoi:\n");
@@ -268,7 +268,7 @@ int main()
     PrintList(my_list);
     
     AddPerson(my_list);
-    PrintList(my_list);
+    InputNode(my_list);
 
     return 0;
 }
