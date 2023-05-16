@@ -74,6 +74,79 @@ Node* FindNodeByID (List l, int idx)
 	
 }
 
+void AddNodeAfter(List &l, Node *q, Node * new_ele, int idx)
+{
+	if(q!=NULL)
+	{
+		new_ele->pNext = q->pNext;
+		q->pNext = new_ele;
+		if( q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else
+		AddFirst(l, new_ele);
+}
+
+void RemoveHead(List &l)
+{
+	Node *p;
+
+	if(l.pHead != NULL)
+	{
+		p = l.pHead; 
+		
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+
+}
+
+void RemoveAfter(List &l, Node *q)
+{
+	Node *p;
+	if (q!= NULL)
+	{
+		p = q->pNext;
+		if(p!= NULL)
+		{
+			if(p == l.pTail)
+			l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;
+		}
+	}
+	else
+	RemoveHead(l);
+}
+
+int RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p!=NULL)
+	{
+		if(p->Info.id == idx) break;
+		q = p;
+		p = p->pNext;
+	}
+	if(p == NULL) return 0;
+	if(q != NULL) 
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+		l.pTail = NULL;
+	}
+	return 1;
+}
+
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -102,11 +175,15 @@ int main()
 	struct person per2 = {2, "Vinh", "Pham"};
 	struct person per3 = {3, "Tong", "Nguyen"};
     struct person per4 = {4, "Vinh", "Nguyen"};
+    struct person per5 = {5, "Tho", "Huynh"};
+
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
     Node* new_ele4  = GetNode(per4);
+    Node* new_ele5  = GetNode(per5);
+
    
     List my_list;
     Init(my_list);
@@ -115,6 +192,8 @@ int main()
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
     AddTail(my_list, new_ele4);
+    AddTail(my_list, new_ele5);
+
    
 	PrintList(my_list);
 	
@@ -126,8 +205,22 @@ int main()
 	if(KQ != NULL)
 		PrintNode(KQ);
 	else
-		printf("\nKhong tim thay Node co id : %d", idx);	
+		printf("\nKhong tim thay Node co id : %d", idx);
+		
+		
+	printf("\nNhap ID can xoa : \n");
+	scanf("%d", &idx);
 	
+	int kq = RemoveNode(my_list, idx);
+	
+	if(kq!=0)
+		printf("Da xoa Node co id = %d\n", idx);
+	else	
+		printf("Khong the xoa Node.\n");
+		
+		printf("Danh sach sau khi thuc hien:\n");
+		PrintList(my_list);
+		
 	return 0;
 }
 

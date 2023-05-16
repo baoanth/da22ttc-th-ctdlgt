@@ -93,7 +93,7 @@ void PrintNode(Node *p)
     printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
-Node *FindNodeByID(List l, int idx)
+Node *FindNodeByID(List &l, int idx)
 {
     Node *p;
     p = l.pHead;
@@ -102,26 +102,23 @@ Node *FindNodeByID(List l, int idx)
     return p;
 }
 
-/*
-Person RemoveHead(List &l)
+void RemoveHead(List &l)
 {
     Node *p;
-    Person x;
+
     if (l.pHead != NULL)
     {
         p = l.pHead;
-        x = p->person;
         l.pHead = l.pHead->pNext;
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
     }
-    return x;
 }
 
 void RemoveAfter(List &l, Node *q)
 {
-    NODE *p;
+    Node *p;
     if (q != NULL)
     {
         p = q->pNext;
@@ -143,7 +140,7 @@ int RemoveNode(List &l, int idx)
     Node *q = NULL;
     while (p != NULL)
     {
-        if (p->Info == k)
+        if (p->Info.id == idx)
             break;
         q = p;
         p = p->pNext;
@@ -165,13 +162,12 @@ int RemoveNode(List &l, int idx)
     }
     return 1;
 }
-*/
 
 int main()
 {
-    struct Person per1 = {1, "Vinh", "Pham"};
-    struct Person per2 = {2, "An", "Nguyen"};
-    struct Person per3 = {3, "Tong", "Nguyen"};
+    struct Person per1 = {1, "C", "AB"};
+    struct Person per2 = {2, "F", "DE"};
+    struct Person per3 = {3, "I", "GH"};
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
@@ -201,9 +197,26 @@ int main()
     else
         printf("Khong tim thay ID %d", idx);
 
-//  RemoveHead(my_list);
-//  RemoveAfter(my_list, q);
-//  RemoveNode(my_list, idx);
+/*	RemoveHead(my_list);
+    printf("\nDanh sach sau khi xoa phan tu dau\n");
+    PrintList(my_list);
+
+    RemoveAfter(my_list, );
+    printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+    PrintList(my_list);
+*/
+    printf("\nNhap id can xoa: ");
+    scanf("%d", &idx);
+
+    int kqrm = RemoveNode(my_list, idx);
+
+    if (kqrm != 0)
+        printf("\nDa xoa Node co id %d\n", idx);
+    else
+        printf("\nKhong the xoa Node co id %d\n", idx);
+
+    printf("\nDanh sach sau khi xoa Node\n");
+    PrintList(my_list);
 
     return 0;
 }
