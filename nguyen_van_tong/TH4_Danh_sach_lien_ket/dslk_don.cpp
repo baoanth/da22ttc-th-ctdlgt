@@ -156,17 +156,8 @@ void inputNode(node &a)
     int vt, i = 0;
     cout << "nhap vao vi tri can chen "; cin >> vt;
     node p = a;
-    while (p != nullptr)
-    {
-        if (i == vt)
-        {
-            addbyViTri(a,tmp, i);
-            break;
-        }
-           
-        i++;
-        p = p-> Next;
-    } 
+    addbyViTri(a,tmp, vt);
+    
 }
 int main()
 {
