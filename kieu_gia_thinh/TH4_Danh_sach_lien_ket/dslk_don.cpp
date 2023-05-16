@@ -72,7 +72,7 @@ void PrintList(List &l)
 		p = l.pHead;
 		while(p!=NULL)
 		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			printf("| %5d | %20s | %20s |\n", p->Info.id, p->Info.fname, p->Info.lname);
 			p = p->pNext;	
 		}
 	}

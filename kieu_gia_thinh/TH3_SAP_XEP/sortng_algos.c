@@ -179,8 +179,6 @@ int main()
 	int tam[N],i;
 	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
 	print_array(my_array, N);
-<<<<<<< HEAD
-=======
 	for( i = 0; i<N;i++)
 	{
 		tam[i+1] = my_array[i]; 	
@@ -233,7 +231,7 @@ int main()
 	}
 	
 	
->>>>>>> f74513dbd376928e87b394e099674840d3ece655
+
 //	printf("1. SelectionSort\n");
 //	Selection_Sort(my_array, N);
 //	
@@ -245,7 +243,7 @@ int main()
 //	
 //	printf("4.BubleSort\n");
 //	Buble_Sort(my_array, N);
-<<<<<<< HEAD
+
 	while(1)
 	{
 		int lc;
@@ -268,8 +266,5 @@ int main()
 
 
 
-=======
->>>>>>> f74513dbd376928e87b394e099674840d3ece655
-	
 	return  0;
 }
