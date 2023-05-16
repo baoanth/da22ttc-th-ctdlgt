@@ -62,6 +62,70 @@ void AddTail(List &l, Node* new_ele)
 	}
 }
 
+void RemoveHead(List &l)
+{
+	Node *p;
+	if (l.pHead != NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if (l.pHead == NULL)
+		   l.pTail == NULL;
+	}
+}
+
+void RemoveAfter(List &l, Node *q)
+{
+	Node *p;
+	if (q != NULL)
+	{
+		p = q->pNext;
+		if (p != NULL)
+		{
+			if(p == l.pTail)
+			l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;
+		}
+		
+	}
+	else
+	RemoveHead(l);
+}
+
+int RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p != NULL)
+	{
+		if(p->Info.id == idx)
+		  break;
+		q = p;
+		p = p->pNext;
+	}
+	if (p == NULL)
+	{
+	    return 0;
+        printf("Khong tim thay Node co id = %d", idx);
+    }
+    if(q != NULL)
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+		   l.pTail = NULL;
+	}
+	return 1;
+}
+
 Node* FindNodeByID(List l, int idx)
 {
 	Node *p;
@@ -122,7 +186,6 @@ int main()
 	AddTail(mylist, new_ele2);
 	AddTail(mylist, new_ele3);	
 	
-	
 	PrintList(mylist);
 	
 	int idx;
@@ -134,6 +197,17 @@ int main()
 		PrintNode(KQ);
 	else
 		printf("\nKhong tim thay Node co ID : %d",idx);
+	
+	
+	printf("\nNhap id can xoa ");
+	scanf("%d", &idx);
+	int kq = RemoveNode(mylist, idx);
+	if (kq!=0)
+	   printf("\nDa xoa Node co id = %d", idx);
+	else
+	   printf("\nKhong the xoa Node co id = %d", idx);
+	printf("\nDanh sach sau khi thao tac\n");
+	PrintList(mylist);
 	
 	return 0;
 }
