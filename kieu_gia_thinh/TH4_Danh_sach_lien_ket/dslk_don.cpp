@@ -141,9 +141,10 @@ int RemoveNode(List &l, int idx)
 	}
 	if(p == NULL)
 	return 0;//Khong tim thay Idx
-	
-	if(p == l.pTail)
+	if(q!=NULL)
 	{
+	if(p == l.pTail)
+	
 		if(p==l.pTail)
 			l.pTail = q;
 		q->pNext = p->pNext;
@@ -208,6 +209,12 @@ int main()
     	PrintNode(KQ);
 	else 
 	printf("\nKhong tim thay Node co ID: %d", idx);
+	
+	printf("\nNhap ID can xoa: ");
+	scanf("%d", &idx);
+	RemoveNode(my_list, idx);
+	PrintList(my_list);
+	
 	
 	return 0;
 }
