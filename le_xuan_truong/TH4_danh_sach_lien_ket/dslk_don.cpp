@@ -74,6 +74,21 @@ Node* FindNodeByID (List l, int idx)
 	
 }
 
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+	Node *q;
+	q= FindNodeByID(l,idx);
+	if ( q!=NULL)
+	{
+		new_ele->pNext = q->pNext;
+		q->pNext = new_ele;
+		if(q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else 
+		AddFirst(l, new_ele);
+}
+    
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -111,11 +126,15 @@ int main()
 
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
-    AddTail(my_list, new_ele3);
-   
+    PrintList(my_list);
+    
+	int idx;
+	printf("\nNhap vi tri ID can chen vao : ");
+	scanf("%d",&idx);
+    AddNodeAfter(my_list, idx,new_ele3);
+    
 	PrintList(my_list);
 	
-	int idx;
 	printf("\nNhap ID can tim : ");
 	scanf("%d",&idx);
 	printf("\n");
