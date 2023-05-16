@@ -121,6 +121,8 @@ void RemoveLast(List &l, Node *q)
 		RemoveHead(l);
 }
 	
+	
+	
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -176,10 +178,10 @@ int main()
 	else
 		printf("\nKhong tim thay Node co ID : %d",idx);	
 	
-	printf("\nSau khi xoa nut dau va cuoi : \n");
-	RemoveHead(my_list);
-	//RemoveLast(my_list, KQ);
-	PrintList(my_list);
+//	printf("\nSau khi xoa nut dau va cuoi : \n");
+//	RemoveHead(my_list);
+//	RemoveLast(my_list, KQ);
+//	PrintList(my_list);
 	
 	return 0;
 }
