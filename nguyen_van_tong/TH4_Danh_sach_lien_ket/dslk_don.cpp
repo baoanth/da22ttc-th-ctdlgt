@@ -134,6 +134,40 @@ void RemoveNode(node &a, int idx)
     }
 }
 
+void addbyViTri(node &a,node tmp, int vt)
+{
+    node p = a;
+   for(int i=0; i < vt-1;i++)
+   {
+        p = p-> Next;
+   }
+    tmp-> Next = p->Next;
+    p->Next = tmp;
+
+}
+
+void inputNode(node &a)
+{
+    Person per;
+    cout << "nhap vao id "; cin >> per.id;
+    cout << "nhap vao fname "; cin >> per.fname;
+    cout << "nhap vao lname "; cin >> per.lname;
+    node tmp = getnode(per);
+    int vt, i = 0;
+    cout << "nhap vao vi tri can chen "; cin >> vt;
+    node p = a;
+    while (p != nullptr)
+    {
+        if (i == vt)
+        {
+            addbyViTri(a,tmp, i);
+            break;
+        }
+           
+        i++;
+        p = p-> Next;
+    } 
+}
 int main()
 {
 
@@ -154,14 +188,7 @@ int main()
     addLast(Head, p4);
     print_List(Head);
 
-    int idx;
-    cout << "nhap vao id can chen";
-    cin >> idx;
-
-    print_List(Head);
-
-    RemoveNode(Head, idx);
-
+    inputNode(Head);
     print_List(Head);
 
     return 0;
