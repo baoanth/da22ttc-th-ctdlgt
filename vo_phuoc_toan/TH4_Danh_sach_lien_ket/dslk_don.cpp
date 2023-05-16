@@ -1,196 +1,182 @@
 #include <stdio.h>
-#include <conio.h>
-#include <string.h>
-// struct person with 3 fields
-typedef struct Person
+#include <stdlib.h>
+
+typedef struct person
 {
     int id;
     char fname[20];
     char lname[20];
-}Person;
+}person;
 
 typedef struct Node
 {
-    Person Info;
-    Node* pNext;    
+	person Info;
+	Node* pNext;
 }Node;
 
 typedef struct List
 {
-    Node* pHead;
-    Node* pTail;
+	Node* pHead;
+	Node* pTail;
 }List;
 
-Node* GetNode(Person x)
+Node* GetNode(person x)
 {
-    Node *p;
-    p = new Node;
-    if (p==NULL)
-    {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
-    }
-    p->Info = x;
-    p->pNext = NULL;
-    return p;
+	Node *p;
+	p = new Node;
+	if (p==NULL)   
+	{ 
+		printf("Khong du bo nho !"); 
+		return NULL; 
+	}
+	p->Info = x; 
+	p->pNext = NULL;
+	return p; 
 }
 
-void AddFist(List &l, Node* new_ele)
+void AddFirst(List &l, Node* new_ele)
 {
-    if (l.pHead ==NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        new_ele ->pNext = l.pHead;    
-        l.pHead = new_ele;
-    }
-}
-void Init(List &l)
-{
-    l.pHead = NULL;
-	l.pTail = NULL;
-}
-void AddLast(List& l, Node* new_ele)
-{
-	if(l.Head==NULL)
+	if (l.pHead == NULL)
 	{
-		l.Tail=new_ele;
+		l.pHead = new_ele;
+		l.pTail  = l.pHead;
 	}
-	else
-	{
-		l.Head->next_ele;
-		l.Tail->new_ele;
+	else 
+	{	
+		new_ele->pNext = l.pHead;  
+		l.pHead = new_ele; 	
 	}
 }
-void PrintList(List l)
+
+void AddTail(List &l, Node *new_ele)
 {
-	Node* p=l.Head;
-	while (p!=NULL)
+	if (l.pHead == NULL)
 	{
-		printf("ID: %d, Ten: %s %s\n", p->info.id, p->info.fname, p->info.lname);
-		p=p->next;
-	}
-}
-Node* FindNodeByID(List l, int idx)
-{
-	Node* p=l.Head;
-	while(p!=NULL && p->info.id!=idx)
-	{
-		p=p->next;
-	}
-	return p;
-}
-void AddNodeAfter(List &l, int idx,  Node* new_ele)
-{
-	Node* p=FindNodeByID(l,idx);
-	if(p==NULL)
-	{
-		printf("Node with ID %d not found\n", idx);
-		return;
-	}
-	if(p==l.Tail)
-	{
-		AddLast(l.new_ele);
-	}
-}
-void AddNodeAfter(List &l, int idx, Node *new_ele)
-{
-	if(l.pHead==NULL)
-	{
-		l.phhead = new_ele;
+		l.pHead = new_ele;
 		l.pTail = l.pHead;
 	}
 	else
 	{
-		l.pTail -> Next = new_ele;
+		l.pTail->pNext = new_ele;
 		l.pTail = new_ele;
 	}
 }
+
+Node* FindNodeByID (List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	
+	while ((p!=NULL)&& (p->Info.id !=idx))
+		p=p->pNext;
+	
+	return p;	
+	
+}
+
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+	Node *q;
+	q= FindNodeByID(l,idx);
+	if ( q!=NULL)
+	{
+		new_ele->pNext = q->pNext;
+		q->pNext = new_ele;
+		if(q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else 
+		AddFirst(l, new_ele);
+}
+    
 void RemoveHead(List &l)
 {
-	if(l.Head==NULL)
+	Node *p;
+	person x;
+	
+	if ( l.pHead != NULL)
 	{
-		printf("List is empty\n");
-		return;
-	}
-	if(l.Head==l.Tail)
-	{
-		free(l.Head);
-		l.Head=NULL;
-		l.Tail=NULl;
-	}
-	else
-	{
-		Node* p=l.Head;
-		l.Head=l.Head->next;
-		free(p);
+		p = l.pHead; 
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
 	}
 }
+    
 void RemoveLast(List &l)
 {
-	if(l.Head=NULL)
+	Node *p;
+	person x;
+	
+	if ( l.pHead != NULL)
 	{
-		printf("List is empty\n");
-		return;
-	}
-	if(l.Head==l.Tail)
-	{
-		free(l.Head);
-		l.Head=NULL;
-		l.Tail=NULl;
-	}
-	else
-	{
-		Node* p=l.Head;
-		while(p->next!=l.Tail)
-		{
-			p=p->next;
-		}
-		free(l.Tail);
-		l.Tail = p;
-		l.Tail -> next = NULL;
+		p = l.pTail; 
+		l.pTail = l.pTail;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
 	}
 }
-void RemoveNode(List &l, int idx)
+void Init(List &l)
 {
-	if(l.Head=NULL)
-	{
-		printf("List is empty\n");
-		return;
-	}
-	if(l.Head->info.id  == idx)
-	{
-		RemoveHead(l);
-		return;
-	}
-		Node* p=l.Head;
-		while(p->next!=NULL && p->next->info.id !=idx)
-		{
-			p=p
-		}
+	l.pHead = l.pTail = NULL;
 }
 
+void PrintNode(Node *p)
+{
+	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
+}
 
+void PrintList(List &l)
+{
+	Node *p;
+	p = l.pHead;
+	
+	while (p!= NULL)
+	{
+		printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
+		p = p->pNext;
+	}
+}
 
 int main()
 {
-    struct Person per1 = {1, "vo", "Phuoc Toan" };
-	struct Person per2 = {2, "Chau", "Thanh Thien" };
-	struct Person per3 = {3, "Kieu", "Gia Thinh" };
-    
-    Node* new_ele1  = GetNode(per1);
+	struct person per1 = {1, "Vo Phuoc", "Toan"};
+	struct person per2 = {2, "Vuong Chi", "Trung"};
+	struct person per3 = {3, "Le Thi Nguyen", "Xuyen"};
+	 
+ 	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
+  	Node* new_ele3  = GetNode(per3);
+   
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
-
-
+    AddFirst(my_list, new_ele1);
+    AddTail(my_list, new_ele2);
+    PrintList(my_list);
+    
+	int idx;
+	printf("\nNhap vi tri ID can chen vao : ");
+	scanf("%d",&idx);
+    AddNodeAfter(my_list, idx,new_ele3);
+    
+	PrintList(my_list);
+	
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(my_list, idx);
+	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);	
+	
+	printf("\nSau khi xoa nut dau va cuoi : \n");
+	RemoveHead(my_list);
+	RemoveLast(my_list);
+	PrintList(my_list);
+	
+	return 0;
 }
+
 

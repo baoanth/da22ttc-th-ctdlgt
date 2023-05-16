@@ -45,7 +45,7 @@ Node* GetNode(Person x)
 }
 
 //Viet ham them mot Node mo vao dau danh sach
-void AddFist(List &l, Node* new_ele)
+void AddFirst(List &l, Node* new_ele)
 {
     if (l.pHead ==NULL)
     {
@@ -59,7 +59,7 @@ void AddFist(List &l, Node* new_ele)
     }
 }
 
-//Ham duyet va in dannh sach ra man hinh
+//Ham duyet va in danh sach ra man hinh
 void PrintList(List &l)
 {
 	if(l.pHead == NULL)
@@ -78,6 +78,104 @@ void PrintList(List &l)
 	}
 }
 
+//Viet ham chen vao cuoi danh sach
+void AddTail(List &l, Node *new_ele)
+{
+	if(l.pHead = NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
+//Viet ham void RemoveHead(List &l)
+void RemoveHead(List &l)
+{
+	Node *p;
+	
+	if(l.pHead !=NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead -> pNext;
+		delete p;
+		if(l.pHead == NULL)
+		l.pTail = NULL;
+	}
+}
+
+//Viet ham void RemoveAfter(List &l, Node *q)
+void RemoveAfter(List &l, Node *q)
+{
+	Node *p;
+	
+	if(q!= NULL)
+	{
+		p = q -> pNext;
+		if(p!=NULL)
+		{
+			if(p==l.pTail)
+			l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;
+		}
+	}
+}
+
+//Viet ham cai dat int RemoveNode(List &l, idx)
+int RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p!=NULL)
+	{
+		if(p->Info.id = idx)
+		break;
+		
+		q = p; 
+		p = p->pNext;
+	}
+	if(p == NULL)
+	return 0;//Khong tim thay Idx
+	if(q!=NULL)
+	{
+	if(p == l.pTail)
+	
+		if(p==l.pTail)
+			l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+			l.pTail = NULL;
+	}
+	return 1;
+}
+
+//Viet ham Node* FindNodeByID(List l, int idx 
+Node* FindNodeByID(List l, int idx) 
+{
+	Node *p;
+	p=l.pHead;
+	
+	while((p!=NULL) && (p->Info.id !=idx))
+		p=p->pNext;
+		
+		return p;
+}
+
+//Viet ham void PrintNode(Node *p)
+void PrintNode(Node *p)
+{
+	printf("%3d | %20s | %10s\n", p->Info.id, p->Info.fname, p->Info.lname);
+}
 
 //Ham main
 int main()
@@ -92,11 +190,32 @@ int main()
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+    AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
+    
+//    AddTail(my_list, new_ele1);
+//    AddTail(my_list, new_ele2);
+//    AddTail(my_list, new_ele3);
     
     PrintList(my_list);
-
+    
+    int idx;
+    printf("\nNhap ID can tim: ");
+    scanf("%d", &idx);
+    printf("\n");
+    Node* KQ = FindNodeByID(my_list, idx);
+    if(KQ !=NULL)
+    	PrintNode(KQ);
+	else 
+	printf("\nKhong tim thay Node co ID: %d", idx);
+	
+	printf("\nNhap ID can xoa: ");
+	scanf("%d", &idx);
+	RemoveNode(my_list, idx);
+	PrintList(my_list);
+	
+	
+	return 0;
 }
 
