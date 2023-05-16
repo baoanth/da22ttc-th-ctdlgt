@@ -214,9 +214,9 @@ int main()
     List my_list;
     Init(my_list);
 
-    //  AddFist(my_list, new_ele1);
-    //  AddFist(my_list, new_ele2);
-    //  AddFist(my_list, new_ele3);
+//  AddFist(my_list, new_ele1);
+//  AddFist(my_list, new_ele2);
+//  AddFist(my_list, new_ele3);
 
     AddTail(my_list, new_ele1);
     AddTail(my_list, new_ele2);
@@ -240,14 +240,14 @@ int main()
     printf("\nDanh sach sau khi them Node\n");
 	PrintList(my_list);
 	
-    /*	RemoveHead(my_list);
-        printf("\nDanh sach sau khi xoa phan tu dau\n");
-        PrintList(my_list);
+/*	RemoveHead(my_list);
+    printf("\nDanh sach sau khi xoa phan tu dau\n");
+    PrintList(my_list);
 
-        RemoveAfter(my_list, );
-        printf("\nDanh sach sau khi xoa phan tu cuoi\n");
-        PrintList(my_list);
-    */
+    RemoveAfter(my_list, );
+    printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+    PrintList(my_list);
+*/
     printf("\nNhap id can xoa: ");
     scanf("%d", &idx);
 
