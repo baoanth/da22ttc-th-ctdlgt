@@ -157,22 +157,22 @@ int main()
     
 	int idx;
 	printf ("-------------------------------------------------");
-	printf("\nVi tri ID: ");
+	printf("\nLocation ID: ");
 	scanf("%d",&idx);
     AddNodeAfter(my_list, idx,new_ele3);
     
 	PrintList(my_list);
 	printf ("-------------------------------------------------");
-	printf("\nID can tim: ");
+	printf("\nID to look for: ");
 	scanf("%d",&idx);
 	printf("\n");
 	Node* KQ = FindNodeByID(my_list, idx);
 	if(KQ != NULL)
 		PrintNode(KQ);
 	else
-		printf("\nKhong tim thay Node co ID : %d",idx);	
+		printf("\nNot Found: %d",idx);	
 	
-	printf("\nSau khi xoa nut dau va cuoi : \n");
+	printf("\nAfter Deletion: \n");
 	RemoveHead(my_list);
 	RemoveLast(my_list);
 	PrintList(my_list);
