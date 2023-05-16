@@ -169,6 +169,30 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
+void InputNode(List &l)
+{
+    Person p;
+    printf("Nhap thong tin nguoi:\n");
+    printf("ID: ");
+    scanf("%d", &p.id);
+    fflush(stdin);
+    printf("First name: ");
+    gets(p.fname);
+    fflush(stdin);
+    printf("Last name: ");
+    gets(p.lname);
+
+    Node *new_node = GetNode(p);
+
+    int idx;
+    printf("Nhap vi tri can them: ");
+    scanf("%d", &idx);
+
+    AddNodeAfter(l, idx - 1, new_node);
+
+    printf("Da them nguoi vao danh sach!\n");
+}
+
 int main()
 {
     struct Person per1 = {1, "Kim", "Tri"};
@@ -176,9 +200,6 @@ int main()
     struct Person per3 = {3, "Kim", "Minh"};
     struct Person per4 = {4, "Thach", "Tri"};
     struct Person per5 = {5, "Kim", "MinhTri"};
-    {
-        /* data */
-    };
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
@@ -198,50 +219,54 @@ int main()
 
     printf("**************************************************************\n");
 
-    int idx;
-    printf("Nhap id :");
-    scanf("%d", &idx);
-
-    Node *node_kq =
-        FindNodeByID(my_list, idx);
-    if (node_kq != NULL)
-    {
-        PrintNode(node_kq);
+        int idx;
+        printf("Nhap id :");
+        scanf("%d", &idx);
+    
+        Node *node_kq =
+            FindNodeByID(my_list, idx);
+        if (node_kq != NULL)
+        {
+            PrintNode(node_kq);
+            printf("**************************************************************\n");
+        }
+        else
+        {
+            printf("Khong tim thay id %d\n", idx);
+            printf("**************************************************************\n");
+        }
+    
+        Node *new_ele5 = GetNode(per5);
+        AddNodeAfter(my_list, idx, new_ele5);
+    
+        printf("Sau khi them nut : \n");
+        printf("\n");
+        PrintList(my_list);
+    
+        RemoveHead(my_list);
         printf("**************************************************************\n");
-    }
-    else
-    {
-        printf("Khong tim thay id %d\n", idx);
+        printf("Sau khi xoa nut dau : \n");
+        printf("\n");
+    
+        PrintList(my_list);
+    
+        RemoveLast(my_list);
         printf("**************************************************************\n");
-    }
+        printf("Sau khi xoa nut cuoi : \n");
+        printf("\n");
+    
+        PrintList(my_list);
+    
+    
+        printf("Nhap id can xoa:");
+        scanf("%d", &idx);
+        RemoveNode(my_list, idx);
+        printf("**************************************************************\n");
+        printf("Sau khi thuc hien thao tac : \n");
+        printf("\n");
+        PrintList(my_list);
 
-    Node *new_ele5 = GetNode(per5);
-    AddNodeAfter(my_list, idx, new_ele5);
-
-    printf("Sau khi them nut : \n");
-    printf("\n");
-    PrintList(my_list);
-
-    RemoveHead(my_list);
-    printf("**************************************************************\n");
-    printf("Sau khi xoa nut dau : \n");
-    printf("\n");
-
-    PrintList(my_list);
-
-    RemoveLast(my_list);
-    printf("**************************************************************\n");
-    printf("Sau khi xoa nut cuoi : \n");
-    printf("\n");
-
-    PrintList(my_list);
-
-    printf("Nhap id can xoa:");
-    scanf("%d", &idx);
-    RemoveNode(my_list, idx);
-    printf("**************************************************************\n");
-    printf("Sau khi thuc hien thao tac : \n");
-    printf("\n");
+    InputNode(my_list);
     PrintList(my_list);
 
     return 0;
