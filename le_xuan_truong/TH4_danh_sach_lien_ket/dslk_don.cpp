@@ -62,27 +62,94 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
-=======
->>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+Node* FindNodeByID (List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	
+	while ((p!=NULL)&& (p->Info.id !=idx))
+		p=p->pNext;
+	
+	return p;	
+	
+}
 
-=======
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
-<<<<<<< HEAD
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
->>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+	Node *q;
+	q= FindNodeByID(l,idx);
+	if ( q!=NULL)
+	{
+		new_ele->pNext = q->pNext;
+		q->pNext = new_ele;
+		if(q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else 
+		AddFirst(l, new_ele);
+}
+    
+void RemoveHead(List &l)
+{
+	Node *p;
+		
+	if ( l.pHead != NULL)
+	{
+		p = l.pHead; 
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+    
+void RemoveLast(List &l, Node *q)
+{
+	Node *p;
+	
+	if ( q != NULL)
+	{
+		p = q ->pNext ;
+		if ( p != NULL)
+	{
+	if(p == l.pTail)
+		l.pTail = q;
+	q->pNext = p->pNext;
+	delete p;
+	}
+}
+	else
+		RemoveHead(l);
+}
+	
+void RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	
+	while( p != NULL)
+	{
+		if(p->Info.id == idx) break;
+		q = p; 
+		p = p->pNext;
+	}
+	 
+	if(q != NULL)
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else 
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+			l.pTail = NULL;
+		
+	}
+
+}	
+	
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -109,91 +176,26 @@ int main()
 {
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
-	
-	 
- 	Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
->>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
-	struct person per3 = {3, "Le Thach Hue", "Meo"};
-
+	struct person per3 = {3, "Le Thach Xuan", "Meo"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
-
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
->>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
    
     List my_list;
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
-    AddTail(my_list, new_ele3);
-   
-=======
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
->>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
-    AddFirst(my_list, new_ele2);
-=======
-    AddTail(my_list, new_ele2);
-    AddTail(my_list, new_ele3);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
-<<<<<<< HEAD
-=======
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
-<<<<<<< HEAD
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
->>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
-=======
->>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+    PrintList(my_list);
     
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+	int idx;
+	printf("\nNhap vi tri ID can chen vao sau no : ");
+	scanf("%d",&idx);
+    AddNodeAfter(my_list, idx, new_ele3);
+    
 	PrintList(my_list);
 	
-	int idx;
 	printf("\nNhap ID can tim : ");
 	scanf("%d",&idx);
 	printf("\n");
@@ -202,6 +204,16 @@ int main()
 		PrintNode(KQ);
 	else
 		printf("\nKhong tim thay Node co ID : %d",idx);	
+	
+	printf("\nNhap ID can xoa : ");
+	scanf("%d",&idx);
+	
+	printf("\nSau khi xoa ID %d : \n", idx);
+//	RemoveHead(my_list);
+//	RemoveLast(my_list, KQ);
+	RemoveNode(my_list, idx);
+	PrintList(my_list);
+
 	
 	return 0;
 }
