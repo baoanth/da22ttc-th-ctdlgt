@@ -61,29 +61,72 @@ void PrintList(List l)
         ptr = ptr->pNext;
     }
 }
+void PrintNode(Node *p)
+{
+    printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+}
+void AddTail(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+Node *FindNodeById(List l, int idx)
+{
+    Node *p = l.pHead;
+    while (p != NULL && p->Info.id != idx)
+        p = p->pNext;
+    return p;
+}
+void AddNodeAfter(List &l, int idx, Person new_info)
+{
+    Node *prev_node = FindNodeById(l, idx);
+    if (prev_node == NULL) 
+	{
+        printf("Khong tim thay nut co ID = %d\n", idx);
+        return;
+    }
 
+    Node *new_node = GetNode(new_info);
+    new_node->pNext = prev_node->pNext;
+    prev_node->pNext = new_node;
 
+    if (l.pTail == prev_node) 
+	{
+        l.pTail = new_node;
+    }
+}          
 int main()
 {
     struct Person per1 = {1, "Nguyen", "Le" };
 	struct Person per2 = {2, "Duy", "Quang" };
 	struct Person per3 = {3, "Pham", "Vinh" };
     
+    Node *new_ele0 = GetNode(per1);
+    Node *new_ele1 = GetNode(per1);
+    Node *new_ele2 = GetNode(per2);
+    Node *new_ele3 = GetNode(per3);
     List my_list;
     Init(my_list);
 
-    Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
-
     AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
+    AddTail(my_list, new_ele2);
     AddFist(my_list, new_ele3);
-
-
     PrintList(my_list);
+    int idx;
+    printf("\nNhap id can tim: ");
+    scanf("%d", &idx);
+    Node *tim_kiem = FindNodeById(my_list, idx);
+    if (tim_kiem != NULL)
+        PrintNode(tim_kiem);
+    else
+        printf("Khong tim thay nut co id %d", idx);
     return 0;
 }
-
-
-
