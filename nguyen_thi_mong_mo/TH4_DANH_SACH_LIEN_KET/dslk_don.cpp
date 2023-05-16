@@ -180,7 +180,11 @@ void PrintList(List &l)
             p = p->pNext;
         }
     }
+<<<<<<< HEAD
 >>>>>>> 6925b7cc4dd77deded6c9e5c526061a2d9449055
+=======
+>>>>>>> 1ec43c1fa76a1d15cd5d2d3267b1bfaa912fc1ac
+>>>>>>> a509ab0940b9d25a56a36507494398d470097e7e
 }
 
 int main()
