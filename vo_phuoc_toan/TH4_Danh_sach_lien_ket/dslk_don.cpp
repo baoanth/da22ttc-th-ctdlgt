@@ -89,6 +89,33 @@ void AddNodeAfter(List &l, int idx, Node *new_ele)
 		AddFirst(l, new_ele);
 }
     
+void RemoveHead(List &l)
+{
+	Node *p;
+	person x;
+	
+	if ( l.pHead != NULL)
+	{
+		p = l.pHead; 
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+    
+void RemoveLast(List &l)
+{
+	Node *p;
+	person x;
+	
+	if ( l.pHead != NULL)
+	{
+		p = l.pTail; 
+		l.pTail = l.pTail;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -115,7 +142,7 @@ int main()
 {
 	struct person per1 = {1, "Vo Phuoc", "Toan"};
 	struct person per2 = {2, "Vuong Chi", "Trung"};
-	struct person per3 = {3, "Le Thi Nguyen ", "Xuyen"};
+	struct person per3 = {3, "Le Thi Nguyen", "Xuyen"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -144,6 +171,12 @@ int main()
 	else
 		printf("\nKhong tim thay Node co ID : %d",idx);	
 	
+	printf("\nSau khi xoa nut dau va cuoi : \n");
+	RemoveHead(my_list);
+	RemoveLast(my_list);
+	PrintList(my_list);
+	
 	return 0;
 }
+
 
