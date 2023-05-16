@@ -267,8 +267,8 @@ int main()
     printf("\n");
     PrintList(my_list);
     
-    AddPerson(my_list);
     InputNode(my_list);
+    PrintList(my_list);
 
     return 0;
 }
