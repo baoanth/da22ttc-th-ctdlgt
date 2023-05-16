@@ -92,8 +92,7 @@ void AddNodeAfter(List &l, int idx, Node *new_ele)
 void RemoveHead(List &l)
 {
 	Node *p;
-	person x;
-	
+		
 	if ( l.pHead != NULL)
 	{
 		p = l.pHead; 
@@ -103,19 +102,25 @@ void RemoveHead(List &l)
 	}
 }
     
-void RemoveLast(List &l)
+void RemoveLast(List &l, Node *q)
 {
 	Node *p;
-	person x;
 	
-	if ( l.pHead != NULL)
+	if ( q != NULL)
 	{
-		p = l.pTail; 
-		l.pTail = l.pTail;
-		delete p;
-		if(l.pHead == NULL) l.pTail = NULL;
+		p = q ->pNext ;
+		if ( p != NULL)
+	{
+	if(p == l.pTail)
+		l.pTail = q;
+	q->pNext = p->pNext;
+	delete p;
 	}
 }
+	else
+		RemoveHead(l);
+}
+	
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -158,7 +163,7 @@ int main()
 	int idx;
 	printf("\nNhap vi tri ID can chen vao : ");
 	scanf("%d",&idx);
-    AddNodeAfter(my_list, idx,new_ele3);
+    AddNodeAfter(my_list, idx, new_ele3);
     
 	PrintList(my_list);
 	
@@ -173,7 +178,7 @@ int main()
 	
 	printf("\nSau khi xoa nut dau va cuoi : \n");
 	RemoveHead(my_list);
-	RemoveLast(my_list);
+	//RemoveLast(my_list, KQ);
 	PrintList(my_list);
 	
 	return 0;
