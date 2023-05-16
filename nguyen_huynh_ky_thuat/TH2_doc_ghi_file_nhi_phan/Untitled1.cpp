@@ -91,7 +91,10 @@ int main()
     HangHoa* mydmhh=  read_DMHH( "DMHH.DAT", &n );
 	
 	printf("\nDanh sach tren co %d mon hang\n", n);	
+<<<<<<< HEAD:chau_thanh_thien/TH2_doc_ghi_fle_nhi_phan/danh_sach_hang_hoa.c
+=======
 	printf_DMHH(mydmhh, n);
+>>>>>>> 1b6b937c7c8a0d1972e9a42bd2b4457776de332b:nguyen_huynh_ky_thuat/TH2_doc_ghi_file_nhi_phan/Untitled1.cpp
 	return 0;
 
 }
