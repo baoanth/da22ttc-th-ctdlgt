@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -270,5 +272,9 @@ int main()
     InputNode(my_list);
     PrintList(my_list);
 
+<<<<<<< HEAD
+>>>>>>> 4e5a62c4974b0bfc73948b764429946ebc1f5461
+=======
     return 0;
 }
+>>>>>>> 8e63614c252e774f190db70f99fc78ad49aea3e1
