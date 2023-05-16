@@ -140,9 +140,9 @@ void PrintList(List &l)
 
 int main()
 {
-	struct person per1 = {1, "Vo Phuoc", "Toan"};
-	struct person per2 = {2, "Vuong Chi", "Trung"};
-	struct person per3 = {3, "Le Thi Nguyen", "Xuyen"};
+	struct person per1 = {1, "Le Xuan", "Truong"};
+	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
+	struct person per3 = {3, "Le Thach Xuan", "Meo"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -178,5 +178,6 @@ int main()
 	
 	return 0;
 }
+
 
 

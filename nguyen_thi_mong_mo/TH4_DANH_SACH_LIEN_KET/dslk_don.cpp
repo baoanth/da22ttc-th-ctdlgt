@@ -40,7 +40,7 @@ void AddFirst(List &l, Node *new_ele)
     if (l.pHead == NULL)
     {
         l.pHead = new_ele;
-        l.pTail = l.pHead;
+        l.pTail = l.pHead;      
     }
     else
     {
@@ -150,6 +150,22 @@ void PrintNode(Node *p)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
+	if (l.pHead ==NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+			p = p->pNext;
+		}		
+	}   
+=======
     if (l.pHead == NULL)
     {
         printf("Danh sach rong\n");
@@ -164,6 +180,7 @@ void PrintList(List &l)
             p = p->pNext;
         }
     }
+>>>>>>> 1ec43c1fa76a1d15cd5d2d3267b1bfaa912fc1ac
 }
 
 int main()
