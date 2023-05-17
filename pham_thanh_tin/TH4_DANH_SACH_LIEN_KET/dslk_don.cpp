@@ -76,7 +76,7 @@ Node* FindNodeByID(List l, int idx)
 	return p;
 }
 
-int RemoveNode(List l, int idx)
+int RemoveNode(List &l, int idx)
 {
     Node *p = l.pHead;
     Node *q = NULL;
@@ -132,9 +132,9 @@ void PrintList(List l)
 
 int main()
 {
-    struct Person per1= {1, "Huynh Van", "Mien"};
-    struct Person per2= {2, "Ho Quang", "Vinh"};
-    struct Person per3= {3, "Ly Ngoc", "Khang"};
+    struct Person per1= {1, "Pham", "Thanh Tin"};
+    struct Person per2= {2, "Pham", "Van Thach"};
+    struct Person per3= {3, "Nguyen", "Thi Kim Le"};
     
     Node* new_ele1 = GetNode(per1);
     Node* new_ele2 = GetNode(per2);
