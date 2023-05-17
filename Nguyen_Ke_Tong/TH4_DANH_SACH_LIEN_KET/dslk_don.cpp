@@ -19,7 +19,12 @@ typedef struct List
 	Node* pHead;
 	Node* pTail;
 }List;
-
+//khoi tao danh sach lien ket
+void Init(List &l)
+{ 
+    l.pHead = l.pTail = NULL;
+}
+//khai bao Node voi info la kieu person
 Node* GetNode(person x)
 {
 	Node *p;
@@ -28,12 +33,12 @@ Node* GetNode(person x)
 	{ 
 		printf("Khong du bo nho !"); 
 		return NULL; 
-	}
+ 	}
 	p->Info = x; 
 	p->pNext = NULL;
 	return p; 
 }
-
+//chen cao dau danh sach
 void AddFirst(List &l, Node* new_ele)
 {
 	if (l.pHead == NULL)
@@ -47,7 +52,7 @@ void AddFirst(List &l, Node* new_ele)
 		l.pHead = new_ele; 	
 	}
 }
-
+//chen vao cuoi danh sach
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -61,7 +66,7 @@ void AddTail(List &l, Node *new_ele)
 		l.pTail = new_ele;
 	}
 }
-
+//tim kiem nut boi id voi gia tri la idx
 Node* FindNodeByID (List l, int idx)
 {
 	Node *p;
@@ -74,16 +79,11 @@ Node* FindNodeByID (List l, int idx)
 	
 }
 
-void Init(List &l)
-{
-	l.pHead = l.pTail = NULL;
-}
-
 void PrintNode(Node *p)
 {
 	printf("%3d | %5s  %s\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
-
+//duyet va in ra mang hinh
 void PrintList(List &l)
 {
 	Node *p;
@@ -95,7 +95,7 @@ void PrintList(List &l)
 		p = p->pNext;
 	}
 }
-
+//them mot nut sau nut co ID la idx
 void AddNodeAfter(List &l, int idx, Node *new_ele5)
 {
     Node *q = FindNodeByID(l, idx);
@@ -110,7 +110,7 @@ void AddNodeAfter(List &l, int idx, Node *new_ele5)
     else
         AddFirst(l, new_ele5);
 }
-
+//xoa nut dau
 void RemoveHead(List &l)
 {
     if (l.pHead != NULL)
@@ -122,7 +122,7 @@ void RemoveHead(List &l)
         delete p;
     }
 }
-
+//xoa nut cuoi
 void RemoveLast(List &l)
 {
     if (l.pTail != NULL)
@@ -142,7 +142,7 @@ void RemoveLast(List &l)
         delete p;
     }
 }
-
+//xoa nut co ID la idx
 int RemoveNode(List &l, int idx)
 {
     Node *p = l.pHead;
