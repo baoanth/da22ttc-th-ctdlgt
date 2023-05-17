@@ -62,6 +62,76 @@ void PrintList ( List l )
    }
 }
 
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead==NULL)  
+	{
+		l.pHead = new_ele;
+		l.pTail  = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele ;
+	}	
+}
+
+void Output (Node* p)
+{
+	
+	printf ("%d %s %s \n", p -> Info.id, p -> Info.fname, p-> Info.lname);
+}
+	
+ Node* FindNodeByID (List l, int idx)
+{
+	Node* p = l.pHead;
+	while ( p != NULL && p -> Info.id != idx)
+	p = p -> pNext;
+	return p;
+}	
+
+/*Data RemoveHead(List &l)
+{
+	Node *p;
+	Data idx;
+	if ( l.pHead != NULL)
+	{
+		p = l.pHead; idx = p->data;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+return idx;	
+}*/
+
+
+int RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while( p != NULL)
+	{
+		if(p->Info.id == idx) break;
+		q = p;
+	    p = p->pNext;
+	}
+	if(p == NULL) 
+	return 0; 
+	if(q != NULL)
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else 
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+		l.pTail = NULL;
+	}
+return 1;
+}
 int main ()
 {
 	struct Person per1 = { 1, "dau", "tay"};
@@ -79,6 +149,33 @@ int main ()
 	AddFirst (my_list, new_ele2);
 	AddFirst (my_list, new_ele3);
 	
+	/*AddTail (my_list, new_ele1);
+	AddTail (my_list, new_ele2);
+	AddTail (my_list, new_ele3);*/
+	
 	PrintList (my_list);
+	
+	int idx;
+	printf ("\n nhap vao ID can tim: ");
+	scanf ("%d", &idx);
+	Node* node_kq = FindNodeByID(my_list, idx);
+	if (node_kq != NULL)
+		Output (node_kq);
+	else 
+		printf ("\n khong tim thay ID %d\n", idx);
+	
+	//PrintList (my_list);
+	
+	printf ("\n nhap ID can xoa: ");
+	scanf ("%d", &idx);
+	int kq = RemoveNode(my_list, idx);
+	if (kq != NULL)
+		printf ("\n ID da xoa: %d \n",idx);
+	else 
+		printf ("\n khong the xoa ID %d\n", idx);
+	printf ("\n Danh sach sau khi xoa: \n");
+	PrintList (my_list);
+	
+	return 0;
 		
 } 

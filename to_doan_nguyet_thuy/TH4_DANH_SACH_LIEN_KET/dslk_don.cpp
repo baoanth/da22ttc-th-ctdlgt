@@ -82,14 +82,11 @@ void printList(List &l)
         }
     }
 }
-void output(List &l)
+void output(Node* p)
 {
-    Node* p= l.pHead;
-    if(p!= NULL)
-    {
-        printf("%3d%10s%10s\n", p->info.id, p->info.fname , p->info.lname);
-            p= p->pNext;
-    }
+    
+    printf("%3d%10s%10s\n", p->info.id, p->info.fname , p->info.lname);
+    
 }
 //tim kiem
 Node* FindNodeByID(List l, int idx)
@@ -98,6 +95,53 @@ Node* FindNodeByID(List l, int idx)
     while(p!= NULL && p->info.id!= idx)
          p = p-> pNext;
     return p;
+}
+/*void RemoveHead(List &l)
+
+    Node* p;
+    Data idx;
+    if(l.pHead != NULL)
+    {
+        p = l.pHead;
+        idx = p->data;
+        l.pHead = l.pHead->pNext;
+        delete p;
+        if(l.pHead == NULL)
+            l.pTail = NULL;
+
+    }
+    return idx;
+}*/
+int RemoveNode(List &l, int idx)
+{
+    Node* p = l.pHead;
+    Node* q = NULL;
+    while(p!= NULL)
+    {
+        if(p->info.id== idx)
+        	break;
+        q = p;
+        p= p-> pNext;
+
+    }
+    if(p == NULL)    
+        return 0;
+    if(q != NULL)
+    {
+        if(p== l.pTail)
+            l.pTail= q;
+        q->pNext = p->pNext;
+        delete p;
+    }
+    else
+    {
+        l.pHead = p->pNext;
+        if(l.pHead == NULL)
+            l.pTail = NULL;
+
+    }
+    return 1;
+
 }
 int main()
 {
@@ -122,14 +166,26 @@ int main()
     printf("Nhap id can tim\n");
     scanf("%d", &idx);
     
-    Node* new_ele = FindNodeByID(my_list,idx);
-    output(my_list);
+    Node* node_kq = FindNodeByID(my_list,idx);
+    if(node_kq!= NULL)
+        output(node_kq);
+    else
+        printf("Khong tim thay node %d \n", idx);
+    
+    printf("Nhap id can xoa: ");
+    scanf("%d", &idx);
+    int kq = RemoveNode(my_list, idx);
+    if(kq != 0)
+        printf("Da xoa node %d \n", idx);
+    else
+        printf("Khong the xoa node %d \n");
+
+    printf("Danh sach sau khi xoa:\n");
+    printList(my_list);
 
 
 
-
+return 0;
 
 }
-
-
 
