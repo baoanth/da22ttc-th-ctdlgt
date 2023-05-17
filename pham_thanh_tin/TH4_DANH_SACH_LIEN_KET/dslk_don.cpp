@@ -76,7 +76,7 @@ Node* FindNodeByID(List l, int idx)
 	return p;
 }
 
-int RemoveNode(List l, int idx)
+int RemoveNode(List &l, int idx)
 {
     Node *p = l.pHead;
     Node *q = NULL;
