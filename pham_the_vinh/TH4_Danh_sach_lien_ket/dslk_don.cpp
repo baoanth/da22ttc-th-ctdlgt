@@ -225,6 +225,11 @@ int main()
 
     PrintList(my_list);
 
+	printf("\n*** Them Node ***\n");
+    InputNode(my_list);
+    printf("\nDanh sach sau khi them Node\n");
+	PrintList(my_list);
+	
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
@@ -236,11 +241,6 @@ int main()
     else
         printf("Khong tim thay ID %d", idx);
 	
-	printf("\n*** Them Node ***\n");
-    InputNode(my_list);
-    printf("\nDanh sach sau khi them Node\n");
-	PrintList(my_list);
-	
 /*	RemoveHead(my_list);
     printf("\nDanh sach sau khi xoa phan tu dau\n");
     PrintList(my_list);
@@ -249,6 +249,7 @@ int main()
     printf("\nDanh sach sau khi xoa phan tu cuoi\n");
     PrintList(my_list);
 */
+
     printf("\nNhap id can xoa: ");
     scanf("%d", &idx);
 
