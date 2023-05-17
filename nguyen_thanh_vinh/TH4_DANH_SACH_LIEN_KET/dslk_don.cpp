@@ -66,6 +66,43 @@ void PrintList(List l)
         p = p->pNext;
     }
 }
+
+void InputNode(List &1)
+{
+	Person per_tam;
+	printf("Nhap node moi\n");
+	
+	printf("ID: ");
+	scanf("%d", &per_tam.id);
+	
+	printf("First name:");
+	gets(per_tam.fname);
+	
+	printf("Last name: ");
+	gets(per_tam.lname);
+	
+	Node *new_ele = GetNode(per_tam)
+	
+	printf("Ban muon them node vao vi tri nao\n");
+	printf("1. Dau danh sach\n 2. Cuoi danh sach \n");
+	int chon=0;
+	
+	switch (chon)
+	{
+		case 1:
+			AddFirst(1, new_ele);
+			printf("Da them new_ele vao dau danh sach");
+			break;
+		case 2;
+		    AddLast(1, new_ele );
+		    printf("Da them new_ele vao cuoi danh sach");
+		    break;
+		default:
+			AddLast(1, new_ele);
+			printf("Ban nhap lua chon sai; Da them new_ele vao dau danh sach");
+			break;
+	}
+			
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
