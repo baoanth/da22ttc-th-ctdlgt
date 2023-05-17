@@ -97,7 +97,7 @@ Node* FindNodeByID(List l, int idx)
     return p;
 }
 /*void RemoveHead(List &l)
-{
+
     Node* p;
     Data idx;
     if(l.pHead != NULL)
