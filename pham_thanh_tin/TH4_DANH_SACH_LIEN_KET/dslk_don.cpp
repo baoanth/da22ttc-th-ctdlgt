@@ -143,11 +143,7 @@ void InputNode(List &l)
     		break;
     	default:
     		AddTail(l, new_ele);
-<<<<<<< HEAD
 	        printf("Ban da nhap sai. Da them new_ele vao cuoi danh sach\n");	
-=======
-	        printf("Ban da nhap sai. Da them new_ele vao cuoi danh sach");	
->>>>>>> 42a71a3daaebc356133abe8ba9b13bd0e80f7990
 	        break;
 	}
 }
@@ -212,15 +208,10 @@ int main()
     printf("\n Danh sach sau khi xoa\n");
     PrintList(my_list);
     
-<<<<<<< HEAD
     
     InputNode(my_list);
     InputNode(my_list);
     printf("\n Danh sach sau khi cap nhat: \n");
-=======
-    InputNode(my_list);
-    InputNode(my_list);
->>>>>>> 42a71a3daaebc356133abe8ba9b13bd0e80f7990
     PrintList(my_list);
 	
 return 0;
@@ -232,7 +223,6 @@ return 0;
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -240,5 +230,3 @@ return 0;
 
 
 
-=======
->>>>>>> 42a71a3daaebc356133abe8ba9b13bd0e80f7990
