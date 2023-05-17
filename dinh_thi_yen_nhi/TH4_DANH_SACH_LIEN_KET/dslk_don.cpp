@@ -132,6 +132,49 @@ int RemoveNode(List &l, int idx)
 	}
 return 1;
 }
+
+
+void InputNode(List &l)
+{
+	Person per_tam;
+	printf ("\n nhap Node moi: ");
+	printf ("\n nhap ID: ");
+	scanf ("%d", &per_tam.id);
+	
+	fflush(stdin);
+	printf ("\n First name: \n");
+	gets(per_tam.fname);
+	
+	fflush(stdin);
+	printf ("\n Last name: \n");
+	gets(per_tam.lname);
+	
+	fflush(stdin);
+	Node* new_ele = GetNode(per_tam);
+	printf ("\n 1. Them vao dau danh sach; 2. Them vao cuoi danh sach");
+	printf ("\n nhap lua chon cua ban: \n");
+	
+	fflush(stdin);
+	int chon = 0;
+	scanf ("%d",&chon);
+	switch (chon)	
+	{
+		case 1:
+			AddFirst (l, new_ele);
+			printf ("\n Da them vao dau danh sach.");
+			break;
+		case 2:
+			AddTail (l, new_ele);
+			printf ("\n Da them vao cuoi danh sach.");
+			break;
+		default:
+			AddTail (l, new_ele);
+			printf ("\n Da them vao cuoi danh sach.");
+			break;
+		
+	}
+	
+}
 int main ()
 {
 	struct Person per1 = { 1, "dau", "tay"};
@@ -174,6 +217,11 @@ int main ()
 	else 
 		printf ("\n khong the xoa ID %d\n", idx);
 	printf ("\n Danh sach sau khi xoa: \n");
+	PrintList (my_list);
+	
+	InputNode (my_list);
+	InputNode (my_list);
+	InputNode (my_list);
 	PrintList (my_list);
 	
 	return 0;
