@@ -198,8 +198,8 @@ void InputNode(List &l)
 
 int main()
 {
-	struct person per1 = {1, "Tran", "tho"};
-	struct person per2 = {2, "Chau", "Qui"};
+	struct person per1 = {1, "Chau", "Qui"};
+	struct person per2 = {2, "Tran", "Tho"};
 	struct person per3 = {3, "Tran", "Thong"};
 	struct person per4 = {4, "Dang", "Phuoc"}; 
 	struct person per5 = {5, "Pham", "Trong"};
