@@ -103,8 +103,11 @@ int main()
 	AddFist(my_list, new_ele2);
 	
 	PrintList(my_list);
+<<<<<<< HEAD
 	AddTail(my_list, new_ele1);
 	AddTail(my_list, new_ele2);
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 return 0;
 }
 
