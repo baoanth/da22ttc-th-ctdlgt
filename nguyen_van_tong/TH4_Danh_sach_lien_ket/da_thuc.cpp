@@ -78,8 +78,12 @@ void print(dathuc l)
             printf("+");
         if (p->Info.bac == 0)
             printf("%dx", p->Info.heso);
-        printf("%dx^%d", p->Info.heso, p->Info.bac);
-        p = p->pNext;
+        else
+        {
+        	 printf("%dx^%d", p->Info.heso, p->Info.bac);
+        
+        }
+       	p = p->pNext;
     }
 }
 
