@@ -76,12 +76,28 @@ void in_da_thuc(DaThuc l)
     Node *p = l.pHead;
     while (p != NULL)
     {
+        if (p->Info.he_so == 0)
+            continue;
         if (p != l.pHead && p->Info.he_so > 0)
             printf("+");
         if (p != l.pTail && p->pNext != l.pTail)
-            printf("%dx^%d", p->Info.he_so, p->Info.bac);
+        {
+            if (p->Info.he_so != 1 && p->Info.he_so != -1)
+                printf("%dx^%d", p->Info.he_so, p->Info.bac);
+            else if (p->Info.he_so == 1)
+                printf("x^%d", p->Info.bac);
+            else if (p->Info.he_so == -1)
+                printf("-x^%d", p->Info.bac);
+        }
         else if (p->pNext == l.pTail)
-            printf("%dx", p->Info.he_so);
+        {
+            if (p->Info.he_so != 1 && p->Info.he_so != -1)
+                printf("%dx", p->Info.he_so);
+            else if (p->Info.he_so == 1)
+                printf("x");
+            else if (p->Info.he_so == -1)
+                printf("-x");
+        }
         else if (p == l.pTail)
             printf("%d", p->Info.he_so);
 
