@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 struct Person
 {
@@ -13,7 +13,7 @@ struct Node
     Node *Next;
 };
 
-typedef struct  Node* node;
+typedef struct Node *node;
 
 node getnode(Person x)
 {
@@ -23,9 +23,9 @@ node getnode(Person x)
     return p;
 }
 
-void addFirst(node &a,node new_ele)
+void addFirst(node &a, node new_ele)
 {
-    if(a == NULL)
+    if (a == NULL)
     {
         a = new_ele;
     }
@@ -34,7 +34,6 @@ void addFirst(node &a,node new_ele)
         new_ele->Next = a;
         a = new_ele;
     }
-    
 }
 
 void in(Person per)
@@ -46,38 +45,31 @@ void in(Person per)
 
 void print_List(node a)
 {
-    while(a!= NULL)
+    while (a != NULL)
     {
         in(a->data);
         a = a->Next;
     }
-
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2ebb5d8f42fed092649e2016097bd227db0bb6ba
 
-void addLast(node& a, node p)
+void addLast(node &a, node p)
 {
-    if(a == NULL )
+    if (a == NULL)
     {
         a = p;
     }
     else
     {
-    	node q = a;
-        while(q->Next != NULL)
+        node q = a;
+        while (q->Next != NULL)
         {
-            q= q->Next;
+            q = q->Next;
         }
-    	q ->Next = p; 
-        
-        
+        q->Next = p;
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -124,29 +116,99 @@ void addLast(node& a, node p)
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 node FindbyID(node a,int idx)
+=======
+node FindbyID(node a, int idx)
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 {
     node p = a;
-    while(p != NULL)
+    while (p != NULL)
     {
-        if(p->data.id == idx) 
+        if (p->data.id == idx)
         {
             return p;
             break;
         }
         p = p->Next;
-    } 
-	return NULL;
-   
+    }
+    return NULL;
 }
 
 void addNodeAfter(node &a, node tmp, int idx)
 {
     node p = a;
     node q = FindbyID(p, idx);
-
-    tmp->Next = q->Next;
-    q ->Next = tmp; 
+    if (q != NULL)
+    {
+        tmp->Next = q->Next;
+        q->Next = tmp;
+    }
+    else
+    {
+        addLast(a, tmp);
+    }
 }
+
+void RemoveHead(node &a)
+{
+    a = a->Next;
+}
+
+void RemoveLast(node &a)
+{
+    node p = a;
+    while (p->Next->Next != NULL)
+    {
+        p = p->Next;
+    }
+    node q = p->Next;
+    p->Next = NULL;
+    delete (q);
+}
+
+void RemoveNode(node &a, int idx)
+{
+    node p = a;
+    node tmp = FindbyID(p, idx);
+
+    if (tmp == NULL)
+        cout << "khong tim thay ";
+    else
+    {
+        node q = a;
+        while (q->Next != tmp)
+        {
+            q = q->Next;
+        }
+        q->Next = tmp->Next;
+    }
+}
+
+void addbyViTri(node &a,node tmp, int vt)
+{
+    node p = a;
+   for(int i=0; i < vt-1;i++)
+   {
+        p = p-> Next;
+   }
+    tmp-> Next = p->Next;
+    p->Next = tmp;
+
+}
+
+void inputNode(node &a)
+{
+    Person per;
+    cout << "nhap vao id "; cin >> per.id;
+    cout << "nhap vao fname "; cin >> per.fname;
+    cout << "nhap vao lname "; cin >> per.lname;
+    node tmp = getnode(per);
+    int vt, i = 0;
+    cout << "nhap vao vi tri can chen "; cin >> vt;
+    node p = a;
+    addbyViTri(a,tmp, vt);
+    
+}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -255,9 +317,13 @@ void addNodeAfter(node &a, node tmp, int idx)
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 int main()
 {
+
     node Head = NULL;
+<<<<<<< HEAD
     Person per1 = {1,"nguyen", "An"};
 	Person per2 = {2,"Le", "Vinh"};
 	Person per3 = {3,"Nguyen", "Tong"};
@@ -390,10 +456,17 @@ int main()
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+    Person per1 = {1, "Nguyen", "An"};
+    Person per2 = {2, "Pham", "Vinh"};
+    Person per3 = {3, "Nguyen", "Tong"};
+    Person per4 = {4, "Nguyen", "Vinh"};
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -551,9 +624,16 @@ int main()
 
     addFirst(Head, p1);
     addFirst(Head, p2);
-    addLast(Head, p3);
+=======
+    node p4 = getnode(per4);
 
+    addLast(Head, p1);
+    addLast(Head, p2);
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+    addLast(Head, p3);
+    addLast(Head, p4);
     print_List(Head);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -643,5 +723,11 @@ int main()
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 =======
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+
+    inputNode(Head);
+    print_List(Head);
+
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
     return 0;
 }
