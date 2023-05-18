@@ -55,7 +55,7 @@ void AddTail(DaThuc &l, Node *new_ele)
 
 void them_nut_cuoi(DaThuc &l)
 {
-    struct DonThuc new_don_thuc;
+    DonThuc new_don_thuc;
     int bac_da_thuc, i;
     printf("Ban muon nhap da thuc bac may?: ");
     scanf("%d", &bac_da_thuc);
@@ -109,14 +109,58 @@ void in_da_thuc(DaThuc l)
     }
 }
 
+DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
+{
+    DonThuc dt_tam;
+
+    Node *q = l1.pHead;
+    Node *p = l2.pHead;
+
+    DaThuc l_kq;
+    Init(l_kq);
+
+    while(q != NULL)
+    {
+        dt_tam.he_so = q->Info.he_so;
+        dt_tam.bac = q->Info.bac;
+
+        while(p != NULL)
+        {
+            if(q->Info.bac == p->Info.bac)
+                break;
+            p = p->pNext;
+        }
+
+        dt_tam.he_so += p->Info.he_so;
+
+        Node* new_ele = GetNode(dt_tam);
+        AddTail(l_kq,new_ele);
+
+        q = q->pNext;
+    }
+    return l_kq;
+    
+}
+
 int main()
 {
-    DaThuc my_da_thuc;
-    Init(my_da_thuc);
+    DaThuc da_thuc1;
+    Init(da_thuc1);
 
-    them_nut_cuoi(my_da_thuc);
+    DaThuc da_thuc2;
+    Init(da_thuc2);
 
-    in_da_thuc(my_da_thuc);
+    DaThuc da_thuc_kq;
+
+    them_nut_cuoi(da_thuc1);
+    in_da_thuc(da_thuc1);
+    printf("\n\n");
+    them_nut_cuoi(da_thuc2);
+    in_da_thuc(da_thuc2);
+
+    da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
+    printf("\nDa thuc sau khi cong: ");
+    in_da_thuc(da_thuc_kq);
 
     return 0;
 }

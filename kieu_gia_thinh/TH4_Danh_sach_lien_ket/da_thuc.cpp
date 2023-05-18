@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//******************
 typedef struct Donthuc
 {
     int hs;
@@ -18,7 +19,9 @@ typedef struct Dathuc
 	Node* pHead;
 	Node* pTail;
 }Dathuc;
+//*******************
 
+//Viet ham GetNode
 Node* GetNode(Donthuc x)
 {
 	Node *p;
@@ -52,7 +55,7 @@ void AddTail(Dathuc &l, Node *new_ele)
 void Nhapdathuc(Dathuc &l)
 {
 	int MaxN= 0;
-	int i;
+	int i, j;
 	Donthuc s;
 	
 	printf("Phuong trinh co bac: ");
@@ -61,7 +64,7 @@ void Nhapdathuc(Dathuc &l)
 	for(i= MaxN; i>=0; i--)
 	{
 		printf("x^%d = ",i);
-		s.bac= i;
+		s.bac = i;
 		scanf("%d", &s.hs);
 		
 		Node* new_ele = GetNode(s);
@@ -69,11 +72,13 @@ void Nhapdathuc(Dathuc &l)
 	}
 }
 
+//Viet ham Init
 void Init(Dathuc &l)
 {
 	l.pHead = l.pTail = NULL;
 }
 
+//viet ham Printdathuc
 void Printdathuc(Dathuc &l)
 {
 	Node *p;
@@ -83,25 +88,40 @@ void Printdathuc(Dathuc &l)
 	
 	while (p!= NULL)
 	{
-		if((p->Info.hs>0)&&(p!=l.pHead))
+		if((p->Info.hs>0) && (p!=l.pHead))
 			printf("+");
-		if(p->Info.bac==0)
-			printf("%d",p->Info.hs);
+		if(p->Info.bac == 0)
+			printf("%d", p->Info.hs);
 		else
-			printf("%dx^%d",p->Info.hs, p->Info.bac);
+			printf("%dx^%d", p->Info.hs, p->Info.bac);
 		p = p->pNext;
 	}
 }
 
+//Viet ham Congdathuc
+//Dathuc Congdathuc(dathuc1, dathuc2)
+//{
+	
+//}
+
+
+//viet ham main
 int main()
 {
-	Dathuc my_dathuc;
-	Init(my_dathuc);
-		
-	Nhapdathuc(my_dathuc);
-		   
-	Printdathuc(my_dathuc);
-	    
+	//Dinh nghia them 1 da thuc 
+	Dathuc dathuc1;
+	Dathuc dathuc2;
+	
+	Init(dathuc1);
+	
+	//Nhap 2 da thuc
+	Nhapdathuc(dathuc1);
+	Nhapdathuc(dathuc2);
+	
+	//In 2 da thuc vua nhap		   
+	Printdathuc(dathuc1);
+	Printdathuc(dathuc2);
+	
     return 0;
 }
 

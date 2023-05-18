@@ -120,18 +120,39 @@ void in_da_thuc(DaThuc l)
         p = p->pNext;
     }
 }
-
+//void cong_da_thuc(DaThuc,DaThuc)
+//{
+//	Node *p ,*q;
+//	DaThuc l_kq;
+//	Init(l_kq);
+//	DonThuc tam;
+//	p = l1.pHead;
+//	q = l2.pHead;
+//	while(p!= NULL)
+//	{
+//		tam.he_so=p->Info.he_so;
+//		tam.bac= p->Info.bac;
+//		
+//		while(q!=NULL)
+//		{
+//			if(p->Info.bac == q->Info.bac)
+//			break;
+//			q=q->pNext;
+//			
+//		}
+//	}
+//}
 
 int main ()
 {
 	DaThuc my_da_thuc;
+	DaThuc my_da_thuc1;
     Init(my_da_thuc);
-
+	
     them_nut_cuoi(my_da_thuc);
-
+	them_nut_cuoi(my_da_thuc1);
     in_da_thuc(my_da_thuc);
-
-	
-	
+    in_da_thuc(my_da_thuc1);
+    
 	return 0;
 }

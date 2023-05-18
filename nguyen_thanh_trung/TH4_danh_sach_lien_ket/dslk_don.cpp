@@ -192,11 +192,18 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele3);
 
+<<<<<<< HEAD
+<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
+    PrintList(my_list);
+=======
+	PrintList(my_list);
+=======
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
     
 
     PrintList(my_list);
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 
     printf("**************************************************************\n");
 
@@ -239,6 +246,13 @@ int main()
     PrintList(my_list);
     
 
+<<<<<<< HEAD
+
+
+
+
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656:chau_thanh_thien/TH4_Danh_sach_lien_ket/dslk_don.cpp
+=======
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
     RemoveNode(my_list, idx);
@@ -247,6 +261,7 @@ int main()
     printf("\n");
     PrintList(my_list); 
      
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 
     return 0;
 }
