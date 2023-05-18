@@ -143,7 +143,7 @@ void InputNode(List &l)
     		break;
     	default:
     		AddTail(l, new_ele);
-	        printf("Ban da nhap sai. Da them new_ele vao cuoi danh sach");	
+	        printf("Ban da nhap sai. Da them new_ele vao cuoi danh sach\n");	
 	        break;
 	}
 }
@@ -208,12 +208,21 @@ int main()
     printf("\n Danh sach sau khi xoa\n");
     PrintList(my_list);
     
+    
     InputNode(my_list);
     InputNode(my_list);
+    printf("\n Danh sach sau khi cap nhat: \n");
     PrintList(my_list);
 	
 return 0;
 }
+
+
+
+
+
+
+
 
 
 
