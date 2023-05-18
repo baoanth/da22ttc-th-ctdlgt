@@ -75,6 +75,20 @@
 		}
 	}
 	
+	void AddTail(List &l, Node *new_ele)
+	{
+		if(l.pHead==NULL)
+		{
+			l.pHead = new_ele;
+			l.pTail = l.pHead;
+			
+		}
+		else
+		{
+			l.pTail->Next = new_ele;
+			l.
+		}
+	}
 	int main()
 	{
 		struct Person per1 = {1, "Nguyen","Vo Minh Thu"};
@@ -92,9 +106,8 @@
 		AddFirst(my_list, new_ele3);
 		
 		PrintList(my_list);
-		
-	
 	
 	
 	}
+	
 	
