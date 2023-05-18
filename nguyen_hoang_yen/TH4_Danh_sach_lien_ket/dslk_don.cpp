@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+  #include <stdio.h>
+#include <conio.h>
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,6 +53,7 @@ void AddFirst(List &l, Node* new_ele)
 		l.pHead = new_ele; 	
 	}
 }
+<<<<<<< HEAD
 
 void AddTail(List &l, Node *new_ele)
 {
@@ -148,6 +154,29 @@ Node* FindNodeByID (List l, int idx)
 	
 	return p;	
 	
+=======
+void AddTail(List &l, Node* new_ele)
+{
+	if(l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;	
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}	
+}
+
+Node* FindNodeByID(List l, int idx)
+{
+	Node *p;
+	p =l.pHead;
+	while((p!=NULL) && ( p->Info.id !=idx ))
+	p = p-> pNext;
+	return p;
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 }
 
 void Init(List &l)
@@ -190,13 +219,38 @@ int main()
 	List my_list;
 	Init(my_list);
 	
+<<<<<<< HEAD
 	AddTail(my_list, new_ele1);
 	AddTail(my_list, new_ele2);
 	AddTail(my_list, new_ele3);
+=======
+<<<<<<< HEAD
+	AddFist(my_list, new_ele1);
+	AddFist(my_list, new_ele2);
+	
+	PrintList(my_list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+return 0;
+=======
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 	
 	PrintList(my_list);
 	
 	int idx;
+<<<<<<< HEAD
 	printf("\nNhap id can tim: ");
 	scanf("%d",&idx);
 	Node* KQ=FindNodeByID (my_list, idx);
@@ -213,3 +267,30 @@ int main()
 	PrintList(my_list);	
 
 return 0;
+=======
+	scanf("%d", &idx);
+   	printf("\n nhap id can tim  ");
+	printf("\n");
+    Node* kq = FindNodeByID( my_list, idx);
+	if ( kq != NULL)
+    	PrintNode(kq);
+	else 
+		printf("Tim khong thay node co id \n  %d",idx);   
+	
+    return 0;
+<<<<<<< HEAD
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+}
+
+
+	
+
+
+
+
+
+
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
