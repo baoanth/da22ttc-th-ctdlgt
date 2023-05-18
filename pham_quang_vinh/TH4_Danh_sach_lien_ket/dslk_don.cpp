@@ -27,7 +27,7 @@ Node* GetNode(Person x)
     p = new Node;
     if (p==NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
+        printf("Khong du bo nho de cap phat cho nut moi");  
         return 0;
     }
     p->Info = x;

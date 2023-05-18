@@ -55,14 +55,50 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
 	if (l.pTail == NULL)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pHead == NULL)
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+	if (l.pHead == NULL)
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 	{
 		printf("Danh sach rong\n");
 	}
 	else
 	{
 		Node *p;
+<<<<<<< HEAD
 		p = l.pTail;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+		p = l.pHead;
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+		p = l.pHead;
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -73,6 +109,7 @@ void PrintList(List &l)
 
 int main()
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -88,6 +125,41 @@ int main()
 	struct Person per2={1,"Thao","Di"};
 	struct Person per3={1,"Han","Tin"};
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b8140ab904ab6152d12532e648e1379e71b9184d
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
+	struct Person per3={1,"Han","Tin"};
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+=======
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
+	struct Person per3={1,"Han","Tin"};
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);
