@@ -66,10 +66,35 @@
     		p = l.pHead;
     		while (p!=NULL)
     		{
-    			printf("%5d %20s %20s\n", p->Info.id,p->Info.fname, p->Info.lname);
+    			printf("%5d %20s %20s\n", p->Info.id,p->Info.fname,	 p->Info.lname);
     			p = p->pNext;
     		}
     	}
+    }
+    
+    void AddTail(List &l, Node *new_ele)
+    {
+    	if (l.pHead==NULL)
+    {
+    	    l.pHead = new_ele;
+    		l.pTail = l.pHead;
+    }
+    
+    else
+    {
+    	l.pTail->pNext = new_ele;
+    	l.pTail = new_ele;
+    }
+    
+    }
+    
+    Node* FindNodeByID(List l, int idx)
+    {
+    	Node *p;
+    	p = l.pHead;
+    	while((p!=NULL)&&(p->Info!=k))
+    	      p = p->pNext;
+    	      return p;
     }
     int main()
     {
