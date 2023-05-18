@@ -48,39 +48,9 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
-void AddTail(List &l, Node *new_ele)
-{
-	if (l.pHead == NULL)
-	{
-		l.pHead = new_ele;
-		l.pTail = l.pHead;
-	}
-	else
-	{
-		l.pTail->pNext = new_ele;
-		l.pTail = new_ele;
-	}
-}
-
-Node* FindNodeByID (List l, int idx)
-{
-	Node *p;
-	p=l.pHead;
-	
-	while ((p!=NULL)&& (p->Info.id !=idx))
-		p=p->pNext;
-	
-	return p;		
-}
-
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
-}
-
-void PrintNode(Node *p)
-{
-	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 void PrintList(List &l)
@@ -101,20 +71,12 @@ void PrintList(List &l)
 	}
 }
 
-Node* FindNodeByID(List &l, Person x)
-{
-	Node *p;
-	p = l.pHead;
-	while((p!=NULL)&&(p->Info != x))
-		p = p->pNext;
-		return p;
-}
 
 int main()
 {
-    struct Person per1 = {1, "Cho", "Shinba" };
-	struct Person per2 = {2, "Cho", "Alaska" };
-	struct Person per3 = {3, "Cho", "BigBull" };
+    struct Person per1 = {1, "Nhan dep trai", "Thong ngu" };
+	struct Person per2 = {2, "Trung dien", "Ku ti" };
+	struct Person per3 = {3, "Teo", "Hoa" };
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -126,33 +88,10 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
-	PrintList(my_list);
+    PrintList(my_list);
 
-int idx;
-	printf("\nNhap ID can tim : ");
-	scanf("%d",&idx);
-	printf("\n");
-	Node* KQ = FindNodeByID(my_list, idx);
-	if(KQ != NULL)
-		PrintNode(KQ);
-	else
-		printf("\nKhong tim thay Node co ID : %d",idx);	
-	
-	return 0;
+    return 0;
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

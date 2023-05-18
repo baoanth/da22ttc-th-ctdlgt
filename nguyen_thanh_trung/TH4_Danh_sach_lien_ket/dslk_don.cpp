@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -36,7 +35,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFirst(List &l, Node *new_ele)
+void AddFist(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -94,19 +93,19 @@ Node *FindNodeByID(List l, int idx)
     return p;
 }
 
-void AddNodeAfter(List &l, int idx, Node *new_ele5)
+void AddNodeAfter(List &l, int idx, Node *new_ele)
 {
     Node *q = FindNodeByID(l, idx);
 
-    if (q != NULL && new_ele5 != NULL)
+    if (q != NULL && new_ele != NULL)
     {
-        new_ele5->pNext = q->pNext;
-        q->pNext = new_ele5;
+        new_ele->pNext = q->pNext;
+        q->pNext = new_ele;
         if (q == l.pTail)
-            l.pTail = new_ele5;
+            l.pTail = new_ele;
     }
-    else
-        AddFirst(l, new_ele5);
+    //	else
+    //	AddFirst(l, new_ele);
 }
 
 void RemoveHead(List &l)
@@ -170,52 +169,32 @@ int RemoveNode(List &l, int idx)
     return 1;
 }
 
-void InputNode(List &l)
-{
-    Person p;
-    printf("Nhap thong tin nguoi:\n");
-    printf("ID: ");
-    scanf("%d", &p.id);
-    fflush(stdin);
-    printf("First name: ");
-    gets(p.fname);
-    fflush(stdin);
-    printf("Last name: ");
-    gets(p.lname);
-
-    Node *new_node = GetNode(p);
-
-    int idx;
-    printf("Nhap vi tri can them: ");
-    scanf("%d", &idx);
-
-    AddNodeAfter(l, idx - 1, new_node);
-
-    printf("Da them nguoi vao danh sach!\n");
-}
-
 int main()
 {
-    struct Person per1 = {1, "Kim", "Tri"};
-    struct Person per2 = {2, "Thach", "Minh"};
-    struct Person per3 = {3, "Kim", "Minh"};
-    struct Person per4 = {4, "Thach", "Tri"};
-    struct Person per5 = {5, "Kim", "MinhTri"};
+    struct Person per1 = {1, "Nguyen", "Trung"};
+    struct Person per2 = {2, "Thanh", "Trung"};
+    struct Person per3 = {3, "Nguyen", "ThanhTrung"};
+    struct Person per4 = {4, "ThanhTrung", "Nguyen"};
+    struct Person per5 = {5, "Thanh", "NguyenTrung"};
+    {
+        /* data */
+    };
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
-    Node *new_ele5 = GetNode(per5);
+    Node *new_else5 = GetNode(per5);
 
     List my_list;
     Init(my_list);
 
-    AddFirst(my_list, new_ele1);
-    AddFirst(my_list, new_ele3);
+    AddFist(my_list, new_ele1);
+    AddFist(my_list, new_ele3);
 
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
+    
 
     PrintList(my_list);
 
@@ -238,7 +217,8 @@ int main()
         printf("**************************************************************\n");
     }
 
-        AddNodeAfter(my_list, idx, new_ele5);
+    Node *new_ele5 = GetNode(per5);
+    AddNodeAfter(my_list, idx, new_ele5);
 
     printf("Sau khi them nut : \n");
     printf("\n");
@@ -257,6 +237,7 @@ int main()
     printf("\n");
 
     PrintList(my_list);
+    
 
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
@@ -264,13 +245,8 @@ int main()
     printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
-    PrintList(my_list);
-
-    InputNode(my_list);
-    printf("**************************************************************\n");
-    printf("Sau khi thuc hien thao tac : \n");
-    printf("\n");
-    PrintList(my_list);
+    PrintList(my_list); 
+     
 
     return 0;
 }
