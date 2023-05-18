@@ -165,17 +165,17 @@ int RemoveNode(List &l, int idx)
 
 void AddNodeAfter(List &l, int idx, Node *new_ele)
 {
-	Node *q = FindNodeByID(l, idx);
-	 
-	if(q!=NULL)
-	{
-		new_ele->pNext=q->pNext;
-		q->pNext=new_ele;
-		if(q==l.pTail)
-			l.pTail=new_ele;
-	}
-	else
-		AddFirst(l, new_ele);
+    Node *q = FindNodeByID(l, idx);
+
+    if (q != NULL)
+    {
+        new_ele->pNext = q->pNext;
+        q->pNext = new_ele;
+        if (q == l.pTail)
+            l.pTail = new_ele;
+    }
+    else
+        AddFirst(l, new_ele);
 }
 
 void InputNode(List &l)
@@ -214,22 +214,22 @@ int main()
     List my_list;
     Init(my_list);
 
-/*  AddFirst(my_list, new_ele1);
-    AddFirst(my_list, new_ele2);
-    AddFirst(my_list, new_ele3);
-*/
+    /*  AddFirst(my_list, new_ele1);
+        AddFirst(my_list, new_ele2);
+        AddFirst(my_list, new_ele3);
+    */
 
-	AddTail(my_list, new_ele1);
-	AddTail(my_list, new_ele2);
-	AddTail(my_list, new_ele3);
+    AddTail(my_list, new_ele1);
+    AddTail(my_list, new_ele2);
+    AddTail(my_list, new_ele3);
 
     PrintList(my_list);
 
-	printf("\n*** Them Node ***\n");
+    printf("\n*** Them Node ***\n");
     InputNode(my_list);
     printf("\nDanh sach sau khi them Node\n");
-	PrintList(my_list);
-	
+    PrintList(my_list);
+
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
@@ -240,15 +240,15 @@ int main()
         PrintNode(Node_kq);
     else
         printf("Khong tim thay ID %d", idx);
-	
-/*	RemoveHead(my_list);
-    printf("\nDanh sach sau khi xoa phan tu dau\n");
-    PrintList(my_list);
 
-    RemoveAfter(my_list, );
-    printf("\nDanh sach sau khi xoa phan tu cuoi\n");
-    PrintList(my_list);
-*/
+    /*	RemoveHead(my_list);
+        printf("\nDanh sach sau khi xoa phan tu dau\n");
+        PrintList(my_list);
+
+        RemoveAfter(my_list, );
+        printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+        PrintList(my_list);
+    */
 
     printf("\nNhap id can xoa: ");
     scanf("%d", &idx);
@@ -262,6 +262,6 @@ int main()
 
     printf("\nDanh sach sau khi xoa Node\n");
     PrintList(my_list);
-    
+
     return 0;
 }
