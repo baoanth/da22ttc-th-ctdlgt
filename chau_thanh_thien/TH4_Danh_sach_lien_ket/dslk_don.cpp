@@ -71,6 +71,15 @@ void PrintList(List &l)
 	}
 }
 
+Node* FindNodeByID(List &l, Person x)
+{
+	Node *p;
+	p = l.pHead;
+	while((p!=NULL)&&(p->Info != x))
+		p = p->pNext;
+		return p;
+}
+
 int main()
 {
     struct Person per1 = {1, "Cho", "Shinba" };
