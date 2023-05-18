@@ -355,7 +355,35 @@ void RemoveNode(node &a, int idx)
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 =======
 
+<<<<<<< HEAD
 >>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+void addbyViTri(node &a,node tmp, int vt)
+{
+    node p = a;
+   for(int i=0; i < vt-1;i++)
+   {
+        p = p-> Next;
+   }
+    tmp-> Next = p->Next;
+    p->Next = tmp;
+
+}
+
+void inputNode(node &a)
+{
+    Person per;
+    cout << "nhap vao id "; cin >> per.id;
+    cout << "nhap vao fname "; cin >> per.fname;
+    cout << "nhap vao lname "; cin >> per.lname;
+    node tmp = getnode(per);
+    int vt, i = 0;
+    cout << "nhap vao vi tri can chen "; cin >> vt;
+    node p = a;
+    addbyViTri(a,tmp, vt);
+    
+}
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 int main()
 {
 
@@ -745,14 +773,7 @@ int main()
     addLast(Head, p4);
     print_List(Head);
 
-    int idx;
-    cout << "nhap vao id can chen";
-    cin >> idx;
-
-  //  print_List(Head);
-
-    RemoveNode(Head, idx);
-
+    inputNode(Head);
     print_List(Head);
 <<<<<<< HEAD
 <<<<<<< HEAD
