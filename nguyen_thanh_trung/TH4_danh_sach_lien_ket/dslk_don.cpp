@@ -48,9 +48,39 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead == NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
+Node* FindNodeByID (List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	
+	while ((p!=NULL)&& (p->Info.id !=idx))
+		p=p->pNext;
+	
+	return p;		
+}
+
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
+}
+
+void PrintNode(Node *p)
+{
+	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 void PrintList(List &l)
@@ -88,7 +118,37 @@ int main()
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
 
+<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
     PrintList(my_list);
+=======
+	PrintList(my_list);
+
+int idx;
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(my_list, idx);
+	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656:chau_thanh_thien/TH4_Danh_sach_lien_ket/dslk_don.cpp
 
     return 0;
 
