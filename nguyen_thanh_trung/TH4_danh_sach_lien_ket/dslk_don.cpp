@@ -27,7 +27,7 @@ Node *GetNode(Person x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat nut");
+        printf("Khong du bo nho de cap phat cho nut moi");
         return 0;
     }
     p->Info = x;
@@ -35,7 +35,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFirst(List &l, Node *new_ele)
+void AddFist(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -48,61 +48,9 @@ void AddFirst(List &l, Node *new_ele)
         l.pHead = new_ele;
     }
 }
-<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
-void AddTail(List &l, Node *new_ele)
-{
-	if (l.pHead == NULL)
-	{
-		l.pHead = new_ele;
-		l.pTail = l.pHead;
-	}
-	else
-	{
-		l.pTail->pNext = new_ele;
-		l.pTail = new_ele;
-	}
-}
-
-Node* FindNodeByID (List l, int idx)
-{
-	Node *p;
-	p=l.pHead;
-	
-	while ((p!=NULL)&& (p->Info.id !=idx))
-		p=p->pNext;
-	
-	return p;		
-}
-=======
->>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11:huynh_quoc_nhan/TH4_danh_sach_lien_ket/dslk_don.cpp
-
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
-}
-
-void PrintNode(Node *p)
-<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
-{
-	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
-}
-
-void PrintList(List &l)
-=======
->>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11:huynh_quoc_nhan/TH4_danh_sach_lien_ket/dslk_don.cpp
-{
-    printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-}
-
-void PrintList(List l)
-{
-    printf("\n");
-    Node *p = l.pHead;
-    while (p != NULL)
-    {
-        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-        p = p->pNext;
-    }
 }
 
 void AddTail(List &l, Node *new_ele)
@@ -119,26 +67,45 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
-Node *FindNodeById(List l, int idx)
+void PrintList(List l)
 {
     Node *p = l.pHead;
-    while (p != NULL && p->Info.id != idx)
+    while (p != NULL)
+    {
+        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
         p = p->pNext;
+    }
+}
+
+void PrintNode(Node *p)
+{
+    printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+    p = p->pNext;
+}
+
+Node *FindNodeByID(List l, int idx)
+{
+    Node *p = l.pHead;
+    while ((p != NULL) && (p->Info.id != idx))
+    {
+        p = p->pNext;
+    }
     return p;
 }
 
-void AddNodeAfter(List &l, int idx, Node *new_ele4)
+void AddNodeAfter(List &l, int idx, Node *new_ele)
 {
-    Node *q = FindNodeById(l, idx);
-    if (q != NULL && new_ele4 != NULL)
+    Node *q = FindNodeByID(l, idx);
+
+    if (q != NULL && new_ele != NULL)
     {
-        new_ele4->pNext = q->pNext;
-        q->pNext = new_ele4;
+        new_ele->pNext = q->pNext;
+        q->pNext = new_ele;
         if (q == l.pTail)
-            l.pTail = new_ele4;
+            l.pTail = new_ele;
     }
-    else
-        AddFirst(l, new_ele4);
+    //	else
+    //	AddFirst(l, new_ele);
 }
 
 void RemoveHead(List &l)
@@ -147,7 +114,8 @@ void RemoveHead(List &l)
     {
         Node *p = l.pHead;
         l.pHead = p->pNext;
-        if(l.pHead == NULL) l.pTail == NULL;
+        if (l.pHead == NULL)
+            l.pTail = NULL;
         delete p;
     }
 }
@@ -156,7 +124,7 @@ void RemoveLast(List &l)
 {
     if (l.pTail != NULL)
     {
-        Node *p = l.pTail;
+        Node *p = l.pHead;
         Node *q = NULL;
         while (p->pNext != NULL)
         {
@@ -175,157 +143,110 @@ void RemoveLast(List &l)
 int RemoveNode(List &l, int idx)
 {
     Node *p = l.pHead;
-    Node *q;
-    while(p != NULL)
+    Node *q = NULL;
+    while (p != NULL)
     {
-        if(p->Info.id == idx) break;
+        if (p->Info.id == idx)
+            break;
+        q = p;
         p = p->pNext;
     }
-    if(p == NULL)
+    if (p == NULL)
         return 0;
-    q = p->pNext;
-    if(q != NULL)
+    if (q != NULL)
     {
-        p = q ->pNext;
-        if(p != NULL)
-        {
-            q->pNext = p->pNext;
-            if(p == l.pTail)
-                l.pTail = q;
-            else   
-                p->pNext = q;
-        }
+        if (p == l.pTail)
+            l.pTail = q;
+        q->pNext = p->pNext;
+        delete p;
     }
-    else 
+    else
     {
         l.pHead = p->pNext;
-        if(l.pHead == NULL)
-            l.pTail == NULL;
-        else    
-            l.pHead == NULL;
+        if (l.pHead == NULL)
+            l.pTail = NULL;
     }
-    delete p;
     return 1;
-}
-
-void InputNode(List &l)
-{
-    struct Person new_per;
-    printf("\nVui long nhap id: ");
-    scanf("%d", &new_per.id);
-    printf("\nVui long nhap fname: ");
-    scanf("%s", &new_per.fname);
-    printf("\nVui long nhap lname: ");
-    scanf("%s", &new_per.lname);
-    
-    Node *new_ele = GetNode(new_per);
-    int vi_tri;
-    printf("\nCan them vao vi tri nao: ");
-    scanf("%d", &vi_tri);
-    AddNodeAfter(l, vi_tri, new_ele);
-
 }
 
 int main()
 {
-<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
-    struct Person per1 = {1, "Nguyen", "Trung" };
-	struct Person per2 = {2, "Thanh", "trung" };
-	struct Person per3 = {3, "Trung", "Thanh" };
-    
-    Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
-=======
-    struct Person per1 = {1, "Nguyen", "Vinh"};
-    struct Person per2 = {2, "Tran", "Hung"};
-    struct Person per3 = {3, "Pho", "Ngoc"};
-    struct Person per4 = {4, "Ai", "Mai"};
+    struct Person per1 = {1, "Nguyen", "Trung"};
+    struct Person per2 = {2, "Thanh", "Trung"};
+    struct Person per3 = {3, "Nguyen", "ThanhTrung"};
+    struct Person per4 = {4, "ThanhTrung", "Nguyen"};
+    struct Person per5 = {5, "Thanh", "NguyenTrung"};
+    {
+        /* data */
+    };
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
+    Node *new_else5 = GetNode(per5);
 
->>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11:huynh_quoc_nhan/TH4_danh_sach_lien_ket/dslk_don.cpp
     List my_list;
     Init(my_list);
 
-    AddFirst(my_list, new_ele1);
+    AddFist(my_list, new_ele1);
+    AddFist(my_list, new_ele3);
+
     AddTail(my_list, new_ele2);
-    AddFirst(my_list, new_ele3);
+    AddTail(my_list, new_ele4);
+    
 
-<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
     PrintList(my_list);
-=======
-	PrintList(my_list);
 
-int idx;
-	printf("\nNhap ID can tim : ");
-	scanf("%d",&idx);
-	printf("\n");
-	Node* KQ = FindNodeByID(my_list, idx);
-	if(KQ != NULL)
-		PrintNode(KQ);
-	else
-		printf("\nKhong tim thay Node co ID : %d",idx);	
-	
-	return 0;
-}
+    printf("**************************************************************\n");
 
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a:chau_thanh_thien/TH4_Danh_sach_lien_ket/dslk_don.cpp
-
-    
     int idx;
-    printf("\nNhap id can tim: ");
+    printf("Nhap id :");
     scanf("%d", &idx);
-    Node *tim_kiem = FindNodeById(my_list, idx);
-    if (tim_kiem != NULL)
-        PrintNode(tim_kiem);
+
+    Node *node_kq =
+        FindNodeByID(my_list, idx);
+    if (node_kq != NULL)
+    {
+        PrintNode(node_kq);
+        printf("**************************************************************\n");
+    }
     else
-        printf("Khong tim thay nut co id %d", idx);
-    
-    printf("\nNhap id can chen phia sau: ");
-    scanf("%d", &idx);
+    {
+        printf("Khong tim thay id %d\n", idx);
+        printf("**************************************************************\n");
+    }
 
-    AddNodeAfter(my_list, idx, new_ele4);
+    Node *new_ele5 = GetNode(per5);
+    AddNodeAfter(my_list, idx, new_ele5);
 
+    printf("Sau khi them nut : \n");
+    printf("\n");
     PrintList(my_list);
 
     RemoveHead(my_list);
-    printf("\n Xoa nut dau");
+    printf("**************************************************************\n");
+    printf("Sau khi xoa nut dau : \n");
+    printf("\n");
+
     PrintList(my_list);
 
     RemoveLast(my_list);
-    printf("\n Xoa nut cuoi");
-    PrintList(my_list);
+    printf("**************************************************************\n");
+    printf("Sau khi xoa nut cuoi : \n");
+    printf("\n");
 
-    printf("\nNhap id can xoa: ");
-    scanf("%d", &idx);
-    int kq = RemoveNode(my_list,idx);
-    if(kq == 1)
     PrintList(my_list);
     
 
-    InputNode(my_list);
-    PrintList(my_list);
+    printf("Nhap id can xoa:");
+    scanf("%d", &idx);
+    RemoveNode(my_list, idx);
+    printf("**************************************************************\n");
+    printf("Sau khi thuc hien thao tac : \n");
+    printf("\n");
+    PrintList(my_list); 
+     
 
     return 0;
-<<<<<<< HEAD:nguyen_thanh_trung/TH4_danh_sach_lien_ket/dslk_don.cpp
-
-
-=======
->>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11:huynh_quoc_nhan/TH4_danh_sach_lien_ket/dslk_don.cpp
 }

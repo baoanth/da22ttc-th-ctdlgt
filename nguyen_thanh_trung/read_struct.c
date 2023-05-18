@@ -2,7 +2,11 @@
 // struct from a file
 #include <stdio.h>
 #include <stdlib.h>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> a532bdc9afa6488b3413e6fbed3ccd72dc887c9c
 // struct person with 3 fields
 struct person
 {
@@ -12,6 +16,7 @@ struct person
 };
 int main()
 {
+<<<<<<< HEAD
 	struct person perA;
 	FILE *infile = fopen("person.dat", "rb");
 	
@@ -30,4 +35,24 @@ int main()
 	}
 	
 	fclose(infile);
+=======
+	FILE *infile=fopen("person.dat","rb");
+	struct person perA;
+	
+	
+	printf("%5s%12s%13s\n","ID","First Name","Last Name");
+	
+	fread(&perA, sizeof(struct person), 1, infile);
+	
+	while(!feof(infile))
+	{
+		printf("%5d%12s%13s\n",perA.id,perA.fname,perA.lname);
+		
+		fread(&perA,sizeof(struct person),1 ,infile);
+		
+	}
+	
+	fclose(infile);
+	
+>>>>>>> a532bdc9afa6488b3413e6fbed3ccd72dc887c9c
 }
