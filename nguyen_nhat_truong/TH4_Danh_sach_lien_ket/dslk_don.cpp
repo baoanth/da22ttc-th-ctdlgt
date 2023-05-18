@@ -58,6 +58,7 @@ void Init(List &l)
 void AddTail(List &l, Node *new_ele)
 {
 <<<<<<< HEAD
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 	if (l.pTail == NULL)
@@ -66,12 +67,14 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 <<<<<<< HEAD
 <<<<<<< HEAD
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
 	if (l.pHead == NULL)
 =======
-=======
->>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
-<<<<<<< HEAD
 	if (l.pTail == NULL)
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 =======
 	if (l.pHead == NULL)
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
@@ -93,6 +96,7 @@ void AddTail(List &l, Node *new_ele)
 	{
 		Node *p;
 <<<<<<< HEAD
+=======
 <<<<<<< HEAD
 		p = l.pTail;
 =======
@@ -100,12 +104,14 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 <<<<<<< HEAD
 <<<<<<< HEAD
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
 		p = l.pHead;
 =======
-=======
->>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
-<<<<<<< HEAD
 		p = l.pTail;
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 =======
 		p = l.pHead;
 >>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
@@ -143,6 +149,28 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 }
+<<<<<<< HEAD
+void AddTail(List &l, Node *new_ele)
+{
+	if (l.pHead==NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = new_ele;
+	}
+	else
+	{
+		l.pTail ->pNext = new_ele;
+		l.pTail = new_ele;
+	}
+}
+
+
+int main()
+{
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+=======
 
 void PrintList(List l)
 {
@@ -351,6 +379,8 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -392,6 +422,7 @@ int main()
 	struct Person per3 = {3, "Han" , "Tin" };
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 =======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 	struct Person per1 = {1, "Thao" , "Di" };
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
@@ -400,6 +431,9 @@ int main()
 	struct Person per2={1,"Thao","Di"};
 	struct Person per3={1,"Han","Tin"};
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 <<<<<<< HEAD
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
@@ -426,9 +460,19 @@ int main()
 	List mylist;
 	Init(mylist);
 	
+<<<<<<< HEAD
+	/*AddFirst(mylist, new_ele1);
+	AddFirst(mylist, new_ele2);
+	AddFirst(mylist, new_ele3);	*/
+	
+	AddTail(mylist, new_ele1);
+	AddTail(mylist, new_ele2);
+	AddTail(mylist, new_ele3);	
+=======
 	AddFirst(mylist, new_ele1);
 	AddFirst(mylist, new_ele2);
 	AddFirst(mylist, new_ele3);	
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 	
 	PrintList(mylist);
 	

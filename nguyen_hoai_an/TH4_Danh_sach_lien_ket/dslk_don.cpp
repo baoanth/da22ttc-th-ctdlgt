@@ -73,11 +73,8 @@ Node* FindNodeByID (List l, int idx)
 	return p;	
 }
 
-
-	Node *q = NULL;
-	while(p!=NULL)
-	{void AddNodeAfter(List &l, Node *q, Node * new_ele, int idx)
-{
+void AddNodeAfter(List &l, Node *q, Node * new_ele, int idx)
+{	
 	if(q!=NULL)
 	{
 		new_ele->pNext = q->pNext;
@@ -124,10 +121,14 @@ void RemoveAfter(List &l, Node *q)
 int RemoveNode(List &l, int idx)
 {
 	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p!=NULL)
+	{
 		if(p->Info.id == idx) break;
 		q = p;
 		p = p->pNext;
-	}
+	}	
+	
 	if(p == NULL) return 0;
 	if(q != NULL) 
 	{
