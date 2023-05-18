@@ -61,6 +61,11 @@ void AddTail(List &l, Node *new_ele)
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 <<<<<<< HEAD
@@ -77,6 +82,9 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
 =======
 	if (l.pTail == NULL)
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
@@ -89,6 +97,11 @@ void AddTail(List &l, Node *new_ele)
 		Node *p;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
@@ -106,6 +119,9 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
 =======
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
 =======
 		p = l.pTail;
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
@@ -127,7 +143,11 @@ void AddTail(List &l, Node *new_ele)
         l.pTail->pNext = new_ele;
         l.pTail = new_ele;
     }
+<<<<<<< HEAD
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 }
 <<<<<<< HEAD
 void AddTail(List &l, Node *new_ele)
@@ -362,6 +382,23 @@ int main()
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
+	struct Person per3={1,"Han","Tin"};
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -398,6 +435,9 @@ int main()
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
 =======
 =======
 <<<<<<< HEAD
@@ -441,7 +481,11 @@ int main()
 >>>>>>> 4e5a62c4974b0bfc73948b764429946ebc1f5461
 =======
     return 0;
+<<<<<<< HEAD
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 }
 <<<<<<< HEAD
 >>>>>>> 8e63614c252e774f190db70f99fc78ad49aea3e1

@@ -206,13 +206,13 @@ int main()
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
+    AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+    AddFirst(my_list, new_ele3);
 
     PrintList(my_list);
 
-    /*
+    
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
@@ -242,7 +242,7 @@ int main()
     int kq = RemoveNode(my_list,idx);
     if(kq == 1)
     PrintList(my_list);
-    */
+    
 
     InputNode(my_list);
     PrintList(my_list);
