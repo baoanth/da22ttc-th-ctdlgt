@@ -70,12 +70,12 @@ void ThemNutCuoi(Dathuc &l)
 void NhapDaThuc(Dathuc &l)
 {
     Donthuc s;
-    int i,n;
+    int i,maxN;
 	printf("Bac cua da thuc: ");
-	scanf("%d", &n);
-	for (i = 1; i<= n; i++)
+	scanf("%d", &maxN);
+	for (i =maxN; i>=0; i--)
 	{
-		printf("x^%d ", i);
+		printf("x^%d =", i);
 		s.bac =i;
 		scanf("%d", &s.heso);
 		Node* new_ele = GetNode(s);
