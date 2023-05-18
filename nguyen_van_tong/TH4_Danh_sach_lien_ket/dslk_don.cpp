@@ -402,6 +402,11 @@ void RemoveNode(node &a, int idx)
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 =======
 
@@ -547,6 +552,10 @@ void inputNode(node &a)
 =======
 >>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 int main()
 {
 
@@ -702,6 +711,14 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -848,6 +865,12 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> 334655d424bda68a9d41827a76714eab9247231d
@@ -857,7 +880,11 @@ int main()
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 =======
 >>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+<<<<<<< HEAD
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+=======
 >>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
@@ -1382,6 +1409,12 @@ int main()
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
+<<<<<<< HEAD
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> ca6edf686a2c7cdb261f9140d39b3c06060e9f39
@@ -1393,6 +1426,10 @@ int main()
 =======
 
 >>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+<<<<<<< HEAD
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+=======
 >>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
     return 0;
 }
