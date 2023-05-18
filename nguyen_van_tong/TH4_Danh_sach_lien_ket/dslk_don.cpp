@@ -54,6 +54,7 @@ void print_List(node a)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 <<<<<<< HEAD
@@ -71,6 +72,8 @@ void print_List(node a)
 >>>>>>> 334655d424bda68a9d41827a76714eab9247231d
 =======
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 
 void addLast(node &a, node p)
 {
@@ -89,6 +92,7 @@ void addLast(node &a, node p)
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -146,6 +150,9 @@ node FindbyID(node a, int idx)
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 node FindbyID(node a,int idx)
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+node FindbyID(node a, int idx)
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 {
     node p = a;
     while (p != NULL)
@@ -195,20 +202,21 @@ void RemoveLast(node &a)
 void RemoveNode(node &a, int idx)
 {
     node p = a;
-    node tmp = FindbyID(p,idx);
-   
-    if(tmp == NULL) cout << "khong tim thay ";
+    node tmp = FindbyID(p, idx);
+
+    if (tmp == NULL)
+        cout << "khong tim thay ";
     else
     {
-    	node q =a;
-   		while (q ->Next != tmp)
-   		{
-   			q = q->Next;
-   		}
-   		q->Next = tmp->Next;
+        node q = a;
+        while (q->Next != tmp)
+        {
+            q = q->Next;
+        }
+        q->Next = tmp->Next;
     }
-   
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -345,15 +353,18 @@ void RemoveNode(node &a, int idx)
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 int main()
 {
-	
+
     node Head = NULL;
-<<<<<<< HEAD
-    Person per1 = {1, "nguyen", "An"};
-    Person per2 = {2, "Le", "Vinh"};
+    Person per1 = {1, "Nguyen", "An"};
+    Person per2 = {2, "Pham", "Vinh"};
     Person per3 = {3, "Nguyen", "Tong"};
     Person per4 = {4, "Nguyen", "Vinh"};
+<<<<<<< HEAD
 =======
     Person per1 = {1,"nguyen", "An"};
 	Person per2 = {2,"Le", "Vinh"};
@@ -516,10 +527,13 @@ int main()
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 
     node p1 = getnode(per1);
     node p2 = getnode(per2);
     node p3 = getnode(per3);
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -651,11 +665,13 @@ int main()
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
     node p4 = getnode(per4);
 
-<<<<<<< HEAD
     addLast(Head, p1);
     addLast(Head, p2);
+<<<<<<< HEAD
 =======
    addLast(Head,p1);
    addLast(Head,p2);
@@ -723,16 +739,22 @@ int main()
     addFirst(Head, p1);
     addFirst(Head, p2);
 >>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
     addLast(Head, p3);
     addLast(Head, p4);
     print_List(Head);
+
     int idx;
-    cout << "nhap vao id can xoa ";
+    cout << "nhap vao id can chen";
     cin >> idx;
 
-   RemoveNode(Head,idx);
+  //  print_List(Head);
+
+    RemoveNode(Head, idx);
 
     print_List(Head);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -841,5 +863,8 @@ int main()
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
     return 0;
 }

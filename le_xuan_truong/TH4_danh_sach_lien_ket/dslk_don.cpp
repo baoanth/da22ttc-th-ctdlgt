@@ -50,6 +50,7 @@ void AddFirst(List &l, Node* new_ele)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -73,6 +74,8 @@ void AddFirst(List &l, Node* new_ele)
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -87,6 +90,7 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -105,9 +109,104 @@ void AddTail(List &l, Node *new_ele)
 >>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+Node* FindNodeByID (List l, int idx)
+{
+	Node *p;
+	p=l.pHead;
+	
+	while ((p!=NULL)&& (p->Info.id !=idx))
+		p=p->pNext;
+	
+	return p;	
+	
+}
+
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+	Node *q;
+	q= FindNodeByID(l,idx);
+	if ( q!=NULL)
+	{
+		new_ele->pNext = q->pNext;
+		q->pNext = new_ele;
+		if(q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else 
+		AddFirst(l, new_ele);
+}
+    
+void RemoveHead(List &l)
+{
+	Node *p;
+		
+	if ( l.pHead != NULL)
+	{
+		p = l.pHead; 
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+    
+void RemoveLast(List &l, Node *q)
+{
+	Node *p;
+	
+	if ( q != NULL)
+	{
+		p = q ->pNext ;
+		if ( p != NULL)
+	{
+	if(p == l.pTail)
+		l.pTail = q;
+	q->pNext = p->pNext;
+	delete p;
+	}
+}
+	else
+		RemoveHead(l);
+}
+	
+void RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	
+	while( p != NULL)
+	{
+		if(p->Info.id == idx) break;
+		q = p; 
+		p = p->pNext;
+	}
+	 
+	if(q != NULL)
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else 
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+			l.pTail = NULL;
+		
+	}
+
+}	
+	
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
+}
+
+void PrintNode(Node *p)
+{
+	printf("%3d | %20s | %10s\n",p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 void PrintList(List &l)
@@ -126,6 +225,7 @@ int main()
 {
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -158,10 +258,14 @@ int main()
 >>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
 	struct person per3 = {3, "Le Thach Hue", "Meo"};
 
+=======
+	struct person per3 = {3, "Le Thach Xuan", "Meo"};
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -180,6 +284,8 @@ int main()
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
    
     List my_list;
     Init(my_list);
@@ -187,6 +293,7 @@ int main()
     AddFirst(my_list, new_ele1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     AddFirst(my_list, new_ele2);
 =======
 <<<<<<< HEAD
@@ -226,9 +333,36 @@ int main()
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+    AddTail(my_list, new_ele2);
+    PrintList(my_list);
     
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+	int idx;
+	printf("\nNhap vi tri ID can chen vao sau no : ");
+	scanf("%d",&idx);
+    AddNodeAfter(my_list, idx, new_ele3);
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+    
 	PrintList(my_list);
+	
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(my_list, idx);
+	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);	
+	
+	printf("\nNhap ID can xoa : ");
+	scanf("%d",&idx);
+	
+	printf("\nSau khi xoa ID %d : \n", idx);
+//	RemoveHead(my_list);
+//	RemoveLast(my_list, KQ);
+	RemoveNode(my_list, idx);
+	PrintList(my_list);
+
 	
 	return 0;
 }
