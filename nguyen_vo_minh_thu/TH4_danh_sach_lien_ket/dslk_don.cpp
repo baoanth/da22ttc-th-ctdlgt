@@ -96,11 +96,69 @@ void PrintList(List &l)
 	}
 }
 
+void RemoveHead(List &l)
+{
+	Node *p;
+	if (l.pHead != NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if (l.pHead == NULL)
+			l.pTail = NULL;
+			
+	}
+}
+
+void RemoveAfter (List &l, Node *q)
+{
+	Node *p;
+	if (q != NULL)
+	{
+		p = q->pNext;
+		if (p !=NULL)
+		{
+			if(p == l.pTail)
+			l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;
+		}
+	}
+	
+	
+}
+
+int RemoveNode(List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p != NULL)
+	{
+		if(p->Info.id == idx) break;
+		q = p; p = p->pNext;
+	}
+		if (p == NULL) return 0;
+		if(q != NULL)
+		{
+			if(p == l.pTail)
+				l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;
+		}
+		else
+		{
+			l.pHead = p->pNext;
+			if(l.pHead == NULL)
+				l.pTail = NULL;
+		}
+		return 1;
+}
+
 int main()
 {
-	struct person per1 = {1, "Do", "Thien Vu"};
-	struct person per2 = {2, "Nguyen", " Huynh Ky Thuat"};
-	struct person per3 = {3, "Duong", "Tieu Tuyet"};
+	struct person per1 = {1, "Nguyen", "Vo Minh Thu"};
+	struct person per2 = {2, "lam", "Vinh Loc"};
+	struct person per3 = {3, "Nguyen", "Lam"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -115,7 +173,7 @@ int main()
    
 	PrintList(my_list);
 	
-	int idx;
+int idx;
 	printf("\nNhap ID can tim : ");
 	scanf("%d",&idx);
 	printf("\n");
@@ -127,3 +185,6 @@ int main()
 	
 	return 0;
 }
+
+
+	
