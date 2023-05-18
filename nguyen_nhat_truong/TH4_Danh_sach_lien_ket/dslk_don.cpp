@@ -55,14 +55,22 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
 	if (l.pHead == NULL)
+=======
+	if (l.pTail == NULL)
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 	{
 		printf("Danh sach rong\n");
 	}
 	else
 	{
 		Node *p;
+<<<<<<< HEAD
 		p = l.pHead;
+=======
+		p = l.pTail;
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 		while (p!=NULL)
 		{
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -70,6 +78,7 @@ void PrintList(List &l)
 		}
 	}
 }
+<<<<<<< HEAD
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead==NULL)
@@ -90,6 +99,20 @@ int main()
 	struct Person per1 = {1, "Thao" , "Di" };
 	struct Person per2 = {2, "Tieu" , "Vy" };
 	struct Person per3 = {3, "Han" , "Tin" };
+=======
+
+int main()
+{
+<<<<<<< HEAD
+	struct Person per1 = {1, "Thao" , "Di" };
+	struct Person per2 = {2, "Tieu" , "Vy" };
+	struct Person per3 = {3, "Han" , "Tin" };
+=======
+	struct Person per1={1,"Tieu","Vy"};
+	struct Person per2={1,"Thao","Di"};
+	struct Person per3={1,"Han","Tin"};
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);
@@ -98,6 +121,7 @@ int main()
 	List mylist;
 	Init(mylist);
 	
+<<<<<<< HEAD
 	/*AddFirst(mylist, new_ele1);
 	AddFirst(mylist, new_ele2);
 	AddFirst(mylist, new_ele3);	*/
@@ -105,6 +129,11 @@ int main()
 	AddTail(mylist, new_ele1);
 	AddTail(mylist, new_ele2);
 	AddTail(mylist, new_ele3);	
+=======
+	AddFirst(mylist, new_ele1);
+	AddFirst(mylist, new_ele2);
+	AddFirst(mylist, new_ele3);	
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 	
 	PrintList(mylist);
 	
