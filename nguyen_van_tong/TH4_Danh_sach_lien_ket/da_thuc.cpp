@@ -77,7 +77,9 @@ void print(dathuc l)
         if (p != l.pHead && p->Info.heso > 0)
             printf("+");
         if (p->Info.bac == 0)
-            printf("%dx", p->Info.heso);
+            printf("%d", p->Info.heso);
+        else if(p->Info.bac == 1)
+        	 printf("%dx", p->Info.heso);
         else
         {
         	 printf("%dx^%d", p->Info.heso, p->Info.bac);
