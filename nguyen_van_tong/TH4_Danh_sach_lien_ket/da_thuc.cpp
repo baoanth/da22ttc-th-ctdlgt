@@ -89,13 +89,63 @@ void print(dathuc l)
     }
 }
 
+dathuc congdathuc(dathuc l, dathuc f)
+{
+	Node* p = l.pHead;
+	Node* q = f.pHead;
+	
+//	if(p->Info.bac > q->Info.bac)
+//	{
+		while(p!=NULL)
+		{
+			donthuc tmp;
+			dathuc l_kq;
+			tmp.bac = p->Info.bac;
+			tmp.heso = p->Info.heso;
+			while(q!=NULL)
+			{
+				if (tmp.bac == q->Info.bac)
+				{
+					break;
+				}
+				q = q->pNext;
+			}
+			tmp.heso += q->Info.heso;
+			Node* newe = GetNode(tmp);
+			Init(l_kq);
+			AddTail(l_kq, newe);
+			p = p->pNext;
+	    }
+	    return l_kq;
+//	}
+//	else
+//	{
+//		while(q!=NULL)
+//		{
+//			if (q->Info.bac = p->Info.bac)
+//			{
+//				q->Info.heso = q->Info.heso+p->Info.heso;
+//			}
+//			q = q->pNext;
+//		}
+//		
+//	}
+
+}
+
+
+
 int main()
 {
 
     dathuc my_dathuc;
+    dathuc dathuc2, kq;
     Init(my_dathuc);
-
+	Init(dathuc2);
     nhapdathuc(my_dathuc);
-    print(my_dathuc);
+    nhapdathuc(dathuc2);
+    kq = congdathuc(my_dathuc,dathuc2);
+    
+    print(kq);
     return 0;
 }
