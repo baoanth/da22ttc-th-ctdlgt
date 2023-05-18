@@ -4,7 +4,7 @@
 
 typedef struct DonThuc
 {
-    int heso;
+    int he_so;
     int bac;
 } DonThuc;
 
@@ -26,7 +26,7 @@ Node *GetNode(DonThuc x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
+        printf("Khong du bo nho de cap phat nut");
         return 0;
     }
     p->Info = x;
@@ -53,54 +53,50 @@ void AddTail(DaThuc &l, Node *new_ele)
     }
 }
 
-void ThemNotCuoi(DaThuc &l)
+void them_nut_cuoi(DaThuc &l)
 {
-    DonThuc my_donthuc;
-    Node *p;
-    int n, i;
+    struct DonThuc new_don_thuc;
+    int bac_da_thuc, i;
+    printf("Ban muon nhap da thuc bac may?: ");
+    scanf("%d", &bac_da_thuc);
 
-    printf("Nhap so bac cua da thuc:");
-    scanf("%d", &n);
-    for (i = n; i >= 0; i--)
+    for (i = bac_da_thuc; i >= 0; i--)
     {
         printf("X^%d : ", i);
-        scanf("%d", &my_donthuc.heso);
-
-         my_donthuc.bac = i;
-
-        Node *new_ele = GetNode(my_donthuc);
-
+        scanf("%d", &new_don_thuc.he_so);
+        new_don_thuc.bac = i;
+        Node *new_ele = GetNode(new_don_thuc);
         AddTail(l, new_ele);
     }
 }
 
-void PrintDaThuc(DaThuc l)
+void in_da_thuc(DaThuc l)
 {
+    printf("\n");
     Node *p = l.pHead;
     while (p != NULL)
     {
-        if ((p != l.pHead) && (p->Info.heso > 0))
+        if (p != l.pHead && p->Info.he_so > 0)
             printf("+");
-        if ((p != l.pTail) && (p->pNext != l.pTail))
-            printf(" %d^%d ", p->Info.heso, p->Info.bac);
+        if (p != l.pTail && p->pNext != l.pTail)
+            printf("%dx^%d", p->Info.he_so, p->Info.bac);
         else if (p->pNext == l.pTail)
-            printf(" %dx ", p->Info.heso);
+            printf("%dx", p->Info.he_so);
         else if (p == l.pTail)
-            printf(" %d ", p->Info.heso);
+            printf("%d", p->Info.he_so);
 
         p = p->pNext;
     }
 }
 
-
 int main()
 {
-    DaThuc my_dathuc;
-    Init(my_dathuc);
+    DaThuc my_da_thuc;
+    Init(my_da_thuc);
 
-    ThemNotCuoi(my_dathuc);
+    them_nut_cuoi(my_da_thuc);
 
-    PrintDaThuc(my_dathuc);
+    in_da_thuc(my_da_thuc);
 
     return 0;
 }
