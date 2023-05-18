@@ -159,6 +159,7 @@ int main()
     bublesort(my_array,N);
     printf("\ninterchangesort ");
     interchangesort(my_array,N);
+    HeapSort()
 
 }
 
