@@ -63,10 +63,9 @@ void NhapDaThuc(DaThuc &l)
 
     int i;
     DonThuc s;
-
     for (i = n; i >= 0; i--)
     {
-        printf("x^%d. Nhap so:", i);
+        printf("  x^%d. Nhap so:", i);
         s.bac = i;
         scanf("%d", &s.heso);
 
@@ -83,12 +82,19 @@ void InDaThuc(DaThuc &l)
     }
     else
     {
-        Node *p = l.pHead;
+        Node *p=l.pHead;
 
         while (p != NULL)
         {
             if ((p != l.pHead) && (p->Info.heso > 0))
             printf("+");
+            if(p->Info.bac == 0)
+            printf("%d", p->Info.heso);
+            
+            else if(p->Info.bac == 1)
+            printf("%dx", p->Info.heso);
+            
+            else
             printf("%dx^%d", p->Info.heso, p->Info.bac);
             p = p->pNext;
         }

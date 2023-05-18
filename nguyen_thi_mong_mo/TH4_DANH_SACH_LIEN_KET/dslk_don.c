@@ -61,17 +61,18 @@ void ThemNotCuoi(DaThuc &l)
 
     printf("Nhap so bac cua da thuc:");
     scanf("%d", &n);
-    for (i = n; i >= 0; i--)
+    for ( i = 0; i <= n; i++)
     {
-        printf("X^%d : ", i);
+        printf("Nhap bac: ");
+        scanf("%d", &my_donthuc.bac);
+        printf("Nhap he so: ");
         scanf("%d", &my_donthuc.heso);
+         Node *new_ele = GetNode(my_donthuc);
 
-         my_donthuc.bac = i;
-
-        Node *new_ele = GetNode(my_donthuc);
-
-        AddTail(l, new_ele);
+    AddTail(l, new_ele);
     }
+    
+   
 }
 
 void PrintDaThuc(DaThuc l)
@@ -79,19 +80,12 @@ void PrintDaThuc(DaThuc l)
     Node *p = l.pHead;
     while (p != NULL)
     {
-        if ((p != l.pHead) && (p->Info.heso > 0))
-            printf("+");
-        if ((p != l.pTail) && (p->pNext != l.pTail))
-            printf(" %d^%d ", p->Info.heso, p->Info.bac);
-        else if (p->pNext == l.pTail)
-            printf(" %dx ", p->Info.heso);
-        else if (p == l.pTail)
-            printf(" %d ", p->Info.heso);
-
+        if((p != l.pHead) && (p->Info.heso>0))
+        printf(" + ");
+        printf("%dx^%d", p->Info.heso, p->Info.bac);
         p = p->pNext;
     }
 }
-
 
 int main()
 {

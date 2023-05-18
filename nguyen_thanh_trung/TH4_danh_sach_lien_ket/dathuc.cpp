@@ -77,11 +77,7 @@ void in_da_thuc(DaThuc l)
     while (p != NULL)
     {
         if (p->Info.he_so == 0)
-        {
-            p = p->pNext;
-            l.pHead = p;
             continue;
-        }
         if (p != l.pHead && p->Info.he_so > 0)
             printf("+");
         if (p != l.pTail && p->pNext != l.pTail)
