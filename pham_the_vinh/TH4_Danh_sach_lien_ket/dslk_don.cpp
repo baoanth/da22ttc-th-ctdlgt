@@ -82,7 +82,7 @@ void PrintList(List &l)
         p = l.pHead;
         while (p != NULL)
         {
-            printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
+            printf("%2d%15s%15s\n", p->Info.id, p->Info.lname, p->Info.fname);
             p = p->pNext;
         }
     }
@@ -90,7 +90,7 @@ void PrintList(List &l)
 
 void PrintNode(Node *p)
 {
-    printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
+    printf("%2d%15s%15s\n", p->Info.id, p->Info.lname, p->Info.fname);
 }
 
 Node *FindNodeByID(List &l, int idx)
