@@ -186,11 +186,14 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
+=======
 void PrintNode(Node *p)
 {
     printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 void PrintList(List &l)
 {
 
@@ -210,7 +213,10 @@ void PrintList(List &l)
 	}      
 
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 
 
 int main()
@@ -267,4 +273,9 @@ int main()
     PrintList(my_list);
 
     return 0;
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 }
