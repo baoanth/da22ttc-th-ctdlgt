@@ -53,7 +53,7 @@ void NhapDathuc(Dathuc &l)
 	int i;
 	Donthuc s;
 	
-	printf("PT co bac: ");
+	printf("\nPT co bac: ");
 	scanf("%d", &MaxN);
 	
 	for(i= MaxN; i>=0; i--)
@@ -91,14 +91,29 @@ void PrintDathuc(Dathuc &l)
 	}
 }
 
+void CongDathuc(Dathuc &l1, Dathuc &l2)
+{
+	
+}
+
 int main()
 {
-	Dathuc my_dathuc;
-	Init(my_dathuc);
-		
-	NhapDathuc(my_dathuc);
-		   
-	PrintDathuc(my_dathuc);
+	Dathuc my_dathuc1;
+	Init(my_dathuc1);
+	Dathuc my_dathuc2;
+	Init(my_dathuc2);
+	
+	printf("\nNhap da thuc 1: ");		
+	NhapDathuc(my_dathuc1);		   
+	PrintDathuc(my_dathuc1);
+	
+	printf("\n");
+	
+	printf("\nNhap da thuc 2: ");	
+	NhapDathuc(my_dathuc2);		   
+	PrintDathuc(my_dathuc2);
+	
+	
 	    
     return 0;
 }
