@@ -61,7 +61,10 @@ void PrintList(List &l)
 	}
 	else
 	{
+<<<<<<< HEAD
+=======
 <<<<<<<< HEAD:tran_nguyen_vu/Th4_Danh_sach_lien_ket/dslk.don.cpp
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
 		Node *p;
 		p = l.pHead ;
 		while (p!=NULL)
@@ -70,6 +73,16 @@ void PrintList(List &l)
 			p = p->pNext;
 		}		
 	}
+<<<<<<< HEAD
+}
+
+
+int main()
+{
+    struct Person per1 = {1, "Vu", "Thien" };
+	struct Person per2 = {2, "Nguyen", "Ku ti" };
+	struct Person per3 = {3, "Tran", "Hoa" };
+=======
 ========
 		l.pTail-> pNext = new_ele;
 		l.pTail = new_ele;
@@ -102,6 +115,7 @@ int main()
 	struct Person per3 = {3, "Vinh", "Phu" };
     struct Person per4 = {4, "vinh", "nguyen" };
 >>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b:nguyen_phu_vinh/TH4_Danh_Sach_Lien_Ket/dslk_don.cpp
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
     
     Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -112,13 +126,18 @@ int main()
     AddFist(my_list, new_ele1);
     AddFist(my_list, new_ele2);
     AddFist(my_list, new_ele3);
+<<<<<<< HEAD
+=======
 <<<<<<<< HEAD:tran_nguyen_vu/Th4_Danh_sach_lien_ket/dslk.don.cpp
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
 
     PrintList(my_list);
 
     return 0;
 
 
+<<<<<<< HEAD
+=======
 ========
    
 //	PrintList(my_list);
@@ -135,4 +154,5 @@ int main()
 	
 	return 0;
 >>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b:nguyen_phu_vinh/TH4_Danh_Sach_Lien_Ket/dslk_don.cpp
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
 }
