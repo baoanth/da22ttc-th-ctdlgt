@@ -33,6 +33,7 @@ Node* GetNode(Donthuc x)
 	return p; 
 }
 
+//Viet ham AddTail
 void AddTail(Dathuc &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -47,13 +48,14 @@ void AddTail(Dathuc &l, Node *new_ele)
 	}
 }
 
-void NhapDathuc(Dathuc &l)
+//Viet ham Nhap da thuc
+void Nhapdathuc(Dathuc &l)
 {
 	int MaxN= 0;
 	int i;
 	Donthuc s;
 	
-	printf("PT co bac: ");
+	printf("Phuong trinh co bac: ");
 	scanf("%d", &MaxN);
 	
 	for(i= MaxN; i>=0; i--)
@@ -72,12 +74,12 @@ void Init(Dathuc &l)
 	l.pHead = l.pTail = NULL;
 }
 
-void PrintDathuc(Dathuc &l)
+void Printdathuc(Dathuc &l)
 {
 	Node *p;
 	p = l.pHead;
 	
-	printf("\nP(x)= ");
+	printf("\nDa thuc vua nhap la:  ");
 	
 	while (p!= NULL)
 	{
@@ -96,9 +98,10 @@ int main()
 	Dathuc my_dathuc;
 	Init(my_dathuc);
 		
-	NhapDathuc(my_dathuc);
+	Nhapdathuc(my_dathuc);
 		   
-	PrintDathuc(my_dathuc);
+	Printdathuc(my_dathuc);
 	    
     return 0;
 }
+
