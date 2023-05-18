@@ -108,6 +108,18 @@ int main()
 	List my_list;
 	Init(my_list);
 	
+<<<<<<< HEAD
+	AddFist(my_list, new_ele1);
+	AddFist(my_list, new_ele2);
+	
+	PrintList(my_list);
+<<<<<<< HEAD
+	AddTail(my_list, new_ele1);
+	AddTail(my_list, new_ele2);
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+return 0;
+=======
 	AddTail(my_list, new_ele1);
 	AddTail(my_list, new_ele2);
 	
@@ -124,6 +136,7 @@ int main()
 		printf("Tim khong thay node co id \n  %d",idx);   
 	
     return 0;
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 }
 
 

@@ -48,6 +48,29 @@ void AddFirst(List &l, Node* new_ele)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
@@ -62,6 +85,26 @@ void AddTail(List &l, Node *new_ele)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
 Node* FindNodeByID (List l, int idx)
 {
 	Node *p;
@@ -150,6 +193,7 @@ void RemoveNode(List &l, int idx)
 
 }	
 	
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -186,6 +230,44 @@ int main()
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    AddTail(my_list, new_ele2);
+<<<<<<< HEAD
+    AddTail(my_list, new_ele3);
+   
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    AddTail(my_list, new_ele2);
+=======
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+    AddFirst(my_list, new_ele2);
+=======
+    AddTail(my_list, new_ele2);
+    AddTail(my_list, new_ele3);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b383becc58d4c9cd8508517a2d8a395dd3c6d6d7
+>>>>>>> 9c62531f1cfae60fcb086841383235521fa3e424
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
     AddTail(my_list, new_ele2);
     PrintList(my_list);
     
@@ -193,6 +275,7 @@ int main()
 	printf("\nNhap vi tri ID can chen vao sau no : ");
 	scanf("%d",&idx);
     AddNodeAfter(my_list, idx, new_ele3);
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
     
 	PrintList(my_list);
 	
