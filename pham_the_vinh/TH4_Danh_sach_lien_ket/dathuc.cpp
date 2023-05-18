@@ -57,17 +57,17 @@ void AddTail(DaThuc &l, Node *new_ele)
 
 void NhapDaThuc(DaThuc &l)
 {
-    int n = 0;
+    int bacmax = 0;
 
-    printf("Nhap bac cua da thuc: ");
-    scanf("%d", &n);
+    printf(" Nhap bac cua da thuc: ");
+    scanf("%d", &bacmax);
 
     int i;
     DonThuc s;
 
-    for (i = n; i >= 0; i--)
+    for (i = bacmax; i >= 0; i--)
     {
-        printf("x^%d. Nhap he so:", i);
+        printf(" x^%d. Nhap he so:", i);
         s.bac = i;
         scanf("%d", &s.heso);
 
@@ -80,7 +80,7 @@ void InDaThuc(DaThuc &l)
 {
     if (l.pHead == NULL)
     {
-        printf("Rong");
+        printf(" Rong");
     }
     else
     {
@@ -88,10 +88,16 @@ void InDaThuc(DaThuc &l)
 
         while (p != NULL)
         {
-            if ((p != l.pHead) && (p->Info.heso > 0))
-                printf(" + ");
-
-            printf("%dx^%d", p->Info.heso, p->Info.bac);
+            if (p != l.pHead && p->Info.heso > 0)
+            	printf(" + ");
+            	
+        	if (p->Info.bac == 0)
+            	printf("%d", p->Info.heso);
+        	else if(p->Info.bac == 1)
+        	 	printf("%dx", p->Info.heso);
+        	else
+        		printf(" %dx^%d", p->Info.heso, p->Info.bac);
+        	
             p = p->pNext;
         }
     }
@@ -104,7 +110,7 @@ int main()
 
     NhapDaThuc(my_dathuc);
 
-    printf("\nDa thuc vua nhap:\n");
+    printf("\n Da thuc vua nhap:\n");
     InDaThuc(my_dathuc);
 
     return 0;

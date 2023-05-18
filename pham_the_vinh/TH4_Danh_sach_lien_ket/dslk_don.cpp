@@ -7,11 +7,32 @@ typedef struct Person
     int id;
     char fname[20];
     char lname[20];
+<<<<<<< HEAD
+}Person;
+=======
 } Person;
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
 
 typedef struct Node
 {
     Person Info;
+<<<<<<< HEAD
+    Node* pNext;    
+}Node;
+
+typedef struct List
+{
+    Node* pHead;
+    Node* pTail;
+}List;
+
+Node* GetNode(Person x)
+{
+    Node *p;
+    p = new Node;
+    
+    if (p==NULL)
+=======
     Node *pNext;
 } Node;
 
@@ -27,12 +48,22 @@ Node *GetNode(Person x)
     p = new Node;
 
     if (p == NULL)
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
     {
         printf("Khong du bo nho de cap phat");
         return 0;
     }
     p->Info = x;
     p->pNext = NULL;
+<<<<<<< HEAD
+    
+    return p;
+}
+
+void AddFist(List &l, Node* new_ele)
+{
+    if (l.pHead ==NULL)
+=======
 
     return p;
 }
@@ -40,17 +71,24 @@ Node *GetNode(Person x)
 void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
     else
     {
+<<<<<<< HEAD
+        new_ele ->pNext = l.pHead;    
+=======
         new_ele->pNext = l.pHead;
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
         l.pHead = new_ele;
     }
 }
 
+<<<<<<< HEAD
+=======
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -65,6 +103,7 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
@@ -72,6 +111,46 @@ void Init(List &l)
 
 void PrintList(List &l)
 {
+<<<<<<< HEAD
+	if (l.pHead ==NULL)
+	{
+		printf("Danh sach rong");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;
+		}		
+	}
+}
+
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+int main()
+{
+    struct Person per1 = {1, "Vinh", "Pham"};
+	struct Person per2 = {2, "An", "Nguyen"};
+	struct Person per3 = {3, "Tong", "Nguyen"};
+    
+    Node* new_ele1  = GetNode(per1);
+    Node* new_ele2  = GetNode(per2);
+    Node* new_ele3  = GetNode(per3);
+    
+    List my_list;
+    Init(my_list);
+
+    AddFist(my_list, new_ele1);
+    AddFist(my_list, new_ele2);
+    AddFist(my_list, new_ele3);
+
+=======
     if (l.pHead == NULL)
     {
         printf("Danh sach rong");
@@ -261,6 +340,7 @@ int main()
         printf("\nKhong the xoa Node co id %d\n", idx);
 
     printf("\nDanh sach sau khi xoa Node\n");
+>>>>>>> 77f14fee2572540c58e789d20453ef1757e9faa2
     PrintList(my_list);
 
     return 0;

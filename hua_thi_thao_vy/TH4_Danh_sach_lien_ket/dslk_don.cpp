@@ -167,9 +167,9 @@ void PrintList(List &l)
 
 int main()
 {
-	struct Person per1 = {1, "Vy" , "Hua" };
-	struct Person per2 = {2, "Truong" , "Nguyen" };
-	struct Person per3 = {3, "Hoi" , "Nguyen" };
+	struct Person per1 = {1, "Hua" , "Thao Vy" };
+	struct Person per2 = {2, "Nguyen" , "Nhat Truong" };
+	struct Person per3 = {3, "Nguyen" , "Nhat Hoi" };
 	
 	Node* new_ele1 = GetNode(per1);
 	Node* new_ele2 = GetNode(per2);
@@ -181,11 +181,39 @@ int main()
 	AddFirst(mylist, new_ele1);
 	/*AddFirst(mylist, new_ele2);
 	AddFirst(mylist, new_ele3);*/	
+<<<<<<< HEAD
+	
+	//AddTail(mylist, new_ele1);
+	AddTail(mylist, new_ele2);
+	AddTail(mylist, new_ele3);	
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 	
 	//AddTail(mylist, new_ele1);
 	AddTail(mylist, new_ele2);
 	AddTail(mylist, new_ele3);	
 	
+	PrintList(mylist);
+	
+	int idx;
+	printf("\nNhap ID can tim : ");
+	scanf("%d",&idx);
+	printf("\n");
+	Node* KQ = FindNodeByID(mylist, idx);
+	if(KQ != NULL)
+		PrintNode(KQ);
+	else
+		printf("\nKhong tim thay Node co ID : %d",idx);
+	
+	
+	printf("\nNhap id can xoa ");
+	scanf("%d", &idx);
+	int kq = RemoveNode(mylist, idx);
+	if (kq!=0)
+	   printf("\nDa xoa Node co id = %d", idx);
+	else
+	   printf("\nKhong the xoa Node co id = %d", idx);
+	printf("\nDanh sach sau khi thao tac\n");
 	PrintList(mylist);
 	
 	int idx;
