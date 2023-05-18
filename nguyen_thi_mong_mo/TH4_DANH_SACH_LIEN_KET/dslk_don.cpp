@@ -64,6 +64,7 @@ void AddTail(List &l, Node* new_ele)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //Ham nhap Node moi vao vi tri tuy y
 void InputNode(List &l)
 {
@@ -115,6 +116,13 @@ Node* FindNodeByID(List l, int idx)
     Node *p;
     p =l.pHead;
 
+=======
+Node* FindNodeByID(List l, int idx)
+{
+    Node *p;
+    p =l.pHead;
+
+>>>>>>> parent of 31600ad (Add Remove Node)
     while ((p!=NULL) && (p->Info.id !=idx))
         p = p->pNext;
 
@@ -143,7 +151,10 @@ void PrintNode(Node *p)
 void PrintList(List &l)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 31600ad (Add Remove Node)
 =======
 >>>>>>> parent of 31600ad (Add Remove Node)
 	if (l.pHead ==NULL)
@@ -160,8 +171,12 @@ void PrintList(List &l)
 			p = p->pNext;
 		}		
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}      
 
+=======
+	}
+>>>>>>> parent of 31600ad (Add Remove Node)
 =======
 	}
 >>>>>>> parent of 31600ad (Add Remove Node)
@@ -169,6 +184,7 @@ void PrintList(List &l)
 =======
 >>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
 
+<<<<<<< HEAD
 
 
 
@@ -215,12 +231,38 @@ int main()
     //AddTail(my_list, new_ele3);
 >>>>>>> parent of 31600ad (Add Remove Node)
 
+=======
+
+int main()
+{
+    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
+	struct Person per2 = {2, "Le", "Binh" };
+	struct Person per3 = {3, "Tran", "Hoa" };
+    
+    Node* new_ele1  = GetNode(per1);
+    Node* new_ele2  = GetNode(per2);
+    Node* new_ele3  = GetNode(per3);
+    List my_list;
+    Init(my_list);
+
+	//AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele3);
+
+<<<<<<< HEAD
+	
+    AddTail(my_list, new_ele1);
+    //AddTail(my_list, new_ele2);
+    //AddTail(my_list, new_ele3);
+
+>>>>>>> parent of 31600ad (Add Remove Node)
 <<<<<<< HEAD
     PrintList(my_list);
     
 	int idx;
     printf("\nNhap id can tim ");
     scanf("%d", &idx);
+<<<<<<< HEAD
 <<<<<<< HEAD
     
 	Node *node_kq = FindNodeByID(my_list, idx);
@@ -254,6 +296,17 @@ int main()
 
     PrintList(my_list);
 =======
+=======
+<<<<<<< HEAD
+    PrintList(my_list);
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> parent of 31600ad (Add Remove Node)
+=======
+    Node *node_kq  = FindNodeByID(my_list, idx);
+    if (node_kq!=NULL)
+        PrintNode(node_kq);
+    else   
+        printf("Tim khong thay node co id %d", idx);
 =======
 <<<<<<< HEAD
     PrintList(my_list);
