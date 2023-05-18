@@ -124,6 +124,11 @@ void PrintNode(Node *p)
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -153,6 +158,9 @@ void PrintNode(Node *p)
 =======
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 =======
@@ -181,6 +189,11 @@ void PrintNode(Node *p)
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
@@ -367,6 +380,10 @@ int main()
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
@@ -383,6 +400,11 @@ int main()
 <<<<<<< HEAD
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
 =======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
@@ -420,11 +442,20 @@ int main()
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+} 
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 >>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
 =======
 =======
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 <<<<<<< HEAD
     PrintList(my_list);
 
@@ -510,6 +541,8 @@ int main()
 =======
 >>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
 >>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 =======
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
@@ -525,6 +558,11 @@ int main()
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -555,6 +593,9 @@ int main()
 =======
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
 >>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 =======
@@ -583,6 +624,11 @@ int main()
 >>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
 =======
 >>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 =======
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 <<<<<<< HEAD
