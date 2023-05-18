@@ -159,6 +159,7 @@ int main()
     in_da_thuc(da_thuc2);
 
     da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
+    printf("\nDa thuc sau khi cong: ");
     in_da_thuc(da_thuc_kq);
 
     return 0;
