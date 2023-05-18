@@ -29,6 +29,9 @@ void input_text_file(char * filename)
    
 }
 
+<<<<<<< HEAD
+int main(){
+=======
 char* read_text_file(char* filename)
 {
 	FILE *infile = fopen(filename, "r");	
@@ -58,6 +61,7 @@ char* read_text_file(char* filename)
 
 int main()
 {
+>>>>>>> 8c5644e8ff72d2db7a8d5d5063f1d87d76572b87
 	input_text_file("outfile.txt");
 	
 	char* file_content = read_text_file("outfile.txt");
