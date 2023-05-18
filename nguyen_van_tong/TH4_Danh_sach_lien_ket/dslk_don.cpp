@@ -158,7 +158,7 @@ int main()
     cout << "nhap vao id can chen";
     cin >> idx;
 
-  //  print_List(Head);
+    print_List(Head);
 
     RemoveNode(Head, idx);
 
