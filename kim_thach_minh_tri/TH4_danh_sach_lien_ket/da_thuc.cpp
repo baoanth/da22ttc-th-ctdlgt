@@ -21,7 +21,6 @@ typedef struct List
 } List;
 
 
-
 int main()
 {
 
