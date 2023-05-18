@@ -68,6 +68,33 @@ void Nhapdathuc(Dathuc &l)
 	}
 }
 
+Dathuc congdathuc(my_dathuc, dathuc &la, dathuc &lb )
+{
+	Node *p, *q;
+	Donthuc dt-tam
+	p = la -> pHead;
+	q = lb -> pHead;
+	while(p != NULL)
+	{
+		dt_tam.hs = p -> Info.hs;
+		dt_tam.bac = q -> Info.bac;
+		while(q != NULL)
+		{
+			if (p -> tam.hs = p->Info.bac) break;
+			q = q -> pNext;
+		}
+	}
+	if(q != NULL)
+    	dt_tam.hs += q -> Info.hs;
+    Node new_ele = GetNode(dt_tam);
+}
+
+
+
+
+
+
+
 void Init(Dathuc &l)
 {
 	l.pHead = l.pTail = NULL;
