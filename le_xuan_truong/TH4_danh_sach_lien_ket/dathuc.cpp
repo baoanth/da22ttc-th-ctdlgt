@@ -47,7 +47,7 @@ void AddTail(Dathuc &l, Node *new_ele)
 	}
 }
 
-void AddNutCuoi(Dathuc &l)
+void NhapDathuc(Dathuc &l)
 {
 	int MaxN= 0;
 	int i;
@@ -96,7 +96,7 @@ int main()
 	Dathuc my_dathuc;
 	Init(my_dathuc);
 		
-	AddNutCuoi(my_dathuc);
+	NhapDathuc(my_dathuc);
 		   
 	PrintDathuc(my_dathuc);
 	    
