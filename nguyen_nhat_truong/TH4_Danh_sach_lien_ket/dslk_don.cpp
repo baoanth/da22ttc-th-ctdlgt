@@ -56,6 +56,93 @@ void Init(List &l)
 
 void AddTail(List &l, Node *new_ele)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pHead == NULL)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pHead == NULL)
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+	if (l.pHead == NULL)
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> e93a10bcd9e9120c687b7176025727b939abbd6b
+=======
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+	if (l.pTail == NULL)
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+<<<<<<< HEAD
+		p = l.pHead;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+		p = l.pHead;
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+		p = l.pHead;
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> e93a10bcd9e9120c687b7176025727b939abbd6b
+=======
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+		p = l.pTail;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;
+		}
+	}
+=======
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
     if (l.pHead == NULL)
     {
         l.pHead = new_ele;
@@ -219,8 +306,6 @@ int main()
 
     PrintList(my_list);
 
-    printf("**************************************************************\n");
-
     int idx;
     printf("Nhap id :");
     scanf("%d", &idx);
@@ -230,12 +315,10 @@ int main()
     if (node_kq != NULL)
     {
         PrintNode(node_kq);
-        printf("**************************************************************\n");
     }
     else
     {
         printf("Khong tim thay id %d\n", idx);
-        printf("**************************************************************\n");
     }
 
         AddNodeAfter(my_list, idx, new_ele5);
@@ -245,14 +328,12 @@ int main()
     PrintList(my_list);
 
     RemoveHead(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut dau : \n");
     printf("\n");
 
     PrintList(my_list);
 
     RemoveLast(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut cuoi : \n");
     printf("\n");
 
@@ -261,13 +342,11 @@ int main()
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
     RemoveNode(my_list, idx);
-    printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
 
     InputNode(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
