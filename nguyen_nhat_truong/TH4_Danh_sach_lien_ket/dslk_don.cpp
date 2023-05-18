@@ -219,8 +219,6 @@ int main()
 
     PrintList(my_list);
 
-    printf("**************************************************************\n");
-
     int idx;
     printf("Nhap id :");
     scanf("%d", &idx);
@@ -230,12 +228,10 @@ int main()
     if (node_kq != NULL)
     {
         PrintNode(node_kq);
-        printf("**************************************************************\n");
     }
     else
     {
         printf("Khong tim thay id %d\n", idx);
-        printf("**************************************************************\n");
     }
 
         AddNodeAfter(my_list, idx, new_ele5);
@@ -245,14 +241,12 @@ int main()
     PrintList(my_list);
 
     RemoveHead(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut dau : \n");
     printf("\n");
 
     PrintList(my_list);
 
     RemoveLast(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut cuoi : \n");
     printf("\n");
 
@@ -261,13 +255,11 @@ int main()
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
     RemoveNode(my_list, idx);
-    printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
 
     InputNode(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
