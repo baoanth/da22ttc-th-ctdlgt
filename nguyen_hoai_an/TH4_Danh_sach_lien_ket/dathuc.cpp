@@ -14,11 +14,11 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct DaThuc
+typedef struct Dathuc
 {
     Node *pHead;
     Node *pTail;
-} DaThuc;
+} Dathuc;
 
 Node *GetNode(DonThuc x)
 {
@@ -36,12 +36,12 @@ Node *GetNode(DonThuc x)
     return p;
 }
 
-void Init(DaThuc &l)
+void Init(Dathuc &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
-void AddTail(DaThuc &l, Node *new_ele)
+void AddTail(Dathuc &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -55,7 +55,7 @@ void AddTail(DaThuc &l, Node *new_ele)
     }
 }
 
-void NhapDaThuc(DaThuc &l)
+void NhapDaThuc(Dathuc &l)
 {
     int n = 0;
     printf("Da thuc bac: ");
@@ -74,7 +74,7 @@ void NhapDaThuc(DaThuc &l)
     }
 }
 
-void InDaThuc(DaThuc &l)
+void InDaThuc(Dathuc &l)
 {
     if (l.pHead == NULL)
     {
@@ -101,15 +101,59 @@ void InDaThuc(DaThuc &l)
     }
 }
 
+Dathuc Congdathuc(Dathuc &l, Dathuc &m)
+{
+	Node *p, *q;
+	Dathuc l_kq;
+	Init(l_kq);
+	Donthuc dt_tam;
+	p = l.pHead;
+	q = m.pHead;
+	
+	while(p != NULL)
+	{
+		dt_tam.heso = p->Info.heso;
+		dt_tam.bac = p->Info.bac;
+		while(q != NULL)
+		{
+		if(p->Info.bac == q->Info.bac)
+		break;
+		q = q->pNext;			
+		}
+		if(q!=NULL)
+			dt_tam.heso += q->Info.heso;
+			
+		Node new_ele = GetNode(dt_tam);
+		AddTail(l_kq, new_ele);
+		
+		p->pNext;
+	}
+	return l_kq;
+}
+
 int main()
 {
-    DaThuc my_dathuc;
+   /* Dathuc my_dathuc;
     Init(my_dathuc);
 
     NhapDaThuc(my_dathuc);
 
-    printf("Da thuc vua nhap: ");
+    printf("Da thuc vua nhap:  ");
     InDaThuc(my_dathuc);
+   */ 
+	Dathuc dt1, dt3, dt3;
+	Init(dt1);
+	Init(dt2);
+	
+	Nhapdathuc(dt1);
+	PrintDaThuc(dt1);
+	
+	Nhapdathuc(dt2);
+	PrintDaThuc(dt2);
+	
+	dt3 = CongDaThuc(dt1, dt2);
+	PrintDaThuc(dt);
+	    
 
     return 0;
 }
