@@ -62,17 +62,27 @@ void AddTail(Dathuc &l, Node *new_ele)
 
 void ThemNutCuoi(Dathuc &l)
 {
-	DonThuc s;
+	DonThuc my_donthuc;
+	Node *p;
 	
-	printf("Bac:");
-	scanf("%d", &s.bac);
-	printf("He so:");
-	scanf("%d", &s.hs);
+	int n,i;
+	printf("Nhap so bac cua da thuc:");
+	scanf("%d", &n);
+	for(i=n; i>=0; i--)
+	{
+		printf("x^%d :",i);
+		scanf("%d",&my_donthuc.hs);
+		
+		my_donthuc.bac=i;
+		
+		Node *new_ele = GetNode(my_donthuc);
+		
+		AddTail(l, new_ele);
+		
+	}
 	
-	Node *new_ele= GetNode(s);
-	AddTail(l, new_ele);
-
 }
+
 
 void PrintList(Dathuc &l)
 {
