@@ -7,6 +7,23 @@ typedef struct Person
     int id;
     char fname[20];
     char lname[20];
+<<<<<<< HEAD
+}Person;
+
+typedef struct Node
+{
+    Person Info;
+    Node *pNext;    
+}Node;
+
+typedef struct List
+{
+    Node* pHead;
+    Node* pTail;
+}List;
+
+Node* GetNode(Person x)
+=======
 } Person;
 
 typedef struct Node
@@ -22,18 +39,66 @@ typedef struct List
 } List;
 
 Node *GetNode(Person x)
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 {
     Node *p;
     p = new Node;
     if (p==NULL)
     {
+<<<<<<< HEAD
+        printf("Khong du bo nho de cap phat cho nut moi");
+=======
         printf("Khong du bo nho de cap nhat");
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
         return 0;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
+<<<<<<< HEAD
+
+void AddFirst(List &l, Node* new_ele)
+{
+    if (l.pHead ==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        new_ele ->pNext = l.pHead;    
+        l.pHead = new_ele;
+    }
+}
+
+void AddTail(List &l, Node* new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+Node* FindNodeByID(List l, int idx)
+{
+    Node *p;
+    p =l.pHead;
+
+    while ((p!=NULL) && (p->Info.id !=idx))
+        p = p->pNext;
+
+    return p;
+}
+
+
+=======
 void AddFirst(List &l, Node * new_ele)
 {
 if (l.pHead==NULL) 
@@ -47,6 +112,7 @@ new_ele->pNext = l.pHead;
 l.pHead = new_ele;
 }
 }
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 
 void Init(List &l)
 {
@@ -66,6 +132,9 @@ void PrintList(List l)
         p = p->pNext;
     }
 }
+<<<<<<< HEAD
+
+=======
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -185,15 +254,24 @@ void InputNode(List &l)
     AddNodeAfter(l, vi_tri, new_ele);
 
 }
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 
 
 int main()
 {
+<<<<<<< HEAD
+    struct Person per1 = {1, "Thien", "Tran Nhut Thien" };
+	struct Person per2 = {2, "Tran", "Thien" };
+	struct Person per3 = {3, "Tran", "Nhut" };
+    
+   
+=======
     struct Person per1 = {1, "Nhut Thien", "Thien"};
     struct Person per2 = {2, "Tran Nhut", "Nhut Thien"};
     struct Person per3 = {3, "Nhut Thien", "Nhut"};
    
     
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
@@ -207,10 +285,25 @@ int main()
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
+<<<<<<< HEAD
+    Node *tim_kiem = FindNodeByID(my_list, idx);
+=======
     Node *tim_kiem = FindNodeById(my_list, idx);
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
     if (tim_kiem != NULL)
         PrintNode(tim_kiem);
     else
         printf("Khong tim thay ten co id %d", idx);
     return 0;
+<<<<<<< HEAD
+    
+
+   
+
+
+
 }
+
+=======
+}
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6

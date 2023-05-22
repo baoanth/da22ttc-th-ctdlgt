@@ -91,7 +91,7 @@ void PrintDathuc(Dathuc &l)
 	}
 }
 
-Dathuc CongDathuc(Dathuc &l1, Dathuc &l2)
+Dathuc CongDathuc(Dathuc l1, Dathuc l2)
 {
 	Node *p, *q;
 	
