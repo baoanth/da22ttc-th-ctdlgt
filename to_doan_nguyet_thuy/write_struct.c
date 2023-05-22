@@ -14,7 +14,24 @@ struct person
 
 int main()
 {
- printf("day la mot bai mau");
- printf("day chi la ao");
+	struct person per1 = {1, "To", "Thuy"};
+	struct person per2 = {2, "Doan", "Nguyet"};
+	
+	
+	FILE *outfile;
+	outfile= fopen("person.dat","w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	
+	if(outfile!=0)
+	   printf("Write file successfully");
+	else 
+	   printf("ERROR! Write file successfully");
+	   
+	   fclose(outfile);
+	
+	   
+    
 
 };

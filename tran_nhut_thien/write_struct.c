@@ -11,6 +11,16 @@ struct person
     char lname[20];
 };
 int main(){
-printf("tui la nhut thien");
-printf("lop da22ttc");
+    struct person per1 ={1, "Nguyen", "An"};
+    struct person per2 = {2,"Le","Binh" };
+    FILE* outfile = fopen("person.dat", "w");
+    fwrite(&per1, sizeof(struct person), 1,outfile);
+    fwrite(&per2, sizeof(struct person), 1,outfile);
+    
+    if (fwrite!=0)
+     printf("ghi file thanh cong");
+    else
+     printf("ghi file that bai");
+    fclose (outfile);
+
 }

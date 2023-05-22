@@ -9,8 +9,21 @@ struct person
     int id;
     char fname[20];
     char lname[20];
-};
+} ;
 int main(){
-    printf("Day la tep doc file");
-    printf("Day la tep ao");
+	struct person per1 = {1, "Dang","Phuoc"};
+	struct person per2 = {2, "Pham","Anh"};
+	struct person per3 = {3, "Tran","Hoang"};
+	
+	FILE* outfile = fopen("person.dat","w");
+	
+	fwrite(&per1, sizeof(struct person), 1, outfile);
+	fwrite(&per2, sizeof(struct person), 1, outfile);
+	fwrite(&per3, sizeof(struct person), 1, outfile);
+	
+	if (fwrite!=0)
+		printf("Ghi file thanh cong");
+	else 
+		printf("Ghi file that bai");
+	fclose(outfile);
 }
