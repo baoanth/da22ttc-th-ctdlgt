@@ -93,7 +93,7 @@ Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
 		Node* new_ele = GetNode(dathuc_tam);
 		AddTail(l_kq, new_ele);
 		
-		p->pNext;
+		p=p->pNext;
 	}
 	
 	return l_kq;
@@ -101,7 +101,7 @@ Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
 
 void PrintDathuc(Dathuc &l)
 { 
-	printf("\nP(x)=");
+	printf("P(x)=");
 	if(l.pHead ==NULL)
 	{
 		printf("Da thuc rong \n");
@@ -129,14 +129,18 @@ int main()
 	Init(dt1);
 	Init(dt2);
 	
+	printf("Nhap da thuc 1: \n");
 	NhapDaThuc(dt1);
 	PrintDathuc(dt1);
-	 printf("\n");
+	
+	printf("\n\n");
+	 
+	printf("Nhap da thuc 2: \n");
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
 	
 	dt3 = CongDaThuc(dt1, dt2);
-	
+	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
 	
 	

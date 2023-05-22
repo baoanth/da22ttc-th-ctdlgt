@@ -102,7 +102,7 @@ Dathuc CongDathuc(Dathuc l1, Dathuc l2)
 	p= l1.pHead;
 	q= l2.pHead;
 	
-	while(q!= NULL)
+	while(p!= NULL)
 	{
 		t.hs= p->Info.hs;
 		t.bac= p->Info.bac;
@@ -118,7 +118,7 @@ Dathuc CongDathuc(Dathuc l1, Dathuc l2)
 			
 		Node* new_ele= GetNode(t);
 		AddTail(l_kq, new_ele);
-		p->pNext;
+		p=p->pNext;
 	}
 	return l_kq;
 }
