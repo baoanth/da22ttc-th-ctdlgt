@@ -156,7 +156,7 @@ void QuickSort(int a[], int l, int r)
 			i++;
 			j--;
 		}
-	}while (i <= j);
+	}while (i < j);
 	
 	if(l<j)
 	   QuickSort(a, l, j);
