@@ -65,7 +65,7 @@ void NhapDaThuc(DaThuc &l)
     DonThuc s;
     int i;
 
-    for (i = bacmax; i >= 0; i--)
+    for(i = bacmax; i >= 0; i--)
     {
         printf("Nhap he so x^%d:", i);
         s.bac = i;
@@ -77,7 +77,7 @@ void NhapDaThuc(DaThuc &l)
 
 void InDaThuc(DaThuc &l)
 {
-    if (l.pHead == NULL)
+    if(l.pHead == NULL)
     {
         printf("Trong rong");
     }
@@ -85,7 +85,7 @@ void InDaThuc(DaThuc &l)
     {
         Node *p = l.pHead;
 
-        while (p != NULL)
+        while(p != NULL)
         {
             if (p != l.pHead && p->Info.heso > 0)
                 printf(" + ");
@@ -105,22 +105,23 @@ DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
 {
     Node *p = l1.pHead;
     Node *q = l2.pHead;
+    
     DaThuc KetQua;
     Init(KetQua);
     DonThuc DaThucTam;
 
-    while (p!= NULL)
+    while(p!= NULL)
     {
         DaThucTam.bac = p->Info.bac;
         DaThucTam.heso = p->Info.heso;
 
-        while (q!= NULL)
+        while(q!= NULL)
         {
             if (DaThucTam.bac == q->Info.bac)
                 break;
             q = q->pNext;
         }
-        if (q!= NULL)
+        if(q!= NULL)
             DaThucTam.heso += q->Info.heso;
 
         Node *new_ele = GetNode(DaThucTam);
@@ -141,11 +142,12 @@ int main()
 
     printf("Da thuc vua nhap:\n");
     InDaThuc(DaThuc1);
-    printf("\n");
+    printf(" \n");
     InDaThuc(DaThuc2);
-    printf("\n");
+
     KetQua = CongDaThuc(DaThuc1, DaThuc2);
-    printf("\nKet qua=");
+    printf("\nKet qua = ");
     InDaThuc(KetQua);
+    
     return 0;
 }
