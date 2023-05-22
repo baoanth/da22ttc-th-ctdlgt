@@ -56,7 +56,7 @@ void AddTail(Dathuc &l, Node *new_ele)
 void NhapDaThuc(Dathuc &l)
 {
 	int maxN=0;
-	printf("Da thuc bac ");
+	printf("Da thuc bac: ");
 	scanf("%d",&maxN);
 	int i;
 	Donthuc s;
@@ -69,14 +69,39 @@ void NhapDaThuc(Dathuc &l)
 		AddTail(l, new_ele);
 	}
 }
-void CongDaThuc(Dathuc &l1, Dathuc &l2)
+Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
 {
+	Node *p, *q;
+	Dathuc l_kq;
+	Init (l_kq);
+	Donthuc dathuc_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dathuc_tam.hs=p->Info.hs;
+		dathuc_tam.bac=p->Info.bac;
+		while(q!=NULL)
+		{
+			if(p->Info.bac == q->Info.bac)
+			break;
+			q=q->pNext;
+		}
+		if(q!=NULL)
+			dathuc_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dathuc_tam);
+		AddTail(l_kq, new_ele);
+		
+		p=p->pNext;
+	}
 	
+	return l_kq;
 }
 
 void PrintDathuc(Dathuc &l)
 { 
-	printf("\nP(x)=");
+	printf("P(x)=");
 	if(l.pHead ==NULL)
 	{
 		printf("Da thuc rong \n");
@@ -100,18 +125,24 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
-	Dathuc my_dathuc1;
-	Init(my_dathuc1);
-	Dathuc my_dathuc2;
-	Init(my_dathuc2);
+	Dathuc dt1, dt2, dt3;
+	Init(dt1);
+	Init(dt2);
 	
-	printf("\nNhap da thuc 1:\n");
-	NhapDaThuc(my_dathuc1);
-	PrintDathuc(my_dathuc1);
+	printf("Nhap da thuc 1: \n");
+	NhapDaThuc(dt1);
+	PrintDathuc(dt1);
 	
-	printf("\nNhap da thuc 2: \n");
-	NhapDaThuc(my_dathuc2);
-	PrintDathuc(my_dathuc2);
+	printf("\n\n");
+	 
+	printf("Nhap da thuc 2: \n");
+	NhapDaThuc(dt2);
+	PrintDathuc(dt2);
+	
+	dt3 = CongDaThuc(dt1, dt2);
+	printf("\n\nTong hai da thuc la:  ");
+	PrintDathuc(dt3);
+	
 	
 
 
