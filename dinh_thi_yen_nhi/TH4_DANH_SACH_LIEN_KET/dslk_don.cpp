@@ -62,6 +62,37 @@ void PrintList ( List l )
    }
 }
 
+void AddTail (List &l, Node *new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail -> pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+void Output (List l)
+{
+    Node*p = l.pHead;
+    while (p!=NULL)
+    {
+        p = p -> pNext;
+    }
+}
+
+Node* FindNodeByID(List l, int idx, int id)
+{
+    Node*p = l.pHead ;
+    while ( p != NULL && p -> Info.id != idx )
+            p = p -> pNext;
+    return p;
+}
+
 int main ()
 {
 	struct Person per1 = { 1, "dau", "tay"};
@@ -80,5 +111,12 @@ int main ()
 	AddFirst (my_list, new_ele3);
 	
 	PrintList (my_list);
+	
+	int idx;
+	printf ("nhap id can tim: \n");
+	scanf ("%d",&idx);
+	
+	Node *new_ele = FindNodeByID(my_list, idx);
+		
 		
 } 

@@ -13,7 +13,7 @@ typedef struct Person
 } Person;
 =======
 }Person;
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+>>>>>>> 11ae627302a13f94f32aa31b4a57d5139f9673d
 =======
 } Person;
 <<<<<<< HEAD
@@ -154,8 +154,7 @@ void AddFist(List &l, Node *new_ele)
         new_ele ->pNext = l.pHead;    
 =======
         new_ele->pNext = l.pHead;
-<<<<<<< HEAD
-<<<<<<< HEAD
+<<<<<<< HEAD<<<<<<< HEAD
 >>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
 =======
 >>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
