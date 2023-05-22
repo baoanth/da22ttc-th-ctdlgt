@@ -19,19 +19,21 @@ typedef struct DaThuc
     Node *pHead;
     Node *pTail;
 } DaThuc;
+
 Node *GetNode(DonThuc x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
-        printf("Khong du bo nho de cap nhat");
+        printf("Khong du bo nho de cap phat nut");
         return 0;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
+
 void Init(DaThuc &l)
 {
     l.pHead = l.pTail = NULL;
@@ -50,6 +52,7 @@ void AddTail(DaThuc &l, Node *new_ele)
         l.pTail = new_ele;
     }
 }
+
 void them_nut_cuoi(DaThuc &l)
 {
     DonThuc new_don_thuc;
@@ -66,6 +69,7 @@ void them_nut_cuoi(DaThuc &l)
         AddTail(l, new_ele);
     }
 }
+
 void in_da_thuc(DaThuc l)
 {
     printf("\n");
@@ -104,6 +108,7 @@ void in_da_thuc(DaThuc l)
         p = p->pNext;
     }
 }
+
 DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
 {
     DonThuc dt_tam;
@@ -136,6 +141,7 @@ DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
     return l_kq;
     
 }
+
 int main()
 {
     DaThuc da_thuc1;
@@ -152,7 +158,7 @@ int main()
     them_nut_cuoi(da_thuc2);
     in_da_thuc(da_thuc2);
 
- 	da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
+    da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
     printf("\nDa thuc sau khi cong: ");
     in_da_thuc(da_thuc_kq);
 
