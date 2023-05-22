@@ -56,7 +56,7 @@ void AddTail(Dathuc &l, Node *new_ele)
 void NhapDaThuc(Dathuc &l)
 {
 	int maxN=0;
-	printf("Da thuc bac ");
+	printf("Da thuc bac: ");
 	scanf("%d",&maxN);
 	int i;
 	Donthuc s;
