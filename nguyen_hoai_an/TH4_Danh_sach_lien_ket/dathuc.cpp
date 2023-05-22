@@ -26,7 +26,7 @@ Node *GetNode(DonThuc x)
 
     if (p == NULL)
     {
-        printf("404 ");
+        printf("Khong du bo nho.");
         return 0;
     }
 
@@ -57,18 +57,19 @@ void AddTail(DaThuc &l, Node *new_ele)
 
 void NhapDaThuc(DaThuc &l)
 {
-    int n = 0;
-    printf("Da thuc bac: ");
-    scanf("%d", &n);
+    int bacmax = 0;
 
-    int i;
+    printf("Nhap bac da thuc: ");
+    scanf("%d", &bacmax);
+
     DonThuc s;
-    for (i = n; i >= 0; i--)
+    int i;
+
+    for (i = bacmax; i >= 0; i--)
     {
-        printf("  x^%d. Nhap so:", i);
+        printf("Nhap he so x^%d:", i);
         s.bac = i;
         scanf("%d", &s.heso);
-
         Node *new_ele = GetNode(s);
         AddTail(l, new_ele);
     }
@@ -82,34 +83,69 @@ void InDaThuc(DaThuc &l)
     }
     else
     {
-        Node *p=l.pHead;
+        Node *p = l.pHead;
 
         while (p != NULL)
         {
-            if ((p != l.pHead) && (p->Info.heso > 0))
-            printf("+");
-            if(p->Info.bac == 0)
-            printf("%d", p->Info.heso);
-            
-            else if(p->Info.bac == 1)
-            printf("%dx", p->Info.heso);
-            
+            if (p != l.pHead && p->Info.heso > 0)
+                printf(" + ");
+            if (p->Info.bac == 0)
+                printf("%d", p->Info.heso);
+            else if (p->Info.bac == 1)
+                printf("%dx", p->Info.heso);
             else
-            printf("%dx^%d", p->Info.heso, p->Info.bac);
+                printf("%dx^%d", p->Info.heso, p->Info.bac);
+
             p = p->pNext;
         }
     }
 }
 
+DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
+{
+    Node *p = l1.pHead;
+    Node *q = l2.pHead;
+    DaThuc KetQua;
+    Init(KetQua);
+    DonThuc DaThucTam;
+
+    while (p!= NULL)
+    {
+        DaThucTam.bac = p->Info.bac;
+        DaThucTam.heso = p->Info.heso;
+
+        while (q!= NULL)
+        {
+            if (DaThucTam.bac == q->Info.bac)
+                break;
+            q = q->pNext;
+        }
+        if (q!= NULL)
+            DaThucTam.heso += q->Info.heso;
+
+        Node *new_ele = GetNode(DaThucTam);
+        AddTail(KetQua, new_ele);
+        p = p->pNext;
+    }
+    return KetQua;
+}
+
 int main()
 {
-    DaThuc my_dathuc;
-    Init(my_dathuc);
+    DaThuc DaThuc1, DaThuc2, KetQua;
+    Init(DaThuc1);
+    Init(DaThuc2);
 
-    NhapDaThuc(my_dathuc);
+    NhapDaThuc(DaThuc1);
+    NhapDaThuc(DaThuc2);
 
-    printf("Da thuc vua nhap: ");
-    InDaThuc(my_dathuc);
-
+    printf("Da thuc vua nhap:\n");
+    InDaThuc(DaThuc1);
+    printf("\n");
+    InDaThuc(DaThuc2);
+    printf("\n");
+    KetQua = CongDaThuc(DaThuc1, DaThuc2);
+    printf("\nKet qua=");
+    InDaThuc(KetQua);
     return 0;
 }
