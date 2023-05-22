@@ -12,7 +12,7 @@ typedef struct Person
 typedef struct Node
 {
     Person Info;
-    Node* pNext;    
+    Node *pNext;    
 }Node;
 
 typedef struct List
@@ -79,68 +79,53 @@ Node* FindNodeByID(List l, int idx)
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
-
+}
 void PrintNode(Node *p)
 {
-    printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+    printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
-
-void PrintList(List &l)
+void PrintList(List l)
 {
-	if (l.pHead ==NULL)
-	{
-		printf("Danh sach rong\n");
-	}
-	else
-	{
-		Node *p;
-		p = l.pHead ;
-		while (p!=NULL)
-		{
-			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
-			p = p->pNext;
-		}		
-	}
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
+        p = p->pNext;
+    }
 }
 
 
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
+    struct Person per1 = {1, "Thien", "Tran Nhut Thien" };
+	struct Person per2 = {2, "Tran", "Thien" };
+	struct Person per3 = {3, "Tran", "Nhut" };
     
-    Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
+   
+    Node *new_ele1 = GetNode(per1);
+    Node *new_ele2 = GetNode(per2);
+    Node *new_ele3 = GetNode(per3);
     List my_list;
     Init(my_list);
 
-	
-    AddFirst(my_list, new_ele2);
+    AddFirst(my_list, new_ele1);
+    AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
-
-	
-    AddTail(my_list, new_ele1);
-
-
-
     PrintList(my_list);
     int idx;
-    printf("\nNhap id can tim ");
+    printf("\nNhap id can tim: ");
     scanf("%d", &idx);
-    Node *node_kq  = FindNodeByID(my_list, idx);
-    if (node_kq!=NULL)
-        PrintNode(node_kq);
-    else   
-        printf("Tim khong thay node co id %d", idx);
-
-    PrintList(my_list);
-
-
+    Node *tim_kiem = FindNodeByID(my_list, idx);
+    if (tim_kiem != NULL)
+        PrintNode(tim_kiem);
+    else
+        printf("Khong tim thay ten co id %d", idx);
     return 0;
+    
+
+   
 
 
 
