@@ -96,11 +96,11 @@ void in_da_thuc(DaThuc l)
         else if (p->pNext == l.pTail)
         {
             if (p->Info.he_so != 1 && p->Info.he_so != -1)
-                printf("%dx", p->Info.he_so);
+                printf("%dx^%d", p->Info.he_so, p->Info.bac);
             else if (p->Info.he_so == 1)
-                printf("x");
+                printf("x^%d", p->Info.bac);
             else if (p->Info.he_so == -1)
-                printf("-x");
+                printf("-x^%d", p->Info.bac);
         }
         else if (p == l.pTail)
             printf("%d", p->Info.he_so);

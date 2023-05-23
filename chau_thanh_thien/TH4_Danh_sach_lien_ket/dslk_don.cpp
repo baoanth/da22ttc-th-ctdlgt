@@ -101,6 +101,23 @@ void PrintList(List &l)
 	}
 }
 
+<<<<<<< HEAD
+void RemoveHead(List &l, int idx)
+{
+	Node *p = FindNodeByID(l, idx);
+	
+	if(l.pHead != NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+
+
+
+=======
 Node* FindNodeByID(List &l, Person x)
 {
 	Node *p;
@@ -110,6 +127,7 @@ Node* FindNodeByID(List &l, Person x)
 		return p;
 }
 
+>>>>>>> 594e5729e738585b58519f9084fbcd81c77519ca
 int main()
 {
     struct Person per1 = {1, "Cho", "Shinba" };
