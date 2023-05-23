@@ -176,12 +176,11 @@ int main()
 {
 	struct person per1 = {1, "Le Xuan", "Truong"};
 	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
-	struct person per3 = {3, "Le Thach Hue", "Meo"};
-	
+	struct person per3 = {3, "Le Thach Xuan", "Meo"};
+	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
-
    
     List my_list;
     Init(my_list);
@@ -194,7 +193,7 @@ int main()
 	printf("\nNhap vi tri ID can chen vao sau no : ");
 	scanf("%d",&idx);
     AddNodeAfter(my_list, idx, new_ele3);
-
+    
 	PrintList(my_list);
 	
 	printf("\nNhap ID can tim : ");
