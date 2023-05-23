@@ -54,10 +54,161 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
+<<<<<<< HEAD
+void PrintList(List &l)
+{
+	if (l.pHead ==NULL)
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
+			p = p->pNext;
+		}		
+	}
+}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+=======
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+void PrintList(List &l)
+=======
 void PrintNode(Node *p)
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+void PrintList(List &l)
+=======
+void PrintNode(Node *p)
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 {
     printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
+<<<<<<< HEAD
+=======
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+=======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+=======
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 
 void PrintList(List l)
 {
@@ -210,6 +361,114 @@ int main()
     AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
 
+<<<<<<< HEAD
+    PrintList(my_list);
+
+    return 0;
+
+
+}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+    PrintList(my_list);
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+    PrintList(my_list);
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+} 
+=======
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+
+} 
+=======
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+} 
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+=======
+=======
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+    PrintList(my_list);
+
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+} 
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+=======
     PrintList(my_list);
 
     /*
@@ -227,10 +486,12 @@ int main()
 
     AddNodeAfter(my_list, idx, new_ele4);
 
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
     PrintList(my_list);
 
     RemoveHead(my_list);
     printf("\n Xoa nut dau");
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
     PrintList(my_list);
 
     RemoveLast(my_list);
@@ -247,5 +508,139 @@ int main()
     InputNode(my_list);
     PrintList(my_list);
 
+<<<<<<< HEAD
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+    PrintList(my_list);
+
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+=======
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
     return 0;
 }
+<<<<<<< HEAD
+=======
+
+} 
+>>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 5de63e9e904304a5f48a7fee999f0123f1cdeb0a
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+=======
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+<<<<<<< HEAD
+>>>>>>> 3b3270c5029c69abffff531b504dec023a307d35
+=======
+>>>>>>> 746df14f0e5d95d461172bd037c2b85fca5d532d
+>>>>>>> 5a1f1f644d05c13365b1e7efdcb95d4b8d623df0
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> 334655d424bda68a9d41827a76714eab9247231d
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+=======
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+=======
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+<<<<<<< HEAD
+=======
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+>>>>>>> 23ffe3f67ad4e1fb00aaef81241a1894c18d4867
+=======
+=======
+=======
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+=======
+>>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
