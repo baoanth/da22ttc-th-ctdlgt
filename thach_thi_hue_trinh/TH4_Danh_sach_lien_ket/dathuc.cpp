@@ -179,9 +179,10 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
-	Dathuc dt1, dt2, l_kq;
+	Dathuc dt1, dt2, dt3;
 	Init(dt1);
 	Init(dt2);
+	Init(dt3);
 	
 	printf("Nhap da thuc 1: \n");
 	NhapDaThuc(dt1);
@@ -192,11 +193,12 @@ int main()
 	printf("Nhap da thuc 2: \n");
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
-	
-	//dt3= CongDathuc(dt1, dt2);
-	printf("\n\nTong hai da thuc la:  ");
-	PrintDathuc(l_kq);
-	
+
+//	dt3= CongDathuc(dt1, dt2);
+//	printf("\n\nTong hai da thuc la:  ");
+//	PrintDathuc(l_kq);
+	CongDathuc(dt1,dt2,dt3);
+	PrintDathuc(dt3);
 	
 
 
