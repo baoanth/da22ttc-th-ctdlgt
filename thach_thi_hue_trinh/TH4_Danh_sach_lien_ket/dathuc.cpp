@@ -122,35 +122,51 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 	}
 
 }
-//Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
-//{
-//	Node *p, *q;
-//	Dathuc l_kq;
-//	Init (l_kq);
-//	Donthuc dathuc_tam;
-//	p= l1.pHead;
-//	q= l2.pHead;
-//	while(p!=NULL)
-//	{
-//		dathuc_tam.hs=p->Info.hs;
-//		dathuc_tam.bac=p->Info.bac;
-//		while(q!=NULL)
-//		{
-//			if(p->Info.bac == q->Info.bac)
-//			break;
-//			q=q->pNext;
-//		}
-//		if(q!=NULL)
-//			dathuc_tam.hs += q->Info.hs;
-//			
-//		Node* new_ele = GetNode(dathuc_tam);
-//		AddTail(l_kq, new_ele);
-//		
-//		p=p->pNext;
-//	}
-//	
-//	return l_kq;
-//}
+
+float UocluongDathuc(Dathuc l, int x)
+{
+	float kq=0;
+	
+	Node* p= l.pHead;
+	
+	while(p!=NULL)
+	{
+		kq += p->Info.hs *pow(x,p->Info.bac);
+		
+		p=p->pNext;
+	}
+	return kq;
+	
+}
+/*Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
+ {
+	Node *p, *q;
+	Dathuc l_kq;
+	Init (l_kq);
+	Donthuc dathuc_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dathuc_tam.hs=p->Info.hs;
+		dathuc_tam.bac=p->Info.bac;
+		while(q!=NULL)
+		{
+			if(p->Info.bac == q->Info.bac)
+			break;
+			q=q->pNext;
+		}
+		if(q!=NULL)
+			dathuc_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dathuc_tam);
+		AddTail(l_kq, new_ele);
+		
+		p=p->pNext;
+	}
+	
+	return l_kq;
+} */
 
 
 void PrintDathuc(Dathuc &l)
@@ -194,11 +210,16 @@ int main()
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
 
-//	dt3= CongDathuc(dt1, dt2);
-//	printf("\n\nTong hai da thuc la:  ");
-//	PrintDathuc(dt3);
-	CongDathuc(dt1,dt2,dt3);
+/*	dt3= CongDathuc(dt1, dt2);
+	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
+*/
+	CongDathuc(dt1,dt2,dt3);
+	PrintDathuc(dt3); 
+	
+	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc :");
+	scanf("%f",&x);
+	printf("Gia tri cua da thuc x=%f la:%f",dt1,x);
 	
 
 
