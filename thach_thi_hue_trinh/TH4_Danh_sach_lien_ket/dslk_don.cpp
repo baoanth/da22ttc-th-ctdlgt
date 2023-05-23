@@ -62,81 +62,6 @@ void AddTail(List &l, Node *new_ele)
 	}
 } 
 
-void AddNodeAfter(List &l, Node *q, Node *new_ele)
-{
-	if( q!=NULL)
-	{
-		new_ele->pNext =q->pNext;
-		q->pNext = new_ele;
-		if(q==l.pTail)
-			l.pTail= new_ele;
-	}
-	else
-	 AddFirst(l, new_ele);
-}
-
-
-void RemoveHead(List &l)
-{
-	Node *p;
-
-	if (l.pHead !=NULL)
-	 {
-	 	p= l.pHead ;
-	 	l.pHead= l.pHead->pNext;
-		delete p;
-		if (l.pHead==NULL)
-		    l.pTail= NULL;
-	 }
-}	 
-
-void RemoveAfter(List &l, Node *q)
-{
-	Node *p;
-	if(q!= NULL)
-	{
-		p=q ->pNext;
-		if(p !=NULL)
-		{
-			if (p==l.pTail)
-				l.pTail= q;
-			q->pNext =p->pNext;
-			delete p;
-		}
-	}
-	else 
-	RemoveHead(l);
-}
-
-int RemoveNode (List &l, int idx)
-{
-	
-   	Node *p=l.pHead;
-   	Node *q=NULL;
-   	while(p!=NULL)
-   	{
-   		if(p ->Info.id == idx) break;
-   		q = p; p=p->pNext;
-   	}
-		if(p==NULL) return 0; 
-		printf("Khong tim thay Node co ID = %d",idx);
-   		if(q != NULL)
-   	{
-   		if (p==l.pTail)
-   			l.pTail = q;
-   		q->pNext = p->pNext;
-   		delete p;
-   	}
-   	else 
-   	{
-   		l.pHead= p->pNext;
-   		if(l.pHead == NULL)
-   			l.pTail== NULL;
-   	}
-   	return 1;
-   	
-}
-
 Node* FindNodeByID (List l, int idx)
 {
 	Node *p;
@@ -197,15 +122,7 @@ int main()
 	Node* KQ=FindNodeByID (my_list, idx);
 		if(KQ != NULL) PrintNode(KQ);
 		else
-		 printf("\nTim khong thay NODE co ID %d", idx);
-		 
-	printf("\nNhap ID can xoa");
-	scanf("%d", &idx);
-	int kq=RemoveNode(my_list, idx);
-	if (kq !=0)
-		printf("\nDa xoa Node co ID= %d",idx);
-		printf("Danh sach sau thao tac \n");
-	PrintList(my_list);	
+		 printf("Tim khong thay NODE co ID %d", idx);
 
 return 0;
 }

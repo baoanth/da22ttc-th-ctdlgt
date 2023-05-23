@@ -76,7 +76,7 @@ Node* FindNodeByID(List l, int idx)
 	return p;
 }
 
-int RemoveNode(List l, int idx)
+int RemoveNode(List &l, int idx)
 {
     Node *p = l.pHead;
     Node *q = NULL;
@@ -107,6 +107,46 @@ int RemoveNode(List l, int idx)
 return 1;
 }
 
+void InputNode(List &l)
+{
+	Person per_tam;
+	printf("\n Moi nhap node moi");
+    printf("\nID:");
+    scanf("%d", &per_tam.id);
+    
+    fflush(stdin);
+    printf("First name:");
+    gets(per_tam.fname);
+    
+    fflush(stdin);
+    printf("Last name:");
+    gets(per_tam.lname);
+    
+    Node* new_ele = GetNode(per_tam);
+    
+    printf("Ban muon them vao vi tri nao: ");
+    printf("1.Dau danh sach; 2.Cuoi danh sach\n");
+    
+    fflush(stdin);
+    int chon=0;
+    scanf("%d", &chon);
+    
+    switch(chon)
+    {
+    	case 1:
+    		AddFirst(l, new_ele);
+    		printf("Da them new_ele vao dau danh sach");
+    		break;
+    	case 2:
+    		AddTail(l, new_ele);
+    		printf("Da them new_ele vao cuoi danh sach");
+    		break;
+    	default:
+    		AddTail(l, new_ele);
+	        printf("Ban da nhap sai. Da them new_ele vao cuoi danh sach\n");	
+	        break;
+	}
+}
 void PrintNode(Node *p)
 {
 	printf("%3d %10s %12s \n", p->Info.id, p->Info.fname, p->Info.lname);    
@@ -167,9 +207,22 @@ int main()
         printf("\n Khong the xoa nut co id %d", idx);
     printf("\n Danh sach sau khi xoa\n");
     PrintList(my_list);
+    
+    
+    InputNode(my_list);
+    InputNode(my_list);
+    printf("\n Danh sach sau khi cap nhat: \n");
+    PrintList(my_list);
 	
 return 0;
 }
+
+
+
+
+
+
+
 
 
 
