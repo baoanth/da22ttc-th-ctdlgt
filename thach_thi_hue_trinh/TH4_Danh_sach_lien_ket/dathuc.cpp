@@ -196,7 +196,7 @@ int main()
 
 //	dt3= CongDathuc(dt1, dt2);
 //	printf("\n\nTong hai da thuc la:  ");
-//	PrintDathuc(l_kq);
+//	PrintDathuc(dt3);
 	CongDathuc(dt1,dt2,dt3);
 	PrintDathuc(dt3);
 	
