@@ -165,6 +165,64 @@ void PrintList(List &l)
 	}
 }
 
+void RemoveHead(List &l)
+{
+	Node *p;
+	if (l.pHead != NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if (l.pHead == NULL)
+		    l.pTail = NULL;
+	}
+}
+void RemoveAfter(List &l, Node *q)
+{
+	Node *p;
+	if (q != NULL)
+	{
+		p = q->pNext;
+		if (p != NULL)
+		{
+			if (p == l.pTail)
+			    l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;    
+		}
+	}
+	
+	else
+	   RemoveHead(l);
+	   
+}
+
+int RemoveNode(List &l, Data k)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while(p !=NULL)
+	{
+		if(p->Info == k) break;
+		q= p; p = p->pNext;
+	}
+	if(p == NULL) return 0;
+	if(q !== NULL)
+	{
+		if(p == l.pTail)
+		     l.pTail = q;
+		     q->pNext= p->pNext;
+		     delete p;
+	}
+	else
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+		     l.pTail = NULL;
+	}
+	return 1;
+   }
+
 int main()
 {
 	struct Person per1 = {1, "Nguyen" , "Huynh Ky Thuat" };

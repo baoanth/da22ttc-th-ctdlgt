@@ -6,9 +6,6 @@ typedef struct Donthuc
 {
 	int he_so;
 	int bac;
-	
-	
-	
 }Donthuc;
 
 typedef struct Node
@@ -120,39 +117,77 @@ void in_da_thuc(DaThuc l)
         p = p->pNext;
     }
 }
-//void cong_da_thuc(DaThuc,DaThuc)
-//{
-//	Node *p ,*q;
-//	DaThuc l_kq;
-//	Init(l_kq);
-//	DonThuc tam;
-//	p = l1.pHead;
-//	q = l2.pHead;
-//	while(p!= NULL)
-//	{
-//		tam.he_so=p->Info.he_so;
-//		tam.bac= p->Info.bac;
-//		
-//		while(q!=NULL)
-//		{
-//			if(p->Info.bac == q->Info.bac)
-//			break;
-//			q=q->pNext;
-//			
-//		}
-//	}
-//}
-
-int main ()
+void CopyDaThuc(DaThuc l, DaThuc &l_kq)
 {
-	DaThuc my_da_thuc;
-	DaThuc my_da_thuc1;
-    Init(my_da_thuc);
-	
-    them_nut_cuoi(my_da_thuc);
-	them_nut_cuoi(my_da_thuc1);
-    in_da_thuc(my_da_thuc);
-    in_da_thuc(my_da_thuc1);
-    
-	return 0;
+    // Init(l_kq);
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        Node *q = GetNode(p->Info);
+        AddTail(l_kq, q);
+        p = p->pNext;
+    }
 }
+
+Node *TimNodeBacN(DaThuc l, int n)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.bac == n)
+        {
+            break;
+        }
+        p = p->pNext;
+    }
+    return p;
+}
+
+DaThuc CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+
+{
+
+    Init(l_kq);
+    CopyDaThuc(l1, l_kq);
+    Node *p = l2.pHead;
+
+    while (p != NULL)
+    {
+        Node *fNode = TimNodeBacN(l_kq, p->Info.bac);
+        if (fNode != NULL)
+        {
+            fNode->Info.he_so += p->Info.he_so;
+        }
+        else
+        {
+            Node *tam = GetNode(p->Info);
+            AddTail(l_kq, tam);
+        }
+        p = p->pNext;
+    }
+}
+
+int main()
+{
+    DaThuc my_dathuc1;
+    DaThuc my_dathuc2, kq;
+    Init(my_dathuc1);
+    Init(my_dathuc2);
+    Init(kq);
+
+    them_nut_cuoi(my_dathuc1);
+    them_nut_cuoi(my_dathuc2);
+
+    printf("\nDa thuc 1:");
+    in_da_thuc(my_dathuc1);
+    printf("\nDa thuc 2:");
+    in_da_thuc(my_dathuc2);
+
+    printf("\nDa thuc kq:");
+    CongDaThuc(my_dathuc1, my_dathuc2, kq);
+
+    in_da_thuc(kq);
+
+    return 0;
+}
+
