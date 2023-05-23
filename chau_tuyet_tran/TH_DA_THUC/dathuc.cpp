@@ -71,7 +71,7 @@ void NhapDaThuc(Dathuc &l)
 {
     Donthuc s;
     int i,maxN;
-	printf("Bac cua da thuc: ");
+	printf("Bac cua da thuc la bac : ");
 	scanf("%d", &maxN);
 	for (i =maxN; i>=0; i--)
 	{
@@ -81,59 +81,6 @@ void NhapDaThuc(Dathuc &l)
 		Node* new_ele = GetNode(s);
 		AddTail(l, new_ele);
 	}
-}
-
-void CopyDathuc(Dathuc l, Dathuc &l_kq)
-{
-	Node* p;
-	p = l.pHead;
-	
-	while (p!=NULL)
-	{
-		Node* new_ele = GetNode(p->Info);
-		AddTail(l_kq, new_ele);
-		p=p->pNext;
-	}
-	printf("\nDa copy da thuc\n");
-}
-
-Node* TimNodeBacN(Dathuc l, int n)
-{
-	Node* p;
-	p = l.pHead;
-	
-	while (p!=NULL)
-	{
-		if(p->Info.bac==n)
-		   break;
-		p=p->pNext;
-	}
-	return p;
-}
-
-void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
-{
-	CopyDathuc(l1, l_kq);
-	
-	Node* p;
-	p= l2.pHead;
-	
-	while(p!=NULL)
-	{
-		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
-		if (foundNode!=NULL)
-		{
-			foundNode->Info.heso += p->Info.heso;
-			printf("\nFound bac %d\n" ,p->Info.bac);
-		}
-		else
-		{
-			Node* node_tam = GetNode(p->Info);
-			AddTail(l_kq, node_tam);
-		}
-		p=p->pNext;
-	}
-
 }
 
 void PrintDathuc(Dathuc &l)
@@ -156,31 +103,15 @@ void PrintDathuc(Dathuc &l)
 	}
 }
 
+
 int main()
-{
-	/*Dathuc mydathuc;
+{	
+	printf("Moi ban nhap ");
+	Dathuc mydathuc;
 	Init(mydathuc);
 	
 	NhapDaThuc(mydathuc);
-	PrintDathuc(mydathuc);*/
-	Dathuc dt1, dt2, dt3;
-	Init(dt1);
-	Init(dt2);
-	Init(dt3);
-	
-	printf("Nhap da thuc 1: \n");
-	NhapDaThuc(dt1);
-	PrintDathuc(dt1);
-	
-	printf("\n");
-	 
-	printf("Nhap da thuc 2: \n");
-	NhapDaThuc(dt2);
-	PrintDathuc(dt2);
-	
-	CongDathuc(dt1, dt2, dt3);
-	printf("\nTong hai da thuc la:  ");
-	PrintDathuc(dt3);
+	PrintDathuc(mydathuc);
 	
 	return 0;
 }

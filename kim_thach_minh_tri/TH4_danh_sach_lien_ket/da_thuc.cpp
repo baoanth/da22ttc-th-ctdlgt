@@ -66,7 +66,7 @@ void ThemNotCuoi(DaThuc &l)
         printf("X^%d : ", i);
         scanf("%d", &my_donthuc.heso);
 
-         my_donthuc.bac = i;
+        my_donthuc.bac = i;
 
         Node *new_ele = GetNode(my_donthuc);
 
@@ -79,7 +79,7 @@ void PrintDaThuc(DaThuc l)
     printf("\n");
     Node *p = l.pHead;
     while (p != NULL)
-    {
+	{
         if ((p != l.pHead) && (p->Info.heso > 0))
             printf("+");
         if ((p != l.pTail) && (p->pNext != l.pTail))
@@ -91,7 +91,7 @@ void PrintDaThuc(DaThuc l)
             else if (p->Info.heso == -1)
                 printf("-x^%d", p->Info.bac);
         }
-          //  printf(" %d^%d ", p->Info.heso, p->Info.bac);
+        //  printf(" %d^%d ", p->Info.heso, p->Info.bac);
         else if (p->pNext == l.pTail)
         {
             if (p->Info.heso != 1 && p->Info.heso != -1)
@@ -101,7 +101,7 @@ void PrintDaThuc(DaThuc l)
             else if (p->Info.heso == -1)
                 printf("-x^%d", p->Info.bac);
         }
-           // printf(" %dx ", p->Info.heso);
+        // printf(" %dx ", p->Info.heso);
         else if (p == l.pTail)
             printf(" %d ", p->Info.heso);
 
@@ -109,59 +109,93 @@ void PrintDaThuc(DaThuc l)
     }
 }
 
-DaThuc CongDaThuc(DaThuc l1, DaThuc l2)
+void CopyDaThuc(DaThuc l, DaThuc &l_kq)
 {
-    Node *p, *q;
-    DaThuc l_kq;
-    Init(l_kq);
-    DonThuc tam;
-
-    p = l1.pHead;
-    q = l2.pHead;
-    while(p != NULL)
+    // Init(l_kq);
+    Node *p = l.pHead;
+    while (p != NULL)
     {
-        tam.heso = p->Info.heso;
-        tam.bac = p->Info.bac;
-
-        while(q != NULL)
-        {
-            if(p->Info.bac == q->Info.bac )
-                break;
-            q=q->pNext;
-        }
-        if(q != NULL)
-            tam.heso += q->Info.heso;
-           
-
-        Node* new_ele = GetNode(tam);
-        AddTail(l_kq, new_ele);
-        p=p->pNext;
+        Node *q = GetNode(p->Info);
+        AddTail(l_kq, q);
+        p = p->pNext;
     }
-    
-    return l_kq;
+}
+
+Node *TimNodeBacN(DaThuc l, int n)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.bac == n)
+        {
+            break;
+        }
+        p = p->pNext;
+    }
+    return p;
+}
+
+DaThuc CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+
+{
+
+    Init(l_kq);
+    CopyDaThuc(l1, l_kq);
+    Node *p = l2.pHead;
+
+    while (p != NULL)
+    {
+        Node *fNode = TimNodeBacN(l_kq, p->Info.bac);
+        if (fNode != NULL)
+        {
+            fNode->Info.heso += p->Info.heso;
+        }
+        else
+        {
+            Node *tam = GetNode(p->Info);
+            AddTail(l_kq, tam);
+        }
+        p = p->pNext;
+    }
+}
+
+void RutGonDaThuc(DaThuc &l)
+{
+    for (Node *p = l.pHead; p != NULL; p = p->pNext)
+    {
+        int bac_p = p->Info.bac;
+        Node *q = p->pNext;
+        while (q != NULL && q->Info.bac == bac_p)
+        {
+            p->Info.heso += q->Info.heso;
+            Node *r = q;
+            q = q->pNext;
+            Remove(l, r);
+        }
+    }
 }
 
 int main()
 {
     DaThuc my_dathuc;
-    DaThuc my_dathuc1;
+    DaThuc my_dathuc1, kq;
     Init(my_dathuc);
     Init(my_dathuc1);
+    Init(kq);
 
     ThemNotCuoi(my_dathuc);
     ThemNotCuoi(my_dathuc1);
 
-    printf("\nDa thuc 1:\n");
+    printf("\nDa thuc 1:");
+    RutGonDaThuc(my_dathuc);
     PrintDaThuc(my_dathuc);
-    printf("\nDa thuc 2:\n");
+    printf("\nDa thuc 2:");
     PrintDaThuc(my_dathuc1);
 
-     DaThuc dathuc_kq ;
-     printf("\nDa thuc kq:\n");
-    dathuc_kq = CongDaThuc(my_dathuc, my_dathuc1);
+    printf("\nDa thuc kq:");
+    CongDaThuc(my_dathuc, my_dathuc1, kq);
 
-    PrintDaThuc(dathuc_kq);
-    
+    PrintDaThuc(kq);
 
     return 0;
 }
