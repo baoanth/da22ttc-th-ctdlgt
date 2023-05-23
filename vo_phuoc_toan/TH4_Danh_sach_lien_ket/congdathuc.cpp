@@ -20,7 +20,19 @@ typedef struct Dathuc
 	Node* pTail;
 }Dathuc;
 
-
+Node* GetNode(Donthuc x)
+{
+	Node *p;
+	p = new Node;
+	if (p==NULL)   
+	{ 
+		printf("Khong du bo nho !"); 
+		return NULL; 
+	}
+	p->Info = x; 
+	p->pNext = NULL;
+	return p; 
+}
 
 void Init(Dathuc &l)
 {
@@ -130,18 +142,6 @@ int main()
 	dt3 = CongDaThuc(dt1, dt2);
 	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
-	
-	
-
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
