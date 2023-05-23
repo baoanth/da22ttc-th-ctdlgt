@@ -94,6 +94,7 @@ void Xuatdathuc(dathuc& l)
     }
 }
 
+<<<<<<< HEAD
 void CopyDaThuc( dathuc l, dathuc &l_kq)
 {
     Node* p;
@@ -149,10 +150,13 @@ void CongDaThuc(dathuc l1, dathuc l2, dathuc&l_kq)
     }
 }
 
+=======
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 int main()
 {
     dathuc my_Px1;
     dathuc my_Px2;
+<<<<<<< HEAD
 	dathuc my_Px3;
 	
     Init(my_Px1);
@@ -174,3 +178,15 @@ int main()
 
     return 0;
 }
+=======
+
+    Init(my_Px1);
+
+    Nhapdathuc(my_Px1);
+
+    Xuatdathuc(my_Px1);
+
+    return 0;
+}
+
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
