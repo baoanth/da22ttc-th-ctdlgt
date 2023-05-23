@@ -90,7 +90,7 @@ void print(dathuc l)
 
 void CopyDaThuc(dathuc l, dathuc &l_kq)
 {
-    //Init(l_kq);
+    // Init(l_kq);
     Node *p = l.pHead;
     while (p != NULL)
     {
@@ -116,7 +116,7 @@ Node *TimNodeBacN(dathuc l, int n)
 
 void congdathuc(dathuc l1, dathuc l2, dathuc &l_kq)
 {
-	Init(l_kq);
+    Init(l_kq);
     CopyDaThuc(l1, l_kq);
     Node *p = l2.pHead;
 
@@ -146,9 +146,7 @@ int main()
     nhapdathuc(dathuc1);
     nhapdathuc(dathuc2);
     congdathuc(dathuc1, dathuc2, kq);
-	
-	
-	
+
     print(kq);
     return 0;
 }
