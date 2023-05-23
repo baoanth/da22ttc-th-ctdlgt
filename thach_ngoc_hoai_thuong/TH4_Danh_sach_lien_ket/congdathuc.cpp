@@ -142,10 +142,6 @@ int main()
 	dt3 = CongDaThuc(dt1, dt2);
 	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
-	
-	
-
 
 	return 0;
 }
-
