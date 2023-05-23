@@ -77,7 +77,7 @@ void PrintDathuc(Dathuc &l)
 	Node *p;
 	p = l.pHead;
 	
-	printf("\nP(x)= ");
+	printf("P(x)= ");
 	
 	while (p!= NULL)
 	{
@@ -85,7 +85,7 @@ void PrintDathuc(Dathuc &l)
 			printf("+");
 		if(p->Info.bac==0)
 			printf("%d",p->Info.hs);
-		else
+		else if(p->Info.hs!=0)
 			printf("%dx^%d",p->Info.hs, p->Info.bac);
 		p = p->pNext;
 	}
@@ -131,7 +131,7 @@ int main()
 	Init(my_dathuc2);
 	Dathuc my_dathuc3;
 	
-	printf("\nNhap da thuc 1: ");		
+	printf("Nhap da thuc 1: ");		
 	NhapDathuc(my_dathuc1);		   
 	PrintDathuc(my_dathuc1);
 	
@@ -141,6 +141,7 @@ int main()
 	NhapDathuc(my_dathuc2);		   
 	PrintDathuc(my_dathuc2);
 	
+	printf("\n\nTong 2 da thuc:  ");	
 	my_dathuc3= CongDathuc(my_dathuc1, my_dathuc2);
 	PrintDathuc(my_dathuc3);
 	
