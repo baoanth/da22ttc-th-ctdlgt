@@ -153,28 +153,28 @@ void Congdathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 }
 
 //Viet ham nhan 2 da thuc 
-void Nhandathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
-{
-	Copydathuc(l1, l_kq);
-	
-	Node* p;
-	p = l2.pHead;
-	
-	while(p!=NULL)
-	{
-		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
-		if(foundNode != NULL)
-		{
-			foundNode->Info.hs *= p->Info.hs;
-		}
-		else
-		{
-			Node* Node_tam = GetNode(p->Info);
-			AddTail(l_kq, Node_tam);
-		}
-		p = p->pNext;
-	}
-}
+//void Nhandathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
+//{
+//	Copydathuc(l1, l_kq);
+//	
+//	Node* p;
+//	p = l2.pHead;
+//	
+//	while(p!=NULL)
+//	{
+//		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
+//		if(foundNode != NULL)
+//		{
+//			foundNode->Info.hs *= p->Info.hs;
+//		}
+//		else
+//		{
+//			Node* Node_tam = GetNode(p->Info);
+//			AddTail(l_kq, Node_tam);
+//		}
+//		p = p->pNext;
+//	}
+//}
 
 //Viet ham main
 int main()
@@ -191,19 +191,27 @@ int main()
 	Nhapdathuc(dathuc1);
 	Nhapdathuc(dathuc2);
 	
+	
 	//In 2 da thuc vua nhap		   
 	Printdathuc(dathuc1);
 	Printdathuc(dathuc2);
 	
-	//Cong da thuc
+	//Cong da thuc 2 da thuc
 	Congdathuc(dathuc1, dathuc2, dathuc3);
 	printf("\nTong 2 da thuc la: \n");
 	Printdathuc(dathuc3);
 	
-	//Nhan da thuc
-	Nhandathuc(dathuc1, dathuc2, kq);
-	printf("\nTich 2 da thuc la: ");
-	Printdathuc(kq);
+
+	//Nhan da thuc 2 da thuc 
+//	Nhandathuc(dathuc1, dathuc2, kq);
+//	printf("\nTich 2 da thuc la: ");
+//	Printdathuc(kq);
+
+	int x, gtbt;
+	printf("\nNhap vao gia tri cua bien X: ");
+	scanf("%d", &x);
+	
+	
 	
     return 0;
 }
