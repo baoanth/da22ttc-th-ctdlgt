@@ -136,6 +136,24 @@ void congdathuc(dathuc l1, dathuc l2, dathuc &l_kq)
     }
 }
 
+dathuc nhandonthuc(donthuc x, dathuc l)
+{
+    dathuc kq;
+    Init(kq);
+    donthuc tmp;
+    Node*p = l.pHead;
+    while(p!= NULL)
+    {
+        tmp.bac = p->Info.bac*x.bac;
+        tmp.heso = p->Info.heso*x.heso;
+        Node* q = GetNode(tmp);
+        AddTail(kq,q);
+        p = p-> pNext;
+    }
+    return kq;
+}
+
+
 int main()
 {
 
