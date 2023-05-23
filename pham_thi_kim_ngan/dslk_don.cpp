@@ -97,6 +97,56 @@ void AddTail(List &l,Node *new_ele)
     }
 }
 
+Node* FindNodeAfter(List &l,int idx)
+{
+	Node *p;
+	p=l.pHead;
+	while ((p!=NULL)&&(p->Infno !=idx))
+	p=p->pNext;
+	return p;
+}
+void AddNodeAfter(List &l, int idx)
+{
+	if (l.pHead==NULL)
+	{
+		l.pHead=new_ele;
+		l.pTail=l.pHead;
+	}
+else
+    {
+        new_ele->pNext=l.pHead;
+	    l.pHead=new_ele;
+   }
+}	 
+  void RemoveHead(List &l)
+{
+     Node *p;
+     Data x;
+     if ( l.pHead != NULL)
+{
+     p = l.pHead; x = p->data;
+     l.pHead = l.pHead->pNext;
+     delete p;
+     if(l.pHead == NULL) l.pTail = NULL;
+}
+    return x;
+}
+	void RemoveLast(List &l)
+{
+	Node*p;
+if ( q != NULL)
+{
+p = q ->pNext ;
+if ( p != NULL)
+{
+if(p == l.pTail)
+l.pTail = q;
+q->pNext = p->pNext;
+delete p;
+}
+else
+RemoveHead(l);
+}
 
 
 
