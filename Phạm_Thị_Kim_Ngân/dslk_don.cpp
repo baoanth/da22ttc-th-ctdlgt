@@ -1,5 +1,6 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 
 typedef struct Person
@@ -24,14 +25,14 @@ void Init( List &l)
 	
 	l.pHead=l.pTail;
 }
-  void GetNode(Person x)
+  Node* GetNode(Person x)
 {
     Node *p;
     p=new Node;
     if(p==NULL)
     {
         printf("erro!"); 
-       
+       return NULL;
     }
     p->Info=x;
     p->pNext=NULL;
@@ -57,16 +58,16 @@ void PrintList(List l)
 	
 	while (p!= NULL)
 	{
-		printf("%4d 30%S 40%S \n",p->Info.id, p->Info.fname, p->Info.lname);
+		printf("%4d 30%S 20%S \n",p->Info.id, p->Info.fname, p->Info.lname);
 		p = p->pNext;
 	}
 }
-void main()
+int main()
 {
 	
-    struct nguoi Per1 = { 1, " pham " , " tho "  };
-    struct nguoi Per2 = { 2, " kim "  , " nan "  };
-    struct nguoi Per3 = { 3 , "ngan"  ,   "phan" };
+    struct  per1={"pham"   ,"tho" }
+    struct  Per2 ={" kim " , " nan " };
+    struct  Per3 ={"ngan"  , "phan"};
 
     Node* new_ele1  = GetNode(Per1);
     Node* new_ele2  = GetNode(Per2);
@@ -81,6 +82,19 @@ void main()
 	PrintList(my_list);
 
     return 0;
+}
+void AddTail(List &l,Node *new_ele)
+{
+    if(l.pHead==NULL)
+    {
+        l.pHead=new_ele;
+        l.pTail=l.pHead;
+    }
+    else
+    {
+        l.pTail->Next=new_ele;
+        l.pTail=New_ele;
+    }
 }
 
 
