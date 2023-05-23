@@ -101,6 +101,21 @@ void PrintList(List &l)
 	}
 }
 
+void RemoveHead(List &l, int idx)
+{
+	Node *p = FindNodeByID(l, idx);
+	
+	if(l.pHead != NULL)
+	{
+		p = l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+
+
+
 int main()
 {
     struct Person per1 = {1, "Cho", "Shinba" };
