@@ -89,14 +89,93 @@ void in_da_thuc(DaThuc l)
     }
 }
 
+void CopyDaThuc(DaThuc l, DaThuc &l_kq)
+{
+    // Init(l_kq);
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        Node *q = GetNode(p->Info);
+        AddTail(l_kq, q);
+        p = p->pNext;
+    }
+}
+
+Node *TimNodeBacN(DaThuc l, int n)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.bac == n)
+        {
+            break;
+        }
+        p = p->pNext;
+    }
+    return p;
+}
+
+DaThuc CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+
+{
+
+    Init(l_kq);
+    CopyDaThuc(l1, l_kq);
+    Node *p = l2.pHead;
+
+    while (p != NULL)
+    {
+        Node *fNode = TimNodeBacN(l_kq, p->Info.bac);
+        if (fNode != NULL)
+        {
+            fNode->Info.heso += p->Info.heso;
+        }
+        else
+        {
+            Node *tam = GetNode(p->Info);
+            AddTail(l_kq, tam);
+        }
+        p = p->pNext;
+    }
+}
+
+void RutGonDaThuc(DaThuc &l)
+{
+    for (Node *p = l.pHead; p != NULL; p = p->pNext)
+    {
+        int bac_p = p->Info.bac;
+        Node *q = p->pNext;
+        while (q != NULL && q->Info.bac == bac_p)
+        {
+            p->Info.heso += q->Info.heso;
+            Node *r = q;
+            q = q->pNext;
+            Remove(l, r);
+        }
+    }
+}
+
 int main()
 {
-    DaThuc my_da_thuc;
-    Init(my_da_thuc);
+    DaThuc my_dathuc;
+    DaThuc my_dathuc1, kq;
+    Init(my_dathuc);
+    Init(my_dathuc1);
+    Init(kq);
 
-    them_nut_cuoi(my_da_thuc);
+    ThemNotCuoi(my_dathuc);
+    ThemNotCuoi(my_dathuc1);
 
-    in_da_thuc(my_da_thuc);
+    printf("\nDa thuc 1:");
+    RutGonDaThuc(my_dathuc);
+    PrintDaThuc(my_dathuc);
+    printf("\nDa thuc 2:");
+    PrintDaThuc(my_dathuc1);
+
+    printf("\nDa thuc kq:");
+    CongDaThuc(my_dathuc, my_dathuc1, kq);
+
+    PrintDaThuc(kq);
 
     return 0;
 }
