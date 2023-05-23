@@ -96,11 +96,11 @@ void in_da_thuc(DaThuc l)
         else if (p->pNext == l.pTail)
         {
             if (p->Info.he_so != 1 && p->Info.he_so != -1)
-                printf("%dx", p->Info.he_so);
+                printf("%dx^%d", p->Info.he_so, p->Info.bac);
             else if (p->Info.he_so == 1)
-                printf("x");
+                printf("x^%d", p->Info.bac);
             else if (p->Info.he_so == -1)
-                printf("-x");
+                printf("-x^%d", p->Info.bac);
         }
         else if (p == l.pTail)
             printf("%d", p->Info.he_so);
@@ -116,32 +116,88 @@ DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
     Node *q = l1.pHead;
     Node *p = l2.pHead;
 
+    if (p->Info.bac >= q->Info.bac)
+    {
+        p = l1.pHead;
+        q = l2.pHead;
+    }
+
     DaThuc l_kq;
     Init(l_kq);
 
-    while(q != NULL)
+    int tinh_toan;
+    printf("\n Nhan 1 de thuc hien cong | Nhan 2 de thuc hien tru: ");
+    scanf("%d", &tinh_toan);
+
+    while (q != NULL)
     {
         dt_tam.he_so = q->Info.he_so;
         dt_tam.bac = q->Info.bac;
 
-        while(p != NULL)
+        if (q->Info.bac == p->Info.bac)
         {
-            if(q->Info.bac == p->Info.bac)
-                break;
+            if (tinh_toan == 1)
+                dt_tam.he_so += p->Info.he_so;
+            else
+                dt_tam.he_so -= p->Info.he_so;
             p = p->pNext;
         }
 
-        dt_tam.he_so += p->Info.he_so;
-
-        Node* new_ele = GetNode(dt_tam);
-        AddTail(l_kq,new_ele);
+        Node *new_ele = GetNode(dt_tam);
+        AddTail(l_kq, new_ele);
 
         q = q->pNext;
     }
     return l_kq;
-    
 }
 
+/*
+void CopyDaThuc(DaThuc l1, DaThuc &l_kq)
+{
+    Node* p;
+    p = l1.pHead;
+    Init(l_kq);
+    while(p!=NULL)
+    {
+        Node* new_ele = GetNode(p->Info);
+        AddTail(l_kq,new_ele);
+        p = p->pNext;
+    }
+}
+
+Node* TimNodeBacN(DaThuc l, int n)
+{
+    Node* p;
+    p = l.pHead;
+
+    while(p!=NULL)
+    {
+        if(p->Info.he_so == n)
+        return p;
+    }
+}
+
+void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+{
+    CopyDaThuc(l1, l_kq);
+
+    Node* p = l2.pHead;
+    while(p!=NULL)
+    {
+        Node* tim_node = TimNodeBacN(l_kq, p->Info.bac);
+        if(tim_node == NULL)
+        {
+            tim_node->Info.he_so += p->Info.he_so;
+        }
+        else
+        {
+            Node *node_tam = GetNode(p->Info);
+            AddTail(l_kq,node_tam);
+        }
+    }
+
+}
+*/
 int main()
 {
     DaThuc da_thuc1;
@@ -158,8 +214,8 @@ int main()
     them_nut_cuoi(da_thuc2);
     in_da_thuc(da_thuc2);
 
-    da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
-    printf("\nDa thuc sau khi cong: ");
+    da_thuc_kq = tinh_toan_da_thuc(da_thuc1, da_thuc2);
+    printf("\nDa thuc sau khi tinh toan: ");
     in_da_thuc(da_thuc_kq);
 
     return 0;
