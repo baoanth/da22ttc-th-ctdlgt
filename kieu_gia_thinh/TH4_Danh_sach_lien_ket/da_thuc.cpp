@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//******************
+//********************
 typedef struct Donthuc
 {
     int hs;
@@ -19,14 +19,23 @@ typedef struct Dathuc
 	Node* pHead;
 	Node* pTail;
 }Dathuc;
-//*******************
+
+DaThuc CreateDaThuc(float heso, int bac)
+{
+    DaThuc dt;
+    dt.heso = heso;
+    dt.bac = bac;
+    return dt;
+}
+
+//********************
 
 //Viet ham GetNode
 Node* GetNode(Donthuc x)
 {
 	Node *p;
 	p = new Node;
-	if (p==NULL)   
+	if (p == NULL)   
 	{ 
 		printf("Khong du bo nho !"); 
 		return NULL; 
@@ -88,7 +97,7 @@ void Printdathuc(Dathuc &l)
 	
 	while (p!= NULL)
 	{
-		if((p->Info.hs>0) && (p!=l.pHead))
+		if((p->Info.hs>=0) && (p!=l.pHead))
 			printf("+");
 		if(p->Info.bac == 0)
 			printf("%d", p->Info.hs);
@@ -98,29 +107,120 @@ void Printdathuc(Dathuc &l)
 	}
 }
 
-//Viet ham Congdathuc
-//Dathuc Congdathuc(dathuc1, dathuc2)
-//{
+//Viet ham Copy Da thuc
+void Copydathuc(Dathuc l, Dathuc &l_kq)
+{
+	Node *p;
+	p = l.pHead;
 	
+	while(p != NULL)
+	{
+		Node* new_ele = GetNode(p->Info);
+		AddTail(l_kq, new_ele);
+		p = p->pNext;
+	}
+	printf("\nDa copy da thuc xong\n");
+}
+
+//Viet ham tim Node bac N
+Node* TimNodeBacN(Dathuc l, int n)
+{
+	Node *p;
+	p = l.pHead;
+	
+	while(p!=NULL)
+	{
+		if(p->Info.bac == n)
+			break;
+		p = p->pNext;
+	}
+	return p;
+}
+
+//Viet ham cong da thuc 
+void Congdathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
+{
+	Copydathuc(l1, l_kq);
+	
+	Node* p;
+	p = l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
+		if(foundNode != NULL)
+		{
+			foundNode->Info.hs += p->Info.hs;
+		}
+		else
+		{
+			Node* Node_tam = GetNode(p->Info);
+			AddTail(l_kq, Node_tam);
+		}
+		p = p->pNext;
+	}
+}
+
+//Viet ham nhan 2 da thuc 
+//void Nhandathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
+//{
+//	Copydathuc(l1, l_kq);
+//	
+//	Node* p;
+//	p = l2.pHead;
+//	
+//	while(p!=NULL)
+//	{
+//		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
+//		if(foundNode != NULL)
+//		{
+//			foundNode->Info.hs *= p->Info.hs;
+//		}
+//		else
+//		{
+//			Node* Node_tam = GetNode(p->Info);
+//			AddTail(l_kq, Node_tam);
+//		}
+//		p = p->pNext;
+//	}
 //}
 
-
-//viet ham main
+//Viet ham main
 int main()
 {
 	//Dinh nghia them 1 da thuc 
-	Dathuc dathuc1;
-	Dathuc dathuc2;
+	Dathuc dathuc1, dathuc2, dathuc3, kq;
 	
 	Init(dathuc1);
-	
+	Init(dathuc2);
+	Init(dathuc3);
+	Init(kq);
+		
 	//Nhap 2 da thuc
 	Nhapdathuc(dathuc1);
 	Nhapdathuc(dathuc2);
 	
+	
 	//In 2 da thuc vua nhap		   
 	Printdathuc(dathuc1);
 	Printdathuc(dathuc2);
+	
+	//Cong da thuc 2 da thuc
+	Congdathuc(dathuc1, dathuc2, dathuc3);
+	printf("\nTong 2 da thuc la: \n");
+	Printdathuc(dathuc3);
+	
+
+	//Nhan da thuc 2 da thuc 
+//	Nhandathuc(dathuc1, dathuc2, kq);
+//	printf("\nTich 2 da thuc la: ");
+//	Printdathuc(kq);
+
+	int x, gtbt;
+	printf("\nNhap vao gia tri cua bien X: ");
+	scanf("%d", &x);
+	
+	
 	
     return 0;
 }
