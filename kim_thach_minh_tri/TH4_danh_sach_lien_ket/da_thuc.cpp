@@ -76,15 +76,32 @@ void ThemNotCuoi(DaThuc &l)
 
 void PrintDaThuc(DaThuc l)
 {
+    printf("\n");
     Node *p = l.pHead;
     while (p != NULL)
     {
         if ((p != l.pHead) && (p->Info.heso > 0))
             printf("+");
         if ((p != l.pTail) && (p->pNext != l.pTail))
-            printf(" %d^%d ", p->Info.heso, p->Info.bac);
+        {
+            if (p->Info.heso != 1 && p->Info.heso != -1)
+                printf("%dx^%d", p->Info.heso, p->Info.bac);
+            else if (p->Info.heso == 1)
+                printf("x^%d", p->Info.bac);
+            else if (p->Info.heso == -1)
+                printf("-x^%d", p->Info.bac);
+        }
+          //  printf(" %d^%d ", p->Info.heso, p->Info.bac);
         else if (p->pNext == l.pTail)
-            printf(" %dx ", p->Info.heso);
+        {
+            if (p->Info.heso != 1 && p->Info.heso != -1)
+                printf("%dx^%d", p->Info.heso, p->Info.bac);
+            else if (p->Info.heso == 1)
+                printf("x^%d", p->Info.bac);
+            else if (p->Info.heso == -1)
+                printf("-x^%d", p->Info.bac);
+        }
+           // printf(" %dx ", p->Info.heso);
         else if (p == l.pTail)
             printf(" %d ", p->Info.heso);
 
@@ -114,11 +131,14 @@ DaThuc CongDaThuc(DaThuc l1, DaThuc l2)
         }
         if(q != NULL)
             tam.heso += q->Info.heso;
-            p=p->pNext;
+           
 
-        Node new_ele = GetNode(tam);
+        Node* new_ele = GetNode(tam);
         AddTail(l_kq, new_ele);
+        p=p->pNext;
     }
+    
+    return l_kq;
 }
 
 int main()
@@ -131,8 +151,17 @@ int main()
     ThemNotCuoi(my_dathuc);
     ThemNotCuoi(my_dathuc1);
 
+    printf("\nDa thuc 1:\n");
     PrintDaThuc(my_dathuc);
+    printf("\nDa thuc 2:\n");
     PrintDaThuc(my_dathuc1);
+
+     DaThuc dathuc_kq ;
+     printf("\nDa thuc kq:\n");
+    dathuc_kq = CongDaThuc(my_dathuc, my_dathuc1);
+
+    PrintDaThuc(dathuc_kq);
+    
 
     return 0;
 }
