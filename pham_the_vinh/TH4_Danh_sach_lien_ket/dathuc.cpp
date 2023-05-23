@@ -26,7 +26,7 @@ Node *GetNode(DonThuc x)
 
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat");
+        printf("---Khong du bo nho de cap phat---");
         return 0;
     }
 
@@ -59,7 +59,7 @@ void NhapDaThuc(DaThuc &l)
 {
     int bacmax = 0;
 
-    printf("Nhap bac cua da thuc: ");
+    printf("---Nhap bac cua da thuc: ");
     scanf("%d", &bacmax);
 
     DonThuc s;
@@ -67,7 +67,7 @@ void NhapDaThuc(DaThuc &l)
 
     for (i = bacmax; i >= 0; i--)
     {
-        printf("Nhap he so cho x^%d:", i);
+        printf("Nhap he so cho x^%d: ", i);
         s.bac = i;
         scanf("%d", &s.heso);
         printf("\n");
@@ -80,7 +80,7 @@ void InDaThuc(DaThuc &l)
 {
     if (l.pHead == NULL)
     {
-        printf("Rong");
+        printf("---Rong---");
     }
     else
     {
@@ -88,7 +88,7 @@ void InDaThuc(DaThuc &l)
 
         while (p != NULL)
         {
-            if (p != l.pHead && p->Info.heso > 0)
+            if (p != l.pHead && p->Info.heso >= 0)
                 printf(" + ");
 
             if (p->Info.bac == 0)
@@ -103,6 +103,53 @@ void InDaThuc(DaThuc &l)
     }
 }
 
+void CopyDaThuc(DaThuc l, DaThuc &l_KetQua)
+{
+	Node* p = l.pHead;
+
+    while (p!=NULL)
+    {
+    	Node* new_ele = GetNode(p->Info);
+    	AddTail(l_KetQua, new_ele);
+    	p = p->pNext;
+    }
+}
+
+Node* TimNodeBacN(DaThuc l, int n)
+{
+	Node* p = l.pHead;
+
+    while (p!=NULL)
+    {
+    	if(p->Info.bac==n)
+    		break;
+    	p = p->pNext;
+    }
+    return p;
+}
+
+void CongDaThuc(DaThuc &l1, DaThuc &l2, DaThuc &l_KetQua)
+{
+	CopyDaThuc(l1, l_KetQua);
+	Node* p = l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* FoundNode = TimNodeBacN(l_KetQua, p->Info.bac);
+		if(FoundNode != NULL)
+		{
+			FoundNode->Info.heso += p->Info.heso;
+		}
+		else
+		{
+			Node* NodeTam = GetNode(p->Info);
+			AddTail(l_KetQua, NodeTam);
+		}
+		p = p->pNext;	
+	}	
+}
+
+/*
 DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
 {
     Node *p = l1.pHead;
@@ -131,23 +178,31 @@ DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
     }
     return KetQua;
 }
+*/
 
 int main()
 {
     DaThuc DaThuc1, DaThuc2, KetQua;
     Init(DaThuc1);
     Init(DaThuc2);
-
+	Init(KetQua);
+	
     NhapDaThuc(DaThuc1);
     NhapDaThuc(DaThuc2);
 
-    printf("Da thuc vua nhap:\n");
+    printf("---Da thuc vua nhap:\n");
     InDaThuc(DaThuc1);
     printf("\n");
     InDaThuc(DaThuc2);
     printf("\n");
-    KetQua = CongDaThuc(DaThuc1, DaThuc2);
-    printf("\nKet qua cong hai da thuc:\n");
+    
+    CongDaThuc(DaThuc1, DaThuc2, KetQua);
+    printf("\n---Ket qua cong hai da thuc:\n");
     InDaThuc(KetQua);
+	
+/*	KetQua = CongDaThuc(DaThuc1, DaThuc2);
+	printf("\n---Ket qua cong hai da thuc:\n");
+	InDaThuc(KetQua);
+*/
     return 0;
 }
