@@ -74,7 +74,7 @@ Node* FindNodeByID (List l, int idx)
 }
 
 void AddNodeAfter(List &l, Node *q, Node * new_ele, int idx)
-{
+{	
 	if(q!=NULL)
 	{
 		new_ele->pNext = q->pNext;
@@ -127,7 +127,8 @@ int RemoveNode(List &l, int idx)
 		if(p->Info.id == idx) break;
 		q = p;
 		p = p->pNext;
-	}
+	}	
+	
 	if(p == NULL) return 0;
 	if(q != NULL) 
 	{
