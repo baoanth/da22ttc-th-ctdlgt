@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h>
 typedef struct Donthuc
 {
     int heso, bac;
@@ -153,18 +153,51 @@ dathuc nhandonthuc(donthuc x, dathuc l)
     return kq;
 }
 
+int tinh(dathuc l, int x)
+{
+   int kq = 0;
+    Node* p = l.pHead;
+    while(p!= NULL)
+    {
+        kq += p->Info.heso*pow(x,p->Info.bac);
+        p = p->pNext;
+    }
+    return kq;
+}
+
+void gopcungmu(dathuc &l)
+{
+	Node*p = l.pHead;
+	Node *q = l.pHead->pNext;
+	while(p!= NULL)
+	{
+		while(q!= NULL)
+		{
+			if(p->Info.bac = q->Info.bac)
+				p->Info.heso+= q->Info.heso;
+			q = q->pNext;
+		}
+		p = p-> pNext;	
+	} 
+}
 
 int main()
 {
 
-    dathuc dathuc1;
-    dathuc dathuc2, kq;
-    Init(dathuc1);
+   // dathuc dathuc1;
+    dathuc dathuc2;
+   // Init(dathuc1);
     Init(dathuc2);
-    nhapdathuc(dathuc1);
+    //nhapdathuc(dathuc1);
     nhapdathuc(dathuc2);
-    congdathuc(dathuc1, dathuc2, kq);
+    //congdathuc(dathuc1, dathuc2, kq);
+    print(dathuc2);
+    int x;
+    printf("\nnhap vao gia tri ");
+    scanf("%d", &x);
 
-    print(kq);
+    int kq = tinh(dathuc2, x);
+    printf("%d", kq);
+    //print(kq);
     return 0;
 }
