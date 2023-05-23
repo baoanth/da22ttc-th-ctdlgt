@@ -124,7 +124,7 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 		if (foundNode!=NULL)
 		{
 			foundNode->Info.heso += p->Info.heso;
-			printf("Found bac %d\n" ,p->Info.bac);
+			printf("\nFound bac %d\n" ,p->Info.bac);
 		}
 		else
 		{
@@ -166,6 +166,7 @@ int main()
 	Dathuc dt1, dt2, dt3;
 	Init(dt1);
 	Init(dt2);
+	Init(dt3);
 	
 	printf("Nhap da thuc 1: \n");
 	NhapDaThuc(dt1);
@@ -177,7 +178,7 @@ int main()
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
 	
-	dt3 = CongDathuc(dt1, dt2);
+	CongDathuc(dt1, dt2, dt3);
 	printf("\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
 	
