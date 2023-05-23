@@ -19,6 +19,15 @@ typedef struct Dathuc
 	Node* pHead;
 	Node* pTail;
 }Dathuc;
+
+DaThuc CreateDaThuc(float heso, int bac)
+{
+    DaThuc dt;
+    dt.heso = heso;
+    dt.bac = bac;
+    return dt;
+}
+
 //********************
 
 //Viet ham GetNode
