@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include <math.h>
 
 typedef struct DonThuc
 {
@@ -78,8 +79,9 @@ void in_da_thuc(DaThuc l)
     {
         if (p->Info.he_so == 0)
         {
+            if(p == l.pHead)
+               l.pHead = p->pNext;
             p = p->pNext;
-            l.pHead = p;
             continue;
         }
         if (p != l.pHead && p->Info.he_so > 0)
@@ -126,7 +128,7 @@ DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
     Init(l_kq);
 
     int tinh_toan;
-    printf("\n Nhan 1 de thuc hien cong | Nhan 2 de thuc hien tru: ");
+    printf("\n Nhan 1 de cong | Nhan 2 de tru | Nhan 3 de nhan: ");
     scanf("%d", &tinh_toan);
 
     while (q != NULL)
@@ -138,8 +140,13 @@ DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
         {
             if (tinh_toan == 1)
                 dt_tam.he_so += p->Info.he_so;
-            else
+            else if(tinh_toan == 2)
                 dt_tam.he_so -= p->Info.he_so;
+            else if(tinh_toan == 3)
+            {
+                dt_tam.he_so *= p->Info.he_so;
+                dt_tam.bac += p->Info.bac;
+            }
             p = p->pNext;
         }
 
@@ -150,54 +157,37 @@ DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
     }
     return l_kq;
 }
-
-/*
-void CopyDaThuc(DaThuc l1, DaThuc &l_kq)
+    
+void rut_gon_da_thuc(DaThuc l)
 {
-    Node* p;
-    p = l1.pHead;
-    Init(l_kq);
+    DaThuc da_thuc_tam;
+    Init(da_thuc_tam);
+    DonThuc dt_tam;
+
+    Node *p = l.pHead;
     while(p!=NULL)
     {
-        Node* new_ele = GetNode(p->Info);
-        AddTail(l_kq,new_ele);
+        dt_tam.he_so = p->Info.he_so;
+        dt_tam.bac = p->Info.bac;
+
+        Node *new_ele = GetNode(dt_tam);
+        AddTail(da_thuc_tam, new_ele);
         p = p->pNext;
     }
+
 }
 
-Node* TimNodeBacN(DaThuc l, int n)
+float uoc_luong_da_thuc(DaThuc l, int x)
 {
-    Node* p;
-    p = l.pHead;
-
+    Node* p = l.pHead;
+    float kq = 0;
     while(p!=NULL)
     {
-        if(p->Info.he_so == n)
-        return p;
+        kq += p->Info.he_so* pow(x,p->Info.bac);
+        p = p->pNext;
     }
+    return kq;
 }
-
-void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
-{
-    CopyDaThuc(l1, l_kq);
-
-    Node* p = l2.pHead;
-    while(p!=NULL)
-    {
-        Node* tim_node = TimNodeBacN(l_kq, p->Info.bac);
-        if(tim_node == NULL)
-        {
-            tim_node->Info.he_so += p->Info.he_so;
-        }
-        else
-        {
-            Node *node_tam = GetNode(p->Info);
-            AddTail(l_kq,node_tam);
-        }
-    }
-
-}
-*/
 int main()
 {
     DaThuc da_thuc1;
@@ -216,6 +206,10 @@ int main()
 
     da_thuc_kq = tinh_toan_da_thuc(da_thuc1, da_thuc2);
     printf("\nDa thuc sau khi tinh toan: ");
+    in_da_thuc(da_thuc_kq);
+
+    rut_gon_da_thuc(da_thuc_kq);
+    printf("\nDa thuc sau khi rut gon: ");
     in_da_thuc(da_thuc_kq);
 
     return 0;
