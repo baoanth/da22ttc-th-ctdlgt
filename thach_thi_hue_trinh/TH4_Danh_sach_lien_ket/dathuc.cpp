@@ -212,13 +212,15 @@ int main()
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
  
-
+	printf("\n");
 /*	dt3= CongDathuc(dt1, dt2);
 	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
 */
 	CongDathuc(dt1,dt2,dt3);
 	PrintDathuc(dt3); 
+	
+	printf("\n");
 	
 	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc :");
 	scanf("%f",&x);
