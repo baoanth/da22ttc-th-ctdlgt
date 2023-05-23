@@ -120,6 +120,7 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 		}
 		p=p->pNext;
 	}
+
 }
 //Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
 //{
@@ -178,7 +179,7 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
-	Dathuc dt1, dt2,dt3;
+	Dathuc dt1, dt2, l_kq;
 	Init(dt1);
 	Init(dt2);
 	
@@ -192,9 +193,9 @@ int main()
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
 	
-//	dt3 = CongDathuc(dt1, dt2);
+	//dt3= CongDathuc(dt1, dt2);
 	printf("\n\nTong hai da thuc la:  ");
-	PrintDathuc(dt3);
+	PrintDathuc(l_kq);
 	
 	
 
