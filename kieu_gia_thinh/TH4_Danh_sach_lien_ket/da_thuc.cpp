@@ -195,10 +195,12 @@ int main()
 	Printdathuc(dathuc1);
 	Printdathuc(dathuc2);
 	
+	//Cong da thuc
 	Congdathuc(dathuc1, dathuc2, dathuc3);
 	printf("\nTong 2 da thuc la: \n");
 	Printdathuc(dathuc3);
 	
+	//Nhan da thuc
 	Nhandathuc(dathuc1, dathuc2, kq);
 	printf("\nTich 2 da thuc la: ");
 	Printdathuc(kq);
