@@ -170,13 +170,17 @@ void nhandathuc(dathuc l1, dathuc l2, dathuc &kq)
     donthuc tmp;
     Node *p = l1.pHead;
     Node *q = l2.pHead;
+   
     while (p != NULL)
     {
+    	tmp.bac =  p->Info.bac;
+    	tmp.heso =  p->Info.heso;
         while (q != NULL)
         {
-            tmp.bac = p->Info.bac + q->Info.bac;
-            tmp.heso = p->Info.heso * q->Info.heso;
-            Node *x = GetNode(tmp);
+        	donthuc i;
+            i.bac = tmp.bac + q->Info.bac;
+            i.heso = tmp.heso * q->Info.heso;
+            Node *x = GetNode(i);
             AddTail(kq, x);
             q = q->pNext;
         }
