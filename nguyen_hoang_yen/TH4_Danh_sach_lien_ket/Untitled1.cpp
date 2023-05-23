@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,19 +6,19 @@ typedef struct Donthuc
 {
     int hs;
     int bac;
-}Donthuc;
+} Donthuc;
 
 typedef struct Node
 {
 	Donthuc Info;
 	Node* pNext;
-}Node;
+} Node;
 
 typedef struct Dathuc
 {
 	Node* pHead;
 	Node* pTail;
-}Dathuc;
+} Dathuc;
 
 Node* GetNode(Donthuc x)
 {
@@ -25,7 +26,7 @@ Node* GetNode(Donthuc x)
 	p = new Node;
 	if (p==NULL)   
 	{ 
-		printf("Khong du bo nho !"); 
+		printf("Ko du bo nho !"); 
 		return NULL; 
 	}
 	p->Info = x; 
@@ -47,13 +48,13 @@ void AddTail(Dathuc &l, Node *new_ele)
 	}
 }
 
-void NhapDathuc(Dathuc &l)
+void Nhapdathuc(Dathuc &l)
 {
 	int MaxN= 0;
 	int i;
 	Donthuc s;
 	
-	printf("\nPT co bac: ");
+	printf("Pt co bac: ");
 	scanf("%d", &MaxN);
 	
 	for(i= MaxN; i>=0; i--)
@@ -67,17 +68,40 @@ void NhapDathuc(Dathuc &l)
 	}
 }
 
+Dathuc congdathuc(my_dathuc, dathuc &l1, dathuc &l2 )
+{
+	Node *p, *q;
+	Donthuc dt-tam;
+	p = l1 -> pHead;
+	q = l2 -> pHead;
+	while(p != NULL)
+	{
+		dt_tam.hs = p -> Info.hs;
+		dt_tam.bac = q -> Info.bac;
+		while(q != NULL)
+		{
+			if (p -> tam.hs = p->Info.bac) break;
+			q = q -> pNext;
+		}
+	}
+	if(q != NULL)
+    	dt_tam.hs += q -> Info.hs;
+    Node new_ele = GetNode(dt_tam);
+}
+
+
+
 void Init(Dathuc &l)
 {
 	l.pHead = l.pTail = NULL;
 }
 
-void PrintDathuc(Dathuc &l)
+void Printdathuc(Dathuc &l)
 {
 	Node *p;
 	p = l.pHead;
 	
-	printf("P(x)= ");
+	printf("\nDa thuc vua nhap =  ");
 	
 	while (p!= NULL)
 	{
@@ -85,12 +109,13 @@ void PrintDathuc(Dathuc &l)
 			printf("+");
 		if(p->Info.bac==0)
 			printf("%d",p->Info.hs);
-		else if(p->Info.hs!=0)
+		else
 			printf("%dx^%d",p->Info.hs, p->Info.bac);
 		p = p->pNext;
 	}
 }
 
+<<<<<<< HEAD:le_xuan_truong/TH4_danh_sach_lien_ket/dathuc.cpp
 //Dathuc CongDathuc(Dathuc l1, Dathuc l2)
 //{
 //	Node *p, *q;
@@ -200,6 +225,18 @@ int main()
 	CongDathuc(my_dathuc1, my_dathuc2, my_dathuc3);
 	PrintDathuc(my_dathuc3);
 	
+=======
+int main()
+{
+	Dathuc my_dathuc;
+	Init(my_dathuc);
+		
+	Nhapdathuc(my_dathuc);
+		   
+	Printdathuc(my_dathuc);
+	    
+>>>>>>> 44187dd0f04ee5e8f0fcb4278aedf502e940f023:nguyen_hoang_yen/TH4_Danh_sach_lien_ket/Untitled1.cpp
     return 0;
 }
+
 
