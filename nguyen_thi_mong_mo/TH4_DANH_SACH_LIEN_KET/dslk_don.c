@@ -1,79 +1,100 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
-typedef struct Person
+
+typedef struct DonThuc
 {
-    int id;
-    char fname[20];
-    char lname[20];
-}Person;
+    int heso;
+    int bac;
+} DonThuc;
 
 typedef struct Node
 {
-    Person Info;
-    Node* pNext;    
-}Node;
+    DonThuc Info;
+    Node *pNext;
+} Node;
 
-
-
-
-
-typedef struct List
+typedef struct DaThuc
 {
-    Node* pHead;
-    Node* pTail;
-}List;
+    Node *pHead;
+    Node *pTail;
+} DaThuc;
 
-Node* GetNode(Person x)
+Node *GetNode(DonThuc x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
         printf("Khong du bo nho de cap phat cho nut moi");
-        exit(1);
+        return 0;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
 
-void AddFist(List &l, Node* new_ele)
-{
-    if (l.pHead ==NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = pHead;
-    }
-    else
-    {
-        new_ele ->pNext = l.pHead;    
-        l.pHead = new_ele;
-    }
-}
-void Init(List &l)
+void Init(DaThuc &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
+void AddTail(DaThuc &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
 
+void ThemNotCuoi(DaThuc &l)
+{
+    DonThuc my_donthuc;
+    Node *p;
+    int n, i;
+
+    printf("Nhap so bac cua da thuc:");
+    scanf("%d", &n);
+    for ( i = 0; i <= n; i++)
+    {
+        printf("Nhap bac: ");
+        scanf("%d", &my_donthuc.bac);
+        printf("Nhap he so: ");
+        scanf("%d", &my_donthuc.heso);
+         Node *new_ele = GetNode(my_donthuc);
+
+    AddTail(l, new_ele);
+    }
+    
+   
+}
+
+void PrintDaThuc(DaThuc l)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if((p != l.pHead) && (p->Info.heso>0))
+        printf(" + ");
+        printf("%dx^%d", p->Info.heso, p->Info.bac);
+        p = p->pNext;
+    }
+}
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Le Hoa Binh" };
-	struct Person per2 = {2, "Le", "Binh" };
-	struct Person per3 = {3, "Tran", "Hoa" };
-    
-    Node* new_ele1  = GetNode(per1);
-    Node* new_ele2  = GetNode(per2);
-    Node* new_ele3  = GetNode(per3);
-    List my_list;
-    Init(&my_list);
+    DaThuc my_dathuc;
+    Init(my_dathuc);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+    ThemNotCuoi(my_dathuc);
 
+    PrintDaThuc(my_dathuc);
 
+    return 0;
 }
