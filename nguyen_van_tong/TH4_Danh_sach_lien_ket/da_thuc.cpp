@@ -136,9 +136,9 @@ void congdathuc(dathuc l1, dathuc l2, dathuc &l_kq)
     }
 }
 
-int tinh(dathuc l, int x)
+float tinh(dathuc l, int x)
 {
-    int kq = 0;
+    float kq = 0;
     Node *p = l.pHead;
     while (p != NULL)
     {
@@ -202,11 +202,11 @@ int main()
     // print(dathuc2);
     // int x;
     // printf("\nnhap vao gia tri ");
-    // scanf("%d", &x);
+    // scanf("%f", &x);
 
-    // int kq = tinh(dathuc2, x);
+    // float kq = tinh(dathuc2, x);
     nhandathuc(dathuc1, dathuc2, kq);
-    // printf("%d", kq);
+    // printf("%.2f", kq);
     print(kq);
     return 0;
 }
