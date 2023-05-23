@@ -65,7 +65,7 @@ void NhapDaThuc(Dathuc &l)
 	{
 		printf("x^%d=",i);
 		s.bac=i;
-		scanf("%d",&s.hs);
+		scanf("\n%d",&s.hs);
 		Node*new_ele=GetNode(s);
 		AddTail(l, new_ele);
 	}
@@ -196,7 +196,8 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
-	Dathuc dt1, dt2, dt3,x;
+	Dathuc dt1, dt2, dt3;
+	float x;
 	Init(dt1);
 	Init(dt2);
 	Init(dt3);
@@ -210,7 +211,8 @@ int main()
 	printf("Nhap da thuc 2: \n");
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
-
+ 
+	printf("\n");
 /*	dt3= CongDathuc(dt1, dt2);
 	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
@@ -218,9 +220,11 @@ int main()
 	CongDathuc(dt1,dt2,dt3);
 	PrintDathuc(dt3); 
 	
+	printf("\n");
+	
 	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc :");
 	scanf("%f",&x);
-	printf("Gia tri cua da thuc x=%.1f la:%.1f",dt1,x);
+	printf("Gia tri cua da thuc x=%.0f la: %.0f",x, UocluongDathuc(dt3, x));
 	
 
 
