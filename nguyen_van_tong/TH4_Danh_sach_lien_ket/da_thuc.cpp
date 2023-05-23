@@ -136,68 +136,77 @@ void congdathuc(dathuc l1, dathuc l2, dathuc &l_kq)
     }
 }
 
-dathuc nhandonthuc(donthuc x, dathuc l)
+float tinh(dathuc l, int x)
 {
-    dathuc kq;
-    Init(kq);
-    donthuc tmp;
-    Node*p = l.pHead;
-    while(p!= NULL)
+    float kq = 0;
+    Node *p = l.pHead;
+    while (p != NULL)
     {
-        tmp.bac = p->Info.bac*x.bac;
-        tmp.heso = p->Info.heso*x.heso;
-        Node* q = GetNode(tmp);
-        AddTail(kq,q);
-        p = p-> pNext;
-    }
-    return kq;
-}
-
-int tinh(dathuc l, int x)
-{
-   int kq = 0;
-    Node* p = l.pHead;
-    while(p!= NULL)
-    {
-        kq += p->Info.heso*pow(x,p->Info.bac);
+        kq += p->Info.heso * pow(x, p->Info.bac);
         p = p->pNext;
     }
     return kq;
 }
 
-void gopcungmu(dathuc &l)
+void gopcungbac(dathuc l)
 {
-	Node*p = l.pHead;
-	Node *q = l.pHead->pNext;
-	while(p!= NULL)
-	{
-		while(q!= NULL)
-		{
-			if(p->Info.bac = q->Info.bac)
-				p->Info.heso+= q->Info.heso;
-			q = q->pNext;
-		}
-		p = p-> pNext;	
-	} 
+    Node *p = l.pHead;
+    Node *q = l.pHead->pNext;
+    while (p->pNext != NULL)
+    {
+        while (q != NULL)
+        {
+            if (p->Info.bac = q->Info.bac)
+                p->Info.heso += q->Info.heso;
+            q = q->pNext;
+        }
+        p = p->pNext;
+    }
+}
+
+void nhandathuc(dathuc l1, dathuc l2, dathuc &kq)
+{
+    Init(kq);
+    donthuc tmp;
+    Node *p = l1.pHead;
+    Node *q = l2.pHead;
+   
+    while (p != NULL)
+    {
+    	tmp.bac =  p->Info.bac;
+    	tmp.heso =  p->Info.heso;
+        while (q != NULL)
+        {
+        	donthuc i;
+            i.bac = tmp.bac + q->Info.bac;
+            i.heso = tmp.heso * q->Info.heso;
+            Node *x = GetNode(i);
+            AddTail(kq, x);
+            q = q->pNext;
+        }
+        p = p->pNext;
+    }
+    // gopcungbac(kq);
 }
 
 int main()
 {
 
-   // dathuc dathuc1;
+    dathuc dathuc1, kq;
     dathuc dathuc2;
-   // Init(dathuc1);
+    Init(dathuc1);
     Init(dathuc2);
-    //nhapdathuc(dathuc1);
+    nhapdathuc(dathuc1);
     nhapdathuc(dathuc2);
-    //congdathuc(dathuc1, dathuc2, kq);
-    print(dathuc2);
-    int x;
-    printf("\nnhap vao gia tri ");
-    scanf("%d", &x);
+    // congdathuc(dathuc1, dathuc2, kq);
+    // print(dathuc2);
+    // int x;
+    // printf("\nnhap vao gia tri ");
+    // scanf("%f", &x);
 
-    int kq = tinh(dathuc2, x);
-    printf("%d", kq);
-    //print(kq);
+    // float kq = tinh(dathuc2, x);
+    nhandathuc(dathuc1, dathuc2, kq);
+    // printf("%.2f", kq);
+    print(kq);
     return 0;
 }

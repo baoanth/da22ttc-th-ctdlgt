@@ -32,6 +32,58 @@ Node *GetNode (DonThuc x)
     p->pNext = NULL;
     return p;
 }
+void copydathuc(dathuc l,dathuc &l_kq)
+{
+    Node*P;
+    P=pHead;
+    while(p!=NULL)
+    {
+        Node*new_ele=GetNode(p->Info);
+        AddTail(dathuc &l,Node *new_ele);
+        p->pNext;
+    }
+    printf("\n da thuc da coopy xong");
+}
+
+Node*TimNodeBacN(dathuc l,int n)
+{
+    Node*p;
+    p=pHead;
+    while(p=!NULL)
+    {
+        if(p->Info.bac==n)
+        break;
+        p=p->pNext;
+
+    }
+    return p;
+}
+
+void congdathuc(dathuc l1,dathuc l2,dathuc &l_kq)
+{
+    copydathuc(l1,l_kq)
+    Node*p;
+    p=l2.pHead;
+    while(p=!NULL)
+    {
+        Node*foundNode=TimNodeBacN(l_kq,p->Info.bac);
+        if(foundNode=!NULL)
+        {
+            foundNode->Info.heso =p->Info.heso;
+            printf("\n bac cua he so la %d =",p->Info.bac);
+        }
+        else
+        {
+            Node *node_tam=GetNode(p->Info);
+            AddTail(l_kq,node_tam);
+        }
+        p=p->pNext;
+    }
+}
+
+
+
+
 
 
 
