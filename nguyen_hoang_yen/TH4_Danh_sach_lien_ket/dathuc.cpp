@@ -91,10 +91,6 @@ Dathuc congdathuc(my_dathuc, dathuc &la, dathuc &lb )
 
 
 
-
-
-
-
 void Init(Dathuc &l)
 {
 	l.pHead = l.pTail = NULL;

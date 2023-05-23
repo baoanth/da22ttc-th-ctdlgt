@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
+
 typedef struct Person
 {
     int id;
