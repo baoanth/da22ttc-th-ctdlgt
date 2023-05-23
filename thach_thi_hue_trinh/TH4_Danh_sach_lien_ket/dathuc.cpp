@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct Donthuc
 {
@@ -195,7 +196,7 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
-	Dathuc dt1, dt2, dt3;
+	Dathuc dt1, dt2, dt3,x;
 	Init(dt1);
 	Init(dt2);
 	Init(dt3);
@@ -219,7 +220,7 @@ int main()
 	
 	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc :");
 	scanf("%f",&x);
-	printf("Gia tri cua da thuc x=%f la:%f",dt1,x);
+	printf("Gia tri cua da thuc x=%.1f la:%.1f",dt1,x);
 	
 
 
