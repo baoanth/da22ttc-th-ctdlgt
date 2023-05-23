@@ -204,7 +204,7 @@ int main()
             } 
 			case '5':
             {
-                printf("-> Cay: \n");
+                printf("-> Xap xep cay: \n");
                 HeapSort(my_array, N);
                 break;
             } 
