@@ -26,7 +26,7 @@ Node *GetNode(Donthuc x)
 	p = new Node;
 	if(p == NULL)
 	{
-		printf("Khong du bo nho de cap phat");
+		printf("ERRO!");
 		return 0;
 	}
 	p->Info = x;
