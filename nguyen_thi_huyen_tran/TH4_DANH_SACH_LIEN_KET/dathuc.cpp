@@ -76,39 +76,99 @@ void Init(Dathuc &l)
 	l.pHead = l.pTail = NULL;
 }
 
-//viet ham Printdathuc
-void Printdathuc(Dathuc &l)
+  
+ void Xuatdathuc(Dathuc& l)
 {
-	Node *p;
-	p = l.pHead;
-	
-	printf("\nDa thuc vua nhap la:  ");
-	
-	while (p!= NULL)
-	{
-		if((p->Info.hs>0) && (p!=l.pHead))
-			printf("+");
-		if(p->Info.bac == 0)
-			printf("%d", p->Info.hs);
-		else
-			printf("%dx^%d", p->Info.hs, p->Info.bac);
-		p = p->pNext;
-	}
+    Node* p = l.pHead;
+
+    printf("da thuc vua nhap :\n");
+    printf("\n  P(x) = ");
+
+    while (p != NULL)
+    {
+        if ((p->Info.hs > 0) && (p != l.pHead))
+            printf(" + ");
+
+        if (p->Info.bac == 0)
+            printf(" %d", p->Info.hs);
+        else
+            printf("%dx^%d", p->Info.hs, p->Info.bac);
+
+        p = p->pNext;
+    }
 }
+Dathuc TinhTong(Dathuc l1, Dathuc l2)
+{
+    Dathuc sum;
+    Init(sum);
+
+    Node* p1 = l1.pHead;
+    Node* p2 = l2.pHead;
+
+    while (p1 != NULL && p2 != NULL)
+    {
+        Donthuc sum_node;
+        if (p1->Info.bac == p2->Info.bac)
+        {
+            sum_node.bac = p1->Info.bac;
+            sum_node.hs = p1->Info.hs + p2->Info.hs;
+
+            p1 = p1->pNext;
+            p2 = p2->pNext;
+        }
+        else if (p1->Info.bac > p2->Info.bac)
+        {
+            sum_node.bac = p1->Info.bac;
+            sum_node.hs = p1->Info.hs;
+
+            p1 = p1->pNext;
+        }
+        else
+        {
+            sum_node.bac = p2->Info.bac;
+            sum_node.hs = p2->Info.hs;
+
+            p2 = p2->pNext;
+        }
+
+        Node* new_ele = GetNode(sum_node);
+        AddTail(sum, new_ele);
+    }
+
+    
+
+    return sum;
+}
+
+
+ 
 //viet ham main
+
 int main()
 {
-	//Dinh nghia them 1 da thuc 
-	Dathuc dathuc1;
+    Dathuc my_Px1;
+    Dathuc my_Px2;
+
+		
+    Init(my_Px1);
+    Init(my_Px2);
 	
-	Init(dathuc1);
 	
-	//Nhap 2 da thuc
-	Nhapdathuc(dathuc1);
-	
-	//In 2 da thuc vua nhap		   
-	Printdathuc(dathuc1);
-	
+    printf("Nhap da thuc 1\n");
+    Nhapdathuc(my_Px1);
+    Xuatdathuc(my_Px1);
+    printf("\n");
+    
+    
+    printf("Nhap da thuc 2\n");
+    Nhapdathuc(my_Px2);
+    Xuatdathuc(my_Px2);
+
+    Dathuc sum = TinhTong (my_Px1, my_Px2);
+    printf("\n Cong hai da thuc :\n");
+    Xuatdathuc(sum);
+
     return 0;
 }
+
 
