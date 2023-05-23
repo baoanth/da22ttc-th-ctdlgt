@@ -202,13 +202,13 @@ int main()
 	Init(dt2);
 	Init(dt3);
 	
-	printf("Nhap da thuc 1: \n");
+	printf("---[NHAP DA THUC 1]--- \n");
 	NhapDaThuc(dt1);
 	PrintDathuc(dt1);
 	
 	printf("\n\n");
 	 
-	printf("Nhap da thuc 2: \n");
+	printf("---[NHAP DA THUC 2]--- \n");
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
  
@@ -222,9 +222,9 @@ int main()
 	
 	printf("\n");
 	
-	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc :");
+	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc: x=");
 	scanf("%f",&x);
-	printf("Gia tri cua da thuc x=%.0f la: %.0f",x, UocluongDathuc(dt3, x));
+	printf("Gia tri cua da thuc khi x=%.0f la: %.0f",x, UocluongDathuc(dt3, x));
 	
 
 
