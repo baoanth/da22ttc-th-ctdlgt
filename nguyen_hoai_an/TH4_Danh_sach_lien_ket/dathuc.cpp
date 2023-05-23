@@ -158,10 +158,10 @@ int main()
 
     NhapDaThuc(my_dt2);
     PrintDaThuc(my_dt3);
+    printf("\n--------------------\n");
 
     CongDaThuc(my_dt1, my_dt2, my_dt3);
     PrintDaThuc(my_dt3);
     
     return 0;
 }
-
