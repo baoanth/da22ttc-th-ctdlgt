@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct Donthuc
 {
@@ -64,7 +65,7 @@ void NhapDaThuc(Dathuc &l)
 	{
 		printf("x^%d=",i);
 		s.bac=i;
-		scanf("%d",&s.hs);
+		scanf("\n%d",&s.hs);
 		Node*new_ele=GetNode(s);
 		AddTail(l, new_ele);
 	}
@@ -122,35 +123,51 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 	}
 
 }
-//Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
-//{
-//	Node *p, *q;
-//	Dathuc l_kq;
-//	Init (l_kq);
-//	Donthuc dathuc_tam;
-//	p= l1.pHead;
-//	q= l2.pHead;
-//	while(p!=NULL)
-//	{
-//		dathuc_tam.hs=p->Info.hs;
-//		dathuc_tam.bac=p->Info.bac;
-//		while(q!=NULL)
-//		{
-//			if(p->Info.bac == q->Info.bac)
-//			break;
-//			q=q->pNext;
-//		}
-//		if(q!=NULL)
-//			dathuc_tam.hs += q->Info.hs;
-//			
-//		Node* new_ele = GetNode(dathuc_tam);
-//		AddTail(l_kq, new_ele);
-//		
-//		p=p->pNext;
-//	}
-//	
-//	return l_kq;
-//}
+
+float UocluongDathuc(Dathuc l, int x)
+{
+	float kq=0;
+	
+	Node* p= l.pHead;
+	
+	while(p!=NULL)
+	{
+		kq += p->Info.hs *pow(x,p->Info.bac);
+		
+		p=p->pNext;
+	}
+	return kq;
+	
+}
+/*Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
+ {
+	Node *p, *q;
+	Dathuc l_kq;
+	Init (l_kq);
+	Donthuc dathuc_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dathuc_tam.hs=p->Info.hs;
+		dathuc_tam.bac=p->Info.bac;
+		while(q!=NULL)
+		{
+			if(p->Info.bac == q->Info.bac)
+			break;
+			q=q->pNext;
+		}
+		if(q!=NULL)
+			dathuc_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dathuc_tam);
+		AddTail(l_kq, new_ele);
+		
+		p=p->pNext;
+	}
+	
+	return l_kq;
+} */
 
 
 void PrintDathuc(Dathuc &l)
@@ -180,25 +197,34 @@ void PrintDathuc(Dathuc &l)
 int main()
 {
 	Dathuc dt1, dt2, dt3;
+	float x;
 	Init(dt1);
 	Init(dt2);
 	Init(dt3);
 	
-	printf("Nhap da thuc 1: \n");
+	printf("---[NHAP DA THUC 1]--- \n");
 	NhapDaThuc(dt1);
 	PrintDathuc(dt1);
 	
 	printf("\n\n");
 	 
-	printf("Nhap da thuc 2: \n");
+	printf("---[NHAP DA THUC 2]--- \n");
 	NhapDaThuc(dt2);
 	PrintDathuc(dt2);
-
-//	dt3= CongDathuc(dt1, dt2);
-//	printf("\n\nTong hai da thuc la:  ");
-//	PrintDathuc(dt3);
-	CongDathuc(dt1,dt2,dt3);
+ 
+	printf("\n");
+/*	dt3= CongDathuc(dt1, dt2);
+	printf("\n\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
+*/
+	CongDathuc(dt1,dt2,dt3);
+	PrintDathuc(dt3); 
+	
+	printf("\n");
+	
+	printf("\nNhap gia tri cua x de uoc luong gia tri da thuc: x=");
+	scanf("%f",&x);
+	printf("Gia tri cua da thuc khi x=%.0f la: %.0f",x, UocluongDathuc(dt3, x));
 	
 
 

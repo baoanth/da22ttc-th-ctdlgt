@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Donthuc
+typedef struct donthuc
 {
     int heso, bac;
-} donthuc;
+}donthuc;
 
 typedef struct Node
 {
     donthuc info;
     Node* pNext;
-} Node;
+}Node;
 
-typedef struct Dathuc
+typedef struct dathuc
 {
     Node* pHead;
     Node* pTail;
-} dathuc;
+}dathuc;
 
 void Init(dathuc& l)
 {
@@ -38,7 +38,7 @@ Node* GetNode(donthuc x)
     return p;
 }
 
-void AddTail(dathuc& l, Node* new_ele)
+void AddTail(dathuc &l, Node* new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -93,75 +93,60 @@ void Xuatdathuc(dathuc& l)
         p = p->pNext;
     }
 }
-
-<<<<<<< HEAD
-void CopyDaThuc( dathuc l, dathuc &l_kq)
+dathuc TinhTong(dathuc l1, dathuc l2)
 {
-    Node* p;
-    p = l.pHead;
-    while( p!=NULL)
+    dathuc sum;
+    Init(sum);
+
+    Node* p1 = l1.pHead;
+    Node* p2 = l2.pHead;
+
+    while (p1 != NULL && p2 != NULL)
     {
-        Node* new_ele = GetNode(p ->info);
-        AddTail(l_kq, new_ele);
-        p = p->pNext;
-
-    }
-    printf("Da copy da thuc:\n");
-}
-Node* TimBacN(dathuc l, int n)
-{
-    Node* p;
-    p = l.pHead;
-    while(p != NULL)
-    {
-        if(p->info.bac==n) 
-            break;
-        p= p-> pNext;
-
-    }
-    return p;
-
-}
-
-void CongDaThuc(dathuc l1, dathuc l2, dathuc&l_kq)
-{
-    CopyDaThuc(l1, l_kq);
-
-    Node* p;
-    p = l2.pHead;
-
-    while(p != NULL)
-    {
-        Node* foundNode = TimBacN(l_kq, p->info.bac);
-        if(foundNode = NULL)
+        donthuc sum_node;
+        if (p1->info.bac == p2->info.bac)
         {
-            foundNode->info.heso += p->info.heso;
-            printf("found bac %d \n", p->info.bac);
+            sum_node.bac = p1->info.bac;
+            sum_node.heso = p1->info.heso + p2->info.heso;
 
+            p1 = p1->pNext;
+            p2 = p2->pNext;
+        }
+        else if (p1->info.bac > p2->info.bac)
+        {
+            sum_node.bac = p1->info.bac;
+            sum_node.heso = p1->info.heso;
+
+            p1 = p1->pNext;
         }
         else
         {
-            Node* node_tam = GetNode(p ->info);
-            AddTail(l_kq, node_tam);
+            sum_node.bac = p2->info.bac;
+            sum_node.heso = p2->info.heso;
 
+            p2 = p2->pNext;
         }
-        p= p->pNext;
 
+        Node* new_ele = GetNode(sum_node);
+        AddTail(sum, new_ele);
     }
+
+    
+
+    return sum;
 }
 
-=======
->>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
+
+
 int main()
 {
     dathuc my_Px1;
     dathuc my_Px2;
-<<<<<<< HEAD
-	dathuc my_Px3;
-	
+
+		
     Init(my_Px1);
     Init(my_Px2);
-	Init(my_Px3);
+	
 	
     printf("Nhap da thuc 1:\n");
     Nhapdathuc(my_Px1);
@@ -172,21 +157,12 @@ int main()
     Nhapdathuc(my_Px2);
     Xuatdathuc(my_Px2);
 
+    dathuc sum = TinhTong(my_Px1, my_Px2);
     printf("\n Cong hai da thuc :\n");
-    CongDaThuc(my_Px1, my_Px2, my_Px3);
-    Xuatdathuc(my_Px3);
-
-    return 0;
-}
-=======
-
-    Init(my_Px1);
-
-    Nhapdathuc(my_Px1);
-
-    Xuatdathuc(my_Px1);
+    Xuatdathuc(sum);
 
     return 0;
 }
 
->>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
+
+   
