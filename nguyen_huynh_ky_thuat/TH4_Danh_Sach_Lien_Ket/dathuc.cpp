@@ -1,157 +1,89 @@
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
 
-typedef struct DonThuc
+typedef struct Donthuc
 {
-    int heso;
-    int bac;
-    
-}DonThuc;
+	int heso;
+	int bac;
+}Donthuc;
 
 typedef struct Node
 {
-	DonThuc Info;
-	Node* pNext;
+	Donthuc Info;
+	Node *pNext;
 }Node;
 
-typedef struct DaThuc
+typedef struct Dathuc
 {
-	Node* pHead;
-	Node* pTail;
-}DaThuc;
+	Node *pHead;
+	Node *pTail;
+}Dathuc;
 
-Node* Get_Node(DonThuc x)
+Node *GetNode(Donthuc x)
 {
 	Node *p;
 	p = new Node;
-	
-	if(p==NULL)
+	if(p == NULL)
 	{
-		printf("Khong du bo nho!");
-		return NULL;
+		printf("Khong du bo nho de cap phat");
+		return 0;
 	}
-	
-	p->Info=x;
-	p->pNext=NULL;
+	p->Info = x;
+	p->pNext = NULL;
 	return p;
 }
 
-void Add_Tail(DaThuc &l, Node* new_ele)
-{
-	if(l.pHead==NULL)
-	{
-		l.pHead=new_ele;
-		l.pTail=l.pHead;
-	}
-	else
-	{
-		l.pTail->pNext = new_ele;
-		l.pTail=new_ele;
-	}
-}
-
-void Init(DaThuc &l)
+void Init(Dathuc &l)
 {
 	l.pHead = l.pTail = NULL;
 }
 
-void Nhap_DaThuc(DaThuc &l)
+void AddTail(Dathuc &l, Node *new_ele)
 {
-	int maxMU;
-	DonThuc s;
-	printf("Moi ban nhap so mu lon nhat: ");
-	scanf("%d", &maxMU);
-	
-	for(int i=maxMU; i>=0; i--)
+	if(l.pHead == NULL)
 	{
-		printf("Nhap he so cua mu %d: ", i);
-		scanf("%d", &s.heso);
-		s.bac = i;
-		Node* new_ele = Get_Node(s);
-		Add_Tail(l, new_ele);
-	}
-}
-
-void Print_DaThuc(DaThuc &l)
-{
-	if (l.pHead ==NULL)
-	{
-		printf("Da thuc rong\n");
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
 	}
 	else
 	{
-		Node *p;
-		p = l.pHead ;
-		while (p!=NULL)
-		{
-			if((p!=l.pHead) && (p->Info.heso))
-			printf("+");
-			if(p->Info.bac==0)
-				printf("%d", p->Info.heso);
-			else if(p->Info.bac==1)
-				printf("%dx", p->Info.heso);
-			else
-			{
-				printf("%dx^%d", p->Info.heso, p->Info.bac);
-			}
-		
-			p = p->pNext;
-		}		
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
 	}
 }
 
-void CopyDaThuc(DaThuc l, DaThuc &l_kq)
+void ThemNutCuoi(Dathuc &l)
 {
-	Node* p;
-	p = l.pHead;
+	Donthuc s;
 	
-	while (p!=NULL)
-	{
-		Node* new_ele = Get_Node(p->Info);
-		Add_Tail(l_kq, new_ele);
-		p=p->pNext;
-	}
-	printf("\nDa copy da thuc xong!\n");
-}
-
-Node* TimNodeBacN(DaThuc l, int n)
-{
-	Node* p;
-	p =l.pHead;
+	printf("Bac: ");
+	scanf("%d", &s.bac);
+	printf("He so: ");
+	scanf("%d", &s.heso);
 	
-	while (p!=NULL)
-	{
-		if(p->Info.bac==n)
-		    break;
-		p=p->pNext;    
-	}
-	return p;
+	Node* new_ele = GetNode(s);
+	AddTail(l, new_ele);
+	
 }
 
-void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+void NhapDaThuc(Dathuc &l)
 {
-	CopyDaThuc(l1, l_kq);
-	Node*p;
-	p =l2.pHead;
-	while (p!=NULL)
+    Donthuc s;
+    int i,maxN;
+	printf("Bac cua da thuc: ");
+	scanf("%d", &maxN);
+	for (i =maxN; i>=0; i--)
 	{
-		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
-		if (foundNode!=NULL)
-		{
-			foundNode->Info.heso += p->Info.heso;
-			printf("Found bac %d\n",p->Info.bac);
-		}
-		else
-		{
-			Node* node_tam = Get_Node(p->Info);
-			Add_Tail(l_kq, node_tam);
-		}
-		p=p->pNext;
+		printf("x^%d =", i);
+		s.bac =i;
+		scanf("%d", &s.heso);
+		Node* new_ele = GetNode(s);
+		AddTail(l, new_ele);
 	}
 }
 
-void PrintDaThuc(DaThuc &l)
+void PrintDathuc(Dathuc &l)
 {
 	if (l.pHead == NULL)
 	{
@@ -173,13 +105,13 @@ void PrintDaThuc(DaThuc &l)
 
 int main()
 {
-	DaThuc my_dathuc;
-	Init(my_dathuc);
+	Dathuc mydathuc;
+	Init(mydathuc);
 	
-	Nhap_DaThuc(my_dathuc);
+	NhapDaThuc(mydathuc);
+	PrintDathuc(mydathuc);
 	
-	printf("\nDa thuc da nhap: ");
-	Print_DaThuc(my_dathuc);
-	
+	return 0;
 }
+
 
