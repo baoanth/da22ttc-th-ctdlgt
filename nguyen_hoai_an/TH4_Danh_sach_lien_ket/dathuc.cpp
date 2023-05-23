@@ -138,7 +138,9 @@ int main()
     Init(DaThuc2);
 
     NhapDaThuc(DaThuc1);
+    printf("--------------------\n");
     NhapDaThuc(DaThuc2);
+    printf("--------------------\n");    
 
     printf("Da thuc vua nhap:\n");
     InDaThuc(DaThuc1);
