@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -37,7 +36,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node *new_ele)
+void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -57,6 +56,93 @@ void Init(List &l)
 
 void AddTail(List &l, Node *new_ele)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pHead == NULL)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (l.pHead == NULL)
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+	if (l.pTail == NULL)
+=======
+	if (l.pHead == NULL)
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> e93a10bcd9e9120c687b7176025727b939abbd6b
+=======
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+	if (l.pTail == NULL)
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+	{
+		printf("Danh sach rong\n");
+	}
+	else
+	{
+		Node *p;
+<<<<<<< HEAD
+		p = l.pHead;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+=======
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+<<<<<<< HEAD
+		p = l.pHead;
+=======
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+		p = l.pTail;
+=======
+		p = l.pHead;
+>>>>>>> 347f9951992dfdbf98060bb69330328ea236a3cd
+<<<<<<< HEAD
+>>>>>>> 47d9a4f2cbf417b7cc90d9c81d4043f3d95e9217
+=======
+>>>>>>> 9fe68217ae5ccfac5030a3ef4c9baa2df4779813
+<<<<<<< HEAD
+>>>>>>> e93a10bcd9e9120c687b7176025727b939abbd6b
+=======
+<<<<<<< HEAD
+>>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
+=======
+=======
+		p = l.pTail;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
+		while (p!=NULL)
+		{
+			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+			p = p->pNext;
+		}
+	}
+=======
+=======
+>>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
     if (l.pHead == NULL)
     {
         l.pHead = new_ele;
@@ -95,19 +181,19 @@ Node *FindNodeByID(List l, int idx)
     return p;
 }
 
-void AddNodeAfter(List &l, int idx, Node *new_ele)
+void AddNodeAfter(List &l, int idx, Node *new_ele5)
 {
     Node *q = FindNodeByID(l, idx);
 
-    if (q != NULL && new_ele != NULL)
+    if (q != NULL && new_ele5 != NULL)
     {
-        new_ele->pNext = q->pNext;
-        q->pNext = new_ele;
+        new_ele5->pNext = q->pNext;
+        q->pNext = new_ele5;
         if (q == l.pTail)
-            l.pTail = new_ele;
+            l.pTail = new_ele5;
     }
-    //	else
-    //	AddFirst(l, new_ele);
+    else
+        AddFirst(l, new_ele5);
 }
 
 void RemoveHead(List &l)
@@ -177,7 +263,7 @@ void InputNode(List &l)
     printf("Nhap thong tin nguoi:\n");
     printf("ID: ");
     scanf("%d", &p.id);
-     fflush(stdin);
+    fflush(stdin);
     printf("First name: ");
     gets(p.fname);
     fflush(stdin);
@@ -190,37 +276,35 @@ void InputNode(List &l)
     printf("Nhap vi tri can them: ");
     scanf("%d", &idx);
 
-    AddNodeAfter(l, idx-1, new_node);
+    AddNodeAfter(l, idx - 1, new_node);
 
     printf("Da them nguoi vao danh sach!\n");
 }
-
 
 int main()
 {
     struct Person per1 = {1, "giap", "at"};
     struct Person per2 = {2, "binh", "dinh"};
     struct Person per3 = {3, "mau", "ky"};
-    struct Person per4 = {4, "canh", "tan"};
+    struct Person per4 = {4, "canh", "Tan"};
     struct Person per5 = {5, "nham", "quy"};
-   
+
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
     Node *new_ele4 = GetNode(per4);
+    Node *new_ele5 = GetNode(per5);
 
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
-    AddFist(my_list, new_ele3);
+    AddFirst(my_list, new_ele1);
+    AddFirst(my_list, new_ele3);
 
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
 
     PrintList(my_list);
-
-    printf("**************************************************************\n");
 
     int idx;
     printf("Nhap id :");
@@ -231,54 +315,41 @@ int main()
     if (node_kq != NULL)
     {
         PrintNode(node_kq);
-        printf("**************************************************************\n");
     }
     else
     {
         printf("Khong tim thay id %d\n", idx);
-        printf("**************************************************************\n");
     }
 
-    Node *new_ele5 = GetNode(per5);
-    AddNodeAfter(my_list, idx, new_ele5);
+        AddNodeAfter(my_list, idx, new_ele5);
 
     printf("Sau khi them nut : \n");
     printf("\n");
     PrintList(my_list);
 
     RemoveHead(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut dau : \n");
     printf("\n");
 
     PrintList(my_list);
 
     RemoveLast(my_list);
-    printf("**************************************************************\n");
     printf("Sau khi xoa nut cuoi : \n");
     printf("\n");
 
     PrintList(my_list);
 
-
     printf("Nhap id can xoa:");
     scanf("%d", &idx);
     RemoveNode(my_list, idx);
-    printf("**************************************************************\n");
     printf("Sau khi thuc hien thao tac : \n");
     printf("\n");
     PrintList(my_list);
-    
+
     InputNode(my_list);
+    printf("Sau khi thuc hien thao tac : \n");
+    printf("\n");
     PrintList(my_list);
 
-<<<<<<< HEAD
->>>>>>> 4e5a62c4974b0bfc73948b764429946ebc1f5461
-=======
     return 0;
 }
-<<<<<<< HEAD
->>>>>>> ac67c5a3029941dc8b236826380a711232d27631
-=======
->>>>>>> 8e63614c252e774f190db70f99fc78ad49aea3e1
->>>>>>> c502d85257d060c87e9d78f08e987cc2b381e655

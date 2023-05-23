@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
@@ -8,6 +9,29 @@ typedef struct Person
     char fname[20];
     char lname[20];
 } Person;
+<<<<<<< HEAD
+=======
+}Person;
+>>>>>>> 11ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+} Person;
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+} Person;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+=======
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
 
 typedef struct Node
 {
@@ -45,6 +69,23 @@ void AddFirst(List &l, Node *new_ele)
     else
     {
         new_ele->pNext = l.pHead;
+<<<<<<< HEAD
+<<<<<<< HEAD<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+        new_ele->pNext = l.pHead;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+=======
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
         l.pHead = new_ele;
     }
 }

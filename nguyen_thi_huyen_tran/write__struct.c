@@ -14,6 +14,22 @@ struct person
 
 int main()
 {
+<<<<<<< HEAD
+  struct person per1 = {1, "Nguyen", "An"};
+  struct person per2 = {1, "Le", "Binh"};
+  
+  FILE* outfile = fopen("person.dat", "w");
+  
+  fwrite(&per1, sizeof (struct person), 1, outfile);
+  fwrite(&per2, sizeof (struct person), 1, outfile);
+  
+  if (fwrite!=0)
+     printf("file thanh cong");
+  else
+     printf("file that bai");
+  fclose(outfile);
+  
+=======
     struct person per1 = {1,"Nguyen","Tran"};
 	struct person per2 = {2,"Nguyen","Tong"};	
 	
@@ -27,5 +43,6 @@ int main()
 	else
 	  printf("ERROR! Write file unsuccessfully");
 	fclose(outfile);    
+>>>>>>> 7115dabdf1a312c5bb1d898a7ef053986a773852
 }
 
