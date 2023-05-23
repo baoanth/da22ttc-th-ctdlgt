@@ -88,46 +88,82 @@ void print(dathuc l)
     }
 }
 
-dathuc congdathuc(dathuc l, dathuc f)
+void CopyDaThuc(dathuc l, dathuc &l_kq)
 {
+    // Init(l_kq);
     Node *p = l.pHead;
-    Node *q = f.pHead;
-    dathuc kq;
-    Init(kq);
     while (p != NULL)
     {
-        donthuc tmp;
-        tmp.bac = p->Info.bac;
-        tmp.heso = p->Info.heso;
-
-        while (q != NULL)
-        {
-            if (tmp.bac == q->Info.bac)
-            {
-                break;
-            }
-
-            q = q->pNext;
-        }
-        if (q != NULL)
-            tmp.heso += q->Info.heso;
-        Node *newe = GetNode(tmp);
-        AddTail(kq, newe);
+        Node *q = GetNode(p->Info);
+        AddTail(l_kq, q);
         p = p->pNext;
+    }
+}
+
+Node *TimNodeBacN(dathuc l, int n)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.bac == n)
+        {
+            break;
+        }
+        p = p->pNext;
+    }
+    return p;
+}
+
+void congdathuc(dathuc l1, dathuc l2, dathuc &l_kq)
+{
+    Init(l_kq);
+    CopyDaThuc(l1, l_kq);
+    Node *p = l2.pHead;
+
+    while (p != NULL)
+    {
+        Node *fNode = TimNodeBacN(l_kq, p->Info.bac);
+        if (fNode != NULL)
+        {
+            fNode->Info.heso += p->Info.heso;
+        }
+        else
+        {
+            Node *tmp = GetNode(p->Info);
+            AddTail(l_kq, tmp);
+        }
+        p = p->pNext;
+    }
+}
+
+dathuc nhandonthuc(donthuc x, dathuc l)
+{
+    dathuc kq;
+    Init(kq);
+    donthuc tmp;
+    Node*p = l.pHead;
+    while(p!= NULL)
+    {
+        tmp.bac = p->Info.bac*x.bac;
+        tmp.heso = p->Info.heso*x.heso;
+        Node* q = GetNode(tmp);
+        AddTail(kq,q);
+        p = p-> pNext;
     }
     return kq;
 }
 
+
 int main()
 {
 
-    dathuc my_dathuc;
+    dathuc dathuc1;
     dathuc dathuc2, kq;
-    Init(my_dathuc);
+    Init(dathuc1);
     Init(dathuc2);
-    nhapdathuc(my_dathuc);
+    nhapdathuc(dathuc1);
     nhapdathuc(dathuc2);
-    kq = congdathuc(my_dathuc, dathuc2);
+    congdathuc(dathuc1, dathuc2, kq);
 
     print(kq);
     return 0;
