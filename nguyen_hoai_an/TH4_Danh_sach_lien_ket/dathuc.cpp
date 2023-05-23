@@ -128,6 +128,29 @@ void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 
 }
 
+void NhanDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+{
+    //Copydathuc(l1, l_kq);
+	
+	Node* p;
+	p = l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
+		if(foundNode != NULL)
+		{
+			foundNode->Info.heso *= p->Info.heso;
+		}
+		else
+		{
+			Node* Node_tam = GetNode(p->Info);
+			AddTail(l_kq, Node_tam);
+		}
+		p = p->pNext;
+	}
+}
+
 void PrintDaThuc(DaThuc l)
 {
     Node* p;
@@ -136,7 +159,7 @@ void PrintDaThuc(DaThuc l)
     while (p!=NULL )
     {
         if(p!=l.pHead && p->Info.heso>=1)
-        	printf("+")	;
+        	printf(" + ")	;
         printf("%d", p->Info.heso);
         if(p->Info.bac>0)
 			printf("x^%d", p->Info.bac);
@@ -147,21 +170,28 @@ void PrintDaThuc(DaThuc l)
 
 int main()
 {
-    DaThuc my_dt1, my_dt2, my_dt3;
+    DaThuc my_dt1, my_dt2, my_dt3, kq;
     Init(my_dt1);
     Init(my_dt2);
     Init(my_dt3);
+    Init(kq);
 
     NhapDaThuc(my_dt1);
     PrintDaThuc(my_dt1);
     printf("\n--------------------\n");
 
     NhapDaThuc(my_dt2);
-    PrintDaThuc(my_dt3);
+    PrintDaThuc(my_dt2);
     printf("\n--------------------\n");
 
     CongDaThuc(my_dt1, my_dt2, my_dt3);
+    printf("Ket qua = ");
     PrintDaThuc(my_dt3);
+    printf("\n");
+
+    NhanDaThuc(my_dt1, my_dt2, kq);
+	printf("\nTich 2 da thuc = ");
+	PrintDaThuc(kq);
     
     return 0;
 }
