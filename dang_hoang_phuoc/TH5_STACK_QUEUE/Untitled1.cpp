@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include <cstring>
+#include <string.h>
 typedef struct Node
 {
 	char Info;
@@ -118,3 +118,4 @@ int main()
     }
     return 0;
 }
+
