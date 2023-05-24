@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include<math.h>
 
-typedef struct DonThuc
+typedef struct DonThuc 
 {
     int heso;
     int bac;
@@ -238,7 +238,7 @@ int main()
 	InDaThuc(KetQua);
 */
 	float x;
-	printf("\n\n---Nhap x de tinh gia tri cua da thuc: ");
+	printf("\n\n---Nhap x de tinh gia tri da thuc: ");
 	scanf("%f", &x);
 	float KetQua1 = TinhGiaTri(DaThuc1, x);
 	printf("Gia tri cua da thuc 1 khi x = %.2f: %.2f\n", x,  KetQua1);
