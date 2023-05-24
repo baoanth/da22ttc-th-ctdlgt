@@ -12,14 +12,14 @@ typedef struct Stack
 {
     Node* pHead;
     Node* pTail;
-} Stack;
+} 
+Stack;
 
 
 void Init ( Stack &s )
 {
     s.pHead = s.pTail = NULL;
 }
-
 char IsEmpty(Stack &s)
 {
 	if (s.pHead == NULL) 
@@ -27,7 +27,6 @@ char IsEmpty(Stack &s)
 	else 
 	return 0;
 }
-
 void RemoveHead ( Stack &s )
 {
 	Node *p;
@@ -41,7 +40,6 @@ void RemoveHead ( Stack &s )
 	}
 	
 }
-
 Node* GetNode ( char x)
 {
     Node *p;
@@ -104,7 +102,7 @@ int main()
     Init (my_stack);
     
     printf ("\n Chuoi ban dau la: %s \n", str);
-    printf ("\n ket qua in ra man hinh la: ");
+    printf ("\n ket qua in ra man hinh STACK la: ");
     
     for (i=0; i < strlen(str); i++)
     {

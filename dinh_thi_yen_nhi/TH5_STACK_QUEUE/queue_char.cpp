@@ -8,19 +8,19 @@ typedef struct Node
     Node* pNext;
 } Node;
 
-typedef struct Stack
+typedef struct Queue
 {
     Node* pHead;
     Node* pTail;
-} Stack;
+} Queue;
 
 
-void Init ( Stack &s )
+void Init ( Queue &s )
 {
     s.pHead = s.pTail = NULL;
 }
 
-char IsEmpty(Stack &s)
+char IsEmpty(Queue &s)
 {
 	if (s.pHead == NULL) 
 	return 1;
@@ -28,7 +28,8 @@ char IsEmpty(Stack &s)
 	return 0;
 }
 
-void RemoveHead ( Stack &s )
+
+void RemoveHead ( Queue &s )
 {
 	Node *p;
 	char x;
@@ -56,7 +57,7 @@ Node* GetNode ( char x)
     return p;
 }
 
- void InsertFirst ( Stack &s, Node *new_ele )
+ void InsertTail ( Queue &s, Node *new_ele )
 {
     if ( s. pHead == NULL )
     {
@@ -70,21 +71,20 @@ Node* GetNode ( char x)
     }
 }
 
-
-void Push ( Stack &s, char x )
+void EnQueue ( Queue &s, char x )
 {
 	Node* new_ele = GetNode (x);
-    InsertFirst (s, new_ele);
+    InsertTail (s, new_ele);
 }
 
-char Top ( Stack &s )
+char Front ( Queue &s )
 { 
     if(IsEmpty(s)) 
     return NULL;
     return s.pHead -> Info;
 }
 
-char Pop ( Stack &s )
+char DeQueue ( Queue &s )
 { 
     char x;
     if(IsEmpty (s) )
@@ -100,21 +100,21 @@ int main()
     int i;
     char x;
     
-    Stack my_stack;
-    Init (my_stack);
+    Queue my_queue;
+    Init (my_queue);
     
-    printf ("\n Chuoi ban dau la: %s \n", str);
-    printf ("\n ket qua in ra man hinh la: ");
+    printf ("\n noi dung cua hang doi la: %s \n", str);
+    printf ("\n ket qua in ra man hinh dang QUEUE la: ");
     
     for (i=0; i < strlen(str); i++)
     {
     	if (str[i] == '*')
     	{
-    		x = Pop (my_stack);
+    		x = DeQueue (my_queue);
     		printf ("%c", x);
     	}
     	else
-    		Push ( my_stack, str[i] );
+    		EnQueue ( my_queue, str[i] );
     }
     	
 	return 0;
