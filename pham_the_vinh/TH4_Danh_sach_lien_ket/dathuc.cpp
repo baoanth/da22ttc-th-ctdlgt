@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include<math.h>
 
-typedef struct DonThuc
+typedef struct DonThuc 
 {
     int heso;
     int bac;
