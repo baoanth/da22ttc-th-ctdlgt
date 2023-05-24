@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include <string.h>
+#include <cstring>
+
 typedef struct Node
 {
 	char Info;
 	Node* pNext;
 }Node;
 
-typedef struct stack
+typedef struct queue
 {
 	Node* pHead;
 	Node* pTail;
-}stack;
+}queue;
 
 Node* GetNode(char &x)
 {
@@ -28,7 +29,7 @@ Node* GetNode(char &x)
 	return p; 
 }
 
-void AddFirst(stack &l, Node *new_ele)
+void AddFirst(queue &l, Node *new_ele)
 {
 	if (l.pHead == NULL)
 	{
@@ -42,7 +43,8 @@ void AddFirst(stack &l, Node *new_ele)
 	}
 }
 
-void RemoveHead(stack &l)
+
+void RemoveHead(queue &l)
 {
     Node *p;
     char x;
@@ -56,13 +58,12 @@ void RemoveHead(stack &l)
     }
 }
 
-void Init(stack &S)
+void Init(queue &S)
 { 
     S.pHead = NULL;
     S.pTail = NULL;
 }
-
-char IsEmpty(stack &S)
+char IsEmpty(queue &S)
 {
     if(S.pHead == NULL)
     return 1;
@@ -70,13 +71,13 @@ char IsEmpty(stack &S)
 	 return 0;
 }
 
-void Push(stack &S, char x)
+void Push(queue &S, char x)
 {
     Node* new_ele = GetNode(x);
     AddFirst(S, new_ele);
 }
 
-char Pop(stack &S)
+char Pop(queue &S)
 {
     char x;
     if(IsEmpty(S)) 
@@ -86,7 +87,7 @@ char Pop(stack &S)
     return x;
 }
 
-char Top(stack &S)
+char Top(queue &S)
 {
     if(IsEmpty(S))
     return NULL;
@@ -100,22 +101,21 @@ int main()
     char x;
     int i;
 
-    stack my_stack;
-    Init (my_stack);
+    queue my_queue;
+    Init (my_queue);
 
     printf("Chuoi goc: %s\n",str);
-    printf("\n Ket qua in ra voi dong STACK: ");
+    printf("\n Ket qua in ra voi dong QUEUE: ");
 
     for(i=0; i< strlen(str); i++)
     {
         if (str[i]=='*')
         {
-            x = Pop(my_stack);
+            x = Pop(my_queue);
             printf("%c",x);
         }
         else
-        Push(my_stack, str[i]);
+        Push(my_queue, str[i]);
     }
     return 0;
 }
-
