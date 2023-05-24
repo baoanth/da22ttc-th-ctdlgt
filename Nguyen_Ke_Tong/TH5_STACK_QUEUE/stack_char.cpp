@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <cstring>
 typedef struct Node
 {
 	char Info;
