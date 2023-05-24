@@ -104,7 +104,7 @@ int main()
     Init (my_stack);
     
     printf ("\n Chuoi ban dau la: %s \n", str);
-    printf ("\n ket qua in ra man hinh dang STACK la: ");
+    printf ("\n ket qua in ra man hinh la: ");
     
     for (i=0; i < strlen(str); i++)
     {
