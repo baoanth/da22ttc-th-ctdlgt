@@ -4,13 +4,8 @@
 
 typedef struct
 {
-<<<<<<< HEAD
     char mahang[10] ;
     char tenhang[20];
-=======
-    char mahang[5];
-    char tenhang[25];
->>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
     int soluong;
     float dongia;
     float thanhtien;
@@ -57,17 +52,7 @@ void print_DMHH(HangHoa* hh, int n)
 	}
 }
 
-<<<<<<< HEAD
-HangHoa find_HH_by_ma(char* mahang, HangHoa* dmhh)
-{
-
-
-}
-
-void input_DMHH(char* filename)
-=======
 void print_HH(HangHoa h)
->>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
 {
     printf("%10s%20s%20d%20.0f%20.0f\n", h.mahang, h.tenhang, h.soluong, h.dongia, h.thanhtien);	
 }

@@ -61,14 +61,10 @@ void NhapDaThuc(DaThuc &l)
     int i;
     for (i =max_bac; i>=0; i--)
     {
-        DonThuc dt_tam;
-        dt_tam.bac = i;
-
-        printf("   x^%d : ",i);
-        scanf("%d", &dt_tam.heso);
-
-        Node* new_ele = GetNode(dt_tam);
-
+        printf("Nhap he so x^%d:", i);
+        s.bac = i;
+        scanf("%d", &s.heso);
+        Node *new_ele = GetNode(s);
         AddTail(l, new_ele);
     }
 
@@ -128,7 +124,7 @@ void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 
 }
 
-void NhanDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+/*void NhanDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 {
     //Copydathuc(l1, l_kq);
 	
@@ -149,7 +145,7 @@ void NhanDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 		}
 		p = p->pNext;
 	}
-}
+}*/
 
 void PrintDaThuc(DaThuc l)
 {
@@ -184,14 +180,14 @@ int main()
     PrintDaThuc(my_dt2);
     printf("\n--------------------\n");
 
-    CongDaThuc(my_dt1, my_dt2, my_dt3);
-    printf("\nTong 2 da thuc = ");
-    PrintDaThuc(my_dt3);
-    printf("\n");
+    printf("Da thuc vua nhap:\n");
+    InDaThuc(DaThuc1);
+    printf(" \n");
+    InDaThuc(DaThuc2);
 
-    NhanDaThuc(my_dt1, my_dt2, kq);
+    /*NhanDaThuc(my_dt1, my_dt2, kq);
 	printf("\nTich 2 da thuc = ");
-	PrintDaThuc(kq);
+	PrintDaThuc(kq);*/
     
     return 0;
 }

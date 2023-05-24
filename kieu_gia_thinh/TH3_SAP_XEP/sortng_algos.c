@@ -280,6 +280,7 @@ while(1)
 	}
 	
 	
+
 //	printf("1. SelectionSort\n");
 //	Selection_Sort(my_array, N);
 //	
@@ -291,7 +292,33 @@ while(1)
 //	
 //	printf("4.BubleSort\n");
 //	Buble_Sort(my_array, N);
+<<<<<<< HEAD
+
+	while(1)
+	{
+		int lc;
+		printf("Nhap vao chuc nang ma ban muon\n");
+		scanf("%d", &lc);
+		
+		if(lc==0)
+		{
+			printf("1. EXIT\n");
+		} 
+		else if(lc==1)
+		{
+			printf("1. SelectionSort\n");
+			Selection_Sort(my_array, N);
+		}
+	}
+
+
+
+
+
+
+=======
 >>>>>>> 34905ce81823c637f0ea9119a70428347d6a69ce
 	
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 	return  0;
 }

@@ -79,11 +79,11 @@ void bublesort(int a[],int N)
 
 }
 
-void shift(int a[],int 1,int r)
+void shift(int a[],int l,int r)
 {
     int x,i,j;
     i=1;
-    j=2*i
+    j=2*i;
     x=a[i];
     while (j<=r)
     {
@@ -116,7 +116,7 @@ void CreateHeap(int a[], int N )
 void HeapSort (int a[], int N)
 { 
     int r;
-    CreateHeap(a,N)
+    CreateHeap(a,N);
     r = N; 
     while(r > 0)
      {
@@ -159,7 +159,9 @@ int main()
     bublesort(my_array,N);
     printf("\ninterchangesort ");
     interchangesort(my_array,N);
-    HeapSort()
+    printf("\n\n heapsort : ");
+    HeapSort(my_array,N);
+    return 1;
 
 }
 
