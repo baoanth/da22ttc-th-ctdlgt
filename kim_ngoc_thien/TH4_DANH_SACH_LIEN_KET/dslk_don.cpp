@@ -43,7 +43,7 @@ void AddFirst(List &l, Node* new_ele)
 	}
 	else 
 	{	
-		new_ele->pNext = l.pHead;  
+		new_ele->pNext = l.pHead;      
 		l.pHead = new_ele; 	
 	}
 }
@@ -215,5 +215,5 @@ int main()
 	PrintList(my_list);
 
 	
-	return 0;
+	return 0;                                                                                                                                                               
 }
