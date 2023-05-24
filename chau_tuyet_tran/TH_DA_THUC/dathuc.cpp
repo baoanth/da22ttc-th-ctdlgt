@@ -1,6 +1,7 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <math.h>
 
 typedef struct Donthuc
 {
@@ -26,7 +27,7 @@ Node *GetNode(Donthuc x)
 	p = new Node;
 	if(p == NULL)
 	{
-		printf("Khong du bo nho de cap phat");
+		printf("Not enough memory to update!");
 		return 0;
 	}
 	p->Info = x;
@@ -71,23 +72,24 @@ void NhapDaThuc(Dathuc &l)
 {
     Donthuc s;
     int i,maxN;
-	printf("Bac cua da thuc la bac : ");
+	printf("Enter degree of polynomial: ");
 	scanf("%d", &maxN);
 	for (i =maxN; i>=0; i--)
 	{
-		printf("x^%d =", i);
+		printf("x ^ %d = ", i);
 		s.bac =i;
 		scanf("%d", &s.heso);
 		Node* new_ele = GetNode(s);
 		AddTail(l, new_ele);
 	}
+	printf ("\n");
 }
 
 void PrintDathuc(Dathuc &l)
 {
 	if (l.pHead == NULL)
 	{
-		printf("Da thuc rong\n");
+		printf("EMPTY!\n");
 	}
 	else
 	{
@@ -96,8 +98,8 @@ void PrintDathuc(Dathuc &l)
 		while (p!=NULL)
 		{
 			if((p!=l.pHead) &&  (p->Info.heso>=0))
-			printf("+");
-			printf("%dx^%d", p->Info.heso, p->Info.bac);
+			printf(" + ");
+			printf("%3dx ^ %d", p->Info.heso, p->Info.bac);
 			p = p->pNext;
 		}
 	}
@@ -106,7 +108,8 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {	
-	printf("Moi ban nhap ");
+	printf ("Please enter polynomial!\n");
+	printf ("--------------------------------------------\n");
 	Dathuc mydathuc;
 	Init(mydathuc);
 	
