@@ -6,8 +6,8 @@
 
 typedef struct Node
 {
-char Info; 
-Node* pNext; 
+	char Info; 
+	Node* pNext; 
 } Node;
 
 typedef struct Stack
@@ -17,7 +17,7 @@ typedef struct Stack
 } Stack;
 
 
-Node *GetNode(char x)
+Node *GetNode(char &x)
 {
     Node *p;
     p = new Node;
@@ -32,7 +32,7 @@ Node *GetNode(char x)
 }
 void AddFirst(Stack &l, Node* new_ele)
 {
-	if (l.pHead==NULL) //Danh sách r?ng
+	if (l.pHead==NULL) 
 	{
 		l.pHead = new_ele;
 		l.pTail = l.pHead;
@@ -43,102 +43,55 @@ void AddFirst(Stack &l, Node* new_ele)
 			l.pHead = new_ele; 
 		}
 }
-void Init(List &l)
+void Init(Stack &s)
 {
-    S.pHead = S.pTail = NULL;
-}
-char IsEmpty(List &S)
-{
-	if (S.pHead == NULL) // stack r?ng
-	return 1;
-	else return 0;
-}
-
-
-
-void PrintList(List l)
-{
-    Node *p = l.pHead;
-    while (p != NULL)
-    {
-        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-        p = p->pNext;
-    }
-}
-void AddTail(List &l, Node *new_ele)
-{
-    if (S.pHead == NULL)
-    {
-        S.pHead = new_ele;
-        l.pTail = S.pHead;
-    }
-    else
-    {
-        l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
-    }
-}
-/*NODE* InsertHead(List &l, char x)
-{
-	NODE* new_ele = GetNode(x);
-		if (new_ele ==NULL) return NULL;
-		if (S.pHead==NULL)
-		{
-			S.pHead = new_ele;
-			l.pTail = S.pHead;
-		}
-			else
-			{
-				new_ele->pNext = S.pHead; // (1)
-				S.pHead ->pPrev = new_ele; // (2)
-				S.pHead = new_ele; // (3)
-			}
-				return new_ele;
-}*/
-
-void RemoveHead(List &s)
-{
-	Node *p;
-	char x;
-	if ( l.pHead != NULL)
-	{
-		p = l.pHead; x = p->data;
-		l.pHead = l.pHead->pNext;
-		delete p;
-		if(l.pHead == NULL) 
-			l.pTail = NULL;
-	}
-		
+    s.pHead = s.pTail = NULL;
 }
 char IsEmpty(Stack &s)
 {
-	if (s.pHead == NULL) // stack r?ng
-	return 1;
-	else return 0;
+    if(s.pHead == NULL)
+    return 1;
+    else
+	 return 0;
 }
+
+void RemoveHead(Stack &l)
+{
+    Node *p;
+    char x;
+   		if (l.pHead != NULL)
+    	{
+    		p= l.pHead;
+    		l.pHead = l.pHead->pNext;
+    		delete p;
+    		if(l.pHead == NULL)
+    		l.pTail = NULL;
+    	}
+}
+
 void Push(Stack &s, char x)
 {
 	Node* new_ele = GetNode(x);
 	AddFirst(s, new_ele);
 }
-char Pop(LIST &S)
+char Pop(Stack &s)
 {
 	char x;
-	if(isEmpty(S)) 
+	if(IsEmpty(s)) 
 		return NULL;
 	x = s.pHead->Info;
-	RemoveHead(S);
+	RemoveHead(s);
 	return x;
 }
-char Top(LIST &S)
+char Top(Stack &s)
 {
-	if(isEmpty(S))
+	if(IsEmpty(s))
 		return NULL;
-	return s.Head->Info;
+	return s.pHead->Info;
 }
 int main()
 {
-	char str[] = "EAS*Y**QUE***ST**TION"
+	char str[] = "EAS*Y**QUE***ST**TION";
 	int i;
 	char x;
 	Stack my_stack;
@@ -147,7 +100,7 @@ int main()
 	printf("Chuoi ban dau: %s\n", str);
 	printf("Ket qua in ra voi STACK:  ");
 	
-	for (i=o; i<strlen(str);i++)
+	for (i=0; i<strlen(str);i++)
 	{
 		if(str[i] =='*')
 		{
