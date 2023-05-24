@@ -9,11 +9,11 @@ struct person
     int id;
     char fname[20];
     char lname[20];
-};
+};	
 
 int main()
 {
-	struct person per1 = {1, "Nguyen", "An" };
+	struct person per1 = {1, "Nguyen", "Le Hoa Binh" };
 	struct person per2 = {2, "Le", "Binh" };
 	struct person per3 = {3, "Tran", "Hoa" };
 	
