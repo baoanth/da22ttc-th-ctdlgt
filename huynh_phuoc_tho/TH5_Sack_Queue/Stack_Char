@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+
+typedef struct Node
+{
+    Person Info;
+    Node *pNext;
+} Node;
+
+typedef struct List
+{
+    Node *pHead;
+    Node *pTail;
+} List;
+
+//List *S;
+//S.pHead=;.pTail=NULL
+
+char IsEmpty (LIST &s)
+{
+    if (s.pHead==NULL)
+        return 1;
+    else
+        return 0;
+    
+}
+
+void Push(LIST %s, Data x)
+{
+    InsertHead (s, x);
+
+}
+
+Data Pop(LIST %s)
+{
+    Data x;
+    if(IsEmpty(s))
+        return NULLDATA;
+    x = RemoveFirst(s);
+    return x;
+}
+
+Data Top (LIST &s)
+{
+    if(IsEmpty(s))
+        return NULLDATA;
+    return l.Head->Info
+}
+
+Node *GetNode(Person x)
+{
+    Node *p;
+    p = new Node;
+    if (p == NULL)
+    {
+        printf("Khong du bo nho de cap phat cho nut moi");
+        return 0;
+    }
+    p->Info = x;
+    p->pNext = NULL;
+    return p;
+}
+
+void AddFirst(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
+    }
+}
+
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
+}
+
+
+
+int main()
+{
+
+
+}
