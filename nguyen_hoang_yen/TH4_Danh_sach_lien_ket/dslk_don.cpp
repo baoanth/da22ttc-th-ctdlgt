@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+
+#include <stdio.h>
+=======
+<<<<<<< HEAD
 =======
   #include <stdio.h>
+>>>>>>> 594e5729e738585b58519f9084fbcd81c77519ca
 #include <conio.h>
 >>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
 #include <string.h>
@@ -169,6 +174,63 @@ void AddTail(List &l, Node* new_ele)
 	}	
 }
 
+void RemoveHead(List &l, int idx)
+{
+	Node *p;
+	if (l.pHead  != NULL)
+	{
+		p = l.pHead; 
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if (l.pHead == NULL) l.pTail = NULL;
+	}
+} 
+
+void RemovoAfter ( List &l, Node *q)
+{
+	Node *p;
+	if ( q != NULL)
+	{
+		p = q ->pNext;
+		if (p ! = NULL)
+		{
+			if (p== l.pTail)
+		 		l.pTail = q;
+			q->pNext = p->pNext;
+			delete p;	
+		} 
+	else
+	
+		RemoveHead(l);
+	}
+}
+int RemoveNode (List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	while( p! = NULL)
+	{
+		if (p->Info == k) break;
+		q = p; p = p->pNext;
+	}
+	if(p == NULL) return 0;
+	if(q != NULL)
+	{
+		if(p == l.pTail)
+			l.pTail = q;
+			p->pNext = p->pNext;
+			delete p;
+	}
+	else
+	{
+		l.Head = p->pNext;
+		if(l.pHead == NULL)
+			l.pTail = NULL;
+	}
+	return 1;
+}
+
+
 Node* FindNodeByID(List l, int idx)
 {
 	Node *p;
@@ -284,6 +346,44 @@ return 0;
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
 }
+
+
+
+
+
+ 
+/*void AddFirst (DList &l, DNode* new_ele)
+{
+	if (l.Head==NULL)
+	{
+		l.pHead = new_ele;
+		l.pHead = l.Head;
+	}
+	else
+	{
+		new_ele->pNext = l.Head;
+		l.Head ->pPev = new_ele;
+		l.Head = new_ele; 
+	}
+}
+NODE* InsertHead(DList &l, Data x)
+{
+	NODE* new_ele = GetNode (x);
+	if (new_ele==NULL) return NULL;
+	if ( l.pHead==NULL)
+	{
+		L. pHead = new_ele;
+		l.pTail = l. pHead;
+	}
+	else
+	{
+		new_ele->pNext = l.pHead;
+		l.Head ->pPrev = new_ele ;
+		l.Head = new_ele;
+	}
+	return new_ele;
+}*/
+
 
 
 	
