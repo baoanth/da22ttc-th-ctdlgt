@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-// struct person with 3 fields
-typedef struct Person
-{
-    char hoten[50];
-    int tuoi;
-    char diachi[50];
-    char tinhtrang[50];
-} Person;
+
 typedef struct Node
 {
-    Person Info;
+    char Info;
     Node *pNext;
 } Node;
 
@@ -21,7 +14,7 @@ typedef struct Queve
     Node *pTail;
 } Queve;
 
-Node *GetNode(Person x)
+Node *Get_Node(char x)
 {
     Node *p;
     p = new Node;
@@ -35,7 +28,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddTail(Queve &l, Node *new_ele)
+void Add_Tail(Queve &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -53,7 +46,7 @@ void Init(Queve &l)
     l.pHead = l.pTail = NULL;
 }
 
-char RemoveHead(Queve &l)
+char Remove_Head(Queve &l)
 {
     if (l.pHead != NULL)
     {
@@ -64,7 +57,7 @@ char RemoveHead(Queve &l)
             l.pTail = NULL;
     }
 }
-char IsEmpty(Queve &l)
+char Is_Empty(Queve &l)
 {
     if (l.pHead == NULL)
 
@@ -74,32 +67,50 @@ char IsEmpty(Queve &l)
         return 0;
 }
 
-void Push(Queve &l, Person x)
+void Push(Queve &l, char x)
 {
-    Node *new_ele = GetNode(x);
-    AddTail(l, new_ele);
+    Node *new_ele = Get_Node(x);
+    Add_Tail(l, new_ele);
 }
 
-Person Pop(Queve &l)
+char Pop(Queve &l)
 {
-    Person x;
-    if (IsEmpty(l))
+    char x;
+    if (Is_Empty(l))
         return NULL;
     x = l.pHead->Info;
-    RemoveHead(l);
+    Remove_Head(l);
     return x;
 }
 
 char Top(Queve &l)
 {
-    if (IsEmpty(l))
+    if (Is_Empty(l))
         return NULL;
     return l.pHead->Info;
 }
 
 main()
 {
-    Person bn1 = {""}
+    char str[] = "EAS*Y**QUE***ST***I**ON";
+    int i;
+    char x;
+    Queve my_queve;
+    Init(my_queve);
+    printf("Chuoi goc: %s\n ", str);
+    printf("Ket qua Queve in :");
+    for (i = 0; i < strlen(str); i++)
+    {
+        if (str[i] != '*')
+        {
+            Push(my_queve, str[i]);
+        }
+        else
+        {
+            x = Pop(my_queve);
+            printf("%c", x);
+        }
+    }
 
     return 0;
 }
