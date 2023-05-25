@@ -114,7 +114,7 @@ void Inputqueue(Queue &s)
     printf("Nhap stt \n");
     scanf("%d", &per_tam.stt);
 
-    fflush(stdin);
+    
     printf("nhap tuoi: ");
     scanf("%d",per_tam.tuoi);
     
