@@ -72,7 +72,7 @@ void NhapDaThuc(Dathuc &l)
 	}
 }
 
-void CopyDaThuc ( Dathuc l, Dathuc &l_kq)
+void CopyDaThuc (Dathuc l, Dathuc &l_kq)
 {
 	Node* p;
 	p=l.pHead;
@@ -165,36 +165,35 @@ float uocluong(Dathuc l, int x)
 
 int main()
 {
-	float x1, x2; 
-	Dathuc dt1, dt2, dt3;
-	Init(dt1);
-	Init(dt2);
-	Init(dt3);
+	float x;  
+
+	Dathuc my_dt1;
+	Init(my_dt1);
+	Dathuc my_dt2;
+	Init(my_dt2);
+	Dathuc my_dt3;	
+	Init(my_dt3);
 	
 	printf ("Please enter polynomial!\n");
 	printf ("--------------------------------------------\n");
 	
 	printf("Enter polynomial 1: \n");
-	NhapDaThuc(dt1);
-	PrintDathuc(dt1);
+	NhapDaThuc(my_dt1);
+	PrintDathuc(my_dt1);
 	
 	printf("\n--------------------------------------------\n");
 	 
 	printf("Enter polynomial 2: \n");
-	NhapDaThuc(dt2);
-	PrintDathuc(dt2);
+	NhapDaThuc(my_dt2);
+	PrintDathuc(my_dt2);
 	
-	CongDathuc(dt1,dt2,dt3);
-	PrintDathuc(dt3);
-	
-	printf("\n----------\n");
-	
+	CongDathuc(my_dt1, my_dt2, my_dt3);
+	PrintDathuc(my_dt3);
+		 
+    printf("\n----------\n");
 	printf("Enter x to estimate the polynomial value 1: ");
-	scanf("%f", &x1);
-	printf("Polynomial value 1: P(%.2f)= %.2f\n", x1, uocluong(dt1, x1));
-	printf("Enter x to estimate the polynomial value 2: ");
-	scanf("%f", &x2);
-	printf("Polynomial value 2: P(%.2f)= %.2f", x2, uocluong(dt2, x2));
+	scanf("%f", &x);
+	printf("Polynomial value 1: P(%.2f)= %.2f", x, uocluong(my_dt1, x));
 	
 	return 0;
 }
