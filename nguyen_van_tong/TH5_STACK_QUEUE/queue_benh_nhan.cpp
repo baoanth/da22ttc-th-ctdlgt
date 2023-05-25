@@ -111,6 +111,7 @@ void print_queue(Queue l)
 
 void DeQueue(Queue &l)
 {
+    if(IsEmpty(l)) return;
     RemoveHead(l);
 }
 void EnQueue(Queue &s)
