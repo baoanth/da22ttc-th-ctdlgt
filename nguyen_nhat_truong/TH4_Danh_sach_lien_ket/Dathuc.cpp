@@ -59,7 +59,7 @@ void NhapDathuc(Dathuc &l)
 	
 	for(i= MaxN; i>=0; i--)
 	{
-		printf("x^%d = ",i);
+		printf("(x^%d) = ",i);
 		s.bac= i;
 		scanf("%d", &s.hs);
 		
