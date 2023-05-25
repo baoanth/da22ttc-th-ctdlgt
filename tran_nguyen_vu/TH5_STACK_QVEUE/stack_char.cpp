@@ -52,7 +52,7 @@ void RemoveHead(Stack &l)
     {
         Node *p = l.pHead;
         l.pHead = p->pNext;
-        if (l.pHead == NULL)
+        if (l.pHead == NULL) 
             l.pTail == NULL;
         delete p;
     }
