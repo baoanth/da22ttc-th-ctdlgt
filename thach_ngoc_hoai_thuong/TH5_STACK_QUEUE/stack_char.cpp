@@ -1,21 +1,27 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-
-
+// struct person with 3 fields
+typedef struct Person
+{
+    char hoten[50];
+    int tuoi;
+    char diachi[50];
+    char tinhtrang[50];
+} Person;
 typedef struct Node
 {
-    char Info;
+    Person Info;
     Node *pNext;
 } Node;
 
-typedef struct Stack
+typedef struct Queve
 {
     Node *pHead;
     Node *pTail;
-} Stack;
+} Queve;
 
-Node *GetNode(char x)
+Node *GetNode(Person x)
 {
     Node *p;
     p = new Node;
@@ -29,98 +35,128 @@ Node *GetNode(char x)
     return p;
 }
 
-void AddFirst(Stack &l, Node *new_ele)
+void AddTail(Queve &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
         l.pHead = new_ele;
-        l.pTail = l.pHead;      
+        l.pTail = l.pHead;
     }
     else
     {
-        new_ele->pNext = l.pHead;
-        l.pHead = new_ele;
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
     }
 }
-
-void RemoveHead(Stack &l)
+void Init(Queve &l)
 {
-    Node *p;
-    char x;
-    if (l.pHead != NULL)
-    {
-        p = l.pHead;
-        l.pHead = l.pHead->pNext;
-        delete p;
-        if (l.pHead == NULL)
-            l.pTail = NULL;
-    }
+    l.pHead = l.pTail = NULL;
 }
 
-char IsEmpty(Stack &s)
+//Person RemoveHead(Queve &l)
+//{
+//    if (l.pHead != NULL)
+//    {
+//        Node *p = l.pHead;
+//        l.pHead = l.pHead->pNext;
+//        delete p;
+//        if (l.pHead == NULL)
+//            l.pTail = NULL;
+//    }
+//}
+char IsEmpty(Queve &l)
 {
-    if (s.pHead == NULL) // stack rỗng
+    if (l.pHead == NULL)
+
         return 1;
-    else 
-		return 0;
+
+    else
+        return 0;
 }
 
-void Init(Stack &s)
+void Push(Queve &l, Person x)
 {
-	s.pHead = NULL;
-	s.pTail = NULL;
+    Node *new_ele = GetNode(x);
+    AddTail(l, new_ele);
 }
 
-//Dua mot phan tu x vao stack
-void Push(Stack &s, char x)
+//Person Pop(Queve &l)
+//{
+//    Person x;
+//    if (IsEmpty(l))
+//        return NULL;
+//    x = l.pHead->Info;
+//    RemoveHead(l);
+//    return x;
+//}
+
+Person Top(Queve &l)
 {
-    Node* new_ele = GetNode(x);
-	AddFirst(s, new_ele);
+	Person x;
+    if (IsEmpty(l))
+        return x;
+    return l.pHead->Info;
 }
 
-//Lay mot phan tu ra khoi dinh stack
-char Pop(Stack &s)
-{   
-    char x;
-    if(IsEmpty(s) )
-        return NULL;
-    
-	x = s.pHead->Info; //Lay gia tri dinh stack    
-    RemoveHead(s); // Xoa phan tu dinh stack
-    
-    return x;
-}
-// Xem phan tu o dinh stack ma khong lay ra 
-char Top(Stack &s)
-{ 
-    if(IsEmpty(s)) 
-        return NULL;
-    return s.pHead->Info;
-}
-
-int main()
+void PrintQueue(Queve &l)
 {
-    char  str[] = "EAS*Y**QUE***ST***I*ON";
-    
-    int i; 
-    char x;
-    Stack my_stack;
-    Init(my_stack);
-    
-	printf("Chuoi goc: %s\n", str);
-	printf("\n Ket qua in ra voi STACK:  ");
-	
-    for (i=0; i<strlen(str); i++)
+    if(l.pHead == NULL)
     {
-        if (str[i]=='*')
-        {
-           x = Pop(my_stack) ;
-           printf("%c",x);
-        }
-        else
-            Push(my_stack, str[i]);
+        printf("Danh sach rong:\n");
     }
+    else
+    {
+        Node* p;
+        p = l.pHead;
+        while(p!= NULL)
+        {
+            printf("\nTen: %14s\nTuoi: %7d\nDiaChi: %10s\nTinhTrang: %5s\n", p->Info.hoten, p->Info.tuoi , p->Info.diachi , p->Info.tinhtrang);
+            printf("==================================");
+            p= p->pNext;
+
+        }
+    }
+}
+
+void InputQueve(Queve &l)
+{
+    Person p;
+    printf("Nhap thong tin nguoi benh:\n");
+    printf("HoTen: ");
+    gets(p.hoten);
+    fflush(stdin);
+    printf("Tuoi: ");
+    scanf("%d",&p.tuoi);
+    fflush(stdin);
+    printf("DiaChi: ");
+    gets(p.diachi);
+    printf("TinhTrang: ");
+    gets(p.tinhtrang);
+
+    Node *new_node = GetNode(p);
+
+    
+    AddTail(l, new_node);
+
+    printf("Da them nguoi vao danh sach!\n");
+}
+main()
+{
+    Person Per1 = {"P.Q.Vinh" , 18 , "TraVinh" , "Nghien game"};
+    Person Per2 = {"H.K.Gia.Lac" , 17 , "TraVinh" , "Nghien da pes"};
+    
+    Node *new1 = GetNode(Per1);
+    Node *new2 = GetNode(Per2);
+    Queve my_queve;
+    Init(my_queve);
+    AddTail(my_queve, new1);
+    
+    AddTail(my_queve, new2);
+    PrintQueue(my_queve);
+    
+    InputQueve(my_queve);
+    
+     PrintQueue(my_queve);
+
     return 0;
-
-
 }
