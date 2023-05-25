@@ -83,7 +83,7 @@ void Push(Queue &l, char x)
 char Pop(Queue &l)
 {
     char x;
-    if (IsEmpty(l)) 
+    if (IsEmpty(l))
         return NULL;
     x = RemoveFirst(l, x);
     return x;

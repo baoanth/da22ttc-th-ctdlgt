@@ -14,7 +14,7 @@ typedef struct Queve
     Node *pTail;
 } Queve;
 
-Node *GetNode(char x)
+Node *Get_Node(char x)
 {
     Node *p;
     p = new Node;
@@ -28,7 +28,7 @@ Node *GetNode(char x)
     return p;
 }
 
-void AddTail(Queve &l, Node *new_ele)
+void Add_Tail(Queve &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -46,7 +46,7 @@ void Init(Queve &l)
     l.pHead = l.pTail = NULL;
 }
 
-char RemoveHead(Queve &l)
+char Remove_Head(Queve &l)
 {
     if (l.pHead != NULL)
     {
@@ -55,10 +55,9 @@ char RemoveHead(Queve &l)
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
-        
     }
 }
-char IsEmpty(Queve &l)
+char Is_Empty(Queve &l)
 {
     if (l.pHead == NULL)
 
@@ -70,23 +69,23 @@ char IsEmpty(Queve &l)
 
 void Push(Queve &l, char x)
 {
-    Node *new_ele = GetNode(x);
-    AddTail(l, new_ele);
+    Node *new_ele = Get_Node(x);
+    Add_Tail(l, new_ele);
 }
 
 char Pop(Queve &l)
 {
     char x;
-    if (IsEmpty(l))
+    if (Is_Empty(l))
         return NULL;
     x = l.pHead->Info;
-     RemoveHead(l);
+    Remove_Head(l);
     return x;
 }
 
 char Top(Queve &l)
 {
-    if (IsEmpty(l))
+    if (Is_Empty(l))
         return NULL;
     return l.pHead->Info;
 }

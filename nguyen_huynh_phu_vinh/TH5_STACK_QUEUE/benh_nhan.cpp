@@ -1,9 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct Person
+{
+    char ho_ten[50];
+    int tuoi;
+    char dia_chi[100];
+    char tinh_trang_benh[100];
+} Person;
+
 typedef struct Node
 {
-    char Info;
+    Person Info;
     Node *pNext;
 } Node;
 
@@ -18,7 +26,7 @@ void Init(Queue &l)
     l.pHead = l.pTail = NULL;
 }
 
-Node *GetNode(char x)
+Node *GetNode(Person x)
 {
     Node *p;
     p = new Node;
@@ -58,7 +66,7 @@ void RemoveHead(Queue &l)
     }
 }
 
-char RemoveFirst(Queue &l, char x)
+Person RemoveFirst(Queue &l, Person x)
 {
     Node*p = l.pHead;
     x = p->Info;
@@ -66,53 +74,31 @@ char RemoveFirst(Queue &l, char x)
     return x;
 }
 
-char IsEmpty(Queue &l)
-{
-    if (l.pHead == NULL)
-        return 1;
-    else
-        return 0;
-}
-
-void Push(Queue &l, char x)
+void Push(Queue &l, Person x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-char Pop(Queue &l)
+void in_dslk(Queue l)
 {
-    char x;
-    if (IsEmpty(l)) 
-        return NULL;
-    x = RemoveFirst(l, x);
-    return x;
+    Node* p = l.pHead;
+    while(p!=NULL)
+    {
+        printf("\n%10s%10d%10s%10s", p->Info.ho_ten, p->Info.tuoi, p->Info.dia_chi, p->Info.tinh_trang_benh);
+        p = p->pNext;
+    }
 }
-
-char Top(Queue &l)
-{
-    if (IsEmpty(l))
-        return NULL;
-    return l.pHead->Info;
-}
-
 int main()
 {
     Queue my_queue;
     Init(my_queue);
-    char str[] = "EAS*Y**QUE***ST***I*ON";
-    char x;
-    int i;
-    for (i = 0; i < strlen(str); i++)
-    {
-        if (str[i] != '*')
-            Push(my_queue, str[i]);
-        else
-        {
-            x = Pop(my_queue);
-            printf("%c", x);
-        }
-        
-    }
+    Person per1 = {"Vinh", 19, "Cau Ke", "Khoe"};
+    Person per2 = {"Tri", 19, "Tra Vinh", "Tot"};
+    
+    Push(my_queue, per1);
+    Push(my_queue, per2);
+    in_dslk(my_queue);
+
     return 0;
 }
