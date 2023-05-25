@@ -146,7 +146,6 @@ main()
     EnQueue(my_queve);
 
     print_queue(my_queve);
-    DeQueue(my_queve);
-    print_queue(my_queve);
+    
     return 0;
 }
