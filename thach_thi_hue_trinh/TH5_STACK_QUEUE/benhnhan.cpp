@@ -7,17 +7,18 @@
 typedef struct Person
 {
     int tuoi;
-    char dc[20];
-    char tt[20];
-    char h[20];
-    char t[20];
+    //char hoten[20];
+    char diachi[20];
+    char ttbenh[20];
+    char fname[20];
+    char lname[20];
     int stt;
 
 }Person;
 
 typedef struct Node
 {
-    Person Info;
+    Person info;
     Node *pNext;
 }Node;
 
@@ -35,14 +36,14 @@ void Init(Queue &s)
 Node* GetNode(Person x)
 {
 	Node* p;
-    p=new Node;
+    p = new Node;
     if(p==NULL)
     {
-    	printf("Khong du bo nho!\n");
+    	printf("Khong du bo nho de cap phat cho nut moi!\n");
     	return 0;
 	}
-	p->Info=x;
-	p->pNext=NULL;
+	p->info = x;
+	p->pNext = NULL;
 	return p;	
 }
 
@@ -60,7 +61,7 @@ void AddTail(Queue &s, Node* new_ele)
 	}
 }
 
-void RemoveHead(Queue &s)
+/*void RemoveHead(Queue &s)
 {
     Node *p;
     char x;
@@ -69,63 +70,69 @@ void RemoveHead(Queue &s)
         p = s.pHead;
         s.pHead = s.pHead->pNext;
         delete p;
-        if(s.pHead == NULL)	s.pTail = NULL;
+        if(s.pHead == NULL)
+            s.pTail = NULL;
     }
-}
+}*/
 char IsEmpty(Queue &s)
 {
-    if(s.pHead == NULL)	return 1;
+    if(s.pHead == NULL)
+        return 1;
     else return 0;
 }
 
 void EnQueue(Queue &s, Person x)
 {
+
     Node* new_ele = GetNode(x);
-    AddTail(s, new_ele);
+    	AddTail(s, new_ele);
 }
 
-Person DeQueue(Queue &s)
+/*Person DeQueue(Queue &s)
 {
     Person x;
-    if(IsEmpty(s)) return x;   
-    x = s.pHead->Info;
+    if(IsEmpty(s)) 
+        return x;
+        
+        x = s.pHead->Info;
     RemoveHead(s);
     return x;
 }
-
+*/
 Person Front(Queue &s)
-{
+{	
 	Person x;
     if(IsEmpty(s)) return x;
-    return s.pHead->Info;
+    return s.pHead->info;
 }
 
 void Inputqueue(Queue &s)
 {
     Person per_tam;
-   
-    printf("STT : ");
+    printf("Nhap benh nhan moi :\n");
+
+    printf("Nhap stt \n");
     scanf("%d", &per_tam.stt);
 
     fflush(stdin);
-    printf("Tuoi : ");
-    scanf("%d",&per_tam.tuoi);
+    printf("Nhap tuoi: ");
+    scanf("%d",per_tam.tuoi);
     
     fflush(stdin);
-    printf("Ho : ");
-    gets(per_tam.h);
+    printf("First name: ");
+    gets(per_tam.fname);
 
     fflush(stdin);
-    printf("Ten : ");
-    gets(per_tam.t);
+    printf("Last name: ");
+    gets(per_tam.lname);
 
     fflush(stdin);
     printf("Dia chi : ");
-    gets(per_tam.dc);
+    gets(per_tam.diachi);
 
     fflush(stdin);
-    printf("Tinh trang benh : ");
-    gets(per_tam.tt);
+    printf("Tinh trang benh ");
+    gets(per_tam.ttbenh);
 
   	EnQueue(s, per_tam);
 
@@ -143,32 +150,25 @@ void printQueue(Queue &s)
         p = s.pHead;
         while(p!= NULL)
         {
-            printf("\n%3d|%6d|%10s|%10s|%20s|%20s", p->Info.stt,p->Info.tuoi ,p->Info.h , p->Info.t, p->Info.dc, p->Info.tt);
+            printf(" %3d | 5%d | %10s | %10s | %17s | %16s |\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
             p= p->pNext;
+
         }
     }
 }
 
 int main()
 {
-	int i, n;
 
     Queue my_queue;
-    Init(my_queue);
     
-    printf("Nhap so luong benh nhan: ");
-    scanf("%d",&n);
-    for(i=1; i<=n; i++)
-    {
-    	printf("\nNhap benh nhan %d :\n",i);
-    	Inputqueue(my_queue);
-    }
-      
-    printf("\ndanh sach sau khi nhap:");
-    printf("\nSTT| Tuoi |    Ho    |    Ten   |         DC         |         TTB        ");
-    printQueue(my_queue);
+    Inputqueue(my_queue);
+    Inputqueue(my_queue);
+    Init(my_queue);
 
-//	DeQueue(my_queue);
+    printf("danh sach sau khi nhap:\n");
+    printf("\n STT |Tuoi|     Ho    |    Ten   |     Dia chi     |   Tinh trang   |");
+    printQueue(my_queue);
 
     return 0;
 }

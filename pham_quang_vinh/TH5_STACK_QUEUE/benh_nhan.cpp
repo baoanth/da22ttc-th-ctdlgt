@@ -142,8 +142,8 @@ void InputQueve(Queve &l)
 }
 main()
 {
-    Person Per1 = {"P.Q.Vinh" , 18 , "TraVinh" , "Nghien game"};
-    Person Per2 = {"H.K.Gia.Lac" , 17 , "TraVinh" , "Nghien da pes"};
+    Person Per1 = {"T.N.H.Thuong" , 19 , "TraVinh" , "Cam cum"};
+    Person Per2 = {"L.T.L.Tien" , 19 , "TieuCan" , "Bi khung"};
     
     Node *new1 = GetNode(Per1);
     Node *new2 = GetNode(Per2);
