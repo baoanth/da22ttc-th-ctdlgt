@@ -85,7 +85,7 @@ void Push(Stack &l,  char x )
 {
 	Node *new_ele=GetNode(x);
 	AddFist(l,new_ele);
-	
+    
 }
 
 char Pop(Stack &l)
