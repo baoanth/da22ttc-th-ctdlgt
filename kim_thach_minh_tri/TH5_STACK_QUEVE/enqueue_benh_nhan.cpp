@@ -80,15 +80,6 @@ void EnQueue(Queve &l, Person x)
     AddTail(l, new_ele);
 }
 
-//Person Pop(Queve &l)
-//{
-//    Person x;
-//    if (IsEmpty(l))
-//        return NULL;
-//    x = l.pHead->Info;
-//    RemoveHead(l);
-//    return x;
-//}
 
 Person Front(Queve &l)
 {
