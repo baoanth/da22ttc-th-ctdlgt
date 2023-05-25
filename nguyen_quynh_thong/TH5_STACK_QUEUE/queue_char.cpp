@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 
 typedef struct Node
@@ -8,11 +7,16 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct Queve
+typedef struct Queue
 {
     Node *pHead;
     Node *pTail;
-} Queve;
+} Queue;
+
+void Init(Queue &l)
+{
+    l.pHead = l.pTail = NULL;
+}
 
 Node *GetNode(char x)
 {
@@ -20,15 +24,15 @@ Node *GetNode(char x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
+        printf("Khong du bo nho de cap phat nut");
+        return NULL;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
 
-void AddTail(Queve &l, Node *new_ele)
+void AddTail(Queue &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -41,76 +45,74 @@ void AddTail(Queve &l, Node *new_ele)
         l.pTail = new_ele;
     }
 }
-void Init(Queve &l)
-{
-    l.pHead = l.pTail = NULL;
-}
 
-char RemoveHead(Queve &l)
+void RemoveHead(Queue &l)
 {
     if (l.pHead != NULL)
     {
         Node *p = l.pHead;
-        l.pHead = l.pHead->pNext;
-        delete p;
+        l.pHead = p->pNext;
         if (l.pHead == NULL)
-            l.pTail = NULL;
+            l.pTail == NULL;
+        delete p;
     }
 }
-char IsEmpty(Queve &l)
+
+char RemoveFirst(Queue &l, char x)
+{
+    Node*p = l.pHead;
+    x = p->Info;
+    RemoveHead(l);
+    return x;
+}
+
+char IsEmpty(Queue &l)
 {
     if (l.pHead == NULL)
-
         return 1;
-
     else
         return 0;
 }
 
-void EnQueue(Queve &l, char x)
+void Push(Queue &l, char x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-char DeQueue(Queve &l)
+char Pop(Queue &l)
 {
     char x;
     if (IsEmpty(l))
         return NULL;
-    x = l.pHead->Info;
-    RemoveHead(l);
+    x = RemoveFirst(l, x);
     return x;
 }
 
-char Top(Queve &l)
+char Top(Queue &l)
 {
     if (IsEmpty(l))
         return NULL;
     return l.pHead->Info;
 }
 
-main()
+int main()
 {
-    char str[] = "EAS*Y**QUE***ST***I**ON";
-    int i;
+    Queue my_queue;
+    Init(my_queue);
+    char str[] = "EAS*Y**QUE***ST***I*ON";
     char x;
-    Queve my_queve;
-    Init(my_queve);
-    printf("Chuoi goc: %s\n ", str);
-    printf("Ket qua Queve in :");
+    int i;
     for (i = 0; i < strlen(str); i++)
     {
         if (str[i] != '*')
-        {
-            EnQueue(my_queve, str[i]);
-        }
+            Push(my_queue, str[i]);
         else
         {
-            x = DeQueue(my_queve);
+            x = Pop(my_queue);
             printf("%c", x);
         }
+        
     }
-
     return 0;
 }

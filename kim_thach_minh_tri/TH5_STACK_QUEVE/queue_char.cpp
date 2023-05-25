@@ -68,13 +68,13 @@ char IsEmpty(Queve &l)
         return 0;
 }
 
-void Push(Queve &l, char x)
+void EnQueve(Queve &l, char x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-char Pop(Queve &l)
+char DeQueve(Queve &l)
 {
     char x;
     if (IsEmpty(l))
@@ -84,7 +84,7 @@ char Pop(Queve &l)
     return x;
 }
 
-char Top(Queve &l)
+char Front(Queve &l)
 {
     if (IsEmpty(l))
         return NULL;
@@ -104,11 +104,11 @@ main()
     {
         if (str[i] != '*')
         {
-            Push(my_queve, str[i]);
+            EnQueve(my_queve, str[i]);
         }
         else
         {
-            x = Pop(my_queve);
+            x = DeQueve(my_queve);
             printf("%c", x);
         }
     }
