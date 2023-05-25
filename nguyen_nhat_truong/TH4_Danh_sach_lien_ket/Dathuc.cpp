@@ -61,40 +61,107 @@ void ThemNotCuoi(DaThuc &l)
 
     printf("Nhap so bac cua da thuc:");
     scanf("%d", &n);
-    for ( i = 0; i <= n; i++)
+    for (i = n; i >= 0; i--)
     {
-        printf("Nhap bac: ");
-        scanf("%d", &my_donthuc.bac);
-        printf("Nhap he so: ");
+        printf("(X^%d) : ", i);
         scanf("%d", &my_donthuc.heso);
-         Node *new_ele = GetNode(my_donthuc);
 
-    AddTail(l, new_ele);
+         my_donthuc.bac = i;
+
+        Node *new_ele = GetNode(my_donthuc);
+
+        AddTail(l, new_ele);
     }
-    
-   
 }
 
 void PrintDaThuc(DaThuc l)
 {
+    printf("\n");
     Node *p = l.pHead;
     while (p != NULL)
     {
-        if((p != l.pHead) && (p->Info.heso>0))
-        printf(" + ");
-        printf("%dx^%d", p->Info.heso, p->Info.bac);
+        if ((p != l.pHead) && (p->Info.heso > 0))
+            printf("+");
+        if ((p != l.pTail) && (p->pNext != l.pTail))
+        {
+            if (p->Info.heso != 1 && p->Info.heso != -1)
+                printf("(%dx^%d)", p->Info.heso, p->Info.bac);
+            else if (p->Info.heso == 1)
+                printf("(x^%d)", p->Info.bac);
+            else if (p->Info.heso == -1)
+                printf("(-x^%d)", p->Info.bac);
+        }
+          //  printf(" %d^%d ", p->Info.heso, p->Info.bac);
+        else if (p->pNext == l.pTail)
+        {
+            if (p->Info.heso != 1 && p->Info.heso != -1)
+                printf("(%dx^%d)", p->Info.heso, p->Info.bac);
+            else if (p->Info.heso == 1)
+                printf("(x^%d)", p->Info.bac);
+            else if (p->Info.heso == -1)
+                printf("(-x^%d)", p->Info.bac);
+        }
+           // printf(" %dx ", p->Info.heso);
+        else if (p == l.pTail)
+            printf(" %d ", p->Info.heso);
+
         p = p->pNext;
     }
+}
+
+DaThuc CongDaThuc(DaThuc l1, DaThuc l2)
+{
+    Node *p, *q;
+    DaThuc l_kq;
+    Init(l_kq);
+    DonThuc tam;
+
+    p = l1.pHead;
+    q = l2.pHead;
+    while(p != NULL)
+    {
+        tam.heso = p->Info.heso;
+        tam.bac = p->Info.bac;
+
+        while(q != NULL)
+        {
+            if(p->Info.bac == q->Info.bac )
+                break;
+            q=q->pNext;
+        }
+        if(q != NULL)
+            tam.heso += q->Info.heso;
+           
+
+        Node* new_ele = GetNode(tam);
+        AddTail(l_kq, new_ele);
+        p=p->pNext;
+    }
+    
+    return l_kq;
 }
 
 int main()
 {
     DaThuc my_dathuc;
+    DaThuc my_dathuc1;
     Init(my_dathuc);
+    Init(my_dathuc1);
 
     ThemNotCuoi(my_dathuc);
+    ThemNotCuoi(my_dathuc1);
 
+    printf("\nDa thuc 1:\n");
     PrintDaThuc(my_dathuc);
+    printf("\nDa thuc 2:\n");
+    PrintDaThuc(my_dathuc1);
+
+     DaThuc dathuc_kq ;
+     printf("\nDa thuc kq:\n");
+    dathuc_kq = CongDaThuc(my_dathuc, my_dathuc1);
+
+    PrintDaThuc(dathuc_kq);
+    
 
     return 0;
 }

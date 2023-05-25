@@ -82,7 +82,7 @@ void PrintList(List &l)
         p = l.pHead;
         while (p != NULL)
         {
-            printf("%2d%15s%15s\n", p->Info.id, p->Info.lname, p->Info.fname);
+            printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
             p = p->pNext;
         }
     }
@@ -90,7 +90,7 @@ void PrintList(List &l)
 
 void PrintNode(Node *p)
 {
-    printf("%2d%15s%15s\n", p->Info.id, p->Info.lname, p->Info.fname);
+    printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
 Node *FindNodeByID(List &l, int idx)
@@ -198,7 +198,7 @@ void InputNode(List &l)
     printf("Nhap vi tri Node can them: ");
     scanf("%d", &idx);
 
-    AddNodeAfter(l, idx - 1, new_node);
+    AddNodeAfter(l, idx-1, new_node);
 }
 
 int main()
