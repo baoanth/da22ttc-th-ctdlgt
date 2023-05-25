@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 
 typedef struct Node
@@ -8,11 +7,16 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct Queve
+typedef struct Stack
 {
     Node *pHead;
     Node *pTail;
-} Queve;
+} Stack;
+
+void Init(Stack &l)
+{
+    l.pHead = l.pTail = NULL;
+}
 
 Node *GetNode(char x)
 {
@@ -20,15 +24,15 @@ Node *GetNode(char x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
+        printf("Khong du bo nho de cap phat nut");
+        return NULL;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
 
-void AddTail(Queve &l, Node *new_ele)
+void AddFirst(Stack &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -37,80 +41,77 @@ void AddTail(Queve &l, Node *new_ele)
     }
     else
     {
-        l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
     }
 }
-void Init(Queve &l)
-{
-    l.pHead = l.pTail = NULL;
-}
 
-char RemoveHead(Queve &l)
+void RemoveHead(Stack &l)
 {
     if (l.pHead != NULL)
     {
         Node *p = l.pHead;
-        l.pHead = l.pHead->pNext;
+        l.pHead = p->pNext;
+        if (l.pHead == NULL) 
+            l.pTail == NULL;
         delete p;
-        if (l.pHead == NULL)
-            l.pTail = NULL;
     }
 }
-char IsEmpty(Queve &l)
+
+char RemoveFirst(Stack &l, char x)
 {
-    if (l.pHead == NULL)
-
-        return 1;
-
-    else
-        return 0;
-}
-
-void EnQueue(Queve &l, char x)
-{
-    Node *new_ele = GetNode(x);
-    AddTail(l, new_ele);
-}
-
-char DeQueue(Queve &l)
-{
-    char x;
-    if (IsEmpty(l))
-        return NULL;
-    x = l.pHead->Info;
+    Node*p = l.pHead;
+    x = p->Info;
     RemoveHead(l);
     return x;
 }
 
-char Top(Queve &l)
+char IsEmpty(Stack &l)
+{
+    if (l.pHead == NULL)
+        return 1;
+    else
+        return 0;
+}
+
+void Push(Stack &l, char x)
+{
+    Node *new_ele = GetNode(x);
+    AddFirst(l, new_ele);
+}
+
+char Pop(Stack &l)
+{
+    char x;
+    if (IsEmpty(l))
+        return NULL;
+    x = RemoveFirst(l, x);
+    return x;
+}
+
+char Top(Stack &l)
 {
     if (IsEmpty(l))
         return NULL;
     return l.pHead->Info;
 }
 
-main()
+int main()
 {
-    char str[] = "EAS*Y**QUE***ST***I**ON";
-    int i;
+    Stack my_stack;
+    char str[] = "EAS*Y**QUE***ST***I*ON";
     char x;
-    Queve my_queve;
-    Init(my_queve);
-    printf("Chuoi goc: %s\n ", str);
-    printf("Ket qua Queve in :");
+    int i;
     for (i = 0; i < strlen(str); i++)
     {
         if (str[i] != '*')
-        {
-            EnQueue(my_queve, str[i]);
-        }
+            Push(my_stack, str[i]);
         else
         {
-            x = DeQueue(my_queve);
+            x = Pop(my_stack);
             printf("%c", x);
         }
+        
     }
-
     return 0;
 }

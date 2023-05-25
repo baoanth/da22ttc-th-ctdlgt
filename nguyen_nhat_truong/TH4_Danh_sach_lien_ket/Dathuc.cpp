@@ -1,167 +1,226 @@
 #include <stdio.h>
-#include <conio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <math.h>
 
-typedef struct DonThuc
+typedef struct Donthuc
 {
-    int heso;
+    int hs;
     int bac;
-} DonThuc;
+}Donthuc;
 
 typedef struct Node
 {
-    DonThuc Info;
-    Node *pNext;
-} Node;
+	Donthuc Info;
+	Node* pNext;
+}Node;
 
-typedef struct DaThuc
+typedef struct Dathuc
 {
-    Node *pHead;
-    Node *pTail;
-} DaThuc;
+	Node* pHead;
+	Node* pTail;
+}Dathuc;
 
-Node *GetNode(DonThuc x)
+Node* GetNode(Donthuc x)
 {
-    Node *p;
-    p = new Node;
-    if (p == NULL)
-    {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
-    }
-    p->Info = x;
-    p->pNext = NULL;
-    return p;
+	Node *p;
+	p = new Node;
+	if (p==NULL)   
+	{ 
+		printf("Khong du bo nho !"); 
+		return NULL; 
+	}
+	p->Info = x; 
+	p->pNext = NULL;
+	return p; 
 }
 
-void Init(DaThuc &l)
+void AddTail(Dathuc &l, Node *new_ele)
 {
-    l.pHead = l.pTail = NULL;
+	if (l.pHead == NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail = l.pHead;
+	}
+	else
+	{
+		l.pTail->pNext = new_ele;
+		l.pTail = new_ele;
+	}
 }
 
-void AddTail(DaThuc &l, Node *new_ele)
+void NhapDathuc(Dathuc &l)
 {
-    if (l.pHead == NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
-    }
+	int MaxN= 0;
+	int i;
+	Donthuc s;
+	
+	printf("\nPT co bac: ");
+	scanf("%d", &MaxN);
+	
+	for(i= MaxN; i>=0; i--)
+	{
+		printf("x^%d = ",i);
+		s.bac= i;
+		scanf("%d", &s.hs);
+		
+		Node* new_ele = GetNode(s);
+		AddTail(l, new_ele);	
+	}
 }
 
-void ThemNotCuoi(DaThuc &l)
+void Init(Dathuc &l)
 {
-    DonThuc my_donthuc;
-    Node *p;
-    int n, i;
-
-    printf("Nhap so bac cua da thuc:");
-    scanf("%d", &n);
-    for (i = n; i >= 0; i--)
-    {
-        printf("(X^%d) : ", i);
-        scanf("%d", &my_donthuc.heso);
-
-         my_donthuc.bac = i;
-
-        Node *new_ele = GetNode(my_donthuc);
-
-        AddTail(l, new_ele);
-    }
+	l.pHead = l.pTail = NULL;
 }
 
-void PrintDaThuc(DaThuc l)
+void PrintDathuc(Dathuc &l)
 {
-    printf("\n");
-    Node *p = l.pHead;
-    while (p != NULL)
-    {
-        if ((p != l.pHead) && (p->Info.heso > 0))
-            printf("+");
-        if ((p != l.pTail) && (p->pNext != l.pTail))
-        {
-            if (p->Info.heso != 1 && p->Info.heso != -1)
-                printf("(%dx^%d)", p->Info.heso, p->Info.bac);
-            else if (p->Info.heso == 1)
-                printf("(x^%d)", p->Info.bac);
-            else if (p->Info.heso == -1)
-                printf("(-x^%d)", p->Info.bac);
-        }
-          //  printf(" %d^%d ", p->Info.heso, p->Info.bac);
-        else if (p->pNext == l.pTail)
-        {
-            if (p->Info.heso != 1 && p->Info.heso != -1)
-                printf("(%dx^%d)", p->Info.heso, p->Info.bac);
-            else if (p->Info.heso == 1)
-                printf("(x^%d)", p->Info.bac);
-            else if (p->Info.heso == -1)
-                printf("(-x^%d)", p->Info.bac);
-        }
-           // printf(" %dx ", p->Info.heso);
-        else if (p == l.pTail)
-            printf(" %d ", p->Info.heso);
-
-        p = p->pNext;
-    }
+	Node *p;
+	p = l.pHead;
+	
+	printf("P(x)= ");
+	
+	while (p!= NULL)
+	{
+		if((p->Info.hs>0)&&(p!=l.pHead))
+			printf("+");
+		if(p->Info.bac==0)
+			printf("%d",p->Info.hs);
+		else if(p->Info.hs!=0)
+			printf("%dx^%d",p->Info.hs, p->Info.bac);
+		p = p->pNext;
+	}
 }
 
-DaThuc CongDaThuc(DaThuc l1, DaThuc l2)
+//Dathuc CongDathuc(Dathuc l1, Dathuc l2)
+//{
+//	Node *p, *q;
+//	
+//	Dathuc l_kq;
+//	Init(l_kq);
+//	
+//	Donthuc t;
+//	p= l1.pHead;
+//	q= l2.pHead;
+//	
+//	while(p!= NULL)
+//	{
+//		t.hs= p->Info.hs;
+//		t.bac= p->Info.bac;
+//		
+//		while(q!= NULL)
+//		{
+//			if(p->Info.bac == q->Info.bac)
+//			break;
+//			q= q-> pNext;
+//		}
+//		if(q!= NULL)
+//			t.hs += q->Info.hs;
+//			
+//		Node* new_ele= GetNode(t);
+//		AddTail(l_kq, new_ele);
+//		p=p->pNext;
+//	}
+//	return l_kq;
+//}
+
+void CopyDaThuc(Dathuc l, Dathuc &l_kq)
 {
-    Node *p, *q;
-    DaThuc l_kq;
-    Init(l_kq);
-    DonThuc tam;
+	Node* p;
+	p=l.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* new_ele =GetNode(p->Info);
+		AddTail(l_kq, new_ele);
+		p=p->pNext;
+	}
+	printf("\n\nTong 2 da thuc: ");
+}
 
-    p = l1.pHead;
-    q = l2.pHead;
-    while(p != NULL)
-    {
-        tam.heso = p->Info.heso;
-        tam.bac = p->Info.bac;
+Node* TimNodeBacN(Dathuc l, int n)
+{
+	Node* p;
+	p =l.pHead;
+	
+	while(p!=NULL)
+	{
+		if(p->Info.bac==n)
+		break;
+		p=p->pNext;
+	}
+	return p;
+}
 
-        while(q != NULL)
-        {
-            if(p->Info.bac == q->Info.bac )
-                break;
-            q=q->pNext;
-        }
-        if(q != NULL)
-            tam.heso += q->Info.heso;
-           
+void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
+{
+	CopyDaThuc(l1, l_kq);
+	
+	Node*p;
+	p=l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node*FoundNode = TimNodeBacN(l_kq, p->Info.bac);
+		if(FoundNode!=NULL)
+		{
+			FoundNode->Info.hs +=p->Info.hs;
+//			printf("Tim bac %d\n", p->Info.bac);
+		}
+		else
+		{
+			Node* node_tam= GetNode(p->Info);
+			AddTail(l_kq,node_tam);
+		}
+		p=p->pNext;
+	}
+}
 
-        Node* new_ele = GetNode(tam);
-        AddTail(l_kq, new_ele);
-        p=p->pNext;
-    }
-    
-    return l_kq;
+float UocluongDathuc(Dathuc l, int x)
+{
+	float kq=0;
+	
+	Node* p= l.pHead;
+	
+	while(p!=NULL)
+	{
+		kq += p->Info.hs *pow(x,p->Info.bac);
+		p=p->pNext;
+	}
+	return kq;
 }
 
 int main()
 {
-    DaThuc my_dathuc;
-    DaThuc my_dathuc1;
-    Init(my_dathuc);
-    Init(my_dathuc1);
+	float x;
+	
+	Dathuc my_dathuc1;
+	Init(my_dathuc1);
+	Dathuc my_dathuc2;
+	Init(my_dathuc2);
+	Dathuc my_dathuc3;	
+	Init(my_dathuc3);
 
-    ThemNotCuoi(my_dathuc);
-    ThemNotCuoi(my_dathuc1);
-
-    printf("\nDa thuc 1:\n");
-    PrintDaThuc(my_dathuc);
-    printf("\nDa thuc 2:\n");
-    PrintDaThuc(my_dathuc1);
-
-     DaThuc dathuc_kq ;
-     printf("\nDa thuc kq:\n");
-    dathuc_kq = CongDaThuc(my_dathuc, my_dathuc1);
-
-    PrintDaThuc(dathuc_kq);
-    
-
+	printf("Nhap da thuc 1: ");		
+	NhapDathuc(my_dathuc1);		   
+	PrintDathuc(my_dathuc1);
+	
+	printf("\n");
+	
+	printf("\nNhap da thuc 2: ");	
+	NhapDathuc(my_dathuc2);		   
+	PrintDathuc(my_dathuc2);
+	
+//	printf("\n\nTong 2 da thuc:  ");	
+//	my_dathuc3= CongDathuc(my_dathuc1, my_dathuc2);
+//	PrintDathuc(my_dathuc3);
+	CongDathuc(my_dathuc1, my_dathuc2, my_dathuc3);
+	PrintDathuc(my_dathuc3);
+	
+	printf("\n\nNhap gia tri cua x de uoc luong gia tri da thuc 1 :");
+	scanf("%f",&x);
+	printf("Gia tri cua da thuc 1: P(%.2f)= %.2f", x, UocluongDathuc(my_dathuc1,x));
+		
     return 0;
 }
+
