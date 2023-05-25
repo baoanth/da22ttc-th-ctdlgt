@@ -90,7 +90,7 @@ void EnQueue(Queve &l, Person x)
 //    return x;
 //}
 
-Person DeQueue(Queve &l)
+Person Front(Queve &l)
 {
 	Person x;
     if (IsEmpty(l))
