@@ -28,7 +28,6 @@ Node *GetNode(char x)
 	return p;
 }
 
-
 void AddFirst(Stack &l, Node *new_ele)
 {
 	if(l.pHead==NULL)

@@ -1,117 +1,172 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#define MAX_LENGTH 200
+
+
+typedef struct Person
+{
+    int tuoi;
+    char hoten[20];
+    char diachi[20];
+    char ttbenh[20];
+    char fname[20];
+    char lname[20];
+    int stt;
+
+}Person;
 
 typedef struct Node
 {
-    char Info;
+    Person info;
     Node *pNext;
-} Node;
+}Node;
 
-typedef struct Stack
+typedef struct Queue
 {
     Node *pHead;
     Node *pTail;
-} Stack;
+}Queue;
 
-void Init(Stack &l)
+void Init(Queue &s)
 {
-    l.pHead = l.pTail = NULL;
+    s.pHead = s.pTail = NULL;
 }
 
-Node *GetNode(char x)
+Node* GetNode(Person x)
+{
+	Node* p;
+    p=new Node;
+    if(p==NULL)
+    {
+    	printf("Khong du bo nho de cap phat cho nut moi!\n");
+    	return 0;
+	}
+	p->info=x;
+	p->pNext=NULL;
+	return p;	
+}
+
+void AddTail(Queue &s, Node* new_ele)
+{
+    if(s.pHead==NULL)
+    {
+	    s.pHead=new_ele;
+	    s.pTail=s.pHead;
+	}
+	else
+	{
+	    s.pTail->pNext = new_ele;
+        s.pTail = new_ele;
+	}
+}
+
+/*void RemoveHead(Queue &s)
 {
     Node *p;
-    p = new Node;
-    if (p == NULL)
-    {
-        printf("Khong du bo nho de cap phat nut");
-        return NULL;
-    }
-    p->Info = x;
-    p->pNext = NULL;
-    return p;
-}
-
-void AddFirst(Stack &l, Node *new_ele)
-{
-    if (l.pHead == NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        new_ele->pNext = l.pHead;
-        l.pHead = new_ele;
-    }
-}
-
-void RemoveHead(Stack &l)
-{
-    if (l.pHead != NULL)
-    {
-        Node *p = l.pHead;
-        l.pHead = p->pNext;
-        if (l.pHead == NULL) 
-            l.pTail == NULL;
-        delete p;
-    }
-}
-
-char RemoveFirst(Stack &l, char x)
-{
-    Node*p = l.pHead;
-    x = p->Info;
-    RemoveHead(l);
-    return x;
-}
-
-char IsEmpty(Stack &l)
-{
-    if (l.pHead == NULL)
-        return 1;
-    else
-        return 0;
-}
-
-void Push(Stack &l, char x)
-{
-    Node *new_ele = GetNode(x);
-    AddFirst(l, new_ele);
-}
-
-char Pop(Stack &l)
-{
     char x;
-    if (IsEmpty(l))
-        return NULL;
-    x = RemoveFirst(l, x);
-    return x;
+    if(s.pHead != NULL)
+    {
+        p = s.pHead;
+        s.pHead = s.pHead->pNext;
+        delete p;
+        if(s.pHead == NULL)
+            s.pTail = NULL;
+    }
+}*/
+char IsEmpty(Queue &s)
+{
+    if(s.pHead == NULL)
+        return 1;
+    else return 0;
 }
 
-char Top(Stack &l)
+void EnQueue(Queue &s, Person x)
 {
-    if (IsEmpty(l))
-        return NULL;
-    return l.pHead->Info;
+
+    Node* new_ele = GetNode(x);
+    if(new_ele != NULL)
+    	AddTail(s, new_ele);
+}
+
+/*Person DeQueue(Queue &s)
+{
+    Person x;
+    if(IsEmpty(s)) 
+        return x;
+        
+        x = s.pHead->Info;
+    RemoveHead(s);
+    return x;
+}
+*/
+Person Front(Queue &s)
+{	Person x;
+    if(IsEmpty(s)) return x;
+    return s.pHead->info;
+}
+
+void Inputqueue(Queue &s)
+{
+    Person per_tam;
+    printf("Nhap benh nhan moi :\n");
+
+    printf("Nhap stt \n");
+    scanf("%d", &per_tam.stt);
+
+    fflush(stdin);
+    printf("nhap tuoi: ");
+    scanf("%d",per_tam.tuoi);
+    
+    fflush(stdin);
+    printf("First name: ");
+    gets(per_tam.fname);
+
+    fflush(stdin);
+    printf("Last name: ");
+    gets(per_tam.lname);
+
+    fflush(stdin);
+    printf("dia chi : ");
+    gets(per_tam.diachi);
+
+    fflush(stdin);
+    printf("tinh trang benh ");
+    gets(per_tam.ttbenh);
+
+  	EnQueue(s, per_tam);
+
+}
+
+void printQueue(Queue &s)
+{
+    if(s.pHead == NULL)
+    {
+        printf("Danh sach rong:\n");
+    }
+    else
+    {
+        Node* p;
+        p = s.pHead;
+        while(p!= NULL)
+        {
+            printf("%3d%3d%10s%10s%10s%10s\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
+            p= p->pNext;
+
+        }
+    }
 }
 
 int main()
 {
-    Stack my_stack;
-    char str[] = "EAS*Y**QUE***ST***I*ON";
-    char x;
-    int i;
-    for (i = 0; i < strlen(str); i++)
-    {
-        if (str[i] != '*')
-            Push(my_stack, str[i]);
-        else
-        {
-            x = Pop(my_stack);
-            printf("%c", x);
-        }
-        
-    }
+
+    Queue my_queue;
+    Inputqueue(my_queue);
+    Inputqueue(my_queue);
+    Init(my_queue);
+
+    printf("danh sach sau khi nhap:\n");
+    printQueue(my_queue);
+
     return 0;
 }

@@ -60,6 +60,7 @@ void AddTail(Queue &s, Node* new_ele)
 	}
 }
 
+
 char IsEmpty(Queue &s)
 {
     if(s.pHead == NULL)
@@ -75,6 +76,7 @@ void EnQueue(Queue &s, Person x)
     	AddTail(s, new_ele);
 }
 
+
 Person Front(Queue &s)
 {	Person x;
     if(IsEmpty(s)) return x;
@@ -89,7 +91,7 @@ void Inputqueue(Queue &s)
     printf("Nhap stt \n");
     scanf("%d", &per_tam.stt);
 
-    
+    fflush(stdin);
     printf("nhap tuoi: ");
     scanf("%d",per_tam.tuoi);
     
@@ -146,4 +148,3 @@ int main()
 
     return 0;
 }
-

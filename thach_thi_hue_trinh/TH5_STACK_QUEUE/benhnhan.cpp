@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define MAX_LENGTH 200
 
 
 typedef struct Person
 {
     int tuoi;
-    char hoten[20];
+    //char hoten[20];
     char diachi[20];
     char ttbenh[20];
     char fname[20];
@@ -35,14 +36,14 @@ void Init(Queue &s)
 Node* GetNode(Person x)
 {
 	Node* p;
-    p=new Node;
+    p = new Node;
     if(p==NULL)
     {
     	printf("Khong du bo nho de cap phat cho nut moi!\n");
     	return 0;
 	}
-	p->info=x;
-	p->pNext=NULL;
+	p->info = x;
+	p->pNext = NULL;
 	return p;	
 }
 
@@ -60,6 +61,19 @@ void AddTail(Queue &s, Node* new_ele)
 	}
 }
 
+/*void RemoveHead(Queue &s)
+{
+    Node *p;
+    char x;
+    if(s.pHead != NULL)
+    {
+        p = s.pHead;
+        s.pHead = s.pHead->pNext;
+        delete p;
+        if(s.pHead == NULL)
+            s.pTail = NULL;
+    }
+}*/
 char IsEmpty(Queue &s)
 {
     if(s.pHead == NULL)
@@ -71,12 +85,23 @@ void EnQueue(Queue &s, Person x)
 {
 
     Node* new_ele = GetNode(x);
-    if(new_ele != NULL)
     	AddTail(s, new_ele);
 }
 
+/*Person DeQueue(Queue &s)
+{
+    Person x;
+    if(IsEmpty(s)) 
+        return x;
+        
+        x = s.pHead->Info;
+    RemoveHead(s);
+    return x;
+}
+*/
 Person Front(Queue &s)
-{	Person x;
+{	
+	Person x;
     if(IsEmpty(s)) return x;
     return s.pHead->info;
 }
@@ -89,8 +114,8 @@ void Inputqueue(Queue &s)
     printf("Nhap stt \n");
     scanf("%d", &per_tam.stt);
 
-    
-    printf("nhap tuoi: ");
+    fflush(stdin);
+    printf("Nhap tuoi: ");
     scanf("%d",per_tam.tuoi);
     
     fflush(stdin);
@@ -102,11 +127,11 @@ void Inputqueue(Queue &s)
     gets(per_tam.lname);
 
     fflush(stdin);
-    printf("dia chi : ");
+    printf("Dia chi : ");
     gets(per_tam.diachi);
 
     fflush(stdin);
-    printf("tinh trang benh ");
+    printf("Tinh trang benh ");
     gets(per_tam.ttbenh);
 
   	EnQueue(s, per_tam);
@@ -125,7 +150,7 @@ void printQueue(Queue &s)
         p = s.pHead;
         while(p!= NULL)
         {
-            printf("%3d%3d%10s%10s%10s%10s\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
+            printf(" %3d | 5%d | %10s | %10s | %17s | %16s |\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
             p= p->pNext;
 
         }
@@ -142,8 +167,10 @@ int main()
     Init(my_queue);
 
     printf("danh sach sau khi nhap:\n");
+    printf("\n STT |Tuoi|     Ho    |    Ten   |     Dia chi     |   Tinh trang   |");
     printQueue(my_queue);
 
     return 0;
 }
+
 
