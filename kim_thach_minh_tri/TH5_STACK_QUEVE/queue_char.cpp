@@ -84,7 +84,7 @@ char DeQueve(Queve &l)
     return x;
 }
 
-char Top(Queve &l)
+char Front(Queve &l)
 {
     if (IsEmpty(l))
         return NULL;
