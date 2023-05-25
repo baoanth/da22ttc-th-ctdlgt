@@ -108,7 +108,7 @@ int main()
     Init(my_stack);
     
 	printf("Chuoi goc: %s\n", str);
-	printf("\n Ket qua in ra man hinh STACK: ");
+	printf("\nKet qua in ra man hinh STACK:");
 	
     for (i=0; i<strlen(str); i++)
     {
