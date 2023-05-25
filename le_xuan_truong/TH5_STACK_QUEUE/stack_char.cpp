@@ -6,7 +6,7 @@ typedef struct Node
 {
     char Info;
     Node *pNext;
-} Node;
+}Node;
 
 typedef struct Stack
 {
@@ -51,8 +51,7 @@ void RemoveHead(Stack &l)
         p = l.pHead;
         l.pHead = l.pHead->pNext;
         delete p;
-        if (l.pHead == NULL)
-            l.pTail = NULL;
+        if (l.pHead == NULL)	l.pTail = NULL;
     }
 }
 
@@ -79,7 +78,7 @@ void Push(Stack &s, char x)
 char Pop(Stack &s)
 {   
     char x;
-    if(IsEmpty(s) )
+    if(IsEmpty(s))
         return NULL;
     
 	x = s.pHead->Info;  
@@ -97,7 +96,7 @@ char Top(Stack &s)
 
 int main()
 {
-    char  str[] = "EAS*Y**QUE***ST***I*ON";
+    char  str[] = "HNIRT***** *M*OE**";
     
     int i; 
     char x;

@@ -2,7 +2,6 @@
 #include <conio.h>
 #include <string.h>
 
-
 typedef struct Node
 {
     char Info;
@@ -34,94 +33,88 @@ void AddFirst(Stack &l, Node *new_ele)
     if (l.pHead == NULL)
     {
         l.pHead = new_ele;
-        l.pTail = l.pHead;      
+        l.pTail = l.pHead;
     }
     else
     {
         new_ele->pNext = l.pHead;
+
+        new_ele->pNext = l.pHead;
+
         l.pHead = new_ele;
     }
+}
+void Init(Stack &l)
+{
+    l.pHead = l.pTail = NULL;
 }
 
 void RemoveHead(Stack &l)
 {
-    Node *p;
-    char x;
     if (l.pHead != NULL)
     {
-        p = l.pHead;
+        Node *p = l.pHead;
         l.pHead = l.pHead->pNext;
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
+        
     }
 }
 
-char IsEmpty(Stack &s)
+char IsEmpty(Stack &l)
 {
-    if (s.pHead == NULL) // stack r?ng
+    if (l.pHead == NULL)
+
         return 1;
-    else 
-		return 0;
+
+    else
+        return 0;
 }
 
-void Init(Stack &s)
+void Push(Stack &l, char x)
 {
-	s.pHead = NULL;
-	s.pTail = NULL;
+    Node *new_ele = GetNode(x);
+    AddFirst(l, new_ele);
 }
 
-//Dua mot phan tu x vao stack
-void Push(Stack &s, char x)
+char Pop(Stack &l)
 {
-    Node* new_ele = GetNode(x);
-	AddFirst(s, new_ele);
-}
-
-//Lay mot phan tu ra khoi dinh stack
-char Pop(Stack &s)
-{   
     char x;
-    if(IsEmpty(s) )
+    if (IsEmpty(l))
         return NULL;
-    
-	x = s.pHead->Info; //Lay gia tri dinh stack    
-    RemoveHead(s); // Xoa phan tu dinh stack
-    
+    RemoveHead(l);
     return x;
 }
-// Xem phan tu o dinh stack ma khong lay ra 
-char Top(Stack &s)
-{ 
-    if(IsEmpty(s)) 
+
+char Top(Stack &l)
+{
+    if (IsEmpty(l))
         return NULL;
-    return s.pHead->Info;
+    return l.pHead->Info;
 }
 
-int main()
+main()
 {
-    char  str[] = "OV** *COUHP***** *NAOT****";
-    
-    int i; 
+    char str[] = "EAS*Y**QUE***ST***I**ON";
+    int i;
     char x;
     Stack my_stack;
     Init(my_stack);
-    
-	printf("Chuoi goc: %s\n", str);
-	printf("\n Ket qua in ra voi STACK:  ");
-	
-    for (i=0; i<strlen(str); i++)
+    printf("Chuoi goc: %s\n ", str);
+    printf("Ket qua Stack in :");
+    for (i = 0; i < strlen(str); i++)
     {
-        if (str[i]=='*')
+        if (str[i] != '*')
         {
-           x = Pop(my_stack) ;
-           printf("%c",x);
+            Push(my_stack, str[i]);
         }
         else
-            Push(my_stack, str[i]);
+        {
+            x = Pop(my_stack);
+            printf("%c", x);
+        }
     }
+
     return 0;
-
-
 }
-
