@@ -136,6 +136,7 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 
 }
 
+<<<<<<< HEAD
 /*float UocluongDathuc(Dathuc l, int x)
 {
 	float kq=0;
@@ -151,6 +152,8 @@ void CongDathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 	return kq;
 }*/
 
+=======
+>>>>>>> b621b07ad2061cbeba93fabaffa62f3c525ba88e
 void PrintDathuc(Dathuc &l)
 {
 	if (l.pHead == NULL)
@@ -178,9 +181,13 @@ int main()
 	
 	NhapDaThuc(mydathuc);
 	PrintDathuc(mydathuc);*/
+<<<<<<< HEAD
 	
 	Dathuc dt1, dt2, dt3;
 	float x;
+=======
+	Dathuc dt1, dt2, dt3;
+>>>>>>> b621b07ad2061cbeba93fabaffa62f3c525ba88e
 	Init(dt1);
 	Init(dt2);
 	Init(dt3);
@@ -198,10 +205,13 @@ int main()
 	CongDathuc(dt1, dt2, dt3);
 	printf("\nTong hai da thuc la:  ");
 	PrintDathuc(dt3);
+<<<<<<< HEAD
 	
 	/*printf("\nNhap gia tri cua x de uoc luong gia tri da thuc: x=");
 	scanf("%f",&x);
 	printf("Gia tri cua da thuc khi x= %f la: %f",x, UocluongDathuc(dt3, x));*/
+=======
+>>>>>>> b621b07ad2061cbeba93fabaffa62f3c525ba88e
 	
 	return 0;
 }

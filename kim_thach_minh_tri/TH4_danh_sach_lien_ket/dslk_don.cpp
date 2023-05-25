@@ -1,25 +1,7 @@
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-#include <stdlib.h>
-
-=======
-#include <conio.h>
-#include <string.h>
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
->>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
-=======
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 // struct person with 3 fields
 typedef struct Person
 {
@@ -27,6 +9,29 @@ typedef struct Person
     char fname[20];
     char lname[20];
 } Person;
+<<<<<<< HEAD
+=======
+}Person;
+>>>>>>> 11ae627302a13f94f32aa31b4a57d5139f9673d
+=======
+} Person;
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+} Person;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+=======
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
 
 typedef struct Node
 {
@@ -54,20 +59,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-void AddFirst(List &l, Node* new_ele)
-{
-    if (l.pHead == NULL)
-=======
-void AddFist(List &l, Node *new_ele)
-=======
 void AddFirst(List &l, Node *new_ele)
->>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
-=======
-void AddFirst(List &l, Node *new_ele)
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 {
     if (l.pHead == NULL)
     {
@@ -77,6 +69,23 @@ void AddFirst(List &l, Node *new_ele)
     else
     {
         new_ele->pNext = l.pHead;
+<<<<<<< HEAD
+<<<<<<< HEAD<<<<<<< HEAD
+>>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
+=======
+>>>>>>> d2bbc63055582a14f4528f31452d82c3e6017204
+>>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
+<<<<<<< HEAD
+=======
+=======
+        new_ele->pNext = l.pHead;
+>>>>>>> 70bbb6f9dd7dbe79db9df453a7ea5c8be6dd02ec
+>>>>>>> 6f29dcfadef56eec2c3dec7e6b498c1691139651
+=======
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
         l.pHead = new_ele;
     }
 }
@@ -109,45 +118,6 @@ void PrintList(List l)
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-Node *FindNodeByID(List l, int id)
-{
-    Node *node = l.pHead;
-    while (node != NULL)
-    {
-        if (node->Info.id == id)
-        {
-            return node;
-        }
-        node = node->pNext;
-    }
-    return NULL;
-=======
-void PrintNode(Node* p)
-{
-	printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-    p = p->pNext;
->>>>>>> 334655d424bda68a9d41827a76714eab9247231d
-}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 53216d064b8a49cd04e413668fa08fdf5874804b
->>>>>>> 111ae627302a13f94f32aa31b4a57d5139f9673d
-<<<<<<< HEAD
->>>>>>> 0db6543df8aa9c1bd51ecbe5b15e3f1306d01f50
-=======
-=======
->>>>>>> 2a7947e254789dee86141976d0ac7ff00a60444a
->>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
-
-=======
-=======
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 void PrintNode(Node *p)
 {
     printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -191,17 +161,6 @@ void RemoveHead(List &l)
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Node* node1 = GetNode(per2);
-    AddFirst(my_list, node2);
-<<<<<<< HEAD
-
-    
-=======
-=======
-=======
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 void RemoveLast(List &l)
 {
     if (l.pTail != NULL)
@@ -221,10 +180,6 @@ void RemoveLast(List &l)
         delete p;
     }
 }
-<<<<<<< HEAD
->>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
-=======
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 
 int RemoveNode(List &l, int idx)
 {
@@ -322,14 +277,6 @@ int main()
         printf("Khong tim thay id %d\n", idx);
         printf("**************************************************************\n");
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 52101222854229aae11bba57ee85bfbcd88c7e28
->>>>>>> 12873f93a066a8eddcaa685309c27dac913e12da
-=======
->>>>>>> c58b3b7b2760572e4f13e45dea3ee2e63b67a656
-=======
->>>>>>> cd4da97f2055dfebe247e87ebc129bf9bd08f885
 
         AddNodeAfter(my_list, idx, new_ele5);
 

@@ -83,6 +83,10 @@ void nhapdathuc(dathuc &l)
 	}
 	
 }
+void congdathuc (dathuc &l1, dathuc &l2)
+{
+	
+}
 void Printdathuc(dathuc &l)
 {
 	if(l.pHead == NULL)
