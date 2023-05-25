@@ -2,35 +2,34 @@
 #include <conio.h>
 #include <string.h>
 
+
 typedef struct Node
 {
-	char Info;
-	Node* pNext;
-}Node;
+    char Info;
+    Node *pNext;
+} Node;
 
 typedef struct Stack
 {
-	Node* pHead;
-	Node* pTail;
-}Stack;
+    Node *pHead;
+    Node *pTail;
+} Stack;
 
-Node* Get_Node(char x)
+Node *GetNode(char x)
 {
-	Node *p;
-	p = new Node;
-	
-	if(p==NULL)
-	{
-		printf("Khong du bo nho!");
-		return NULL;
-	}
-	
-	p->Info=x;
-	p->pNext=NULL;
-	return p;
+    Node *p;
+    p = new Node;
+    if (p == NULL)
+    {
+        printf("Khong du bo nho de cap phat cho nut moi");
+        return 0;
+    }
+    p->Info = x;
+    p->pNext = NULL;
+    return p;
 }
 
-void Add_First(Stack &l, Node *new_ele)
+void AddFirst(Stack &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -44,7 +43,7 @@ void Add_First(Stack &l, Node *new_ele)
     }
 }
 
-void Remove_Head(Stack &l)
+void RemoveHead(Stack &l)
 {
     Node *p;
     char x;
@@ -58,9 +57,9 @@ void Remove_Head(Stack &l)
     }
 }
 
-char Is_Empty(Stack &s)
+char IsEmpty(Stack &s)
 {
-    if (s.pHead == NULL)
+    if (s.pHead == NULL) // stack rỗng
         return 1;
     else 
 		return 0;
@@ -72,34 +71,36 @@ void Init(Stack &s)
 	s.pTail = NULL;
 }
 
+//Dua mot phan tu x vao stack
 void Push(Stack &s, char x)
 {
-    Node* new_ele = Get_Node(x);
-	Add_First(s, new_ele);
+    Node* new_ele = GetNode(x);
+	AddFirst(s, new_ele);
 }
 
+//Lay mot phan tu ra khoi dinh stack
 char Pop(Stack &s)
 {   
     char x;
-    if(Is_Empty(s) )
+    if(IsEmpty(s) )
         return NULL;
     
-	x = s.pHead->Info;  
-    Remove_Head(s);
+	x = s.pHead->Info; //Lay gia tri dinh stack    
+    RemoveHead(s); // Xoa phan tu dinh stack
     
     return x;
 }
-
+// Xem phan tu o dinh stack ma khong lay ra 
 char Top(Stack &s)
 { 
-    if(Is_Empty(s)) 
+    if(IsEmpty(s)) 
         return NULL;
     return s.pHead->Info;
 }
 
 int main()
 {
-	 char  str[] = "EAS*Y**QUE***ST***I*ON";
+    char  str[] = "EAS*Y**QUE***ST***I*ON";
     
     int i; 
     char x;
@@ -114,11 +115,12 @@ int main()
         if (str[i]=='*')
         {
            x = Pop(my_stack) ;
-           printf("%2c", x);
+           printf("%c",x);
         }
         else
             Push(my_stack, str[i]);
     }
     return 0;
+
 
 }

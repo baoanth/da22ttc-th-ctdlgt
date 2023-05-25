@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include <string.h>
+
 typedef struct Node
 {
     char Info;
@@ -12,7 +11,12 @@ typedef struct Stack
 {
     Node *pHead;
     Node *pTail;
-};
+} Stack;
+
+void Init(Stack &l)
+{
+    l.pHead = l.pTail = NULL;
+}
 
 Node *GetNode(char x)
 {
@@ -20,17 +24,12 @@ Node *GetNode(char x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho !");
+        printf("Khong du bo nho de cap phat nut");
         return NULL;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
-}
-
-void Init(Stack &l)
-{
-    l.pHead = l.pTail = NULL;
 }
 
 void AddFirst(Stack &l, Node *new_ele)
@@ -47,20 +46,27 @@ void AddFirst(Stack &l, Node *new_ele)
     }
 }
 
-void RemoveFirst(Stack &l)
+void RemoveHead(Stack &l)
 {
-    Node *p;
     if (l.pHead != NULL)
     {
-        p = l.pHead;
-        l.pHead = l.pHead->pNext;
-        delete p;
+        Node *p = l.pHead;
+        l.pHead = p->pNext;
         if (l.pHead == NULL)
-            l.pTail = NULL;
+            l.pTail == NULL;
+        delete p;
     }
 }
 
-int IsEmpty(Stack &l)
+char RemoveFirst(Stack &l, char x)
+{
+    Node*p = l.pHead;
+    x = p->Info;
+    RemoveHead(l);
+    return x;
+}
+
+char IsEmpty(Stack &l)
 {
     if (l.pHead == NULL)
         return 1;
@@ -70,46 +76,42 @@ int IsEmpty(Stack &l)
 
 void Push(Stack &l, char x)
 {
-    Node *p = GetNode(x);
-    AddFirst(l, p);
+    Node *new_ele = GetNode(x);
+    AddFirst(l, new_ele);
 }
 
-void Pop(Stack &l, char &x)
+char Pop(Stack &l)
 {
+    char x;
     if (IsEmpty(l))
-        return;
-    Node *p = l.pHead;
-    x = p->Info;
-    RemoveFirst(l);
+        return NULL;
+    x = RemoveFirst(l, x);
+    return x;
 }
 
 char Top(Stack &l)
 {
     if (IsEmpty(l))
-        return 0;
+        return NULL;
     return l.pHead->Info;
 }
 
 int main()
 {
-    char a[] = "EAS*Y**QUE***ST***I*ON";
-    int n = 23;
-    Stack mystack;
-    Init(mystack);
-
-    for (int i = 0; i < n; i++)
+    Stack my_stack;
+    char str[] = "EAS*Y**QUE***ST***I*ON";
+    char x;
+    int i;
+    for (i = 0; i < strlen(str); i++)
     {
-        if (a[i] != '*')
-        {
-            Push(mystack, a[i]);
-        }
+        if (str[i] != '*')
+            Push(my_stack, str[i]);
         else
         {
-            char tmp;
-            Pop(mystack, tmp);
-            printf("%3c", tmp);
+            x = Pop(my_stack);
+            printf("%c", x);
         }
+        
     }
-
     return 0;
 }
