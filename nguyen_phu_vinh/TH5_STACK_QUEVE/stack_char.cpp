@@ -85,7 +85,7 @@ void Push(Stack &l,  char x )
 {
 	Node *new_ele=GetNode(x);
 	AddFist(l,new_ele);
-	
+    
 }
 
 char Pop(Stack &l)
@@ -106,7 +106,7 @@ char Top(Stack &l)
 int main()
 {
     Stack my_stack;
-    char str[] = "EAS**Y**QUE***ST****I**ON";
+    char str[] = "EAS*Y**QUE***ST***I*ON";
     char x;
     int i;
     for (i = 0; i < strlen(str); i++)

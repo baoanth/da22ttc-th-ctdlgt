@@ -233,13 +233,39 @@ void GopDonThuc(DaThuc &l)
 
 int main()
 {
-    DaThuc my_dathuc;
-    Init(my_dathuc);
+    DaThuc DaThuc1, DaThuc2, Tong, Tich;
+    Init(DaThuc1);
+    Init(DaThuc2);
+	Init(Tong);
+    Init(Tich);
+	
+    NhapDaThuc(DaThuc1);
+    NhapDaThuc(DaThuc2);
 
-    NhapDaThuc(my_dathuc);
+    printf("Da thuc vua nhap: \n");
+    InDaThuc(DaThuc1);
+    printf("\n");
+    InDaThuc(DaThuc2);
+    printf("\n");
 
-    printf("Da thuc vua nhap: ");
-    InDaThuc(my_dathuc);
+    CongDaThuc(DaThuc1, DaThuc2, Tong);
+    printf("\nTong 2 da thuc = ");
+    InDaThuc(Tong);
 
+    NhanDaThuc(DaThuc1, DaThuc2, Tich);
+	printf("\nTich 2 da thuc = ");
+	InDaThuc(Tich);
+	
+	float x;
+    printf("\n");
+	printf("\nNhap x de tinh gia tri da thuc: ");
+	scanf("%f", &x);
+	float KetQua = TinhGiaTri(DaThuc1, x);
+	printf("Gia tri da thuc 1 khi x = %.2f la: %.2f\n", x, KetQua);
+	float KetQua1 = TinhGiaTri(DaThuc2, x);
+	printf("Gia tri da thuc 2 khi x = %.2f la: %.2f\n", x, KetQua1);
+	
     return 0;
 }
+
+
