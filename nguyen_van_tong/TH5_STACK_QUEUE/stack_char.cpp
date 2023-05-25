@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include<string.h>
+#include <string.h>
 typedef struct Node
 {
     char Info;
@@ -42,48 +42,51 @@ void AddFirst(Stack &l, Node *new_ele)
     }
     else
     {
-        new_ele ->pNext = l.pHead;
-        l.pHead = new_ele; 
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
     }
 }
 
 void RemoveFirst(Stack &l)
 {
-    Node* p;
-    if(l.pHead != NULL)
+    Node *p;
+    if (l.pHead != NULL)
     {
         p = l.pHead;
         l.pHead = l.pHead->pNext;
         delete p;
-        if(l.pHead == NULL) l.pTail = NULL;
+        if (l.pHead == NULL)
+            l.pTail = NULL;
     }
 }
 
 int IsEmpty(Stack &l)
 {
-    if(l.pHead == NULL)
+    if (l.pHead == NULL)
         return 1;
-    else 
+    else
         return 0;
 }
 
 void Push(Stack &l, char x)
 {
-	Node* p = GetNode(x);
-    AddFirst(l,p);
+    Node *p = GetNode(x);
+    AddFirst(l, p);
 }
 
 void Pop(Stack &l, char &x)
 {
-    if(IsEmpty(l)) return;
-    Node* p = l.pHead;
+    if (IsEmpty(l))
+        return;
+    Node *p = l.pHead;
     x = p->Info;
-    RemoveFirst(l); 
+    RemoveFirst(l);
 }
 
 char Top(Stack &l)
 {
-    if(IsEmpty(l)) return 0;
+    if (IsEmpty(l))
+        return 0;
     return l.pHead->Info;
 }
 
@@ -94,20 +97,19 @@ int main()
     Stack mystack;
     Init(mystack);
 
-    for(int i = 0; i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        if(a[i]!='*')
+        if (a[i] != '*')
         {
             Push(mystack, a[i]);
         }
         else
         {
-            char tmp; Pop(mystack,tmp);
-            printf("%3c", tmp );
-
+            char tmp;
+            Pop(mystack, tmp);
+            printf("%3c", tmp);
         }
     }
-   
-   
+
     return 0;
 }

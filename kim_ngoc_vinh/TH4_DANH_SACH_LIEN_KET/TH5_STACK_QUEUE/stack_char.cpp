@@ -59,7 +59,7 @@ void RemoveHead(Stack &l)
 
 char IsEmpty(Stack &s)
 {
-    if (s.pHead == NULL) // stack r?ng
+    if (s.pHead == NULL) // stack rỗng
         return 1;
     else 
 		return 0;
@@ -121,4 +121,6 @@ int main()
             Push(my_stack, str[i]);
     }
     return 0;
+
+
 }

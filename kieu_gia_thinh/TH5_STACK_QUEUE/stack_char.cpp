@@ -2,11 +2,11 @@
 #include <conio.h>
 #include <string.h>
 
-
+//***************************
 typedef struct Node
 {
-    char Info;
-    Node *pNext;
+	char Info;
+	Node *pNext;
 } Node;
 
 typedef struct Stack
@@ -15,6 +15,9 @@ typedef struct Stack
     Node *pTail;
 } Stack;
 
+//***************************
+
+//Viet ham Node *GetNode(char x)
 Node *GetNode(char x)
 {
     Node *p;
@@ -29,9 +32,10 @@ Node *GetNode(char x)
     return p;
 }
 
-void AddFirst(Stack &l, Node *new_ele)
+//Viet ham void AddFirst(Stack &l, Node  *new_ele)
+void AddFirst(Stack &l, Node  *new_ele)
 {
-    if (l.pHead == NULL)
+	if (l.pHead == NULL)
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;      
@@ -43,6 +47,7 @@ void AddFirst(Stack &l, Node *new_ele)
     }
 }
 
+//Viet ham void RemoveHead(Stack &l)
 void RemoveHead(Stack &l)
 {
     Node *p;
@@ -57,40 +62,47 @@ void RemoveHead(Stack &l)
     }
 }
 
+//Kiem tra hang doi rong
 char IsEmpty(Stack &s)
 {
-    if (s.pHead == NULL) // stack r?ng
-        return 1;
-    else 
-		return 0;
+	if(s.pHead == NULL) // stack rong
+		return 1;
+	else return 0;
 }
 
+//Viet ham void Init
 void Init(Stack &s)
 {
-	s.pHead = NULL;
-	s.pTail = NULL;
+	s.pHead = s.pTail = NULL;
 }
 
-//Dua mot phan tu x vao stack
+//Viet ham chen vao dau danh sach
+void InserHead(Stack &s, char x)
+{
+	Node* new_ele = GetNode(x);
+    AddFirst(s, new_ele);
+}
+
+//Them 1 phan tu x vao Stack s
 void Push(Stack &s, char x)
 {
-    Node* new_ele = GetNode(x);
-	AddFirst(s, new_ele);
+	InserHead(s, x);
 }
 
-//Lay mot phan tu ra khoi dinh stack
+//Trich/huy phan tu o  dinh Stack S
 char Pop(Stack &s)
 {   
     char x;
-    if(IsEmpty(s) )
+    if(IsEmpty(s))
         return NULL;
     
-	x = s.pHead->Info; //Lay gia tri dinh stack    
-    RemoveHead(s); // Xoa phan tu dinh stack
+	x = s.pHead->Info;  
+    RemoveHead(s);
     
     return x;
 }
-// Xem phan tu o dinh stack ma khong lay ra 
+
+// Xem thong tin cua phan tu o dinh Stack
 char Top(Stack &s)
 { 
     if(IsEmpty(s)) 
@@ -98,27 +110,38 @@ char Top(Stack &s)
     return s.pHead->Info;
 }
 
+//Viet ham main
 int main()
 {
-    char  str[] = "EAS*Y**QUE***ST***I*ON";
-    
-    int i; 
+    char  str[] = "AIG*** *HNIHT***** *REBMUN****** *1*";
+     
     char x;
     Stack my_stack;
     Init(my_stack);
     
-	printf("Chuoi goc: %s\n", str);
-	printf("\n Ket qua in ra voi STACK:  ");
+	printf("Chuoi da cho: %s\n", str);
+	printf("\nChuoi in ra man hinh voi STACK:  ");
 	
-    for (i=0; i<strlen(str); i++)
+    for (int i=0; i < strlen(str); i++)
     {
-        if (str[i]=='*')
+        if (str[i] == '*')
         {
-           x = Pop(my_stack) ;
-           printf("%c",x);
+           	x = Pop(my_stack) ;
+           	printf("%c",x);
         }
         else
-            Push(my_stack, str[i]);
+        	Push(my_stack, str[i]);
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
