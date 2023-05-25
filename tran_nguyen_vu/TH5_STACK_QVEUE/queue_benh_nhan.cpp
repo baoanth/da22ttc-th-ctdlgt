@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_LENGTH 200
 
 
 typedef struct Person
@@ -61,19 +60,7 @@ void AddTail(Queue &s, Node* new_ele)
 	}
 }
 
-/*void RemoveHead(Queue &s)
-{
-    Node *p;
-    char x;
-    if(s.pHead != NULL)
-    {
-        p = s.pHead;
-        s.pHead = s.pHead->pNext;
-        delete p;
-        if(s.pHead == NULL)
-            s.pTail = NULL;
-    }
-}*/
+
 char IsEmpty(Queue &s)
 {
     if(s.pHead == NULL)
@@ -89,17 +76,7 @@ void EnQueue(Queue &s, Person x)
     	AddTail(s, new_ele);
 }
 
-/*Person DeQueue(Queue &s)
-{
-    Person x;
-    if(IsEmpty(s)) 
-        return x;
-        
-        x = s.pHead->Info;
-    RemoveHead(s);
-    return x;
-}
-*/
+
 Person Front(Queue &s)
 {	Person x;
     if(IsEmpty(s)) return x;
@@ -161,6 +138,7 @@ int main()
 {
 
     Queue my_queue;
+    
     Inputqueue(my_queue);
     Inputqueue(my_queue);
     Init(my_queue);
