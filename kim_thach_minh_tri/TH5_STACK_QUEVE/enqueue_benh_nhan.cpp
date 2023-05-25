@@ -117,6 +117,29 @@ void PrintQueue(Queve &l)
         }
     }
 }
+
+void InputQueve(Queve &l)
+{
+    Person p;
+    printf("Nhap thong tin nguoi benh:\n");
+    printf("HoTen: ");
+    gets(p.hoten);
+    fflush(stdin);
+    printf("Tuoi: ");
+    scanf("%d",&p.tuoi);
+    fflush(stdin);
+    printf("DiaChi: ");
+    gets(p.diachi);
+    printf("TinhTrang: ");
+    gets(p.tinhtrang);
+
+    Node *new_node = GetNode(p);
+
+    
+    AddTail(l, new_node);
+
+    printf("Da them nguoi vao danh sach!\n");
+}
 main()
 {
     Person Per1 = {"N.P.Vinh" , 19 , "TraVinh" , "Nghien FF"};
@@ -130,6 +153,10 @@ main()
     
     AddTail(my_queve, new2);
     PrintQueue(my_queve);
+    
+    InputQueve(my_queve);
+    
+     PrintQueue(my_queve);
 
     return 0;
 }

@@ -55,7 +55,6 @@ char RemoveHead(Queve &l)
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
-        
     }
 }
 char IsEmpty(Queve &l)
@@ -68,19 +67,19 @@ char IsEmpty(Queve &l)
         return 0;
 }
 
-void EnQueve(Queve &l, char x)
+void Push(Queve &l, char x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-char DeQueve(Queve &l)
+char Pop(Queve &l)
 {
     char x;
     if (IsEmpty(l))
         return NULL;
     x = l.pHead->Info;
-     RemoveHead(l);
+    RemoveHead(l);
     return x;
 }
 
@@ -104,11 +103,11 @@ main()
     {
         if (str[i] != '*')
         {
-            EnQueve(my_queve, str[i]);
+            Push(my_queve, str[i]);
         }
         else
         {
-            x = DeQueve(my_queve);
+            x = Pop(my_queve);
             printf("%c", x);
         }
     }
