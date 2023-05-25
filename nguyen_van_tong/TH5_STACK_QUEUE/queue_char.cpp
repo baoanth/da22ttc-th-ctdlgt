@@ -55,7 +55,6 @@ char RemoveHead(Queve &l)
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
-        
     }
 }
 char IsEmpty(Queve &l)
@@ -80,7 +79,7 @@ char Pop(Queve &l)
     if (IsEmpty(l))
         return NULL;
     x = l.pHead->Info;
-     RemoveHead(l);
+    RemoveHead(l);
     return x;
 }
 
