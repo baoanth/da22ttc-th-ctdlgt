@@ -94,7 +94,8 @@ Person DeQueue(Queue &s)
 }
 
 Person Front(Queue &s)
-{	Person x;
+{
+	Person x;
     if(IsEmpty(s)) return x;
     return s.pHead->Info;
 }
@@ -166,6 +167,8 @@ int main()
     printf("\ndanh sach sau khi nhap:");
     printf("\nSTT| Tuoi |    Ho    |    Ten   |         DC         |         TTB        ");
     printQueue(my_queue);
+
+//	DeQueue(my_queue);
 
     return 0;
 }
