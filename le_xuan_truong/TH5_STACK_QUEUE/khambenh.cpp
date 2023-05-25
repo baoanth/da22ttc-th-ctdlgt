@@ -7,7 +7,6 @@
 typedef struct Person
 {
     int tuoi;
-    char ht[20];
     char dc[20];
     char tt[20];
     char h[20];
