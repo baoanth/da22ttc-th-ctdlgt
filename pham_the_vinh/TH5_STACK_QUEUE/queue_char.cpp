@@ -2,17 +2,17 @@
 #include <conio.h>
 #include <string.h>
 
-typedef struct Node 
+typedef struct Node
 {
     char Info;
     Node *pNext;
 } Node;
 
-typedef struct Stack
+typedef struct Queue
 {
     Node *pHead;
     Node *pTail;
-} Stack;
+} Queue;
 
 Node *GetNode(char x)
 {
@@ -27,74 +27,74 @@ Node *GetNode(char x)
     return p;
 }
 
-void AddFirst(Stack &S, Node *new_ele)
+void AddTail(Queue &Q, Node *new_ele)
 {
-    if (S.pHead == NULL)
+    if (Q.pHead == NULL)
     {
-        S.pHead = new_ele;
-        S.pTail = S.pHead;
+        Q.pHead = new_ele;
+        Q.pTail = Q.pHead;
     }
     else
     {
-        new_ele->pNext = S.pHead;
-        S.pHead = new_ele;
+        Q.pTail->pNext = new_ele;
+        Q.pTail = new_ele;
     }
 }
 
-void RemoveHead(Stack &S)
+void RemoveHead(Queue &Q)
 {
     Node *p;
-    if (S.pHead != NULL)
+    if (Q.pHead != NULL)
     {
-        p = S.pHead;
-        S.pHead = S.pHead->pNext;
+        p = Q.pHead;
+        Q.pHead = Q.pHead->pNext;
         delete p;
-        if (S.pHead == NULL)
-            S.pTail = NULL;
+        if (Q.pHead == NULL)
+            Q.pTail = NULL;
     }
 }
 
-void Init(Stack &S)
+void Init(Queue &Q)
 {
-    S.pHead = S.pTail = NULL;
+    Q.pHead = Q.pTail = NULL;
 }
 
-char IsEmpty(Stack &S)
+char IsEmpty(Queue &Q)
 {
-    if (S.pHead == NULL)
+    if (Q.pHead == NULL)
         return 1;
     else
         return 0;
 }
 
-void Push(Stack &S, char x)
+void EnQueue(Queue &Q, char x)
 {
     Node *new_ele = GetNode(x);
-    AddFirst(S, new_ele);
+    AddTail(Q, new_ele);
 }
 
-char Pop(Stack &S)
+char DeQueue(Queue &Q)
 {
     char x;
-    if (IsEmpty(S))
+    if (IsEmpty(Q))
         return NULL;
-    x = S.pHead->Info;
-    RemoveHead(S);
+    x = Q.pHead->Info;
+    RemoveHead(Q);
     return x;
 }
 
-char Top(Stack &S)
+char Front(Queue &Q)
 {
-    if (IsEmpty(S))
+    if (IsEmpty(Q))
         return NULL;
-    return S.pHead->Info;
+    return Q.pHead->Info;
 }
 
 int main()
 {
     char str[] = "EAS*Y**QUE***ST***I*ON";
-    Stack myStack;
-    Init(myStack);
+    Queue myQueue;
+    Init(myQueue);
     printf("Chuoi ban dau: %s", str);
     int i;
     char x;
@@ -103,12 +103,12 @@ int main()
     {
         if (str[i] == '*')
         {
-            x = Pop(myStack);
+            x = DeQueue(myQueue);
             printf("%c", x);
         }
         else
         {
-            Push(myStack, str[i]);
+            EnQueue(myQueue, str[i]);
         }
     }
     return 0;
