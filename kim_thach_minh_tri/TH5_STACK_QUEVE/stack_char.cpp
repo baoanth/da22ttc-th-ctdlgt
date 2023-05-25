@@ -49,7 +49,7 @@ void Init(Stack &l)
     l.pHead = l.pTail = NULL;
 }
 
-void RemoveHead(Stack &l)
+char RemoveHead(Stack &l)
 {
     if (l.pHead != NULL)
     {
@@ -83,7 +83,8 @@ char Pop(Stack &l)
     char x;
     if (IsEmpty(l))
         return NULL;
-    RemoveHead(l);
+    x = l.pHead->Info;
+     RemoveHead(l);
     return x;
 }
 
@@ -118,3 +119,5 @@ main()
 
     return 0;
 }
+
+
