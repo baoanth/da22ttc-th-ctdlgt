@@ -75,13 +75,9 @@ char IsEmpty(Queue &l)
         return 0;
 }
 
-void Push(Queue &l, BenhNhan x)
-{
-    Node *new_ele = GetNode(x);
-    AddTail(l, new_ele);
-}
 
-void Pop(Queue &l, BenhNhan &x)
+
+void DeQueue(Queue &l, BenhNhan &x)
 {
     if (IsEmpty(l))
         return;
@@ -89,49 +85,38 @@ void Pop(Queue &l, BenhNhan &x)
     RemoveHead(l);
 }
 
-void Top(Queue &l, BenhNhan &p)
-{
-    if (IsEmpty(l))
-        return;
-    p = l.pHead->Info;
-}
-
 void print_queue(Queue l)
 {
-    Node *p = l.pHead;
-    while (p != NULL)
-    {
-        printf("\nho ten benh nhan: %s", p->Info.hoten);
-        printf("\ntuoi %d", p->Info.tuoi);
-        printf("\ndia chi: %s", p->Info.diachi);
-        printf("\ntinh trang suc khoe: %s", p->Info.tinhtrang);
-        p = p->pNext;
-    }
+	Node*p = l.pHead;
+	while(p!= NULL)
+	{
+		printf("\nho ten benh nhan: %s", p->Info.hoten);
+		printf("\ntuoi %d", p->Info.tuoi);
+		printf("\ndia chi: %s",p->Info.diachi);
+		printf("\ntinh trang suc khoe: %s", p->Info.tinhtrang);
+		p = p->pNext;
+	}
 }
 
-void DeQueue(Queue &l)
-{
-    if(IsEmpty(l)) return;
-    RemoveHead(l);
-}
+
 void EnQueue(Queue &s)
 {
     BenhNhan x;
     fflush(stdin);
     printf("\nnhap ten benh nhan: ");
     gets(x.hoten);
-
-    fflush(stdin);
+	
+	fflush(stdin);
     printf("\nnhap tuoi: ");
     scanf("%d", &x.tuoi);
-
-    fflush(stdin);
+    
+	fflush(stdin);
     printf("\nnhap dia chi: ");
     gets(x.diachi);
-
-    fflush(stdin);
+    
+	fflush(stdin);
     printf("\nnhap tinh trang suc khoe: ");
-
+   
     gets(x.tinhtrang);
     Node *p = GetNode(x);
     AddTail(s, p);
@@ -144,9 +129,9 @@ main()
     Init(my_queve);
     EnQueue(my_queve);
     EnQueue(my_queve);
-
+    
     print_queue(my_queve);
-    DeQueue(my_queve);
-    print_queue(my_queve);
+	/*DeQueue(my_queve);
+	print_queue(my_queve);*/
     return 0;
 }
