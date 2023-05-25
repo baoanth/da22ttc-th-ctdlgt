@@ -214,7 +214,7 @@ int main()
     AddTail(my_list, new_ele2);
 	AddTail(my_list, new_ele3);
     AddTail(my_list, new_ele4);
-  //  AddTail(my_list, new_ele5);
+  
 
     PrintList(my_list);
 
