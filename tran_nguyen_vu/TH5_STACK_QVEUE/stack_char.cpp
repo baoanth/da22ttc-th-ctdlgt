@@ -1,79 +1,64 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
+
 typedef struct Node
 {
     char Info;
-    Node* pNext;    
-}Node;
+    Node *pNext;
+} Node;
 
 typedef struct Stack
 {
-    Node* pHead;
-    Node* pTail;
-}Stack;
+    Node *pHead;
+    Node *pTail;
+} Stack;
 
 void Init(Stack &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
-Node* GetNode(char x)
+Node *GetNode(char x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
+        printf("Khong du bo nho de cap phat nut");
+        return NULL;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
 
-void AddFist(Stack &l, Node* new_ele)
+void AddFirst(Stack &l, Node *new_ele)
 {
-    if (l.pHead ==NULL)
+    if (l.pHead == NULL)
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
     }
     else
     {
-        new_ele ->pNext = l.pHead;    
+        new_ele->pNext = l.pHead;
         l.pHead = new_ele;
     }
 }
 
-
-char IsEmpty( Stack &l)
-{
-	if (l.pHead == NULL)
-	return 1; 
-	else return 0;
-}
-
-
 void RemoveHead(Stack &l)
 {
-    if (l.pHead == NULL)
+    if (l.pHead != NULL)
     {
-        printf("loi: danh sach rong\n");
-    }
-    else if (l.pHead->pNext == NULL)
-    {
-        delete l.pHead;
-        l.pHead = l.pTail = NULL;
-    }
-    else
-    {
-        Node* p = l.pHead;
-        l.pHead = l.pHead->pNext;
+        Node *p = l.pHead;
+        l.pHead = p->pNext;
+        if (l.pHead == NULL) 
+            l.pTail == NULL;
         delete p;
     }
 }
-char RemoveFist(Stack &l, char x)
+
+char RemoveFirst(Stack &l, char x)
 {
     Node*p = l.pHead;
     x = p->Info;
@@ -81,11 +66,18 @@ char RemoveFist(Stack &l, char x)
     return x;
 }
 
-void Push(Stack &l,  char x )
+char IsEmpty(Stack &l)
 {
-	Node *new_ele=GetNode(x);
-	AddFist(l,new_ele);
-    
+    if (l.pHead == NULL)
+        return 1;
+    else
+        return 0;
+}
+
+void Push(Stack &l, char x)
+{
+    Node *new_ele = GetNode(x);
+    AddFirst(l, new_ele);
 }
 
 char Pop(Stack &l)
@@ -93,9 +85,10 @@ char Pop(Stack &l)
     char x;
     if (IsEmpty(l))
         return NULL;
-    x = RemoveFist(l, x);
+    x = RemoveFirst(l, x);
     return x;
 }
+
 char Top(Stack &l)
 {
     if (IsEmpty(l))

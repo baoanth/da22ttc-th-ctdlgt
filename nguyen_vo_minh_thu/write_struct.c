@@ -11,21 +11,22 @@ struct person
     char lname[20];
 };
 
+//ham main
+
 int main()
 {
-	struct person per1 = {1, "Le Xuan", "Truong"};
-	struct person per2 = {2, "Thach Thi Hue", "Trinh"};
-	
-	FILE *outfile;
-	outfile= fopen("person.dat","w");
+	struct person per1 = {1,"Thu" , "Nguyen"};
+	struct person per2 = {2,"Minh" , "Vo"};
+	FILE *outfile = fopen("person.dat","wb");
 	
 	fwrite(&per1, sizeof(struct person), 1, outfile);
 	fwrite(&per2, sizeof(struct person), 1, outfile);
 	
-	if(outfile!=0)
-	   printf("Ghi file thanh cong!");
-	else 
-	   printf("Loi! Ghi file khong thanh cong");
-	   
-	   fclose(outfile);
+	if (fwrite!=0)
+		printf("Ghi file thanh cong roi!");
+	else
+		printf("LOI! Ghi file KHONG thanh cong!");
+		
+	fclose(outfile);
 }
+
