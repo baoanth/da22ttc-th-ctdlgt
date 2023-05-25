@@ -28,7 +28,7 @@ Node *Get_Node(BenhNhan x)
     p = new Node;
     if (p == NULL)
     {
-        printf("Khong du bo nho de cap phat cho nut moi");
+        printf("Khong du bo nho");
         return 0;
     }
     p->Info = x;
@@ -101,10 +101,10 @@ void print_queue(Queue l)
     Node *p = l.pHead;
     while (p != NULL)
     {
-        printf("\nho ten benh nhan: %s", p->Info.hoten);
-        printf("\ntuoi %d", p->Info.tuoi);
-        printf("\ndia chi: %s", p->Info.diachi);
-        printf("\ntinh trang suc khoe: %s", p->Info.tinhtrang);
+        printf("\nHo va ten benh nhan: %s", p->Info.hoten);
+        printf("\nTuoi: %d", p->Info.tuoi);
+        printf("\nDia chi: %s", p->Info.diachi);
+        printf("\nTinh trang suc khoe: %s", p->Info.tinhtrang);
         p = p->pNext;
     }
 }
@@ -118,19 +118,19 @@ void EnQueue(Queue &s)
 {
     BenhNhan x;
     fflush(stdin);
-    printf("\nnhap ten benh nhan: ");
+    printf("Ho va ten benh nhan: ");
     gets(x.hoten);
 
     fflush(stdin);
-    printf("\nnhap tuoi: ");
+    printf("Tuoi: ");
     scanf("%d", &x.tuoi);
 
     fflush(stdin);
-    printf("\nnhap dia chi: ");
+    printf("Dia chi: ");
     gets(x.diachi);
 
     fflush(stdin);
-    printf("\nnhap tinh trang suc khoe: ");
+    printf("Tinh trang suc khoe: ");
 
     gets(x.tinhtrang);
     Node *p = Get_Node(x);
@@ -139,13 +139,16 @@ void EnQueue(Queue &s)
 
 main()
 {
-
     Queue my_queve;
     Init(my_queve);
+	printf("---Nhap benh nhan thu nhat---\n");
     EnQueue(my_queve);
+	printf("\n---Nhap benh nhan thu hai---\n");
     EnQueue(my_queve);
 
+	printf("\n\n---Danh sach benh nhan---\n");
     print_queue(my_queve);
+    printf("\n");
     DeQueue(my_queve);
     print_queue(my_queve);
     return 0;
