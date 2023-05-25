@@ -194,6 +194,7 @@ int main()
 	printf("Enter x to estimate the polynomial value 1: ");
 	scanf("%f", &x);
 	printf("Polynomial value 1: P(%.2f)= %.2f", x, uocluong(my_dt1, x));
+    scanf("%f", &x);
 	
 	return 0;
 }
