@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 // C program for reading
 // struct from a file
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,6 +15,23 @@ struct person
 };
 int main()
 {
+<<<<<<< HEAD
+	FILE *infile = fopen("person.dat","rb");
+	struct person perA;
+	fread(&perA, sizeof(struct person), 1, infile);
+	while(!feof(infile))
+	{
+		printf("%5d",perA.id);
+		printf("%10s",perA.fname);
+		printf("%10s\n",perA.lname);
+		fread(&perA, sizeof(struct person), 1, infile );
+	}
+	fclose(infile);
+}
+
+
+
+=======
 	struct person per1 = {1,"Chau","Qui"};
 	struct person per2 = {2,"Tran","Tho"};	
 	struct person per3 = {3,"Dang","Phuoc"};
@@ -27,3 +47,4 @@ int main()
 	  printf("ERROR! Write file unsuccessfully");
 	fclose(outfile);    
 }
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf

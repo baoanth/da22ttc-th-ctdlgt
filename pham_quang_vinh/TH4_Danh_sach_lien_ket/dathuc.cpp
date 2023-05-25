@@ -55,7 +55,11 @@ void AddTail(DaThuc &l, Node *new_ele)
 
 void them_nut_cuoi(DaThuc &l)
 {
+<<<<<<< HEAD
+    DonThuc new_don_thuc;
+=======
     struct DonThuc new_don_thuc;
+>>>>>>> 1b7db8af8d7a92e11b36b1eb33d490f51d1091af
     int bac_da_thuc, i;
     printf("Ban muon nhap da thuc bac may?: ");
     scanf("%d", &bac_da_thuc);
@@ -76,12 +80,41 @@ void in_da_thuc(DaThuc l)
     Node *p = l.pHead;
     while (p != NULL)
     {
+<<<<<<< HEAD
+        if (p->Info.he_so == 0)
+        {
+            p = p->pNext;
+            l.pHead = p;
+            continue;
+        }
+        if (p != l.pHead && p->Info.he_so > 0)
+            printf("+");
+        if (p != l.pTail && p->pNext != l.pTail)
+        {
+            if (p->Info.he_so != 1 && p->Info.he_so != -1)
+                printf("%dx^%d", p->Info.he_so, p->Info.bac);
+            else if (p->Info.he_so == 1)
+                printf("x^%d", p->Info.bac);
+            else if (p->Info.he_so == -1)
+                printf("-x^%d", p->Info.bac);
+        }
+        else if (p->pNext == l.pTail)
+        {
+            if (p->Info.he_so != 1 && p->Info.he_so != -1)
+                printf("%dx^%d", p->Info.he_so, p->Info.bac);
+            else if (p->Info.he_so == 1)
+                printf("x^%d", p->Info.bac);
+            else if (p->Info.he_so == -1)
+                printf("-x^%d", p->Info.bac);
+        }
+=======
         if (p != l.pHead && p->Info.he_so > 0)
             printf("+");
         if (p != l.pTail && p->pNext != l.pTail)
             printf("%dx^%d", p->Info.he_so, p->Info.bac);
         else if (p->pNext == l.pTail)
             printf("%dx", p->Info.he_so);
+>>>>>>> 1b7db8af8d7a92e11b36b1eb33d490f51d1091af
         else if (p == l.pTail)
             printf("%d", p->Info.he_so);
 
@@ -89,6 +122,60 @@ void in_da_thuc(DaThuc l)
     }
 }
 
+<<<<<<< HEAD
+DaThuc tinh_toan_da_thuc(DaThuc l1, DaThuc l2)
+{
+    DonThuc dt_tam;
+
+    Node *q = l1.pHead;
+    Node *p = l2.pHead;
+
+    DaThuc l_kq;
+    Init(l_kq);
+
+    while(q != NULL)
+    {
+        dt_tam.he_so = q->Info.he_so;
+        dt_tam.bac = q->Info.bac;
+
+        while(p != NULL)
+        {
+            if(q->Info.bac == p->Info.bac)
+                break;
+            p = p->pNext;
+        }
+
+        dt_tam.he_so += p->Info.he_so;
+
+        Node* new_ele = GetNode(dt_tam);
+        AddTail(l_kq,new_ele);
+
+        q = q->pNext;
+    }
+    return l_kq;
+    
+}
+
+int main()
+{
+    DaThuc da_thuc1;
+    Init(da_thuc1);
+
+    DaThuc da_thuc2;
+    Init(da_thuc2);
+
+    DaThuc da_thuc_kq;
+
+    them_nut_cuoi(da_thuc1);
+    in_da_thuc(da_thuc1);
+    printf("\n\n");
+    them_nut_cuoi(da_thuc2);
+    in_da_thuc(da_thuc2);
+
+    da_thuc_kq = tinh_toan_da_thuc(da_thuc1,da_thuc2);
+    printf("\nDa thuc sau khi cong: ");
+    in_da_thuc(da_thuc_kq);
+=======
 int main()
 {
     DaThuc my_da_thuc;
@@ -97,6 +184,7 @@ int main()
     them_nut_cuoi(my_da_thuc);
 
     in_da_thuc(my_da_thuc);
+>>>>>>> 1b7db8af8d7a92e11b36b1eb33d490f51d1091af
 
     return 0;
 }
