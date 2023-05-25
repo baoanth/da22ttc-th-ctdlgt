@@ -8,11 +8,11 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct Stack
+typedef struct Queve
 {
     Node *pHead;
     Node *pTail;
-} Stack;
+} Queve;
 
 Node *GetNode(char x)
 {
@@ -28,7 +28,7 @@ Node *GetNode(char x)
     return p;
 }
 
-void AddFirst(Stack &l, Node *new_ele)
+void AddTail(Queve &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -37,19 +37,16 @@ void AddFirst(Stack &l, Node *new_ele)
     }
     else
     {
-        new_ele->pNext = l.pHead;
-
-        new_ele->pNext = l.pHead;
-
-        l.pHead = new_ele;
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
     }
 }
-void Init(Stack &l)
+void Init(Queve &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
-char RemoveHead(Stack &l)
+char RemoveHead(Queve &l)
 {
     if (l.pHead != NULL)
     {
@@ -61,8 +58,7 @@ char RemoveHead(Stack &l)
         
     }
 }
-
-char IsEmpty(Stack &l)
+char IsEmpty(Queve &l)
 {
     if (l.pHead == NULL)
 
@@ -72,13 +68,13 @@ char IsEmpty(Stack &l)
         return 0;
 }
 
-void Push(Stack &l, char x)
+void Push(Queve &l, char x)
 {
     Node *new_ele = GetNode(x);
-    AddFirst(l, new_ele);
+    AddTail(l, new_ele);
 }
 
-char Pop(Stack &l)
+char Pop(Queve &l)
 {
     char x;
     if (IsEmpty(l))
@@ -88,7 +84,7 @@ char Pop(Stack &l)
     return x;
 }
 
-char Top(Stack &l)
+char Top(Queve &l)
 {
     if (IsEmpty(l))
         return NULL;
@@ -100,24 +96,22 @@ main()
     char str[] = "EAS*Y**QUE***ST***I**ON";
     int i;
     char x;
-    Stack my_stack;
-    Init(my_stack);
+    Queve my_queve;
+    Init(my_queve);
     printf("Chuoi goc: %s\n ", str);
-    printf("Ket qua Stack in :");
+    printf("Ket qua Queve in :");
     for (i = 0; i < strlen(str); i++)
     {
         if (str[i] != '*')
         {
-            Push(my_stack, str[i]);
+            Push(my_queve, str[i]);
         }
         else
         {
-            x = Pop(my_stack);
+            x = Pop(my_queve);
             printf("%c", x);
         }
     }
 
     return 0;
 }
-
-
