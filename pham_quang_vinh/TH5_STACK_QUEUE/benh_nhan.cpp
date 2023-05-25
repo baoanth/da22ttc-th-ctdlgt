@@ -74,7 +74,7 @@ char IsEmpty(Queve &l)
         return 0;
 }
 
-void EnQueue(Queve &l, Person x)
+void Push(Queve &l, Person x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
@@ -90,7 +90,7 @@ void EnQueue(Queve &l, Person x)
 //    return x;
 //}
 
-Person Front(Queve &l)
+Person Top(Queve &l)
 {
 	Person x;
     if (IsEmpty(l))
@@ -118,7 +118,7 @@ void PrintQueue(Queve &l)
     }
 }
 
-void InputQueue(Queve &l)
+void InputQueve(Queve &l)
 {
     Person p;
     printf("Nhap thong tin nguoi benh:\n");
@@ -142,18 +142,19 @@ void InputQueue(Queve &l)
 }
 main()
 {
-    Person Per1 = {"N.P.Vinh" , 19 , "TraVinh" , "Nghien FF"};
-    Person Per2 = {"P.M.Nhat" , 19 , "TraVinh" , "Nghien FF"};
+    Person Per1 = {"T.N.H.Thuong" , 19 , "TraVinh" , "Cam cum"};
+    Person Per2 = {"L.T.L.Tien" , 19 , "TieuCan" , "Bi khung"};
     
-    
+    Node *new1 = GetNode(Per1);
+    Node *new2 = GetNode(Per2);
     Queve my_queve;
     Init(my_queve);
-    EnQueue(my_queve, Per1);
+    AddTail(my_queve, new1);
     
-    EnQueue(my_queve, Per2);
+    AddTail(my_queve, new2);
     PrintQueue(my_queve);
     
-    InputQueue(my_queve);
+    InputQueve(my_queve);
     
      PrintQueue(my_queve);
 
