@@ -100,7 +100,7 @@ char Top(Stack &s)
 
 int main()
 {
-    char  str[] = "EAS*Y**QUE***ST***I*ON";
+    char  str[] = "OV** *COUHP***** *NAOT****";
     
     int i; 
     char x;
