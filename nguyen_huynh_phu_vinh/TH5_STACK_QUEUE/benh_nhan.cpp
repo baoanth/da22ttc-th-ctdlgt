@@ -74,7 +74,7 @@ Person RemoveFirst(Queue &l, Person x)
     return x;
 }
 
-void Push(Queue &l, Person x)
+void EnQueue(Queue &l, Person x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
@@ -96,8 +96,8 @@ int main()
     Person per1 = {"Vinh", 19, "Cau Ke", "Khoe"};
     Person per2 = {"Tri", 19, "Tra Vinh", "Tot"};
     
-    Push(my_queue, per1);
-    Push(my_queue, per2);
+    EnQueue(my_queue, per1);
+    EnQueue(my_queue, per2);
     in_dslk(my_queue);
 
     return 0;
