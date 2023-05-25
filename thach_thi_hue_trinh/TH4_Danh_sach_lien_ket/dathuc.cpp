@@ -69,8 +69,33 @@ void NhapDaThuc(Dathuc &l)
 		AddTail(l, new_ele);
 	}
 }
-void CongDaThuc(Dathuc &l1, Dathuc &l2)
+Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
 {
+	Node *p, *q;
+	Dathuc l_kq;
+	Init(l_kq);
+	Donthuc dt_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dt_tam.hs= p->Info.hs;
+		dt_tam.bac= q->Info.bac;
+		while(q!=NULL)
+		{
+			if (p->Info.bac == q->Info.bac)
+				break;
+			q=q->pNext;	
+		}
+		if(q!=NULL)
+			dt_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dt_tam);
+		AddTail(l_kq, new_ele);
+		
+		p->pNext;	
+	}
+	return l_kq;
 	
 }
 
@@ -104,6 +129,7 @@ int main()
 	Init(my_dathuc1);
 	Dathuc my_dathuc2;
 	Init(my_dathuc2);
+	Dathuc my_dathuc3;
 	
 	printf("\nNhap da thuc 1:\n");
 	NhapDaThuc(my_dathuc1);
@@ -112,6 +138,9 @@ int main()
 	printf("\nNhap da thuc 2: \n");
 	NhapDaThuc(my_dathuc2);
 	PrintDathuc(my_dathuc2);
+	
+	my_dathuc3= CongDaThuc(my_dathuc1, my_dathuc2);
+	PrintDathuc(my_dathuc3);
 	
 
 
