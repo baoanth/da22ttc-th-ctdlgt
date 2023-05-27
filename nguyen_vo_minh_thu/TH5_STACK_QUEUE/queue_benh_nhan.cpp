@@ -1,28 +1,28 @@
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
 
-typedef struct Person
+struct BenhNhan
 {
     char hoten[20];
     int tuoi;
     char diachi[30];
     char tinhtrang[40];
-} Person;
+};
 
-typedef struct Node
+typedef struct Node 
 {
-    Person Info;
+    BenhNhan Info;
     Node *pNext;
 } Node;
 
-typedef struct Queve
+typedef struct Queue
 {
     Node *pHead;
     Node *pTail;
-} Queve;
+} Queue;
 
-Node *GetNode(Person x)
+Node *GetNode(BenhNhan x)
 {
     Node *p;
     p = new Node;
@@ -36,7 +36,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddTail(Queve &l, Node *new_ele)
+void AddTail(Queue &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -50,100 +50,87 @@ void AddTail(Queve &l, Node *new_ele)
     }
 }
 
-void Init(Queve &l)
+void Init(Queue &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
-char IsEmpty(Queve &l)
+char RemoveHead(Queue &l)
+{
+    if (l.pHead != NULL)
+    {
+        Node *p = l.pHead;
+        l.pHead = l.pHead->pNext;
+        delete p;
+        if (l.pHead == NULL)
+            l.pTail = NULL;
+    }
+}
+
+char IsEmpty(Queue &l)
 {
     if (l.pHead == NULL)
 
         return 1;
-	else
+    else
         return 0;
 }
 
-void EnQueue(Queve &l, Person x)
-{
-    Node *new_ele = GetNode(x);
-    AddTail(l, new_ele);
-}
 
-Person Front(Queve &l)
+
+void DeQueue(Queue &l, BenhNhan &x)
 {
-	Person x;
     if (IsEmpty(l))
-        return x;
-    return l.pHead->Info;
+        return;
+    x = l.pHead->Info;
+    RemoveHead(l);
 }
 
-void PrintQueue(Queve &l)
+void print_queue(Queue l)
 {
-    if(l.pHead == NULL)
-    {
-        printf("\nDanh sach rong:");
-    }
-    else
-    {
-        Node* p;
-        p = l.pHead;
-        while(p!= NULL)
-        {
-            printf("\nTen: %14s\nTuoi: %7d\nDiaChi: %10s\nTinhTrang: %5s\n",p->Info.hoten,p->Info.tuoi,p->Info.diachi , p->Info.tinhtrang);
-            
-            p= p->pNext;
-
-        }
-    }
+	Node*p = l.pHead;
+	while(p!= NULL)
+	{
+		printf("\nHo ten benh nhan:%s", p->Info.hoten);
+		printf("\nTuoi %d",p->Info.tuoi);
+		printf("\nDia chi: %s",p->Info.diachi);
+		printf("\nTinh trang suc khoe:%s",p->Info.tinhtrang);
+		p = p->pNext;
+	}
 }
 
-void InputQueue(Queve &l)
+void EnQueue(Queue &s)
 {
-    Person p;
-    printf("\nNhap thong tin nguoi benh:");
-    printf("HoTen:");
-    gets(p.hoten);
+    BenhNhan x;
     fflush(stdin);
-    printf("Tuoi:");
-    scanf("%d",&p.tuoi);
-    fflush(stdin);
-    printf("DiaChi:");
-    gets(p.diachi);
-    printf("TinhTrang:");
-    gets(p.tinhtrang);
-
-    Node *new_node = GetNode(p);
-
+    printf("\nNhap ten benh nhan:");
+    gets(x.hoten);
+	
+	fflush(stdin);
+    printf("\nNhap tuoi:");
+    scanf("%d", &x.tuoi);
     
-    AddTail(l, new_node);
-
-    printf("Da them nguoi vao danh sach!\n");
+	fflush(stdin);
+    printf("\nNhap dia chi:");
+    gets(x.diachi);
+    
+	fflush(stdin);
+    printf("\nNhap tinh trang suc khoe:");
+   
+    gets(x.tinhtrang);
+    Node *p = GetNode(x);
+    AddTail(s,p);
 }
 
 main()
 {
-    Person Per1 = {"N.V.M.THU",21,"TraCu","Nghien TIKTOK"};
-    Person Per2 = {"N.H.K.THUAT",20,"TraCu","Nghien FF"};
-    Person Per3 = {"N.N.TRUONG",27,"CangLong","Nghien THAOVY"};
-    Person Per4 = {"H.T.T.VY",20,"DuyenHai","Nghien PLAY TOGETHER"};
-    
-    Queve my_queve;
-    Init(my_queve);
-    EnQueue(my_queve,Per1);
-    
-    EnQueue(my_queve,Per2);
-    PrintQueue(my_queve);
-    
-    EnQueue(my_queve,Per3);
-    PrintQueue(my_queve);
-    
-	EnQueue(my_queve,Per4);
-    PrintQueue(my_queve);
-    
-    InputQueue(my_queve);
-    
-     PrintQueue(my_queve);
 
+	Queue my_queve;
+    Init(my_queve);
+    EnQueue(my_queve);
+    EnQueue(my_queve);
+    
+    print_queue(my_queve);
+	
     return 0;
 }
