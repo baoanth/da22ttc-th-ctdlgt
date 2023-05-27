@@ -33,7 +33,7 @@ Node *GetNode(BenhNhan x)
         return 0;
     }
     p->Info = x;
-    p->pNext = NULL;
+    //p->pNext = NULL;
     return p;
 }
 
