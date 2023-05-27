@@ -124,9 +124,9 @@ void InputQueue(Queve &l)
 main()
 {
     Person Per1 = {"N.V.M.THU",21,"TraCu","Nghien TIKTOK"};
-    Person Per2 = {"N.H.K.THUAT",20,"TraCu","Nghien FF"};
-    Person Per3 = {"N.N.TRUONG",27,"CangLong","Nghien THAOVY"};
-    Person Per4 = {"H.T.T.VY",20,"DuyenHai","Nghien PLAY TOGETHER"};
+    Person Per2 = {"V.L.TRUONG",24,"TraVinh","Nghien LIENQUAN.MOBILE"};
+    Person Per3 = {"K.T.T.NGAN",25,"Travinh","Nghien KIEMTIEN"};
+    
     
     Queve my_queve;
     Init(my_queve);
@@ -138,9 +138,7 @@ main()
     EnQueue(my_queve,Per3);
     PrintQueue(my_queve);
     
-	EnQueue(my_queve,Per4);
-    PrintQueue(my_queve);
-    
+	
     InputQueue(my_queve);
     
      PrintQueue(my_queve);
