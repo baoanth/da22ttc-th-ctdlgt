@@ -110,7 +110,7 @@ void Inputqueue(Queue &s)
 {
     Person per_tam;
     
-    printf("Nhap STT: ");
+    printf("\nNhap STT: ");
     scanf("%d", &per_tam.stt);
 
     fflush(stdin);
@@ -149,7 +149,7 @@ void printQueue(Queue &s)
         p = s.pHead;
         while(p!= NULL)
         {
-            printf(" %3d | 5%d | %10s | %10s | %17s | %16s |\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
+            printf("\n%3d| %4d | %6s | %7s | %9s | %14s |", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
             p= p->pNext;
 
         }
@@ -167,7 +167,7 @@ int main()
     scanf("%d",&n);
     for(i=1; i<=n; i++)
     {
-    	printf("Nhap thong tin benh nhan %d:\n ",i);
+    	printf("\nNhap thong tin benh nhan %d:\n ",i);
     	Inputqueue(my_queue);
 	}
     
@@ -175,7 +175,7 @@ int main()
    // Init(my_queue);
 
     printf("DANH SACH SAU KHI NHAP\n");
-    printf("\n STT|Tuoi|     Ho    |    Ten   |     Dia chi     |   Tinh trang   |");
+    printf("STT| Tuoi |   Ho   |   Ten   |  Dia chi  |   Tinh trang   |");
     printQueue(my_queue);
 
     return 0;
