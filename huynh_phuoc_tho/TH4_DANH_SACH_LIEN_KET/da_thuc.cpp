@@ -2,6 +2,7 @@
 #include<conio.h>
 #include<string.h>
 
+
 typedef struct Donthuc
 {
 	int heso;
@@ -26,11 +27,12 @@ Node *GetNode(Donthuc x)
 	p = new Node;
 	if(p == NULL)
 	{
-		printf("Khong du bo nho de cap phat");
+		printf(" KHONG DU DUNG LUONG ");
 		return 0;
 	}
 	p->Info = x;
 	p->pNext = NULL;
+	
 	return p;
 }
 
@@ -57,9 +59,9 @@ void ThemNutCuoi(Dathuc &l)
 {
 	Donthuc s;
 	
-	printf("Bac: ");
+	printf("Bac : ");
 	scanf("%d", &s.bac);
-	printf("He so: ");
+	printf("He so la : ");
 	scanf("%d", &s.heso);
 	
 	Node* new_ele = GetNode(s);
@@ -87,7 +89,7 @@ void PrintDathuc(Dathuc &l)
 {
 	if (l.pHead == NULL)
 	{
-		printf("Da thuc rong\n");
+		printf("no la rong \n");
 	}
 	else
 	{
