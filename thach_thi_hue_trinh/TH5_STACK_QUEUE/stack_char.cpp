@@ -104,8 +104,8 @@ int main()
 	Stack my_stack;
 	Init(my_stack);
 	
-	printf("Chuoi goc: %s \n", str);
-	printf("\n Ket qua in ra voi Stack: ");
+	printf("Chuoi ban dau: %s ", str);
+	printf("\nKet qua sau khi in ra voi Stack: ");
 	
 	for(i=0; i<strlen(str); i++ )
 	{
