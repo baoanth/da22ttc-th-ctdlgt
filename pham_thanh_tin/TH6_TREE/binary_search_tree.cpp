@@ -101,6 +101,20 @@ int main()
     printf("\nDuyet theo thu tu sau:\n");
     LRN(root);
     
+    int Key;
+    printf("\n");
+    printf("\nNhap node can tim trong cay:");
+    scanf("%d",&Key);
+    Node* searchN = searchNode(root, Key);
+    if(searchN != NULL)
+    {
+	    printf("Node %d co ton tai trong cay", Key);
+	}
+	else
+	{
+	    printf("Node %d khon ton tai trong cay", Key);
+	}
+     
 return 0;
 }
 
