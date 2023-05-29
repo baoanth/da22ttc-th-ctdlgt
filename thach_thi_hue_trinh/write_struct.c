@@ -13,7 +13,7 @@ struct person
 
 int main()
 {  
-	struct person per1 = { 1, "Naruto" , "Uzumaki" };
+	struct person per1 = { 1, "Meomeo" , "Uzumaki" };
 	struct person per2 = { 2, "Hinata" , "Uzumaki" };
 	struct person per3 = { 3, "Boruto" , "Uzumaki" };
 	struct person per4 = { 4, "Sasuke" , "Uchiha " };

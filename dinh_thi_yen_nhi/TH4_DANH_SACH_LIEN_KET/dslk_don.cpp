@@ -62,6 +62,39 @@ void PrintList ( List l )
    }
 }
 
+<<<<<<< HEAD
+void AddTail (List &l, Node *new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail -> pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+void Output (List l)
+{
+    Node*p = l.pHead;
+    while (p!=NULL)
+    {
+        p = p -> pNext;
+    }
+}
+
+Node* FindNodeByID(List l, int idx, int id)
+{
+    Node*p = l.pHead ;
+    while ( p != NULL && p -> Info.id != idx )
+            p = p -> pNext;
+    return p;
+}
+
+=======
 void AddTail(List &l, Node *new_ele)
 {
 	if (l.pHead==NULL)  
@@ -175,6 +208,7 @@ void InputNode(List &l)
 	}
 	
 }
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
 int main ()
 {
 	struct Person per1 = { 1, "dau", "tay"};
@@ -199,6 +233,14 @@ int main ()
 	PrintList (my_list);
 	
 	int idx;
+<<<<<<< HEAD
+	printf ("nhap id can tim: \n");
+	scanf ("%d",&idx);
+	
+	Node *new_ele = FindNodeByID(my_list, idx);
+		
+		
+=======
 	printf ("\n nhap vao ID can tim: ");
 	scanf ("%d", &idx);
 	Node* node_kq = FindNodeByID(my_list, idx);
@@ -226,4 +268,5 @@ int main ()
 	
 	return 0;
 		
+>>>>>>> 2ee17036c6e249051f957e7ed7214990e020feaf
 } 
