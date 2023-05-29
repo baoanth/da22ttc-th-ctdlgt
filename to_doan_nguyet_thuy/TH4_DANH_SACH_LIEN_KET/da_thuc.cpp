@@ -100,10 +100,17 @@ int main()
     dathuc my_Px2;
 
     Init(my_Px1);
+    Init(my_Px2);
 
+    printf("Nhap da thuc p1 :\n");
     Nhapdathuc(my_Px1);
-
     Xuatdathuc(my_Px1);
+    printf("\n");
+
+    printf("Nhap da thuc p2 :\n");
+    Nhapdathuc(my_Px2);
+    Xuatdathuc(my_Px2);
+
 
     return 0;
 }
