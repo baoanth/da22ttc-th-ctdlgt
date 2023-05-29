@@ -132,7 +132,7 @@ void Inputqueue(Queue &s)
     fflush(stdin);
     printf("Tinh trang benh: ");
     gets(per_tam.ttbenh);
-
+	printf("\n");
   	EnQueue(s, per_tam);
 
 }
@@ -175,6 +175,7 @@ int main()
    // Init(my_queue);
 
     printf("DANH SACH SAU KHI NHAP\n");
+    printf("\n");
     printf("STT| Tuoi |   Ho   |   Ten   |  Dia chi  |   Tinh trang   |");
     printQueue(my_queue);
 
