@@ -1,126 +1,149 @@
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#define MAX_LENGTH 200
 
-typedef struct preson
+
+typedef struct Person
 {
-    int Tuoi;
-    char Hoten[20];
-    char Diachi[20];
-    char Tinhtrang[20];
-    char Stt;
+    int tuoi;
+    char hoten[20];
+    char diachi[20];
+    char ttbenh[20];
+    char fname[20];
+    char lname[20];
+    int stt;
 
-    preson* pNext;
-} preson;
+}Person;
+
+typedef struct Node
+{
+    Person info;
+    Node *pNext;
+}Node;
 
 typedef struct Queue
 {
-    Node* pHead;
-    Node* pTail;
-} Queue;
+    Node *pHead;
+    Node *pTail;
+}Queue;
 
-
-void Init ( Queue &s )
+void Init(Queue &s)
 {
     s.pHead = s.pTail = NULL;
 }
 
+Node* GetNode(Person x)
+{
+	Node* p;
+    p=new Node;
+    if(p==NULL)
+    {
+    	printf("Khong du bo nho de cap phat cho nut moi!\n");
+    	return 0;
+	}
+	p->info=x;
+	p->pNext=NULL;
+	return p;	
+}
+
+void AddTail(Queue &s, Node* new_ele)
+{
+    if(s.pHead==NULL)
+    {
+	    s.pHead=new_ele;
+	    s.pTail=s.pHead;
+	}
+	else
+	{
+	    s.pTail->pNext = new_ele;
+        s.pTail = new_ele;
+	}
+}
+
 char IsEmpty(Queue &s)
 {
-	if (s.pHead == NULL) 
-	return 1;
-	else 
-	return 0;
+    if(s.pHead == NULL)
+        return 1;
+    else return 0;
 }
 
-
-void RemoveHead ( Queue &s )
+void EnQueue(Queue &s, Person x)
 {
-	Node *p;
-	char x;
-	if ( s.pHead != NULL)
-	{
-		p = s.pHead; 
-		s.pHead = s.pHead->pNext;
-		delete p;
-		if(s.pHead == NULL) s.pTail = NULL;
-	}
-	
+
+    Node* new_ele = GetNode(x);
+    if(new_ele != NULL)
+    	AddTail(s, new_ele);
 }
 
-Node* GetNode ( char x)
+Person Front(Queue &s)
+{	Person x;
+    if(IsEmpty(s)) return x;
+    return s.pHead->info;
+}
+
+void Inputqueue(Queue &s)
 {
-    Node *p;
-    p = new Node;
-    if (p == NULL)
+    Person per_tam;
+    printf("Nhap benh nhan moi.\n");
+
+    printf("Nhap stt: ");
+    scanf("%d", &per_tam.stt);
+
+
+    printf("nhap tuoi: ");
+    scanf("%d",per_tam.tuoi);
+
+    fflush(stdin);
+    printf("First name: ");
+    gets(per_tam.fname);
+
+    fflush(stdin);
+    printf("Last name: ");
+    gets(per_tam.lname);
+
+    fflush(stdin);
+    printf("dia chi : ");
+    gets(per_tam.diachi);
+
+    fflush(stdin);
+    printf("tinh trang benh: ");
+    gets(per_tam.ttbenh);
+
+  	EnQueue(s, per_tam);
+
+}
+
+void printQueue(Queue &s)
+{
+    if(s.pHead == NULL)
     {
-        printf ("khong du bo nho");
-        return 0;
+        printf("Danh sach rong:\n");
     }
-    p -> Info = x;
-    p -> pNext = NULL;
-    return p;
-}
-
- void InsertTail ( Queue &s, Node *new_ele )
-{
-    if ( s. pHead == NULL )
+    else
     {
-        s.pHead = new_ele;
-        s.pTail = s.pHead;
+        Node* p;
+        p = s.pHead;
+        while(p!= NULL)
+        {
+            printf("%3d%3d%10s%10s%10s%10s\n", p->info.stt,p->info.tuoi ,p->info.fname , p->info.lname, p->info.diachi, p->info.ttbenh);
+            p= p->pNext;
+
+        }
     }
-    else 
-    {
-        new_ele -> pNext = s.pHead;
-        s.pHead = new_ele;
-    }
-}
-
-void EnQueue ( Queue &s, char x )
-{
-	Node* new_ele = GetNode (x);
-    InsertTail (s, new_ele);
-}
-
-char Front ( Queue &s )
-{ 
-    if(IsEmpty(s)) 
-    return NULL;
-    return s.pHead -> Info;
-}
-
-char DeQueue ( Queue &s )
-{ 
-    char x;
-    if(IsEmpty (s) )
-    return NULL ;
-    x = s.pHead -> Info;
-	RemoveHead (s) ;
-    return x ;
 }
 
 int main()
 {
-    char str[] = " EAS*Y**QUE***ST***I*ON ";
-    int i;
-    char x;
-    
+
     Queue my_queue;
-    Init (my_queue);
-    
-    printf ("\n noi dung cua hang doi la: %s \n", str);
-    printf ("\n ket qua in ra man hinh dang QUEUE la: ");
-    
-    for (i=0; i < strlen(str); i++)
-    {
-    	if (str[i] == '*')
-    	{
-    		x = DeQueue (my_queue);
-    		printf ("%c", x);
-    	}
-    	else
-    		EnQueue ( my_queue, str[i] );
-    }
-    	
-	return 0;
+
+    Inputqueue(my_queue);
+    Inputqueue(my_queue);
+    Init(my_queue);
+
+    printf("danh sach sau khi nhap:\n");
+    printQueue(my_queue);
+
+    return 0;
 }
