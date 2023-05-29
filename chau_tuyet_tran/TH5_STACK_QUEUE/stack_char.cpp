@@ -60,7 +60,7 @@ void RemoveHead(Stack &l)
 
 char IsEmpty(Stack &s)
 {
-    if (s.pHead == NULL) // stack rong
+    if (s.pHead == NULL)
         return 1;
     else 
 		return 0;
@@ -72,26 +72,24 @@ void Init(Stack &s)
 	s.pTail = NULL;
 }
 
-//Dua mot phan tu x vao stack
 void Push(Stack &s, char x)
 {
     Node* new_ele = GetNode(x);
 	AddFirst(s, new_ele);
 }
 
-//Lay mot phan tu ra khoi dinh stack
 char Pop(Stack &s)
 {   
     char x;
     if(IsEmpty(s) )
         return NULL;
     
-	x = s.pHead->Info; //Lay gia tri dinh stack    
-    RemoveHead(s); // Xoa phan tu dinh stack
+	x = s.pHead->Info;
+    RemoveHead(s); 
     
     return x;
 }
-// Xem phan tu o dinh stack ma khong lay ra 
+
 char Top(Stack &s)
 { 
     if(IsEmpty(s)) 
@@ -122,7 +120,5 @@ int main()
             Push(my_stack, str[i]);
     }
     return 0;
-
-
 }
 
