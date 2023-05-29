@@ -170,7 +170,6 @@ void PrintList(List &l)
 	}
 }
 
-
 int main()
 {
 	struct person per1 = { 3, "Naruto" , "Uzumaki" };
@@ -219,7 +218,6 @@ int main()
 	RemoveNode(my_list, idx);
 	PrintList(my_list);
 
-		 
 
 return 0;
 }
