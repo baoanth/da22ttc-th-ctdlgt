@@ -94,10 +94,91 @@ void Xuatdathuc(dathuc& l)
     }
 }
 
+<<<<<<< HEAD
+void CopyDaThuc( dathuc l, dathuc &l_kq)
+{
+    Node* p;
+    p = l.pHead;
+    while( p!=NULL)
+    {
+        Node* new_ele = GetNode(p ->info);
+        AddTail(l_kq, new_ele);
+        p = p->pNext;
+
+    }
+    printf("Da copy da thuc:\n");
+}
+Node* TimBacN(dathuc l, int n)
+{
+    Node* p;
+    p = l.pHead;
+    while(p != NULL)
+    {
+        if(p->info.bac==n) 
+            break;
+        p= p-> pNext;
+
+    }
+    return p;
+
+}
+
+void CongDaThuc(dathuc l1, dathuc l2, dathuc&l_kq)
+{
+    CopyDaThuc(l1, l_kq);
+
+    Node* p;
+    p = l2.pHead;
+
+    while(p != NULL)
+    {
+        Node* foundNode = TimBacN(l_kq, p->info.bac);
+        if(foundNode = NULL)
+        {
+            foundNode->info.heso += p->info.heso;
+            printf("found bac %d \n", p->info.bac);
+
+        }
+        else
+        {
+            Node* node_tam = GetNode(p ->info);
+            AddTail(l_kq, node_tam);
+
+        }
+        p= p->pNext;
+
+    }
+}
+
+=======
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 int main()
 {
     dathuc my_Px1;
     dathuc my_Px2;
+<<<<<<< HEAD
+	dathuc my_Px3;
+	
+    Init(my_Px1);
+    Init(my_Px2);
+	Init(my_Px3);
+	
+    printf("Nhap da thuc 1:\n");
+    Nhapdathuc(my_Px1);
+    Xuatdathuc(my_Px1);
+    printf("\n");
+
+    printf("Nhap da thuc 2:\n");
+    Nhapdathuc(my_Px2);
+    Xuatdathuc(my_Px2);
+
+    printf("\n Cong hai da thuc :\n");
+    CongDaThuc(my_Px1, my_Px2, my_Px3);
+    Xuatdathuc(my_Px3);
+
+    return 0;
+}
+=======
 
     Init(my_Px1);
 
@@ -108,3 +189,4 @@ int main()
     return 0;
 }
 
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
