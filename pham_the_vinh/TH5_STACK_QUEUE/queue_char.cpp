@@ -17,13 +17,16 @@ typedef struct Queue
 Node *GetNode(char x)
 {
     Node *p = new Node;
+
     if (p == NULL)
     {
         printf("---Khong du bo nho de cap phat---");
         return 0;
     }
+
     p->Info = x;
     p->pNext = NULL;
+
     return p;
 }
 
@@ -44,11 +47,13 @@ void AddTail(Queue &Q, Node *new_ele)
 void RemoveHead(Queue &Q)
 {
     Node *p;
+
     if (Q.pHead != NULL)
     {
         p = Q.pHead;
         Q.pHead = Q.pHead->pNext;
         delete p;
+
         if (Q.pHead == NULL)
             Q.pTail = NULL;
     }
@@ -76,10 +81,13 @@ void EnQueue(Queue &Q, char x)
 char DeQueue(Queue &Q)
 {
     char x;
+
     if (IsEmpty(Q))
         return NULL;
+
     x = Q.pHead->Info;
     RemoveHead(Q);
+
     return x;
 }
 
@@ -87,18 +95,24 @@ char Front(Queue &Q)
 {
     if (IsEmpty(Q))
         return NULL;
+
     return Q.pHead->Info;
 }
 
 int main()
 {
     char str[] = "EAS*Y**QUE***ST***I*ON";
+
     Queue myQueue;
     Init(myQueue);
+
     printf("Chuoi ban dau: %s", str);
+
     int i;
     char x;
+
     printf("\nKet qua: ");
+
     for (i = 0; i < strlen(str); i++)
     {
         if (str[i] == '*')
@@ -111,5 +125,6 @@ int main()
             EnQueue(myQueue, str[i]);
         }
     }
+    
     return 0;
 }
