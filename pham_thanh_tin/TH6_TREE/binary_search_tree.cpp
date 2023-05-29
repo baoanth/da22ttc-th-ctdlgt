@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <string.h>
 #include <conio.h>
-#include <stdlib.h>
 
 typedef struct Node
 {
@@ -13,12 +11,13 @@ typedef Node* TREE;
 
 Node* createNode(int data) 
 {
-    Node* node = (Node*)malloc(sizeof(Node));
+    Node* node = new Node;
     node->data = data;
     node->pLeft = NULL;
     node->pRight = NULL;
     return node;
 }    
+
 Node* insertNode(Node* root, int data) {
     if (root == NULL) {
         return createNode(data);
@@ -101,8 +100,6 @@ int main()
     printf("\n");
     printf("\nDuyet theo thu tu sau:\n");
     LRN(root);
-    
-    
     
 return 0;
 }
