@@ -7,7 +7,7 @@ typedef struct Node
 {
     int data;
     struct Node *pLeft, *pRight;
-    
+
 }Node;
 typedef Node* TREE;
 
@@ -79,19 +79,19 @@ void LRN(Node* node)
 
 int main()
 {
-	
+
     Node* root = NULL;
-    
-    root = insertNode(root, 1);
+
     root = insertNode(root, 2);
-    root = insertNode(root, 3);
-    root = insertNode(root, 4);
-    root = insertNode(root, 5);
-    root = insertNode(root, 6);
-    root = insertNode(root, 7);
-    root = insertNode(root, 8);
-    root = insertNode(root, 9);
+    root = insertNode(root, 50);
+    root = insertNode(root, 00);
+    root = insertNode(root, 77);
     root = insertNode(root, 10);
+    root = insertNode(root, 5);
+    root = insertNode(root, 80);
+    root = insertNode(root, 67);
+    root = insertNode(root, 9);
+    root = insertNode(root, 40);
 
     printf("Duyet theo thu tu truoc:\n");
     NLR(root);
@@ -101,9 +101,10 @@ int main()
     printf("\n");
     printf("\nDuyet theo thu tu sau:\n");
     LRN(root);
-    printf("thanh cong");
+
+
+
 return 0;
 }
-
 
 

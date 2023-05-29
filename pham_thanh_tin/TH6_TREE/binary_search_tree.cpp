@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <string.h>
 #include <conio.h>
-#include <stdlib.h>
 
 typedef struct Node
 {
@@ -13,12 +11,13 @@ typedef Node* TREE;
 
 Node* createNode(int data) 
 {
-    Node* node = (Node*)malloc(sizeof(Node));
+    Node* node = new Node;
     node->data = data;
     node->pLeft = NULL;
     node->pRight = NULL;
     return node;
 }    
+
 Node* insertNode(Node* root, int data) {
     if (root == NULL) {
         return createNode(data);
@@ -82,16 +81,16 @@ int main()
 	
     Node* root = NULL;
     
-    root = insertNode(root, 1);
-    root = insertNode(root, 2);
-    root = insertNode(root, 3);
-    root = insertNode(root, 4);
-    root = insertNode(root, 5);
-    root = insertNode(root, 6);
-    root = insertNode(root, 7);
-    root = insertNode(root, 8);
-    root = insertNode(root, 9);
+    root = insertNode(root, 20);
+    root = insertNode(root, 50);
+    root = insertNode(root, 00);
+    root = insertNode(root, 70);
     root = insertNode(root, 10);
+    root = insertNode(root, 30);
+    root = insertNode(root, 80);
+    root = insertNode(root, 60);
+    root = insertNode(root, 90);
+    root = insertNode(root, 40);
 
     printf("Duyet theo thu tu truoc:\n");
     NLR(root);
@@ -101,7 +100,21 @@ int main()
     printf("\n");
     printf("\nDuyet theo thu tu sau:\n");
     LRN(root);
-    printf("thanh cong");
+    
+    int Key;
+    printf("\n");
+    printf("\nNhap node can tim trong cay:");
+    scanf("%d",&Key);
+    Node* searchN = searchNode(root, Key);
+    if(searchN != NULL)
+    {
+	    printf("Node %d co ton tai trong cay", Key);
+	}
+	else
+	{
+	    printf("Node %d khon ton tai trong cay", Key);
+	}
+     
 return 0;
 }
 
