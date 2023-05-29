@@ -178,6 +178,55 @@ int main()
 {
 	int tam[N],i;
 	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
+<<<<<<< HEAD
+//	print_array(my_array, N);
+//	printf("1. SelectionSort\n");
+//	Selection_Sort(my_array, N);
+//	
+//	printf("2. InsertionSort\n");
+//	Insertion_Sort(my_array, N);
+//	
+//	printf("3. InterchangeSort\n");
+//	Interchange_Sort(my_array, N);
+//	
+//	printf("4.BubleSort\n");
+//	Buble_Sort(my_array, N);
+while(1)
+{
+	int my_array[] = {4, 6, 2, 7, 5, 9, 8, 10, 65, 22};
+		
+	int lc;
+	printf("0. EXIT\n");
+	printf("1. Sap xep chen truc tiep\n");
+	printf("2. Sap xep chon truc tiep\n");
+	printf("3. Sap xep doi cho truc tiep\n");
+	printf("4. Sap xep noi bot\n");
+	printf("--------------------------------\n");
+	printf("Moi luc chon chuc nang\n");
+	scanf("%d", &lc);
+	
+	if(lc == 0)
+	{
+		break;
+	}
+	else if (lc == 1)
+	{
+		Selection_Sort(my_array, N);
+	}
+	else if (lc == 2)
+	{
+		Insertion_Sort(my_array, N);
+	}
+	else if (lc == 3)
+	{
+		Interchange_Sort(my_array, N);
+	}
+	else if (lc == 4)
+	{
+		Buble_Sort(my_array, N);
+	}
+}
+=======
 	print_array(my_array, N);
 	for( i = 0; i<N;i++)
 	{
@@ -231,6 +280,7 @@ int main()
 	}
 	
 	
+
 //	printf("1. SelectionSort\n");
 //	Selection_Sort(my_array, N);
 //	
@@ -242,6 +292,33 @@ int main()
 //	
 //	printf("4.BubleSort\n");
 //	Buble_Sort(my_array, N);
+<<<<<<< HEAD
+
+	while(1)
+	{
+		int lc;
+		printf("Nhap vao chuc nang ma ban muon\n");
+		scanf("%d", &lc);
+		
+		if(lc==0)
+		{
+			printf("1. EXIT\n");
+		} 
+		else if(lc==1)
+		{
+			printf("1. SelectionSort\n");
+			Selection_Sort(my_array, N);
+		}
+	}
+
+
+
+
+
+
+=======
+>>>>>>> 34905ce81823c637f0ea9119a70428347d6a69ce
 	
+>>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 	return  0;
 }

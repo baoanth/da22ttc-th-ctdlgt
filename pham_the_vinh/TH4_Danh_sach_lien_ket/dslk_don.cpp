@@ -37,7 +37,7 @@ Node *GetNode(Person x)
     return p;
 }
 
-void AddFist(List &l, Node *new_ele)
+void AddFirst(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -93,7 +93,7 @@ void PrintNode(Node *p)
     printf("%2d%10s%15s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
 
-Node *FindNodeByID(List l, int idx)
+Node *FindNodeByID(List &l, int idx)
 {
     Node *p;
     p = l.pHead;
@@ -102,26 +102,23 @@ Node *FindNodeByID(List l, int idx)
     return p;
 }
 
-/*
-Person RemoveHead(List &l)
+void RemoveHead(List &l)
 {
     Node *p;
-    Person x;
+
     if (l.pHead != NULL)
     {
         p = l.pHead;
-        x = p->person;
         l.pHead = l.pHead->pNext;
         delete p;
         if (l.pHead == NULL)
             l.pTail = NULL;
     }
-    return x;
 }
 
 void RemoveAfter(List &l, Node *q)
 {
-    NODE *p;
+    Node *p;
     if (q != NULL)
     {
         p = q->pNext;
@@ -143,7 +140,7 @@ int RemoveNode(List &l, int idx)
     Node *q = NULL;
     while (p != NULL)
     {
-        if (p->Info == k)
+        if (p->Info.id == idx)
             break;
         q = p;
         p = p->pNext;
@@ -165,13 +162,50 @@ int RemoveNode(List &l, int idx)
     }
     return 1;
 }
-*/
+
+void AddNodeAfter(List &l, int idx, Node *new_ele)
+{
+    Node *q = FindNodeByID(l, idx);
+
+    if (q != NULL)
+    {
+        new_ele->pNext = q->pNext;
+        q->pNext = new_ele;
+        if (q == l.pTail)
+            l.pTail = new_ele;
+    }
+    else
+        AddFirst(l, new_ele);
+}
+
+void InputNode(List &l)
+{
+    Person p;
+    printf("Nhap id: ");
+    scanf("%d", &p.id);
+    fflush(stdin);
+
+    printf("Nhap first name: ");
+    gets(p.fname);
+    fflush(stdin);
+
+    printf("Nhap last name: ");
+    gets(p.lname);
+
+    Node *new_node = GetNode(p);
+
+    int idx;
+    printf("Nhap vi tri Node can them: ");
+    scanf("%d", &idx);
+
+    AddNodeAfter(l, idx-1, new_node);
+}
 
 int main()
 {
-    struct Person per1 = {1, "Vinh", "Pham"};
-    struct Person per2 = {2, "An", "Nguyen"};
-    struct Person per3 = {3, "Tong", "Nguyen"};
+    struct Person per1 = {1, "Vinh", "Pham The"};
+    struct Person per2 = {2, "An", "Nguyen Hoai"};
+    struct Person per3 = {3, "Tong", "Nguyen Van"};
 
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
@@ -180,14 +214,20 @@ int main()
     List my_list;
     Init(my_list);
 
-//  AddFist(my_list, new_ele1);
-//  AddFist(my_list, new_ele2);
-//  AddFist(my_list, new_ele3);
+    /*  AddFirst(my_list, new_ele1);
+        AddFirst(my_list, new_ele2);
+        AddFirst(my_list, new_ele3);
+    */
 
     AddTail(my_list, new_ele1);
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele3);
 
+    PrintList(my_list);
+
+    printf("\n*** Them Node ***\n");
+    InputNode(my_list);
+    printf("\nDanh sach sau khi them Node\n");
     PrintList(my_list);
 
     int idx;
@@ -201,9 +241,27 @@ int main()
     else
         printf("Khong tim thay ID %d", idx);
 
-//  RemoveHead(my_list);
-//  RemoveAfter(my_list, q);
-//  RemoveNode(my_list, idx);
+    /*	RemoveHead(my_list);
+        printf("\nDanh sach sau khi xoa phan tu dau\n");
+        PrintList(my_list);
+
+        RemoveAfter(my_list, );
+        printf("\nDanh sach sau khi xoa phan tu cuoi\n");
+        PrintList(my_list);
+    */
+
+    printf("\nNhap id can xoa: ");
+    scanf("%d", &idx);
+
+    int kqrm = RemoveNode(my_list, idx);
+
+    if (kqrm != 0)
+        printf("\nDa xoa Node co id %d\n", idx);
+    else
+        printf("\nKhong the xoa Node co id %d\n", idx);
+
+    printf("\nDanh sach sau khi xoa Node\n");
+    PrintList(my_list);
 
     return 0;
 }
