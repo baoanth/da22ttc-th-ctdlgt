@@ -74,6 +74,60 @@ Node* FindNodeByID (List l, int idx)
 	
 }
 
+void AddNodeAfter (List &l, int idx, Node *new_ele)
+{
+	Node *q;
+	q=FindNodeByID(l,idx);
+	if (q!=NULL)
+	{
+		new_ele->pNext = q-> pNext;
+		q->pNext = new_ele;
+		if(q == l.pTail)
+			l.pTail = new_ele;
+	}
+	else 
+		AddFirst(l, new_ele);
+}
+
+void RemoveHead(List &l)
+{
+	Node *p;
+	
+	if(l.pHead != NULL)
+	{
+		p =l.pHead;
+		l.pHead = l.pHead->pNext;
+		delete p;
+		if(l.pHead == NULL) l.pTail = NULL;
+	}
+}
+
+void RemoveTail(List &l)
+{	
+	if(l.pTail != NULL)
+	{
+		Node *p = l.pTail;
+		Node *q = NULL;
+		while (p->pNext != NULL);
+		{
+			q = p;
+			p = p->pNext;
+		}
+		if(q!=NULL)
+			q->pNext = NULL;
+		else
+			l.pHead = NULL;
+			l.pTail = q;
+		delete p;	
+	}
+}
+
+
+
+
+
+
+
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -100,7 +154,7 @@ void PrintList(List &l)
 int main()
 {
 	struct person per1 = { 3, "Naruto" , "Uzumaki" };
-	struct person per2 = { 2, "Hinata" , "Huyga" };
+	struct person per2 = { 2, "Hinata" , "Hyuga" };
 	struct person per3 = { 1, "Boruto" , "Uzumaki" };
 
 	Node*new_ele1= GetNode(per1);
@@ -112,17 +166,34 @@ int main()
 
 	AddFirst(my_list,new_ele1);
 	AddTail(my_list,new_ele2);
-	AddTail(my_list,new_ele3);
+	//AddTail(my_list,new_ele3);
+	PrintList(my_list);
 	
-	PrintList(my_list) ;
 	
 	int idx;
+	printf("Nhap ID can chen vao sau do: ");
+	scanf("%d", &idx);
+	AddNodeAfter (my_list, idx, new_ele3);
+	PrintList(my_list);
+	
+	
 	printf("\nNhap ID can tim: ");
 	scanf("%d",&idx);
 	Node* KQ=FindNodeByID (my_list, idx);
 		if(KQ != NULL) PrintNode(KQ);
 		else
-		 printf("Tim khong thay NODE co ID %d", idx);
+		 printf("Tim khong thay NODE co ID %d\n", idx);
+	printf("\n");
+	
+	printf("Sau khi xoa ID dau DS\n");
+	RemoveHead(my_list);
+	PrintList(my_list);
+	
+	printf("Sau khi sau ID cuoi DS\n");
+	RemoveTail(my_list);
+	PrintList(my_list);
+
+		 
 
 return 0;
 }
