@@ -122,11 +122,31 @@ void RemoveTail(List &l)
 	}
 }
 
-
-
-
-
-
+void RemoveNode (List &l, int idx)
+{
+	Node *p = l.pHead;
+	Node *q = NULL;
+	
+	while(p != NULL)
+	{
+		if( p->Info.id == idx) break;
+		q = p;
+		p = p->pNext;
+	}
+	if(q != NULL) 
+	{
+		if(p == l.pTail)
+		l.pTail = q;
+		q->pNext = p->pNext;
+		delete p;
+	}
+	else 
+	{
+		l.pHead = p->pNext;
+		if(l.pHead == NULL)
+			l.pTail = NULL;
+	}
+}
 
 void Init(List &l)
 {
@@ -185,12 +205,18 @@ int main()
 		 printf("Tim khong thay NODE co ID %d\n", idx);
 	printf("\n");
 	
-	printf("Sau khi xoa ID dau DS\n");
+/*	printf("Sau khi xoa ID dau DS\n");
 	RemoveHead(my_list);
 	PrintList(my_list);
 	
-	printf("Sau khi sau ID cuoi DS\n");
+	printf("Sau khi xoa ID cuoi DS\n");
 	RemoveTail(my_list);
+	PrintList(my_list);
+*/	
+	printf("Nhap ID muon xoa: ");
+	scanf("%d",&idx);
+	printf("DS sau khi xoa ID %d\n", idx);
+	RemoveNode(my_list, idx);
 	PrintList(my_list);
 
 		 
