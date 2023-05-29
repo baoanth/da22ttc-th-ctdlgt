@@ -7,7 +7,6 @@
 typedef struct Person
 {
     int tuoi;
-    //char hoten[20];
     char diachi[20];
     char ttbenh[20];
     char fname[20];
@@ -137,7 +136,7 @@ void Inputqueue(Queue &s)
 
 }
 
-void printQueue(Queue &s)
+void PrintQueue(Queue &s)
 {
     if(s.pHead == NULL)
     {
@@ -171,15 +170,12 @@ int main()
     	Inputqueue(my_queue);
 	}
     
-    //Inputqueue(my_queue);
-   // Init(my_queue);
-
     printf("DANH SACH SAU KHI NHAP\n");
     printf("\n");
     printf("STT| Tuoi |   Ho   |   Ten   |  Dia chi  |   Tinh trang   |");
-    printQueue(my_queue);
+    PrintQueue(my_queue);
 
     return 0;
 }
-//Tui ne HT oi
+
 
