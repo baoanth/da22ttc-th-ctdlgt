@@ -1,37 +1,52 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include <string.h>
+#include <conio.h>
 typedef struct TNode
 {
 	int key;
-	TNode *pLeft, *pRight;
+	struct TNode *pLeft, *pRight;
 }TNode;
+typedef TNode* TREE;
 
-TNode *createNewNode(int x)
+TNode *createNewNode(int data)
 {
 	TNode * node = new TNode;
-	node->key = x;
+	node->key = data;
 	
 	node->pLeft = NULL;
 	node->pRight = NULL;
 }
 
-
-
-int insertNode(TNode &t, int x)
+TNode* searchNode(TNode* t, int x)
 {
-	if(&t)
+    if(t)
+    {
+        if(t->key == x)
+            return t;
+        if(t->key > x)
+            return searchNode(t->pLeft, x);
+        else 
+            return searchNode(t->pRight, x);
+    }
+    return NULL;
+}
+
+
+int insertNode(TNode *t, int x)
+{
+	if(t)
 	{
 		if(t->key == x)
-			return 0; //dã có
+		return 0; //dã có
 		if(t->key > x)
 		{
-			printf("Them %d ben trai %d\n",data, Root->key);
+			printf("Them %d ben trai %d\n",x, t->key);
 			return insertNode(t->pLeft,x);
 		}
 		else
 		{
-			printf("Them %d ben phai %d\n",data, Root->key);
+			printf("Them %d ben phai %d\n",x, t->key);
 			return insertNode(t->pRight,x);
 		}
 		printf("Re nhanh\n");
@@ -51,37 +66,19 @@ int insertNode(TNode &t, int x)
 
 }
 
-void NLR(TNode* Root)// in truoc
+void NLR(TREE* &Root)// in truoc
 {
 	if (Root != NULL)
 	{
-		printf ("%d\n", Root->key);
+		printf ("%d\n", &Root->key);
 		NLR(Root->pLeft);
 		NLR(Root->pRight);
 	}
 }
 
-void LNR(Tnode* Root)//in giua
-{
-	if (Root != NULL)
-	{
-		LNR(Root->Left);
-		printf ("%d\n", root->key);
-		LNR(Root->Right);
-	}
-}
 
-void LRN(TNode* Root)//in sau
-{
-	if (Root != NULL)
-		{
-			LRN(Root->Left);
-			LRN(Root->Right);
-			printf ("%d\n", root->key);
-		}
-}
 
-int countNode(TNode * Root)
+int countNode(TREE * Root)
 {
 	int count = 0;
 	if (Root !=NULL)
@@ -92,7 +89,7 @@ int countNode(TNode * Root)
 	}
 	return 0;
 }
-int countLeafNode(TNode * Root)
+int countLeafNode(TREE * Root)
 {
 	int count = 0;
 	if (Root !=NULL)
@@ -105,7 +102,7 @@ int countLeafNode(TNode * Root)
 	return 0;
 }
 
-int getTreeHeight(TNode *Root)
+int getTreeHeight(TREE *Root)
 {
 	if (Root== NULL)
 		return 0;
@@ -120,7 +117,7 @@ int getTreeHeight(TNode *Root)
 
 int main()
 {
-	TNode * myTree =NULL;
+	TREE * myTree =NULL;
 	
 	myTree = insertNode(myTree,10);
 	myTree = insertNode(myTree,7);
