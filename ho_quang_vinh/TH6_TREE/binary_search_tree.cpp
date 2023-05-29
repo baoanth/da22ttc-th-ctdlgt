@@ -1,69 +1,110 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+#include <stdlib.h>
 
-typedef struct TNODE
+typedef struct Node
 {
- int Key;
-struct NODE *pLeft, *pRight;
-}TNODE;
-typedef TNODE*TREE;
-int insertNode(TREE T, int X)
-{
-if(T) {
-if(T->Key == X)
- return 0;
-if(T->Key > X)
- return insertNode(T->pLeft, X);
-else 
- return insertNode(T->pRight, X);
-}
-T = new TNODE;
-if( T->key == x)
-return T;
-if (T->key > x)
-T->pleft = T->PRight = NULL;
-return 1;
-}
-TNODE* searchNode(TREE T, int X)
-{
-if(T) 
-{
-if(T->Key == X)
- return T;
-if(T->Key > X) 
- return searchNode(T->pLeft, X);
-else
- return searchNode(T->pRight, X);
-}
-return NULL;
-}
-void NLR(TREE Root)
-{
-if (Root != NULL)
-{
-    NLR(Root->pLeft);
-    NLR(Root->pRight);
-}
-}
-void LNR(TREE Root)
-{
-if (Root != NULL)
-{
+    int data;
+    struct Node *pLeft, *pRight;
 
-     LNR(Root->Left);
-     LNR(Root->Right);
+}Node;
+typedef Node* TREE;
+
+Node* createNode(int data) 
+{
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->data = data;
+    node->pLeft = NULL;
+    node->pRight = NULL;
+    return node;
+}    
+Node* insertNode(Node* root, int data) {
+    if (root == NULL) {
+        return createNode(data);
+    }
+
+    if (data < root->data) {
+        root->pLeft = insertNode(root->pLeft, data);
+    } else if (data > root->data) {
+        root->pRight = insertNode(root->pRight, data);
+    }
+
+    return root;
 }
+
+Node* searchNode(Node* t, int x)
+{
+    if(t)
+    {
+        if(t->data == x)
+            return t;
+        if(t->data > x)
+            return searchNode(t->pLeft, x);
+        else 
+            return searchNode(t->pRight, x);
+    }
+    return NULL;
 }
+
+void NLR(Node* node)
+{
+    if(node != NULL)
+    {   
+        printf("%d ", node->data);
+        NLR(node->pLeft);
+        NLR(node->pRight);
+    }
+}
+
+void LNR(Node* node)
+{
+    if(node != NULL)
+    {
+        LNR(node->pLeft);
+        printf("%d ", node->data);
+        LNR(node->pRight);
+    }
+}
+
+void LRN(Node* node)
+{
+    if(node != NULL)
+    {
+        LRN(node->pLeft);
+        LRN(node->pRight);
+        printf("%d ", node->data);
+    }
+}
+
 int main()
 {
-	int my_tree[]=( 13, 9, 5, 27, 5, 29, 10, 6, 11, 4);
-	printf("xuat mang;\n");
-	printf_tree(my_tree);
-	printf("\n");
-	NLR (my_tree);
-	LNR(my_tree);
-	LRN(my_tree);
+
+    Node* root = NULL;
+
+    root = insertNode(root, 2);
+    root = insertNode(root, 50);
+    root = insertNode(root, 00);
+    root = insertNode(root, 77);
+    root = insertNode(root, 10);
+    root = insertNode(root, 5);
+    root = insertNode(root, 80);
+    root = insertNode(root, 67);
+    root = insertNode(root, 9);
+    root = insertNode(root, 40);
+
+    printf("Duyet theo thu tu truoc:\n");
+    NLR(root);
+    printf("\n");
+    printf("\nDuyet theo thu tu giua:\n");
+    LNR(root);
+    printf("\n");
+    printf("\nDuyet theo thu tu sau:\n");
+    LRN(root);
+
+
+
 return 0;
-}	
+}
+
 
