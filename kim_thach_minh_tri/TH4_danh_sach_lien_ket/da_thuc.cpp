@@ -159,22 +159,6 @@ DaThuc CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
     }
 }
 
-void RutGonDaThuc(DaThuc &l)
-{
-    for (Node *p = l.pHead; p != NULL; p = p->pNext)
-    {
-        int bac_p = p->Info.bac;
-        Node *q = p->pNext;
-        while (q != NULL && q->Info.bac == bac_p)
-        {
-            p->Info.heso += q->Info.heso;
-            Node *r = q;
-            q = q->pNext;
-            Remove(l, r);
-        }
-    }
-}
-
 int main()
 {
     DaThuc my_dathuc;
@@ -187,7 +171,6 @@ int main()
     ThemNotCuoi(my_dathuc1);
 
     printf("\nDa thuc 1:");
-    RutGonDaThuc(my_dathuc);
     PrintDaThuc(my_dathuc);
     printf("\nDa thuc 2:");
     PrintDaThuc(my_dathuc1);
