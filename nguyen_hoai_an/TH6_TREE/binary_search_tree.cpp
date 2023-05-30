@@ -94,6 +94,19 @@ int main()
 
     printf("\nDuyet theo thu tu sau: \n");
 	Print_LRN(my_tree);
+	
+	int Key;
+    printf("\nNhap Node can tim: ");
+    scanf("%d", &Key);
 
+    TNode* newKey = SearchNode(my_tree, Key);
+    if( newKey!= NULL)
+    {
+        printf("Da tim thay %d trong cay.");
+    }
+    else
+    {
+        printf("Khong co nhe.");
+    }
     return 0;
 }
