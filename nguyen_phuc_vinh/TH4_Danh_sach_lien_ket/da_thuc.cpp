@@ -157,6 +157,16 @@ void Cong_DaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 printf("\n");
 }
 
+float Uoc_Luong(Dathuc &l1, int x)
+{
+	Node* p=l.pHead;
+	
+	while(p!=NULL)
+	{
+		
+	}
+}
+
 int main()
 {
 	DaThuc my_dathuc1, my_dathuc2, my_dathuc_kq;
@@ -177,6 +187,8 @@ int main()
 	Cong_DaThuc(my_dathuc1, my_dathuc2, my_dathuc_kq);
 	printf("Ket qua cong 2 da thuc: ");
 	Print_DaThuc(my_dathuc_kq);
+	
+	
 	
 	
 }
