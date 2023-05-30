@@ -157,6 +157,8 @@ void Cong_DaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 printf("\n");
 }
 
+<<<<<<< HEAD
+=======
 float Uoc_Luong(Dathuc &l1, int x)
 {
 	Node* p=l.pHead;
@@ -167,6 +169,7 @@ float Uoc_Luong(Dathuc &l1, int x)
 	}
 }
 
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 int main()
 {
 	DaThuc my_dathuc1, my_dathuc2, my_dathuc_kq;
@@ -189,6 +192,9 @@ int main()
 	Print_DaThuc(my_dathuc_kq);
 	
 	
+<<<<<<< HEAD
+=======
 	
 	
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 }
