@@ -1,6 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+<<<<<<< HEAD
+//Khai bao cay
+
+
+
+/*In cay theo thu tu truoc*/
+void Print_NLR()
+
+/*In cay theo thu tu giua*/
+void Print_LNR()
+
+/*In cay theo thu tu sau*/
+void Print_LRN()
+
+/*Tim kiem nut co gia tri la x*/
+int SearchNode()
+
+/*Them nut vao cay BST*/
+int InsertNode()
+
+
+/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
+int main()
+=======
 // Khai bao cay
 typedef struct TNODE
 {
@@ -98,3 +122,4 @@ int main()
     Print_LNR(my_tree);
 
 }
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
