@@ -85,6 +85,8 @@ int main()
     InsertNode(my_tree, 13);
     InsertNode(my_tree, 20);
 	InsertNode(my_tree, 1);
+	InsertNode(my_tree, 19);
+	InsertNode(my_tree, 36);
 
     printf("Duyet theo thu tu truoc: \n");
     Print_NLR(my_tree);
@@ -106,7 +108,7 @@ int main()
     }
     else
     {
-        printf("Khong co nhe.");
+        printf("Khong co dau ma kim haha.");
     }
     return 0;
 }
