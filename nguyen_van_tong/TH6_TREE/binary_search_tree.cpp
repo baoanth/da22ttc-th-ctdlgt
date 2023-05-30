@@ -77,12 +77,23 @@ int insertNode(tree &T, int x)
 int main()
 {
     int a[] = {12, 3, 6, 87, 32, 7, 5, 98, 45, 34, 80, 43, 90};
-	tree T = NULL;
+    tree T = NULL;
 
-    for(int i = 0; i<13;i++)
-    	insertNode(T,a[i]);
+    for (int i = 0; i < 13; i++)
+        insertNode(T, a[i]);
 
     Print_NLR(T);
     cout << endl;
     Print_LNR(T);
+    cout << endl;
+    Print_LRN(T);
+
+    int x;
+    cout << "\nnhap vao gia tri can tim ";
+    cin >> x;
+    tree p = searchNode(T, x);
+    if (p != NULL)
+        cout << "\ntim thay ";
+    else
+        cout << "\nKHONG tim thay";
 }
