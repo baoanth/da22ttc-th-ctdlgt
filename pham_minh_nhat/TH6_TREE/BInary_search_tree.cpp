@@ -1,136 +1,102 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include <string.h>
-#include <conio.h>
-typedef struct TNode
-{
-	int key;
-	struct TNode *pLeft, *pRight;
-}TNode;
-typedef TNode* TREE;
+#include <stdio.h>
+#include <stdlib.h>
 
-TNode *createNewNode(int data)
+// Khai bao cay
+typedef struct TNODE
 {
-	TNode * node = new TNode;
-	node->key = data;
-	
-	node->pLeft = NULL;
-	node->pRight = NULL;
+    int Key;
+    struct TNODE *pLeft, *pRight;
+} TNODE;
+typedef TNODE *TREE;
+
+/*In cay theo thu tu truoc*/
+void Print_NLR(TREE Root)
+{
+    if (Root != NULL)
+    {
+        printf("%3d", Root->Key);
+        Print_NLR(Root->pLeft);
+        Print_NLR(Root->pRight);
+    }
 }
 
-TNode* searchNode(TNode* t, int x)
+/*In cay theo thu tu giua*/
+void Print_LNR(TREE Root)
 {
-    if(t)
+    if (Root != NULL)
     {
-        if(t->key == x)
-            return t;
-        if(t->key > x)
-            return searchNode(t->pLeft, x);
-        else 
-            return searchNode(t->pRight, x);
+        Print_LNR(Root->pLeft);
+        printf("%3d", Root->Key);
+        Print_LNR(Root->pRight);
+    }
+}
+
+/*In cay theo thu tu sau*/
+void Print_LRN(TREE Root)
+{
+    if (Root != NULL)
+    {
+        Print_LRN(Root->pLeft);
+        Print_LRN(Root->pRight);
+        printf("%3d", Root->Key);
+    }
+}
+
+/*Tim kiem nut co gia tri la x*/
+TNODE *SearchNode(TREE T, int X)
+{
+    if (T)
+    {
+        if (T->Key == X)
+            return T;
+        if (T->Key > X)
+            return SearchNode(T->pLeft, X);
+        else
+            return SearchNode(T->pRight, X);
     }
     return NULL;
 }
 
-int insertNode(TNode *t, int x)
+/*Them nut vao cay BST*/
+int InsertNode(TREE &T, int X)
 {
-	if(t)
-	{
-		if(t->key == x)
-		return 0; //dã có
-		if(t->key > x)
-		{
-			printf("Them %d ben trai %d\n",x, t->key);
-			return insertNode(t->pLeft,x);
-		}
-		else
-		{
-			printf("Them %d ben phai %d\n",x, t->key);
-			return insertNode(t->pRight,x);
-		}
-		printf("Re nhanh\n");
-	}
-
-	printf("t == NULL\n");
-	t = new TNode;
-	if(t == NULL)
-	{
-		printf("Thieu bo nho\n");
-		return -1; 
-	}
-	t->key = x;
-	printf("Them %d vao nut goc\n",x);
-	t->pLeft =t->pRight = NULL;
-	return 1; //thêm vào thành công
-
+    if (T)
+    {
+        if (T->Key == X)
+            return 0;
+        if (T->Key > X)
+            return InsertNode(T->pLeft, X);
+        else
+            return InsertNode(T->pRight, X);
+    }
+    T = new TNODE;
+    if (T == NULL)
+        return -1;
+    T->Key = X;
+    T->pLeft = T->pRight = NULL;
+    return 1;
 }
 
-void NLR(TREE* &Root)// in truoc
-{
-	if (Root != NULL)
-	{
-		printf ("%d\n", &Root->key);
-		NLR(Root->pLeft);
-		NLR(Root->pRight);
-	}
-}
-
-
-
-int countNode(TREE * Root)
-{
-	int count = 0;
-	if (Root !=NULL)
-	{
-		count ++;
-		count += countNode (Root ->pLeft);
-		count += countNode (Root ->pRight);
-	}
-	return 0;
-}
-int countLeafNode(TREE * Root)
-{
-	int count = 0;
-	if (Root !=NULL)
-	{
-		if ((Root->pLeft == NULL)&&(Root->pRight==NULL))
-			count ++;
-		count += countNode (Root ->pLeft);
-		count += countNode (Root ->pRight);
-	}
-	return 0;
-}
-
-int getTreeHeight(TREE *Root)
-{
-	if (Root== NULL)
-		return 0;
-	int maxLeft = getTreeHeight(Root->pLeft);
-	int maxRight = getTreeHeight(Root->pRight);
-	
-	if (maxLeft>maxRight)
-		return maxLeft+1;
-	else
-		return maxRight+1;
-}
-
+/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
-	TREE * myTree =NULL;
-	
-	myTree = insertNode(myTree,10);
-	myTree = insertNode(myTree,7);
-	myTree = insertNode(myTree,8);
-	myTree = insertNode(myTree,9);
-	myTree = insertNode(myTree,15);
-	myTree = insertNode(myTree,12);
-	myTree = insertNode(myTree,4);
-	myTree = insertNode(myTree,16);
-	printf("Duyet cay theo thu tu truoc:\n");
-	NLR(myTree);	
-	printf("Duyet cay theo thu tu giua:\n");
-	LNR(myTree);
-	printf("Duyet cay theo thu tu sau:\n");
-	LRN(myTree);
-	
+    TREE my_tree = NULL;
+    InsertNode(my_tree, 30);
+    InsertNode(my_tree, 22);
+    InsertNode(my_tree, 12);
+    InsertNode(my_tree, 21);
+    InsertNode(my_tree, 26);
+    InsertNode(my_tree, 27);
+    InsertNode(my_tree, 45);
+    InsertNode(my_tree, 50);
+    InsertNode(my_tree, 38);
+    InsertNode(my_tree, 33);
+    InsertNode(my_tree, 36);
+
+    Print_NLR(my_tree);
+    printf("\n");
+    Print_LNR(my_tree);
+    printf("\n");
+    Print_LRN(my_tree);
+    return 0;
 }
