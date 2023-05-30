@@ -93,36 +93,45 @@ void SearchStandFor(TREE &p, TREE &q)
 		q=q->pRight;
 	}
 }
-void searchStandFor(TREE &p, TREE &q)
-{
-if(q->pLeft) searchStandFor(p, q->pLeft);
-else {
-p->Key = q->Key;
-p = q;
-q = q->pRight;
-}
-}
 
 //Huy mot phan tu co khoa X
-int delNode(TREE &T, int X)
+int DelNode(TREE &T, int X)
 {
-if(T==NULL) return 0;
-if(T->Key > X) return delNode (T->pLeft, X);
-if(T->Key < X) return delNode (T->pRight, X);
-else { //T->Key == X 
-TNODE* p = T;
-if(T->pLeft == NULL) T= T->pRight;
-else 
-if(T->pRight == NULL) T = T->pLeft;
-else { //T có c? 2 con 
-TNODE* q = T->pRight;
-searchStandFor(p, q);
-}
-delete p;
-}
+    if(T==NULL) 
+    return 0;
+    
+    if(T->Key > X) 
+    return DelNode (T->pLeft, X);
+    
+    if(T->Key < X) 
+    return DelNode (T->pRight, X);
+    else 
+    { 
+        TNODE* p = T;
+        if(T->pLeft == NULL) 
+            T= T->pRight;
+        else 
+            if(T->pRight == NULL) 
+                T = T->pLeft;
+            else 
+            {
+                TNODE* q = T->pRight;
+                SearchStandFor(p, q);
+            }
+        delete p;
+    }
 }
 
-//************
+//Huy toan bo cay nhi phan tim kiem
+void removeTree(TREE &T)
+{
+	if(T)
+	{
+		removeTree(T->pLeft);
+		removeTree(T->pRight);
+		delete(T);
+	}
+}
 
 //Khai bao cay, chen vao 10 nut, in ra 3 kieu
 int main()
@@ -161,27 +170,41 @@ int main()
     else 
     	printf("Da tim thay %d", X);
 
-	int Y;
-	printf("\nNhap vao Node can xoa: ");
-	scanf("%d", &Y);
+//XOA
+	int n, biendem = 0;
+	printf("\nBan muon xoa may lan: ");
+	scanf("%d", &n);
 	
-	int Xoa = delNode(my_tree, Y);
-	if(Xoa == NULL) 
-    	printf("Khong xoa duoc %d", Y);
-    else 
-    	printf("Da xoa %d", Y);
-//In lai sau khi xoa
-	printf("\nIn theo thu tu truoc sau khi xoa\n");
-    Print_NLR(my_tree);
-    printf("\n");
-    printf("In theo thu tu giua sau khi xoa\n");
-    Print_LNR(my_tree);
-    printf("\n");
-	printf("In theo thu tu sau sau khi xoa\n");
-    Print_LRN(my_tree);
+//********************************
+	for(int i = 1; i<=n; i++)
+	{
+		biendem++;
+//Xoa phan tu
+		int Y;
+		printf("\nNhap vao Node can xoa: ");
+		scanf("%d", &Y);
 	
-    
-    return 0;
-   
+		int Xoa = DelNode(my_tree, Y);
+		if(Xoa == NULL) 
+    		printf("Khong xoa duoc %d", Y);
+  	 	else 
+    		printf("Da xoa %d", Y);
+	}
+//In lai sau khi xoa Node
+		printf("\nIn theo thu tu truoc sau khi xoa %d lan\n", biendem);
+   	 	Print_NLR(my_tree);
+    	
+		printf("\n");
+		
+    	printf("In theo thu tu giua sau khi xoa %d lan\n", biendem);
+    	Print_LNR(my_tree);
+    	
+		printf("\n");
+    	
+		printf("In theo thu tu sau sau khi xoa %d lan\n", biendem);
+    	Print_LRN(my_tree);
+    	
+    return 0; 
 }
+
 
