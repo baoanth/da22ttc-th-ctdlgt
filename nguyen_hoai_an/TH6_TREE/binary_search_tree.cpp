@@ -73,6 +73,43 @@ int InsertNode(TREE &T, int x)
     return 1;
 }
 
+/*int DelNode(TREE &T, int x)
+{
+    if(T == NULL)
+    return 0;
+    if(T->Key > x)
+    return DelNode(T->pLeft, x);
+    if(T->Key < x)
+    return DelNode(T->pRight, x);
+    else
+    {
+        TNode* p = T;
+        if(T->pLeft == NULL)
+        T = T->pRight;
+        else 
+        if(T->pRight == NULL)
+        T = T->pLeft;
+        else
+        {
+            TNode* q = T->pRight;
+            SearchStandFor(p,q);
+        }
+        delete p;
+    }
+}
+
+void SearchStandFor(TREE &p, TREE &q)
+{
+    if(q->pLeft)
+    SearchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key = q->Key;
+        p = q;
+        q = q->pRight;
+    }
+}
+*/
 int main()
 {
     TREE my_tree = NULL;
@@ -110,5 +147,16 @@ int main()
     {
         printf("Khong co dau ma kim haha.");
     }
+/*
+    printf("Nhap Node can xoa: ");
+    scanf("%d", &Key);
+*/
+
+
+
+
+
+
+
     return 0;
 }
