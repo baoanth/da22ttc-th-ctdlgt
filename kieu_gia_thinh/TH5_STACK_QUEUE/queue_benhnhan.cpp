@@ -2,6 +2,7 @@
 #include<conio.h>
 #include<string.h>
 
+//********************
 struct BenhNhan
 {
     char hoten[20];
@@ -21,7 +22,9 @@ typedef struct Queue
     Node *pHead;
     Node *pTail;
 } Queue;
+//********************
 
+//Tao GetNode
 Node *GetNode(BenhNhan x)
 {
     Node *p;
@@ -36,6 +39,7 @@ Node *GetNode(BenhNhan x)
     return p;
 }
 
+//Viet ham void AddTail
 void AddTail(Queue &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -50,11 +54,13 @@ void AddTail(Queue &l, Node *new_ele)
     }
 }
 
+//Viet ham Init
 void Init(Queue &l)
 {
     l.pHead = l.pTail = NULL;
 }
 
+//Viet ham RemoveHead
 char RemoveHead(Queue &l)
 {
     if (l.pHead != NULL)
@@ -67,6 +73,7 @@ char RemoveHead(Queue &l)
     }
 }
 
+//Kt hang doi rong
 char IsEmpty(Queue &l)
 {
     if (l.pHead == NULL)
@@ -76,8 +83,7 @@ char IsEmpty(Queue &l)
         return 0;
 }
 
-
-
+//Trich/Huy phan tu o dau hang doi
 void DeQueue(Queue &l, BenhNhan &x)
 {
     if (IsEmpty(l))
@@ -86,7 +92,8 @@ void DeQueue(Queue &l, BenhNhan &x)
     RemoveHead(l);
 }
 
-void print_queue(Queue l)
+//Viet ham in hang doi
+void PrintQueue(Queue l)
 {
 	Node*p = l.pHead;
 	while(p!= NULL)
@@ -99,39 +106,40 @@ void print_queue(Queue l)
 	}
 }
 
+//Them 1 phan tu vao cuoi hang doi
 void EnQueue(Queue &s)
 {
     BenhNhan x;
     fflush(stdin);
-    printf("\nNhap ten benh nhan:");
+    printf("\nNhap ten benh nhan: ");
     gets(x.hoten);
 	
 	fflush(stdin);
-    printf("\nNhap tuoi:");
+    printf("\nNhap tuoi: ");
     scanf("%d", &x.tuoi);
     
 	fflush(stdin);
-    printf("\nNhap dia chi:");
+    printf("\nNhap dia chi: ");
     gets(x.diachi);
     
 	fflush(stdin);
-    printf("\nNhap tinh trang suc khoe:");
+    printf("\nNhap tinh trang suc khoe: ");
    
     gets(x.tinhtrang);
     Node *p = GetNode(x);
     AddTail(s,p);
 }
 
-main()
+//Viet ham main
+int main()
 {
 
-	Queue my_queve;
-    Init(my_queve);
-    EnQueue(my_queve);
-    EnQueue(my_queve);
+	Queue my_queue;
+    Init(my_queue);
+    EnQueue(my_queue);
+    EnQueue(my_queue);
     
-    print_queue(my_queve);
-	/*DeQueue(my_queve);
-	print_queue(my_queve);*/
+    PrintQueue(my_queue);
+	
     return 0;
 }

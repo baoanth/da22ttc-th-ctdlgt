@@ -219,6 +219,10 @@ void PrintList(List &l)
 			p = p->pNext;
 		}		
 <<<<<<< HEAD
+	}      
+
+=======
+<<<<<<< HEAD
 	}   
 =======
     if (l.pHead == NULL)
@@ -244,6 +248,7 @@ void PrintList(List &l)
 	}      
 
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 }
 <<<<<<< HEAD
  
