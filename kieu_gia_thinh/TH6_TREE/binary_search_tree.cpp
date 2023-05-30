@@ -81,6 +81,48 @@ int InsertNode(TREE &T, int x)
     return 1; 
 }
 
+//Tim phan tu the mang cho nut p
+void SearchStandFor(TREE &p, TREE &q)
+{
+	if(q->pLeft)
+		SearchStandFor(p, q->pLeft);
+	else
+	{
+		p->Key = q->Key;
+		p=q;
+		q=q->pRight;
+	}
+}
+
+//Huy mot phan tu co khoa X
+int DelNode(TREE &T, int X)
+{
+	if(T=NULL)
+	return 0;
+	
+	if(T->Key > X)
+	return DelNode(T->pLeft, X)
+	if(T->Key < X)
+	return DelNode(T->pLeft, X)
+	
+	else
+	{
+		TNODE* p = T;
+		if(T->pLeft == NULL)
+		T = T->pRight;
+		else
+			if(T->pRight == NULL)
+			T = T->pLeft;
+			
+			else
+			{
+				TNODE* q= T->pRight;
+				SearchStandFor(p, q);
+			}
+	delete p;
+	}
+}
+
 //Khai bao cay, chen vao 10 nut, in ra 3 kieu
 int main()
 {
@@ -106,6 +148,7 @@ int main()
 	printf("In theo thu tu sau\n");
     Print_LRN(my_tree);
     
+//Tim phan tu X
     int X;
     printf("\nNhap Node can tim :");
     scanf("%d", &X);
@@ -116,6 +159,17 @@ int main()
     	printf("Khong tim thay %d", X);
     else 
     	printf("Da tim thay %d", X);
+ //Xoa phan tu 
+	int Y;
+	printf("\nNhap Node can xoa");
+	scanf("%d", &Y);
+	
+	TNODE* Xoa = SearchStandFor(my_tree, Y);
+	if(Xoa == NULL)
+		printf("Khong co phan tu %d. Khong the xoa", Y);
+	else
+		printf("Da xoa %d", Y);
+	 	
     
     return 0;
    
