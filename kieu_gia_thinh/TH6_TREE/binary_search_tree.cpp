@@ -4,17 +4,16 @@
 // Khai bao cay
 typedef struct TNODE
 {
-    int Key; // Data là kiểu dữ liệu ứng với thông tin lưu tại nút
+    int Key;
     struct TNODE *pLeft, *pRight;
 } TNODE;
 typedef TNODE* TREE;
 
-/*In cay theo thu tu truoc*/
+//In cay theo thu tu truoc
 void Print_NLR(TREE Root)
 {
     if (Root != NULL)
     {
-       // Xu ly ROOT
         printf("%3d", Root->Key);
 		
 		Print_NLR(Root->pLeft);
@@ -22,21 +21,27 @@ void Print_NLR(TREE Root)
     }
 }
 
-/*In cay theo thu tu giua*/
+//In cay theo thu tu giua
 void Print_LNR(TREE Root)
 {
     if (Root != NULL)
     {
         Print_LNR(Root->pLeft);
-	   // Xu ly ROOT
         printf("%3d", Root->Key);		
-		
         Print_LNR(Root->pRight);
     }
 }
 
-/*In cay theo thu tu sau*/
-void Print_LRN();
+//In cay theo thu tu sau
+void Print_LRN(TREE Root)
+{
+	 if (Root != NULL)
+    {
+        Print_LNR(Root->pLeft);
+        Print_LNR(Root->pRight); 
+		printf("%3d", Root->Key);	
+    }
+}
 
 /*Tim kiem nut co gia tri la x*/
 TNODE *SearchNode(TREE Root, int x)
@@ -54,13 +59,13 @@ TNODE *SearchNode(TREE Root, int x)
     return NULL;
 }
 
-/*Them nut vao cay BST*/
+//Them nut vao cay
 int InsertNode(TREE &T, int x)
 {
     if (T)
     {
         if (T->Key == x)
-            return 0; // đã có X
+            return 0; 
         if (T->Key > x)
             return InsertNode(T->pLeft, x);
         else
@@ -69,32 +74,50 @@ int InsertNode(TREE &T, int x)
    
     T = new TNODE;
     if (T == NULL)
-        return -1; // thiếu bộ nhớ
-    
-    // Da tim dung vi tri
+        return -1;
+        
     T->Key = x;  
     T->pLeft = T->pRight = NULL;
-    return 1; // thêm vào thành công
+    return 1; 
 }
 
-/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
+//Khai bao cay, chen vao 10 nut, in ra 3 kieu
 int main()
 {
     TREE my_tree = NULL;
-    InsertNode(my_tree, 30 );
-    InsertNode(my_tree, 22);
-    InsertNode(my_tree, 26);
-    InsertNode(my_tree, 45);
+    InsertNode(my_tree, 24);
+    InsertNode(my_tree, 23);
+    InsertNode(my_tree, 3);
+    InsertNode(my_tree, 7);
+    InsertNode(my_tree, 37);
     InsertNode(my_tree, 50);
-    InsertNode(my_tree, 38);
-    InsertNode(my_tree, 33);
-    InsertNode(my_tree, 12);
-    InsertNode(my_tree, 21);
-    InsertNode(my_tree, 27);
-    InsertNode(my_tree, 36);
+    InsertNode(my_tree, 15);
+    InsertNode(my_tree, 24);
+    InsertNode(my_tree, 20);
+    InsertNode(my_tree, 11);
+    InsertNode(my_tree, 45);
 
+	printf("In theo thu tu truoc\n");
     Print_NLR(my_tree);
     printf("\n");
+    printf("In theo thu tu giua\n");
     Print_LNR(my_tree);
-
+    printf("\n");
+	printf("In theo thu tu sau\n");
+    Print_LRN(my_tree);
+    
+    int X;
+    printf("\nNhap Node can tim :");
+    scanf("%d", &X);
+    printf("\n");
+    
+    TNODE* Tk = SearchNode(my_tree, X);
+    if(Tk == NULL) 
+    	printf("Khong tim thay %d", X);
+    else 
+    	printf("Da tim thay %d", X);
+    
+    return 0;
+   
 }
+

@@ -35,7 +35,11 @@ Node *GetNode(Person x)
     return p;
 }
 
+<<<<<<< HEAD
+void AddFirst(List &l, Node* new_ele)
+=======
 void AddFirst(List &l, Node *new_ele)
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
 {
     if (l.pHead == NULL)
     {
@@ -72,6 +76,30 @@ void PrintList(List &l)
 		}		
 	}
 }
+<<<<<<< HEAD
+void AddTail(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
+}
+
+Node *FindNodeById(List l, int idx)
+{
+    Node *p = l.pHead;
+    while (p != NULL && p->Info.id != idx)
+        p = p->pNext;
+    return p;
+}
+
+=======
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -243,6 +271,7 @@ Node *FindNodeById(List l, int idx)
     return p;
 }
 
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
 void AddNodeAfter(List &l, int idx, Node *new_ele4)
 {
     Node *q = FindNodeById(l, idx);
@@ -352,7 +381,11 @@ int main()
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
+<<<<<<< HEAD
+   
+=======
     
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
 
     List my_list;
     Init(my_list);
@@ -360,14 +393,62 @@ int main()
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
+<<<<<<< HEAD
+   
+
+    PrintList(my_list);
+
+    /*
+    int idx;
+    printf("\nNhap id can tim: ");
+    scanf("%d", &idx);
+    Node *tim_kiem = FindNodeById(my_list, idx);
+    if (tim_kiem != NULL)
+        PrintNode(tim_kiem);
+    else
+        printf("Khong tim thay nut co id %d", idx);
+    
+    printf("\nNhap id can chen phia sau: ");
+    scanf("%d", &idx);
+
+    AddNodeAfter(my_list, idx, new_ele4);
+
+    PrintList(my_list);
+
+    RemoveHead(my_list);
+    printf("\n Xoa nut dau");
+    PrintList(my_list);
+
+    RemoveLast(my_list);
+    printf("\n Xoa nut cuoi");
+    PrintList(my_list);
+
+    printf("\nNhap id can xoa: ");
+    scanf("%d", &idx);
+    int kq = RemoveNode(my_list,idx);
+    if(kq == 1)
+    PrintList(my_list);
+    */
+
+    InputNode(my_list);
+=======
 
 <<<<<<< HEAD
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
     PrintList(my_list);
 
     return 0;
 
 
 }
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -644,3 +725,4 @@ int main()
 =======
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
