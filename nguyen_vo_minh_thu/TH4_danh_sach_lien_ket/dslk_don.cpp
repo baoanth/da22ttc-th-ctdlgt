@@ -157,8 +157,8 @@ int RemoveNode(List &l, int idx)
 int main()
 {
 	struct person per1 = {1, "Nguyen", "Vo Minh Thu"};
-	struct person per2 = {2, "Vo", "Thu"};
-	struct person per3 = {3, "Nguyen", "Minh"};
+	struct person per2 = {2, "lam", "Vinh Loc"};
+	struct person per3 = {3, "Nguyen", "Lam"};
 	 
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
@@ -183,8 +183,63 @@ int idx;
 	else
 		printf("\nKhong tim thay Node co ID : %d",idx);	
 	
+<<<<<<< HEAD
+	void PrintList(List&l)
+	{
+		if(l.pHead == NULL)
+		{
+			printf("Danh sach rong\n");
+			
+		}
+		else
+		{
+			Node *p;
+			p = l.pHead;
+			while (p!=NULL)
+			{
+				printf("%5d %20s %20s \n", p->Info.id, p->Info.fname, p->Info.lname);
+				p = p->pNext;
+				
+			}
+		}
+	}
+	
+	void AddTail(List &l, Node *new_ele)
+	{
+		if (l.pHead==NULL)
+		{
+			l.pHead = new_ele;
+			l.pTail = l.pHead;
+		}
+		else 
+		{
+			l.pTail->pNext = new_ele;
+			l.pTail = new_ele;
+		}
+	}
+	int main()
+	{
+		struct Person per1 = {1, "Nguyen","Vo Minh Thu"};
+		struct Person per2 = {2, "Vo","Thu"};
+		struct Person per3 = {3, "Nguyen","Minh"};
+		
+		Node* new_ele1 = GetNode(per1);
+		Node* new_ele2 = GetNode(per2);
+		Node* new_ele3 = GetNode(per3);
+		List my_list;
+		Init(my_list);
+		
+		AddFirst(my_list, new_ele1);
+		AddFirst(my_list, new_ele2);
+		AddFirst(my_list, new_ele3);
+		
+		PrintList(my_list);
+		
+	}
+=======
 	return 0;
 }
 
 
+>>>>>>> dcc3c9bc82a6e0e30b74d57f58d1f7208a133873
 	
