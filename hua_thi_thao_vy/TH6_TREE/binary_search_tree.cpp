@@ -91,4 +91,15 @@ int main()
 	Print_LNR(my_tree);
 	printf("\n");
 	Print_LRN(my_tree);
+	
+	int x;
+	printf("\nTim gia tri cua x= ");
+	scanf("%d", &x);
+	TNODE *giatri=SearchNode(my_tree, x);
+	if(giatri == NULL)
+	{
+		printf("Khong tim thay gia tri ");
+	}
+	else 
+	    printf("Tim thay gia tri");
 }
