@@ -80,7 +80,7 @@ int InsertNode(TREE &T, int x)
 int main()
 {
     TREE Root = NULL;
-    int x;
+    int y;
 
     InsertNode(Root, 30);
     InsertNode(Root, 22);
@@ -92,9 +92,9 @@ int main()
     InsertNode(Root, 38);
     InsertNode(Root, 33);
     InsertNode(Root, 36);
-	InsertNode(Root, 50);
-	
-	printf("In theo thu tu truoc:\n");
+    InsertNode(Root, 50);
+
+    printf("In theo thu tu truoc:\n");
     Print_NLR(Root);
     printf("\n");
     printf("In theo thu tu giua:\n");
@@ -102,6 +102,14 @@ int main()
     printf("\n");
     printf("In theo thu tu sau:\n");
     Print_LRN(Root);
+
+    printf("\nNhap x can tim: ");
+    scanf("%d", &y);
+    TNODE* gia_tri = SearchNode(Root, y);
+    if(gia_tri == NULL)
+        printf("Khong co gia tri x = %d\n",y);
+    else    
+		printf("Tim thay x = %d \n",y);
 
     return 0;
 }
