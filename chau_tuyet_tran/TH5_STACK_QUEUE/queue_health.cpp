@@ -3,8 +3,9 @@
 #include <conio.h>
 #include <string.h>
 
-struct Patient
+struct BenhNhan
 {
+	int number;
     char name[20];
     int age;
     char address[50];
@@ -13,7 +14,7 @@ struct Patient
 
 typedef struct Node
 {
-    Patient Info;
+    BenhNhan Info;
     Node *pNext;
 } Node;
 
@@ -23,7 +24,7 @@ typedef struct Queue
     Node *pTail;
 } Queue;
 
-Node *GetNode(Patient x)
+Node *GetNode(BenhNhan x)
 {
     Node *p;
     p = new Node;
@@ -76,13 +77,13 @@ char IsEmpty(Queue &l)
         return 0;
 }
 
-void Push(Queue &l, Patient x)
+void Push(Queue &l, BenhNhan x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-void Pop(Queue &l, Patient &x)
+void Pop(Queue &l, BenhNhan &x)
 {
     if (IsEmpty(l))
         return;
@@ -90,7 +91,7 @@ void Pop(Queue &l, Patient &x)
     RemoveHead(l);
 }
 
-void Top(Queue &l, Patient &p)
+void Top(Queue &l, BenhNhan &p)
 {
     if (IsEmpty(l))
         return;
@@ -118,6 +119,11 @@ void DeQueue(Queue &l)
 void EnQueue(Queue &s)
 {
     BenhNhan x;
+
+    fflush(stdin);
+    printf("Number : ");
+    scanf("%d", &x.number);
+    
     fflush(stdin);
     printf("- Enter patient name: ");
     gets(x.name);
@@ -142,6 +148,9 @@ void EnQueue(Queue &s)
 
 main()
 {
+    int n; 
+    printf("Nhap so luong benh nhan: ");
+    scanf("%d",&n);
 
     Queue my_queve;
     Init(my_queve);
