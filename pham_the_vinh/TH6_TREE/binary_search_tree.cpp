@@ -94,4 +94,20 @@ int main()
     Print_LNR(my_tree);
     printf("\nThu tu sau: ");
     Print_LRN(my_tree);
+
+	int x;
+	printf("\nNhap x can tim: ");
+	scanf("%d", &x);
+	
+    TNODE *KqSearch = SearchNode(my_tree, x);
+    if(KqSearch != NULL)
+    {
+        printf("--- Da tim thay ---");
+    }
+    else
+    {
+        printf("--- Khong tim thay ---");
+    }
+    
+    return 0;
 }
