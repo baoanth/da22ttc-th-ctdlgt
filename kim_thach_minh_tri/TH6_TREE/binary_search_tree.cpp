@@ -5,8 +5,8 @@
 typedef struct TNODE
 {
     int Key;
-    struct NODE *pLeft, *pRight;
-}TNODE;
+    struct TNODE *pLeft, *pRight;
+} TNODE;
 typedef TNODE *TREE;
 
 /*In theo thu tu truoc*/
@@ -14,23 +14,21 @@ void Print_NLR(TREE Root)
 {
     if (Root != NULL)
     {
-        /*Xu ly*/
+        printf("%3d", Root->Key);
         Print_NLR(Root->pLeft);
         Print_NLR(Root->pRight);
     }
-
 }
 
-/*Ins theo thu tu giua*/
+/*In theo thu tu giua*/
 void Print_LNR(TREE Root)
 {
     if (Root != NULL)
     {
-        Print_LNR (Root->Left);
-        /*Xu ly*/
-        Print_LNR (Root->Right);
+        Print_LNR(Root->pLeft);
+        printf("%3d", Root->Key);
+        Print_LNR(Root->pRight);
     }
-    
 }
 
 /*In theo thu tu sau*/
@@ -38,26 +36,28 @@ void Print_LRN(TREE Root)
 {
     if (Root != NULL)
     {
-        Print_LRN(Root->Left);
-        Print_LRN(Root->Right);
-        /*xu ly*/
+        Print_LRN(Root->pLeft);
+        Print_LRN(Root->pRight);
+        printf("%3d", Root->Key);
     }
 }
 
+/*Tim kiem x trong cay*/
 TNODE *SearchNode(TREE T, int x)
 {
     if (T)
     {
-        if(T->Key == x)
-        return T;
+        if (T->Key == x)
+            return T;
         if (T->Key > x)
             return SearchNode(T->pLeft, x);
-        else 
+        else
             return SearchNode(T->pRight, x);
     }
     return NULL;
 }
 
+/*Them x vao cay*/
 int InsertNode(TREE &T, int x)
 {
     if (T)
@@ -69,18 +69,39 @@ int InsertNode(TREE &T, int x)
         else
             return InsertNode(T->pRight, x);
     }
-       T = new_TNode;
-       if (T == NULL)
+    T = new TNODE;
+    if (T == NULL)
         return -1;
     T->Key = x;
     T->pLeft = T->pRight = NULL;
-    return 1;  
+    return 1;
 }
-
-
 
 int main()
 {
+    TREE Root = NULL;
+    int x;
+
+    InsertNode(Root, 30);
+    InsertNode(Root, 22);
+    InsertNode(Root, 12);
+    InsertNode(Root, 21);
+    InsertNode(Root, 26);
+    InsertNode(Root, 27);
+    InsertNode(Root, 45);
+    InsertNode(Root, 38);
+    InsertNode(Root, 33);
+    InsertNode(Root, 36);
+	InsertNode(Root, 50);
+	
+	printf("In theo thu tu truoc:\n");
+    Print_NLR(Root);
+    printf("\n");
+    printf("In theo thu tu giua:\n");
+    Print_LNR(Root);
+    printf("\n");
+    printf("In theo thu tu sau:\n");
+    Print_LRN(Root);
 
     return 0;
 }
