@@ -101,7 +101,7 @@ void print_queue(Queue l)
     Node *p = l.pHead;
     while (p != NULL)
     {
-        printf("\nHo va ten benh nhan: %s", p->Info.hoten);
+        printf("\nHo ten thang benh nhan: %s", p->Info.hoten);
         printf("\nTuoi: %d", p->Info.tuoi);
         printf("\nDia chi: %s", p->Info.diachi);
         printf("\nTinh trang suc khoe: %s", p->Info.tinhtrang);
@@ -118,7 +118,7 @@ void EnQueue(Queue &s)
 {
     BenhNhan x;
     fflush(stdin);
-    printf("Ho ten benh nhan: ");
+    printf("Ho ten thang benh nhan: ");
     gets(x.hoten);
 
     fflush(stdin);
@@ -141,12 +141,12 @@ int main()
 {
     Queue my_queve;
     Init(my_queve);
-	printf("\nNhap benh nhan thu nhat:\n");
+	printf("\nNhap thang benh nhan thu nhat:\n");
     EnQueue(my_queve);
-	printf("\nNhap benh nhan thu hai: \n");
+	printf("\nNhap thang benh nhan thu hai: \n");
     EnQueue(my_queve);
 
-    printf("-------------------\n");
+    printf("------------------------------------\n");
 
 	printf("Danh sach benh nhan: \n");
     print_queue(my_queve);
