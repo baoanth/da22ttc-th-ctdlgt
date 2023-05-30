@@ -105,11 +105,11 @@ int main()
 
     printf("\nNhap x can tim: ");
     scanf("%d", &y);
-    TNODE* gia_tri = SearchNode(Root, y);
-    if(gia_tri == NULL)
-        printf("Khong co gia tri x = %d\n",y);
-    else    
-		printf("Tim thay x = %d \n",y);
+    TNODE *gia_tri = SearchNode(Root, y);
+    if (gia_tri == NULL)
+        printf("Khong co gia tri x = %d\n", y);
+    else
+        printf("Tim thay x = %d \n", y);
 
     return 0;
 }
