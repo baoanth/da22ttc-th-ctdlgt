@@ -40,18 +40,21 @@ void Print_LRN(TREE Root)
     }
 }
 
-TNODE* SearchNode(TREE T, int x)
+TNODE* SearchNode(TREE Root, int x)
 {
-	if(T)
+	TNODE* p=Root;
+	
+	while(p!=NULL)
 	{
-		if(T->Key==x)
-		    return T;
-	    if(T->Key>x)
-		    return SearchNode(T->pLeft, x);
-	    else
-		    return SearchNode(T->pRight, x);		
+		if(x==p->Key)
+			return p;
+		else
+			if(x<p->Key)
+				p=p->pLeft;
+			else
+				p=p->pRight;	
 	}
-return NULL;
+	return NULL;
 }
 
 int InsertNode(TREE &T, int x)
@@ -74,7 +77,6 @@ int InsertNode(TREE &T, int x)
         return 1;
 }
 
-/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
 	TREE my_tree = NULL;
@@ -97,4 +99,21 @@ int main()
     printf("\nLeft Right Node: ");
     Print_LRN(my_tree);
     
+    int x;
+    
+    printf("\nNhap gia tri can tim: ");
+    scanf("%d", &x);  
+    
+    TNODE* Find = SearchNode(my_tree, x);
+
+    if(Find!=NULL)
+    {
+    	printf("Tim thay gia tri %d", x);
+    }
+    else
+    {
+    	printf("Khong tim thay gia tri");
+    }
+    
+    return 0;
 }

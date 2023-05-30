@@ -44,9 +44,9 @@ TNODE *SearchNode(TREE T, int x)
 {
     if (T)
     {
-        if(T->Key == x)
+        if (T->Key == x)
             return T;
-        if(T->Key > x)
+        if (T->Key > x)
             return SearchNode(T->pLeft, x);
         else
             return SearchNode(T->pRight, x);
@@ -56,21 +56,57 @@ TNODE *SearchNode(TREE T, int x)
 
 int InsertNode(TREE &T, int x)
 {
-    if(T)
+    if (T)
     {
-        if(T->Key == x)
+        if (T->Key == x)
             return 0;
-        if(T->Key > x)
+        if (T->Key > x)
             return InsertNode(T->pLeft, x);
         else
             return InsertNode(T->pRight, x);
     }
     T = new TNODE;
-    if(T == NULL)
+    if (T == NULL)
         return -1;
     T->Key = x;
     T->pLeft = T->pRight = NULL;
     return 1;
+}
+
+void SearchStandFor(TREE &p, TREE &q)
+{
+    if (q->pLeft)
+        SearchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key = q->Key;
+        p = q;
+        q = q->pRight;
+    }
+}
+
+int DeleteNode(TREE &T, int x)
+{
+    if (T == NULL)
+        return 0;
+    if (T->Key > x)
+        return DeleteNode(T->pLeft, x);
+    if (T->Key < x)
+        return DeleteNode(T->pRight, x);
+    else
+    {
+        TNODE *p = T;
+        if (T->pLeft == NULL)
+            T = T->pRight;
+        else if (T->pRight == NULL)
+            T = T->pLeft;
+        else
+        {
+            TNODE *q = T->pRight;
+            SearchStandFor(p, q);
+        }
+        delete p;
+    }
 }
 
 int main()
@@ -96,11 +132,11 @@ int main()
     Print_LRN(my_tree);
 
     int x;
-    printf("\nNhap x can tim: ");
+    printf("\n\nNhap x can tim: ");
     scanf("%d", &x);
 
     TNODE *KqSearch = SearchNode(my_tree, x);
-    if(KqSearch != NULL)
+    if (KqSearch != NULL)
     {
         printf("--- Da tim thay ---");
     }
@@ -108,6 +144,19 @@ int main()
     {
         printf("--- Khong tim thay ---");
     }
+
+	int d;
+	printf("\n\nNhap gia tri can xoa: ");
+	scanf("%d", &d);
+   
+    DeleteNode(my_tree, d);
+    
+   	printf("Thu tu truoc: ");
+    Print_NLR(my_tree);
+    printf("\nThu tu giua: ");
+    Print_LNR(my_tree);
+    printf("\nThu tu sau: ");
+    Print_LRN(my_tree);
 
     return 0;
 }
