@@ -89,14 +89,14 @@ int main()
 	{
 		int my_array[] = {5, 8, 3, 1, 4, 6, 10, 2, 7, 9};
 		int select;
-		printf ("=============================\n");
+		printf("=============================\n");
 		printf("0.EXIT\n");
 		printf("1.InsertionSort\n");
 		printf("2.SelectionSort\n");
 		printf("3.InterchangeSort\n");
 		printf("4.BubbleSort\n");
 		printf("=============================\n");
-		printf("_Chon chuc nang: \n");
+		printf("_Chon chuc nang: ");
 		scanf("%d", &select);
 
 		if (select == 0)

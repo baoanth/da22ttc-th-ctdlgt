@@ -1,122 +1,222 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <conio.h>
 #define N 10
 
-
-void print_array(int a[], int n)
+void print_array(int a[ ], int n)
 {
 	int i;
-	for (i=0; i<n; i++)
+    for(i = 0; i < n; i++) 
 	{
-		printf("%5d", a[i]);		
+		printf("%5d", a[i]);
 	}
 	printf("\n");
 }
 
-void hoan_vi(int* a, int* b)
+void hoan_vi(int *a, int *b)
 {
-	int temp;
-	temp = *a;
+	int tam;
+	tam = *a;
 	*a = *b;
-	*b = temp;
+	*b = tam;
 }
 
-void SelectionSort(int a[], int n)
+void SelectionSort(int a[ ], int n)
 {
-	int min; // chi so phan tu nho nhat trong day hien hanh
-	int i,j;
-	for(i=0; i<n-1; i++ )
+	int min;
+	int i, j;
+	for(i = 0; i < n-1; i++)
 	{
-		min=i;		
-		for ( j=i+1; j<n; j++)		
-			if(a[j]< a[min])
-				min = j; // Ghi nhan vi tri phan tu nho nhat hien hanh
-		hoan_vi(&a[min], &a[i]);		
-		print_array(a, n);		
+		min = i;
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[min])
+			{
+				min = j;
+			}
+		}
+		hoan_vi(&a[min], &a[i]);
+        print_array(a, n);
 	}
-	
 }
-void InsertionSort(int a[], int n)
+
+void InsertionSort(int a[ ], int n)
 {
-	int pos,i;
-	int x; //Luu gia tri a[i] tranh bi ghi de khi doi cho cac phan tu 
-	for (i=1;i<n;i++) //doan a[0] da sap
-{
-	x = a[i]; pos= i-1; //tim vi tri chen x
-	while ((pos >=0)&&(a[pos]>x))
+	int pos, i;
+	int x;
+	for(i = 0; i < n; i++)
 	{
-		a[pos +1] =a[pos];
-		pos--;
+		x = a[i];
+		pos = i-1;
+		while((pos >= 0) && (a[pos] > x))
+		{
+			a[pos+1] = a[pos];
+			pos--;
+		}
+		a[pos+1] = x;
+		print_array(a,n);
 	}
-	a[pos+1]=x;
-	print_array(a, n);
 }
-}
-void InterchangeSort (int a[] ,int n)
+
+void InterchangeSort(int a[ ], int n)
 {
-	int i,j;
-	for (i=0; i<n;i++)
-    for (j=i+1;j< n;j++)
-	if(a[j]<a[i])
+	int i, j;
+	for(i = 0; i < n-1; i++)
 	{
-		hoan_vi(&a[i],&a[j]);
+		for(j = i+1; j < n; j++)
+		{
+			if(a[j] < a[i])
+			{
+				hoan_vi(&a[i], &a[j]);
+				print_array(a,n);
+			}
+		}
+	}
+}
+
+void BubleSort(int a[ ], int n)
+{
+	int i, j;
+	for(i = 0; i < n-1; i++)
+	{
+		for(j = n-1; j > i; j--)
+		{
+			if(a[j] < a[j-1])
+			{
+				hoan_vi(&a[j], &a[j-1]);
+				print_array(a,n);
+			}
+		}
+	}
+}
+
+void Shift(int a[ ], int l , int r)
+{
+	int x, i, j;
+	i = l; 
+	j = 2*i+1;
+	x = a[i];
+
+	while(j <= r)
+	{	
+		if(j < r)
+			if(a[j] < a[j+1])
+				j++;
+			if(a[j] < x)
+				break;
+			else 
+			{
+				a[i] = a[j];
+				i = j;
+				j = 2*i+1;
+				a[i] = x;
+			}		
+	}
+}
+
+void CreateHeap(int a[ ], int n)
+{
+	int l = n/2;
+	while(l >= 0)
+	{
+		Shift(a, l, n);
+		l--;
+	}
+}
+
+void HeapSort(int a[ ], int n)
+{
+	CreateHeap(a, n-1);
+	printf("=Heap=\n");
+	print_array(a,N);
+	printf("=\n");
+	int r;
+	r = n-1;
+	while(r > 0)
+	{
+		hoan_vi(&a[0], &a[r]);
 		print_array(a, n);
+		r = r - 1;
+		Shift(a, 0, r);
 	}
-
 }
-void BubleSort(int a[],int n)
+
+void QuickSort(int a[ ], int l, int r)
 {
-	int i,j;
-	for (i=0;i<n-1;i++)
-	for (j =n-1;j>i;j--)
-	if(a[j]<a[j-1])
+	int i, j;
+	int x;
+	x = a[(l+r)/2];
+	i = l;
+	j = r;
+	do 
 	{
-			hoan_vi(&a[j],&a[j-1]);
-			print_array(a, n);
-	}
-
+		while(a[i] < x) i++;
+		while(a[j] > x) j--;
+		if(i <= j)
+		{
+			hoan_vi(&a[i], &a[j]);
+			print_array(a,N);
+			i++;
+			j--;
+		}
+	} while(i < j);
+	if(l < j)
+		QuickSort(a,l,j);
+	if(i < r)
+		QuickSort(a,i,r);
 }
+
 int main()
 {
-	while (1)
-	{
-		char lua_chon;
-		  int my_array[N] = {7,6,8,9,4,12,13,10,19,15,33};
-		  printf("Mang ban dau:");
-		  print_array(my_array,N);
-		  printf("Vui long nhap vao so tuong ung thuat toan de chon,nhan 0 de thoat\n");
-		  printf("1.Chon truc tiep\n2.Chen truc tiep\n3.Doi truc tiep\n4.Noi bot\nSo:");
-		  lua_chon = getch();
-		  switch (lua_chon)
-		  {
-		  	case '1':
-		  		{
-				  printf("->Chon truc tiep:\n");
-		  		  SelectionSort(my_array,N);
-		  		  break;
-		  		}
-		  case '2':
-		  		{
-				  printf("->Chen truc tiep:\n");
-		  		  InsertionSort(my_array,N);
-		  		  break;
-		  		}
-		  case '3':
-		  		{
-				  printf("->Doi cho truc tiep:\n");
-		  		  InterchangeSort(my_array,N);
-		  		  break;
-		  		}
-		  case '4':
-		  		{
-				  printf("->Noi bot:\n");
-		  		  BubleSort(my_array,N);
-		  		  break;
-		  		}	
-		  case '0':
-		  return 0;
-		  }
-	}
+    while (1)
+    {
+        char lua_chon;
+        int my_array[N] = {5,10,3,7,19,27,39,14,22,43,21,34};
+        printf("Mang Ban Dau: ");
+        print_array(my_array, N);
+        printf("Vui long nhan vao so tuong ung tung thuat toan de chon, nhan 0 de thoat\n");
+        printf("1. Chon truc tiep\n2. Chen truc tiep\n3. Doi cho truc tiep\n4. Noi bot\n5. Xap xep cay\n6. Phan hoach\n");
+        lua_chon = getch(); // Ham nhap ky tu tu ban phim cua thu vien conio.h
+        switch (lua_chon)
+        {
+            case '1':
+            {
+                printf("-> Chon truc tiep: \n");
+                SelectionSort(my_array, N);
+                break;
+            } 
+            case '2':
+            {
+                printf("-> Chen truc tiep: \n");
+                InsertionSort(my_array, N);
+                break;
+            }
+             case '3':
+            {
+                printf("-> Doi cho truc tiep: \n");
+                InterchangeSort(my_array, N);
+                break;
+            } 
+             case '4':
+            {
+                printf("-> Noi bot: \n");
+                BubleSort(my_array, N);
+                break;
+            } 
+			case '5':
+            {
+                printf("-> Xap xep cay: \n");
+                HeapSort(my_array, N);
+                break;
+            } 
+			 case '6':
+            {
+                printf("-> Phan hoach: \n");
+                QuickSort(my_array, 0, N-1);
+                break;
+            } 
+            case '0': return 0;
+        }
+        
+    }
 	return 0;
 }
