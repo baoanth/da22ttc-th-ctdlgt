@@ -160,9 +160,9 @@ int main()
     
 //Tim phan tu X
     int X;
-    printf("\nNhap Node can tim :");
+    printf("\n\nNhap Node can tim :");
     scanf("%d", &X);
-    printf("\n");
+    
     
     TNODE* Tk = SearchNode(my_tree, X);
     if(Tk == NULL) 
@@ -172,7 +172,7 @@ int main()
 
 //XOA
 	int n, biendem = 0;
-	printf("\nBan muon xoa may lan: ");
+	printf("\n\nBan muon xoa may lan: ");
 	scanf("%d", &n);
 	
 //********************************
@@ -181,14 +181,14 @@ int main()
 		biendem++;
 //Xoa phan tu
 		int Y;
-		printf("\nNhap vao Node can xoa: ");
+		printf("\nNhap vao Node can xoa lan thu %d: ", biendem);
 		scanf("%d", &Y);
 	
 		int Xoa = DelNode(my_tree, Y);
 		if(Xoa == NULL) 
-    		printf("Khong xoa duoc %d", Y);
+    		printf("Khong xoa duoc: %d", Y);
   	 	else 
-    		printf("Da xoa %d", Y);
+    		printf("Da xoa: %d", Y);
 	}
 //In lai sau khi xoa Node
 		printf("\nIn theo thu tu truoc sau khi xoa %d lan\n", biendem);
