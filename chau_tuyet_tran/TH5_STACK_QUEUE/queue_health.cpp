@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <string.h>
 
-struct BenhNhan
+struct Patient
 {
     char name[20];
     int age;
@@ -13,7 +13,7 @@ struct BenhNhan
 
 typedef struct Node
 {
-    BenhNhan Info;
+    Patient Info;
     Node *pNext;
 } Node;
 
@@ -23,7 +23,7 @@ typedef struct Queue
     Node *pTail;
 } Queue;
 
-Node *GetNode(BenhNhan x)
+Node *GetNode(Patient x)
 {
     Node *p;
     p = new Node;
@@ -76,13 +76,13 @@ char IsEmpty(Queue &l)
         return 0;
 }
 
-void Push(Queue &l, BenhNhan x)
+void Push(Queue &l, Patient x)
 {
     Node *new_ele = GetNode(x);
     AddTail(l, new_ele);
 }
 
-void Pop(Queue &l, BenhNhan &x)
+void Pop(Queue &l, Patient &x)
 {
     if (IsEmpty(l))
         return;
@@ -90,7 +90,7 @@ void Pop(Queue &l, BenhNhan &x)
     RemoveHead(l);
 }
 
-void Top(Queue &l, BenhNhan &p)
+void Top(Queue &l, Patient &p)
 {
     if (IsEmpty(l))
         return;
