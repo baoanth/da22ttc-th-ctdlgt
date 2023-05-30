@@ -85,4 +85,15 @@ int main()
     Print_NLR(T);
     cout << endl;
     Print_LNR(T);
+    cout << endl;
+    Print_LRN(T);
+    
+    int x;
+    cout << "\nnhap vao gia tri can tim ";
+    cin >> x;
+    tree p = searchNode(T,x);
+    if(p != NULL)
+    	cout << "\ntim thay ";
+    else 
+    	cout << "\nKHONG tim thay";
 }
