@@ -80,17 +80,18 @@ int InsertNode(TREE &T, int X)
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
-    TREE my_tree;
+    TREE my_tree = NULL;
     InsertNode(my_tree, 30);
-    InsertNode(my_tree, 21);
-    InsertNode(my_tree, 34);
-    InsertNode(my_tree, 11);
-    InsertNode(my_tree, 9);
-    InsertNode(my_tree, 54);
-    InsertNode(my_tree, 42);
     InsertNode(my_tree, 22);
-    InsertNode(my_tree, 31);
-    InsertNode(my_tree, 2);
+    InsertNode(my_tree, 12);
+    InsertNode(my_tree, 21);
+    InsertNode(my_tree, 26);
+    InsertNode(my_tree, 27);
+    InsertNode(my_tree, 45);
+    InsertNode(my_tree, 50);
+    InsertNode(my_tree, 38);
+    InsertNode(my_tree, 33);
+    InsertNode(my_tree, 36);
 
     Print_NLR(my_tree);
     printf("\n");
