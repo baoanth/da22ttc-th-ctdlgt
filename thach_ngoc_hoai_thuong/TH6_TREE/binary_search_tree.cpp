@@ -82,17 +82,17 @@ int main()
     TREE Root = NULL;
     int y;
 
-    InsertNode(Root, 30);
-    InsertNode(Root, 22);
+    InsertNode(Root, 65);
     InsertNode(Root, 12);
-    InsertNode(Root, 21);
+    InsertNode(Root, 43);
+    InsertNode(Root, 41);
     InsertNode(Root, 26);
-    InsertNode(Root, 27);
-    InsertNode(Root, 45);
-    InsertNode(Root, 38);
-    InsertNode(Root, 33);
-    InsertNode(Root, 36);
-    InsertNode(Root, 50);
+    InsertNode(Root, 53);
+    InsertNode(Root, 42);
+    InsertNode(Root, 13);
+    InsertNode(Root, 54);
+    InsertNode(Root, 15);
+    InsertNode(Root, 55);
 
     printf("In theo thu tu truoc:\n");
     Print_NLR(Root);
