@@ -22,21 +22,6 @@ typedef struct List
     Node* pTail;
 }List;
 
-Node* GetNode(Person x)
-
- Person;
-
-typedef struct person
-{
-Person Info; 
-Node* pNext; 
-} Node;
-
-typedef struct List
-{
-    Node *pHead;
-    Node *pTail;
-} List;
 
 Node *GetNode(Person x)
 
@@ -101,15 +86,15 @@ Node* FindNodeByID(List l, int idx)
 
 void AddFirst(List &l, Node * new_ele)
 {
-if (l.pHead==NULL) 
+  if (l.pHead==NULL) 
 {
-l.pHead = new_ele;
-l.pTail = l.pHead;
+    l.pHead = new_ele;
+    l.pTail = l.pHead;
 }
-else
+  else
 {
-new_ele->pNext = l.pHead;
-l.pHead = new_ele;
+    new_ele->pNext = l.pHead;
+    l.pHead = new_ele;
 }
 }
 
@@ -144,7 +129,7 @@ void AddTail(List &l, Node *new_ele)
     else
     {
         l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
+        l.pTail = new_ele;  
     }
 }
 
