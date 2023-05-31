@@ -51,10 +51,11 @@ TNODE *SearchNode(TREE Root, int x)
     {
         if (x == p->Key)
             return p;
-        else if (x < p->Key)
-            p = p->pLeft;
-        else
-            p = p->pRight;
+        else 
+			if (x < p->Key)
+           		p = p->pLeft;
+        	else
+            	p = p->pRight;
     }
     return NULL;
 }
