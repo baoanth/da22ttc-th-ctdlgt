@@ -133,6 +133,17 @@ else
 
 int main()
 {
+	TREE my_tree = NULL;
+	int selection =1;
+	{
+		printf("*** BINARY SEARCH TREE DEMO ***\n\n");
+		printf("Enter your selection\n");
+		printf("1. Input number to BST");
+		printf("2. print BST in Fist order (NLR)");
+		printf("3. print BST in Middle order (LNR)");
+		printf("4. print BST in last order (LRN)");
+		printf("5. Delete node in BST");
+	}	
     TNode* myTree = NULL;
 
     myTree = insert(myTree, 10);
