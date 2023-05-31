@@ -93,6 +93,19 @@ int getTreeHeight(TNode *Root)
         return maxRight+1;
 }
 
+TNode* searchNode(TNode* Root, int X)
+{
+    if (Root == NULL || Root->Key == X)
+        return Root;
+    {
+    if (X < Root->Key)
+        return searchNode(Root->pLeft, X);
+    else
+        return searchNode(Root->pRight, X);
+    }
+    return NULL;
+}
+
 TNode* insertNode(TNode* Root, int X)
 {
     if (Root == NULL)
@@ -197,8 +210,15 @@ int main()
     printf("Duyet cay sau khi them phan tu\n");
     NLR(myTree);
 
-    printf("\n\nSo node tren cay la %d\n",countNode(myTree));
-    printf("\nSo leafnode tren cay la %d",countLeafNode(myTree));
+    int timNode = 6;
+    TNode* foundNode = searchNode(myTree, timNode);
+    if (foundNode != NULL)
+        printf("\n\nTim thay phan tu %d trong cay\n", timNode);
+    else
+        printf("\n\nKhong tim thay phan tu %d trong cay\n", timNode);
+
+    printf("\nSo node tren cay la %d\n",countNode(myTree));
+    printf("\nSo nhanh tren cay la %d",countLeafNode(myTree));
     printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));
     
     return 0;
