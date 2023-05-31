@@ -93,6 +93,47 @@ int getTreeHeight(TNode *Root)
         return maxRight+1;
 }
 
+TNode* insertNode(TNode* Root, int X)
+{
+    if (Root == NULL)
+    {
+        printf("\nAdd %d as root ", X);
+        return createNewNode(X);
+    }
+
+    TNode* current = Root;
+    TNode* parent = NULL;
+
+    while (current != NULL)
+    {
+        parent = current;
+
+        if (X < current->Key)
+            current = current->pLeft;
+        else if (X > current->Key)
+            current = current->pRight;
+        else
+        {
+            printf("\nPhan tu %d da ton tai trong cay\n", X);
+            return Root;
+        }
+    }
+
+    if (X < parent->Key)
+    {
+        printf("\nAdd %d as left child of %d\n", X, parent->Key);
+        parent->pLeft = createNewNode(X);
+    }
+    else
+    {
+        printf("\nAdd %d as right child of %d\n", X, parent->Key);
+        parent->pRight = createNewNode(X);
+    }
+
+    return Root;
+}
+
+
 TNode* delNode(TNode* Root, int Key)
 {
     if(Root == NULL)
@@ -134,6 +175,48 @@ else
 int main()
 {
     TNode* myTree = NULL;
+    int selection = 1;
+    do
+    {
+    	printf ("*** BINARY SEARCH TREE DEMO ***\n\n");
+    	printf (" Enter your selection ");
+    	printf ("0. EXIT");
+    	printf ("1. Input number to BST \n");
+    	printf ("2. Print BST in first order (NLR) ");
+    	printf ("3. Print BST in Middle order (LNR)");
+    	printf ("4. Print BST in last order (LRN)");
+    	printf ("5. Delete node in BST");
+    	
+    	printf (" Your selection: ");
+    	scanf (" %d ", &selection);
+    } while (selection != NULL);
+    
+    switch (selection)
+    {
+    	case 0:
+    		printf ("")
+    		break;
+    		
+    	case 1:
+    		printf ("")
+    		break;
+    		
+    	case 2:
+    		printf ("")
+    		break;
+    		
+    	case 3:
+    		printf ("")
+    		break;
+    		
+    	case 4:
+    		printf ("")
+    		break;
+    		
+    	case 5:
+    		printf ("")
+    		break;
+    }
 
     myTree = insert(myTree, 10);
     myTree = insert(myTree, 7);
@@ -143,19 +226,26 @@ int main()
     myTree = insert(myTree, 11);
     myTree = insert(myTree, 12);
 
-    printf("\n\nDuyet cay theo thu tu thoi gian\n");
+    /*printf("\n\nDuyet cay theo thu tu thoi gian\n");
     NLR (myTree);
 
 
     printf("\n\nSo node tren cay la %d\n",countNode(myTree));
     printf("\n\nSo leafnode tren cay la %d",countLeafNode(myTree));
     printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));
+
+	int themNode= 11;
+    printf("\n\nThem phan tu: %d", themNode);
+    myTree = insertNode(myTree, themNode);
+    printf("Duyet cay sau khi them phan tu\n");
+    NLR(myTree);
+
     
     int xoaNode= 12;
     printf("\n\nXoa cay so: %d\n", xoaNode);
     myTree = delNode(myTree, xoaNode);
     printf("\nDuyet cay sau khi xoa node\n");
-    NLR(myTree);
+    NLR(myTree);*/
 
     
     return 0;
