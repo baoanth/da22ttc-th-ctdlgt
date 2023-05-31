@@ -122,33 +122,24 @@ int DelNode(TREE &T, int X)
     }
 }
 
-//Huy toan bo cay nhi phan tim kiem
-void removeTree(TREE &T)
-{
-	if(T)
-	{
-		removeTree(T->pLeft);
-		removeTree(T->pRight);
-		delete(T);
-	}
-}
-
 //Khai bao cay, chen vao 10 nut, in ra 3 kieu
 int main()
 {
     TREE my_tree = NULL;
-    InsertNode(my_tree, 24);
-    InsertNode(my_tree, 23);
-    InsertNode(my_tree, 3);
-    InsertNode(my_tree, 7);
-    InsertNode(my_tree, 37);
-    InsertNode(my_tree, 50);
-    InsertNode(my_tree, 15);
-    InsertNode(my_tree, 24);
-    InsertNode(my_tree, 20);
-    InsertNode(my_tree, 11);
-    InsertNode(my_tree, 45);
 
+	int k;
+	printf("\nBan muon nhap bao nhieu nut cho cay nhi phan: ");
+	scanf("%d", &k);
+	
+	for(int i = 1; i<=k; i++)
+	{	
+		int tmp;
+		printf("Nhap vao gia tri thu %d: ", i);
+		scanf("%d", &tmp);
+		InsertNode(my_tree, tmp);
+	}
+	
+//In
 	printf("In theo thu tu truoc\n");
     Print_NLR(my_tree);
     printf("\n");
@@ -179,7 +170,8 @@ int main()
 	for(int i = 1; i<=n; i++)
 	{
 		biendem++;
-//Xoa phan tu
+		
+		//Xoa phan tu
 		int Y;
 		printf("\nNhap vao Node can xoa lan thu %d: ", biendem);
 		scanf("%d", &Y);
