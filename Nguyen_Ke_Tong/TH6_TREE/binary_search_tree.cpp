@@ -179,10 +179,66 @@ else
 }
      return Root;
 }
+
+void inputNode(TREE &T)
+{
+    char ch;
+    int num;
+
+    while(num != -999);
+    {
+        printf("Enter a number (Enter -999 to EXIT):");
+        scanf("%d",&num);
+        insertNode(T,num);
+        printf("Inserted %d into the BST \n",num);
+    }
+}
    
 int main()
 {
-    TNode* myTree =NULL;
+    TREE my_tree =NULL;
+    int selection = 1;
+
+    do
+    {
+        printf("____BINARY SEARCH TREE DEMO___\n");
+
+        printf("Enter your selection\n");
+        printf("1. input number to BST\n");
+        printf("2. Print BST in First order\n");
+        printf("3. Print BST in Middle order\n");
+        printf("4. Print BST in Last order\n");
+        printf("5. Delete node in BST\n");
+        printf("0. EXIT\n");
+
+        printf("Your selection: ");
+        scanf("%d",&selection);
+    }while(selection!=0);
+
+    switch(selection)
+    {
+        case 0:
+        printf("");
+        break;
+
+        case 1:
+        printf("");
+        break;
+
+        case 2:
+        printf("");
+        break;
+
+        case 3:
+        printf("");
+        break;
+
+        case 4:
+        printf("");
+        break;
+    }
+
+    /*TNode* myTree =NULL;
 
     myTree = insert(myTree, 8);
     myTree = insert(myTree, 9);
@@ -219,7 +275,7 @@ int main()
 
     printf("\nSo node tren cay la %d\n",countNode(myTree));
     printf("\nSo nhanh tren cay la %d",countLeafNode(myTree));
-    printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));
+    printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));*/
     
     return 0;
 }
