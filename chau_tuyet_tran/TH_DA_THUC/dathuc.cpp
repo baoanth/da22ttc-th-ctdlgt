@@ -82,7 +82,7 @@ void NhapDaThuc(Dathuc &l)
 		Node* new_ele = GetNode(s);
 		AddTail(l, new_ele);
 	}
-	printf ("\n");
+	printf ("\n");S
 }
 
 void PrintDathuc(Dathuc &l)
