@@ -71,6 +71,35 @@ void NhapDaThuc(Dathuc &l)
 	}
 }
 
+Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
+{
+	Node *p, *q;
+	Dathuc l_kq;
+	Init(l_kq);
+	Donthuc dt_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dt_tam.hs= p->Info.hs;
+		dt_tam.bac= q->Info.bac;
+		while(q!=NULL)
+		{
+			if (p->Info.bac == q->Info.bac)
+				break;
+			q=q->pNext;	
+		}
+		if(q!=NULL)
+			dt_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dt_tam);
+		AddTail(l_kq, new_ele);
+		
+		p->pNext;	
+	}
+	return l_kq;
+}
+
 void CopyDaThuc ( Dathuc l, Dathuc &l_kq)
 {
 	Node* p;
@@ -137,6 +166,7 @@ float UocluongDathuc(Dathuc l, int x)
 		p=p->pNext;
 	}
 	return kq;
+
 	
 }
 /*Dathuc CongDaThuc(Dathuc l1, Dathuc l2)
@@ -173,7 +203,7 @@ float UocluongDathuc(Dathuc l, int x)
 void PrintDathuc(Dathuc &l)
 { 
 	printf("P(x)=");
-	if(l.pHead ==NULL)
+	if(l.pHead==NULL)
 	{
 		printf("Da thuc rong \n");
 	}
@@ -196,11 +226,19 @@ void PrintDathuc(Dathuc &l)
 
 int main()
 {
+
+	Dathuc my_dathuc1;
+	Init(my_dathuc1);
+	Dathuc my_dathuc2;
+	Init(my_dathuc2);
+	Dathuc my_dathuc3;
+
 	Dathuc dt1, dt2, dt3;
 	float x;
 	Init(dt1);
 	Init(dt2);
 	Init(dt3);
+
 	
 	printf("---[NHAP DA THUC 1]--- \n");
 	NhapDaThuc(dt1);
@@ -227,9 +265,9 @@ int main()
 	printf("Gia tri cua da thuc khi x=%.0f la: %.0f",x, UocluongDathuc(dt3, x));
 	
 
-
 	return 0;
 }
+
 
 
 
