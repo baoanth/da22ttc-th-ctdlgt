@@ -126,10 +126,18 @@ int DelNode(TREE &T, int X)
 int main()
 {
     TREE my_tree = NULL;
-
+    
 	int k;
-	printf("\nBan muon nhap bao nhieu nut cho cay nhi phan: ");
-	scanf("%d", &k);
+	
+//Dieu kien de chay chuong trinh
+	do
+	{
+    	printf("Ban muon nhap bao nhieu nut cho cay nhi phan: ");
+		scanf("%d", &k);
+	
+    	if(k<=0)     
+			printf("Ban da nhap sai. Yeu cau ban nhap vao so duong de chuong trinh chay.\n\n");
+    }while(k<=0);
 	
 	for(int i = 1; i<=k; i++)
 	{	
@@ -139,6 +147,7 @@ int main()
 		InsertNode(my_tree, tmp);
 	}
 	
+		
 //In
 	printf("In theo thu tu truoc\n");
     Print_NLR(my_tree);
@@ -163,8 +172,17 @@ int main()
 
 //XOA
 	int n, biendem = 0;
-	printf("\n\nBan muon xoa may lan: ");
-	scanf("%d", &n);
+	
+	
+	do
+	{
+		printf("\n\nBan muon xoa may lan: ");
+		scanf("%d", &n);
+		if(n<=0) 
+			printf("Ban da nhap sai. Yeu cau nhap vao so nguyen duong de chuong trinh xoa nut chay.");
+	} while(n<=0);
+	
+	
 	
 //********************************
 	for(int i = 1; i<=n; i++)
