@@ -180,9 +180,43 @@ else
      return Root;
 }
    
+   
 int main()
 {
-    TNode* myTree =NULL;
+	TREE my_tree = NULL;
+	int selection = 1;
+	while (selection)
+	{
+		printf("---BINARY SEARCH TREE DEMO---\n\n");
+		printf("Enter your selection\n");
+		printf("1. Input number to BST");
+		printf("2. Print BST in First order (NRL)");
+		printf("3. Print BST in Middle order (LNT)");
+		printf("4. Print BST in Last order (LRN)");
+		Printf("5. Delete node in BST");
+		printf("0. EXIT");
+		
+		Printf("Your selection: ");
+		scanf("%d", selection);
+		
+		switch selection
+		
+		    case 1:
+		    	inputNode(my_tree);
+		    	break;
+		    case 2:
+				break;
+			case 3:
+				print_LNR(my_tree);
+				break;
+			case 4:
+				break;	
+			case 5:
+				break;	
+		
+	} while (selection!=0)
+		
+    /*TNode* myTree =NULL;
 
     myTree = insertNode(myTree, 11);
     myTree = insertNode(myTree, 28);
@@ -192,7 +226,7 @@ int main()
     myTree = insertNode(myTree, 33);
     myTree = insertNode(myTree, 18);
     myTree = insertNode(myTree, 36);
-    myTree = insertNode(myTree, 9);
+    myTree = insertNode(myTree, 9);*/
 
     printf("\n\nDuyet cay theo thu tu thoi gian\n");
     NLR(myTree);
