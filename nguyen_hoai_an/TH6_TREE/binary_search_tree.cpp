@@ -114,6 +114,28 @@ int main()
 {
     TREE my_tree = NULL;
 
+    /*
+ 	InsertNode(my_tree, 15); 
+    InsertNode(my_tree, 24);
+	InsertNode(my_tree, 39);
+	InsertNode(my_tree, 50);
+    InsertNode(my_tree, 4);
+    InsertNode(my_tree, 13);
+    InsertNode(my_tree, 20);
+	InsertNode(my_tree, 1);
+	InsertNode(my_tree, 19);
+	InsertNode(my_tree, 36);
+
+    printf("Duyet theo thu tu truoc: \n");
+    Print_NLR(my_tree);
+    
+    printf("\nDuyet theo thu tu giua: \n");
+	Print_LNR(my_tree);
+
+    printf("\nDuyet theo thu tu sau: \n");
+	Print_LRN(my_tree);
+	*/
+
     int n, i, x;
     printf("Nhap so luong tree: ");
     scanf("%d", &n);
@@ -196,26 +218,4 @@ int main()
             break;
     }
         return 0;
-    }
-
-    /*
- 	InsertNode(my_tree, 15); 
-    InsertNode(my_tree, 24);
-	InsertNode(my_tree, 39);
-	InsertNode(my_tree, 50);
-    InsertNode(my_tree, 4);
-    InsertNode(my_tree, 13);
-    InsertNode(my_tree, 20);
-	InsertNode(my_tree, 1);
-	InsertNode(my_tree, 19);
-	InsertNode(my_tree, 36);
-
-    printf("Duyet theo thu tu truoc: \n");
-    Print_NLR(my_tree);
-    
-    printf("\nDuyet theo thu tu giua: \n");
-	Print_LNR(my_tree);
-
-    printf("\nDuyet theo thu tu sau: \n");
-	Print_LRN(my_tree);
-	*/
+}
