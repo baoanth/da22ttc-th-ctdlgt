@@ -133,11 +133,11 @@ int main()
 //Dieu kien de chay chuong trinh
 	do
 	{
-    	printf("Ban muon nhap bao nhieu nut cho cay nhi phan: ");
+    	printf("Hay nhap so nut cho cay: ");
 		scanf("%d", &k);
 	
     	if(k<=0)     
-			printf("Ban da nhap sai. Yeu cau ban nhap vao so duong de chuong trinh chay.\n\n");
+			printf("Ban da nhap sai. Yeu cau ban nhap lai.\n\n");
     }while(k<=0);
 	
 	for(int i = 1; i<=k; i++)
@@ -180,7 +180,7 @@ int main()
 		printf("\n\nBan muon xoa may lan: ");
 		scanf("%d", &n);
 		if(n<=0) 
-			printf("Ban da nhap sai. Yeu cau nhap vao so nguyen duong de chuong trinh xoa nut chay.");
+			printf("Ban da nhap sai. Yeu cau nhap lai.");
 	} while(n<=0);
 	
 	

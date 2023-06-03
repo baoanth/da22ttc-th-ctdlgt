@@ -109,35 +109,127 @@ int delNode(tree &T, int x)
     }
 }
 
+void themnode(tree &T)
+{
+    int n;
+    cout << "nhap vao so luong phan tu trong cay ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cout << "nhap phan tu thu " << i << " ";
+        cin >> x;
+        insertNode(T, x);
+    }
+}
+
+void removeTree(tree &T)
+{
+    if (T)
+    {
+        removeTree(T->left);
+        removeTree(T->right);
+        delete (T);
+    }
+}
+
+int demla(tree T)
+{
+	if(T == NULL )
+		return 0;    
+    if(T->left == NULL && T->right == NULL)
+    	return 1;
+
+    return demla(T->left)+demla(T->right);
+}
+int demnutMotcon(tree T)
+{
+	if(T== NULL)
+		return 0;
+	if((T->left != NULL && T->right == NULL)||((T->left == NULL && T->right != NULL)))
+		return 1;
+	return demnutMotcon(T->left) + demnutMotcon(T->right);
+}
+
+int demlaHaicon(tree T)
+{
+	if(T== NULL)
+		return 0;
+	if(T->left != NULL && T->right != NULL)
+		return 1;
+	return demnutHaicon(T->left) + demnutHaicon(T->right);
+	
+}
+
+int NodeLHK(tree T,int k)
+{
+	if(T == NULL) 
+		return 0;
+	if(T->key > k)
+		return 1;
+	return NodeLHK(T->left,k) + NodeLHK(T->right,k);
+}
 int main()
 {
-    int a[] = {12, 3, 6, 87, 32, 7, 5, 98, 45, 34, 80, 43, 90};
     tree T = NULL;
 
-    for (int i = 0; i < 13; i++)
-        insertNode(T, a[i]);
-
-    Print_NLR(T);
-    cout << endl;
-    Print_LNR(T);
-    cout << endl;
-    Print_LRN(T);
-
-    int x;
-    cout << "\nnhap vao gia tri can xoa ";
-    cin >> x;
-    //    tree p = searchNode(T, x);
-    //    if (p != NULL)
-    //        cout << "\ntim thay ";
-    //    else
-    //        cout << "\nKHONG tim thay";
-    int i = delNode(T, x);
-    if (i != 0)
+    int lc;
+    while (1)
     {
-        cout << "da xoa ";
-        cout << "\ncay sau khi xoa :";
-        Print_NLR(T);
+        cout << "\n-----------------MENU-----------------\n";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con";
+        cout << "\nnhap lua chon ";
+        cin >> lc;
+        if (lc == 0)
+            return 0;
+        else if (lc == 1)
+            themnode(T);
+        else if (lc == 2)
+            Print_NLR(T);
+        else if (lc == 3)
+            Print_LNR(T);
+        else if (lc == 4)
+            Print_LRN(T);
+        else if (lc == 5)
+        {
+            int x;
+            cout << "nhap gia tri can xoa ";
+            cin >> x;
+            int tmp = delNode(T, x);
+            if (tmp)
+                cout << "da xoa xong ";
+            else
+                cout << "khong tim thay gia tri can xoa ";
+        }
+        else if (lc == 6)
+            removeTree(T);
+        else if(lc == 7)
+        {
+            int x;
+            cout << "nhap gia tri can tim :";
+            cin >> x;
+            tree tmp = searchNode(T, x);
+            if (tmp)
+                cout << "da tim thay";
+            else 
+                cout << "KHONG tim thay";
+
+        }
+        else if(lc == 8)
+        {
+            int x = demla(T);
+            cout << "co "<< x << " la";
+        }
+        else if(lc == 9)
+        {
+        	int tmp = demnutMotcon(T);
+        	cout << "co "<<tmp <<" nut co 1 con ";
+        }
+        else if(lc == 10)
+        {
+        	int tmp = demnutHaicon(T);
+        	cout << "co "<<tmp <<" nut co 2 con ";
+        }
     }
-    else
-        cout << "khong tom thay gia tri " << x << " trong cay";
 }
