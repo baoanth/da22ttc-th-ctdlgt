@@ -36,10 +36,14 @@ Node *GetNode(Person x)
 }
 
 <<<<<<< HEAD
+void AddFirst(List &l, Node *new_ele)
+=======
+<<<<<<< HEAD
 void AddFirst(List &l, Node* new_ele)
 =======
 void AddFirst(List &l, Node *new_ele)
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 {
     if (l.pHead == NULL)
     {
@@ -77,6 +81,8 @@ void PrintList(List &l)
 	}
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -100,6 +106,7 @@ Node *FindNodeById(List l, int idx)
 }
 
 =======
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -271,7 +278,10 @@ Node *FindNodeById(List l, int idx)
     return p;
 }
 
+<<<<<<< HEAD
+=======
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 void AddNodeAfter(List &l, int idx, Node *new_ele4)
 {
     Node *q = FindNodeById(l, idx);
@@ -382,10 +392,14 @@ int main()
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
 <<<<<<< HEAD
+    
+=======
+<<<<<<< HEAD
    
 =======
     
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 
     List my_list;
     Init(my_list);
@@ -393,6 +407,10 @@ int main()
     AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
    
 
@@ -435,12 +453,15 @@ int main()
 
 <<<<<<< HEAD
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
     PrintList(my_list);
 
     return 0;
 
 
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 
 
@@ -449,6 +470,7 @@ int main()
 
 
 =======
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -725,4 +747,7 @@ int main()
 =======
 >>>>>>> d6302ece61a6dba59df57133f5a722db35bfa133
 >>>>>>> c1af93f3f198b3d672135fceeddfc247ee92151a
+<<<<<<< HEAD
+=======
 >>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a

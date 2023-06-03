@@ -74,6 +74,41 @@ int insertNode(tree &T, int x)
     return 1;
 }
 
+void searchStandfor(tree &p, tree &q)
+{
+    if (q->left)
+        searchStandfor(p, q->left);
+    else
+    {
+        p->key = q->key;
+        p = q;
+        q = q->right;
+    }
+}
+int delNode(tree &T, int x)
+{
+    if (T == NULL)
+        return 0;
+    if (T->key > x)
+        return delNode(T->left, x);
+    if (T->key < x)
+        delNode(T->right, x);
+    else
+    {
+        tree tmp = T;
+        if (T->left == NULL)
+            T = T->right;
+        else if (T->right == NULL)
+            T = T->left;
+        else
+        {
+            tree q = T->right;
+            searchStandfor(tmp, q);
+        }
+        delete (tmp);
+    }
+}
+
 int main()
 {
     int a[] = {12, 3, 6, 87, 32, 7, 5, 98, 45, 34, 80, 43, 90};
@@ -89,11 +124,20 @@ int main()
     Print_LRN(T);
 
     int x;
-    cout << "\nnhap vao gia tri can tim ";
+    cout << "\nnhap vao gia tri can xoa ";
     cin >> x;
-    tree p = searchNode(T, x);
-    if (p != NULL)
-        cout << "\ntim thay ";
+    //    tree p = searchNode(T, x);
+    //    if (p != NULL)
+    //        cout << "\ntim thay ";
+    //    else
+    //        cout << "\nKHONG tim thay";
+    int i = delNode(T, x);
+    if (i != 0)
+    {
+        cout << "da xoa ";
+        cout << "\ncay sau khi xoa :";
+        Print_NLR(T);
+    }
     else
-        cout << "\nKHONG tim thay";
+        cout << "khong tom thay gia tri " << x << " trong cay";
 }

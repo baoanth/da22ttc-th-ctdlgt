@@ -103,7 +103,7 @@ int main()
     Stack my_stack;
     Init(my_stack);
     printf("Chuoi ban dau : %s \n", str);
-    printf("\n ket qua trong stack");
+    printf("\n ket qua voi stack");
 
     for(i = 0; i< strlen(str); i ++)
     {
