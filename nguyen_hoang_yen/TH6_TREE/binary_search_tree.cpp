@@ -111,12 +111,25 @@ int main()
 {
 	TREE my_tree = NULL;    
 	
-	insertNode(my_tree, 10);
-	insertNode(my_tree, 24);
-	insertNode(my_tree, 26);
-	insertNode(my_tree, 11);
-	insertNode(my_tree, 04);	
 	
+//	insertNode(my_tree, 10);
+//	insertNode(my_tree, 24);
+//	insertNode(my_tree, 26);
+//	insertNode(my_tree, 11);
+//	insertNode(my_tree, 04);	
+	
+	 int k;
+    printf("\nBan muon nhap bao nhieu Node chp cay: ");
+    scanf("%d", &k);
+    
+    for(int i = 1; i<=k; i++)
+    {
+    	int tmp;
+    	printf("\nNhap vao gia tri thu %d: ", i);
+    	scanf("%d", &tmp);
+    	insertNode(my_tree, tmp);
+    }
+
 	
 	printf("in theo thu tu dau");
 	printf("\n");
