@@ -133,6 +133,43 @@ void removeTree(tree &T)
         delete (T);
     }
 }
+
+int demla(tree T)
+{
+	if(T == NULL )
+		return 0;    
+    if(T->left == NULL && T->right == NULL)
+    	return 1;
+
+    return demla(T->left)+demla(T->right);
+}
+int demnutMotcon(tree T)
+{
+	if(T== NULL)
+		return 0;
+	if((T->left != NULL && T->right == NULL)||((T->left == NULL && T->right != NULL)))
+		return 1;
+	return demnutMotcon(T->left) + demnutMotcon(T->right);
+}
+
+int demlaHaicon(tree T)
+{
+	if(T== NULL)
+		return 0;
+	if(T->left != NULL && T->right != NULL)
+		return 1;
+	return demnutHaicon(T->left) + demnutHaicon(T->right);
+	
+}
+
+int NodeLHK(tree T,int k)
+{
+	if(T == NULL) 
+		return 0;
+	if(T->key > k)
+		return 1;
+	return NodeLHK(T->left,k) + NodeLHK(T->right,k);
+}
 int main()
 {
     tree T = NULL;
@@ -141,7 +178,7 @@ int main()
     while (1)
     {
         cout << "\n-----------------MENU-----------------\n";
-        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node ";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con";
         cout << "\nnhap lua chon ";
         cin >> lc;
         if (lc == 0)
@@ -167,7 +204,7 @@ int main()
         }
         else if (lc == 6)
             removeTree(T);
-        else
+        else if(lc == 7)
         {
             int x;
             cout << "nhap gia tri can tim :";
@@ -175,8 +212,24 @@ int main()
             tree tmp = searchNode(T, x);
             if (tmp)
                 cout << "da tim thay";
-            else
+            else 
                 cout << "KHONG tim thay";
+
+        }
+        else if(lc == 8)
+        {
+            int x = demla(T);
+            cout << "co "<< x << " la";
+        }
+        else if(lc == 9)
+        {
+        	int tmp = demnutMotcon(T);
+        	cout << "co "<<tmp <<" nut co 1 con ";
+        }
+        else if(lc == 10)
+        {
+        	int tmp = demnutHaicon(T);
+        	cout << "co "<<tmp <<" nut co 2 con ";
         }
     }
 }
