@@ -50,8 +50,9 @@ Node* SearchNode(TREE Root, int x)
             p = p->pLeft;
         else
             p = p->pRight;
+
+    }	
 	return NULL;
-    }
 }
 
 int InsertNode(TREE &t, int x)
@@ -77,7 +78,7 @@ int InsertNode(TREE &t, int x)
 
 int main()
 {
-	int x, m;
+	int x;
 	TREE root = NULL;
 	
 	 InsertNode(root,1);
@@ -111,13 +112,13 @@ int main()
 	
 	printf("\nNhap x can tim: ");
 	scanf("%d",&x);
-	if(SearchNode(root,x)==NULL)
+	if(SearchNode(root,x)!=NULL)
 	{
-		printf("Khong tim thay %d trong day ",x);
+		printf("Tim thay %d trong day ",x);
 	}
 	else
 	{
-		printf("Tim thay %d trong day ",x);
+		printf("Khong tim thay %d trong day ",x);
 	}
 	printf("\n");
 	printf("\nNhap x can chen: ");
