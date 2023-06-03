@@ -115,28 +115,37 @@ int delNode(TREE &T, int X)
     }
 }
 
+int so_nut_la(TREE Root)
+{
+    if (Root == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return so_nut_la(Root->pLeft) + so_nut_la(Root->pRight);
+    }
+}
+
 int main()
 {
     TREE Root = NULL;
     int y, x, n, i, z;
 
     printf("==========Nhap cay nhi phan==========\n");
-    printf("Nhap so luong phan tu : ");
-    scanf("%d", &n);
-
-    for (i = 0; i < n; i++)
-    {
-        printf("Nhap gia tri thu %d = ", i + 1);
-        scanf("%d", &x);
-        InsertNode(Root, x);
-    }
 
     printf("==========Lua chon cac thao tac==========\n");
-    printf("1. In theo thu tu truoc:\n");
-    printf("2. In theo thu tu giua:\n");
-    printf("3. In theo thu tu sau:\n");
-    printf("4. Tim gia tri x:\n");
-    printf("5. Xoa gia tri x:\n");
+    printf("1. Nhap cay nhi phan:\n");
+    printf("2. In theo thu tu truoc:\n");
+    printf("3. In theo thu tu giua:\n");
+    printf("4. In theo thu tu sau:\n");
+    printf("5. Tim gia tri x:\n");
+    printf("6. Xoa gia tri x:\n");
+    printf("7. Dem so nut la:\n");
     printf("0. EXIT:\n");
     //    InsertNode(Root, 30);
     //    InsertNode(Root, 22);
@@ -151,50 +160,68 @@ int main()
     //    InsertNode(Root, 50);
 
     int lua_chon;
-    while(1){
-    
-    printf("\nNhap lua chon: ");
-    scanf("%d", &lua_chon);
+    while (1)
+    {
 
-    if (lua_chon == 1)
-    {
-        printf("In theo thu tu truoc:\n");
-        Print_NLR(Root);
+        printf("\nNhap lua chon: ");
+        scanf("%d", &lua_chon);
+
+        if (lua_chon == 1)
+        {
+            printf("Nhap so luong phan tu : ");
+            scanf("%d", &n);
+
+            for (i = 0; i < n; i++)
+            {
+                printf("Nhap gia tri thu %d = ", i + 1);
+                scanf("%d", &x);
+                InsertNode(Root, x);
+            }
+        }
+        if (lua_chon == 2)
+        {
+            printf("In theo thu tu truoc:\n");
+            Print_NLR(Root);
+        }
+        if (lua_chon == 3)
+        {
+            printf("In theo thu tu giua:\n");
+            Print_LNR(Root);
+        }
+        if (lua_chon == 4)
+        {
+            printf("In theo thu tu sau:\n");
+            Print_LRN(Root);
+        }
+        if (lua_chon == 5)
+        {
+            printf("\nNhap y can tim: ");
+            scanf("%d", &y);
+            TNODE *gia_tri = SearchNode(Root, y);
+            if (gia_tri == NULL)
+                printf("Khong co gia tri y = %d\n", y);
+            else
+                printf("Tim thay y = %d \n", y);
+        }
+
+        if (lua_chon == 6)
+        {
+            printf("\nNhap x can xoa: ");
+            scanf("%d", &z);
+            int xoa = delNode(Root, z);
+            if (xoa == 0)
+                printf("Khong tim thay gia tri x = %d \n", z);
+            else
+                printf("Da xoa nut x = %d \n", z);
+        }
+        if (lua_chon == 7)
+        {
+            int nut_la = so_nut_la(Root);
+            printf("So nut la cua cay : %d", nut_la);
+        }
+        if (lua_chon == 0)
+            return 0;
     }
-    if (lua_chon == 2)
-    {
-        printf("In theo thu tu giua:\n");
-        Print_LNR(Root);
-    }
-    if (lua_chon == 3)
-    {
-        printf("In theo thu tu sau:\n");
-        Print_LRN(Root);
-    }
-    if (lua_chon == 4)
-    {
-        printf("\nNhap y can tim: ");
-        scanf("%d", &y);
-        TNODE *gia_tri = SearchNode(Root, y);
-        if (gia_tri == NULL)
-            printf("Khong co gia tri y = %d\n", y);
-        else
-            printf("Tim thay y = %d \n", y);
-    }
-    if (lua_chon == 5)
-    {
-        printf("\nNhap x can xoa: ");
-        scanf("%d", &z);
-        int xoa = delNode(Root, z);
-        if (xoa == 0)
-            printf("Khong tim thay gia tri x = %d \n", z);
-        else
-            printf("Da xoa nut x = %d \n", z);
-    }
-    
-    if (lua_chon == 0)
-    return 0;
-}
 
     return 0;
 }
