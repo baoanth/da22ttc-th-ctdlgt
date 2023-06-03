@@ -171,7 +171,7 @@ int NodeNHK(tree T, int k)
 
 int NodeLHK(tree T, int k)
 {
-    if (T == NULL || k >= T->key)
+    if (T == NULL || k > T->key)
         return 0;
     else
         return 1 + NodeLHK(T->right, k) + NodeLHK(T->left, k);
