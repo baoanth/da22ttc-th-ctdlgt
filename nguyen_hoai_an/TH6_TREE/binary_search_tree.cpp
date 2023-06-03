@@ -198,23 +198,25 @@ int main()
         {
             printf("\nNhap x muon tim: ");
             scanf("%d", &x);
+
             TNode *gia_tri = SearchNode(my_tree, x);
-            if (gia_tri == NULL)
-                printf("Khong co dau ma kim haha.");
+            if(gia_tri == NULL)
+            printf("Khong co dau ma kim haha.");
             else
-                printf("Thay roi ne haha.");
-                printf("\n");
+            printf("Thay roi ne haha.");
+            printf("\n");
         }
         if (lua_chon == 6)
         {
             printf("\nNhap x muon xoa: ");
             scanf("%d", &x);
+
             int kt = DelNode(my_tree, x);
             if (kt == 0)
-                printf("Khong thay gia tri can xoa!");
+            printf("Khong thay gia tri can xoa!");
             else
-                printf("Xoa roi nhe");
-                printf("\n");
+            printf("Xoa roi nhe");
+            printf("\n");
         }
         if (lua_chon == 0)
             break;
