@@ -169,7 +169,7 @@ int main()
 		
 	int Y;
 	printf("\n\nBan muon xoa node bao nhieu: ");
-	scanf("%d",Y);
+	scanf("%d", &Y);
 	
 	int  xoa= delNode(my_tree, Y);
 	if(xoa == NULL)
