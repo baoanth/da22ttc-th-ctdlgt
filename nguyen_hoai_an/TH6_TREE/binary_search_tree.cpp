@@ -114,6 +114,22 @@ int main()
 {
     TREE my_tree = NULL;
 
+    int n, i;
+    printf("Nhap so luong tree: ");
+    scanf("%d", &n);
+    printf("\n");
+
+    while(i<n)
+    {
+        int a[n];
+        printf("Nhap gia tri nut %d : ", i);
+        scanf("%d", &a[i]);
+        InsertNode(my_tree, a[i]);
+        i++;
+    }
+
+
+/*
  	InsertNode(my_tree, 15); 
     InsertNode(my_tree, 24);
 	InsertNode(my_tree, 39);
@@ -133,16 +149,16 @@ int main()
 
     printf("\nDuyet theo thu tu sau: \n");
 	Print_LRN(my_tree);
-	
+	*/
+
 	int Key;
-    printf("\n");
     printf("\nNhap Node can tim: ");
     scanf("%d", &Key);
 
     TNode* newKey = SearchNode(my_tree, Key);
     if( newKey!= NULL)
     {
-        printf("Da tim thay %d trong cay.\n");
+        printf("Da tim thay %d trong cay.");
     }
     else
     {
@@ -169,7 +185,8 @@ int main()
     else
     {
         printf("Khong the xoa.");
-    }
+    } 
+
 
     return 0;
 }
