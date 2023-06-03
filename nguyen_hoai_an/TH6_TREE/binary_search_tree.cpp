@@ -153,15 +153,15 @@ int main()
     while(1)
     {
         printf("\n");
-        printf("|-------MENU--------| \n");
-        printf("|0. EXIT            | \n");
-        printf("|1. Node Left Right | \n");
-        printf("|2. Left Node Right | \n");
-        printf("|3. Left Right Node | \n");
-        printf("|4. Them nut        | \n");
-        printf("|5. Tim nut         | \n");
-        printf("|6. Xoa nut         | \n");
-        printf("|-------------------| \n");
+        printf("|--------MENU--------| \n");
+        printf("|0. EXIT             | \n");
+        printf("|1. Node Left Right  | \n");
+        printf("|2. Left Node Right  | \n");
+        printf("|3. Left Right Node  | \n");
+        printf("|4. Insert Node      | \n");
+        printf("|5. Search Node      | \n");
+        printf("|6. Delete Node      | \n");
+        printf("|--------------------| \n");
 
         int lua_chon;
         printf("Ban chon so: ");
