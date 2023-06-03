@@ -115,6 +115,7 @@ int delNode(TREE &T, int X)
     }
 }
 
+/*Dem so nut la*/
 int so_nut_la(TREE Root)
 {
     if (Root == NULL)
@@ -131,6 +132,24 @@ int so_nut_la(TREE Root)
     }
 }
 
+/*So nut co dung mot cay con*/
+int nut_1_cay_con(TREE Root)
+{
+     if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft == NULL || Root->pRight == NULL)
+    {
+        return 1 + nut_1_cay_con(Root->pLeft) + nut_1_cay_con(Root->pRight);
+    }
+    else
+    {
+        return nut_1_cay_con(Root->pLeft) + nut_1_cay_con(Root->pRight);
+    }
+}
+
+
 int main()
 {
     TREE Root = NULL;
@@ -146,6 +165,7 @@ int main()
     printf("5. Tim gia tri x:\n");
     printf("6. Xoa gia tri x:\n");
     printf("7. Dem so nut la:\n");
+    printf("8. So nut co dung mot cat con:\n");
     printf("0. EXIT:\n");
     //    InsertNode(Root, 30);
     //    InsertNode(Root, 22);
@@ -218,6 +238,11 @@ int main()
         {
             int nut_la = so_nut_la(Root);
             printf("So nut la cua cay : %d", nut_la);
+        }
+        if (lua_chon == 8)
+        {
+            int nut_la = nut_1_cay_con(Root);
+            printf("So nut co dung mot cay con : %d", nut_la);
         }
         if (lua_chon == 0)
             return 0;
