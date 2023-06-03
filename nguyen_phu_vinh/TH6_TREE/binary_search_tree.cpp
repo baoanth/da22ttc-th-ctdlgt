@@ -76,6 +76,43 @@ int InsertNode(TREE &T, int X)
     T->pLeft = T->pRight = NULL;
     return 1;
 }
+void SearchStandFor(TREE &p, TREE &q)
+{
+    if (q->pLeft)
+        SearchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key = q->Key;
+        p = q;
+        q = q->pRight;
+    }
+}
+// xoa nut
+int DelNode(TREE &T, int X)
+{
+    if (T == NULL)
+        return 0;
+    if (T->Key > X)
+        return DelNode(T->pLeft, X);
+    if (T->Key < X)
+        return DelNode(T->pRight, X);
+    else
+    {
+        TNODE *p = T;
+        if (T->pLeft == NULL)
+            T = T->pRight;
+        else if (T->pRight == NULL)
+            T = T->pLeft;
+        else
+        {
+            TNODE *q = T->pRight;
+            SearchStandFor(p, q);
+        }
+        delete p;
+    }
+}
+
+
 
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
@@ -92,14 +129,18 @@ int main()
     InsertNode(my_tree, 38);
     InsertNode(my_tree, 33);
     InsertNode(my_tree, 36);
-
+	
+	printf("gia tri dau\n");
     Print_NLR(my_tree);
     printf("\n");
+    printf("gia tri giua\n");
     Print_LNR(my_tree);
     printf("\n");
+    printf("gia tri cuoi\n");
     Print_LRN(my_tree);
-
-    int x;
+    
+	
+    int x,y;
     printf("\nNhap x: ");
     scanf("%d", &x);
     TNODE *gia_tri = SearchNode(my_tree, x);
@@ -107,5 +148,24 @@ int main()
         printf("Khong tim thay gia tri x");
     else
         printf("Tim thay gia tri x");
+        
+    printf("\nNhap y can xoa: ");
+    scanf("%d", &y);
+    
+    int xoa = DelNode(my_tree, y);
+    if (xoa == 0)
+        printf("Khong tim thay gia tri y = %d \n", y);
+    else
+        printf("Da xoa nut y = %d \n", y);
+	printf("gia tri dau\n");
+    Print_NLR(my_tree);
+    printf("\n");
+    printf("gia tri giua\n");
+    Print_LNR(my_tree);
+    printf("\n");
+    printf("gia tri cuoi\n");
+    Print_LRN(my_tree);
+
+	
     return 0;
 }
