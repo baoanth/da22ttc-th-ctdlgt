@@ -117,6 +117,7 @@ int main()
     int n, i;
     printf("Nhap so luong tree: ");
     scanf("%d", &n);
+    printf("\n");
 
     while(i<n)
     {
@@ -126,6 +127,7 @@ int main()
         InsertNode(my_tree, a[i]);
         i++;
     }
+
 
 /*
  	InsertNode(my_tree, 15); 
@@ -150,14 +152,13 @@ int main()
 	*/
 
 	int Key;
-    printf("\n");
     printf("\nNhap Node can tim: ");
     scanf("%d", &Key);
 
     TNode* newKey = SearchNode(my_tree, Key);
     if( newKey!= NULL)
     {
-        printf("Da tim thay %d trong cay.\n");
+        printf("Da tim thay %d trong cay.");
     }
     else
     {
