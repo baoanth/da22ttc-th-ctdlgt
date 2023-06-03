@@ -111,14 +111,14 @@ int delNode(tree &T, int x)
 
 void themnode(tree &T)
 {
- int n;
+    int n;
     cout << "nhap vao so luong phan tu trong cay ";
     cin >> n;
 
-    for(int i = 0; i< n; i++)
+    for (int i = 0; i < n; i++)
     {
         int x;
-        cout << "nhap phan tu thu "<< i << " ";
+        cout << "nhap phan tu thu " << i << " ";
         cin >> x;
         insertNode(T, x);
     }
@@ -126,46 +126,46 @@ void themnode(tree &T)
 
 void removeTree(tree &T)
 {
-	if(T)
-	{
-		removeTree(T->left);
-		removeTree(T->right);
-		delete(T);
-	}
+    if (T)
+    {
+        removeTree(T->left);
+        removeTree(T->right);
+        delete (T);
+    }
 }
 int main()
 {
     tree T = NULL;
-   
+
     int lc;
-    while(1)
+    while (1)
     {
-	    cout << "\n-----------------MENU-----------------\n";
-	    cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay";
-	    cout << "\nnhap lua chon ";
-	    cin >> lc;
-	    if(lc == 0) 
-	        return 0;
-	    else if (lc == 1)
-	        themnode(T);
-	    else if (lc == 2)
-	        Print_NLR(T);
-	    else if (lc == 3)
-	        Print_LNR(T);
-	    else if (lc == 4)
-	        Print_LRN(T);
-	    else if (lc == 5)
-	    {
-	        int x;
-	        cout << "nhap gia tri can xoa ";
-	        cin >> x;
-	        int tmp = delNode(T,x);
-	        if(tmp)
-	            cout << "da xoa xong ";
-	        else   
-	            cout << "khong tim thay gia tri can xoa ";
-	    }
-	    else
-	    	removeTree(T);
-	}
+        cout << "\n-----------------MENU-----------------\n";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay";
+        cout << "\nnhap lua chon ";
+        cin >> lc;
+        if (lc == 0)
+            return 0;
+        else if (lc == 1)
+            themnode(T);
+        else if (lc == 2)
+            Print_NLR(T);
+        else if (lc == 3)
+            Print_LNR(T);
+        else if (lc == 4)
+            Print_LRN(T);
+        else if (lc == 5)
+        {
+            int x;
+            cout << "nhap gia tri can xoa ";
+            cin >> x;
+            int tmp = delNode(T, x);
+            if (tmp)
+                cout << "da xoa xong ";
+            else
+                cout << "khong tim thay gia tri can xoa ";
+        }
+        else
+            removeTree(T);
+    }
 }
