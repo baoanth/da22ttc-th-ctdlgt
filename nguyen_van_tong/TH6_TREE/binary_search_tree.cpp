@@ -109,35 +109,63 @@ int delNode(tree &T, int x)
     }
 }
 
+void themnode(tree &T)
+{
+ int n;
+    cout << "nhap vao so luong phan tu trong cay ";
+    cin >> n;
+
+    for(int i = 0; i< n; i++)
+    {
+        int x;
+        cout << "nhap phan tu thu "<< i << " ";
+        cin >> x;
+        insertNode(T, x);
+    }
+}
+
+void removeTree(tree &T)
+{
+	if(T)
+	{
+		removeTree(T->left);
+		removeTree(T->right);
+		delete(T);
+	}
+}
 int main()
 {
-    int a[] = {12, 3, 6, 87, 32, 7, 5, 98, 45, 34, 80, 43, 90};
     tree T = NULL;
-
-    for (int i = 0; i < 13; i++)
-        insertNode(T, a[i]);
-
-    Print_NLR(T);
-    cout << endl;
-    Print_LNR(T);
-    cout << endl;
-    Print_LRN(T);
-
-    int x;
-    cout << "\nnhap vao gia tri can xoa ";
-    cin >> x;
-    //    tree p = searchNode(T, x);
-    //    if (p != NULL)
-    //        cout << "\ntim thay ";
-    //    else
-    //        cout << "\nKHONG tim thay";
-    int i = delNode(T, x);
-    if (i != 0)
+   
+    int lc;
+    while(1)
     {
-        cout << "da xoa ";
-        cout << "\ncay sau khi xoa :";
-        Print_NLR(T);
-    }
-    else
-        cout << "khong tom thay gia tri " << x << " trong cay";
+	    cout << "\n-----------------MENU-----------------\n";
+	    cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay";
+	    cout << "\nnhap lua chon ";
+	    cin >> lc;
+	    if(lc == 0) 
+	        return 0;
+	    else if (lc == 1)
+	        themnode(T);
+	    else if (lc == 2)
+	        Print_NLR(T);
+	    else if (lc == 3)
+	        Print_LNR(T);
+	    else if (lc == 4)
+	        Print_LRN(T);
+	    else if (lc == 5)
+	    {
+	        int x;
+	        cout << "nhap gia tri can xoa ";
+	        cin >> x;
+	        int tmp = delNode(T,x);
+	        if(tmp)
+	            cout << "da xoa xong ";
+	        else   
+	            cout << "khong tim thay gia tri can xoa ";
+	    }
+	    else
+	    	removeTree(T);
+	}
 }
