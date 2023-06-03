@@ -152,7 +152,7 @@ int main()
     int lua_chon;
     while(1){
     
-    printf("Nhap lua chon: ");
+    printf("\nNhap lua chon: ");
     scanf("%d", &lua_chon);
 
     if (lua_chon == 1)
