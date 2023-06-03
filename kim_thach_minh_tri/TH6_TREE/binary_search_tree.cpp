@@ -209,7 +209,7 @@ int main()
     printf("8. So nut co dung mot cat con:\n");
     printf("9. So nut co dung hai cat con:\n");
     printf("10. So nut co khoa nho hon x:\n");
-    printf("10. So nut co khoa lon hon x:\n");
+    printf("11. So nut co khoa lon hon x:\n");
     printf("0. EXIT:\n");
     //    InsertNode(Root, 30);
     //    InsertNode(Root, 22);
@@ -301,6 +301,15 @@ int main()
             scanf("%d", &x);
             int nut_la = nut_khoa_nhox(Root, x);
             printf("So nut co khoa nho hon %d : %d", x, nut_la);
+        }
+
+        if (lua_chon == 11)
+        {
+            int x;
+            printf("Nhap x : ");
+            scanf("%d", &x);
+            int nut_la = nut_khoa_lonx(Root, x);
+            printf("So nut co khoa lon hon %d : %d", x, nut_la);
         }
         if (lua_chon == 0)
             return 0;
