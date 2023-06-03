@@ -152,7 +152,7 @@ int demnutMotcon(tree T)
 	return demnutMotcon(T->left) + demnutMotcon(T->right);
 }
 
-int demlaHaicon(tree T)
+int demnutHaicon(tree T)
 {
 	if(T== NULL)
 		return 0;
@@ -162,13 +162,20 @@ int demlaHaicon(tree T)
 	
 }
 
+int NodeNHK(tree T,int k)
+{
+	if(T == NULL || T->key >= k) 
+		return 0;
+	else
+		return 1 + NodeNHK(T->left,k) + NodeNHK(T->right,k);
+}
+
 int NodeLHK(tree T,int k)
 {
-	if(T == NULL) 
+	if(T == NULL || k>=T->key) 
 		return 0;
-	if(T->key > k)
-		return 1;
-	return NodeLHK(T->left,k) + NodeLHK(T->right,k);
+	else
+		return 1 + NodeLHK(T->right,k)+NodeLHK(T->left,k) ;
 }
 int main()
 {
@@ -178,7 +185,7 @@ int main()
     while (1)
     {
         cout << "\n-----------------MENU-----------------\n";
-        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con \n11. Dem so nut nho hon K \n12. Dem so nut lon hon K";
         cout << "\nnhap lua chon ";
         cin >> lc;
         if (lc == 0)
@@ -230,6 +237,24 @@ int main()
         {
         	int tmp = demnutHaicon(T);
         	cout << "co "<<tmp <<" nut co 2 con ";
+        }
+        else if(lc == 11)
+        {
+            int k;
+            cout << "nhap gia tri k :";
+            cin >> k;
+
+        	int tmp = NodeNHK(T,k);
+        	cout << "co "<<tmp <<" nut nho hon k ";
+        }
+         else if(lc == 12)
+        {
+            int k;
+            cout << "nhap gia tri k :";
+            cin >> k;
+
+        	int tmp = NodeLHK(T,k);
+        	cout << "co "<<tmp <<" nut lon hon k ";
         }
     }
 }
