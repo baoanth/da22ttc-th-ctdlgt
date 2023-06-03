@@ -148,15 +148,23 @@ int main()
 	int d;
 	printf("\n\nNhap gia tri can xoa: ");
 	scanf("%d", &d);
-   
-    DeleteNode(my_tree, d);
+	    
+    int KqDelete = DeleteNode(my_tree, d);
     
-   	printf("Thu tu truoc: ");
-    Print_NLR(my_tree);
-    printf("\nThu tu giua: ");
-    Print_LNR(my_tree);
-    printf("\nThu tu sau: ");
-    Print_LRN(my_tree);
+    if (KqDelete != NULL)
+    {
+        printf("--- Da xoa ---\n");
+        printf("Thu tu truoc: ");
+	    Print_NLR(my_tree);
+	    printf("\nThu tu giua: ");
+	    Print_LNR(my_tree);
+	    printf("\nThu tu sau: ");
+	    Print_LRN(my_tree);
+    }
+    else
+    {
+        printf("--- Khong tim thay gia tri can xoa ---");
+    }
 
     return 0;
 }
