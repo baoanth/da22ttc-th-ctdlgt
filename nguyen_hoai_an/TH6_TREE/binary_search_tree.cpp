@@ -147,24 +147,28 @@ int main()
         {
             printf(" Node Left Right: ");
             Print_NLR(my_tree);
+            printf("\n");
         }
 
         if (lua_chon == 2)
         {
             printf("Left Node Right : ");
             Print_LNR(my_tree);
+            printf("\n");
         }
 
         if (lua_chon == 3)
         {
             printf("Left Right Node: ");
             Print_LRN(my_tree);
+            printf("\n");
         }
         if (lua_chon == 4)
         {
             printf("\nNhap x muon them: ");
             scanf("%d", &x);
             InsertNode(my_tree, x);
+            printf("\n");
         }
         if (lua_chon == 5)
         {
@@ -175,6 +179,7 @@ int main()
                 printf("Khong co dau ma kim haha.");
             else
                 printf("Thay roi ne haha.");
+                printf("\n");
         }
         if (lua_chon == 6)
         {
@@ -184,7 +189,8 @@ int main()
             if (kt == 0)
                 printf("Khong thay gia tri can xoa!");
             else
-                printf("Xoa roi nhe\n");
+                printf("Xoa roi nhe");
+                printf("\n");
         }
         if (lua_chon == 0)
             break;
