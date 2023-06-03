@@ -135,7 +135,7 @@ int main()
     Print_LRN(my_tree);
 
     int x;
-    printf("\n\n- Nhap x can tim: ");
+    printf("\n\n- Nhap gia tri can tim: ");
     scanf("%d", &x);
 
     TNODE *KqSearch = SearchNode(my_tree, x);
