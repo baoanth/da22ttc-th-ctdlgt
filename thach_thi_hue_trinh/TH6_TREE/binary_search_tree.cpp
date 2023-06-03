@@ -143,7 +143,7 @@ int main()
 	Left_Node_Right(root);
 	printf("\n");
 	printf("DAY 3:\n");
-	printf("Sau xep theo thu tu LRN ");
+	printf("Sap xep theo thu tu LRN ");
 	Left_Right_Node(root);
 	
 	printf("\n");
