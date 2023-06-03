@@ -77,7 +77,8 @@ int InsertNode(TREE &T, int X)
 
 void SearchStandFor(TREE &p, TREE &q)
 {
-	if(q->pLeft)	SearchStandFor(p, q->pLeft);
+	if(q->pLeft)
+		SearchStandFor(p, q->pLeft);
 	else
 	{
 		p->Key = q->Key;
@@ -111,6 +112,7 @@ int DeleteNode(TREE &T, int x)
 int main()
 {
 	int x,n,i;
+	char c;
 	
     TREE my_tree = NULL;
     
@@ -153,30 +155,64 @@ int main()
 		printf("Tim thay %d trong day ",x);
 	}
 	
-	printf("\n\nNhap x can chen: ");
-	scanf("%d",&x);
-	InsertNode(my_tree, x);
-	printf("\nSau khi chen %d vao: ",x);
-	Print_LNR(my_tree);
-	
-	printf("\nXoa gia tri x cua cay: ");
-	scanf("%d",&x);
-	DeleteNode(my_tree,x);
-	printf("\nSau khi xoa %d: ",x);
-	Print_LNR(my_tree);
+//	printf("\n\nNhap x can chen: ");
+//	scanf("%d",&x);
+//	InsertNode(my_tree, x);
+//	printf("\nSau khi chen %d vao: ",x);
+//	Print_LNR(my_tree);
+//	
+//	printf("\nXoa gia tri x cua cay: ");
+//	scanf("%d",&x);
+//	DeleteNode(my_tree,x);
+//	printf("\nSau khi xoa %d: ",x);
+//	Print_LNR(my_tree);
 	
 	printf("\n");
-//	while(1) 
-//	{
-//		printf("\nMa hang: ");
-//		fflush(stdin);
-//		gets();
-//		
-//		if (strncmp(, "EXIT", 4)==0){
-//   			break;
-//   }
-//}
-	
+	while(1) 
+	{
+		printf("\nNhap thao tac can thuc hien: ");
+		printf("\n0.Thoat ra");
+		printf("\n1.Chen them nut");
+		printf("\n2.Xoa nut");
+		printf("\n3.Sap xep cay theo NLR");
+		printf("\n4.Sap xep cay theo LNR");
+		printf("\n5.Sap xep cay theo LRN\n");		
+		scanf("%d",&c);
+		
+		if(c==0)	break;
+		else if(c==1)
+		{
+			printf("\n\nNhap x can chen: ");
+			scanf("%d",&x);
+			InsertNode(my_tree, x);
+			printf("\nSau khi chen %d vao: ",x);
+			Print_LNR(my_tree);
+		}
+		else if(c==2)
+		{
+			printf("\nXoa gia tri x cua cay: ");
+			scanf("%d",&x);
+			DeleteNode(my_tree,x);
+			printf("\nSau khi xoa %d: ",x);
+			Print_LNR(my_tree);
+		}
+		else if(c==3)
+		{
+			printf("\nSap xep cay theo NLR:  ");
+   			Print_NLR(my_tree);
+		}
+		else if(c==4)
+		{
+			printf("\nSap xep cay theo LNR:  ");
+    		Print_LNR(my_tree);
+		}
+		else if(c==5)
+		{
+			printf("\nSap xep cay theo LRN:  ");
+    		Print_LRN(my_tree);
+		}
+   }
+
 	return 0;
 }
 
