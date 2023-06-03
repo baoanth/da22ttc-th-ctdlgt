@@ -126,7 +126,26 @@ int so_nut_la(TREE &T)
             return so_nut_la(T->pLeft) + so_nut_la(T->pRight);
         }
     }
+int nut_1_cay_con(TREE &T)
+{
+    if (T == NULL || T->pLeft == NULL && T->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (T->pLeft == NULL || T->pRight == NULL)
+    {
+        return 1 + nut_1_cay_con(T->pLeft) + nut_1_cay_con(T->pRight);
+    }
+    else
+    {
+        return nut_1_cay_con(T->pLeft) + nut_1_cay_con(T->pRight);
+    }
 
+}
+int nut_2_cay_con(TREE &T)
+{
+	
+}
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 { /*
@@ -197,6 +216,7 @@ int main()
         printf("5. Tim gia tri x\n");
         printf("6. Xoa gia tri x\n");
         printf("7. dem nut la x\n");
+        printf("8. cay con co dung mot nut x\n");
         printf("0. Thoat\n");
 
         int lua_chon;
@@ -249,6 +269,12 @@ int main()
             int nut_la = so_nut_la(my_tree);
             printf("So nut la cua cay : %d", nut_la);
         }
+        if (lua_chon == 8)
+        {
+            int nut_la = nut_1_cay_con(my_tree);
+            printf("So nut co dung mot cay con : %d", nut_la);
+        }
+
         if (lua_chon == 0)
             break;
     }
