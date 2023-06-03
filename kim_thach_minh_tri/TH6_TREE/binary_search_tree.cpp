@@ -118,7 +118,7 @@ int delNode(TREE &T, int X)
 int main()
 {
     TREE Root = NULL;
-    int y, x, n, i;
+    int y, x, n, i, z;
 
     printf("==========Nhap cay nhi phan==========\n");
     printf("Nhap so luong phan tu : ");
@@ -137,6 +137,7 @@ int main()
     printf("3. In theo thu tu sau:\n");
     printf("4. Tim gia tri x:\n");
     printf("5. Xoa gia tri x:\n");
+    printf("0. EXIT:\n");
     //    InsertNode(Root, 30);
     //    InsertNode(Root, 22);
     //    InsertNode(Root, 12);
@@ -183,13 +184,16 @@ int main()
     if (lua_chon == 5)
     {
         printf("\nNhap x can xoa: ");
-        scanf("%d", &x);
-        int xoa = delNode(Root, x);
+        scanf("%d", &z);
+        int xoa = delNode(Root, z);
         if (xoa == 0)
-            printf("Khong tim thay gia tri x = %d \n", x);
+            printf("Khong tim thay gia tri x = %d \n", z);
         else
-            printf("Da xoa nut x = %d \n", x);
+            printf("Da xoa nut x = %d \n", z);
     }
+    
+    if (lua_chon == 0)
+    return 0;
 }
 
     return 0;
