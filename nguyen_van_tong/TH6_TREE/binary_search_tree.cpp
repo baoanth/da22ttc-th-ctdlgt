@@ -141,7 +141,7 @@ int main()
     while (1)
     {
         cout << "\n-----------------MENU-----------------\n";
-        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node ";
         cout << "\nnhap lua chon ";
         cin >> lc;
         if (lc == 0)
@@ -165,7 +165,18 @@ int main()
             else
                 cout << "khong tim thay gia tri can xoa ";
         }
-        else
+        else if (lc == 6)
             removeTree(T);
+        else
+        {
+            int x;
+            cout << "nhap gia tri can tim :";
+            cin >> x;
+            tree tmp = searchNode(T, x);
+            if (tmp)
+                cout << "da tim thay";
+            else
+                cout << "KHONG tim thay";
+        }
     }
 }
