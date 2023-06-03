@@ -99,7 +99,7 @@ int DeleteNode(TREE &T, int x)
         if (T->pLeft == NULL)
             T = T->pRight;
         else if (T->pRight == NULL)
-            T = T->pLeft;
+            T = T->pLeft; 
         else
         {
             TNODE *q = T->pRight;
@@ -109,65 +109,98 @@ int DeleteNode(TREE &T, int x)
     }
 }
 
-int main()
+void InputTree(TREE &T)
 {
-    TREE my_tree = NULL;
-    
+
     int n;
     printf("- Nhap so nut cua cay: ");
     scanf("%d", &n);
-    
-	int i;
-    while(i<n)
-    {
-    	int a[n];
-    	printf("Nhap gia tri nut %d: ", i);
-    	scanf("%d", &a[i]);
-    	InsertNode(my_tree, a[i]);
-    	i++;
-    }
 
-    printf("- Thu tu truoc: ");
-    Print_NLR(my_tree);
-    printf("\n- Thu tu giua: ");
-    Print_LNR(my_tree);
-    printf("\n- Thu tu sau: ");
-    Print_LRN(my_tree);
+    int i = 1;
+    while (i <= n)
+    {
+        int number_tam;
+        printf("Nhap gia tri nut %d: ", i);
+        scanf("%d", &number_tam);
+        InsertNode(T, number_tam);
+        i++;
+    }
+}
+int main()
+{
+    TREE my_tree = NULL;
 
-    int x;
-    printf("\n\n- Nhap gia tri can tim: ");
-    scanf("%d", &x);
+    int stt = 1;
 
-    TNODE *KqSearch = SearchNode(my_tree, x);
-    if (KqSearch != NULL)
+    do
     {
-        printf("--- Da tim thay ---");
-    }
-    else
-    {
-        printf("--- Khong tim thay ---");
-    }
+        printf("\n--- MENU ---");
+        printf("\n1. Nhap cay.");
+        printf("\n2. Duyet theo thu tu truoc.");
+        printf("\n3. Duyet theo thu tu giua.");
+        printf("\n4. Duyet theo thu tu sau.");
+        printf("\n5. Xoa nut.");
+        printf("\n0. Thoat.\n");
 
-	int d;
-	printf("\n\n- Nhap gia tri can xoa: ");
-	scanf("%d", &d);
-	    
-    int KqDelete = DeleteNode(my_tree, d);
-    
-    if (KqDelete != NULL)
-    {
-        printf("--- Da xoa ---\n");
-        printf("Thu tu truoc: ");
-	    Print_NLR(my_tree);
-	    printf("\nThu tu giua: ");
-	    Print_LNR(my_tree);
-	    printf("\nThu tu sau: ");
-	    Print_LRN(my_tree);
-    }
-    else
-    {
-        printf("--- Khong tim thay gia tri can xoa ---");
-    }
-    
+        printf("\n-Nhap chuc nang: ");
+        scanf("%d", &stt);
+        switch (stt)
+        {
+        case 1:
+            InputTree(my_tree);
+            break;
+        case 2:
+            printf("Duyet theo thu tu truoc:");
+            Print_NLR(my_tree);
+            break;
+        case 3:
+            printf("Duyet theo thu tu giua:");
+            Print_LNR(my_tree);
+            break;
+        case 4:
+            printf("Duyet theo thu tu sau:");
+            Print_LRN(my_tree);
+            break;
+        case 5:
+            int d;
+            printf("- Nhap gia tri can xoa: ");
+            scanf("%d", &d);
+            DeleteNode(my_tree, d);
+            break;
+        default:
+            break;
+        }
+    } while (stt);
+
+    /*
+        int x;
+        printf("- Nhap gia tri can tim: ");
+        scanf("%d", &x);
+
+        TNODE *KqSearch = SearchNode(my_tree, x);
+        if (KqSearch != NULL)
+        {
+            printf("--- Da tim thay ---");
+        }
+        else
+        {
+            printf("--- Khong tim thay ---");
+        }
+
+        int d;
+        printf("\n\n- Nhap gia tri can xoa: ");
+        scanf("%d", &d);
+
+        int KqDelete = DeleteNode(my_tree, d);
+
+        if (KqDelete != NULL)
+        {
+            printf("--- Da xoa ---\n");
+        }
+        else
+        {
+            printf("--- Khong tim thay gia tri can xoa ---");
+        }
+    */
     return 0;
 }
