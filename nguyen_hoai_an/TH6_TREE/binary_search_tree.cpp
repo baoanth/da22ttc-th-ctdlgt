@@ -135,19 +135,21 @@ int main()
 	Print_LRN(my_tree);
 	
 	int Key;
+    printf("\n");
     printf("\nNhap Node can tim: ");
     scanf("%d", &Key);
 
     TNode* newKey = SearchNode(my_tree, Key);
     if( newKey!= NULL)
     {
-        printf("Da tim thay %d trong cay.");
+        printf("Da tim thay %d trong cay.\n");
     }
     else
     {
         printf("Khong co dau ma tim haha.");
     }
 
+    
     printf("\nNhap Node can xoa: ");
     scanf("%d", &Key);
 
@@ -156,6 +158,7 @@ int main()
     if (KqDelete!= NULL)
     {
         printf(" Da xoa.\n");
+        printf("\n");
         printf(" Thu tu truoc: \n");
 	    Print_NLR(my_tree);
 	    printf("\n Thu tu giua: \n");
