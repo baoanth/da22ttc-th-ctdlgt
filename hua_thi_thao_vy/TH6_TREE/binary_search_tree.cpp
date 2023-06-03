@@ -135,16 +135,26 @@ int main()
 	TNODE *giatri=SearchNode(my_tree, x);
 	if(giatri == NULL)
 	{
-		printf("Khong tim thay gia tri ");
+		printf("\nKhong tim thay gia tri ");
 	}
 	else 
-	    printf("Tim thay gia tri");
+	    printf("\nTim thay gia tri");
 	
     printf("\n");
-    printf("Nhap x can chen: ");
+    printf("\nNhap x can chen: ");
     scanf("%d", &x);
-    printf("Chen %d vao day\n", x);
+    printf("\nChen %d vao day\n", x);
 	InsertNode(my_tree, x);
+	Print_NLR(my_tree);
+	printf("\n");
+	Print_LRN(my_tree);
+	printf("\n");
+	Print_LNR(my_tree);
+	
+	printf("\nNhap x can xoa: ");
+	scanf("%d", &x);
+	delNode(my_tree, x);
+	printf("\nDay sau khi xoa\n");
 	Print_NLR(my_tree);
 	printf("\n");
 	Print_LRN(my_tree);
