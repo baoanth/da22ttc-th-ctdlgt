@@ -117,83 +117,108 @@ int delNode(TREE &T, int x)
     }
 }
 
-void ChucNang()
+void ChucNangMENU(int &x)
 {
-	int i, n;
-	TREE my_tree=NULL;
-    
-    printf("Nhap so luong nut cua TREE: ");
-    scanf("%d", &n);
+	TREE my_tree = NULL;
+	int sl, n, i;
+	
+	printf("----MENU----\n");
+	printf("1. Tao cay nhi phan\n");
+	printf("2. Node Left Right\n");
+	printf("3. Left Node Right\n");
+	printf("4. Left Right Node\n");
+	printf("5. Find Node\n");
+	printf("0. EXIT\n");
+	
+	printf("Nhap chuc nang so: ");
+	scanf("%d", &sl);
+	
+	while(1)
+	{
+		if(sl == 1)
+		{
+			while(i<n)
+    		{
+	        	int a[n];
+	        	printf("Nhap gia tri %d: ", i+1);
+	        	scanf("%d", &a[i]);
+	        	InsertNode(my_tree, a[i]);
+	        	i++;
+    		}
+		}
+		if (sl == 2)
+        {
+            printf(" Node Left Right: ");
+            Print_NLR(my_tree);
+            printf("\n");
+        }
 
-    while(i<n)
-    {
-    	int a[n];
-    	
-    	printf("Nhap gia tri nut %d: ", i+1);
-    	scanf("%d", &a[i]);
-    	InsertNode(my_tree, a[i]);
-    	i++;
-    }
+        if (sl == 3)
+        {
+            printf("Left Node Right : ");
+            Print_LNR(my_tree);
+            printf("\n");
+        }
+
+        if (sl == 4)
+        {
+            printf("Left Right Node: ");
+            Print_LRN(my_tree);
+            printf("\n");
+        }
+        if (sl == 5)
+        {
+        	SearchNode(my_tree, x); 
+        }
+       /*if (sl == 6)
+        {
+            printf("\nNhap x muon xoa: ");
+            scanf("%d", &x);
+            int sl = delNode(my_tree, x);
+            if (sl == 0)
+                printf("Khong thay gia tri can xoa!");
+            else
+                printf("Xoa roi nhe");
+                printf("\n");
+        }*/
+        if (sl == 0)
+        {
+        	 system("cls");
+        	 break;
+        }   
+	}	
 }
+	
+	
 
 int main()
 {
 	TREE my_tree = NULL;
-	int kt, i, n;
+	int kt, i, n, x;
 
-	printf("MENU LUA CHON:\n");
-    printf("1. Them cay nhi phan\n");
-    printf("0. EXIT");
+	 while(1)
+    {
+    	printf("MENU LUA CHON:\n");
+    	printf("1. Them cay nhi phan\n");
+    	printf("0. EXIT\n");
 
-    printf("\n\nNhap chuc nang MENU: ");
-    scanf("%d", &kt);
-
-
-	while(1)
-	{
-		if(kt==0)
+        int kt;
+		printf("\nChon chuc nang so: ");
+        scanf("%d", &kt);
+        
+        if(kt==1)
+        {
+        	system("cls");
+			ChucNangMENU(x);
+        }
+		else if(kt==0)
 		{
 			break;
-		}else if (kt==1)
-        {
-            system("cls");
-            ChucNang();
-        }
+		}
+	if(kt!=0 && kt!=1) printf("\nMoi ban nhap lai chuc nang!\n\n");
 	}
-
-
-/*	int i, n;
-    printf("Nhap so luong nut cua TREE: \n");
-    scanf("%d", &n);
-
-    while(i<n)
-    {
-    	int a[n];
-    	
-    	printf("Nhap gia tri nut %d: ", i+1);
-    	scanf("%d", &a[i]);
-    	InsertNode(my_tree, a[i]);
-    	i++;
-    }
 	
-/*  InsertNode(my_tree, 20);
-    InsertNode(my_tree, 30);
-    InsertNode(my_tree, 10);
-    InsertNode(my_tree, 12);
-    InsertNode(my_tree, 2);
-    InsertNode(my_tree, 11);
-    InsertNode(my_tree, 34);
-    InsertNode(my_tree, 46);
-    InsertNode(my_tree, 23);
-    InsertNode(my_tree, 16);
-    
-    printf("Node Left Right: ");
-    Print_NLR(my_tree);
-	printf("\nLeft Node Right: ");    
-    Print_LNR(my_tree);
-    printf("\nLeft Right Node: ");
-    Print_LRN(my_tree);
-    
+/*     
     int x;
     
     printf("\nNhap gia tri can tim: ");
