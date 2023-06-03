@@ -137,14 +137,14 @@ int main()
 	*/
 
     int n, i, x;
-    printf("Nhap so luong tree: ");
+    printf("Nhap so luong phan tu cua cay: ");
     scanf("%d", &n);
     printf("\n");
 
     while(i<n)
     {
         int a[n];
-        printf("Nhap gia tri nut %d : ", i+1);
+        printf("Nhap gia tri %d: ", i+1);
         scanf("%d", &a[i]);
         InsertNode(my_tree, a[i]);
         i++;
@@ -153,19 +153,20 @@ int main()
     while(1)
     {
         printf("\n");
-        printf("|-------MENU--------| \n");
-        printf("|0. EXIT            | \n");
-        printf("|1. Node Left Right | \n");
-        printf("|2. Left Node Right | \n");
-        printf("|3. Left Right Node | \n");
-        printf("|4. Them nut        | \n");
-        printf("|5. Tim nut         | \n");
-        printf("|6. Xoa nut         | \n");
-        printf("|-------------------| \n");
+        printf("|--------MENU--------| \n");
+        printf("|0. EXIT             | \n");
+        printf("|1. Node Left Right  | \n");
+        printf("|2. Left Node Right  | \n");
+        printf("|3. Left Right Node  | \n");
+        printf("|4. Insert Node      | \n");
+        printf("|5. Search Node      | \n");
+        printf("|6. Delete Node      | \n");
+        printf("|--------------------| \n");
 
         int lua_chon;
-        printf("Chon so: ");
+        printf("Ban chon so: ");
         scanf("%d", &lua_chon);
+        printf("\n");
 
         if (lua_chon == 1)
         {
@@ -189,14 +190,14 @@ int main()
         }
         if (lua_chon == 4)
         {
-            printf("\nNhap x muon them: ");
+            printf("Nhap x muon them: ");
             scanf("%d", &x);
             InsertNode(my_tree, x);
             printf("\n");
         }
         if (lua_chon == 5)
         {
-            printf("\nNhap x muon tim: ");
+            printf("Nhap x muon tim: ");
             scanf("%d", &x);
 
             TNode *gia_tri = SearchNode(my_tree, x);
@@ -208,7 +209,7 @@ int main()
         }
         if (lua_chon == 6)
         {
-            printf("\nNhap x muon xoa: ");
+            printf("Nhap x muon xoa: ");
             scanf("%d", &x);
 
             int kt = DelNode(my_tree, x);
