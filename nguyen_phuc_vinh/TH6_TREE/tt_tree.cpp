@@ -1,17 +1,32 @@
-#include <conio.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+//CHUA XONG
+typedef struct node {
+    int key;
+    struct node *left, *right;
+} Node;
 
-typedef struct TNODE
-{
-    int Key;
-    struct TNODE *pLeft, *pRight;
-}TNODE;
+Node *create_node(int key) {
+    Node *new_node = malloc(sizeof(Node));
+    new_node->key = key;
+    new_node->left = NULL;
+    new_node->right = NULL;
+    return new_node;
+}
 
-typedef TNODE *TREE;
+Node *insert(Node *root, int key) {
+    if (root == NULL) {
+        return create_node(key);
+    }
+    if (key < root->key) {
+        root->left = insert(root->left, key);
+    }
+    else if (key > root->key) {
+        root->right = insert(root->right, key);
+    }
+    return root;
+}
 
-
-//1
 int count_leaves(Node *root) {
     if (root == NULL) {
         return 0;
@@ -22,7 +37,6 @@ int count_leaves(Node *root) {
     return count_leaves(root->left) + count_leaves(root->right);
 }
 
-//2
 int count_single_child_nodes(Node *root) {
     if (root == NULL) {
         return 0;
@@ -33,7 +47,6 @@ int count_single_child_nodes(Node *root) {
     return count_single_child_nodes(root->left) + count_single_child_nodes(root->right);
 }
 
-//3
 int count_two_child_nodes(Node *root) {
     if (root == NULL) {
         return 0;
@@ -44,7 +57,6 @@ int count_two_child_nodes(Node *root) {
     return count_two_child_nodes(root->left) + count_two_child_nodes(root->right);
 }
 
-//4
 int count_nodes_less_than_x(Node *root, int x) {
     if (root == NULL) {
         return 0;
@@ -55,7 +67,6 @@ int count_nodes_less_than_x(Node *root, int x) {
     return count_nodes_less_than_x(root->left, x);
 }
 
-//5
 int count_nodes_greater_than_x(Node *root, int x) {
     if (root == NULL) {
         return 0;
@@ -66,7 +77,6 @@ int count_nodes_greater_than_x(Node *root, int x) {
     return count_nodes_greater_than_x(root->right, x);
 }
 
-//6
 int count_nodes_between_x_and_y(Node *root, int x, int y) {
     if (root == NULL) {
         return 0;
@@ -82,7 +92,6 @@ int count_nodes_between_x_and_y(Node *root, int x, int y) {
     }
 }
 
-//7
 int height(Node *root) {
     if (root == NULL) {
         return 0;
@@ -91,3 +100,21 @@ int height(Node *root) {
     int right_height = height(root->right);
     return (left_height > right_height ? left_height : right_height) + 1;
 }
+
+int main() {
+    Node *root = NULL;
+    int arr[] = {50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45, 55, 65, 75, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < n; i++) {
+        root = insert(root, arr[i]);
+    }
+    printf("Number of leaves: %d\n", count_leaves(root));
+    printf("Number of nodes with exactly one child: %d\n", count_single_child_nodes(root));
+    printf("Number of nodes with exactly two children: %d\n", count_two_child_nodes(root));
+    printf("Number of nodes with key less than 40: %d\n", count_nodes_less_than_x(root, 40));
+    printf("Number of nodes with key greater than 70: %d\n", count_nodes_greater_than_x(root, 70));
+    printf("Number of nodes with key between 30 and 70: %d\n", count_nodes_between_x_and_y(root, 30, 70));
+    printf("Height of tree: %d\n", height(root));
+    return 0;
+}
+
