@@ -147,9 +147,8 @@ int main()
 		scanf("%d", &tmp);
 		InsertNode(my_tree, tmp);
 	}
-	
-		
-//In
+			
+//In cay nhi phan theo 3 kieu
 	printf("In theo thu tu truoc\n");
     Print_NLR(my_tree);
     printf("\n");
@@ -160,20 +159,30 @@ int main()
     Print_LRN(my_tree);
     
 //Tim phan tu X
-    int X;
-    printf("\n\nNhap Node can tim :");
-    scanf("%d", &X);
+    int X, m, j;
     
+    do
+    {
+    	printf("\n\nBan muon tim Node may lan: ");
+    	scanf("%d", &m);
+    	if(m<=0) 
+			printf("Ban da nhap sai. Yeu cau nhap vao so nguyen duong de chuong trinh tim kiem chay.");
+    } while(m<=0);
     
-    TNODE* Tk = SearchNode(my_tree, X);
-    if(Tk == NULL) 
-    	printf("Khong tim thay %d", X);
-    else 
-    	printf("Da tim thay %d", X);
-
-//XOA
+    for(j = 1; j<=m; j++)
+    {
+    	printf("\nNhap Node can tim :");
+    	scanf("%d", &X);
+    
+    	TNODE* Tk = SearchNode(my_tree, X);
+    	if(Tk == NULL) 
+    		printf("Khong tim thay %d trong cay nhi phan", X);
+    	else 
+    		printf("Da tim thay %d trong cay nhi phan", X);
+    }
+    
+//XOA NODE CAY NHI PHAN
 	int n, biendem = 0;
-	
 	
 	do
 	{
@@ -182,9 +191,7 @@ int main()
 		if(n<=0) 
 			printf("Ban da nhap sai. Yeu cau nhap vao so nguyen duong de chuong trinh xoa nut chay.");
 	} while(n<=0);
-	
-	
-	
+		
 //********************************
 	for(int i = 1; i<=n; i++)
 	{
@@ -194,7 +201,6 @@ int main()
 		int Y;
 		printf("\nNhap vao Node can xoa lan thu %d: ", biendem);
 		scanf("%d", &Y);
-	
 		int Xoa = DelNode(my_tree, Y);
 		if(Xoa == NULL) 
     		printf("Khong xoa duoc: %d", Y);
