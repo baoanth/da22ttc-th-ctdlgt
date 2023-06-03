@@ -76,6 +76,30 @@ int InsertNode(TREE &T, int X)
     T->pLeft = T->pRight = NULL;
     return 1;
 }
+int delNode(TREE &T, int X)
+{
+    if (T == NULL)
+        return 0;
+    if (T->Key > X)
+        return delNode(T->pLeft, X);
+    if (T->Key < X)
+        return delNode(T->pRight, X);
+    else
+    {
+        TNODE *p = T;
+        if (T->pLeft == NULL)
+            T = T->pRight;
+        else if (T->pRight == NULL)
+            T = T->pLeft;
+        else
+        {
+            TNODE *q = T->pRight;
+            searchStandFor(p, q);
+        }
+        delete p;
+    }
+}
+
 
 void searchStandFor(TREE &p, TREE &q)
 {
