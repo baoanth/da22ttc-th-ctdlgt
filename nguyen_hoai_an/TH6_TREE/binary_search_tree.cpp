@@ -85,6 +85,8 @@ int main()
     InsertNode(my_tree, 13);
     InsertNode(my_tree, 20);
 	InsertNode(my_tree, 1);
+	InsertNode(my_tree, 19);
+	InsertNode(my_tree, 36);
 
     printf("Duyet theo thu tu truoc: \n");
     Print_NLR(my_tree);
@@ -94,6 +96,19 @@ int main()
 
     printf("\nDuyet theo thu tu sau: \n");
 	Print_LRN(my_tree);
+	
+	int Key;
+    printf("\nNhap Node can tim: ");
+    scanf("%d", &Key);
 
+    TNode* newKey = SearchNode(my_tree, Key);
+    if( newKey!= NULL)
+    {
+        printf("Da tim thay %d trong cay.");
+    }
+    else
+    {
+        printf("Khong co dau ma kim haha.");
+    }
     return 0;
 }

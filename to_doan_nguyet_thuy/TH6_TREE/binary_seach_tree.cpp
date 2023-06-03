@@ -82,11 +82,84 @@ void LRN(Node* node)
     }
 }
 
+void searchStandFor(Node* &p, Node* &q)
+{
+    if (q->pLeft)
+        searchStandFor(p, q->pLeft);
+    else
+    {
+        p->data = q->data;
+        p = q;
+        q = q->pRight;
+    }
+}
+
+int delNode(Node* &t, int x)
+{
+    if (t == NULL)
+    {	
+    	printf("Khong tim thay khoa x =%d ", x);
+        return 0;
+    }
+    if (t->data > x)
+       return delNode(t->pLeft, x);
+    if (t->data < x)
+       return delNode(t->pRight, x);
+    else
+    {
+        Node* p = t;
+        if (t->pLeft == NULL)
+        {
+            t = t->pRight;
+        }
+        else 
+			if (t->pRight == NULL)
+        	{
+           		t = t->pLeft;
+        	}
+        else
+        {
+            Node* q = t->pRight;
+            searchStandFor(p, q);
+        }
+        delete p;
+    }
+}
+
+
+void printRoot(Node* node)
+ {
+    if (node != NULL)
+	{
+    printf("%d ", node->data);
+    printRoot(node->pLeft);
+    printRoot(node->pRight);
+    }
+}
+
+
 int main()
 {
     Node* root = NULL;
+    
+    int selection;
+    do
+    {
+    	printf("\n-----BINARY SEARCH TREE -----\n\n");
+    	printf("Enter your selection \n");
+    	printf("1.In BST in first order(NLR) \n");
+    	printf("2.In BST in middle order(LNR)  \n");
+    	printf("3.In BST in last order \n");
+    	printf("4.Delete node \n");
+    	printf("5.EXIT\n");
+    	
+    	printf("Your selection :");
+    	scanf("%d", &selection);
+    	
+	}while(selection);
+}
 
-    root = insertNode(root, 2);
+    /*root = insertNode(root, 45);
     root = insertNode(root, 5);
     root = insertNode(root, 0);
     root = insertNode(root, 77);
@@ -124,7 +197,28 @@ int main()
         printf("khong tim thay node %d ton tai trong cay\n", Key);
     }
 
+
+    /*int dele;
+    printf("\nNhap node can xoa:");
+    scanf("%d", dele);
+    printf("\n");
+
+    root = delNode(root, dele);
+    if (root != NULL)
+    {
+        printf("Da xoa node %d trong cay \n", dele);
+    }
+    else
+    {
+        printf(" node %d khong ton tai trong cay\n", dele);
+    }
+    printf("\nCay moi sau khi xoa node %d", dele);
+    printRoot(root);
+    
+	delNode(root, Key);
+	printf("\nCay sau khi xoa node :\n ");
+	NLR(root);
     return 0;
-}
+}*/
 
 

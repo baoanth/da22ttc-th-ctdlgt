@@ -1,86 +1,111 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Khai bao cay*/
+// Khai bao cay
 typedef struct TNODE
 {
     int Key;
-    struct NODE *pLeft, *pRight;
-}TNODE;
+    struct TNODE *pLeft, *pRight;
+} TNODE;
 typedef TNODE *TREE;
 
-/*In theo thu tu truoc*/
+/*In cay theo thu tu truoc*/
 void Print_NLR(TREE Root)
 {
     if (Root != NULL)
     {
-        /*Xu ly*/
+        printf("%3d", Root->Key);
         Print_NLR(Root->pLeft);
         Print_NLR(Root->pRight);
     }
-
 }
 
-/*Ins theo thu tu giua*/
+/*In cay theo thu tu giua*/
 void Print_LNR(TREE Root)
 {
     if (Root != NULL)
     {
-        Print_LNR (Root->Left);
-        /*Xu ly*/
-        Print_LNR (Root->Right);
+        Print_LNR(Root->pLeft);
+        printf("%3d", Root->Key);
+        Print_LNR(Root->pRight);
     }
-    
 }
 
-/*In theo thu tu sau*/
+/*In cay theo thu tu sau*/
 void Print_LRN(TREE Root)
 {
     if (Root != NULL)
     {
-        Print_LRN(Root->Left);
-        Print_LRN(Root->Right);
-        /*xu ly*/
+        Print_LRN(Root->pLeft);
+        Print_LRN(Root->pRight);
+        printf("%3d", Root->Key);
     }
 }
 
-TNODE *SearchNode(TREE T, int x)
+/*Tim kiem nut co gia tri la x*/
+TNODE *SearchNode(TREE T, int X)
 {
     if (T)
     {
-        if(T->Key == x)
-        return T;
-        if (T->Key > x)
-            return SearchNode(T->pLeft, x);
-        else 
-            return SearchNode(T->pRight, x);
+        if (T->Key == X)
+            return T;
+        if (T->Key > X)
+            return SearchNode(T->pLeft, X);
+        else
+            return SearchNode(T->pRight, X);
     }
     return NULL;
 }
 
-int InsertNode(TREE &T, int x)
+/*Them nut vao cay BST*/
+int InsertNode(TREE &T, int X)
 {
     if (T)
     {
-        if (T->Key == x)
+        if (T->Key == X)
             return 0;
-        if (T->Key > x)
-            return InsertNode(T->pLeft, x);
+        if (T->Key > X)
+            return InsertNode(T->pLeft, X);
         else
-            return InsertNode(T->pRight, x);
+            return InsertNode(T->pRight, X);
     }
-       T = new_TNode;
-       if (T == NULL)
+    T = new TNODE;
+    if (T == NULL)
         return -1;
-    T->Key = x;
+    T->Key = X;
     T->pLeft = T->pRight = NULL;
-    return 1;  
+    return 1;
 }
 
-
-
+/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
+    TREE my_tree = NULL;
+    InsertNode(my_tree, 30);
+    InsertNode(my_tree, 22);
+    InsertNode(my_tree, 12);
+    InsertNode(my_tree, 21);
+    InsertNode(my_tree, 26);
+    InsertNode(my_tree, 27);
+    InsertNode(my_tree, 45);
+    InsertNode(my_tree, 50);
+    InsertNode(my_tree, 38);
+    InsertNode(my_tree, 33);
+    InsertNode(my_tree, 36);
 
+    Print_NLR(my_tree);
+    printf("\n");
+    Print_LNR(my_tree);
+    printf("\n");
+    Print_LRN(my_tree);
+
+    int x;
+    printf("\nNhap x: ");
+    scanf("%d", &x);
+    TNODE *gia_tri = SearchNode(my_tree, x);
+    if (gia_tri == NULL)
+        printf("Khong tim thay gia tri x");
+    else
+        printf("Tim thay gia tri x");
     return 0;
 }
