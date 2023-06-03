@@ -93,6 +93,42 @@ void searchStandFor(TREE &p, TREE & q)
 		q = q->pRight;
 	}
 }
+int delNode(TREE &T, int X)
+{
+    if (T == NULL)
+        return 0;
+    if (T->Key > X)
+        return delNode(T->pLeft, X);
+    if (T->Key < X)
+        delNode(T->pRight, X);
+    else
+    {
+    	TNODE* p= T;
+        T = T->pRight;
+        if (T->pLeft == NULL)
+            T = T->pRight;
+        else if (T->pRight == NULL)
+            T = T->pLeft;
+        else
+        {
+         TNODE* q = T->pRight;
+            searchStandFor(  p, q);
+        }
+        delete p;
+    }
+}
+
+//int X;
+//	printf("\nTim gia tri cua X= ");
+//	scanf("%d", &X);
+//	TNODE *giatri=SearchNode(my_tree, X);
+//	if(giatri == NULL)
+//	{
+//		printf("Khong tim thay gia tri ");
+//	}
+//	else 
+//	    printf("Tim thay gia tri");}
+
 int main()
 {
     TREE my_tree = NULL;
@@ -125,7 +161,18 @@ int main()
     printf("\n");
     Print_LRN(my_tree);
 
-   
-
+   int X;
+	printf("\nTim gia tri cua X= ");
+	scanf("%d", &X);
+	TNODE *giatri=SearchNode(my_tree, X);
+	if(giatri == NULL)
+	{
+		printf("Khong tim thay gia tri ");
+	}
+	else 
+	    printf("Tim thay gia tri");
 }
+
+
+
 
