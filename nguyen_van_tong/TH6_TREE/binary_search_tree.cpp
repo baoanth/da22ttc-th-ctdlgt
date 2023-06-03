@@ -176,6 +176,15 @@ int NodeLHK(tree T, int k)
     else
         return 1 + NodeLHK(T->right, k) + NodeLHK(T->left, k);
 }
+
+int NodeXY(tree T, int x, int y)
+{
+    if (T == NULL || T->key >=y || T->key <=x)
+        return 0;
+    else
+        return 1 + NodeXY(T->right, x,y) + NodeXY(T->left,x,y);
+}
+
 int main()
 {
     tree T = NULL;
@@ -184,7 +193,7 @@ int main()
     while (1)
     {
         cout << "\n-----------------MENU-----------------\n";
-        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con \n11. Dem so nut nho hon K \n12. Dem so nut lon hon K";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con \n11. Dem so nut nho hon K \n12. Dem so nut lon hon K \n13. Dem so nut lon hon x nho hon k";
         cout << "\nnhap lua chon ";
         cin >> lc;
         if (lc == 0)
@@ -253,6 +262,16 @@ int main()
 
             int tmp = NodeLHK(T, k);
             cout << "co " << tmp << " nut lon hon k ";
+        }
+         else if (lc == 13)
+        {
+            int x,y;
+            cout << "nhap gia tri x :";
+            cin >> x;
+			cout << "nhap gia tri y :";
+            cin >> y;
+            int tmp = NodeXY(T, x ,y);
+            cout << "co " << tmp << " nut lon hon x nho hon k ";
         }
     }
 }
