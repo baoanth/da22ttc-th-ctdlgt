@@ -149,6 +149,22 @@ int nut_1_cay_con(TREE Root)
     }
 }
 
+/*So nut co dung 2 cay con*/
+int nut_2_cay_con(TREE Root)
+{
+     if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft != NULL && Root->pRight != NULL)
+    {
+        return 1 + nut_2_cay_con(Root->pLeft) + nut_2_cay_con(Root->pRight);
+    }
+    else
+    {
+        return nut_2_cay_con(Root->pLeft) + nut_2_cay_con(Root->pRight);
+    }
+}
 
 int main()
 {
@@ -166,6 +182,7 @@ int main()
     printf("6. Xoa gia tri x:\n");
     printf("7. Dem so nut la:\n");
     printf("8. So nut co dung mot cat con:\n");
+    printf("9. So nut co dung hai cat con:\n");
     printf("0. EXIT:\n");
     //    InsertNode(Root, 30);
     //    InsertNode(Root, 22);
@@ -243,6 +260,11 @@ int main()
         {
             int nut_la = nut_1_cay_con(Root);
             printf("So nut co dung mot cay con : %d", nut_la);
+        }
+        if (lua_chon == 9)
+        {
+            int nut_la = nut_2_cay_con(Root);
+            printf("So nut co dung hai cay con : %d", nut_la);
         }
         if (lua_chon == 0)
             return 0;
