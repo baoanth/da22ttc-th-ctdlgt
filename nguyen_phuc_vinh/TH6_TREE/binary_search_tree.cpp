@@ -1,6 +1,6 @@
-#include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct TNODE
 {
@@ -77,11 +77,106 @@ int InsertNode(TREE &T, int x)
         return 1;
 }
 
+void searchStandFor(TREE &p, TREE &q)
+{
+    if(q->pLeft)
+        searchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key=q->Key;
+        p=q;
+        q=q->pRight;
+    }
+}
+
+int delNode(TREE &T, int x)
+{
+    if(T==NULL)
+        return 0;
+    if(T->Key>x)
+        return delNode(T->pLeft, x);
+    if(T->Key<x)
+        return delNode(T->pRight, x);
+    else
+    {
+        TNODE* p=T;
+        
+        if(T->pLeft==NULL)
+            T = T->pRight;
+        else
+        {
+            if(T->pRight==NULL)
+                T=T->pLeft;
+            else
+            {
+                TNODE* q=T->pRight;
+                searchStandFor(p,q);
+            }
+            delete p;
+        }  
+    }
+}
+
+void ChucNang()
+{
+	int i, n;
+	TREE my_tree=NULL;
+    
+    printf("Nhap so luong nut cua TREE: ");
+    scanf("%d", &n);
+
+    while(i<n)
+    {
+    	int a[n];
+    	
+    	printf("Nhap gia tri nut %d: ", i+1);
+    	scanf("%d", &a[i]);
+    	InsertNode(my_tree, a[i]);
+    	i++;
+    }
+}
+
 int main()
 {
 	TREE my_tree = NULL;
+	int kt, i, n;
+
+	printf("MENU LUA CHON:\n");
+    printf("1. Them cay nhi phan\n");
+    printf("0. EXIT");
+
+    printf("\n\nNhap chuc nang MENU: ");
+    scanf("%d", &kt);
+
+
+	while(1)
+	{
+		if(kt==0)
+		{
+			break;
+		}else if (kt==1)
+        {
+            system("cls");
+            ChucNang();
+        }
+	}
+
+
+/*	int i, n;
+    printf("Nhap so luong nut cua TREE: \n");
+    scanf("%d", &n);
+
+    while(i<n)
+    {
+    	int a[n];
+    	
+    	printf("Nhap gia tri nut %d: ", i+1);
+    	scanf("%d", &a[i]);
+    	InsertNode(my_tree, a[i]);
+    	i++;
+    }
 	
-    InsertNode(my_tree, 20);
+/*  InsertNode(my_tree, 20);
     InsertNode(my_tree, 30);
     InsertNode(my_tree, 10);
     InsertNode(my_tree, 12);
@@ -114,6 +209,7 @@ int main()
     {
     	printf("Khong tim thay gia tri");
     }
+*/
     
     return 0;
 }
