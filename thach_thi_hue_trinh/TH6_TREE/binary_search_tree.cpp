@@ -50,8 +50,9 @@ Node* SearchNode(TREE Root, int x)
             p = p->pLeft;
         else
             p = p->pRight;
+
+    }	
 	return NULL;
-    }
 }
 
 int InsertNode(TREE &t, int x)
@@ -77,7 +78,7 @@ int InsertNode(TREE &t, int x)
 
 int main()
 {
-	int x, m;
+	int x;
 	TREE root = NULL;
 	
 	 InsertNode(root,1);
@@ -91,6 +92,10 @@ int main()
 	 InsertNode(root,5);
 	 InsertNode(root,15);		
 	
+	printf("Day ban dau: 1  4  67  18  19  87  2  4  5  15");
+	printf("\n");
+	printf("\nCAC DAY SAU KHI SAP XEP \n");
+	printf("\n");
 	printf("DAY 1:\n");
 	printf("Sap xep theo thu tu NLR ");
 	Node_Left_Right(root);
@@ -107,22 +112,35 @@ int main()
 	
 	printf("\nNhap x can tim: ");
 	scanf("%d",&x);
-	if(SearchNode(root,x)==NULL)
-	{
-		printf("Khong tim thay %d trong day ",x);
-	}
-	else
+	if(SearchNode(root,x)!=NULL)
 	{
 		printf("Tim thay %d trong day ",x);
 	}
-	
+	else
+	{
+		printf("Khong tim thay %d trong day ",x);
+	}
+	printf("\n");
 	printf("\nNhap x can chen: ");
 	scanf("%d",&x);
-	printf("Chen %d vao day 2: \n",x);
+	
+	printf("Chen %d vao day 1: ",x);
+	InsertNode(root, x);
+	Node_Left_Right(root);
+	printf("\n");
+	
+	printf("Chen %d vao day 2: ",x);
 	InsertNode(root, x);
 	Left_Node_Right(root);
+	printf("\n");
 	
+	printf("Chen %d vao day 3: ",x);
+	InsertNode(root, x);
+	Left_Right_Node(root);
+	
+	return 0;
 }
+//ulatroi
 
 
 
