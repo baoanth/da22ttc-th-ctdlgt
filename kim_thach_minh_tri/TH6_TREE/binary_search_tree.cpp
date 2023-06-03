@@ -100,14 +100,14 @@ int delNode(TREE &T, int X)
     if (T->Key < X)
         return delNode(T->pRight, X);
     else
-    { 
+    {
         TNODE *p = T;
         if (T->pLeft == NULL)
             T = T->pRight;
         else if (T->pRight == NULL)
             T = T->pLeft;
         else
-        { 
+        {
             TNODE *q = T->pRight;
             searchStandFor(p, q);
         }
@@ -149,12 +149,14 @@ int main()
     else
         printf("Tim thay y = %d \n", y);
 
-
     printf("\nNhap x can xoa: ");
     scanf("%d", &x);
-    delNode(Root, x);
-    printf("DA xoa nut x = %d \n", x);
-    
+    int xoa = delNode(Root, x);
+    if (xoa == 0)
+        printf("Khong tim thay gia tri x = %d \n", x);
+    else
+        printf("Da xoa nut x = %d \n", x);
+
     printf("In theo thu tu truoc:\n");
     Print_NLR(Root);
     printf("\n");
