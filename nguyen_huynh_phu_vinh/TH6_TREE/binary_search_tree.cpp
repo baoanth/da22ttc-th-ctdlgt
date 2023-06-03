@@ -76,6 +76,19 @@ int InsertNode(TREE &T, int X)
     T->pLeft = T->pRight = NULL;
     return 1;
 }
+
+void searchStandFor(TREE &p, TREE &q)
+{
+    if (q->pLeft)
+        searchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key = q->Key;
+        p = q;
+        q = q->pRight;
+    }
+}
+
 int delNode(TREE &T, int X)
 {
     if (T == NULL)
@@ -100,36 +113,80 @@ int delNode(TREE &T, int X)
     }
 }
 
-
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
     TREE my_tree = NULL;
-    InsertNode(my_tree, 30);
-    InsertNode(my_tree, 22);
-    InsertNode(my_tree, 12);
-    InsertNode(my_tree, 21);
-    InsertNode(my_tree, 26);
-    InsertNode(my_tree, 27);
-    InsertNode(my_tree, 45);
-    InsertNode(my_tree, 50);
-    InsertNode(my_tree, 38);
-    InsertNode(my_tree, 33);
-    InsertNode(my_tree, 36);
+    int n, i, x;
+    printf("Bai toan cay nhi phan!\n");
+    printf("Vui long nhap so luong phan tu: ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+    {
+        printf("\nNhap gia tri thu %d: ", i + 1);
+        scanf("%d", &x);
+        InsertNode(my_tree, x);
+    }
 
-    Print_NLR(my_tree);
-    printf("\n");
-    Print_LNR(my_tree);
-    printf("\n");
-    Print_LRN(my_tree);
+    printf("\nDa them cac gia tri vao cay thanh cong!\n");
+    while (1)
+    {
+        printf("\n\n----------------------------\n");
+        printf("1. In cay the thu tu NLR\n");
+        printf("2. In cay the thu tu LNR\n");
+        printf("3. In cay the thu tu LRN\n");
+        printf("4. Them gia tri x\n");
+        printf("5. Tim gia tri x\n");
+        printf("6. Xoa gia tri x\n");
+        printf("0. Thoat\n");
 
-    int x;
-    printf("\nNhap x: ");
-    scanf("%d", &x);
-    TNODE *gia_tri = SearchNode(my_tree, x);
-    if (gia_tri == NULL)
-        printf("Khong tim thay gia tri x");
-    else
-        printf("Tim thay gia tri x");
+        int lua_chon;
+        scanf("%d", &lua_chon);
+        if (lua_chon == 1)
+        {
+            printf("In cay the thu tu NLR: ");
+            Print_NLR(my_tree);
+        }
+
+        if (lua_chon == 2)
+        {
+            printf("In cay the thu tu LNR: ");
+            Print_LNR(my_tree);
+        }
+
+        if (lua_chon == 3)
+        {
+            printf("In cay the thu tu LRN: ");
+            Print_LRN(my_tree);
+        }
+        if (lua_chon == 4)
+        {
+            printf("\nNhap gia tri x can them: ");
+            scanf("%d", &x);
+            InsertNode(my_tree, x);
+        }
+        if (lua_chon == 5)
+        {
+            printf("\nNhap x can tim: ");
+            scanf("%d", &x);
+            TNODE *gia_tri = SearchNode(my_tree, x);
+            if (gia_tri == NULL)
+                printf("Khong tim thay gia tri x");
+            else
+                printf("Tim thay gia tri x");
+        }
+        if (lua_chon == 6)
+        {
+            printf("\nNhap x can xoa: ");
+            scanf("%d", &x);
+            int kt = delNode(my_tree, x);
+            if (kt == 0)
+                printf("Khong tim thay gia tri can xoa!");
+            else
+                printf("Xoa gia tri x thanh cong");
+        }
+        if (lua_chon == 0)
+            break;
+    }
     return 0;
 }
