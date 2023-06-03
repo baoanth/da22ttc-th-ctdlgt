@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Khai bao cay
+/*Khai bao cay*/
 typedef struct TNODE
 {
     int Key;
@@ -9,7 +9,7 @@ typedef struct TNODE
 } TNODE;
 typedef TNODE *TREE;
 
-/*In cay theo thu tu truoc*/
+/*In theo thu tu truoc*/
 void Print_NLR(TREE Root)
 {
     if (Root != NULL)
@@ -20,7 +20,7 @@ void Print_NLR(TREE Root)
     }
 }
 
-/*In cay theo thu tu giua*/
+/*In theo thu tu giua*/
 void Print_LNR(TREE Root)
 {
     if (Root != NULL)
@@ -31,7 +31,7 @@ void Print_LNR(TREE Root)
     }
 }
 
-/*In cay theo thu tu sau*/
+/*In theo thu tu sau*/
 void Print_LRN(TREE Root)
 {
     if (Root != NULL)
@@ -42,70 +42,129 @@ void Print_LRN(TREE Root)
     }
 }
 
-/*Tim kiem nut co gia tri la x*/
-TNODE *SearchNode(TREE T, int X)
+/*Tim kiem x trong cay*/
+TNODE *SearchNode(TREE T, int x)
 {
     if (T)
     {
-        if (T->Key == X)
+        if (T->Key == x)
             return T;
-        if (T->Key > X)
-            return SearchNode(T->pLeft, X);
+        if (T->Key > x)
+            return SearchNode(T->pLeft, x);
         else
-            return SearchNode(T->pRight, X);
+            return SearchNode(T->pRight, x);
     }
     return NULL;
 }
 
-/*Them nut vao cay BST*/
-int InsertNode(TREE &T, int X)
+/*Them x vao cay*/
+int InsertNode(TREE &T, int x)
 {
     if (T)
     {
-        if (T->Key == X)
+        if (T->Key == x)
             return 0;
-        if (T->Key > X)
-            return InsertNode(T->pLeft, X);
+        if (T->Key > x)
+            return InsertNode(T->pLeft, x);
         else
-            return InsertNode(T->pRight, X);
+            return InsertNode(T->pRight, x);
     }
     T = new TNODE;
     if (T == NULL)
         return -1;
-    T->Key = X;
+    T->Key = x;
     T->pLeft = T->pRight = NULL;
     return 1;
 }
 
-/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
+/*Tim phan tu the mang*/
+void searchStandFor(TREE &p, TREE &q)
+{
+    if (q->pLeft)
+        searchStandFor(p, q->pLeft);
+    else
+    {
+        p->Key = q->Key;
+        p = q;
+        q = q->pRight;
+    }
+}
+
+/*Xoa mot nut*/
+int delNode(TREE &T, int X)
+{
+    if (T == NULL)
+        return 0;
+    if (T->Key > X)
+        return delNode(T->pLeft, X);
+    if (T->Key < X)
+        return delNode(T->pRight, X);
+    else
+    {
+        TNODE *p = T;
+        if (T->pLeft == NULL)
+            T = T->pRight;
+        else if (T->pRight == NULL)
+            T = T->pLeft;
+        else
+        {
+            TNODE *q = T->pRight;
+            searchStandFor(p, q);
+        }
+        delete p;
+    }
+}
+
 int main()
 {
-    TREE my_tree = NULL;
-    InsertNode(my_tree, 30);
-    InsertNode(my_tree, 22);
-    InsertNode(my_tree, 12);
-    InsertNode(my_tree, 21);
-    InsertNode(my_tree, 26);
-    InsertNode(my_tree, 27);
-    InsertNode(my_tree, 45);
-    InsertNode(my_tree, 50);
-    InsertNode(my_tree, 38);
-    InsertNode(my_tree, 33);
-    InsertNode(my_tree, 36);
+    TREE Root = NULL;
+    int y, x;
 
-    Print_NLR(my_tree);
-    printf("\n");
-    Print_LNR(my_tree);
-    printf("\n");
-    Print_LRN(my_tree);
+    InsertNode(Root, 30);
+    InsertNode(Root, 22);
+    InsertNode(Root, 12);
+    InsertNode(Root, 21);
+    InsertNode(Root, 26);
+    InsertNode(Root, 27);
+    InsertNode(Root, 45);
+    InsertNode(Root, 38);
+    InsertNode(Root, 33);
+    InsertNode(Root, 36);
+    InsertNode(Root, 50);
 
-    int x;
-    printf("\nNhap x: ");
-    scanf("%d", &x);
-    TNODE *gia_tri = SearchNode(my_tree, x);
+    printf("In theo thu tu truoc:\n");
+    Print_NLR(Root);
+    printf("\n");
+    printf("In theo thu tu giua:\n");
+    Print_LNR(Root);
+    printf("\n");
+    printf("In theo thu tu sau:\n");
+    Print_LRN(Root);
+
+    printf("\nNhap y can tim: ");
+    scanf("%d", &y);
+    TNODE *gia_tri = SearchNode(Root, y);
     if (gia_tri == NULL)
-        printf("Khong tim thay gia tri x");
+        printf("Khong co gia tri y = %d\n", y);
     else
-        printf("Tim thay gia tri x");
+        printf("Tim thay y = %d \n", y);
+
+    printf("\nNhap x can xoa: ");
+    scanf("%d", &x);
+    int xoa = delNode(Root, x);
+    if (xoa == 0)
+        printf("Khong tim thay gia tri x = %d \n", x);
+    else
+        printf("Da xoa nut x = %d \n", x);
+
+    printf("In theo thu tu truoc:\n");
+    Print_NLR(Root);
+    printf("\n");
+    printf("In theo thu tu giua:\n");
+    Print_LNR(Root);
+    printf("\n");
+    printf("In theo thu tu sau:\n");
+    Print_LRN(Root);
+
     return 0;
 }
