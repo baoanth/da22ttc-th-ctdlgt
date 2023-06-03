@@ -136,39 +136,45 @@ void removeTree(tree &T)
 
 int demla(tree T)
 {
-	if(T == NULL )
-		return 0;    
-    if(T->left == NULL && T->right == NULL)
-    	return 1;
+    if (T == NULL)
+        return 0;
+    if (T->left == NULL && T->right == NULL)
+        return 1;
 
-    return demla(T->left)+demla(T->right);
+    return demla(T->left) + demla(T->right);
 }
 int demnutMotcon(tree T)
 {
-	if(T== NULL)
-		return 0;
-	if((T->left != NULL && T->right == NULL)||((T->left == NULL && T->right != NULL)))
-		return 1;
-	return demnutMotcon(T->left) + demnutMotcon(T->right);
+    if (T == NULL)
+        return 0;
+    if ((T->left != NULL && T->right == NULL) || ((T->left == NULL && T->right != NULL)))
+        return 1;
+    return demnutMotcon(T->left) + demnutMotcon(T->right);
 }
 
-int demlaHaicon(tree T)
+int demnutHaicon(tree T)
 {
-	if(T== NULL)
-		return 0;
-	if(T->left != NULL && T->right != NULL)
-		return 1;
-	return demnutHaicon(T->left) + demnutHaicon(T->right);
-	
+    if (T == NULL)
+        return 0;
+    if (T->left != NULL && T->right != NULL)
+        return 1;
+    return demnutHaicon(T->left) + demnutHaicon(T->right);
 }
 
-int NodeLHK(tree T,int k)
+int NodeNHK(tree T, int k)
 {
-	if(T == NULL) 
-		return 0;
-	if(T->key > k)
-		return 1;
-	return NodeLHK(T->left,k) + NodeLHK(T->right,k);
+    if (T == NULL || T->key >= k)
+        return 0;
+    else
+        return 1 + NodeNHK(T->left, k) + NodeNHK(T->right, k);
+}
+
+int NodeLHK(tree T, int k)
+{
+    if (T == NULL || k >= T->key)
+        return 0;
+    else
+        return 1 + NodeLHK(T->right, k) + NodeLHK(T->left, k);
 }
 int main()
 {
@@ -178,7 +184,7 @@ int main()
     while (1)
     {
         cout << "\n-----------------MENU-----------------\n";
-        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con";
+        cout << "\n0. Exit \n1. Them nut vao cay\n2. In theo dang NLR \n3. In theo dang LNR \n4. In theo dang LRN \n5. Xoa note trong cay \n6. Xoa toan bo cay \n7. tim kiem node \n8.Dem nut la trong cay \n9. Dem nut co 1 con \n10. Dem nut co 2 con \n11. Dem so nut nho hon K \n12. Dem so nut lon hon K";
         cout << "\nnhap lua chon ";
         cin >> lc;
         if (lc == 0)
@@ -204,7 +210,7 @@ int main()
         }
         else if (lc == 6)
             removeTree(T);
-        else if(lc == 7)
+        else if (lc == 7)
         {
             int x;
             cout << "nhap gia tri can tim :";
@@ -212,24 +218,41 @@ int main()
             tree tmp = searchNode(T, x);
             if (tmp)
                 cout << "da tim thay";
-            else 
+            else
                 cout << "KHONG tim thay";
-
         }
-        else if(lc == 8)
+        else if (lc == 8)
         {
             int x = demla(T);
-            cout << "co "<< x << " la";
+            cout << "co " << x << " la";
         }
-        else if(lc == 9)
+        else if (lc == 9)
         {
-        	int tmp = demnutMotcon(T);
-        	cout << "co "<<tmp <<" nut co 1 con ";
+            int tmp = demnutMotcon(T);
+            cout << "co " << tmp << " nut co 1 con ";
         }
-        else if(lc == 10)
+        else if (lc == 10)
         {
-        	int tmp = demnutHaicon(T);
-        	cout << "co "<<tmp <<" nut co 2 con ";
+            int tmp = demnutHaicon(T);
+            cout << "co " << tmp << " nut co 2 con ";
+        }
+        else if (lc == 11)
+        {
+            int k;
+            cout << "nhap gia tri k :";
+            cin >> k;
+
+            int tmp = NodeNHK(T, k);
+            cout << "co " << tmp << " nut nho hon k ";
+        }
+        else if (lc == 12)
+        {
+            int k;
+            cout << "nhap gia tri k :";
+            cin >> k;
+
+            int tmp = NodeLHK(T, k);
+            cout << "co " << tmp << " nut lon hon k ";
         }
     }
 }
