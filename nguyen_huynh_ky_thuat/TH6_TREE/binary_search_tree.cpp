@@ -118,7 +118,16 @@ int delNode(TREE &T, int X)
     }
 }
 
-
+//int X;
+//	printf("\nTim gia tri cua X= ");
+//	scanf("%d", &X);
+//	TNODE *giatri=SearchNode(my_tree, X);
+//	if(giatri == NULL)
+//	{
+//		printf("Khong tim thay gia tri ");
+//	}
+//	else 
+//	    printf("Tim thay gia tri");}
 
 int main()
 {
@@ -152,7 +161,18 @@ int main()
     printf("\n");
     Print_LRN(my_tree);
 
-   
-
+   int X;
+	printf("\nTim gia tri cua X= ");
+	scanf("%d", &X);
+	TNODE *giatri=SearchNode(my_tree, X);
+	if(giatri == NULL)
+	{
+		printf("Khong tim thay gia tri ");
+	}
+	else 
+	    printf("Tim thay gia tri");
 }
+
+
+
 
