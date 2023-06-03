@@ -98,5 +98,14 @@ int main()
     Print_LNR(my_tree);
     printf("\n");
     Print_LRN(my_tree);
+
+    int x;
+    printf("\nNhap x: ");
+    scanf("%d", &x);
+    TNODE *gia_tri = SearchNode(my_tree, x);
+    if (gia_tri == NULL)
+        printf("Khong tim thay gia tri x");
+    else
+        printf("Tim thay gia tri x");
     return 0;
 }

@@ -83,7 +83,16 @@ int InsertNode(TREE &T, int x)
     return 1; 
 }
 
-
+void searchStandFor(TREE &p, TREE & q)
+{
+	if (q->pLeft)
+	searchStandFor(p, q->pLeft);
+	else{
+		p->Key = q->Key;
+		p = q;
+		q = q->pRight;
+	}
+}
 int main()
 {
     TREE my_tree = NULL;
