@@ -119,7 +119,7 @@ int main()
 //	insertNode(my_tree, 04);	
 	
 	 int k;
-    printf("\nBan muon nhap bao nhieu Node chp cay: ");
+    printf("\nBan muon nhap bao nhieu Node cho cay nhi phan : ");
     scanf("%d", &k);
     
     for(int i = 1; i<=k; i++)
@@ -130,7 +130,6 @@ int main()
     	insertNode(my_tree, tmp);
     }
 
-	
 	printf("in theo thu tu dau");
 	printf("\n");
 	print_NLR(my_tree);
