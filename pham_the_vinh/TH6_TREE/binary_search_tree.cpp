@@ -112,27 +112,30 @@ int DeleteNode(TREE &T, int x)
 int main()
 {
     TREE my_tree = NULL;
+    
+    int n;
+    printf("- Nhap so nut cua cay: ");
+    scanf("%d", &n);
+    
+	int i;
+    while(i<n)
+    {
+    	int a[n];
+    	printf("Nhap gia tri nut %d: ", i);
+    	scanf("%d", &a[i]);
+    	InsertNode(my_tree, a[i]);
+    	i++;
+    }
 
-    InsertNode(my_tree, 11);
-    InsertNode(my_tree, 25);
-    InsertNode(my_tree, 32);
-    InsertNode(my_tree, 14);
-    InsertNode(my_tree, 48);
-    InsertNode(my_tree, 51);
-    InsertNode(my_tree, 27);
-    InsertNode(my_tree, 18);
-    InsertNode(my_tree, 43);
-    InsertNode(my_tree, 9);
-
-    printf("Thu tu truoc: ");
+    printf("- Thu tu truoc: ");
     Print_NLR(my_tree);
-    printf("\nThu tu giua: ");
+    printf("\n- Thu tu giua: ");
     Print_LNR(my_tree);
-    printf("\nThu tu sau: ");
+    printf("\n- Thu tu sau: ");
     Print_LRN(my_tree);
 
     int x;
-    printf("\n\nNhap x can tim: ");
+    printf("\n\n- Nhap gia tri can tim: ");
     scanf("%d", &x);
 
     TNODE *KqSearch = SearchNode(my_tree, x);
@@ -146,7 +149,7 @@ int main()
     }
 
 	int d;
-	printf("\n\nNhap gia tri can xoa: ");
+	printf("\n\n- Nhap gia tri can xoa: ");
 	scanf("%d", &d);
 	    
     int KqDelete = DeleteNode(my_tree, d);
@@ -165,6 +168,6 @@ int main()
     {
         printf("--- Khong tim thay gia tri can xoa ---");
     }
-
+    
     return 0;
 }
