@@ -210,8 +210,10 @@ int main()
 				print_LNR(my_tree);
 				break;
 			case 4:
+            printf("");
 				break;	
 			case 5:
+            printf("");
 				break;	
 		
 	} while (selection!=0)
@@ -226,7 +228,7 @@ int main()
     myTree = insertNode(myTree, 33);
     myTree = insertNode(myTree, 18);
     myTree = insertNode(myTree, 36);
-    myTree = insertNode(myTree, 9);*/
+    myTree = insertNode(myTree, 9);
 
     printf("\n\nDuyet cay theo thu tu thoi gian\n");
     NLR(myTree);
@@ -246,6 +248,6 @@ int main()
     printf("\n\nSo node tren cay la %d\n",countNode(myTree));
     printf("\nSo leafnode tren cay la %d",countLeafNode(myTree));
     printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));
-    
+    */
     return 0;
 }
