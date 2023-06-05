@@ -48,6 +48,20 @@ void AddFist(List &l, Node* new_ele)
         l.pHead = new_ele;
     }
 }
+
+void AddTail(list &1, Node new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext =new_ele;
+        l.pTail = new_ele;
+    }
+}
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;

@@ -88,6 +88,56 @@ void BubbleSort(int a[ ], int n)
 		}
 	}
 }
+void Shift(int a[ ], int l , int r)
+{
+	int x, i, j;
+	i = l; 
+	j = 2*i+1;
+	x = a[i];
+
+	while(j <= r)
+	{	
+		if(j < r)
+			if(a[j] < a[j+1])
+				j++;
+			if(a[j] < x)
+				break;
+			else 
+			{
+				a[i] = a[j];
+				i = j;
+				j = 2*i+1;
+				a[i] = x;
+			}		
+	}
+}
+
+void CreateHeap(int a[ ], int n)
+{
+	int l = n/2;
+	while(l >= 0)
+	{
+		Shift(a, l, n);
+		l--;
+	}
+}
+
+void HeapSort(int a[ ], int n)
+{
+	CreateHeap(a, n-1);
+	printf("=========================Heap=========================\n");
+	print_array(a,N);
+	printf("======================================================\n");
+	int r;
+	r = n-1;
+	while(r > 0)
+	{
+		Hoanvi(&a[0], &a[r]);
+		print_array(a, n);
+		r = r - 1;
+		Shift(a, 0, r);
+	}
+}
 void QuickSort(int a[50], int l , int r)
 {
 	int i, j, x;
@@ -149,11 +199,16 @@ int main()
                 BubbleSort(my_array, N);
                 break;
             } 
-             case '5':
+            case '5':
             {
-                printf("-> QuickSort : \n");
+                printf("-> Cay: \n");
+                HeapSort(my_array, N);
+                break;
+            } 
+             case '6':
+            {
+                printf("-> Phan hoach : \n");
                 QuickSort(my_array,0, N-1);
-                print_array(a,n);
                 break;
             } 
 			

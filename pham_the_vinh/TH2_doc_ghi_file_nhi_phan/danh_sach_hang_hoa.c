@@ -4,13 +4,8 @@
 
 typedef struct
 {
-<<<<<<< HEAD
     char mahang[10] ;
     char tenhang[20];
-=======
-    char mahang[5];
-    char tenhang[25];
->>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
     int soluong;
     float dongia;
     float thanhtien;
@@ -57,17 +52,7 @@ void print_DMHH(HangHoa* hh, int n)
 	}
 }
 
-<<<<<<< HEAD
-HangHoa find_HH_by_ma(char* mahang, HangHoa* dmhh)
-{
-
-
-}
-
-void input_DMHH(char* filename)
-=======
 void print_HH(HangHoa h)
->>>>>>> f1753be805e9556774760784a8f41b2ccab284a9
 {
     printf("%10s%20s%20d%20.0f%20.0f\n", h.mahang, h.tenhang, h.soluong, h.dongia, h.thanhtien);	
 }
@@ -192,10 +177,10 @@ int main()
 {	
 	char* filename ="DSHH.dat";
 	
-  	HangHoa hh1 = {"H001", "Exciter 125", 1, 20000000, 20000000};
-    HangHoa hh2 = {"H002", "Exciter 135", 1, 30000000, 30000000};
-    HangHoa hh3 = {"H003", "Exciter 150", 1, 40000000, 40000000};
-    HangHoa hh4 = {"H004", "Exciter 155", 1, 45000000, 45000000};
+  	HangHoa hh1 = {"H001", "But chi", 1, 2000, 2000};
+    HangHoa hh2 = {"H002", "But bi", 1, 5000, 5000};
+    HangHoa hh3 = {"H003", "But long", 1, 8000, 8000};
+    HangHoa hh4 = {"H004", "But xoa", 1, 10000, 10000};
     
     FILE* outfile = fopen(filename, "w");
 	

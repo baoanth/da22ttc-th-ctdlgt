@@ -1,75 +1,44 @@
 #include <stdio.h>
-#include <conio.h>
+#include <stdlib.h>
 #include <string.h>
-// struct person with 3 fields
-typedef struct Person
+
+typedef struct Donthuc
 {
-    int id;
-    char fname[20];
-    char lname[20];
-} Person;
+    int heso, bac;
+} donthuc;
 
 typedef struct Node
 {
-    Person Info;
-    Node *pNext;
+    donthuc info;
+    Node* pNext;
 } Node;
 
-typedef struct List
+typedef struct Dathuc
 {
-    Node *pHead;
-    Node *pTail;
-} List;
+    Node* pHead;
+    Node* pTail;
+} dathuc;
 
-Node *GetNode(Person x)
-{
-    Node *p;
-    p = new Node;
-    if (p == NULL)
-    {
-        printf("Khong du bo nho de cap phat nut");
-        return 0;
-    }
-    p->Info = x;
-    p->pNext = NULL;
-    return p;
-}
-
-void AddFist(List &l, Node *new_ele)
-{
-    if (l.pHead == NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        new_ele->pNext = l.pHead;
-        l.pHead = new_ele;
-    }
-}
-
-void Init(List &l)
+void Init(dathuc& l)
 {
     l.pHead = l.pTail = NULL;
 }
 
-void PrintNode(Node *p)
+Node* GetNode(donthuc x)
 {
-    printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-}
-
-void PrintList(List l)
-{
-    Node *p = l.pHead;
-    while (p != NULL)
+    Node* p = new Node;
+    if (p == NULL)
     {
-        printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
-        p = p->pNext;
+        printf("khong du bo nho ");
+        return NULL;
     }
+
+    p->info = x;
+    p->pNext = NULL;
+    return p;
 }
 
-void AddTail(List &l, Node *new_ele)
+void AddTail(dathuc& l, Node* new_ele)
 {
     if (l.pHead == NULL)
     {
@@ -80,40 +49,62 @@ void AddTail(List &l, Node *new_ele)
     {
         l.pTail->pNext = new_ele;
         l.pTail = new_ele;
+        new_ele->pNext = NULL;
     }
 }
 
-Node *FindNodeById(List l, int idx)
+void Nhapdathuc(dathuc& l)
 {
-    Node *p = l.pHead;
-    while (p != NULL && p->Info.id != idx)
+    int n = 0;
+    int i;
+    donthuc Px;
+
+    printf("da thuc co bac : ");
+    scanf("%d", &n);
+
+    for (i = n; i >= 0; i--)
+    {
+        printf("x^%d  ", i);
+        Px.bac = i;
+        scanf("%d", &Px.heso);
+
+        Node* new_ele = GetNode(Px);
+        AddTail(l, new_ele);
+    }
+}
+
+void Xuatdathuc(dathuc& l)
+{
+    Node* p = l.pHead;
+
+    printf("da thuc vua nhap :\n");
+    printf("\n  P(x) = ");
+
+    while (p != NULL)
+    {
+        if ((p->info.heso > 0) && (p != l.pHead))
+            printf(" + ");
+
+        if (p->info.bac == 0)
+            printf(" %d", p->info.heso);
+        else
+            printf("%dx^%d", p->info.heso, p->info.bac);
+
         p = p->pNext;
-    return p;
+    }
 }
 
 int main()
 {
-    struct Person per1 = {1, "Nguyen", "Vinh"};
-    struct Person per2 = {2, "Tran", "Hung"};
-    struct Person per3 = {3, "Pho", "Ngoc"};
-    Node *new_ele0 = GetNode(per1);
-    Node *new_ele1 = GetNode(per1);
-    Node *new_ele2 = GetNode(per2);
-    Node *new_ele3 = GetNode(per3);
-    List my_list;
-    Init(my_list);
+    dathuc my_Px1;
+    dathuc my_Px2;
 
-    AddFist(my_list, new_ele1);
-    AddTail(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
-    PrintList(my_list);
-    int idx;
-    printf("\nNhap id can tim: ");
-    scanf("%d", &idx);
-    Node *tim_kiem = FindNodeById(my_list, idx);
-    if (tim_kiem != NULL)
-        PrintNode(tim_kiem);
-    else
-        printf("Khong tim thay nut co id %d", idx);
+    Init(my_Px1);
+
+    Nhapdathuc(my_Px1);
+
+    Xuatdathuc(my_Px1);
+
     return 0;
 }
+
