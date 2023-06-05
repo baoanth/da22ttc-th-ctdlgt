@@ -1,253 +1,286 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include <conio.h>
 
-typedef struct TNode
+typedef struct Node
 {
-    int Key;
-    TNode *pLeft, *pRight;
-}TNode;
+    int data;
+    struct Node *pLeft, *pRight;
+} Node;
 
-TNode* createNewNode(int data)
+typedef Node* TREE;
+
+Node* createNode(int data)
 {
-    TNode* node = new TNode;
-    node->Key = data;
-
+    Node* node = new Node;
+    node->data = data;
     node->pLeft = NULL;
     node->pRight = NULL;
     return node;
 }
 
-TNode* insert(TNode *Root,int data)
+Node* insertNode(Node* root, int data)
 {
-    if(Root==NULL)
+    if (root == NULL)
     {
-        printf("\nAdd %d as root ", data);
-        TNode* node = createNewNode(data);
-
-        return node;
+        return createNode(data);
     }
-    else
+
+    if (data < root->data)
     {
-        if(data < Root->Key)
-        {
-            printf("\nAdd %d as left child of %d\n",data,Root->Key);
-            Root->pLeft = insert(Root->pLeft,data);
-        }
+        root->pLeft = insertNode(root->pLeft, data);
+    }
+    else if (data > root->data)
+    {
+        root->pRight = insertNode(root->pRight, data);
+    }
+
+    return root;
+}
+
+Node* searchNode(Node* t, int x)
+{
+    if (t)
+    {
+        if (t->data == x)
+            return t;
+        if (t->data > x)
+            return searchNode(t->pLeft, x);
         else
-        {
-            printf("\nAdd %d as right child of %d\n",data,Root->Key);
-            Root->pRight = insert(Root->pRight,data);
-        }
-    }
-    return Root;
-}
-
-void NLR(TNode* Root)
-{
-   if (Root != NULL)
-   {
-    printf("%d", Root->Key);
-    NLR (Root->pLeft);
-    NLR (Root->pRight);
-   } 
-}
-
-int countNode(TNode *Root)
-{
-    int count = 0;
-    if (Root !=NULL)
-    {
-        count ++;
-
-        count+= countNode(Root->pLeft);
-        count+= countNode(Root->pRight);
-    }
-    return count;
-}
-
-int countLeafNode(TNode *Root)
-{
-    int count = 0;
-    if(Root !=NULL)
-    {
-        if ((Root->pLeft==NULL)&&(Root->pRight==NULL))
-        count++;
-        
-        count+= countNode(Root->pLeft);
-        count+= countNode(Root->pRight);
-    }
-}
-
-int getTreeHeight(TNode *Root)
-{
-    if (Root == NULL)
-    return 0;
-
-    int maxLeft = getTreeHeight(Root->pLeft);
-
-    int maxRight = getTreeHeight(Root->pRight);
-
-    if (maxLeft > maxRight)
-        return maxLeft+1;
-    else
-        return maxRight+1;
-}
-
-TNode* searchNode(TNode* Root, int X)
-{
-    if (Root == NULL || Root->Key == X)
-        return Root;
-    {
-    if (X < Root->Key)
-        return searchNode(Root->pLeft, X);
-    else
-        return searchNode(Root->pRight, X);
+            return searchNode(t->pRight, x);
     }
     return NULL;
 }
 
-TNode* insertNode(TNode* Root, int X)
+void NLR(Node* node)
 {
-    if (Root == NULL)
+    if (node != NULL)
     {
-        printf("\nAdd %d as root ", X);
-        return createNewNode(X);
+        printf("%d ", node->data);
+        NLR(node->pLeft);
+        NLR(node->pRight);
     }
+}
 
-    TNode* current = Root;
-    TNode* parent = NULL;
-
-    while (current != NULL)
+void LNR(Node* node)
+{
+    if (node != NULL)
     {
-        parent = current;
+        LNR(node->pLeft);
+        printf("%d ", node->data);
+        LNR(node->pRight);
+    }
+}
 
-        if (X < current->Key)
-            current = current->pLeft;
-        else if (X > current->Key)
-            current = current->pRight;
+void LRN(Node* node)
+{
+    if (node != NULL)
+    {
+        LRN(node->pLeft);
+        LRN(node->pRight);
+        printf("%d ", node->data);
+    }
+}
+
+void searchStandFor(Node* &p, Node* &q)
+{
+    if (q->pLeft)
+        searchStandFor(p, q->pLeft);
+    else
+    {
+        p->data = q->data;
+        p = q;
+        q = q->pRight;
+    }
+}
+
+int delNode(Node* &t, int x)
+{
+    if (t == NULL)
+    {	
+    	printf("Khong tim thay khoa x = %d ", x);
+        return 0;
+    }
+    if (t->data > x)
+       return delNode(t->pLeft, x);
+    if (t->data < x)
+       return delNode(t->pRight, x);
+    else
+    {
+        Node* p = t;
+        if (t->pLeft == NULL)
+        {
+            t = t->pRight;
+        }
+        else if (t->pRight == NULL)
+        {
+            t = t->pLeft;
+        }
         else
         {
-            printf("\nPhan tu %d da ton tai trong cay\n", X);
-            return Root;
+            Node* q = t->pRight;
+            searchStandFor(p, q);
         }
+        delete p;
     }
+    return 1;
+}
 
-    if (X < parent->Key)
+void printRoot(Node* node)
+{
+    if (node != NULL)
     {
-        printf("\nAdd %d as left child of %d\n", X, parent->Key);
-        parent->pLeft = createNewNode(X);
+        printf("%d ", node->data);
+        printRoot(node->pLeft);
+        printRoot(node->pRight);
+    }
+}
+
+void InputNode(Node* &root)
+{
+    char ch;
+    int num;
+
+    do
+    {
+        printf("Enter a number: ");
+        scanf("%d", &num);
+        root = insertNode(root, num);
+        printf("Press ESC to exit or any other key to continue ...\n");
+        ch = getch();
+
+        while (getchar() != '\n')
+            continue;
+
+    } while (ch != 27);
+}
+
+int main()
+{
+    Node* root = NULL;
+    int Key;
+    int selection;
+
+    printf("Input tree:\n");
+    InputNode(root);
+
+    do
+    {
+        printf("\n-----BINARY SEARCH TREE -----\n\n");
+        printf("Enter your selection:\n");
+        printf("1. In BST in first order (NLR)\n");
+        printf("2. In BST in middle order (LNR)\n");
+        printf("3. In BST in last order (LRN)\n");
+        printf("4. Delete node\n");
+        printf("5. EXIT\n");
+
+        printf("Your selection: ");
+        scanf("%d", &selection);
+
+        switch (selection)
+        {
+            case 1:
+                printf("1. In BST in first order (NLR)\n");
+                NLR(root);
+                break;
+            case 2:
+                printf("2. In BST in middle order (LNR)\n");
+                LNR(root);
+                break;
+            case 3:
+                printf("3. In BST in last order (LRN)\n");
+                LRN(root);
+                break;
+            case 4:
+                printf("4. Delete node\n");
+                printf("Delete node: ");
+                scanf("%d", &Key);
+                if (delNode(root, Key))
+                {
+                    printf("Deleted node %d\n", Key);
+                    printf("Tree after deletion:\n");
+                    printRoot(root);
+                }
+                else
+                {
+                    printf("Node %d not found in the tree\n", Key);
+                }
+                break;
+            case 5:
+                printf("5. EXIT\n");
+                break;
+            default:
+                break;
+        }
+    } while (selection != 5);
+
+    return 0;
+}
+
+    /*root = insertNode(root, 45);
+    root = insertNode(root, 5);
+    root = insertNode(root, 0);
+    root = insertNode(root, 77);
+    root = insertNode(root, 10);
+    root = insertNode(root, 3);
+    root = insertNode(root, 30);
+    root = insertNode(root, 6);
+    root = insertNode(root, 9);
+    root = insertNode(root, 40);
+
+    printf("Duyet theo thu tu truoc:\n");
+    NLR(root);
+    printf("\n");
+
+    printf("\nDuyet theo thu tu giua:\n");
+    LNR(root);
+    printf("\n");
+
+    printf("\nDuyet theo thu tu sau:\n");
+    LRN(root);
+    printf("\n");
+
+    int Key;
+    printf("\nNhap node can tim :");
+    scanf("%d", & Key);
+    printf("\n");
+    
+    Node* newKey = searchNode(root, Key);
+    if (newKey != NULL)
+    {
+        printf("Da tim thay node %d trong cay \n", Key);
     }
     else
     {
-        printf("\nAdd %d as right child of %d\n", X, parent->Key);
-        parent->pRight = createNewNode(X);
+        printf("khong tim thay node %d ton tai trong cay\n", Key);
     }
 
-    return Root;
-}
 
-TNode* delNode(TNode* Root, int Key)
-{
-    if(Root == NULL)
-    return Root;
-    if (Key < Root->Key)
-    Root->pLeft = delNode(Root->pLeft, Key);
-else if (Key > Root->Key)
-    Root->pRight = delNode(Root->pRight, Key);
-else
-{
-    if (Root->pLeft == NULL)
+    /*int dele;
+    printf("\nNhap node can xoa:");
+    scanf("%d", dele);
+    printf("\n");
+
+    root = delNode(root, dele);
+    if (root != NULL)
     {
-        TNode* temp = Root->pRight;
-        delete Root;
-        return temp;
+        printf("Da xoa node %d trong cay \n", dele);
     }
-    else if (Root->pRight == NULL)
+    else
     {
-        TNode* temp = Root->pLeft;
-        delete Root;
-        return temp;
+        printf(" node %d khong ton tai trong cay\n", dele);
     }
-
-    TNode* minRight = Root->pRight;
-    while (minRight->pLeft != NULL)
-        minRight = minRight->pLeft;
-
-    Root->Key = minRight->Key;
-
-    Root->pRight = delNode(Root->pRight, minRight->Key);
-}
-     return Root;
-}
-   
-   
-int main()
-{
-	TREE my_tree = NULL;
-	int selection = 1;
-	while (selection)
-	{
-		printf("---BINARY SEARCH TREE DEMO---\n\n");
-		printf("Enter your selection\n");
-		printf("1. Input number to BST");
-		printf("2. Print BST in First order (NRL)");
-		printf("3. Print BST in Middle order (LNT)");
-		printf("4. Print BST in Last order (LRN)");
-		Printf("5. Delete node in BST");
-		printf("0. EXIT");
-		
-		Printf("Your selection: ");
-		scanf("%d", selection);
-		
-		switch selection
-		
-		    case 1:
-		    	inputNode(my_tree);
-		    	break;
-		    case 2:
-				break;
-			case 3:
-				print_LNR(my_tree);
-				break;
-			case 4:
-            printf("");
-				break;	
-			case 5:
-            printf("");
-				break;	
-		
-	} while (selection!=0)
-		
-    /*TNode* myTree =NULL;
-
-    myTree = insertNode(myTree, 11);
-    myTree = insertNode(myTree, 28);
-    myTree = insertNode(myTree, 40);
-    myTree = insertNode(myTree, 10);
-    myTree = insertNode(myTree, 22);
-    myTree = insertNode(myTree, 33);
-    myTree = insertNode(myTree, 18);
-    myTree = insertNode(myTree, 36);
-    myTree = insertNode(myTree, 9);
-
-    printf("\n\nDuyet cay theo thu tu thoi gian\n");
-    NLR(myTree);
-
-    int xoaNode= 28;
-    printf("\n\nXoa cay so: %d\n", xoaNode);
-    myTree = delNode(myTree, xoaNode);
-    printf("Duyet cay sau khi xoa node\n");
-    NLR(myTree);
-
-    int themNode= 30;
-    printf("\n\nThem phan tu: %d", themNode);
-    myTree = insertNode(myTree, themNode);
-    printf("Duyet cay sau khi them phan tu\n");
-    NLR(myTree);
-
-    printf("\n\nSo node tren cay la %d\n",countNode(myTree));
-    printf("\nSo leafnode tren cay la %d",countLeafNode(myTree));
-    printf("\n\nChieu cao cua cay la %d",getTreeHeight(myTree));
-    */
+    printf("\nCay moi sau khi xoa node %d", dele);
+    printRoot(root);
+    
+	delNode(root, Key);
+	printf("\nCay sau khi xoa node :\n ");
+	NLR(root);
     return 0;
-}
+}*/
+
+
+
+
+
