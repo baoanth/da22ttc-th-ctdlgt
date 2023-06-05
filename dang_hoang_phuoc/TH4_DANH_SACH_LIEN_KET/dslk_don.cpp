@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-
+// struct person with 3 fields
 typedef struct Person
 {
     int id;
@@ -11,8 +11,8 @@ typedef struct Person
 
 typedef struct Node
 {
-Person Info; 
-Node* pNext; 
+    Person Info;
+    Node *pNext;
 } Node;
 
 typedef struct List
@@ -25,33 +25,35 @@ Node *GetNode(Person x)
 {
     Node *p;
     p = new Node;
-    if (p==NULL)
+    if (p == NULL)
     {
-        printf("Khong du bo nho de cap nhat");
+        printf("Khong du bo nho de cap phat nut");
         return 0;
     }
     p->Info = x;
     p->pNext = NULL;
     return p;
 }
-void AddFirst(List &l, Node * new_ele)
+
+void AddFirst(List &l, Node *new_ele)
 {
-if (l.pHead==NULL) 
-{
-l.pHead = new_ele;
-l.pTail = l.pHead;
-}
-else
-{
-new_ele->pNext = l.pHead;
-l.pHead = new_ele;
-}
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
+    }
 }
 
 void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
+
 void PrintNode(Node *p)
 {
     printf("%d %s %s\n", p->Info.id, p->Info.fname, p->Info.lname);
@@ -59,6 +61,7 @@ void PrintNode(Node *p)
 
 void PrintList(List l)
 {
+    printf("\n");
     Node *p = l.pHead;
     while (p != NULL)
     {
@@ -66,6 +69,7 @@ void PrintList(List l)
         p = p->pNext;
     }
 }
+
 void AddTail(List &l, Node *new_ele)
 {
     if (l.pHead == NULL)
@@ -87,6 +91,7 @@ Node *FindNodeById(List l, int idx)
         p = p->pNext;
     return p;
 }
+
 void AddNodeAfter(List &l, int idx, Node *new_ele4)
 {
     Node *q = FindNodeById(l, idx);
@@ -185,13 +190,15 @@ void InputNode(List &l)
     AddNodeAfter(l, vi_tri, new_ele);
 
 }
+
 int main()
 {
     struct Person per1 = {1, "Dang Hoang", "Phuoc"};
     struct Person per2 = {2, "Tran Chi", "Truong Tho"};
     struct Person per3 = {3, "Chau The", "Qui"};
+    struct Person per4 = {4, "Tran Nhut", "Thien"};
    
-    
+
     Node *new_ele1 = GetNode(per1);
     Node *new_ele2 = GetNode(per2);
     Node *new_ele3 = GetNode(per3);
@@ -200,13 +207,13 @@ int main()
     List my_list;
     Init(my_list);
 
-    AddFist(my_list, new_ele1);
+    AddFirst(my_list, new_ele1);
     AddTail(my_list, new_ele2);
-    AddFist(my_list, new_ele3);
+    AddFirst(my_list, new_ele3);
 
     PrintList(my_list);
 
-    /*
+    
     int idx;
     printf("\nNhap id can tim: ");
     scanf("%d", &idx);
@@ -236,10 +243,11 @@ int main()
     int kq = RemoveNode(my_list,idx);
     if(kq == 1)
     PrintList(my_list);
-    */
+    
 
     InputNode(my_list);
     PrintList(my_list);
 
     return 0;
 }
+
