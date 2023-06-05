@@ -154,6 +154,7 @@ void inputNode(Node **root)
 
 int main()
 {   
+	int t;
     int select;
     Node* root = NULL;
     printf("Input Tree:\n ");
@@ -184,6 +185,11 @@ int main()
 	        	printf("3. Duyet theo thu tu sau(LRN)\n");
 	        	LRN(root);
 	            break;
+	        case 4:
+	        	printf("Nhap node can xoa:", t);
+	        	delNode(root, t);
+    			printf("\nCay sau khi xoa node:");
+    			printRoot(root);
 	        default:
 	            break;
 		}
