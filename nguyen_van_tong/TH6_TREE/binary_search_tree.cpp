@@ -173,24 +173,23 @@ int NodeLHK(tree T, int k)
 {
     if (T == NULL)
         return 0;
-    else if(k < T->key)
+    else if (k < T->key)
         return 1 + NodeLHK(T->right, k) + NodeLHK(T->left, k);
-    else 
-         NodeLHK(T->right,k);
+    else
+        NodeLHK(T->right, k);
 }
 
 int NodeXY(tree T, int x, int y)
 {
     if (T == NULL)
         return 0;
-    else if(y  < T->key || x   > T->key)
-        return 1 + NodeXY(T->right, x,y) + NodeXY(T->left,x,y);
+    else if (y < T->key || x > T->key)
+        return 1 + NodeXY(T->right, x, y) + NodeXY(T->left, x, y);
     else
     {
-    	NodeXY(T->right,x,y);
-    	//NodeXY(T->left ,x,y);
-	}
-         
+        NodeXY(T->right, x, y);
+        // NodeXY(T->left ,x,y);
+    }
 }
 
 int main()
