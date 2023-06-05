@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <conio.h>
 
 typedef struct Node
 {
@@ -98,7 +99,7 @@ int delNode(Node* &t, int x)
 {
     if (t == NULL)
     {	
-    	printf("Khong tim thay khoa x =%d ", x);
+    	printf("Khong tim thay khoa x = %d ", x);
         return 0;
     }
     if (t->data > x)
@@ -112,11 +113,10 @@ int delNode(Node* &t, int x)
         {
             t = t->pRight;
         }
-        else 
-			if (t->pRight == NULL)
-        	{
-           		t = t->pLeft;
-        	}
+        else if (t->pRight == NULL)
+        {
+            t = t->pLeft;
+        }
         else
         {
             Node* q = t->pRight;
@@ -124,39 +124,98 @@ int delNode(Node* &t, int x)
         }
         delete p;
     }
+    return 1;
 }
 
-
 void printRoot(Node* node)
- {
+{
     if (node != NULL)
-	{
-    printf("%d ", node->data);
-    printRoot(node->pLeft);
-    printRoot(node->pRight);
+    {
+        printf("%d ", node->data);
+        printRoot(node->pLeft);
+        printRoot(node->pRight);
     }
 }
 
+void InputNode(Node* &root)
+{
+    char ch;
+    int num;
+
+    do
+    {
+        printf("Enter a number: ");
+        scanf("%d", &num);
+        root = insertNode(root, num);
+        printf("Press ESC to exit or any other key to continue ...\n");
+        ch = getch();
+
+        while (getchar() != '\n')
+            continue;
+
+    } while (ch != 27);
+}
 
 int main()
 {
     Node* root = NULL;
-    
+    int Key;
     int selection;
+
+    printf("Input tree:\n");
+    InputNode(root);
+
     do
     {
-    	printf("\n-----BINARY SEARCH TREE -----\n\n");
-    	printf("Enter your selection \n");
-    	printf("1.In BST in first order(NLR) \n");
-    	printf("2.In BST in middle order(LNR)  \n");
-    	printf("3.In BST in last order \n");
-    	printf("4.Delete node \n");
-    	printf("5.EXIT\n");
-    	
-    	printf("Your selection :");
-    	scanf("%d", &selection);
-    	
-	}while(selection);
+        printf("\n-----BINARY SEARCH TREE -----\n\n");
+        printf("Enter your selection:\n");
+        printf("1. In BST in first order (NLR)\n");
+        printf("2. In BST in middle order (LNR)\n");
+        printf("3. In BST in last order (LRN)\n");
+        printf("4. Delete node\n");
+        printf("5. EXIT\n");
+
+        printf("Your selection: ");
+        scanf("%d", &selection);
+
+        switch (selection)
+        {
+            case 1:
+                printf("1. In BST in first order (NLR)\n");
+                NLR(root);
+                break;
+            case 2:
+                printf("2. In BST in middle order (LNR)\n");
+                LNR(root);
+                break;
+            case 3:
+                printf("3. In BST in last order (LRN)\n");
+                LRN(root);
+                break;
+            case 4:
+                printf("4. Delete node\n");
+                printf("Delete node: ");
+                scanf("%d", &Key);
+                if (delNode(root, Key))
+                {
+                    printf("Deleted node %d\n", Key);
+                    printf("Tree after deletion:\n");
+                    printRoot(root);
+                }
+                else
+                {
+                    printf("Node %d not found in the tree\n", Key);
+                }
+                break;
+            case 5:
+                printf("5. EXIT\n");
+                break;
+            default:
+                break;
+        }
+    } while (selection != 5);
+
+    return 0;
 }
 
     /*root = insertNode(root, 45);
