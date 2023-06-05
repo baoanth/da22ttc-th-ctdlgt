@@ -5,6 +5,7 @@ typedef struct Node
 {
 	int key;
 	struct Node *pLeft, *pRight;
+	
 }Node;
 
 typedef Node*TREE;
@@ -121,7 +122,7 @@ int main()
 	
 	 InsertNode(root,1);
 	 InsertNode(root,4);
-	 InsertNode(root,67);
+	 InsertNode(root,99);
 	 InsertNode(root,18);
 	 InsertNode(root,19);
 	 InsertNode(root,87);
@@ -130,8 +131,8 @@ int main()
 	 InsertNode(root,5);
 	 InsertNode(root,15);		
 	
-	 printf("Day ban dau: 1  4  67  18  19  87  2  4  5  15");
-	printf("\n");
+	 printf("Day ban dau: 1  4  99  18  19  87  2  4  5  15");
+	 printf("\n");
 /*	printf("\nCAC DAY SAU KHI SAP XEP \n");
 	printf("\n");
 	printf("DAY 1:\n");
@@ -147,7 +148,7 @@ int main()
 	Left_Right_Node(root);
 	
 	printf("\n");
-*/	
+	
 	printf("\nNhap x can tim: ");
 	scanf("%d",&x);
 	if(SearchNode(root,x)!=NULL)
@@ -158,7 +159,8 @@ int main()
 	{
 		printf("Khong tim thay %d trong day ",x);
 	}
-/*	printf("\n");
+
+	printf("\n");
 	printf("\nNhap x can chen: ");
 	scanf("%d",&x);
 	
@@ -193,10 +195,11 @@ int main()
 	while(1)
 	{
 		printf("\n========================================================================\n");
-		printf("\n 1.Sap xep day theo thu tu NLR\n 2.Sap xep theo thu tu LNR\n 3.Sap xep theo thu tu LRN\n 4.Chen them mot nut vao day\n 5.Xoa mot nut trong day\n 6.Exit\n \nNhap thao tac can thuc hien: ");
+		printf("\nHAY CHON MOT THAO TAC!");
+		printf("\n 1.Sap xep day theo thu tu NLR\n 2.Sap xep theo thu tu LNR\n 3.Sap xep theo thu tu LRN\n 4.Chen them mot nut vao day\n 5.Xoa mot nut trong day\n 6.Tim mot nut trong day\n 7.Thoat \nNhap thao tac can thuc hien: ");
 		scanf("%d",&c);
 		
-		if(c==6)
+		if(c==7)
 			break;
 		else if(c==1)
 		{
@@ -250,11 +253,25 @@ int main()
 			Left_Right_Node(root);
 			printf("\n");
 		}
+		else if(c==6)
+		{
+			printf("\nNhap x can tim: ");
+			scanf("%d",&x);
+			if(SearchNode(root,x)!=NULL)
+			{
+				printf("Tim thay %d trong day ",x);
+			}
+			else
+			{
+				printf("Khong tim thay %d trong day ",x);
+			}
+			printf("\n");
+		}
 		
 	}
 	return 0;
 }
-//FINISH
+
 
 
 
