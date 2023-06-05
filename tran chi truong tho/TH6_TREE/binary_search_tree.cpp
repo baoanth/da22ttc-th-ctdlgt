@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Khai bao cay*/
+//Khai bao cay
 typedef struct TNODE
 {
     int Key;
@@ -9,7 +9,7 @@ typedef struct TNODE
 } TNODE;
 typedef TNODE *TREE;
 
-/*In theo thu tu truoc*/
+//in theo tu truoc 
 void Print_NLR(TREE Root)
 {
     if (Root != NULL)
@@ -20,7 +20,7 @@ void Print_NLR(TREE Root)
     }
 }
 
-/*In theo thu tu giua*/
+//in ra theo thu tu giua
 void Print_LNR(TREE Root)
 {
     if (Root != NULL)
@@ -31,7 +31,7 @@ void Print_LNR(TREE Root)
     }
 }
 
-/*In theo thu tu sau*/
+//In theo thu tu sau
 void Print_LRN(TREE Root)
 {
     if (Root != NULL)
@@ -42,7 +42,7 @@ void Print_LRN(TREE Root)
     }
 }
 
-/*Tim kiem x trong cay*/
+// tim x trong cay 
 TNODE *SearchNode(TREE T, int x)
 {
     if (T)
@@ -57,7 +57,7 @@ TNODE *SearchNode(TREE T, int x)
     return NULL;
 }
 
-/*Them x vao cay*/
+//them x vao cay 
 int InsertNode(TREE &T, int x)
 {
     if (T)
@@ -77,7 +77,7 @@ int InsertNode(TREE &T, int x)
     return 1;
 }
 
-/*Tim phan tu the mang*/
+//Tim phan tu the mang
 void searchStandFor(TREE &p, TREE &q)
 {
     if (q->pLeft)
@@ -90,7 +90,7 @@ void searchStandFor(TREE &p, TREE &q)
     }
 }
 
-/*Xoa mot nut*/
+//Xoa mot nut
 int delNode(TREE &T, int X)
 {
     if (T == NULL)
@@ -115,7 +115,7 @@ int delNode(TREE &T, int X)
     }
 }
 
-/*Dem so nut la*/
+//Dem so nut la
 int so_nut_la(TREE Root)
 {
     if (Root == NULL)
@@ -132,7 +132,7 @@ int so_nut_la(TREE Root)
     }
 }
 
-/*So nut co dung mot cay con*/
+//So nut co dung mot cay con
 int nut_1_cay_con(TREE Root)
 {
     if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
@@ -149,7 +149,7 @@ int nut_1_cay_con(TREE Root)
     }
 }
 
-/*So nut co dung 2 cay con*/
+//So nut co dung 2 cay con
 int nut_2_cay_con(TREE Root)
 {
     if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
@@ -166,7 +166,7 @@ int nut_2_cay_con(TREE Root)
     }
 }
 
-/*So nut co khoa nho hon x*/
+//So nut co khoa nho hon x
 int nut_khoa_nhox(TREE Root, int x)
 {
     if (Root == NULL || Root->Key >= x)
@@ -179,7 +179,7 @@ int nut_khoa_nhox(TREE Root, int x)
     }
 }
 
-/*So nut co khoa lon hon x*/
+//So nut co khoa lon hon x
 int nut_khoa_lonx(TREE Root, int x)
 {
     if (Root == NULL || Root->Key <= x)
@@ -214,7 +214,7 @@ int chieu_cao_cay(TREE Root)
     }
 }
 
-/*So nut co khoa lon hon x nho hon y*/
+//So nut co khoa lon hon x nho hon y
 int nut_lon_x_nho_y(TREE Root, int x, int y)
 {
     if (Root == NULL)
