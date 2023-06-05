@@ -52,6 +52,33 @@ void NLR(TNode* Root)
    } 
 }
 
+
+void LNR(TNode* Root)
+{
+	if (Root != NULL)
+	{
+		printf(" %d ", Root->Key);
+		LNR(Root->pLeft);
+	//	Xu ly Root; //X? lý tuong ?ng theo nhu c?u
+		LNR(Root->pRight);
+	
+	}
+}
+
+
+void LRN(TNode* Root)
+{
+	if (Root != NULL)
+	{
+		printf(" %d ", Root->Key);
+		LRN(Root->pLeft);
+		LRN(Root->pRight);
+		
+	//	Xu ly Root; //X? lý tuong ?ng theo nhu c?u
+	}
+}
+
+
 int countNode(TNode *Root)
 {
     int count = 0;
@@ -172,59 +199,91 @@ else
      return Root;
 }
 
+void inputNode(TNode* &Root)
+{
+    char ch;
+    int num;
+
+    do
+    {
+        printf("Enter a number (Enter -999 to EXIT):");
+        scanf("%d",&num);
+        Root = insertNode (Root, num);
+        //TNode* insertNode(TNode* Root, int X);
+        //insertNode(T,num);
+        printf("Inserted %d into the BST \n",num);
+        ch = getch();
+        while (getchar()!= '\n')
+        	continue;
+        
+    }while(ch!= 27);
+    
+}
+   
+
 int main()
 {
     TNode* myTree = NULL;
-    int selection = 1;
+
+    int selection;
+    int key;
+    
+    printf ("\n1. Input number to BST \n");
+    inputNode(myTree);
     do
     {
-    	printf ("*** BINARY SEARCH TREE DEMO ***\n\n");
+    	printf ("\n\n*** BINARY SEARCH TREE DEMO ***\n\n");
     	printf (" Enter your selection ");
-    	printf ("0. EXIT");
-    	printf ("1. Input number to BST \n");
-    	printf ("2. Print BST in first order (NLR) ");
-    	printf ("3. Print BST in Middle order (LNR)");
-    	printf ("4. Print BST in last order (LRN)");
-    	printf ("5. Delete node in BST");
+    	printf ("\n1. Print BST in first order (NLR) \n");
+    	printf ("\n2. Print BST in Middle order (LNR)\n");
+    	printf ("\n3. Print BST in last order (LRN)\n");
+    	printf ("\n4. Delete node in BST\n");
+    	printf ("\n5. EXIT\n");
     	
-    	printf (" Your selection: ");
+    	printf ("\n Your selection: ");
     	scanf (" %d ", &selection);
-    } while (selection != NULL);
-    
-    switch (selection)
-    {
-    	case 0:
-    		printf ("")
-    		break;
-    		
-    	case 1:
-    		printf ("")
-    		break;
-    		
-    	case 2:
-    		printf ("")
-    		break;
-    		
-    	case 3:
-    		printf ("")
-    		break;
-    		
-    	case 4:
-    		printf ("")
-    		break;
-    		
-    	case 5:
-    		printf ("")
-    		break;
-    }
-
-    myTree = insert(myTree, 10);
+    /*	myTree = insert(myTree, 10);
     myTree = insert(myTree, 7);
     myTree = insert(myTree, 13);
     myTree = insert(myTree, 8);
     myTree = insert(myTree, 9);
     myTree = insert(myTree, 11);
-    myTree = insert(myTree, 12);
+    myTree = insert(myTree, 12);*/
+   
+	    switch (selection)
+	    {
+	    
+	    	case 1:
+	    		printf ("\n1. Print BST in first order (NLR)\n ");
+	    		NLR(myTree);
+	    		break;
+	    		
+	    	case 2:
+	    		printf ("\n2. Print BST in Middle order (LNR)\n");
+	    		LNR(myTree);
+	    		break;
+	    		
+	    	case 3:
+	    		printf ("\n3. Print BST in last order (LRN)\n");
+	    		LRN(myTree);
+	    		break;
+	    		
+	    	case 4:
+	    		printf ("4. Delete node in BST\n");
+	    		printf("delete node  : ");
+	    		scanf("%d", &key);
+	    		delNode(myTree, key);
+	    		break;
+	    	case 5:
+	    		printf("5. EXIT \n");
+	    		
+	    		 default:
+	            	
+	            break;
+	    }
+	    } while (selection);
+
+    
 
     /*printf("\n\nDuyet cay theo thu tu thoi gian\n");
     NLR (myTree);
