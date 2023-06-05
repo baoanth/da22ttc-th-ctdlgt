@@ -185,15 +185,23 @@ void Init(List &l)
 {
     l.pHead = l.pTail = NULL;
 }
+<<<<<<< HEAD
+ 
+=======
 
 <<<<<<< HEAD
 =======
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 void PrintNode(Node *p)
 {
     printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
 }
+<<<<<<< HEAD
+ 
+=======
 
 >>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 void PrintList(List &l)
 {
 
@@ -210,17 +218,60 @@ void PrintList(List &l)
 			printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname );
 			p = p->pNext;
 		}		
+<<<<<<< HEAD
 	}      
 
+=======
+<<<<<<< HEAD
+	}   
+=======
+    if (l.pHead == NULL)
+    {
+        printf("Danh sach rong\n");
+    }
+    else
+    {
+        Node *p;
+        p = l.pHead;
+        while (p != NULL)
+        {
+            printf("%5d %20s %20s\n", p->Info.id, p->Info.fname, p->Info.lname);
+            p = p->pNext;
+        }
+    }
+<<<<<<< HEAD
+>>>>>>> 6925b7cc4dd77deded6c9e5c526061a2d9449055
+=======
+>>>>>>> 1ec43c1fa76a1d15cd5d2d3267b1bfaa912fc1ac
+>>>>>>> a509ab0940b9d25a56a36507494398d470097e7e
+=======
+	}      
+
+>>>>>>> ca6ac27cd5e02de09453469c19c79d97e62cca5b
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 }
+<<<<<<< HEAD
+ 
+=======
 <<<<<<< HEAD
 =======
 
 >>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 
 
 int main()
 {
+<<<<<<< HEAD
+    struct Person per1 = {3, "Nguyen", "Le Hoa Binh" };
+	struct Person per2 = {2, "Le", "Binh" };
+	struct Person per3 = {1, "Tran", "Hoa" };
+    
+    Node* new_ele3  = GetNode(per3);
+    Node* new_ele2  = GetNode(per2);
+    Node* new_ele1  = GetNode(per1);
+    List my_list;
+=======
     struct Person per1 = {1, "Nguyen", "Le Hoa Binh"};
     struct Person per2 = {2, "Le", "Binh"};
     struct Person per3 = {3, "Tran", "Hoa"};
@@ -230,16 +281,27 @@ int main()
     Node *new_ele3 = GetNode(per3);
     
 	List my_list;
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
     Init(my_list);
 
     AddFirst(my_list, new_ele1);
     AddFirst(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
+<<<<<<< HEAD
+ 
+	
+    AddTail(my_list, new_ele1);
+    //AddTail(my_list, new_ele2);
+    //AddTail(my_list, new_ele3);
+
+ 
+=======
 
     //AddTail(my_list, new_ele1);
     // AddTail(my_list, new_ele2);
     // AddTail(my_list, new_ele3);
 
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
     PrintList(my_list);
     
 	int idx;
@@ -251,6 +313,10 @@ int main()
         PrintNode(node_kq);
     else
         printf("Tim khong thay node co id %d", idx);
+<<<<<<< HEAD
+ 
+    PrintList(my_list); 
+=======
 
     // PrintList(my_list);
 
@@ -271,11 +337,17 @@ int main()
     InputNode(my_list);
 
     PrintList(my_list);
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 
     return 0;
 <<<<<<< HEAD
 
 
+<<<<<<< HEAD
+ 
+
+=======
 =======
 >>>>>>> e747f3b24ff3f201c0528826f0cc7e0e6f0a9e11
+>>>>>>> 17b573a8d1f3b8c2dacfdc5008c8068e4c6378f6
 }

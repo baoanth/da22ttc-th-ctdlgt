@@ -60,7 +60,7 @@ void Nhap_DaThuc(DaThuc &l)
 {
 	int maxMU;
 	DonThuc s;
-	printf("Moi ban nhap so mu lon nhat: ");
+	printf("\nMoi ban nhap so bac lon nhat cua DaThuc: ");
 	scanf("%d", &maxMU);
 	
 	for(int i=maxMU; i>=0; i--)
@@ -101,14 +101,100 @@ void Print_DaThuc(DaThuc &l)
 	}
 }
 
+void Copy_DaThuc(DaThuc l, DaThuc &l_kq)
+{
+	Node* p;
+    p = l.pHead;
+    
+    while (p!=NULL)
+    {
+    	Node* new_ele = Get_Node(p->Info);
+    	Add_Tail(l_kq, new_ele);
+    	p=p->pNext;
+    }
+   // printf("\nCopy xong\n");
+}
+
+Node* Tim_Node_BacN(DaThuc l, int n)
+{
+	Node* p;
+    p =l.pHead;
+    
+    while (p!=NULL)
+    {
+    	if(p->Info.bac==n)
+    		break;
+    	p=p->pNext;
+    }
+    return p;
+}
+
+void Cong_DaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+{
+	    
+    Copy_DaThuc(l1, l_kq);
+    printf("\n");
+    
+	Node* p;
+    p =l2.pHead;
+    
+	while (p!=NULL)
+    {
+    	Node* foundNode = Tim_Node_BacN(l_kq, p->Info.bac);
+    	if (foundNode!=NULL)
+		{
+		 	
+    		foundNode->Info.heso += p->Info.heso;	 
+    		printf("Found bac %d\n" ,p->Info.bac);
+    	}
+    	else
+    	{
+    		Node* node_tam = Get_Node(p->Info);
+    		Add_Tail(l_kq, node_tam);
+    	}
+    	p=p->pNext;
+    }  
+printf("\n");
+}
+
+<<<<<<< HEAD
+=======
+float Uoc_Luong(Dathuc &l1, int x)
+{
+	Node* p=l.pHead;
+	
+	while(p!=NULL)
+	{
+		
+	}
+}
+
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 int main()
 {
-	DaThuc my_dathuc;
-	Init(my_dathuc);
+	DaThuc my_dathuc1, my_dathuc2, my_dathuc_kq;
+	Init(my_dathuc1);
+	Init(my_dathuc2);
+	Init(my_dathuc_kq);
 	
-	Nhap_DaThuc(my_dathuc);
+	Nhap_DaThuc(my_dathuc1);
+	printf("\nDa thuc thu nhat vua nhap: ");
+	Print_DaThuc(my_dathuc1);
+	printf("\n");
 	
-	printf("\nDa thuc da nhap: ");
-	Print_DaThuc(my_dathuc);
+	Nhap_DaThuc(my_dathuc2);
+	printf("\nDa thuc thu hai vua nhap: ");
+	Print_DaThuc(my_dathuc2);
+	printf("\n");
 	
+	Cong_DaThuc(my_dathuc1, my_dathuc2, my_dathuc_kq);
+	printf("Ket qua cong 2 da thuc: ");
+	Print_DaThuc(my_dathuc_kq);
+	
+	
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
 }
