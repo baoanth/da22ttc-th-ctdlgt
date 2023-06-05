@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include <stdlib.h>
 
 typedef struct Node
 {
@@ -134,32 +135,64 @@ void printRoot(Node* node)
         NLR(node->pLeft);
         NLR(node->pRight);
 	}
+}
 
+void inputNode(Node **root)
+{
+    char ch;
+    int num;
+    do {
+        printf("Nhap so moi:");
+        scanf("%d", &num);
+
+        insertNode(*root, num);
+        printf("Nhap ESC de thoat hoac tiep tuc...\n");
+        ch = getch();
+		while (getchar() != '\n');
+    } while (ch != 27);
 }
 
 int main()
 {   
-    int select; 
+    int select;
     Node* root = NULL;
+    printf("Input Tree:\n ");
+	inputNode(&root);
     do
-	{
-    printf("\n---DANH SACH THAO TAC VOI CAY---\n");
-    printf("1. Input tree\n");
-    printf("2. Duyet theo thu tu truoc(NLR)\n");
-    printf("3. Duyet theo thu tu giua(LNR)\n");
-    printf("4. Duyet theo thu tu sau(LRN)\n");
-    printf("5. Tim node trong cay\n");
-    printf("6. Xoa node trong cay\n");
-    printf("0. EXIT\n ");
+	{   
+	    printf("\n");
+	    printf("\n---DANH SACH THAO TAC VOI CAY---\n");
+	    printf("1. Duyet theo thu tu truoc(NLR)\n");
+	    printf("2. Duyet theo thu tu giua(LNR)\n");
+	    printf("3. Duyet theo thu tu sau(LRN)\n");
+	    printf("0. EXIT\n ");
+	    
+	    printf("Moi nhap lua chon cua ban:");
+	    scanf("%d", &select);
+	    
+	    switch(select)
+	    {
+	        case 1:
+	        	printf("1. Duyet theo thu tu truoc(NLR)\n");
+	        	NLR(root);
+	            break;
+	        case 2:
+	        	printf("2. Duyet theo thu tu giua(LNR)\n");
+	        	LNR(root);
+	            break;
+	        case 3:
+	        	printf("3. Duyet theo thu tu sau(LRN)\n");
+	        	LRN(root);
+	            break;
+	        default:
+	            break;
+		}
+	}while(select);
+
     
-    printf("Moi nhap lua chon cua ban:");
-    scanf("%d", &select);
-    switch(select)
-    {
-	}
-    
-    }while(select);
+
 /*    
+
     insertNode(root, 20);
     insertNode(root, 50);
     insertNode(root, 00);
