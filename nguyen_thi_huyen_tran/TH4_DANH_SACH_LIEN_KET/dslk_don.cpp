@@ -273,8 +273,9 @@ int main()
  
     return 0;
 }
-
-
+void AddNodeAfter(List &l, int idx)
+{
+	
 
 
 
