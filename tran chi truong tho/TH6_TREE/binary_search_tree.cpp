@@ -82,16 +82,16 @@ int main()
 	
     Node* root = NULL;
     
-    root = insertNode(root, 20);
+    root = insertNode(root, 13);
     root = insertNode(root, 19);
     root = insertNode(root, 17);
-    root = insertNode(root, 12);
+    root = insertNode(root, 10);
     root = insertNode(root, 15);
     root = insertNode(root, 16);
-    root = insertNode(root, 18);
-    root = insertNode(root, 14);
-    root = insertNode(root, 13);
     root = insertNode(root, 11);
+    root = insertNode(root, 14);
+    root = insertNode(root, 20);
+    root = insertNode(root, 18);
 
     printf("Duyet theo thu tu truoc:\n");
     NLR(root);
