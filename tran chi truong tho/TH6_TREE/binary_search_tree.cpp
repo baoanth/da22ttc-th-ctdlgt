@@ -82,16 +82,16 @@ int main()
 	
     Node* root = NULL;
     
-    root = insertNode(root, 1);
-    root = insertNode(root, 2);
-    root = insertNode(root, 3);
-    root = insertNode(root, 4);
-    root = insertNode(root, 5);
-    root = insertNode(root, 6);
-    root = insertNode(root, 7);
-    root = insertNode(root, 8);
-    root = insertNode(root, 9);
+    root = insertNode(root, 13);
+    root = insertNode(root, 19);
+    root = insertNode(root, 17);
     root = insertNode(root, 10);
+    root = insertNode(root, 15);
+    root = insertNode(root, 16);
+    root = insertNode(root, 11);
+    root = insertNode(root, 14);
+    root = insertNode(root, 20);
+    root = insertNode(root, 18);
 
     printf("Duyet theo thu tu truoc:\n");
     NLR(root);
@@ -101,8 +101,6 @@ int main()
     printf("\n");
     printf("\nDuyet theo thu tu sau:\n");
     LRN(root);
-    printf("thanh cong");
+    printf("\nthanh cong");
 return 0;
 }
-
-
