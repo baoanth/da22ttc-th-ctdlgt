@@ -42,7 +42,7 @@ TNode* insert(TNode *Root,int data)
     return Root;
 }
 
-void NLR(TNode* Root)
+void NLR(TNode* Root)//First orther
 {
    if (Root != NULL)
    {
@@ -51,6 +51,27 @@ void NLR(TNode* Root)
     NLR (Root->pRight);
    } 
 }
+
+void LNR(TNode* Root)//Middle order
+{
+    if (Root != NULL)
+    {
+        LNR(Root->pLeft);
+        printf("%d ", Root->Key);
+        LNR(Root->pRight);
+    }
+}
+
+void LRN(TNode* Root)//Last orther
+{
+    if (Root != NULL)
+    {
+        LRN(Root->pLeft);
+        LRN(Root->pRight);
+        printf("%d ", Root->Key);
+    }
+}
+
 
 int countNode(TNode *Root)
 {
@@ -180,23 +201,25 @@ else
      return Root;
 }
 
-void inputNode(TREE &T)
+void inputNode(TNode* Root) 
 {
-    char ch;
-    int num;
+    int num = 0;
 
-    while(num != -999);
-    {
-        printf("Enter a number (Enter -999 to EXIT):");
-        scanf("%d",&num);
-        insertNode(T,num);
-        printf("Inserted %d into the BST \n",num);
+    while (num != -999) 
+	{
+        printf("Enter a number (Enter -999 to EXIT): ");
+        scanf("%d", &num);
+        if (num != -999)
+	    {
+            insertNode(Root, num);
+            printf("Inserted %d into the BST\n", num);
+        }
     }
 }
    
 int main()
 {
-    TREE my_tree =NULL;
+     TNode* Root =NULL;
     int selection = 1;
 
     do
@@ -213,31 +236,45 @@ int main()
 
         printf("Your selection: ");
         scanf("%d",&selection);
-    }while(selection!=0);
 
     switch(selection)
     {
         case 0:
-        printf("");
-        break;
+            break;
 
         case 1:
-        printf("");
-        break;
+        printf("1. input number to BST");
+        inputNode(Root);
+            break;
 
         case 2:
-        printf("");
-        break;
+        printf("\nFirst order traversal: \n");
+        NLR(Root);
+            break;
 
         case 3:
-        printf("");
-        break;
+        printf("\nMiddle order traversal: \n");
+        LNR(Root);
+            break;
 
         case 4:
-        printf("");
-        break;
+        printf("\nLast order traversal: \n");
+        LRN(Root);
+            break;
+            
+        case 5:
+        printf("\nEnter the node to delete: \n");
+        int delKey;
+        scanf("%d", &delKey);
+        Root = delNode(Root, delKey);
+        printf("\nDeleted node %d from BST", delKey);
+		    break;  
+		
+		default:
+            printf("\nInvalid selection");
+            break;	  
     }
-
+}while (selection != 0);
     /*TNode* myTree =NULL;
 
     myTree = insert(myTree, 8);
