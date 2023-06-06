@@ -183,7 +183,7 @@ void SaveStudentsToFile(List &l, char *filename)
 	
 	if(l.pHead == NULL)
     {
-        printf("\nDanh sach rong!\n");
+        fprintf(outfile,"\nDanh sach rong!\n");
     }
     else
     {
@@ -251,7 +251,7 @@ int main()
             case 5:
                 printf("\nNhap ten file de luu danh sach sinh vien: ");
                 char filename[100];
-                scanf("%s", filename);
+                scanf("%s", &filename);
                 SaveStudentsToFile(my_list, filename);
                 break;
             default:
