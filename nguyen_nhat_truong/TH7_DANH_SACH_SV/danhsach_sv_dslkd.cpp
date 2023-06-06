@@ -44,7 +44,7 @@ void addStudent(Student **head)
         }
         current->next = student;
     }
-    printf("Da them sinh vien moi thah cong\n");
+    printf("Add sinh vien moi thah cong\n");
 }
 
 void deleteStudent(Student **head, int id) 
@@ -204,4 +204,3 @@ int main()
 
     return 0;
 }
-
