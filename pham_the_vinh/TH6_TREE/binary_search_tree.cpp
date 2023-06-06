@@ -129,8 +129,8 @@ void InputTree(TREE &T)
 int main()
 {
     TREE my_tree = NULL;
-    
-  int stt = 1;
+
+    int stt = 1;
 
     do
     {
@@ -150,41 +150,46 @@ int main()
         case 1:
             InputTree(my_tree);
             break;
+
         case 2:
             printf("Duyet theo thu tu truoc:");
             Print_NLR(my_tree);
             break;
+
         case 3:
             printf("Duyet theo thu tu giua:");
             Print_LNR(my_tree);
             break;
+
         case 4:
             printf("Duyet theo thu tu sau:");
             Print_LRN(my_tree);
             break;
+
         case 5:
             int d;
             printf("- Nhap gia tri can xoa: ");
             scanf("%d", &d);
             DeleteNode(my_tree, d);
             break;
+
         case 6:
-//        	int x;
-//          printf("- Nhap gia tri can tim: ");
-//          scanf("%d", &x);
-//
-//          TNODE *KqSearch = SearchNode(my_tree, x);
-//
-//          if (KqSearch != NULL)
-//          {
-//              printf("--- Da tim thay ---");
-//          }
-//          else
-//          {
-//              printf("--- Khong tim thay ---");
-//          }
-//
-//           break;
+            //        	int x;
+            //          printf("- Nhap gia tri can tim: ");
+            //          scanf("%d", &x);
+            //
+            //          TNODE *KqSearch = SearchNode(my_tree, x);
+            //
+            //          if (KqSearch != NULL)
+            //          {
+            //              printf("--- Da tim thay ---");
+            //          }
+            //          else
+            //          {
+            //              printf("--- Khong tim thay ---");
+            //          }
+            //
+            //           break;
 
         default:
             break;
