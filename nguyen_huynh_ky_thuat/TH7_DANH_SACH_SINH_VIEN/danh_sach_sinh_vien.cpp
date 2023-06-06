@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Khai bao cau truc sv
 typedef struct Student
 {
     int id;
@@ -30,7 +29,6 @@ Student *createStudent()
     return student;
 }
 
-// Them sv
 void addStudent(Student **head) 
 {
     Student *student = createStudent();
@@ -46,15 +44,14 @@ void addStudent(Student **head)
         }
         current->next = student;
     }
-    printf("Add sv moi thanh cong\n");
+    printf("Add sinh vien moi thah cong\n");
 }
 
-//Xoa sv
 void deleteStudent(Student **head, int id) 
 {
     if (*head == NULL) 
     {
-        printf("Danh sach sv rong .\n");
+        printf("Danh sach sinh rong .\n");
         return;
     }
     Student *current = *head;
@@ -71,20 +68,19 @@ void deleteStudent(Student **head, int id)
                 prev->next = current->next;
             }
             free(current);
-            printf("Da xoa sv co ma so %d .\n", id);
+            printf("Da xoa sinh vien co ma so %d .\n", id);
             return;
         }
         prev = current;
         current = current->next;
     }
-    printf("Ko tim thay sv co ma so %d.\n", id);
+    printf("Khong tim thay sinh vien co ma so %d.\n", id);
 }
 
-// Sua thong tin sv
 void updateStudent(Student *head, int id) 
 {
     if (head == NULL) {
-        printf("Danh sach sv rong\n");
+        printf("Danh sach sinh vien rong\n");
         return;
     }
     Student *current = head;
@@ -103,34 +99,32 @@ void updateStudent(Student *head, int id)
         }
         current = current->next;
     }
-    printf("Ko tim thay sv co ma so %d .\n", id);
+    printf("Khong tim thay sinh vien co ma so %d .\n", id);
 }
 
-// Hien thi ds sv
 void displayStudents(Student *head) 
 {
     if (head == NULL) 
     {
-        printf("Danh sach sv rong .\n");
+        printf("Danh sach sinh vien rong .\n");
         return;
     }
-    printf("Danh sach sv:\n");
-    printf("%10s %20s %5s %10s\n", "Ma so", "Ho va ten", "Tuoi", "Diem TB");
+    printf("Danh sach sinh vien:\n");
+    printf("%15s %20s %10s %10s\n", "Ma so", "Ho va ten", "Tuoi", "Diem TB");
     Student *current = head;
     while (current != NULL) 
     {
-        printf("%10d %20s %5d %10.2f\n", current->id, current->name, current->age, current->score);
+        printf("%15d %20s %10d %10.2f\n", current->id, current->name, current->age, current->score);
         current = current->next;
     }
 }
 
-// Luu ds sv vao file
 void saveStudentsToFile(Student *head, const char *filename) 
 {
     FILE *file = fopen(filename, "w");
     if (file == NULL) 
     {
-        printf("Ko the mo file de ghi!\n");
+        printf("Khong the mo file de ghi!\n");
         return;
     }
     Student *current = head;
@@ -140,10 +134,9 @@ void saveStudentsToFile(Student *head, const char *filename)
         current = current->next;
     }
     fclose(file);
-    printf("Da luu danh sach sv vao file %s .\n", filename);
+    printf("Da luu danh sach sinh vien vao file %s .\n", filename);
 }
 
-//Sap xep sv theo thu tu tang dan
 void freeStudents(Student *head) 
 {
     Student *current = head;
@@ -154,6 +147,7 @@ void freeStudents(Student *head)
         current = next;
     }
 }
+
 
 int main()
 {
@@ -210,26 +204,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

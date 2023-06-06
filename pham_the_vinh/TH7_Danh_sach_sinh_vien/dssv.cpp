@@ -86,13 +86,13 @@ void UpdateStudent(Student *head, int id)
 			    printf("Nhap diem trung binh: ");
 			    scanf("%f", &St->score);
 	        }
+	        else
+			{
+			printf("Khong tim thay sinh vien can sua co ma so %d.\n", id); 
+			}
 	        St = St->next;
 	    }
-	}
-	else
-	{
-		printf("Khong tim thay sinh vien can sua co ma so %d.\n", id); 
-	}
+	}	
 }
 
 void DisplayStudents(Student *head)
