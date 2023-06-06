@@ -9,7 +9,7 @@ typedef struct Student{
     char ten[10];
     int tuoi;
     float dtb;
-    struct Student *next;
+//    struct Student *next;
 } Student;
 
 typedef struct Node
@@ -88,8 +88,8 @@ void AddStudent(List &l)
     scanf("%f", &per_tam.dtb);
 
   	EnQueue(l, per_tam);
-
 }
+
 int DeleteStudent(List &l, int id)
 {
 	Node *p = l.pHead;
@@ -120,6 +120,7 @@ int DeleteStudent(List &l, int id)
 	}
 	return 1;
 }
+
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
@@ -156,6 +157,7 @@ int UpdateStudent(List &l, int id)
 	}
 	return 1;
 }
+
 void DisplayStudents(List &l)
 {
     if(l.pHead == NULL)
@@ -170,12 +172,13 @@ void DisplayStudents(List &l)
         printf("\n   MSSV   |    HO VA TEN LOT   |    TEN   |TUOI| DTB ");
         while(p!= NULL)
         {
-            printf("\n%10d|%20s|%10s|%4d|%.2f", p->Info.id, p->Info.ho ,p->Info.ten , p->Info.tuoi, p->Info.dtb);
+            printf("\n%10d|%20s|%10s|%4d|%.1f", p->Info.id, p->Info.ho ,p->Info.ten , p->Info.tuoi, p->Info.dtb);
             p = p->pNext;
         }
         printf("\n");
     }
 }
+
 void SaveStudentsToFile(List &l, char *filename)
 {
 	FILE *outfile;
@@ -193,7 +196,7 @@ void SaveStudentsToFile(List &l, char *filename)
         fprintf(outfile,"\n   MSSV   |    HO VA TEN LOT   |    TEN   |TUOI| DTB ");
         while(p!= NULL)
         {
-            fprintf(outfile,"\n%10d|%20s|%10s|%4d|%.2f", p->Info.id, p->Info.ho ,p->Info.ten , p->Info.tuoi, p->Info.dtb);
+            fprintf(outfile,"\n%10d|%20s|%10s|%4d|%.1f", p->Info.id, p->Info.ho ,p->Info.ten , p->Info.tuoi, p->Info.dtb);
             p = p->pNext;
         }
         printf("\n");
@@ -206,7 +209,24 @@ void SaveStudentsToFile(List &l, char *filename)
     fclose(outfile);
 }
 	
-void freeStudents(Student *h);
+//void freeStudents(Student *h);
+
+void SortList(List &l)
+{
+	for(Node *p=l.pHead; p != NULL; p = p->pNext)
+	{		
+		for(Node *q = p->pNext; q != NULL; q = q->pNext)
+ 		{
+   			if(p->Info.id > q->Info.id)
+     		{
+      			int t = p->Info.id;
+       			p->Info.id = q->Info.id;
+       			q->Info.id = t;		
+     		}	
+  		}
+ 	}
+}
+
 int main() 
 {
 
@@ -246,6 +266,7 @@ int main()
                 UpdateStudent(my_list, id);
                 break;
             case 4:
+            	printf("\nDanh sach sinh vien:");
                 DisplayStudents(my_list);
                 break;
             case 5:
@@ -254,6 +275,10 @@ int main()
                 scanf("%s", &filename);
                 SaveStudentsToFile(my_list, filename);
                 break;
+            case 6:
+            	SortList(my_list);
+            	printf("\nDanh sach da duoc sap xep!\n");
+            	break;
             default:
                 printf("\nLua chon khong hop le. Vui long thu lai!\n");
                 break;
