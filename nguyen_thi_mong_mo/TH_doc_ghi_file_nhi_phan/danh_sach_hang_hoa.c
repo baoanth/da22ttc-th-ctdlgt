@@ -40,7 +40,7 @@ int read_DMHH(char* filename, HangHoa * ds_hanghoa)
 // Ham in n mau tin trong danh sach hang hoa ra man hinh
 void print_DMHH(HangHoa* hh, int n)
 {
-	printf("%10s%25s%10s%12s%12s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien");	
+	printf("%10s%25s%15s%12s%20s\n", "Ma Hang" ,"Ten hang", "So luong", "Don gia", "So tien"); 
 	int i;
 	for (i=0; i<n; i++)
 	{
@@ -104,50 +104,58 @@ void input_DMHH(char* filename)
 		fflush(stdin);
 		gets(mahang_input);
 		
-		if (strncmp(mahang_input, "EXIT", 4)==0){
-   			break;
-   		}
+		if(strncmp(mahang_input,"EXIT",4)==0){
+			break;
+		}
 		
-		int found = find_HH_by_ma(mahang_input, my_dmhh, count, &hh_temp);
+		int fod = find_HH_by_ma(mahang_input,array,count,&hang_tam);
 		
-		if (found != -1)
-		{
-			printf("Tim thay ma hang vua nhap tai phan tu thu %d\n", found);
+		if(fod == -1){
 			
-			printf("\nTen hang: %s\n", hh_temp.tenhang);
+			//strcpy(mahang_input,tmp);
+			strcpy(hang_tam.mahang,mahang_input);
+			printf("nhap ten hang ");
+			fflush(stdin);
+			gets(hang_tam.tenhang);
 			
-			printf("So luong: "); 
-			scanf("%d", &hh_temp.soluong);
+			printf("nhap so luong ");
+			scanf("%d",&hang_tam.soluong);
 			
-			printf("Don gia: "); 
-			scanf("%f", &hh_temp.gia);
+			printf("nhap don gia " );
+			scanf("%f",&hang_tam.gia);
 			
-			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
-			printf("\nThanh tien: %f\n", hh_temp.thanhtien); 
+			hang_tam.thanhtien = hang_tam.gia*hang_tam.soluong;
 			
+<<<<<<< HEAD
+=======
+			array[count] = hang_tam;
+			count++;
+			
+			printf("da them mon hang vao vi tri thu %d\n",count);
+			
+>>>>>>> e83868d7239dcb3298d896b87e3a8165c1cb0ec9
 			my_dmhh[found] = hh_temp ;// Gan thong tin moi vao phan tu tuong ung trong danh muc hang hoa	
 		}
 		else
 		{
 			strcpy(hh_temp.mahang, mahang_input);
 			
-			printf("Ten hang: "); 
-			gets(hh_temp.tenhang);
+			printf("ten hang \n");
+			printf("%s",hang_tam.tenhang);
 			
-			printf("So luong: "); 
-			scanf("%d", &hh_temp.soluong);
+			printf("\nso luong moi ");
+			scanf("%d",&hang_tam.soluong);
 			
-			printf("Don gia: "); 
-			scanf("%f", &hh_temp.gia);
+			printf("don gia ");
+			scanf("%f",&hang_tam.gia);
+		
 			
-			hh_temp.thanhtien = hh_temp.soluong * hh_temp.gia ;
-			printf("Thanh tien: %f", hh_temp.thanhtien); 
+			hang_tam.thanhtien = hang_tam.soluong*hang_tam.gia;
 			
+			printf("da nhap duoc 1 thang moi\n");
+			in_DMHH(&hang_tam,1);
 			
-			my_dmhh[count] = hh_temp; // Noi mon hang moi vao cuoi danh muc hang hoa		
-			count++;
-			printf("Them mon hang moi vao vi tri thu %d\n\n", count);
-			print_DMHH(my_dmhh,count);
+			array[fod] = hang_tam;
 		}
 	}
 	// Ghi danh muc hang hoa vao file
