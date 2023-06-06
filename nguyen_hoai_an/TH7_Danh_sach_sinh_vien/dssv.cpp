@@ -1,15 +1,15 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include<stdlib.h>
+#include<string.h>
+#include<stdio.h>
 
-typedef struct Student
+typedef struct Student 
 {
     int id;
-    char name[50];
+    char name[100];
     int age;
     float score;
     struct Student *next;
-}Student;
+} Student;
 
 typedef struct Node
 {
@@ -30,21 +30,21 @@ void Init(List &l)
 
 Node* GetNode(Student x)
 {
-	Node* p;
-    p=new Node;
+    Node* p;
+    p = new Node;
     if(p==NULL)
     {
-    	printf("Khong du bo nho de cap phat cho nut moi!\n");
-    	return 0;
-	}
-	p->Info=x;
-	p->pNext=NULL;
-	return p;	
+        printf("Khong du bo nho.");
+        return 0;
+    }
+    p->Info = x;
+    p->pNext = NULL;
+    return p;
 }
 
 void AddTail(List &l, Node *new_ele)
 {
-    if (l.pHead==NULL)
+    if(l.pHead == NULL)
     {
         l.pHead = new_ele;
         l.pTail = l.pHead;
@@ -56,30 +56,29 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
+// Khai báo các hàm
 void addStudent(List &l)
 {
-    Student sv_moi;
-	printf("\n Moi nhap node moi");
-    printf("\nID:");
-    scanf("%d", &sv_moi.id);
-    
-    fflush(stdin);
-    printf("TEN:");
-    gets(sv_moi.name);
+    Student sv;
+    printf("Them Node moi ");
+    printf("Id: ");
+    scanf("%d", &sv.id);
 
-    fflush(stdin);
-    printf("TUOI:");
-    scanf("%d", &sv_moi.age);
+    printf("Ho ten: ");
+    gets(sv.name);
 
-    fflush(stdin);
-    printf("DTB:");
-    scanf("%f", &sv_moi.score);
-    
-    Node* new_ele = GetNode(sv_moi);
+    printf("Tuoi: ");
+    scanf("%d", &sv.age);
+
+    printf("Diem trung binh: ");
+    scanf("%f", &sv.score);
+
+    Node* new_ele = GetNode(sv);
     AddTail(l, new_ele);
+
 }
 
-int deleteStudent(List &l, int id)
+void deleteStudent(List &l, int id)
 {
     Node *p = l.pHead;
     Node *q = NULL;
@@ -92,7 +91,7 @@ int deleteStudent(List &l, int id)
 	if(p == NULL) 
 	{
 	    return 0;
-	    printf("\n Khong tim thay Sinh vien co stt %d", id);
+	    printf(" Khong tim thay ", id);
 	}
 	if(q != NULL)
 	{
@@ -112,38 +111,30 @@ return 1;
 
 void updateStudent(List &l, int id)
 {
-    Node *p = l.pHead;
-    while (p != NULL)
+    Node *p = pHead;
+    while (p != NULL && strcmp(p->Info.id) != 0)
     {
-        if (p->Info.id == id)
-        {
-            printf("\nNhap thong tin sinh vien can sua:\n");
-            printf("\nID:");
-            scanf("%d", &p->Info.id);
-
-            fflush(stdin);
-            printf("\nTEN:");
-            gets(p->Info.name);
-
-            fflush(stdin);
-            printf("\nTUOI:");
-            scanf("%d", &p->Info.age);
-
-            fflush(stdin);
-            printf("\nDTB:");
-            scanf("%f", &p->Info.score);
-
-            printf("\nDa cap nhat thong tin sinh vien co ID %d\n", id);
-            return;
-        }
-        p = p->pNext;
+        p = p->next;
     }
-    printf("\nKhong tim thay Sinh vien co ID %d\n", id);
+    if (p == NULL)
+        printf("Khong tim thay sinh vien co ma so %d ", id);
+    else
+    {
+        printf("Nhap ma so moi: ");
+        fflush(stdin);
+        gets(p->Info.id);
+        printf("Nhap ten moi: ");
+        gets(p->Info.name);
+        printf("Nhap tuoi moi: ");
+        scanf("%d", &p->Info.age);
+        printf("Nhap diem trung binh moi: ");
+        scanf("%f", &p->Info.score);
+    }
 }
 
 void displayStudents(List &l)
 {
-    if(l.pHead==NULL)
+     if(l.pHead==NULL)
     {
 	    printf("Danh sach rong\n");
 	}
@@ -153,22 +144,21 @@ void displayStudents(List &l)
 	    p=l.pHead;
 	    while(p!=NULL)
 	    {
-	        printf("%3d %10s %5d %.2f \n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
+	        printf("%3d %15s %5d %5f \n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
 	        p = p->pNext;
 		}
 	}
 }
 
-void saveStudentsToFile(List l, const char *filename)
+void saveStudentsToFile(List &l, const char *filename)
 {
-    FILE *file = fopen(filename, "w");
-    if (file == NULL)
+    FILE *file = fopen (filename ,"w");
+    if(file = NULL)
     {
-        printf("Khong the mo file %s de ghi\n", filename);
-        return;
+        printf("Khong the mo", filename);
+        return ;
     }
-
-    Node *p = l.pHead;
+     Node *p = l.pHead;
     while (p != NULL)
     {
         fprintf(file, "%d;%s;%d;%.2f\n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
@@ -179,15 +169,21 @@ void saveStudentsToFile(List l, const char *filename)
     printf("Danh sach sinh vien da duoc luu vao file %s\n", filename);
 }
 
-int main()
+/*void freeStudents(List &l)
 {
-	List(l);
-	Init(l);
+
+}*/
+
+int main() 
+{
     Student *head = NULL;
     int choice;
     int id;
+    List(l);
+    Init(l);
+
     do {
-    printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
+        printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
         printf("1. Them sinh vien moi\n");
         printf("2. Xoa sinh vien\n");
         printf("3. Sua thong tin sinh vien\n");
@@ -230,7 +226,8 @@ int main()
         }
     } while (choice != 0);
 
-    return 0;
+  //  freeStudents(head);
 
+    return 0;
 
 }
