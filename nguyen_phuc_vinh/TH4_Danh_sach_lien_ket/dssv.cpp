@@ -2,21 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Khai b�o c?u tr�c d? li?u cho Sinh vi�n */
-typedef struct {
+/* Khai báo cấu trúc dữ liệu cho Sinh viên */
+typedef struct Student{
     int id;
     char name[50];
     int age;
     float gpa;
 } Student;
 
-/* Khai b�o c?u tr�c d? li?u cho m?t n�t trong danh s�ch li�n k?t */
+/* Khai báo cấu trúc dữ liệu cho một nút trong danh sách liên kết */
 typedef struct ListNode {
     Student student;
     struct ListNode *next;
 } ListNode;
 
-/* C?p ph�t b? nh? cho m?t n�t sinh vi�n m?i v� kh?i t?o gi� tr? */
+/* Cấp phát bộ nhớ cho một nút sinh viên mới và khởi tạo giá trị */
 ListNode *createNode(int id, char name[], int age, float gpa) {
     ListNode *newNode = (ListNode*) malloc(sizeof(ListNode));
     newNode->student.id = id;
@@ -27,7 +27,7 @@ ListNode *createNode(int id, char name[], int age, float gpa) {
     return newNode;
 }
 
-/* Th�m m?t sinh vi�n m?i v�o cu?i danh s�ch li�n k?t */
+/* Thêm một sinh viên mới vào cuối danh sách liên kết */
 void addStudent(ListNode **head, int id, char name[], int age, float gpa) {
     ListNode *newNode = createNode(id, name, age, gpa);
     if (*head == NULL) {
@@ -41,7 +41,7 @@ void addStudent(ListNode **head, int id, char name[], int age, float gpa) {
     }
 }
 
-/* X�a m?t sinh vi�n kh?i danh s�ch li�n k?t */
+/* Xóa một sinh viên khỏi danh sách liên kết */
 void deleteStudent(ListNode **head, int id) {
     if (*head == NULL) {
         printf("Danh sach sinh vien rong.\n");
@@ -66,7 +66,7 @@ void deleteStudent(ListNode **head, int id) {
     printf("Khong tim thay sinh vien co ma so %d.\n", id);
 }
 
-/* S?a th�ng tin c?a m?t sinh vi�n */
+/* Sửa thông tin của một sinh viên */
 void editStudent(ListNode *head, int id) {
     ListNode *currentNode = head;
     while (currentNode != NULL) {
@@ -88,7 +88,7 @@ void editStudent(ListNode *head, int id) {
     printf("Khong tim thay sinh vien co ma so %d.\n", id);
 }
 
-/* Hi?n th? danh s�ch sinh vi�n */
+/* Hiển thị danh sách sinh viên */
 void printList(ListNode *head) {
     if (head == NULL) {
         printf("Danh sach sinh vien rong.\n");
@@ -103,7 +103,7 @@ void printList(ListNode *head) {
     }
 }
 
-/* Luu danh s�ch sinh vi�n v�o file */
+/* Lưu danh sách sinh viên vào file */
 void saveListToFile(ListNode *head, char fileName[]) {
     FILE *file = fopen(fileName, "w");
     if (file == NULL) {
@@ -121,7 +121,7 @@ void saveListToFile(ListNode *head, char fileName[]) {
     printf("Da luu danh sach sinh vien vao file %s.\n", fileName);
 }
 
-/* S?p x?p danh s�ch sinh vi�n theo th? t? tang d?n c?a m� s? sinh vi�n (Insertion sort) */
+/* Sắp xếp danh sách sinh viên theo thứ tự tăng dần của mã số sinh viên (Insertion sort) */
 void sortList(ListNode **head) {
     if (*head == NULL) {
         printf("Danh sach sinh vien rong.\n");
@@ -218,4 +218,3 @@ int main() {
     } while (choice != 0);
     return 0;
 }
-
