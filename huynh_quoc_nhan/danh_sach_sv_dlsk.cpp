@@ -44,14 +44,14 @@ void addStudent(Student **head)
         }
         current->next = student;
     }
-    printf("Add sinh vien moi thah cong\n");
+    printf("Da them sinh vien moi.\n");
 }
 
 void deleteStudent(Student **head, int id) 
 {
     if (*head == NULL) 
     {
-        printf("Danh sach sinh trong .\n");
+        printf("Danh sach sinh vien rong.\n");
         return;
     }
     Student *current = *head;
@@ -68,19 +68,19 @@ void deleteStudent(Student **head, int id)
                 prev->next = current->next;
             }
             free(current);
-            printf("Da xoa sinh vien co ma so %d !\n", id);
+            printf("Da xoa sinh vien co ma so %d.\n", id);
             return;
         }
         prev = current;
         current = current->next;
     }
-    printf("Khong tim thay sinh vien co ma so %d!\n", id);
+    printf("Khong tim thay sinh vien co ma so %d.\n", id);
 }
 
 void updateStudent(Student *head, int id) 
 {
     if (head == NULL) {
-        printf("Danh sach sinh vien trong\n");
+        printf("Danh sach sinh vien rong.\n");
         return;
     }
     Student *current = head;
@@ -88,25 +88,25 @@ void updateStudent(Student *head, int id)
     {
         if (current->id == id) 
         {
-            printf("\nNhap ho va ten: ");
+            printf("\n***Nhap ho va ten: ");
             scanf("%s", current->name);
-            printf("\nNhap tuoi: ");
+            printf("\n***Nhap tuoi: ");
             scanf("%d", &current->age);
-            printf("\nNhap diem trung binh: ");
+            printf("\n***Nhap diem trung binh: ");
             scanf("%f", &current->score);
-            printf("Da cap nhat thong tin sinh vien co ma so %d !\n", id);
-            return ;
+            printf("Da cap nhat thong tin sinh vien co ma so %d.\n", id);
+            return;
         }
         current = current->next;
     }
-    printf("Khong tim thay sinh vien co ma so %d !\n", id);
+    printf("Khong tim thay sinh vien co ma so %d.\n", id);
 }
 
 void displayStudents(Student *head) 
 {
     if (head == NULL) 
     {
-        printf("Danh sach sinh vien trong !\n");
+        printf("Danh sach sinh vien rong.\n");
         return;
     }
     printf("Danh sach sinh vien:\n");
@@ -124,7 +124,7 @@ void saveStudentsToFile(Student *head, const char *filename)
     FILE *file = fopen(filename, "w");
     if (file == NULL) 
     {
-        printf("Khong the mo file de ghi!\n");
+        printf("Khong the mo file de ghi.\n");
         return;
     }
     Student *current = head;
@@ -134,7 +134,7 @@ void saveStudentsToFile(Student *head, const char *filename)
         current = current->next;
     }
     fclose(file);
-    printf("Da luu danh sach sinh vien vao file %s !\n", filename);
+    printf("Da luu danh sach sinh vien vao file %s.\n", filename);
 }
 
 void freeStudents(Student *head) 
@@ -204,4 +204,3 @@ int main()
 
     return 0;
 }
-

@@ -2,12 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct
+typedef struct SinhVien
 {
     char id [50];
     char name [100];
-    int tuoi;
-    float diemTB;
+    int age;
+    float score;
 }SinhVien;
 
 typedef struct Node
@@ -16,7 +16,7 @@ typedef struct Node
     struct Node* next;
 }Node;
 
-
+//hàm t?o m?t Node m?i vs thông tin sv
 Node* createNode(SinhVien sv) 
 {
     Node* newNode = (Node*)malloc(sizeof(Node));
@@ -25,6 +25,7 @@ Node* createNode(SinhVien sv)
     return newNode;
 }
 
+//
 Node* addStudent(Node* pHead, SinhVien sv) 
 {
     Node* newNode = createNode(sv);
@@ -45,7 +46,7 @@ Node* addStudent(Node* pHead, SinhVien sv)
     return pHead;
 }
 
-
+//ham xoa va tim kiem sv
 Node* deleteStudent(Node* pHead, char id[50]) 
 {
     Node* Root = pHead;
@@ -76,7 +77,7 @@ Node* deleteStudent(Node* pHead, char id[50])
     return pHead;
 }
 
-//hï¿½m tï¿½m sv d?a trï¿½n mï¿½ s? sv vï¿½ c?p nh?t l?i tt
+
 void updateStudent(Node* pHead, char id [50]) 
 {
     Node* Root = pHead;
@@ -87,9 +88,9 @@ void updateStudent(Node* pHead, char id [50])
             printf("Nhap ho ten moi: ");
             fgets(Root->sv.name, sizeof(Root->sv.name), stdin);
             printf("Nhap tuoi moi: ");
-            scanf("%d", &(Root->sv.tuoi));
+            scanf("%d", &(Root->sv.age));
             printf("Nhap diem trung binh moi: ");
-            scanf("%f", &(Root->sv.diemTB));
+            scanf("%f", &(Root->sv.score));
             printf("Thong tin sinh vien da duoc cap nhat.\n");
             return;
         }
@@ -98,7 +99,7 @@ void updateStudent(Node* pHead, char id [50])
     printf("Khong tim thay sinh vien voi ma so %s.\n",id);
 }
 
-//hï¿½m hi?n th? ds sv
+
 void displayStudents(Node* pHead) 
 {
     if (pHead == NULL)
@@ -110,16 +111,16 @@ void displayStudents(Node* pHead)
     Node* Root = pHead;
     while (Root != NULL) 
     {
-        printf("Ma so: %s\n", Root->sv.id);
+        printf("Ma so sinh vien : %s", Root->sv.id);
         printf("Ho ten: %s", Root->sv.name);
-        printf("Tuoi: %d\n", Root->sv.tuoi);
-        printf("Diem trung binh: %.2f\n", Root->sv.diemTB);
+        printf("Tuoi: %d\n", Root->sv.age);
+        printf("Diem trung binh: %.2f\n", Root->sv.score);
         printf("----------------------\n");
         Root = Root->next;
     }
 }
 
-//hï¿½m chï¿½o m?t Node vï¿½o sortStudents 
+//hàm chèo m?t Node vào sortStudents 
 Node* insertNode(Node* sortedList, Node* newNode) 
 {
     if (sortedList == NULL || strcmp(newNode->sv.id, sortedList->sv.id) < 0) 
@@ -140,7 +141,7 @@ Node* insertNode(Node* sortedList, Node* newNode)
     return sortedList;
 }   
 
-//hï¿½m sap x?p sv theo th? t? tang d?n
+
 Node* sortStudents(Node* pHead) 
 {
     if (pHead == NULL || pHead->next == NULL) 
@@ -159,10 +160,11 @@ Node* sortStudents(Node* pHead)
     return sortedList;
 } 
     
-//hï¿½m luu ds sv vï¿½o file
+
 void saveStudentsToFile(Node* pHead, char fileName[50]) 
 {
     FILE* file = fopen(fileName, "w");
+
     if (file == NULL) 
     {
         printf("Khong the mo file %s.\n", fileName);
@@ -174,13 +176,15 @@ void saveStudentsToFile(Node* pHead, char fileName[50])
     {
         fprintf(file, "%s\n", Root->sv.id);
         fprintf(file, "%s", Root->sv.name);
-        fprintf(file, "%d\n", Root->sv.tuoi);
-        fprintf(file, "%.2f\n", Root->sv.diemTB);
+        fprintf(file, "%d\n", Root->sv.age);
+        fprintf(file, "%.2f\n", Root->sv.score);
         Root = Root->next;
     }
+
     fclose(file);
     printf("Danh sach sinh vien da duoc luu vao file %s.\n", fileName);
 }
+
 
 void freeStudents(Node* pHead) 
 {
@@ -196,8 +200,8 @@ void freeStudents(Node* pHead)
 
 int main() {
     Node* pHead = NULL;
-    int luachon;
-    char fileName[50];
+    int choice;
+    char name[100];
     char id[10];
     SinhVien sv;
 
@@ -212,19 +216,20 @@ int main() {
         printf("0. Thoat chuong trinh\n");
         printf("=========================================\n");
         printf("Nhap lua chon cua ban: ");
-        scanf("%d", &luachon);
-        getchar(); // Xï¿½a kï¿½ t? '\n' th?a sau khi nh?p l?a ch?n
+        scanf("%d", &choice);
+        getchar(); 
 
-        switch (luachon) {
+        switch (choice) 
+		{
             case 1:
                 printf("Nhap ma so sinh vien: ");
                 fgets(sv.id, sizeof(sv.id), stdin);
                 printf("Nhap ho ten: ");
                 fgets(sv.name, sizeof(sv.name), stdin);
                 printf("Nhap tuoi: ");
-                scanf("%d", &sv.tuoi);
+                scanf("%d", &sv.age);
                 printf("Nhap diem trung binh: ");
-                scanf("%f", &sv.diemTB);
+                scanf("%f", &sv.score);
                 pHead = addStudent(pHead, sv);
                 break;
             case 2:
@@ -242,8 +247,8 @@ int main() {
                 break;
             case 5:
                 printf("Nhap ten file: ");
-                fgets(fileName, sizeof(fileName), stdin);
-                saveStudentsToFile(pHead, fileName);
+                fgets(name, sizeof(name), stdin);
+                saveStudentsToFile(pHead,name );
                 break;
             case 6:
                 pHead = sortStudents(pHead);
@@ -256,7 +261,7 @@ int main() {
                 printf("Lua chon khong hop le. Vui long chon lai.\n");
         }
         printf("\n");
-    } while (luachon != 0);
+    } while (choice != 0);
 
     
     Node* Root = pHead;

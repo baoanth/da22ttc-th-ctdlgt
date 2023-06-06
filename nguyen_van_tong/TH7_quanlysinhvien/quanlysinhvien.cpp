@@ -120,11 +120,11 @@ void displayStudents(Node *head)
     }
 }
 
-void saveStudentsToFile(Node *head, char filename[20])
+void saveStudentsToFile(Node *head, char* filename)
 {
     FILE *f = fopen(filename, "w");
     Node *p = head;
-    if (f = NULL)
+    if (f == NULL)
     {
         printf("khong the mo file ");
         return;
@@ -132,15 +132,35 @@ void saveStudentsToFile(Node *head, char filename[20])
 
     while (p != NULL)
     {
-
-        fprintf(f, "\nMa so sinh vien: %s", p->Info.maso);
-        fprintf(f, "\nTen sinh vien: %s", p->Info.ten);
-        fprintf(f, "\nTuoi sinh vien: %d", p->Info.tuoi);
-        fprintf(f, "\nDiem trung binh cua sinh vien: %.2f", p->Info.dtb);
+        fprintf(f,"\nMa sinh vien: %s", p->Info.maso);
+        fprintf(f,"\nHo ten sinh vien: %s", p->Info.ten);
+        fprintf(f,"\nTuoi sinh vien: %d", p->Info.tuoi);
+        fprintf(f,"\nDiem trung binh: %.2f", p->Info.dtb);
         p = p->next;
     }
     fclose(f);
     printf("da luu danh sach vao file ");
+}
+
+void sortSinhvien(Node* head)
+{
+    Node* p = head;
+    Node*q = head->next;
+    Sinhvien tmp;
+    while(p!= NULL)
+    {
+        while(q!= NULL)
+        {
+            if(strcmp(p->Info.maso, q->Info.maso) >0 )
+            {
+                tmp = p->Info;
+                p->Info = q->Info;
+                q->Info = tmp;
+            }
+            q=q->next;
+        }
+        p = p->next;
+    }
 }
 
 int main()
@@ -190,6 +210,9 @@ int main()
             char filename[100];
             scanf("%s", filename);
             saveStudentsToFile(head, filename);
+            break;
+        case 6:
+            sortSinhvien(head);
             break;
         default:
             printf("Lua chon khong hop le. Vui long thu lai!\n");
