@@ -64,15 +64,15 @@ void addStudent(List &l)
     scanf("%d", &sv_moi.id);
     
     fflush(stdin);
-    printf("\nTEN:");
+    printf("TEN:");
     gets(sv_moi.name);
 
     fflush(stdin);
-    printf("\nTUOI:");
+    printf("TUOI:");
     scanf("%d", &sv_moi.age);
 
     fflush(stdin);
-    printf("\nDTB:");
+    printf("DTB:");
     scanf("%f", &sv_moi.score);
     
     Node* new_ele = GetNode(sv_moi);
@@ -112,8 +112,33 @@ return 1;
 
 void updateStudent(List &l, int id)
 {
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.id == id)
+        {
+            printf("\nNhap thong tin sinh vien can sua:\n");
+            printf("\nID:");
+            scanf("%d", &p->Info.id);
 
+            fflush(stdin);
+            printf("\nTEN:");
+            gets(p->Info.name);
 
+            fflush(stdin);
+            printf("\nTUOI:");
+            scanf("%d", &p->Info.age);
+
+            fflush(stdin);
+            printf("\nDTB:");
+            scanf("%f", &p->Info.score);
+
+            printf("\nDa cap nhat thong tin sinh vien co ID %d\n", id);
+            return;
+        }
+        p = p->pNext;
+    }
+    printf("\nKhong tim thay Sinh vien co ID %d\n", id);
 }
 
 void displayStudents(List &l)
@@ -128,7 +153,7 @@ void displayStudents(List &l)
 	    p=l.pHead;
 	    while(p!=NULL)
 	    {
-	        printf("%3d %15s %5d %5f \n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
+	        printf("%3d %10s %5d %.2f \n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
 	        p = p->pNext;
 		}
 	}
