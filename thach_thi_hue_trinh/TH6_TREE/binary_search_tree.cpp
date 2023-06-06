@@ -5,6 +5,7 @@ typedef struct Node
 {
 	int key;
 	struct Node *pLeft, *pRight;
+	
 }Node;
 
 typedef Node*TREE;
@@ -116,12 +117,12 @@ int DeleteNode( TREE &t, int x)
 
 int main()
 {
-	int x;
+	int x,c ;
 	TREE root = NULL;
 	
 	 InsertNode(root,1);
 	 InsertNode(root,4);
-	 InsertNode(root,67);
+	 InsertNode(root,99);
 	 InsertNode(root,18);
 	 InsertNode(root,19);
 	 InsertNode(root,87);
@@ -130,9 +131,9 @@ int main()
 	 InsertNode(root,5);
 	 InsertNode(root,15);		
 	
-	printf("Day ban dau: 1  4  67  18  19  87  2  4  5  15");
-	printf("\n");
-	printf("\nCAC DAY SAU KHI SAP XEP \n");
+	 printf("Day ban dau: 1  4  99  18  19  87  2  4  5  15");
+	 printf("\n");
+/*	printf("\nCAC DAY SAU KHI SAP XEP \n");
 	printf("\n");
 	printf("DAY 1:\n");
 	printf("Sap xep theo thu tu NLR ");
@@ -143,7 +144,7 @@ int main()
 	Left_Node_Right(root);
 	printf("\n");
 	printf("DAY 3:\n");
-	printf("Sau xep theo thu tu LRN ");
+	printf("Sap xep theo thu tu LRN ");
 	Left_Right_Node(root);
 	
 	printf("\n");
@@ -158,6 +159,7 @@ int main()
 	{
 		printf("Khong tim thay %d trong day ",x);
 	}
+
 	printf("\n");
 	printf("\nNhap x can chen: ");
 	scanf("%d",&x);
@@ -189,6 +191,84 @@ int main()
 	printf("\nDay 3 sau khi xoa ");
 	Left_Right_Node(root);
 	
+*/	printf("\n");
+	while(1)
+	{
+		printf("\n========================================================================\n");
+		printf("\nHAY CHON MOT THAO TAC!");
+		printf("\n 1.Sap xep day theo thu tu NLR\n 2.Sap xep theo thu tu LNR\n 3.Sap xep theo thu tu LRN\n 4.Chen them mot nut vao day\n 5.Xoa mot nut trong day\n 6.Tim mot nut trong day\n 7.Thoat \nNhap thao tac can thuc hien: ");
+		scanf("%d",&c);
+		
+		if(c==7)
+			break;
+		else if(c==1)
+		{
+			printf("Sap xep theo thu tu NLR ");
+			Node_Left_Right(root);
+			printf("\n");
+		}	
+		else if(c==2)
+		{
+			printf("Sap xep theo thu tu LNR ");
+			Left_Node_Right(root);
+			printf("\n");
+		}
+		else if(c==3)
+		{
+			printf("Sap xep theo thu tu LRN ");
+			Left_Right_Node(root);
+			printf("\n");
+		}
+		else if(c==4)
+		{
+			printf("Nhap x can chen: ");
+			scanf("%d",&x);
+			
+			printf("Chen %d vao day NLR: ",x);
+			InsertNode(root, x);
+			Node_Left_Right(root);
+			printf("\n");
+			
+			printf("Chen %d vao day LNR: ",x);
+			InsertNode(root, x);
+			Left_Node_Right(root);
+			printf("\n");
+			
+			printf("Chen %d vao day LRN: ",x);
+			InsertNode(root, x);
+			Left_Right_Node(root);
+			printf("\n");
+		}
+		else if(c==5)
+		{
+			printf("Nhap node can xoa: ");
+			scanf("%d",&x);
+			DeleteNode(root,x);
+	
+			printf("Day NLR sau khi xoa ");
+			Node_Left_Right(root);
+			printf("\nDay LNR sau khi xoa ");
+			Left_Node_Right(root);
+			printf("\nDay LRN sau khi xoa ");
+			Left_Right_Node(root);
+			printf("\n");
+		}
+		else if(c==6)
+		{
+			printf("\nNhap x can tim: ");
+			scanf("%d",&x);
+			if(SearchNode(root,x)!=NULL)
+			{
+				printf("Tim thay %d trong day ",x);
+			}
+			else
+			{
+				printf("Khong tim thay %d trong day ",x);
+			}
+			printf("\n");
+		}
+		
+	}
 	return 0;
 }
 

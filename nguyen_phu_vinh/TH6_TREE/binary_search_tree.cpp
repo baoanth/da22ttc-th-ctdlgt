@@ -111,9 +111,41 @@ int DelNode(TREE &T, int X)
         delete p;
     }
 }
+int so_nut_la(TREE &T)
+    {
+        if (T == NULL)
+        {
+            return 0;
+        }
+        else if (T->pLeft == NULL && T->pRight == NULL)
+        {
+            return 1;
+        }
+        else
+        {
+            return so_nut_la(T->pLeft) + so_nut_la(T->pRight);
+        }
+    }
+int nut_1_cay_con(TREE &T)
+{
+    if (T == NULL || T->pLeft == NULL && T->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (T->pLeft == NULL || T->pRight == NULL)
+    {
+        return 1 + nut_1_cay_con(T->pLeft) + nut_1_cay_con(T->pRight);
+    }
+    else
+    {
+        return nut_1_cay_con(T->pLeft) + nut_1_cay_con(T->pRight);
+    }
 
-
-
+}
+int nut_2_cay_con(TREE &T)
+{
+	
+}
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 { /*
@@ -135,8 +167,8 @@ int main()
     Print_LNR(my_tree);
     printf("\n");
     Print_LRN(my_tree);
-    
-	
+
+
     int x,y;
     printf("\nNhap x: ");
     scanf("%d", &x);
@@ -145,21 +177,21 @@ int main()
         printf("Khong tim thay gia tri x");
     else
         printf("Tim thay gia tri x");
-        
+
     printf("\nNhap y can xoa: ");
     scanf("%d", &y);
-    
+
     int xoa = DelNode(my_tree, y);
     if (xoa == 0)
         printf("Khong tim thay gia tri y = %d \n", y);
     else
         printf("Da xoa nut y = %d \n", y);
-	Print_NLR(my_tree);
+    Print_NLR(my_tree);
     printf("\n");
     Print_LNR(my_tree);
     printf("\n");
     Print_LRN(my_tree);
-    
+
     */
     TREE my_tree = NULL;
     int n, i, x;
@@ -172,7 +204,7 @@ int main()
         scanf("%d", &x);
         InsertNode(my_tree, x);
     }
-
+    
     printf("\nDa them cac gia tri vao cay thanh cong!\n");
     while (1)
     {
@@ -183,6 +215,8 @@ int main()
         printf("4. Them gia tri x\n");
         printf("5. Tim gia tri x\n");
         printf("6. Xoa gia tri x\n");
+        printf("7. dem nut la x\n");
+        printf("8. cay con co dung mot nut x\n");
         printf("0. Thoat\n");
 
         int lua_chon;
@@ -230,6 +264,17 @@ int main()
             else
                 printf("Xoa gia tri x thanh cong");
         }
+        if (lua_chon == 7)
+        {
+            int nut_la = so_nut_la(my_tree);
+            printf("So nut la cua cay : %d", nut_la);
+        }
+        if (lua_chon == 8)
+        {
+            int nut_la = nut_1_cay_con(my_tree);
+            printf("So nut co dung mot cay con : %d", nut_la);
+        }
+
         if (lua_chon == 0)
             break;
     }

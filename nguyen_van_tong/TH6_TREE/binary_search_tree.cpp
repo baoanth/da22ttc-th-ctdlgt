@@ -171,18 +171,25 @@ int NodeNHK(tree T, int k)
 
 int NodeLHK(tree T, int k)
 {
-    if (T == NULL || k >= T->key)
+    if (T == NULL)
         return 0;
-    else
+    else if (k < T->key)
         return 1 + NodeLHK(T->right, k) + NodeLHK(T->left, k);
+    else
+        NodeLHK(T->right, k);
 }
 
 int NodeXY(tree T, int x, int y)
 {
-    if (T == NULL || T->key >=y || T->key <=x)
+    if (T == NULL)
         return 0;
+    else if (y < T->key || x > T->key)
+        return 1 + NodeXY(T->right, x, y) + NodeXY(T->left, x, y);
     else
-        return 1 + NodeXY(T->right, x,y) + NodeXY(T->left,x,y);
+    {
+        NodeXY(T->right, x, y);
+        // NodeXY(T->left ,x,y);
+    }
 }
 
 int main()
@@ -263,14 +270,14 @@ int main()
             int tmp = NodeLHK(T, k);
             cout << "co " << tmp << " nut lon hon k ";
         }
-         else if (lc == 13)
+        else if (lc == 13)
         {
-            int x,y;
+            int x, y;
             cout << "nhap gia tri x :";
             cin >> x;
-			cout << "nhap gia tri y :";
+            cout << "nhap gia tri y :";
             cin >> y;
-            int tmp = NodeXY(T, x ,y);
+            int tmp = NodeXY(T, x, y);
             cout << "co " << tmp << " nut lon hon x nho hon k ";
         }
     }
