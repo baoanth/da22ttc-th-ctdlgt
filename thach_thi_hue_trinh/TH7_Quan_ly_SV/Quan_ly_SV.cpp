@@ -131,6 +131,7 @@ int DeleteStudent (List &l, int idx)
 		if(l.pHead == NULL)
 			l.pTail = NULL;
 	}
+	return 1;
 }
 
 void Init(List &l)
