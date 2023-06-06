@@ -201,11 +201,37 @@ void DisplayStudents(List &l)
 	}
 	
 }
-void saveStudentsToFile(Student *head, const char *filename);
+void SaveStudentsToFile(List &l, char *file_name)
+{
+	
+	FILE *outfile;
+	outfile = fopen(file_name, "w");
+	
+	if(l.pHead==NULL)
+		fprintf(outfile,"\nDanh sach rong");
+	else
+	{
+		Node *p;
+		p = l.pHead;
+		
+		fprintf(outfile,"\n   MSSV   |    HO    |   TEN   |TUOI| DTB ");
+		while (p!= NULL)
+		{
+			fprintf(outfile,"%10d|%10s|%9s|%4d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
+			p = p->pNext;
+		}
+		fprintf(outfile,"\n");
+	}
+	if(outfile!=0)
+		printf("Ghi tep thanh cong!");
+	else
+		printf("Ghi tep that bai!");
+	fclose(outfile);	
+}
 void freeStudents(Student *h)
 
 int main()
- {
+{
  	List meo;
  	Init(meo);
  	int c;
@@ -236,8 +262,21 @@ int main()
 	    }
     	else if(c==3)
     	{
-    		
+    		printf("Danh sach sau khi sua:\n");
+    		UpdateStudent(meo);
     	}
-    return 0;
-
+   		else if(c==4)
+   		{
+   			printf("Danh sach sinh vien:\n");
+   			DisplayStudents(meo);
+   		}
+   		else if(c==5)
+   		{
+   			printf("Nhap ten file de luu Danh sach Sinh vien");
+   			char file_name[100];
+   			scanf("%s",&file_name);
+   			SaveStudentsToFile(meo,file_name);
+   		}
+	} 
+	return 0;
 }
