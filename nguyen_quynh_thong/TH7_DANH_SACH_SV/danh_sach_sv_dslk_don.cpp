@@ -44,14 +44,14 @@ void addStudent(Student **head)
         }
         current->next = student;
     }
-    printf("Da them sinh vien moi thah cong\n");
+    printf("Add sinh vien moi thah cong\n");
 }
 
 void deleteStudent(Student **head, int id) 
 {
     if (*head == NULL) 
     {
-        printf("Danh sach sinh rong .\n");
+        printf("Danh sach sinh trong .\n");
         return;
     }
     Student *current = *head;
@@ -68,19 +68,19 @@ void deleteStudent(Student **head, int id)
                 prev->next = current->next;
             }
             free(current);
-            printf("Da xoa sinh vien co ma so %d .\n", id);
+            printf("Da xoa sinh vien co ma so %d !\n", id);
             return;
         }
         prev = current;
         current = current->next;
     }
-    printf("Khong tim thay sinh vien co ma so %d.\n", id);
+    printf("Khong tim thay sinh vien co ma so %d!\n", id);
 }
 
 void updateStudent(Student *head, int id) 
 {
     if (head == NULL) {
-        printf("Danh sach sinh vien rong\n");
+        printf("Danh sach sinh vien trong\n");
         return;
     }
     Student *current = head;
@@ -94,19 +94,19 @@ void updateStudent(Student *head, int id)
             scanf("%d", &current->age);
             printf("\nNhap diem trung binh: ");
             scanf("%f", &current->score);
-            printf("Da cap nhat thong tin sinh vien co ma so %d .\n", id);
+            printf("Da cap nhat thong tin sinh vien co ma so %d !\n", id);
             return ;
         }
         current = current->next;
     }
-    printf("Khong tim thay sinh vien co ma so %d .\n", id);
+    printf("Khong tim thay sinh vien co ma so %d !\n", id);
 }
 
 void displayStudents(Student *head) 
 {
     if (head == NULL) 
     {
-        printf("Danh sach sinh vien rong .\n");
+        printf("Danh sach sinh vien trong !\n");
         return;
     }
     printf("Danh sach sinh vien:\n");
@@ -134,7 +134,7 @@ void saveStudentsToFile(Student *head, const char *filename)
         current = current->next;
     }
     fclose(file);
-    printf("Da luu danh sach sinh vien vao file %s .\n", filename);
+    printf("Da luu danh sach sinh vien vao file %s !\n", filename);
 }
 
 void freeStudents(Student *head) 
@@ -204,4 +204,5 @@ int main()
 
     return 0;
 }
+
 
