@@ -142,6 +142,27 @@ void saveStudentsToFile(Node *head, char* filename)
     printf("da luu danh sach vao file ");
 }
 
+void sortSinhvien(Node* head)
+{
+    Node* p = head;
+    Node*q = head->next;
+    Sinhvien tmp;
+    while(p!= NULL)
+    {
+        while(q!= NULL)
+        {
+            if(strcmp(p->Info.maso, q->Info.maso) >0 )
+            {
+                tmp = p->Info;
+                p->Info = q->Info;
+                q->Info = tmp;
+            }
+            q=q->next;
+        }
+        p = p->next;
+    }
+}
+
 int main()
 {
     Node *head = NULL;
@@ -189,6 +210,9 @@ int main()
             char filename[100];
             scanf("%s", filename);
             saveStudentsToFile(head, filename);
+            break;
+        case 6:
+            sortSinhvien(head);
             break;
         default:
             printf("Lua chon khong hop le. Vui long thu lai!\n");
