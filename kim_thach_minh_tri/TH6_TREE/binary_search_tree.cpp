@@ -115,56 +115,267 @@ int delNode(TREE &T, int X)
     }
 }
 
+/*Dem so nut la*/
+int so_nut_la(TREE Root)
+{
+    if (Root == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return so_nut_la(Root->pLeft) + so_nut_la(Root->pRight);
+    }
+}
+
+/*So nut co dung mot cay con*/
+int nut_1_cay_con(TREE Root)
+{
+    if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft == NULL || Root->pRight == NULL)
+    {
+        return 1 + nut_1_cay_con(Root->pLeft) + nut_1_cay_con(Root->pRight);
+    }
+    else
+    {
+        return nut_1_cay_con(Root->pLeft) + nut_1_cay_con(Root->pRight);
+    }
+}
+
+/*So nut co dung 2 cay con*/
+int nut_2_cay_con(TREE Root)
+{
+    if (Root == NULL || Root->pLeft == NULL && Root->pRight == NULL)
+    {
+        return 0;
+    }
+    else if (Root->pLeft != NULL && Root->pRight != NULL)
+    {
+        return 1 + nut_2_cay_con(Root->pLeft) + nut_2_cay_con(Root->pRight);
+    }
+    else
+    {
+        return nut_2_cay_con(Root->pLeft) + nut_2_cay_con(Root->pRight);
+    }
+}
+
+/*So nut co khoa nho hon x*/
+int nut_khoa_nhox(TREE Root, int x)
+{
+    if (Root == NULL || Root->Key >= x)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1 + nut_khoa_nhox(Root->pLeft, x) + nut_khoa_nhox(Root->pRight, x);
+    }
+}
+
+/*So nut co khoa lon hon x*/
+int nut_khoa_lonx(TREE Root, int x)
+{
+    if (Root == NULL || Root->Key <= x)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1 + nut_khoa_lonx(Root->pLeft, x) + nut_khoa_lonx(Root->pRight, x);
+    }
+}
+
+/*Chieu cao cua cay*/
+int chieu_cao_cay(TREE Root)
+{
+    if (Root == NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        int trai_cao = chieu_cao_cay(Root->pLeft);
+        int phai_cao = chieu_cao_cay(Root->pRight);
+        if (trai_cao > phai_cao)
+        {
+            return trai_cao + 1;
+        }
+        else
+        {
+            return phai_cao + 1;
+        }
+    }
+}
+
+/*So nut co khoa lon hon x nho hon y*/
+int nut_lon_x_nho_y(TREE Root, int x, int y)
+{
+    if (Root == NULL)
+    {
+        return 0;
+    }
+    else if (Root->Key > x && Root->Key < y)
+    {
+        return 1 + nut_lon_x_nho_y(Root, x, y) + nut_lon_x_nho_y(Root, x, y);
+    }
+    else if (Root->Key <= x)
+    {
+        return nut_lon_x_nho_y(Root->pRight, x, y);
+    }
+    else{
+        return nut_lon_x_nho_y(Root->pLeft, x, y);
+    }
+
+}
 int main()
 {
     TREE Root = NULL;
-    int y, x;
+    int y, x, n, i, z;
 
-    InsertNode(Root, 30);
-    InsertNode(Root, 22);
-    InsertNode(Root, 12);
-    InsertNode(Root, 21);
-    InsertNode(Root, 26);
-    InsertNode(Root, 27);
-    InsertNode(Root, 45);
-    InsertNode(Root, 38);
-    InsertNode(Root, 33);
-    InsertNode(Root, 36);
-    InsertNode(Root, 50);
+    printf("==========Nhap cay nhi phan==========\n");
 
-    printf("In theo thu tu truoc:\n");
-    Print_NLR(Root);
-    printf("\n");
-    printf("In theo thu tu giua:\n");
-    Print_LNR(Root);
-    printf("\n");
-    printf("In theo thu tu sau:\n");
-    Print_LRN(Root);
+    printf("==========Lua chon cac thao tac==========\n");
+    printf("1. Nhap cay nhi phan:\n");
+    printf("2. In theo thu tu truoc:\n");
+    printf("3. In theo thu tu giua:\n");
+    printf("4. In theo thu tu sau:\n");
+    printf("5. Tim gia tri x:\n");
+    printf("6. Xoa gia tri x:\n");
+    printf("7. Dem so nut la:\n");
+    printf("8. So nut co dung mot cat con:\n");
+    printf("9. So nut co dung hai cat con:\n");
+    printf("10. So nut co khoa nho hon x:\n");
+    printf("11. So nut co khoa lon hon x:\n");
+    printf("12. So nut co khoa lon hon x nho hon y:\n");
+    printf("13. Chieu cao cay:\n");
+    printf("0. EXIT:\n");
+    //    InsertNode(Root, 30);
+    //    InsertNode(Root, 22);
+    //    InsertNode(Root, 12);
+    //    InsertNode(Root, 21);
+    //    InsertNode(Root, 26);
+    //    InsertNode(Root, 27);
+    //    InsertNode(Root, 45);
+    //    InsertNode(Root, 38);
+    //    InsertNode(Root, 33);
+    //    InsertNode(Root, 36);
+    //    InsertNode(Root, 50);
 
-    printf("\nNhap y can tim: ");
-    scanf("%d", &y);
-    TNODE *gia_tri = SearchNode(Root, y);
-    if (gia_tri == NULL)
-        printf("Khong co gia tri y = %d\n", y);
-    else
-        printf("Tim thay y = %d \n", y);
+    int lua_chon;
+    while (1)
+    {
 
-    printf("\nNhap x can xoa: ");
-    scanf("%d", &x);
-    int xoa = delNode(Root, x);
-    if (xoa == 0)
-        printf("Khong tim thay gia tri x = %d \n", x);
-    else
-        printf("Da xoa nut x = %d \n", x);
+        printf("\nNhap lua chon: ");
+        scanf("%d", &lua_chon);
 
-    printf("In theo thu tu truoc:\n");
-    Print_NLR(Root);
-    printf("\n");
-    printf("In theo thu tu giua:\n");
-    Print_LNR(Root);
-    printf("\n");
-    printf("In theo thu tu sau:\n");
-    Print_LRN(Root);
+        if (lua_chon == 1)
+        {
+            printf("Nhap so luong phan tu : ");
+            scanf("%d", &n);
+
+            for (i = 0; i < n; i++)
+            {
+                printf("Nhap gia tri thu %d = ", i + 1);
+                scanf("%d", &x);
+                InsertNode(Root, x);
+            }
+        }
+        if (lua_chon == 2)
+        {
+            printf("In theo thu tu truoc:\n");
+            Print_NLR(Root);
+        }
+        if (lua_chon == 3)
+        {
+            printf("In theo thu tu giua:\n");
+            Print_LNR(Root);
+        }
+        if (lua_chon == 4)
+        {
+            printf("In theo thu tu sau:\n");
+            Print_LRN(Root);
+        }
+        if (lua_chon == 5)
+        {
+            printf("\nNhap y can tim: ");
+            scanf("%d", &y);
+            TNODE *gia_tri = SearchNode(Root, y);
+            if (gia_tri == NULL)
+                printf("Khong co gia tri y = %d\n", y);
+            else
+                printf("Tim thay y = %d \n", y);
+        }
+
+        if (lua_chon == 6)
+        {
+            printf("\nNhap x can xoa: ");
+            scanf("%d", &z);
+            int xoa = delNode(Root, z);
+            if (xoa == 0)
+                printf("Khong tim thay gia tri x = %d \n", z);
+            else
+                printf("Da xoa nut x = %d \n", z);
+        }
+        if (lua_chon == 7)
+        {
+            int nut_la = so_nut_la(Root);
+            printf("So nut la cua cay : %d", nut_la);
+        }
+        if (lua_chon == 8)
+        {
+            int nut_la = nut_1_cay_con(Root);
+            printf("So nut co dung mot cay con : %d", nut_la);
+        }
+        if (lua_chon == 9)
+        {
+            int nut_la = nut_2_cay_con(Root);
+            printf("So nut co dung hai cay con : %d", nut_la);
+        }
+
+        if (lua_chon == 10)
+        {
+            int x;
+            printf("Nhap x : ");
+            scanf("%d", &x);
+            int nut_la = nut_khoa_nhox(Root, x);
+            printf("So nut co khoa nho hon %d : %d", x, nut_la);
+        }
+
+        if (lua_chon == 11)
+        {
+            int x;
+            printf("Nhap x : ");
+            scanf("%d", &x);
+            int nut_la = nut_khoa_lonx(Root, x);
+            printf("So nut co khoa lon hon %d : %d", x, nut_la);
+        }
+
+        if (lua_chon == 12)
+        {
+            int x, y;
+            printf("Nhap x : ");
+            scanf("%d", &x);
+            printf("Nhap y : ");
+            scanf("%d", &y);
+            int nut_giua = nut_lon_x_nho_y(Root, x, y);
+            printf("So nut co khoa lon hon x nho hon y : %d", nut_giua);
+        }
+
+        if (lua_chon == 13)
+        {
+            int cao_cay = chieu_cao_cay(Root);
+            printf("Chieu cao cay : %d", cao_cay);
+        }
+        if (lua_chon == 0)
+            return 0;
+    }
 
     return 0;
 }
