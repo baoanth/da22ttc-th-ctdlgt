@@ -103,7 +103,7 @@ void AddStudent(List &l)
 
 }
 
-void DeleteStudent (List &l, int idx)
+int DeleteStudent (List &l, int idx)
 {
 	Node *p = l.pHead;
 	Node *q = NULL;
@@ -115,6 +115,9 @@ void DeleteStudent (List &l, int idx)
 		q = p;
 		p = p->pNext;
 	}
+	
+	if(p==NULL)	return 0;
+	
 	if(q != NULL) 
 	{
 		if(p == l.pTail)
