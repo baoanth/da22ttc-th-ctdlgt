@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 //CHUA XONG
-typedef struct node {
+typedef struct Node {
     int key;
-    struct node *left, *right;
+    struct Node *left, *right;
 } Node;
 
 Node *create_node(int key) {
