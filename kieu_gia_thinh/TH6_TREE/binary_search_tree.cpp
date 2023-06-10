@@ -27,7 +27,7 @@ void Print_LNR(TREE Root)
     if (Root != NULL)
     {
         Print_LNR(Root->pLeft);
-        printf("%3d", Root->Key);		
+        printf("%3d", Root->Key);
         Print_LNR(Root->pRight);
     }
 }
