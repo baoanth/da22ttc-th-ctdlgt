@@ -90,7 +90,7 @@ void load_data(List &l, const char* file_name)
     fclose(file);
 }
 
- Node* FindNodeByID (List &l)
+ Node* FindNodeByID (List &l, char ma[])
 {
 	Node *p;
 	p=l.pHead;
