@@ -105,7 +105,7 @@ void PrintList(List &l)
 {
     if (l.pHead == NULL)
     {
-        printf("Danh sach rong.");
+        printf("Danh sach rong.\n");
     }
     else
     {
@@ -138,13 +138,8 @@ int main()
     load_data(list_khoa, "khoa.txt");
     PrintList(list_khoa);
 
+	return 0;
+	
 
-/* 
-    load_data(&l,"bac.txt");
-    load_data(&l,"he.txt");
-    load_data(&l,"khoa.txt");
-    load_data(&l,"nganh.txt");
-    PrintList(&l);
- */
-    return 0;
 }
+
