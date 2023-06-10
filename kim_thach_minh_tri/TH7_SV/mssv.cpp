@@ -75,45 +75,13 @@ void PrintList(List l)
     Node *p = l.pHead;
     while (p != NULL)
     {
-        printf("%s %s \n", p->Info.ma, p->Info.ten);
+        printf("Ma: %s \nTen: %s \n", p->Info.ma, p->Info.ten);
         p = p->pNext;
     }
 }
 
-//void LoadData (char *filename, List &l)
-//{
-//    
-//    FILE *f = fopen(filename, "r");
-//    TTSV sv_tam;
-//    char chuoi_tam[100];
-//    char *tach_chuoi;
-//    if (filename == NULL)
-//    {
-//        printf("Khong tim thay file");
-//        return;
-//    }
-//    else
-//    {
-//        while (!feof(f))
-//        {
-//            fgets(chuoi_tam, sizeof(chuoi_tam), f);
-//            if (chuoi_tam != NULL)
-//            {
-//                tach_chuoi = strtok(chuoi_tam, ",");
-//                strcpy(sv_tam.ma, tach_chuoi);
-//                if (chuoi_tam != NULL)
-//                {
-//                    tach_chuoi = strtok(NULL, ",");
-//                    strcpy(sv_tam.ten, tach_chuoi);
-//                }
-//            }
-//            Node *new_node = GetNode(sv_tam);
-//            AddTail(l, new_node);
-//        }
-//    }
-//   
-//}
-//
+
+
 
 void LoadData(char *filename, List &l)
 {
@@ -159,49 +127,7 @@ void FindByID(List l_bac, List l_he, List l_nganh, List l_khoa, char *id)
     id_sv[3] = '\0';
 
    
-    Node *p_bac = l_bac.pHead;
-    while (p_bac != NULL)
-    {
-        if (strcmp(p_bac->Info.ma, bac) == 0)
-        {
-            Node *p_he = p_bac->pNext;
-            while (p_he != NULL)
-            {
-                if (strcmp(p_he->Info.ma, he) == 0)
-                {
-                    Node *p_nganh = p_he->pNext;
-                    while (p_nganh != NULL)
-                    {
-                        if (strcmp(p_nganh->Info.ma, nganh) == 0)
-                        {
-                            Node *p_khoa = p_nganh->pNext;
-                            while (p_khoa != NULL)
-                            {
-                                if (strcmp(p_khoa->Info.ma, khoa) == 0)
-                                {
-                                    Node *p_sv = p_khoa->pNext;
-                                    while (p_sv != NULL)
-                                    {
-                                        if (strcmp(p_sv->Info.ma, id_sv) == 0)
-                                        {
-                                            printf("Ma so sinh vien: %s\n", id);
-                                            printf("Ten sinh vien: %s\n", p_sv->Info.ten);
-                                            return;
-                                        }
-                                        p_sv = p_sv->pNext;
-                                    }
-                                }
-                                p_khoa = p_khoa->pNext;
-                            }
-                        }
-                        p_nganh = p_nganh->pNext;
-                    }
-                }
-                p_he = p_he->pNext;
-            }
-        }
-        p_bac = p_bac->pNext;
-    }
+    
     printf("Khong tim thay sinh vien co ma so %s\n", id);
 }
 
