@@ -24,7 +24,7 @@ typedef struct List
 }List;
 
 void Init(List &l)
-{
+{ 
     l.pHead = l.pTail = NULL;
 }
 
@@ -178,7 +178,6 @@ void saveStudentsToFile(List l, const char *filename)
     fclose(file);
     printf("Danh sach sinh vien da duoc luu vao file %s\n", filename);
 }
-
 
 int main()
 {
