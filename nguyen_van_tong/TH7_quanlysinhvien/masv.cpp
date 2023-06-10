@@ -4,8 +4,8 @@
 
 typedef struct SV
 {
-    char name[10];
-    char code[10];
+    char name[200];
+    char code[3];
 } SV;
 
 typedef struct Node
@@ -37,31 +37,46 @@ void addNode(Node **head, Node *p)
     }
 }
 
+void in(Node *p)
+{
+    while (p != NULL)
+    {
+        printf("%s\n  %s\n", p->info.code, p->info.name);
+        p = p->next;
+    }
+}
+
 Node *loadData(const char *filename)
 {
     FILE *infile = fopen(filename, "r");
     if (infile != NULL)
     {
         Node *head = NULL;
-        char line[30];
+        char line[100];
         while (fgets(line, sizeof(line), infile))
         {
-            char *token;
+            line[strcspn(line, "\n")] = '\0';
             SV x;
-
-            token = strtok(line, ",");
-            strcpy(x.code, token);
-            token = strtok(NULL, ",");
-            strcpy(x.name, token);
-
+            sscanf(line, "%[^,], %[^\n]", x.code, x.name);
             Node *tmp = createNode(x);
             addNode(&head, tmp);
         }
         fclose(infile);
         return head;
     }
-    else 
-        return NULL;
+    return NULL;
+}
+
+char *getName(Node *p, char code[])
+{
+    while (p != NULL)
+    {
+        if (strcmp(p->info.code, code) == 0)
+            return p->info.name;
+
+        p = p->next;
+    }
+    return code;
 }
 
 void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaList, const char *studentID)
@@ -72,71 +87,29 @@ void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaLis
         return;
     }
 
-    char bacCode[3];
+    char bacCode[2];
     strncpy(bacCode, studentID, 1);
     bacCode[1] = '\0';
 
-    char heCode[3];
+    char heCode[2];
     strncpy(heCode, studentID + 1, 1);
     heCode[1] = '\0';
 
-    char nganhCode[4];
+    char nganhCode[3];
     strncpy(nganhCode, studentID + 2, 2);
     nganhCode[2] = '\0';
 
-    char khoaCode[4];
+    char khoaCode[3];
     strncpy(khoaCode, studentID + 4, 2);
     khoaCode[2] = '\0';
 
-    Node *bacNode = bacList;
-    while (bacNode != NULL)
-    {
-        if (strcmp(bacNode->info.code, bacCode) == 0)
-        {
-            break;
-        }
-        bacNode = bacNode->next;
-    }
+    char *bacName = getName(bacList, bacCode);
+    char *heName = getName(heList, heCode);
+    char *nganhName = getName(nganhList, nganhCode);
+    char *khoaName = getName(khoaList, khoaCode);
 
-    Node *heNode = heList;
-    while (heNode != NULL)
-    {
-        if (strcmp(heNode->info.code, heCode) == 0)
-        {
-            break;
-        }
-        heNode = heNode->next;
-    }
-
-    Node *nganhNode = nganhList;
-    while (nganhNode != NULL)
-    {
-        if (strcmp(nganhNode->info.code, nganhCode) == 0)
-        {
-            break;
-        }
-        nganhNode = nganhNode->next;
-    }
-
-    Node *khoaNode = khoaList;
-    while (khoaNode != NULL)
-    {
-        if (strcmp(khoaNode->info.code, khoaCode) == 0)
-        {
-            break;
-        }
-        khoaNode = khoaNode->next;
-    }
-
-    if (bacNode == NULL || heNode == NULL || nganhNode == NULL || khoaNode == NULL)
-    {
-        printf("Khong tim thay thong tin sinh vien\n");
-        return;
-    }
-
-    printf("%s %s %s Khoa %s\n", heNode->info.name, bacNode->info.name, nganhNode->info.name, khoaNode->info.name);
+    printf("%s %s %s %s \n", bacName, heName, nganhName, khoaName);
 }
-
 int main()
 {
     Node *bac = NULL;
@@ -149,10 +122,10 @@ int main()
     nganh = loadData("nganh.txt");
     he = loadData("he.txt");
 
+    //	in(he);
     char ma[10];
     printf("Nhap ma sinh vien: ");
-    fgets(ma, sizeof(ma), stdin);
-    ma[strcspn(ma, "\n")] = '\0';
+    scanf("%s", &ma);
 
     findStudentInfo(bac, he, nganh, khoa, ma);
 
