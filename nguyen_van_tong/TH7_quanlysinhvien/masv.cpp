@@ -108,7 +108,7 @@ void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaLis
     char *nganhName = getName(nganhList, nganhCode);
     char *khoaName = getName(khoaList, khoaCode);
 
-    printf("%s %s %s %s \n", bacName, heName, nganhName, khoaName);
+    printf("%s %s %s khoa %s \n", bacName, heName, nganhName, khoaName);
 }
 int main()
 {
