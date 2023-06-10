@@ -96,14 +96,14 @@ void AddStudent(List &l)
 
     fflush(stdin);
     printf("Nhap diem tb: ");
-    scanf("%f",&stu_tam.diem);
+    scanf("%.2f",&stu_tam.diem);
 
 	printf("\n");
   	NhapIF(l, stu_tam);
 
 }
 
-void DeleteStudent (List &l, int idx)
+int DeleteStudent (List &l, int idx)
 {
 	Node *p = l.pHead;
 	Node *q = NULL;
@@ -115,6 +115,9 @@ void DeleteStudent (List &l, int idx)
 		q = p;
 		p = p->pNext;
 	}
+	
+	if(p==NULL)	return 0;
+	
 	if(q != NULL) 
 	{
 		if(p == l.pTail)
@@ -134,24 +137,6 @@ void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
 }
-/*
-void PrintNode(Node *p)
-{
-	printf("%10d | %10s | %10s | %10d | %4f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
-}
-
-void PrintList(List &l)
-{
-	Node *p;
-	p = l.pHead;
-	
-	while (p!= NULL)
-	{
-		printf("%10d | %10s | %10s | %10d | %4f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
-		p = p->pNext;
-	}
-}
-*/
 
 int UpdateStudent(List &l, int idx)
 {
@@ -191,24 +176,50 @@ void DisplayStudents(List &l)
 		Node *p;
 		p = l.pHead;
 		
-		printf("\n   MSSV   |    HO    |   TEN   |TUOI| DTB ");
+		printf("\n   MSSV   |    HO    |   TEN   | TUOI | DTB ");
 		while (p!= NULL)
 		{
-			printf("%10d|%10s|%9s|%4d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
+			printf("\n%10d|%10s|%9s|%6d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
 			p = p->pNext;
 		}
 		printf("\n");
 	}
 	
 }
-void saveStudentsToFile(Student *head, const char *filename);
-void freeStudents(Student *h)
+void SaveStudentsToFile(List &l, char *file_name)
+{
+	
+	FILE *outfile;
+	outfile = fopen(file_name, "w");
+	
+	if(l.pHead==NULL)
+		fprintf(outfile,"\nDanh sach rong");
+	else
+	{
+		Node *p;
+		p = l.pHead;
+		
+		fprintf(outfile,"\n   MSSV   |    HO    |   TEN   | TUOI | DTB ");
+		while (p!= NULL)
+		{
+			fprintf(outfile,"%10d|%10s|%9s|%6d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
+			p = p->pNext;
+		}
+		fprintf(outfile,"\n");
+	}
+	if(outfile!=0)
+		printf("Ghi tep thanh cong!");
+	else
+		printf("Ghi tep that bai!");
+	fclose(outfile);	
+}
+//void freeStudents(Student *h)
 
 int main()
- {
+{
  	List meo;
  	Init(meo);
- 	int c;
+ 	int c,idx;
     while(1)
 	 {
         printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
@@ -221,10 +232,13 @@ int main()
         printf("0. Thoat chuong trinh\n");
         printf("Nhap lua chon cua ban: ");
         scanf("%d", &c);
-
+		printf("\n");
 		if(c==0)
+		{
 			printf("Cam on ban da su dung chuong trinh!\n");
 				break;
+		}
+			
 		else if(c==1)
         {
            AddStudent(meo);
@@ -232,12 +246,25 @@ int main()
 	    else if(c==2)
 	    {
 	    	printf("Danh sach sau khi xoa:\n");
-	    	DeleteStudent(meo);
+	    	DeleteStudent(meo,idx);
 	    }
     	else if(c==3)
     	{
-    		
+    		printf("Danh sach sau khi sua:\n");
+    		UpdateStudent(meo,idx);
     	}
-    return 0;
-
+   		else if(c==4)
+   		{
+   			printf("Danh sach sinh vien:\n");
+   			DisplayStudents(meo);
+   		}
+   		else if(c==5)
+   		{
+   			printf("Nhap ten file de luu Danh sach Sinh vien");
+   			char file_name[100];
+   			scanf("%s",&file_name);
+   			SaveStudentsToFile(meo,file_name);
+   		}
+	} 
+	return 0;
 }
