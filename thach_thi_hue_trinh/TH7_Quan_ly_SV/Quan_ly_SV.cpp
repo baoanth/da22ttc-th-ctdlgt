@@ -167,6 +167,7 @@ int UpdateStudent(List &l, int idx)
 	}
 	return 1;
 }
+
 void DisplayStudents(List &l)
 {
 	if(l.pHead==NULL)
@@ -186,6 +187,7 @@ void DisplayStudents(List &l)
 	}
 	
 }
+
 void SaveStudentsToFile(List &l, char *file_name)
 {
 	
@@ -213,13 +215,29 @@ void SaveStudentsToFile(List &l, char *file_name)
 		printf("Ghi tep that bai!");
 	fclose(outfile);	
 }
-//void freeStudents(Student *h)
+
+void FreeStudent(List &l)
+{
+	for(Node* p = l.pHead; p!= NULL; p = p->pNext)
+	{
+		for(Node *q = p->pNext; q != NULL; q = q->pNext)
+		{
+			if(p->Info.mssv > q->Info.mssv)
+			{
+				Student t = p->Info;
+				p->Info = q ->Info;
+				q->Info = t;
+			}
+		}
+	}
+	
+}
 
 int main()
 {
  	List meo;
  	Init(meo);
- 	int c,idx;
+ 	int c, idx;
     while(1)
 	 {
         printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
@@ -270,6 +288,12 @@ int main()
    			char file_name[100];
    			scanf("%s",&file_name);
    			SaveStudentsToFile(meo,file_name);
+   		}
+   		else if(c==6)
+   		{
+   			FreeStudent(meo);
+   			printf("Danh sach sau khi sap xep!\n");
+   			DisplayStudents(meo);
    		}
 	} 
 	return 0;
