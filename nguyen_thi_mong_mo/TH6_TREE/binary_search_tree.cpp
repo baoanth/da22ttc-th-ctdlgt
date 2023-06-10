@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
+
 #include <conio.h>
 #include <string.h>
-=======
 
-<<<<<<< HEAD
+
+
 //Khai bao cay
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
+
 
 
 
 /*In cay theo thu tu truoc*/
-<<<<<<< HEAD
 void Print_NLR();
 
 /*In cay theo thu tu giua*/
@@ -29,26 +28,6 @@ int InsertNode();
 
 
 
-=======
-void Print_NLR()
-
-/*In cay theo thu tu giua*/
-void Print_LNR()
-
-/*In cay theo thu tu sau*/
-void Print_LRN()
-
-/*Tim kiem nut co gia tri la x*/
-int SearchNode()
-
-/*Them nut vao cay BST*/
-int InsertNode()
-
-
-/*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
-int main()
-=======
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
 // Khai bao cay
 typedef struct TNODE
 {
@@ -73,12 +52,8 @@ void Print_NLR(TREE Root)
 /*In cay theo thu tu giua*/
 void Print_LNR(TREE Root)
 {
-<<<<<<< HEAD
     
 	if (Root != NULL)
-=======
-    if (Root != NULL)
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
     {
         Print_LNR(Root->pLeft);
 	   // Xu ly ROOT
@@ -130,7 +105,6 @@ int InsertNode(TREE &T, int x)
     return 1; // thêm vào thành công
 }
 
-<<<<<<< HEAD
 void SearchStandFor(TREE &p, TREE &q)
 {
 	if(q->pLeft) 
@@ -174,39 +148,23 @@ int DelNode(TREE &T, int X)
 
 void InputNode(TREE &T)
 {
-	char input[50];
-
-    while (1) {
-        printf("Enter a number or type \"EXIT\" to quit: ");
-        fgets(input, sizeof(input), stdin);
-        input[strcspn(input, "\n")] = '\0';  // Remove the trailing newline
-
-        if (strcmp(input, "EXIT") == 0) {
-            break;
-        }
-
-        // Convert the input string to a number if it's a valid number
-        int number;
-        if (sscanf(input, "%d", &number) == 1) 
-		{
-            InsertNode(T, number);        
-			printf("Inserted %d into the BST \n", number);    
-			
-        }
-		else
-		{
-            printf("Invalid input. Please enter a number.\n");
-        }
-    }	
+	int n =0;
+    int i;
+    int num;
+    printf("Ban muon nhap bao nhieu nut?");
+    scanf("%d", &n);
+    for (i=0; i<n; i++)
+    {
+        printf("Nhap so thu %d: ", i);
+        scanf("%d", &num);
+        InsertNode(T, num);
+    }
 }
 
-=======
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
 /*Khai bao 1 cay, chen vao 10 nut, in ra 3 kieu*/
 int main()
 {
     TREE my_tree = NULL;
-<<<<<<< HEAD
     int selection =1;
    
 	do
@@ -214,7 +172,7 @@ int main()
 		printf("\n*** BINARY SEARCH TREE DEMO ***\n\n");
 		
 		printf("Enter your selection\n");
-		printf("1. Input number to BST\n");
+		printf("1. Input numbers to BST\n");
 		printf("2. Print BST in First order (NLR)\n");     
 		printf("3. Print BST in Middle order (LNR)\n");     
 		printf("4. Print BST in Last order (LRN)\n");     
@@ -258,9 +216,6 @@ int main()
 	
 	
 	/*InsertNode(my_tree, 30 );
-=======
-    InsertNode(my_tree, 30 );
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
     InsertNode(my_tree, 22);
     InsertNode(my_tree, 26);
     InsertNode(my_tree, 45);
@@ -273,7 +228,6 @@ int main()
     InsertNode(my_tree, 36);
 
     Print_NLR(my_tree);
-<<<<<<< HEAD
     DelNode(my_tree, 31);
     
     printf("\nSau khi xoa nut\n");
@@ -282,10 +236,4 @@ int main()
 
 }
 
-=======
-    printf("\n");
-    Print_LNR(my_tree);
 
-}
->>>>>>> 7c824c252a81952b5aa42d5d5323e8013f81784a
->>>>>>> 7400ce63eacd8577f395a2ca3237913e973e0366
