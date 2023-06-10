@@ -104,7 +104,7 @@ void displayStudents(Node *pHead)
         printf("Danh sach sinh vien trong.\n");
         return;
     }
-    printf("\nDanh sach sinh vien:");
+    printf("\nDanh sach sinh vien:\n");
     Node *Root = pHead;
     while (Root != NULL)
     {

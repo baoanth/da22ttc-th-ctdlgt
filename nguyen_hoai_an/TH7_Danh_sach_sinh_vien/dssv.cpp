@@ -114,8 +114,12 @@ return 1;
 
 void updateStudent(List &l, int id)
 {
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 2db01e1e302089787fc197b164301a33613b7a29
 }
 
 void displayStudents(List &l)
