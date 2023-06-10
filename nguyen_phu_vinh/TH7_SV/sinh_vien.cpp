@@ -24,7 +24,7 @@ Node *createNode(SinhVien sv)
     return newNode;
 }
 
-//
+
 Node *addStudent(Node *pHead, SinhVien sv)
 {
     Node *newNode = createNode(sv);
@@ -104,11 +104,11 @@ void displayStudents(Node *pHead)
         printf("Danh sach sinh vien trong.\n");
         return;
     }
-    printf("Danh sach sinh vien:\n");
+    printf("\nDanh sach sinh vien:\n");
     Node *Root = pHead;
     while (Root != NULL)
     {
-        printf("Ma so sinh vien : %s", Root->sv.id);
+        printf("\nMa so sinh vien : %s", Root->sv.id);
         printf("Ho ten: %s", Root->sv.name);
         printf("Tuoi: %d\n", Root->sv.age);
         printf("Diem trung binh: %.2f\n", Root->sv.score);
