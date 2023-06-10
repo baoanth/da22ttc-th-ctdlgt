@@ -90,7 +90,7 @@ void load_data(List &l, const char* file_name)
     fclose(file);
 }
 
-/* Node* FindNodeByID (List &l)
+ Node* FindNodeByID (List &l)
 {
 	Node *p;
 	p=l.pHead;
@@ -99,7 +99,7 @@ void load_data(List &l, const char* file_name)
 		p=p->pNext;
 	
 	return p;	
-} */
+} 
 
 void PrintList(List &l)
 {
@@ -123,19 +123,19 @@ int main()
     List list_bac, list_he, list_nganh, list_khoa;
 
     Init( list_bac);
-    load_data("bac.txt", list_bac);
+    load_data(list_bac, "bac.txt");
     PrintList(list_bac);
 
     Init( list_he);
-    load_data("he.txt", list_he);
+    load_data(list_he, "he.txt");
     PrintList(list_he);
 
     Init( list_nganh);
-    load_data("nganh.txt", list_nganh);
+    load_data(list_nganh, "nganh.txt");
     PrintList(list_nganh);
 
     Init( list_khoa);
-    load_data("khoa.txt", list_khoa);
+    load_data(list_khoa, "khoa.txt");
     PrintList(list_khoa);
 
 
