@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
+#include <stdlib.h>
 #include <string.h>
 #define MAX_LINE_LENGTH 100
 
@@ -56,31 +56,13 @@ void Init(List &l)
     l.pHead = l.pTail = NULL;
 }
 
-char* FindMa(Node *p, char ma[])
+Node *Find(List l, char* ma)
 {
-    while(p != NULL)
-    {
-    	if(strcmp(p->Info.ma, ma)==0)
-    		return p->Info.ten;
-    	p = p->pNext;
-	}
-    return ma;
-}
-
-void PrintList(List &l)
-{
-    if (l.pHead == NULL)
-        printf("--- Danh sach rong ---\n");
-    else
-    {
-        Node *p;
-        p = l.pHead;
-        while (p != NULL)
-        {
-            printf("%5s %20s\n", p->Info.ma, p->Info.ten);
-            p = p->pNext;
-        }
-    }
+    Node *p;
+    p = l.pHead;
+    while ((p != NULL) && (strcmp(p->Info.ma, ma)))
+        p = p->pNext;
+    return p;
 }
 
 int LoatData(char* filename, List &l)
@@ -121,51 +103,69 @@ int LoatData(char* filename, List &l)
 	fclose(file);
 }
 
-void PhanTichMssv(Node* ListNganh, Node* ListBac, Node* ListHe, Node* ListKhoa, char* Mssv)
+void PrintList(List &l)
 {
-	if(strlen(Mssv) != 9)
-	{
-		printf("--- Ma so sinh vien khong dung ---\n");
-	}
-	
-	char bac[2]
-	strncpy(bac, Mssv, 1);
-	bac[1] = '\0';
-	
-	char nganh[2]
-	strncpy(nganh, Mssv + 1, 1);
-	nganh[1] = '\0';
-	
-	char he[3]
-	strncpy(he, Mssv + 2, 2);
-	he[2] = '\0';
-	
-	char khoa[3]
-	strncpy(khoa, Mssv + 4, 2);
-	khoa[2] = '\0';
-	
-	char* TenBac = FindMa(ListBac, bac);
-	char* TenNganh = FindMa(ListNganh, nganh);
-	char* TenHe = FindMa(ListHe, he);
-	char* TenKhoa = FindMa(ListKhoa, khoa);
-	
-	 printf("%s %s %s khoa %s \n", TenBac, tenHe, TenNganh, TenKhoa);
+    if (l.pHead == NULL)
+        printf("--- Danh sach rong ---\n");
+    else
+    {
+        Node *p;
+        p = l.pHead;
+        while (p != NULL)
+        {
+            printf("%5s %20s\n", p->Info.ma, p->Info.ten);
+            p = p->pNext;
+        }
+    }
+}
+
+char* SubString(char scr_str[], int start_pos, int len) 
+{
+    char* res_str = (char*) malloc((len + 1) * sizeof(char));
+    int i;
+    for (i = 0; i < len; i++) {
+        res_str[i] = scr_str[start_pos + i];
+    }
+    res_str[len] = '\0';
+
+    return res_str;
 }
 
 int main()
 {
 	List list_nganh, list_bac, list_he, list_khoa;
 	
-	Init(list_nganh);
 	Init(list_bac);
 	Init(list_he);
+	Init(list_nganh);
 	Init(list_khoa);
 	
-	LoatData("nganh.txt", list_nganh);
 	LoatData("bac.txt", list_bac);
-	LoatData("he.txt", list_bac);
-	LoatData("khoa.txt", list_bac);
+	LoatData("he.txt", list_he);
+	LoatData("nganh.txt", list_nganh);
+	LoatData("khoa.txt", list_khoa);
 
+	char Mssv[10];
+	printf("Nhap ma so sinh vien: ");
+	gets(Mssv);
+
+	char* Sub1 = SubString(Mssv, 0, 1);
+    char* Sub2 = SubString(Mssv, 1, 1);
+    char* Sub3 = SubString(Mssv, 2, 2);
+    char* Sub4 = SubString(Mssv, 4, 2);
+       
+	
+	Node* p  = Find(list_bac, Sub1);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p = Find(list_he, Sub2);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p = Find(list_nganh, Sub3);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p = Find(list_khoa, Sub4);
+	printf("%5s %20s", p->Info.ma, p->Info.ten);	
 	
 	
 	return 0;

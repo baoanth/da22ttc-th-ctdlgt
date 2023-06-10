@@ -129,8 +129,8 @@ void InputTree(TREE &T)
 int main()
 {
     TREE my_tree = NULL;
-    
-  int stt = 1;
+
+    int stt = 1;
 
     do
     {
