@@ -1,105 +1,134 @@
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-typedef struct Mssv_ele
+typedef struct SV
 {
-    int id;
-    char ma [01];
-    char ten;
-} Mssv_ele;
+    char name[100];
+    char code[3];
+} SV;
 
 typedef struct Node
-{ 
-	Mssv_ele Info;
-	Node* pNext;
-}Node;
-
-typedef struct List
 {
-	Node* pHead;
-	Node* pTail;
-}List;
+    SV info;
+    struct Node *next;
+} Node;
 
-Node* GetNode(Mssv_ele x)
+Node *createNode(SV x)
 {
-	Node *p;
-	p = new Node;
-	if (p==NULL)   
-	{ 
-		printf("Khong du bo nho !"); 
-		return NULL; 
-	}
-	p->Info = x; 
-	p->pNext = NULL;
-	return p; 
+    Node *p = (Node *)malloc(sizeof(Node));
+    p->info = x;
+    p->next = NULL;
+    return p;
 }
 
-void AddFirst(List &l, Node* new_ele)
+void addNode(Node **head, Node *p)
 {
-	if (l.pHead == NULL)
-	{
-		l.pHead = new_ele;
-		l.pTail  = l.pHead;
-	}
-	else 
-	{	
-		new_ele->pNext = l.pHead;  
-		l.pHead = new_ele; 	
-	}
-}
-
-void AddTail(List &l, Node *new_ele)
-{
-	if(l.pHead==NULL)
-	{
-		l.pHead=new_ele;
-		l.pTail= l.pHead;
-	}
-	else
-	{
-		l.pTail->pNext =new_ele;
-		l.pTail=new_ele;
-	}
-} 
-
-Node* FindNodeByID(List l, int idx)
-{
-	Node *p;
-	p =l.pHead;
-	while((p!=NULL) && ( p->Info.id !=idx ))
-	p = p-> pNext;
-	return p;
-}
-void Init(list &l)
-{
-    l.pHead = l.pTail = NULL;
-}
-void load_data(char filename, list &l)
-{
-    FILE *file;
-    char line[MAX_LINE_LENGTH];
-    char *token;
-    char ma[MAX_LINE_LENGTH];
-    char ten[MAX_LINE_LENGTH];
-    Mssv_ele ele_tam;
-    Node node_tam;
-}
-
-
-file fopen(filename,"r");
-if (file == NULL)
-{
-    printf("ko the mo tep vb. \n");
-    return1;
-}
-while (fgets(line, sizeof(line), file))
-{
-    line[strcspn(line, "\n")] = '\0';
-    token = strtok(line, ",");
-    while(token != NULL)
+    if (*head == NULL)
+        *head = p;
+    else
     {
-        printf("%s\n", token);
-        token = strtok( NULL,",")
+        Node *q = *head;
+        while (q->next != NULL)
+        {
+            q = q->next;
+        }
+        q->next = p;
     }
 }
+
+void in(Node *p)
+{
+    while (p != NULL)
+    {
+        printf("%s\n  %s\n", p->info.code, p->info.name);
+        p = p->next;
+    }
+}
+
+Node *loadData(const char *filename)
+{
+    FILE *infile = fopen(filename, "r");
+    if (infile != NULL)
+    {
+        Node *head = NULL;
+        char line[100];
+        while (fgets(line, sizeof(line), infile))
+        {
+            line[strcspn(line, "\n")] = '\0';
+            SV x;
+            sscanf(line, "%[^,], %[^\n]", x.code, x.name);
+            Node *tmp = createNode(x);
+            addNode(&head, tmp);
+        }
+        fclose(infile);
+        return head;
+    }
+    return NULL;
+}
+
+char *getName(Node *p, char code[])
+{
+    while (p != NULL)
+    {
+        if (strcmp(p->info.code, code) == 0)
+            return p->info.name;
+
+        p = p->next;
+    }
+    return code;
+}
+
+void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaList, const char *studentID)
+{
+    if (strlen(studentID) != 9)
+    {
+        printf("Ma so sinh vien ko hop le\n");
+        return;
+    }
+
+    char bacCode[2];
+    strncpy(bacCode, studentID, 1);
+    bacCode[1] = '\0';
+
+    char heCode[2];
+    strncpy(heCode, studentID + 1, 1);
+    heCode[1] = '\0';
+
+    char nganhCode[3];
+    strncpy(nganhCode, studentID + 2, 2);
+    nganhCode[2] = '\0';
+
+    char khoaCode[3];
+    strncpy(khoaCode, studentID + 4, 2);
+    khoaCode[2] = '\0';
+
+    char *bacName = getName(bacList, bacCode);
+    char *heName = getName(heList, heCode);
+    char *nganhName = getName(nganhList, nganhCode);
+    char *khoaName = getName(khoaList, khoaCode);
+
+    printf("%s %s %s khoa %s \n", bacName, heName, nganhName, khoaName);
+}
+int main()
+{
+    Node *bac = NULL;
+    Node *khoa = NULL;
+    Node *nganh = NULL;
+    Node *he = NULL;
+
+    bac = loadData("bac.txt");
+    khoa = loadData("khoa.txt");
+    nganh = loadData("nganh.txt");
+    he = loadData("he.txt");
+
+    
+    char ma[10];
+    printf("Nhap ma sv: ");
+    scanf("%s", &ma);
+
+    findStudentInfo(bac, he, nganh, khoa, ma);
+
+    return 0;
+}
+
