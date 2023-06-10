@@ -75,45 +75,13 @@ void PrintList(List l)
     Node *p = l.pHead;
     while (p != NULL)
     {
-        printf("%s %s \n", p->Info.ma, p->Info.ten);
+        printf("Ma: %s \nTen: %s \n", p->Info.ma, p->Info.ten);
         p = p->pNext;
     }
 }
 
-//void LoadData (char *filename, List &l)
-//{
-//    
-//    FILE *f = fopen(filename, "r");
-//    TTSV sv_tam;
-//    char chuoi_tam[100];
-//    char *tach_chuoi;
-//    if (filename == NULL)
-//    {
-//        printf("Khong tim thay file");
-//        return;
-//    }
-//    else
-//    {
-//        while (!feof(f))
-//        {
-//            fgets(chuoi_tam, sizeof(chuoi_tam), f);
-//            if (chuoi_tam != NULL)
-//            {
-//                tach_chuoi = strtok(chuoi_tam, ",");
-//                strcpy(sv_tam.ma, tach_chuoi);
-//                if (chuoi_tam != NULL)
-//                {
-//                    tach_chuoi = strtok(NULL, ",");
-//                    strcpy(sv_tam.ten, tach_chuoi);
-//                }
-//            }
-//            Node *new_node = GetNode(sv_tam);
-//            AddTail(l, new_node);
-//        }
-//    }
-//   
-//}
-//
+
+
 
 void LoadData(char *filename, List &l)
 {
@@ -143,6 +111,27 @@ void LoadData(char *filename, List &l)
 }
 
 
+void FindByID(List l_bac, List l_he, List l_nganh, List l_khoa, char *id)
+{
+   
+    char bac[2], he[2], nganh[3], khoa[3], id_sv[4];
+    strncpy(bac, id, 1);
+    bac[1] = '\0';
+    strncpy(he, id + 1, 1);
+    he[1] = '\0';
+    strncpy(nganh, id + 2, 2);
+    nganh[2] = '\0';
+    strncpy(khoa, id + 4, 2);
+    khoa[2] = '\0';
+    strncpy(id_sv, id + 6, 3);
+    id_sv[3] = '\0';
+
+   
+    
+    printf("Khong tim thay sinh vien co ma so %s\n", id);
+}
+
+
 int main()
 {
     List list_bac, list_khoa, list_he, list_nganh;
@@ -163,6 +152,13 @@ int main()
     PrintList(list_he);
     printf("==========================================\n");
     PrintList(list_nganh);
+
+	char id[10];
+
+    printf("Nhap id : ");
+    scanf("%s", &id);
+    
+    FindByID(list_bac, list_he, list_nganh, list_khoa, id);
     
     return 0;
 }

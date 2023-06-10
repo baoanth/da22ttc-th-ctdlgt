@@ -122,7 +122,6 @@ int main()
     nganh = loadData("nganh.txt");
     he = loadData("he.txt");
 
-    //	in(he);
     char ma[10];
     printf("Nhap ma sinh vien: ");
     scanf("%s", &ma);
