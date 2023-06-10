@@ -219,9 +219,9 @@ void SortList(List &l)
  		{
    			if(p->Info.id > q->Info.id)
      		{
-      			int t = p->Info.id;
-       			p->Info.id = q->Info.id;
-       			q->Info.id = t;		
+      			Student t = p->Info;
+       			p->Info = q->Info;
+       			q->Info = t;		
      		}	
   		}
  	}
