@@ -4,7 +4,7 @@
 
 typedef struct SV
 {
-    char name[100];
+    char name[200];
     char code[3];
 } SV;
 
@@ -79,7 +79,7 @@ char *getName(Node *p, char code[])
     return code;
 }
 
-void FindStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaList, const char *studentID)
+void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaList, const char *studentID)
 {
     if (strlen(studentID) != 9)
     {
@@ -122,12 +122,11 @@ int main()
     nganh = loadData("nganh.txt");
     he = loadData("he.txt");
 
-    
     char ma[10];
     printf("Nhap ma sinh vien: ");
     scanf("%s", &ma);
 
-    FindStudentInfo(bac, he, nganh, khoa, ma);
+    findStudentInfo(bac, he, nganh, khoa, ma);
 
     return 0;
 }
