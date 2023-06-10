@@ -1,5 +1,2 @@
-1. Chinh quy
-2. VHVL
-3. Lien thong tu trung cap
-4. Lien thong tu cao dang
-5. Tu xa
+1, Chinh quy
+2, khong chinh quy
