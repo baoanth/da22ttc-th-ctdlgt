@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2db01e1e302089787fc197b164301a33613b7a29
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -270,6 +273,8 @@ int main() {
 
     return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 #include <stdio.h>
 #include <string.h>
@@ -543,3 +548,4 @@ int main() {
     return 0;
 }
 >>>>>>> 5830b6b559fabec38bcb642990605482ad9cb0c8
+>>>>>>> 2db01e1e302089787fc197b164301a33613b7a29
