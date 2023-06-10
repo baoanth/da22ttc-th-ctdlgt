@@ -1,4 +1,4 @@
-#include<stdio.h>
+#0include<stdio.h>
 #include<stdlib.h>
 
 typedef struct Node
