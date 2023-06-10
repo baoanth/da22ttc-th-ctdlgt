@@ -1,129 +1,218 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
-typedef struct Node
-{
-    int data;
-    struct Node *pLeft, *pRight;
-} Node;
 
-typedef Node* TREE;
-
-Node* CreateNode(int data)
+typedef struct TNODE
 {
-    Node* node = new Node;
-    node->data = data;
-    node->pLeft = NULL;
-    node->pRight = NULL;
-    return node;
+    int Key;
+    struct TNODE *pLeft, *pRight;
+} TNODE;
+typedef TNODE* TREE;
+
+void Print_NLR(TREE Root)
+{
+    if (Root != NULL)
+    {
+        printf("%3d", Root->Key);
+		Print_NLR(Root->pLeft);
+        Print_NLR(Root->pRight);
+    }
 }
 
-Node* InsertNode(Node* root, int data)
+void Print_LNR(TREE Root)
 {
-    if (root == NULL)
+    if (Root != NULL)
     {
-        return CreateNode(data);
+        Print_LNR(Root->pLeft);
+        printf("%3d", Root->Key);		
+        Print_LNR(Root->pRight);
     }
-
-    if (data < root->data)
-    {
-        root->pLeft = InsertNode(root->pLeft, data);
-    }
-    else if (data > root->data)
-    {
-        root->pRight = InsertNode(root->pRight, data);
-    }
-
-    return root;
 }
 
-Node* SearchNode(Node* t, int x)
+void Print_LRN(TREE Root)
 {
-    if (t)
+    if (Root != NULL)
     {
-        if (t->data == x)
-            return t;
-        if (t->data > x)
-            return SearchNode(t->pLeft, x);
+        Print_LRN(Root->pLeft);
+        Print_LRN(Root->pRight);
+    	printf("%3d", Root->Key);		
+    }
+}
+
+TNODE *SearchNode(TREE Root, int x)
+{
+    TNODE *p = Root;
+    while (p != NULL)
+    {
+        if (x == p->Key)
+            return p;
+        else if (x < p->Key)
+            p = p->pLeft;
         else
-            return SearchNode(t->pRight, x);
+            p = p->pRight;
     }
     return NULL;
 }
 
-void NLR(Node* node)
+int InsertNode(TREE &T, int X)
 {
-    if (node != NULL)
+    if (T)
     {
-        printf("%d ", node->data);
-        NLR(node->pLeft);
-        NLR(node->pRight);
+        if (T->Key == X)
+            return 0;
+        if (T->Key > X)
+            return InsertNode(T->pLeft, X);
+        else
+            return InsertNode(T->pRight, X);
     }
+   
+    T = new TNODE;
+    if (T == NULL)
+        return -1;
+    
+    T->Key = X;  
+    T->pLeft = T->pRight = NULL;
+    return 1; 
 }
 
-void LNR(Node* node)
+void SearchStandFor(TREE &p, TREE &q)
 {
-    if (node != NULL)
-    {
-        LNR(node->pLeft);
-        printf("%d ", node->data);
-        LNR(node->pRight);
-    }
+	if(q->pLeft)
+		SearchStandFor(p, q->pLeft);
+	else
+	{
+		p->Key = q->Key;
+		p = q;
+		q = q->pRight;
+	}
 }
 
-void LRN(Node* node)
+int DeleteNode(TREE &T, int x)
 {
-    if (node != NULL)
-    {
-        LRN(node->pLeft);
-        LRN(node->pRight);
-        printf("%d ", node->data);
-    }
+	if(T==NULL)	return 0;
+	if(T-> Key > x)
+		return DeleteNode(T-> pLeft, x);
+	if(T-> Key < x)
+		return DeleteNode(T-> pRight, x);
+	else
+	{
+		TNODE *p =T;
+	
+		if(T-> pRight == NULL)
+			T= T-> pLeft;
+		else
+		{
+			TNODE *q = T->pRight;
+			SearchStandFor(p,q);
+		}
+	delete p;
+	}
 }
 
 int main()
 {
-    Node* root = NULL;
-
-    root = InsertNode(root, 4);
-    root = InsertNode(root, 6);
-    root = InsertNode(root, 16);
-    root = InsertNode(root, 20);
-    root = InsertNode(root, 19);
-    root = InsertNode(root, 13);
-    root = InsertNode(root, 10);
-    root = InsertNode(root, 45);
-    root = InsertNode(root, 30);
-    root = InsertNode(root, 27);
-
-    printf("Duyet theo thu tu truoc:\n");
-    NLR(root);
-    printf("\n");
-
-    printf("\nDuyet theo thu tu giua:\n");
-    LNR(root);
-    printf("\n");
-
-    printf("\nDuyet theo thu tu sau:\n");
-    LRN(root);
-    printf("\n");
-
-    int Key;
-    printf("\nNhap node can tim :");
-    scanf("%d", & Key);
-    printf("\n");
+	int x, n, i, c;
+	
+    TREE my_tree = NULL;
     
-    Node* newKey = SearchNode(root, Key);
-    if (newKey != NULL)
+//    InsertNode(my_tree, 80);
+//    InsertNode(my_tree, 45);
+//    InsertNode(my_tree, 13);
+//    InsertNode(my_tree, 72);
+//    InsertNode(my_tree, 25);
+//    InsertNode(my_tree, 38);
+//    InsertNode(my_tree, 33);
+//    InsertNode(my_tree, 12);
+//    InsertNode(my_tree, 21);
+//    InsertNode(my_tree, 27);
+//    InsertNode(my_tree, 36);
+    
+    printf("Nhap so nut tren cay: ");
+    scanf("%d",&n);
+    for(i=1; i<=n; i++)
     {
-        printf("Da tim thay node %d trong cay \n", Key);
+    	printf("Nhap gia tri cho nut %d: ",i);
+		scanf("%d",&x);
+		InsertNode(my_tree, x);
     }
-    else
-    {
-        printf("khong tim thay node %d ton tai trong cay\n", Key);
-    }
+    
+//    printf("\nSap xep cay theo NLR:  ");
+//    Print_NLR(my_tree);
+//    printf("\n\nSap xep cay theo LNR:  ");
+//    Print_LNR(my_tree);
+//    printf("\n\nSap xep cay theo LRN:  ");
+//    Print_LRN(my_tree);
+  		
+	printf("\nNhap x can tim: ");
+	scanf("%d",&x);
+	if(SearchNode(my_tree,x)==NULL)
+	{
+		printf("Khong tim thay %d trong day ",x);
+	}
+	else
+	{
+		printf("Tim thay %d trong day ",x);
+	}
+	
+//	printf("\n\nNhap x can chen: ");
+//	scanf("%d",&x);
+//	InsertNode(my_tree, x);
+//	printf("\nSau khi chen %d vao: ",x);
+//	Print_LNR(my_tree);
+//	
+//	printf("\nXoa gia tri x cua cay: ");
+//	scanf("%d",&x);
+//	DeleteNode(my_tree,x);
+//	printf("\nSau khi xoa %d: ",x);
+//	Print_LNR(my_tree);
+	
+	printf("\n");
+	while(1) 
+	{
+		printf("\n------Binary_Search_Tree------\n");
+		printf("\n0.Thoat ra");
+		printf("\n1.Chen them nut");
+		printf("\n2.Xoa nut");
+		printf("\n3.Sap xep cay theo NLR");
+		printf("\n4.Sap xep cay theo LNR");
+		printf("\n5.Sap xep cay theo LRN\n");	
+		printf("\nNhap thao tac can thuc hien: ");	
+		scanf("%d",&c);
+		
+		if(c==0)	break;
+		else if(c==1)
+		{
+			printf("\nNhap x can chen: ");
+			scanf("%d",&x);
+			InsertNode(my_tree, x);
+			printf("\nDa chen %d vao\n",x);
+		}
+		else if(c==2)
+		{
+			printf("\nXoa gia tri x cua cay: ");
+			scanf("%d",&x);
+			DeleteNode(my_tree,x);
+			printf("\nDa xoa %d di\n",x);
+		}
+		else if(c==3)
+		{
+			printf("\nSap xep cay theo NLR:  ");
+   			Print_NLR(my_tree);
+   			printf("\n");
+		}
+		else if(c==4)
+		{
+			printf("\nSap xep cay theo LNR:  ");
+    		Print_LNR(my_tree);
+    		printf("\n");
+		}
+		else if(c==5)
+		{
+			printf("\nSap xep cay theo LRN:  ");
+    		Print_LRN(my_tree);
+    		printf("\n");
+		}
+   }
 
-    return 0;
+	return 0;
 }
-

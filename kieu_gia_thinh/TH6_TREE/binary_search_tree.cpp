@@ -159,7 +159,7 @@ int main()
     Print_LRN(my_tree);
     
 //Tim phan tu X
-    int X, m, j, count = 0;
+    int X, m, j;
     
     do
     {
@@ -171,8 +171,7 @@ int main()
     
     for(j = 1; j<=m; j++)
     {
-    	count++;
-    	printf("\nNhap Node can tim thu %d: ", count);
+    	printf("\nNhap Node can tim thu %d: ", j);
     	scanf("%d", &X);
     
     	TNODE* Tk = SearchNode(my_tree, X);
@@ -197,10 +196,9 @@ int main()
 	for(int i = 1; i<=n; i++)
 	{
 		biendem++;
-		
 		//Xoa phan tu
 		int Y;
-		printf("\nNhap vao Node can xoa lan thu %d: ", biendem);
+		printf("\nNhap vao Node can xoa lan thu %d: ", i);
 		scanf("%d", &Y);
 		int Xoa = DelNode(my_tree, Y);
 		if(Xoa == NULL) 
