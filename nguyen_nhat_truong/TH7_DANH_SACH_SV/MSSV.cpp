@@ -4,7 +4,7 @@
 
 typedef struct SV
 {
-    char name[100];
+    char name[200];
     char code[3];
 } SV;
 
