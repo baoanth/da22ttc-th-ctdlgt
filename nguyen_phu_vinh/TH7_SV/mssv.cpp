@@ -118,8 +118,10 @@ void PrintList(List &l)
     }
 }
 
+
 int main()
 {
+	int mssv[10];
     List list_bac, list_he, list_nganh, list_khoa;
 
     Init( list_bac);
@@ -137,7 +139,10 @@ int main()
     Init( list_khoa);
     load_data(list_khoa, "khoa.txt");
     PrintList(list_khoa);
-
+	printf("nhap ma so sinh vien:");
+	scanf("%d",mssv);
+	
+	
 	return 0;
 	
 
