@@ -160,7 +160,7 @@ int main()
     scanf("%s", studentCode);
 
     get_student_info(studentCode, &nganhList, &bacList, &heList, &khoaList);
-
+    
     return 0;
 }
 
