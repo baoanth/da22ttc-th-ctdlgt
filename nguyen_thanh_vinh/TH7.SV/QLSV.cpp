@@ -1,98 +1,236 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-typedef struct {
+typedef struct Student
+{
+    int id;
     char name[50];
-    int studentID;
-    float gpa;
-    char old[30];
-} Student;
+    int age;
+    float score;
+    struct Student *next;
+}Student;
 
-void addStudent(Student *students, int *count) {
-    printf("Nhap ten sinh vien: ");
-    scanf("%s", students[*count].name);
-    
-    printf("Nhap ma so sinh vien: ");
-    scanf("%d", &students[*count].studentID);
-    
-    printf("Nhap diem trung binh: ");
-    scanf("%f", &students[*count].gpa);
-    
-    printf("Nhap tuoi: ");
-    scanf("%s", &students[*count].old);
-    
-    (*count)++;
-    
-    printf("Sinh vien da duoc them.\n");
+typedef struct Node
+{
+    Student Info;
+    Node* pNext;
+}Node;
+
+typedef struct List
+{
+    Node* pHead;
+    Node* pTail;
+}List;
+
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
 }
 
-void displayStudents(Student *students, int count) {
-    printf("Danh sach sinh vien:\n");
-    for (int i = 0; i < count; i++) {
-        printf("Ten: %s\n", students[i].name);
-        printf("Ma so sinh vien: %d\n", students[i].studentID);
-        printf("Diem trung binh: %.2f\n", students[i].gpa);
-        printf("Nhap tuoi: %s\n", students[i].old);
-        printf("--------------------\n");
+Node* GetNode(Student x)
+{
+	Node* p;
+    p=new Node;
+    if(p==NULL)
+    {
+    	printf("Khong du bo nho de cap phat cho nut moi!\n");
+    	return 0;
+	}
+	p->Info=x;
+	p->pNext=NULL;
+	return p;	
+}
+
+void AddTail(List &l, Node *new_ele)
+{
+    if (l.pHead==NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
+    }
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
     }
 }
 
-void searchStudent(Student *students, int count, char *searchName) {
-    int found = 0;
+void addStudent(List &l)
+{
+    Student sv_moi;
+	printf("\n Moi nhap node moi");
+    printf("\nID:");
+    scanf("%d", &sv_moi.id);
     
-    printf("Ket qua tim kiem:\n");
-    for (int i = 0; i < count; i++) {
-        if (strcmp(students[i].name, searchName) == 0) {
-            printf("Ten: %s\n", students[i].name);
-            printf("Ma so sinh vien: %d\n", students[i].studentID);
-            printf("Diem trung binh: %.2f\n", students[i].gpa);
-            printf("Nhap tuoi: %s\n", students[i].old);
-            printf("--------------------\n");
-            found = 1;
+    fflush(stdin);
+    printf("TEN:");
+    gets(sv_moi.name);
+
+    fflush(stdin);
+    printf("TUOI:");
+    scanf("%d", &sv_moi.age);
+
+    fflush(stdin);
+    printf("DTB:");
+    scanf("%f", &sv_moi.score);
+    
+    Node* new_ele = GetNode(sv_moi);
+    AddTail(l, new_ele);
+}
+
+int deleteStudent(List &l, int id)
+{
+    Node *p = l.pHead;
+    Node *q = NULL;
+    while(p != NULL)
+    {
+	    if(p->Info.id == id) break;
+	    q = p;
+	    p = p->pNext;
+	}
+	if(p == NULL) 
+	{
+	    return 0;
+	    printf("\n Khong tim thay Sinh vien co stt %d", id);
+	}
+	if(q != NULL)
+	{
+	    if(p == l.pTail)
+	        l.pTail = q;
+	    q->pNext = p->pNext;
+	    delete p;
+	}
+	else 
+	{
+	    l.pHead = p->pNext;
+	    if(l.pHead == NULL)
+	        l.pTail = NULL;
+	}
+return 1;
+}
+
+void updateStudent(List &l, int id)
+{
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        if (p->Info.id == id)
+        {
+            printf("\nNhap thong tin sinh vien can sua:\n");
+            printf("\nID:");
+            scanf("%d", &p->Info.id);
+
+            fflush(stdin);
+            printf("\nTEN:");
+            gets(p->Info.name);
+
+            fflush(stdin);
+            printf("\nTUOI:");
+            scanf("%d", &p->Info.age);
+
+            fflush(stdin);
+            printf("\nDTB:");
+            scanf("%f", &p->Info.score);
+
+            printf("\nDa cap nhat thong tin sinh vien co ID %d\n", id);
+            return;
         }
+        p = p->pNext;
     }
-    
-    if (!found) {
-        printf("Khong tim thay sinh vien co ten '%s'.\n", searchName);
-    }
+    printf("\nKhong tim thay Sinh vien co ID %d\n", id);
 }
 
-int main() {
-    Student students[100];
-    int count = 0;
+void displayStudents(List &l)
+{
+    if(l.pHead==NULL)
+    {
+	    printf("Danh sach rong\n");
+	}
+	else
+	{
+	    Node* p;
+	    p=l.pHead;
+	    while(p!=NULL)
+	    {
+	        printf("%3d %10s %5d %.2f \n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
+	        p = p->pNext;
+		}
+	}
+}
+
+void saveStudentsToFile(List l, const char *filename)
+{
+    FILE *file = fopen(filename, "w");
+    if (file == NULL)
+    {
+        printf("Khong the mo file %s de ghi\n", filename);
+        return;
+    }
+
+    Node *p = l.pHead;
+    while (p != NULL)
+    {
+        fprintf(file, "%d;%s;%d;%.2f\n", p->Info.id, p->Info.name, p->Info.age, p->Info.score);
+        p = p->pNext;
+    }
+
+    fclose(file);
+    printf("Danh sach sinh vien da duoc luu vao file %s\n", filename);
+}
+
+int main()
+{
+	List(l);
+	Init(l);
+    Student *head = NULL;
     int choice;
-    
+    int id;
     do {
-        printf("1. Them sinh vien\n");
-        printf("2. Hien thi danh sach sinh vien\n");
-        printf("3. Tim kiem sinh vien theo ten\n");
-        printf("4. Ban muon xoa sinh vien nao\n");
+    printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
+        printf("1. Them sinh vien moi\n");
+        printf("2. Xoa sinh vien\n");
+        printf("3. Sua thong tin sinh vien\n");
+        printf("4. Hien thi danh sach sinh vien\n");
+        printf("5. Luu danh sach sinh vien vao file\n");
+        printf("6. Sap xep danh sach sinh vien\n");
         printf("0. Thoat chuong trinh\n");
-        printf("Chon chuc nang: ");
+        printf("Nhap lua chon cua ban: ");
         scanf("%d", &choice);
-        
+
         switch (choice) {
+            case 0:
+                printf("Cam on ban da su dung chuong trinh!\n");
+                break;
             case 1:
-                addStudent(students, &count);
+                addStudent(l);
                 break;
             case 2:
-                displayStudents(students, count);
+                printf("Nhap ma so sinh vien can xoa: ");
+                scanf("%d", &id);
+                deleteStudent(l, id);
                 break;
-            case 3: {
-                char searchName[50];
-                printf("Nhap ten sinh vien can tim: ");
-                scanf("%s", searchName);
-                searchStudent(students, count, searchName);
+            case 3:
+                printf("Nhap ma so sinh vien can sua: ");
+                scanf("%d", &id);
+                updateStudent(l, id);
                 break;
             case 4:
-                addStudent(students, &count);
+                displayStudents(l);
                 break;
-            }
+            case 5:
+                printf("Nhap ten file de luu danh sach sinh vien: ");
+                char filename[100];
+                scanf("%s", filename);
+                saveStudentsToFile(l, filename);
+                break;
             default:
+                printf("Lua chon khong hop le. Vui long thu lai!\n");
                 break;
         }
     } while (choice != 0);
-    
+
     return 0;
+
+
 }
