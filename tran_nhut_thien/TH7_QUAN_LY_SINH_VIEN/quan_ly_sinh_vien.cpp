@@ -97,6 +97,27 @@
 		int choice;
 		int id , kt ;
 		do 
+		{
+			printf("\n----CHUONG TRINH QUAN LY SINH VIEN----\N");
+			printf("1.Them sinh vien moi\n");
+			printf("2.xoa thong tin sinh vien\n");
+			printf("3.Sua thong tin sinh vien\n");
+			printf("4.Hien thi danh sach sinh vien\n");
+			printf("5.Luu danh sach sinh vien vao File\n");
+			printf("6.Xap xep danh sach sinh vien\n");
+			printf("0.Thoat chuong trinh\n");
+			printf("Nhap lua chon cua ban:");
+			scanf("%d" ,&choice) ;
+			
+			switch (choice)
+			{
+				case 0:
+				printf("Cam on ban da su dung chuong trinh!\n");
+				brea;
+				c 
+			 } 
+			 
+		}
     }
      
      
