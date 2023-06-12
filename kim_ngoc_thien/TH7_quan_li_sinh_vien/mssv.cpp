@@ -1,129 +1,199 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef struct Node {
-    char name[20];
-    char code[20];
-    struct Node* next;
+#define MAX_LINE_LENGTH 100
+
+typedef struct MssvEle{
+    char ma[3] ;
+    char ten[MAX_LINE_LENGTH];
+    
+}MssvEle;
+
+typedef struct Node
+{
+    MssvEle Info;
+    Node *pNext;
 } Node;
 
-Node* creNode(const char* name, const char* code) {
-    Node* p = (Node*)malloc(sizeof(Node));
-    strcpy(p->name, name);
-    strcpy(p->code, code);
-    p->next = NULL;
+typedef struct List
+{
+    Node *pHead;
+    Node *pTail;
+} List;
+
+Node *GetNode(MssvEle x)
+{
+    Node *p;
+    p = new Node;
+    if (p == NULL)
+    {
+        printf("Khong du bo nho de cap phat cho nut moi");
+        return 0;
+    }
+    p->Info = x;
+    p->pNext = NULL;
     return p;
 }
 
-void addNode(Node* &head, Node* p) {
-    if (head == NULL)
-        head = p;
-    else {
-        Node* q = head;
-        while (q->next != NULL) {
-            q = q->next;
-        }
-        q->next = p;
+void AddFirst(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;      
+    }
+    else
+    {
+        new_ele->pNext = l.pHead;
+        l.pHead = new_ele;
     }
 }
 
-Node* loadData(Node* &head,const char* filename) {
-    FILE* infile = fopen(filename, "r");
-    if (infile != NULL) {
-        char line[30];
-        while (fgets(line, sizeof(line), infile)) {
-            char code[20];
-            char name[20];
-            sscanf(line, "%[^,], %[^\n]", code, name);
-            Node* tmp = creNode(name, code);
-            addNode(head, tmp);
-        }
-        fclose(infile);
-        return head;
+void AddTail(List &l, Node *new_ele)
+{
+    if (l.pHead == NULL)
+    {
+        l.pHead = new_ele;
+        l.pTail = l.pHead;
     }
-    return NULL;
+    else
+    {
+        l.pTail->pNext = new_ele;
+        l.pTail = new_ele;
+    }
 }
 
-void findStudentInfo(Node* bacList, Node* heList, Node* nganhList, Node* khoaList, const char* studentID) {
-    if (strlen(studentID) != 9) {
-        printf("Ma so sinh vien khong hop le\n");
-        return;
-    }
+Node *FindEleByMa(List l, char* ma)
+{
+    Node *p;
+    p = l.pHead;
 
-    char bacCode[3];
-    strncpy(bacCode, studentID, 1);
-    bacCode[1] = '\0';
+    while ((p != NULL) && (strcmp(p->Info.ma, ma)))
+        p = p->pNext;
 
-    char heCode[3];
-    strncpy(heCode, studentID + 1, 1);
-    heCode[1] = '\0';
-
-    char nganhCode[4];
-    strncpy(nganhCode, studentID + 2, 2);
-    nganhCode[2] = '\0';
-
-    char khoaCode[4];
-    strncpy(khoaCode, studentID + 4, 2);
-    khoaCode[2] = '\0';
-
-    Node* bacNode = bacList;
-    while (bacNode != NULL) {
-        if (strcmp(bacNode->code, bacCode) == 0) {
-            break;
-        }
-        bacNode = bacNode->next;
-    }
-
-    Node* heNode = heList;
-    while (heNode != NULL) {
-        if (strcmp(heNode->code, heCode) == 0) {
-            break;
-        }
-        heNode = heNode->next;
-    }
-
-    Node* nganhNode = nganhList;
-    while (nganhNode != NULL) {
-        if (strcmp(nganhNode->code, nganhCode) == 0) {
-            break;
-        }
-        nganhNode = nganhNode->next;
-    }
-
-    Node* khoaNode = khoaList;
-    while (khoaNode != NULL) {
-        if (strcmp(khoaNode->code, khoaCode) == 0) {
-            break;
-        }
-        khoaNode = khoaNode->next;
-    }
-
-    if (bacNode == NULL || heNode == NULL || nganhNode == NULL || khoaNode == NULL) {
-        printf("Khong tim thay thong tin sinh vien\n");
-        return;
-    }
-
-    printf("%s %s %s Khoa %s\n", heNode->name, bacNode->name, nganhNode->name, khoaNode->name);
+    return p;
 }
 
-int main() {
-    Node* bac = NULL;
-    Node* khoa = NULL;
-    Node* nganh = NULL;
-    Node* he = NULL;
-
-    bac = loadData(bac,"bac.txt");
-    khoa = loadData(khoa,"khoa.txt");
-    nganh = loadData(nganh,"nganh.txt");
-    he = loadData(he,"he.txt");
-
-    char ma[10];
-    printf("Nhap ma sinh vien: ");
-    fgets(ma, sizeof(ma), stdin);
-    ma[strcspn(ma, "\n")] = '\0';
-
-    findStudentInfo(bac, he, nganh, khoa, ma);
-
-    return 0;
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
 }
+
+
+int LoadData(char* filename, List &l )
+{
+    FILE *file;
+    char line[MAX_LINE_LENGTH];
+    char *token;
+    char ma[MAX_LINE_LENGTH];
+    char ten[MAX_LINE_LENGTH];
+    MssvEle ele_tam;
+    Node* node_tam;
+
+    
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Kh�ng mo duoc tap tin van ban.\n");
+        return 1;
+    }
+
+    while (fgets(line, sizeof(line), file)) {
+        
+        line[strcspn(line, "\n")] = '\0';       
+
+       
+        token = strtok(line, ",");
+        
+        if (token != NULL) {
+            strcpy(ele_tam.ma, token);
+            token = strtok(NULL, ",");
+            if (token != NULL) {
+                strcpy(ele_tam.ten, token);
+
+            
+            }            
+        }
+        node_tam  = GetNode(ele_tam);
+        AddTail(l, node_tam);
+    }
+
+    
+    fclose(file);    
+}
+
+void PrintList(List &l)
+{
+
+	if (l.pHead ==NULL)
+		printf("Danh sach rong\n");
+	else
+	{
+		Node *p;
+		p = l.pHead ;
+		while (p!=NULL)
+		{
+			printf("%5s %20s \n", p->Info.ma, p->Info.ten);
+			p = p->pNext;
+		}
+    }
+}		
+
+char* subString(char scr_str[], int start_pos, int len) 
+{
+    char* res_str = (char*) malloc((len + 1) * sizeof(char));  
+    int i;
+    for (i = 0; i < len; i++) {
+        res_str[i] = scr_str[start_pos + i];
+    }
+    res_str[len] = '\0';
+    
+
+    return res_str;
+}
+
+int main()
+{
+    List list_bac, list_khoa, list_he, list_nganh;
+    Init(list_bac);
+    Init(list_khoa);
+    Init(list_he);
+    Init(list_nganh);
+    
+	
+	LoadData("bac.txt", list_bac); 
+	LoadData("he.txt", list_he); 
+	LoadData("nganh.txt", list_nganh); 
+	LoadData("khoa.txt", list_khoa); 
+    PrintList(list_bac);
+    PrintList(list_he);
+    PrintList(list_nganh);
+    PrintList(list_khoa);
+    
+	char my_mssv[10] = "110122164";
+	printf("Ket qua tim kiem cho %s\n", my_mssv);    
+
+    char* sub1 = subString(my_mssv,0,1);
+    char* sub2 = subString(my_mssv,1,1);
+    char* sub3 = subString(my_mssv,2,2);
+    char* sub4 = subString(my_mssv,4,2);
+       
+	
+	Node* p  = FindEleByMa(list_bac, sub1);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p  = FindEleByMa(list_he, sub2);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p  = FindEleByMa(list_nganh, sub3);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	p  = FindEleByMa(list_khoa, sub4);
+	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	
+	
+    
+	return 0;
+
+}
+
