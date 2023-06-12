@@ -2,4 +2,3 @@
 2, VHVL
 3, Lien thong tu trung cap
 4, Lien thong tu cao dang
-5, Tu xa
