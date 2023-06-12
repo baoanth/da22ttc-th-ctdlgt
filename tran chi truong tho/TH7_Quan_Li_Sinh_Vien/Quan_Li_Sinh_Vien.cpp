@@ -1,207 +1,266 @@
-
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-typedef struct Student
+typedef struct
 {
-    int id;
-    char name[100];
-    int age;
-    float score;
-    struct Student *next;
-} Student;
+    char id [50];
+    char name [100];
+    int tuoi;
+    float diemTB;
+}SinhVien;
 
-Student *createStudent() 
+typedef struct Node
 {
-    Student *student = (Student *)malloc(sizeof(Student));
-    printf("Nhap ma so sinh vien: ");
-    scanf("%d", &student->id);
+    SinhVien sv;
+    struct Node* next;
+}Node;
 
-    printf("Nhap ho va ten: ");
-    scanf("%s", student->name);
 
-    printf("Nhap tuoi: ");
-    scanf("%d", &student->age);
-
-    printf("Nhap diem trung binh: ");
-    scanf("%f", &student->score);
-    student->next = NULL;
-    return student;
+Node* createNode(SinhVien sv) 
+{
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->sv = sv;
+    newNode->next = NULL;
+    return newNode;
 }
 
-void addStudent(Student **head) 
+
+Node* addStudent(Node* pHead, SinhVien sv) 
 {
-    Student *student = createStudent();
-    if (*head == NULL) 
+    Node* newNode = createNode(sv);
+    if (pHead == NULL) 
     {
-        *head = student;
-    } else 
+        pHead = newNode;
+    } 
+    else 
     {
-        Student *current = *head;
-        while (current->next != NULL) 
+        Node* Root = pHead;
+        while (Root->next != NULL) 
         {
-            current = current->next;
+            Root = Root->next;
         }
-        current->next = student;
+        Root->next = newNode;
     }
-    printf("Da them sinh vien moi.\n");
+    printf("Sinh vien da duoc them vao danh sach.\n");
+    return pHead;
 }
 
-void deleteStudent(Student **head, int id) 
+
+Node* deleteStudent(Node* pHead, char id[50]) 
 {
-    if (*head == NULL) 
+    Node* Root = pHead;
+    Node* prevNode = NULL;
+
+    if (Root != NULL && strcmp(Root->sv.id, id) == 0) 
     {
-        printf("Danh sach sinh vien rong.\n");
-        return;
+        pHead = Root->next;
+        free(Root);
+        printf("Sinh vien da bi xoa khoi danh sach.\n");
+        return pHead;
     }
-    Student *current = *head;
-    Student *prev = NULL;
-    while (current != NULL) 
+    while (Root != NULL && strcmp(Root->sv.id, id) != 0) 
     {
-        if (current->id == id) 
+        prevNode = Root;
+        Root = Root->next;
+    }
+
+    if (Root == NULL) 
+    {
+        printf("Khong tim thay sinh vien voi ma so %s.\n", id);
+        return pHead;
+    }
+
+    prevNode->next = Root->next;
+    free(Root);
+    printf("Sinh vien da bi xoa khoi danh sach.\n");
+    return pHead;
+}
+
+void updateStudent(Node* pHead, char id [50]) 
+{
+    Node* Root = pHead;
+    while (Root != NULL) 
+    {
+        if (strcmp(Root->sv.id, id) == 0) 
         {
-            if (prev == NULL) 
-            {
-                *head = current->next;
-            } else 
-            {
-                prev->next = current->next;
-            }
-            free(current);
-            printf("Da xoa sinh vien co ma so %d.\n", id);
+            printf("Nhap ho ten moi: ");
+            fgets(Root->sv.name, sizeof(Root->sv.name), stdin);
+            printf("Nhap tuoi moi: ");
+            scanf("%d", &(Root->sv.tuoi));
+            printf("Nhap diem trung binh moi: ");
+            scanf("%f", &(Root->sv.diemTB));
+            printf("Thong tin sinh vien da duoc cap nhat.\n");
             return;
         }
-        prev = current;
-        current = current->next;
+        Root = Root->next;
     }
-    printf("Khong tim thay sinh vien co ma so %d.\n", id);
+    printf("Khong tim thay sinh vien voi ma so %s.\n",id);
 }
 
-void updateStudent(Student *head, int id) 
+void displayStudents(Node* pHead) 
 {
-    if (head == NULL) {
-        printf("Danh sach sinh vien rong.\n");
-        return;
-    }
-    Student *current = head;
-    while (current != NULL) 
+    if (pHead == NULL)
     {
-        if (current->id == id) 
-        {
-            printf("Nhap ho va ten: ");
-            scanf("%s", current->name);
-            printf("Nhap tuoi: ");
-            scanf("%d", &current->age);
-            printf("Nhap diem trung binh: ");
-            scanf("%f", &current->score);
-            printf("Da cap nhat thong tin sinh vien co ma so %d.\n", id);
-            return;
-        }
-        current = current->next;
-    }
-    printf("Khong tim thay sinh vien co ma so %d.\n", id);
-}
-
-void displayStudents(Student *head) 
-{
-    if (head == NULL) 
-    {
-        printf("Danh sach sinh vien rong.\n");
+        printf("Danh sach sinh vien trong.\n");
         return;
     }
     printf("Danh sach sinh vien:\n");
-    printf("%15s %20s %10s %10s\n", "Ma so", "Ho va ten", "Tuoi", "Diem TB");
-    Student *current = head;
-    while (current != NULL) 
+    Node* Root = pHead;
+    while (Root != NULL) 
     {
-        printf("%15d %20s %10d %10.2f\n", current->id, current->name, current->age, current->score);
-        current = current->next;
+        printf("Ma so: %s\n", Root->sv.id);
+        printf("Ho ten: %s", Root->sv.name);
+        printf("Tuoi: %d\n", Root->sv.tuoi);
+        printf("Diem trung binh: %.2f\n", Root->sv.diemTB);
+        printf("----------------------\n");
+        Root = Root->next;
     }
 }
 
-void saveStudentsToFile(Student *head, const char *filename) 
+Node* insertNode(Node* sortedList, Node* newNode) 
 {
-    FILE *file = fopen(filename, "w");
+    if (sortedList == NULL || strcmp(newNode->sv.id, sortedList->sv.id) < 0) 
+    {
+        newNode->next = sortedList;
+        sortedList = newNode;
+    } 
+	else
+	{
+        Node* Root = sortedList;
+        while (Root->next != NULL && strcmp(newNode->sv.id, Root->next->sv.id) >= 0) 
+        {
+            Root = Root->next;
+        }
+        newNode->next = Root->next;
+        Root->next = newNode;
+    }
+    return sortedList;
+}   
+
+Node* sortStudents(Node* pHead) 
+{
+    if (pHead == NULL || pHead->next == NULL) 
+    {
+        return pHead;
+    }
+    Node* Root = pHead;
+    Node* sortedList = NULL;
+    while (Root != NULL) 
+    {
+        Node* nextNode = Root->next;
+        sortedList = insertNode(sortedList, Root);
+        Root = nextNode;
+    }
+
+    return sortedList;
+} 
+    
+void saveStudentsToFile(Node* pHead, char fileName[50]) 
+{
+    FILE* file = fopen(fileName, "w");
     if (file == NULL) 
     {
-        printf("Khong the mo file de ghi.\n");
+        printf("Khong the mo file %s.\n", fileName);
         return;
     }
-    Student *current = head;
-    while (current != NULL) 
+
+    Node* Root = pHead;
+    while (Root != NULL) 
     {
-        fprintf(file, "%d,%s,%d,%.2f\n", current->id, current->name, current->age, current->score);
-        current = current->next;
+        fprintf(file, "%s\n", Root->sv.id);
+        fprintf(file, "%s", Root->sv.name);
+        fprintf(file, "%d\n", Root->sv.tuoi);
+        fprintf(file, "%.2f\n", Root->sv.diemTB);
+        Root = Root->next;
     }
     fclose(file);
-    printf("Da luu danh sach sinh vien vao file %s.\n", filename);
+    printf("Danh sach sinh vien da duoc luu vao file %s.\n", fileName);
 }
 
-void freeStudents(Student *head) 
+void freeStudents(Node* pHead) 
 {
-    Student *current = head;
-    while (current != NULL) 
+    Node* Root = pHead;
+    while (Root != NULL) 
     {
-        Student *next = current->next;
-        free(current);
-        current = next;
+        Node* temp = Root;
+        Root = Root->next;
+        free(temp);
     }
 }
 
 
-int main()
-{
-    Student *head = NULL;
-    int selection;
-    int id;
+int main() {
+    Node* pHead = NULL;
+    int luachon;
+    char fileName[50];
+    char id[10];
+    SinhVien sv;
 
     do {
-        printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
+        printf("=========== QUAN LY SINH VIEN ===========\n");
         printf("1. Them sinh vien moi\n");
         printf("2. Xoa sinh vien\n");
         printf("3. Sua thong tin sinh vien\n");
         printf("4. Hien thi danh sach sinh vien\n");
         printf("5. Luu danh sach sinh vien vao file\n");
-        printf("6. Sap xep danh sach sinh vien\n");
+        printf("6. Sap xep sinh vien theo ma so sinh vien\n");
         printf("0. Thoat chuong trinh\n");
-        
+        printf("=========================================\n");
         printf("Nhap lua chon cua ban: ");
-        scanf("%d", &selection);
+        scanf("%d", &luachon);
+        getchar(); 
 
-        switch (selection) 
-		{
-            case 0:
-                printf("Cam on ban da su dung chuong trinh!\n");
-                break;
+        switch (luachon) {
             case 1:
-                addStudent(&head);
+                printf("Nhap ma so sinh vien: ");
+                fgets(sv.id, sizeof(sv.id), stdin);
+                printf("Nhap ho ten: ");
+                fgets(sv.name, sizeof(sv.name), stdin);
+                printf("Nhap tuoi: ");
+                scanf("%d", &sv.tuoi);
+                printf("Nhap diem trung binh: ");
+                scanf("%f", &sv.diemTB);
+                pHead = addStudent(pHead, sv);
                 break;
             case 2:
                 printf("Nhap ma so sinh vien can xoa: ");
-                scanf("%d", &id);
-                deleteStudent(&head, id);
+                fgets(id, sizeof(id), stdin);
+                pHead = deleteStudent(pHead, id);
                 break;
             case 3:
                 printf("Nhap ma so sinh vien can sua: ");
-                scanf("%d", &id);
-                updateStudent(head, id);
+                fgets(id, sizeof(id), stdin);
+                updateStudent(pHead, id);
                 break;
             case 4:
-                displayStudents(head);
+                displayStudents(pHead);
+                break;
             case 5:
-                printf("Nhap ten file de luu danh sach sinh vien: ");
-                char filename[100];
-                scanf("%s", filename);
-                saveStudentsToFile(head, filename);
+                printf("Nhap ten file: ");
+                fgets(fileName, sizeof(fileName), stdin);
+                saveStudentsToFile(pHead, fileName);
+                break;
+            case 6:
+                pHead = sortStudents(pHead);
+                printf("Danh sach sinh vien da duoc sap xep.\n");
+                break;
+            case 0:
+                printf("Thoat chuong trinh.\n");
                 break;
             default:
-                printf("Lua chon khong hop le. Vui long thu lai!\n");
-                break;
+                printf("Lua chon khong hop le. Vui long chon lai.\n");
         }
-    } while (selection != 5);
+        printf("\n");
+    } while (luachon != 0);
 
-    freeStudents(head);
-
+    Node* Root = pHead;
+    while (Root != NULL) 
+    {
+        Node* temp = Root;
+        Root = Root->next;
+        free(temp);
+    }
+//thunghiemthoi
     return 0;
 }

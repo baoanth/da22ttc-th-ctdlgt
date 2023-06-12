@@ -1,0 +1,2 @@
+1, Chinh quy
+2, khong chinh quy
