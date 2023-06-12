@@ -170,7 +170,7 @@ int main()
     PrintList(list_nganh);
     PrintList(list_khoa);
     
-	char my_mssv[10] = "110122164";
+	char my_mssv[10] = "110122177";
 	printf("Ket qua tim kiem cho %s\n", my_mssv);    
 
     char* sub1 = subString(my_mssv,0,1);
