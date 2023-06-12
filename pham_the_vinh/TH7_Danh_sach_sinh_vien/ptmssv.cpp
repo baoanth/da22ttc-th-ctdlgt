@@ -5,7 +5,7 @@
 
 typedef struct MssvEle
 {
-    char ma[2];
+    char ma[5];
     char ten[MAX_LINE_LENGTH];
 }MssvEle;
 
@@ -28,7 +28,7 @@ Node *GetNode(MssvEle x)
 
     if (p == NULL)
     {
-        printf("--- Khong du bo nho de cap phat ---\n");
+        printf("----- Khong du bo nho de cap phat -----\n");
         return 0;
     }
     p->Info = x;
@@ -78,7 +78,7 @@ int LoatData(char* filename, List &l)
 	file = fopen(filename, "r");
 	if(file == NULL)
 	{
-		printf("--- Khong the mo tep ---\n");	
+		printf("----- Khong the mo tep -----\n");	
 		return 1;
 	}
 		
@@ -106,7 +106,7 @@ int LoatData(char* filename, List &l)
 void PrintList(List &l)
 {
     if (l.pHead == NULL)
-        printf("--- Danh sach rong ---\n");
+        printf("----- Danh sach rong -----\n");
     else
     {
         Node *p;
@@ -144,7 +144,8 @@ int main()
 	LoatData("he.txt", list_he);
 	LoatData("nganh.txt", list_nganh);
 	LoatData("khoa.txt", list_khoa);
-
+	
+	printf("----- Tra cuu ma so sinh vien -----\n"); 
 	char Mssv[10];
 	printf("Nhap ma so sinh vien: ");
 	gets(Mssv);
@@ -154,19 +155,18 @@ int main()
     char* Sub3 = SubString(Mssv, 2, 2);
     char* Sub4 = SubString(Mssv, 4, 2);
        
-	
+	printf("\n----- Ket qua tra cuu -----\n"); 
 	Node* p  = Find(list_bac, Sub1);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	printf("Bac:%7s%25s \n", p->Info.ma, p->Info.ten);	
 	
 	p = Find(list_he, Sub2);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	printf("He:%8s%25s \n", p->Info.ma, p->Info.ten);	
 	
 	p = Find(list_nganh, Sub3);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+	printf("Nganh:%5s%25s \n", p->Info.ma, p->Info.ten);	
 	
 	p = Find(list_khoa, Sub4);
-	printf("%5s %20s", p->Info.ma, p->Info.ten);	
-	
+	printf("Khoa:%6s%25s\n", p->Info.ma, p->Info.ten);	
 	
 	return 0;
 }
