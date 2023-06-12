@@ -94,7 +94,7 @@ int LoadData(char* filename, List &l )
     
     file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Kh�ng mo duoc tap tin van ban.\n");
+        printf("Kh?ng mo duoc tap tin van ban.\n");
         return 1;
     }
 
@@ -170,7 +170,7 @@ int main()
     PrintList(list_nganh);
     PrintList(list_khoa);
     
-	char my_mssv[10] = "110122164";
+	char my_mssv[10] = "110122177";
 	printf("Ket qua tim kiem cho %s\n", my_mssv);    
 
     char* sub1 = subString(my_mssv,0,1);
