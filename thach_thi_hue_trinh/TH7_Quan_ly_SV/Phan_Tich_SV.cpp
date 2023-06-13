@@ -5,7 +5,7 @@
 
 typedef struct MSSV
 {
-	char masv[2];
+	char masv[3];
 	char ten[MAX_LINE_LENGTH];
     
 }MSSV;
@@ -36,6 +36,20 @@ Node* GetNode(MSSV x)
 	return p; 
 }
 
+void AddFirst(List &l, Node* new_ele)
+{
+	if (l.pHead == NULL)
+	{
+		l.pHead = new_ele;
+		l.pTail  = l.pHead;
+	}
+	else 
+	{	
+		new_ele->pNext = l.pHead;  
+		l.pHead = new_ele; 	
+	}
+}
+
 void AddTail(List &l, Node *new_ele)
 {
 	if(l.pHead==NULL)
@@ -55,7 +69,7 @@ Node* FindNodeByID (List l, char* masv)
 	Node *p;
 	p=l.pHead;
 	
-	while ((p != NULL)&& (p->Info.masv != masv))
+	while ((p != NULL)&& (strcmp(p->Info.masv,masv)))
 		p=p->pNext;
 	
 	return p;	
@@ -86,7 +100,7 @@ int LoadData(char* file_name, List &l)
 	
 	while(fgets(line, sizeof(line), file))
 	{
-		line[strcspn(line, ",")] = '\0';
+		line[strcspn(line, "\n")] = '\0';
 		token = strtok(line, ",");
 		if(token != NULL)
 		{
@@ -98,11 +112,83 @@ int LoadData(char* file_name, List &l)
 			}
 		}
 		node_tam = GetNode(ele_tam);
-		AddTail(&l,ele_tam);
+		AddTail(l,node_tam);
 	}
 	fclose(file);
-	return 0;
 }
+
+void PrintList(List &l)
+	{
+		if(l.pHead == NULL)
+			printf("Danh sach rong\n");
+		else
+		{
+			Node *p;
+			p = l.pHead;
+			while(p != NULL)
+			{
+				printf("%5s %20s \n", p->Info.masv,p->Info.ten);
+				p = p->pNext;
+			}
+		}	
+	}
+	
+char* SubString(char scr_str[], int start_pos, int len)
+{
+	char* res_str = (char*) malloc((len+1)* sizeof(char));
+	int i;
+	for(i=0; i<len; i++)
+	{
+		res_str[i] = scr_str[start_pos + i];
+	}
+	res_str[len] = '\0';
+		
+	return res_str;
+}
+	
+int main()
+{
+	List list_bac, list_he, list_nganh, list_khoa;
+	Init(list_bac);
+	Init(list_he);
+	Init(list_nganh);
+	Init(list_khoa);
+
+	LoadData("bac.txt", list_bac);
+	LoadData("he.txt", list_he);
+	LoadData("nganh.txt", list_nganh);
+	LoadData("khoa.txt", list_khoa);
+	
+	PrintList(list_bac);
+	PrintList(list_he);
+	PrintList(list_nganh);
+	PrintList(list_khoa);
+
+	char my_masv[10];
+	printf("\nNhap MSSV : ");
+	gets(my_masv);
+	printf("*******************KET QUA TIM KIEM CHO %s*********************\n",my_masv);
+	
+	char* sub1 = SubString(my_masv,0,1);
+	char* sub2 = SubString(my_masv,1,1);
+	char* sub3 = SubString(my_masv,2,2);
+	char* sub4 = SubString(my_masv,4,2);
+	
+	Node* p = FindNodeByID(list_bac, sub1);
+	printf("%5s %20s \n", p->Info.masv, p->Info.ten);
+	
+	p = FindNodeByID(list_he, sub2);
+	printf("%5s %20s \n", p->Info.masv, p->Info.ten);
+	
+	p = FindNodeByID(list_nganh, sub3);
+	printf("%5s %20s \n", p->Info.masv, p->Info.ten);
+	
+	p = FindNodeByID(list_khoa, sub4);
+	printf("%5s %20s \n", p->Info.masv, p->Info.ten);
+	
+	return 0;
+}	
+
 
 
 
