@@ -1,164 +1,133 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-typedef struct TTSV
+typedef struct SV
 {
-    
-    char ma[2];
-    char ten[100];
-} TTSV;
+    char name[200];
+    char code[3];
+} SV;
 
 typedef struct Node
 {
-    TTSV Info;
-    Node *pNext;
-
+    SV info;
+    struct Node *next;
 } Node;
 
-typedef struct List
+Node *createNode(SV x)
 {
-    Node *pHead;
-    Node *pTail;
-} List;
-
-Node *GetNode(TTSV x)
-{
-    Node *p;
-    p = new Node;
-    if (p == NULL)
-    {
-        printf("Khong du bo nho de cap phat cho nut moi");
-        return 0;
-    }
-    p->Info = x;
-    p->pNext = NULL;
+    Node *p = (Node *)malloc(sizeof(Node));
+    p->info = x;
+    p->next = NULL;
     return p;
 }
 
-void AddFirst(List &l, Node *new_ele)
+void addNode(Node **head, Node *p)
 {
-    if (l.pHead == NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
+    if (*head == NULL)
+        *head = p;
     else
     {
-        new_ele->pNext = l.pHead;
-
-        new_ele->pNext = l.pHead;
-
-        l.pHead = new_ele;
+        Node *q = *head;
+        while (q->next != NULL)
+        {
+            q = q->next;
+        }
+        q->next = p;
     }
 }
 
-void Init(List &l)
+void in(Node *p)
 {
-    l.pHead = l.pTail = NULL;
-}
-
-void AddTail(List &l, Node *new_ele)
-{
-    if (l.pHead == NULL)
-    {
-        l.pHead = new_ele;
-        l.pTail = l.pHead;
-    }
-    else
-    {
-        l.pTail->pNext = new_ele;
-        l.pTail = new_ele;
-    }
-}
-void PrintList(List l)
-{
-    Node *p = l.pHead;
     while (p != NULL)
     {
-        printf("Ma: %s \nTen: %s \n", p->Info.ma, p->Info.ten);
-        p = p->pNext;
+        printf("%s\n  %s\n", p->info.code, p->info.name);
+        p = p->next;
     }
 }
 
-
-
-
-void LoadData(char *filename, List &l)
+Node *loadData(const char *filename)
 {
-    FILE *f = fopen(filename, "r");
-    TTSV sv_tam;
-    char chuoi_tam[100];
-    char *tach_chuoi;
-    
-    if (f == NULL)
+    FILE *infile = fopen(filename, "r");
+    if (infile != NULL)
     {
-        printf("Khong tim thay file");
+        Node *head = NULL;
+        char line[100];
+        while (fgets(line, sizeof(line), infile))
+        {
+            line[strcspn(line, "\n")] = '\0';
+            SV x;
+            sscanf(line, "%[^,], %[^\n]", x.code, x.name);
+            Node *tmp = createNode(x);
+            addNode(&head, tmp);
+        }
+        fclose(infile);
+        return head;
+    }
+    return NULL;
+}
+
+char *getName(Node *p, char code[])
+{
+    while (p != NULL)
+    {
+        if (strcmp(p->info.code, code) == 0)
+            return p->info.name;
+
+        p = p->next;
+    }
+    return code;
+}
+
+void findStudentInfo(Node *bacList, Node *heList, Node *nganhList, Node *khoaList, const char *studentID)
+{
+    if (strlen(studentID) != 9)
+    {
+        printf("Ma so sinh vien khong hop le\n");
         return;
     }
 
-    while (fgets(chuoi_tam, sizeof(chuoi_tam), f))
-    {
-        chuoi_tam[strcspn(chuoi_tam, "\r\n")] = '\0'; 
-        tach_chuoi = strtok(chuoi_tam, ",");
-        strcpy(sv_tam.ma, tach_chuoi);
-        tach_chuoi = strtok(NULL, ",");
-        strcpy(sv_tam.ten, tach_chuoi);
-        Node *new_node = GetNode(sv_tam);
-        AddTail(l, new_node);
-    }
+    char bacCode[2];
+    strncpy(bacCode, studentID, 1);
+    bacCode[1] = '\0';
 
-    fclose(f);
+    char heCode[2];
+    strncpy(heCode, studentID + 1, 1);
+    heCode[1] = '\0';
+
+    char nganhCode[3];
+    strncpy(nganhCode, studentID + 2, 2);
+    nganhCode[2] = '\0';
+
+    char khoaCode[3];
+    strncpy(khoaCode, studentID + 4, 2);
+    khoaCode[2] = '\0';
+
+    char *bacName = getName(bacList, bacCode);
+    char *heName = getName(heList, heCode);
+    char *nganhName = getName(nganhList, nganhCode);
+    char *khoaName = getName(khoaList, khoaCode);
+
+    printf("%s %s %s khoa %s \n", bacName, heName, nganhName, khoaName);
 }
-
-
-void FindByID(List l_bac, List l_he, List l_nganh, List l_khoa, char *id)
-{
-   
-    char bac[2], he[2], nganh[3], khoa[3], id_sv[4];
-    strncpy(bac, id, 1);
-    bac[1] = '\0';
-    strncpy(he, id + 1, 1);
-    he[1] = '\0';
-    strncpy(nganh, id + 2, 2);
-    nganh[2] = '\0';
-    strncpy(khoa, id + 4, 2);
-    khoa[2] = '\0';
-    strncpy(id_sv, id + 6, 3);
-    id_sv[3] = '\0';
-
-   
-    
-    printf("Khong tim thay sinh vien co ma so %s\n", id);
-}
-
-
 int main()
 {
-    List list_bac, list_khoa, list_he, list_nganh;
-    Init(list_bac);
-    Init(list_khoa);
-    Init(list_he);
-    Init(list_nganh);
+    Node *bac = NULL;
+    Node *khoa = NULL;
+    Node *nganh = NULL;
+    Node *he = NULL;
 
-    LoadData("bac.txt", list_bac);
-    LoadData("khoa.txt", list_khoa );
-    LoadData("he.txt", list_he );
-    LoadData("nganh.txt", list_nganh);
+    bac = loadData("bac.txt");
+    khoa = loadData("khoa.txt");
+    nganh = loadData("nganh.txt");
+    he = loadData("he.txt");
 
-    PrintList(list_bac);
-    printf("==========================================\n");
-    PrintList(list_khoa);
-    printf("==========================================\n");
-    PrintList(list_he);
-    printf("==========================================\n");
-    PrintList(list_nganh);
 
-	char id[10];
+    char ma[10];
+    printf("Nhap ma sinh vien: ");
+    scanf("%s", &ma);
 
-    printf("Nhap id : ");
-    scanf("%s", &id);
-    
-    FindByID(list_bac, list_he, list_nganh, list_khoa, id);
-    
+    findStudentInfo(bac, he, nganh, khoa, ma);
+
     return 0;
 }
