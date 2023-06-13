@@ -4,7 +4,8 @@
 
 #define MAX_LINE_LENGTH 100
 
-typedef struct MssvEle{
+typedef struct MssvEle
+{
     char ma[3] ;
     char ten[MAX_LINE_LENGTH];
     
@@ -92,7 +93,8 @@ int LoadData(char* filename, List &l )
     Node* node_tam;
 
     file = fopen(filename, "r");
-    if (file == NULL) {
+    if (file == NULL) 
+	{
         printf("Khong the mo tep!\n");
         return 1;
     }
@@ -104,10 +106,12 @@ int LoadData(char* filename, List &l )
 
         token = strtok(line, ",");
         
-        if (token != NULL) {
+        if (token != NULL) 
+		{
             strcpy(ele_tam.ma, token);
             token = strtok(NULL, ",");
-            if (token != NULL) {
+            if (token != NULL)
+			{
                 strcpy(ele_tam.ten, token);
                 //printf("Ma: %s\n", ele_tam.ma);
                 //printf("Ten: %s\n", ele_tam.ten);
@@ -140,7 +144,8 @@ char* subString(char scr_str[], int start_pos, int len)
 {
     char* res_str = (char*) malloc((len + 1) * sizeof(char));  
     int i;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++) 
+	{
         res_str[i] = scr_str[start_pos + i];
     }
     res_str[len] = '\0';
@@ -151,6 +156,8 @@ char* subString(char scr_str[], int start_pos, int len)
 
 int main()
 {
+	char my_mssv[10];
+	
     List list_bac, list_khoa, list_he, list_nganh;
     Init(list_bac);
     Init(list_khoa);
@@ -167,8 +174,9 @@ int main()
     PrintList(list_nganh);
     PrintList(list_khoa);
     
-	char my_mssv[10] = "110122196";
-	printf("==========Ket qua tim kiem cho %s ==========\n", my_mssv);    
+	printf("\nNhap MSSV: ");
+	gets(my_mssv);
+	printf("\n==========Ket qua tim kiem cho %s ==========\n", my_mssv);    
 
     char* sub1 = subString(my_mssv,0,1);
     char* sub2 = subString(my_mssv,1,1);

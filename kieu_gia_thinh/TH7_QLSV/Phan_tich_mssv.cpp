@@ -179,9 +179,17 @@ int main()
     Print_List(list_khoa);
     char my_mssv[10];
     
-    printf("Moi ban nhap vao ma so sinh vien (gom 9 chu so): ");
-	scanf("%s", my_mssv);
-	printf("***Ket qua phan tich mssv %s la: ***\n", my_mssv);    
+    do
+    {
+    	printf("Moi ban nhap vao ma so sinh vien (gom 9 chu so): ");
+		scanf("%s", my_mssv);
+		if (strlen(my_mssv) != 9)
+   	 	{
+      	 	printf("Ma so sinh vien khong hop le\n");
+   		}
+    } while(strlen(my_mssv) != 9);
+    
+   	printf("***Ket qua phan tich mssv %s la: ***\n", my_mssv);    
 
     char* sub1 = Sub_String(my_mssv, 0, 1);
     char* sub2 = Sub_String(my_mssv, 1, 1);
@@ -202,6 +210,5 @@ int main()
 	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
 
 	return 0;
-
 }
 
