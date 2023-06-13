@@ -267,7 +267,8 @@ int main()
          	break;
          case 5:
             printf("Ban da chon chuc nang thoat\n");
-            break;
+            return 0;
+            
         
          default:
             printf("Lua chon khong hop le\n");
