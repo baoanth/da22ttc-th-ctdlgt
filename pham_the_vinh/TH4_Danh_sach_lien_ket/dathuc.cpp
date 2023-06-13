@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
-#include <string.h>
+#include <stdlib.h>
+#include<math.h>
 
-typedef struct DonThuc
+typedef struct DonThuc 
 {
     int heso;
     int bac;
@@ -90,7 +91,7 @@ void InDaThuc(DaThuc &l)
         {
             if (p != l.pHead && p->Info.heso >= 0)
                 printf(" + ");
-
+		
             if (p->Info.bac == 0)
                 printf("%d", p->Info.heso);
             else if (p->Info.bac == 1)
@@ -180,29 +181,69 @@ DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
 }
 */
 
+float TinhGiaTri(DaThuc l, int x)
+{
+    float KetQua = 0;
+    Node* p = l.pHead;
+    
+    while(p != NULL)
+    {
+        KetQua += p->Info.heso*pow(x, p->Info.bac);
+        p = p->pNext;
+    }
+    return KetQua;
+}
+
+void GopDonThuc(DaThuc &l)
+{
+	Node* p = l.pHead;
+	Node* q = l.pHead->pNext;
+	
+	while(p != NULL)
+	{
+		while(q != NULL)
+		{
+			if(p->Info.bac = q->Info.bac)
+				p->Info.heso += q->Info.heso;
+			q = q->pNext;
+		}
+		p = p-> pNext;	
+	} 
+}
+
 int main()
 {
-    DaThuc DaThuc1, DaThuc2, KetQua;
+    DaThuc DaThuc1, DaThuc2, KetQuaCong;
     Init(DaThuc1);
     Init(DaThuc2);
-	Init(KetQua);
+	Init(KetQuaCong);
 	
     NhapDaThuc(DaThuc1);
     NhapDaThuc(DaThuc2);
 
     printf("---Da thuc vua nhap:\n");
+    printf("Da thuc 1: ");
     InDaThuc(DaThuc1);
     printf("\n");
+    printf("Da thuc 2: ");
     InDaThuc(DaThuc2);
     printf("\n");
     
-    CongDaThuc(DaThuc1, DaThuc2, KetQua);
-    printf("\n---Ket qua cong hai da thuc:\n");
-    InDaThuc(KetQua);
+    CongDaThuc(DaThuc1, DaThuc2, KetQuaCong);
+    printf("\n---Ket qua cong hai da thuc: ");
+    InDaThuc(KetQuaCong);
 	
 /*	KetQua = CongDaThuc(DaThuc1, DaThuc2);
 	printf("\n---Ket qua cong hai da thuc:\n");
 	InDaThuc(KetQua);
 */
+	float x;
+	printf("\n\n---Nhap x de tinh gia tri da thuc: ");
+	scanf("%f", &x);
+	float KetQua1 = TinhGiaTri(DaThuc1, x);
+	printf("Gia tri cua da thuc 1 khi x = %.2f: %.2f\n", x,  KetQua1);
+	float KetQua2 = TinhGiaTri(DaThuc2, x);
+	printf("\nGia tri cua da thuc 2 khi x = %.2f: %.2f", x, KetQua2);
+	
     return 0;
 }

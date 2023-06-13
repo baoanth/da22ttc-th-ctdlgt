@@ -200,18 +200,29 @@ int main()
 {
 	struct person per1 = {1, "Chau", "Qui"};
 	struct person per2 = {2, "Tran", "Tho"};
+<<<<<<< HEAD
+	struct person per3 = {3, "Tran", "Thong"};
+	struct person per4 = {4, "Dang", "Phuoc"}; 
+	struct person per5 = {5, "Pham", "Trong"};
+	
+=======
 	struct person per3 = {3, "Kim", "Duy"};
 	struct person per4 = {4, "Dang", "Phuoc"}; 
 	struct person per5 = {5, "Thach", "Hien"};
 	struct person per6 = {6, "buon", "ba"};
 
+>>>>>>> 4bb3076f74f3106f72bb5c592e522520a538c5fb
  	Node* new_ele1  = GetNode(per1);
     Node* new_ele2  = GetNode(per2);
   	Node* new_ele3  = GetNode(per3);
   	Node* new_ele4  = GetNode(per4);
     Node* new_ele5  = GetNode(per5);
+<<<<<<< HEAD
+
+=======
     Node* new_ele6  = GetNode(per6);
     
+>>>>>>> 4bb3076f74f3106f72bb5c592e522520a538c5fb
     List my_list;
     Init(my_list);
 
@@ -220,9 +231,13 @@ int main()
 
     AddTail(my_list, new_ele2);
     AddTail(my_list, new_ele4);
+<<<<<<< HEAD
+   
+=======
     AddTail(my_list, new_ele6);
     
     
+>>>>>>> 4bb3076f74f3106f72bb5c592e522520a538c5fb
 	PrintList(my_list);
 	
 	printf("--------------------------------------");
@@ -278,4 +293,8 @@ int main()
     PrintList(my_list);
 	
 	return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4bb3076f74f3106f72bb5c592e522520a538c5fb

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <math.h>
 
 typedef struct DonThuc
 {
@@ -22,16 +23,23 @@ typedef struct DaThuc
 
 Node *GetNode(DonThuc x)
 {
-    Node *p;
-    p = new Node;
+    Node *p = new Node;
+
     if (p == NULL)
     {
-        printf("Khong du bo nho.");
+        printf("Khong du bo nho");
         return 0;
     }
+
     p->Info = x;
     p->pNext = NULL;
+
     return p;
+}
+
+void Init(DaThuc &l)
+{
+    l.pHead = l.pTail = NULL;
 }
 
 void AddTail(DaThuc &l, Node *new_ele)
@@ -47,121 +55,217 @@ void AddTail(DaThuc &l, Node *new_ele)
         l.pTail = new_ele;
     }
 }
-void Init(DaThuc &l)
-{
-    l.pHead = l.pTail = NULL;
-}
 
 void NhapDaThuc(DaThuc &l)
 {
-    int max_bac = 0;
-    printf(" Da thuc bac: ");
-    scanf("%d", &max_bac);
+    int bacmax = 0;
 
+    printf("Da thuc bac: ");
+    scanf("%d", &bacmax);
+
+    DonThuc s;
     int i;
-    for (i =max_bac; i>=0; i--)
+
+    for (i = bacmax; i >= 0; i--)
     {
-        DonThuc dt_tam;
-        dt_tam.bac = i;
-
-        printf("  --> x^ %d * ",i);
-        scanf("%d", &dt_tam.heso);
-
-        Node* new_ele = GetNode(dt_tam);
-
+        printf("  x^%d : ", i);
+        s.bac = i;
+        scanf("%d", &s.heso);
+        Node *new_ele = GetNode(s);
         AddTail(l, new_ele);
     }
-
 }
-void CopyDaThuc(DaThuc l, DaThuc &l_kq)
+
+void InDaThuc(DaThuc &l)
 {
-	Node* p;
-    p = l.pHead;
+    if (l.pHead == NULL)
+    {
+        printf("Trong Rong.");
+    }
+    else
+    {
+        Node *p = l.pHead;
+
+        while (p != NULL)
+        {
+            if ((p != l.pHead) && (p->Info.heso >= 0))
+                printf(" + ");
+		
+            if (p->Info.bac == 0)
+                printf("%d", p->Info.heso);
+            else if (p->Info.bac == 1)
+                printf("%dx", p->Info.heso);
+            else
+                printf("%dx^%d", p->Info.heso, p->Info.bac);
+
+            p = p->pNext;
+        }
+    }
+}
+
+void CopyDaThuc(DaThuc l, DaThuc &l_KetQua)
+{
+	Node* p = l.pHead;
 
     while (p!=NULL)
     {
     	Node* new_ele = GetNode(p->Info);
-    	AddTail(l_kq, new_ele);
-    	p=p->pNext;
+    	AddTail(l_KetQua, new_ele);
+    	p = p->pNext;
     }
-    printf("\nCopy da thuc xong.\n");
 }
 
 Node* TimNodeBacN(DaThuc l, int n)
 {
-	Node* p;
-    p =l.pHead;
+	Node* p = l.pHead;
 
     while (p!=NULL)
     {
     	if(p->Info.bac==n)
     		break;
-    	p=p->pNext;
+    	p = p->pNext;
     }
     return p;
 }
 
-void CongDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
+void CongDaThuc(DaThuc &l1, DaThuc &l2, DaThuc &l_KetQua)
 {
-
-    CopyDaThuc(l1, l_kq);
-
-	Node* p;
-    p =l2.pHead;
-
-	while (p!=NULL)
-    {
-    	Node* foundNode = TimNodeBacN(l_kq, p->Info.bac); 
-    	if (foundNode!=NULL)   
+	CopyDaThuc(l1, l_KetQua);
+	Node* p = l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* FoundNode = TimNodeBacN(l_KetQua, p->Info.bac);
+		if(FoundNode != NULL)
 		{
-
-    		foundNode->Info.heso += p->Info.heso;
-    		printf("Found bac %d\n" ,p->Info.bac);
-    	}
-    	else  
-    	{
-    		Node* node_tam = GetNode(p->Info);
-    		AddTail(l_kq, node_tam);
-    	}
-    	p=p->pNext;
-    }  
-
+			FoundNode->Info.heso += p->Info.heso;
+		}
+		else
+		{
+			Node* NodeTam = GetNode(p->Info);
+			AddTail(l_KetQua, NodeTam);
+		}
+		p = p->pNext;	
+	}	
 }
 
-void PrintDaThuc(DaThuc l)
+//DaThuc CongDaThuc(DaThuc &l1, DaThuc &l2)
+//{
+//    Node *p = l1.pHead;
+//    Node *q = l2.pHead;
+//    DaThuc KetQua;
+//    Init(KetQua);
+//    DonThuc DaThucTam;
+//
+//    while (p != NULL)
+//    {
+//        DaThucTam.bac = p->Info.bac;
+//        DaThucTam.heso = p->Info.heso;
+//
+//       while (q != NULL)
+//        {
+//            if (DaThucTam.bac == q->Info.bac)
+//               break;
+//            q = q->pNext;
+//        }
+//        if (q != NULL)
+//            DaThucTam.heso += q->Info.heso;
+//
+//        Node *new_ele = GetNode(DaThucTam);
+//       AddTail(KetQua, new_ele);
+//        p = p->pNext;
+//    }
+//    return KetQua;
+//}
+
+void NhanDaThuc(DaThuc l1, DaThuc l2, DaThuc &l_kq)
 {
-    Node* p;
-    p =l.pHead;
+    CopyDaThuc(l1, l_kq);
+	
+	Node* p;
+	p = l2.pHead;
+	
+	while(p!=NULL)
+	{
+		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
+		if(foundNode != NULL)
+		{
+			foundNode->Info.heso *= p->Info.heso;
+		}
+		else
+		{
+			Node* Node_tam = GetNode(p->Info);
+			AddTail(l_kq, Node_tam);
+		}
+		p = p->pNext;
+	}
+}
 
-    while (p!=NULL )
+float TinhGiaTri(DaThuc l, int x)
+{
+    float KetQua = 0;
+    Node* p = l.pHead;
+    
+    while(p != NULL)
     {
-        if(p!=l.pHead && p->Info.heso>=1)
-        	printf("+")	;
-        printf("%d", p->Info.heso);
-        if(p->Info.bac>0)
-			printf("x^%d", p->Info.bac);
-
-        p=p->pNext;
+        KetQua += p->Info.heso*pow(x, p->Info.bac);
+        p = p->pNext;
     }
+    return KetQua;
+}
+
+void GopDonThuc(DaThuc &l)
+{
+	Node* p = l.pHead;
+	Node* q = l.pHead->pNext;
+	
+	while(p != NULL)
+	{
+		while(q != NULL)
+		{
+			if(p->Info.bac = q->Info.bac)
+				p->Info.heso += q->Info.heso;
+			q = q->pNext;
+		}
+		p = p-> pNext;	
+	} 
 }
 
 int main()
 {
-    DaThuc my_dt1, my_dt2, my_dt3;
-    Init(my_dt1);
-    Init(my_dt2);
-    Init(my_dt3);
+    DaThuc DaThuc1, DaThuc2, Tong, Tich;
+    Init(DaThuc1);
+    Init(DaThuc2);
+	Init(Tong);
+    Init(Tich);
+	
+    NhapDaThuc(DaThuc1);
+    NhapDaThuc(DaThuc2);
 
-    NhapDaThuc(my_dt1);
-    PrintDaThuc(my_dt1);
-    printf("\n--------------------\n");
+    printf("Da thuc vua nhap: \n");
+    InDaThuc(DaThuc1);
+    printf("\n");
+    InDaThuc(DaThuc2);
+    printf("\n");
 
-    NhapDaThuc(my_dt2);
-    PrintDaThuc(my_dt3);
-    printf("\n--------------------\n");
+    CongDaThuc(DaThuc1, DaThuc2, Tong);
+    printf("\nTong 2 da thuc = ");
+    InDaThuc(Tong);
 
-    CongDaThuc(my_dt1, my_dt2, my_dt3);
-    PrintDaThuc(my_dt3);
-    
+    NhanDaThuc(DaThuc1, DaThuc2, Tich);
+	printf("\nTich 2 da thuc = ");
+	InDaThuc(Tich);
+	
+	float x;
+    printf("\n");
+	printf("\nNhap x de tinh gia tri da thuc: ");
+	scanf("%f", &x);
+	float KetQua = TinhGiaTri(DaThuc1, x);
+	printf("Gia tri da thuc 1 khi x = %.2f la: %.2f\n", x, KetQua);
+	float KetQua1 = TinhGiaTri(DaThuc2, x);
+	printf("Gia tri da thuc 2 khi x = %.2f la: %.2f\n", x, KetQua1);
+	
     return 0;
 }
+
+

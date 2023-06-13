@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 //********************
 typedef struct Donthuc
@@ -19,6 +20,7 @@ typedef struct Dathuc
 	Node* pHead;
 	Node* pTail;
 }Dathuc;
+
 //********************
 
 //Viet ham GetNode
@@ -152,30 +154,21 @@ void Congdathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
 	}
 }
 
-//Viet ham nhan 2 da thuc 
-void Nhandathuc(Dathuc l1, Dathuc l2, Dathuc &l_kq)
+//Viet ham tinh gia tri da thuc khi nhap x tu ban phim
+float GTdathuc(Dathuc l, int x)
 {
-	Copydathuc(l1, l_kq);
+	float kq=0;
 	
-	Node* p;
-	p = l2.pHead;
+	Node* p= l.pHead;
 	
 	while(p!=NULL)
 	{
-		Node* foundNode = TimNodeBacN(l_kq, p->Info.bac);
-		if(foundNode != NULL)
-		{
-			foundNode->Info.hs *= p->Info.hs;
-		}
-		else
-		{
-			Node* Node_tam = GetNode(p->Info);
-			AddTail(l_kq, Node_tam);
-		}
+		kq += p->Info.hs *pow(x, p->Info.bac);
+		
 		p = p->pNext;
 	}
+	return kq;
 }
-
 //Viet ham main
 int main()
 {
@@ -191,19 +184,23 @@ int main()
 	Nhapdathuc(dathuc1);
 	Nhapdathuc(dathuc2);
 	
+	
 	//In 2 da thuc vua nhap		   
 	Printdathuc(dathuc1);
 	Printdathuc(dathuc2);
 	
-	//Cong da thuc
+	//Cong da thuc 2 da thuc
 	Congdathuc(dathuc1, dathuc2, dathuc3);
 	printf("\nTong 2 da thuc la: \n");
 	Printdathuc(dathuc3);
 	
-	//Nhan da thuc
-	Nhandathuc(dathuc1, dathuc2, kq);
-	printf("\nTich 2 da thuc la: ");
-	Printdathuc(kq);
+
+	
+	float x;
+	printf("\nNhap vao gia tri cua bien X: ");
+	scanf("%f", &x);
+	
+	printf("\nKhi x = %.2f thi gia tri cua da thuc la: %.2f", x, GTdathuc(dathuc3, x));
 	
     return 0;
 }

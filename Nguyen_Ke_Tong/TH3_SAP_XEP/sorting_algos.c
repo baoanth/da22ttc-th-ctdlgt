@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 10
+#define N 10 
 
 void InsertionSort(int a[], int n)
 {

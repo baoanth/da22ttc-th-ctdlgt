@@ -1,0 +1,5 @@
+
+Ma sinh vien: 01
+Ho ten sinh vien: Nguyen Van Tong
+Tuoi inh vien: 19
+Diem trung binh: 10.00
