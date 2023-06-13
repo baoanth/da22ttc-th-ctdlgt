@@ -193,6 +193,25 @@ void preOrder(struct Node *root)
     } 
 } 
 
+void search_avl(Node* root ,int value)
+
+{
+    struct Node* node = root;
+                while (node != NULL) {
+                    if (value < node->key) {
+                        node = node->left;
+                    } else if (value > node->key) {
+                        node = node->right;
+                    } else {
+                        printf("Value %d is present in the AVL Tree\n", value);
+                        break;
+                    }
+                }
+                if (node == NULL) {
+                    printf("Value %d is not present in the AVL Tree\n", value);
+                }
+}
+
 int main() 
 { 
   struct Node *root = NULL; 
@@ -238,7 +257,9 @@ int main()
             break;
          case 3:
             printf("Ban da chon chuc nang tim kiem phan tu\n");
-            /* Điều khiển thực hiện chức năng tìm kiếm phần tử */
+            printf("Enter the value to be searched: ");
+                scanf("%d", &value);
+                search_avl(root, value);
             break;
              case 4:
          	printf("Ban da chon vhuc nang in phan tu\n");
