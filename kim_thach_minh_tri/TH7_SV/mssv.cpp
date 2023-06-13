@@ -126,7 +126,12 @@ void FindByID(List l_bac, List l_he, List l_nganh, List l_khoa, char *id)
     strncpy(id_sv, id + 6, 3);
     id_sv[3] = '\0';
 
-   
+   Node *p = w;
+    while ((p != NULL) && (p->Info.id != idx))
+    {
+        p = p->pNext;
+    }
+    return p;
     
     printf("Khong tim thay sinh vien co ma so %s\n", id);
 }
