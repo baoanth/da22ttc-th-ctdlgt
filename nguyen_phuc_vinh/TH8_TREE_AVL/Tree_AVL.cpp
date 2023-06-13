@@ -98,31 +98,32 @@ void preOrder(Node *root) {
         preOrder(root->right);
     }
 }
- 
+
 int main() {
+    int n, i, num;
     Node *root = NULL;
- 
-    root = insert(root, 10);
-    root = insert(root, 20);
-    root = insert(root, 30);
-    root = insert(root, 40);
-    root = insert(root, 50);
-    root = insert(root, 25);
- 
-    printf("Preorder traversal of the constructed AVL tree is \n");
+
+    printf("Nhap so phan tu: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("Nhap gia tri cua phan tu %d: ", i + 1);
+        scanf("%d", &num);
+        root = insert(root, num);
+    }
+
+    printf("\nCac gia tri trong cay AVL theo thu tu truoc khi chen them phan tu: \n");
     preOrder(root);
 
-    printf("\nInsert 60 to the AVL tree\n");
-    root = insert(root, 60);
+    int new_num;
+    printf("\nNhap gia tri cua phan tu can chen: ");
+    scanf("%d", &new_num);
 
-    printf("Preorder traversal after insertion of 60 is \n");
-    preOrder(root);
+    root = insert(root, new_num);
 
-    printf("\nInsert 15 to the AVL tree\n");
-    root = insert(root, 15);
-
-    printf("Preorder traversal after insertion of 15 is \n");
+    printf("\nCac gia tri trong cay AVL theo thu tu sau khi da chen them phan tu: \n");
     preOrder(root);
 
     return 0;
 }
+
