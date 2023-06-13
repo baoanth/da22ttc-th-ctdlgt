@@ -111,24 +111,18 @@ void LoadData(char *filename, List &l)
 }
 
 
-void FindByID(List l_bac, List l_he, List l_nganh, List l_khoa, char *id)
+char* Findname( char *id,List l)
 {
-   
-    char bac[2], he[2], nganh[3], khoa[3], id_sv[4];
-    strncpy(bac, id, 1);
-    bac[1] = '\0';
-    strncpy(he, id + 1, 1);
-    he[1] = '\0';
-    strncpy(nganh, id + 2, 2);
-    nganh[2] = '\0';
-    strncpy(khoa, id + 4, 2);
-    khoa[2] = '\0';
-    strncpy(id_sv, id + 6, 3);
-    id_sv[3] = '\0';
-
-   
+    Node *p = l.pHead;
+    while ((p != NULL))
+    {
+        if (strcmp(p->Info.ma,id)==0)
+            return p->Info.ten;
+        p = p->pNext;
+    }
+    return NULL;
     
-    printf("Khong tim thay sinh vien co ma so %s\n", id);
+
 }
 
 
@@ -157,8 +151,20 @@ int main()
 
     printf("Nhap id : ");
     scanf("%s", &id);
+
+    char bac_list[2], he_list[2], nganh_list[3], khoa_list[3], id[4];
+    strncpy(bac, id, 1);
+    bac[1] = '\0';
+    strncpy(he, id + 1, 1);
+    he[1] = '\0';
+    strncpy(nganh, id + 2, 2);
+    nganh[2] = '\0';
+    strncpy(khoa, id + 4, 2);
+    khoa[2] = '\0';
+    strncpy(id_sv, id + 6, 3);
+    id_sv[3] = '\0';
     
-    FindByID(list_bac, list_he, list_nganh, list_khoa, id);
+    FindByID( id);
     
     return 0;
 }
