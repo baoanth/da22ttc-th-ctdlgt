@@ -231,18 +231,23 @@ int main()
             break;
          case 2:
             printf("Ban da chon chuc nang xoa phan tu\n");
-            /* Điều khiển thực hiện chức năng xoá phần tử */
+            printf("Enter the value to be deleted: ");
+                scanf("%d", &value);
+                root = deleteNode(root, value);
+                printf("Value %d has been deleted from the AVL Tree\n", value);
             break;
          case 3:
             printf("Ban da chon chuc nang tim kiem phan tu\n");
             /* Điều khiển thực hiện chức năng tìm kiếm phần tử */
             break;
+             case 4:
+         	printf("Ban da chon vhuc nang in phan tu\n");
+         	preOrder(root); 
+         	break;
          case 5:
             printf("Ban da chon chuc nang thoat\n");
             break;
-         case 4:
-         	printf("Ban da chon vhuc nang in phan tu\n");
-         	preOrder(root); 
+        
          default:
             printf("Lua chon khong hop le\n");
             break;
