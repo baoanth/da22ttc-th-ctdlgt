@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+
 // struct person with 3 fields
 typedef struct Person
 {
@@ -69,7 +70,7 @@ void AddTail(List &l, Node *new_ele)
 //Viet ham void InputNode(List &l)
 void InputNode(List &l)
 {
-<<<<<<< HEAD
+
 	if(l.pHead == NULL)
 	{
 		printf("Danh sach rong\n");
@@ -85,7 +86,7 @@ void InputNode(List &l)
 		}
 	}
 }
-=======
+
     Person per_tam;
     printf("\nNhap node moi\n");
     
@@ -95,7 +96,6 @@ void InputNode(List &l)
 	fflush(stdin);
     printf("First name: ");
     gets(per_tam.fname);
->>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 
 	fflush(stdin);
     printf("Last name: ");
@@ -253,13 +253,11 @@ int main()
 //   AddFirst(my_list, new_ele1);
     AddFirst(my_list, new_ele2);
     AddFirst(my_list, new_ele3);
-<<<<<<< HEAD
-    
+	    
     AddTail(my_list, new_ele1);
-=======
+
 
 //    AddTail(my_list, new_ele1);
->>>>>>> 5d589f3b4e81d921ad8d3b294e7e052061cd23d1
 //    AddTail(my_list, new_ele2);
 //    AddTail(my_list, new_ele3);
 
