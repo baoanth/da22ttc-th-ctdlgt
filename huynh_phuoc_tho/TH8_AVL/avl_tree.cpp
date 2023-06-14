@@ -1,136 +1,146 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
 
-struct AVLNode {
-    int data;
-    struct AVLNode* left;
-    struct AVLNode* right;
+struct Node
+{
+    int key;
+    struct Node *left;
+    struct Node *right;
     int height;
-};
+}Node;
 
-struct AVLNode* createNode(int data) {
-    struct AVLNode* newNode = (struct AVLNode*)malloc(sizeof(struct AVLNode));
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    newNode->height = 1; 
-    return newNode;
+
+struct Node* NewNode(int key)
+{
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->key = key;
+    node->left = NULL;
+    node->right = NULL;
+    node->height = 1;
+    return(node);
 }
 
-int height(struct AVLNode* node) {
-    if (node == NULL)
-        return 0;
-    return node->height;
+
+int Height(struct Node* node)
+{
+    if(node == NULL) return 0;
+    else return node->height;
 }
 
-int max(int a, int b) {
-    return (a > b) ? a : b;
+
+int Balance(struct Node* L, struct Node* R)
+{
+    return Height(L) - Height(R);
 }
 
-struct AVLNode* rightRotate(struct AVLNode* y) {
-    struct AVLNode* x = y->left;
-    struct AVLNode* T2 = x->right;
 
-    x->right = y;
-    y->left = T2;
+struct Node* Rotate_Left(struct Node* root)
+{
+    struct Node* T1 = root->right->left;
+    struct Node* T2 = root->right;
+    T2->left = root;
+    root->right = T1;
+    root->height = 1 + (Height(root->left) > Height(root->right) ? Height(root->left) : Height(root->right));
+    T2->height = 1 + (Height(T2->left) > Height(T2->right) ? Height(T2->left) : Height(T2->right));
+    return T2;
+}
 
-    y->height = max(height(y->left), height(y->right)) + 1;
-    x->height = max(height(x->left), height(x->right)) + 1;
+
+struct Node* Rotate_Right(struct Node* root)
+{
+    struct Node* T1 = root->left->right;
+    struct Node* T2 = root->left;
+    T2->right = root;
+    root->left = T1;
+    root->height = 1 + (Height(root->left) > Height(root->right) ? Height(root->left) : Height(root->right));
+    T2->height = 1 + (Height(T2->left) > Height(T2->right) ? Height(T2->left) : Height(T2->right));
+    return T2;
+}
+
+
+struct Node* Rotate_LeftRight(struct Node* root)
+{
+    root->left = Rotate_Left(root->left);
+    return Rotate_Right(root);
+}
+
+struct Node* Rotate_RightLeft(struct Node* root)
+{
+    root->right = Rotate_Right(root->right);
+    return Rotate_Left(root);
+}
+
+
+struct Node* Insert(struct Node* root, int key)
+{
+    if(root == NULL) return NewNode(key);
+
+    if(key > root->key) root->right = Insert(root->right, key);
+    else root->left = Insert(root->left, key);
+
+    root->height = 1 + (Height(root->left) > Height(root->right) ? Height(root->left) : Height(root->right));
 
     
-    return x;
+    int balance = Balance(root->left, root->right);
+
+    if(balance > 1 && key < root->left->key) return Rotate_Right(root);
+    if(balance < -1 && key > root->right->key) return Rotate_Left(root);
+    if(balance > 1 && key > root->left->key) return Rotate_LeftRight(root);
+    if(balance < -1 && key < root->right->key) return Rotate_RightLeft(root);
+
+    return root;
 }
 
 
-struct AVLNode* leftRotate(struct AVLNode* x) {
-    struct AVLNode* y = x->right;
-    struct AVLNode* T2 = y->left;
+struct Node* Search(struct Node* root, int key)
+{
+    if(root == NULL || root->key == key) return root;
 
-    
-    y->left = x;
-    x->right = T2;
-
-    
-    x->height = max(height(x->left), height(x->right)) + 1;
-    y->height = max(height(y->left), height(y->right)) + 1;
-
-    return y;
-}
-
-
-int getBalance(struct AVLNode* node) {
-    if (node == NULL)
-        return 0;
-    return height(node->left) - height(node->right);
-}
-
-
-struct AVLNode* insert(struct AVLNode* node, int data) {
-    
-    if (node == NULL)
-        return createNode(data);
-    if (data < node->data)
-        node->left = insert(node->left, data);
-    else if (data > node->data)
-        node->right = insert(node->right, data);
+    if(key < root->key) 
+		return Search(root->left, key);
     else 
-     return node;
-    node->height = 1 + max(height(node->left), height(node->right));
-
-    int balance = getBalance(node);
-
-    
-    
-    if (balance > 1 && data < node->left->data)
-        return rightRotate(node);
-
-
-    if (balance < -1 && data > node->right->data)
-        return leftRotate(node);
-
-
-    if (balance > 1 && data > node->left->data) {
-        node->left = leftRotate(node->left);
-        return rightRotate(node);
-    }
-
-    if (balance < -1 && data < node->right->data) {
-        node->right = rightRotate(node->right);
-        return leftRotate(node);
-    }
-
-    
-    return node;
+		return Search(root->right, key);
 }
 
 
-void inOrderTraversal(struct AVLNode* root) {
-    if (root != NULL) {
-        inOrderTraversal(root->left);
-        printf("%d ", root->data);
-        inOrderTraversal(root->right);
+void Inorder(struct Node* root)
+{
+    if(root == NULL) return;
+
+    Inorder(root->left);
+    printf("%d ", root->key);
+    Inorder(root->right);
+}
+
+int main()
+{
+    struct Node* my_avl = NULL;
+    int n, key;
+
+    printf("Moi nhap so luong cho cay AVL: ");
+    scanf("%d", &n);
+
+    for(int i = 0; i < n; i++)
+    {
+		printf("Nhap cac phan thu %d: ", i+1);
+        scanf("%d", &key);
+        my_avl = Insert(my_avl, key);
     }
+
+    printf("Cay AVL sau khi chen cac phan tu la:\n");
+    Inorder(my_avl);
+
+    int k;
+    printf("\nNhap gia tri can tim kiem: ");
+    scanf("%d", &k);
+    struct Node* search_result = Search(my_avl, k);
+
+    if(search_result == NULL)
+		printf("Phan tu %d khong co trong cay AVL!\n", k);
+    else 
+		printf("Phan tu %d co trong cay AVL!\n", k);
+
+    return 0;
 }
-
-int main() {
-    struct AVLNode* root = NULL;
-    
-    root = insert(root, 10);
-    root = insert(root, 20);
-    root = insert(root, 30);
-    root = insert(root, 40);
-    root = insert(root, 50);
-    root = insert(root, 25);
-
-    
-    printf("Cay AVL sau khi chen: \n");
-    inOrderTraversal(root);
-
-
-    printf("\n");
-
-	return 0;
-}
-
 
