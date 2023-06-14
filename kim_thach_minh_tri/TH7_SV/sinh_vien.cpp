@@ -17,7 +17,7 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct354+=-09uikl
+typedef struct354+=09uikl
 	ist
 {
     Node *pHead;
