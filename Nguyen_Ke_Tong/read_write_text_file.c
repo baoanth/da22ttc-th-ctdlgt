@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_LINE_LENGTH 1000
-<<<<<<< HEAD
 void input_text_file(char* filename)
 {
 	FILE* outfile;
@@ -86,5 +85,4 @@ int main()
 }	
 	
 	
-	
->>>>>>> 3928e3c477f1e7cffa233b3a881a6243403533a1
+

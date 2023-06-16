@@ -15,7 +15,7 @@ Hanghoa* read_DMHH(char* filename,int *n)
 	hh_array= malloc(MAX_AMOUNT* sizeof(Hanghoa));
     FILE *infile= fopen(filename, "rb");
     Hanghoa hhA;
-    int count=0; 
+    int count=0;
     
     printf("%5s%15s%15s%12s%12s\n","Ma hang","Ten hang","So luong","Don gia","So tien");
     fread(&hhA, sizeof(Hanghoa),1 ,infile);

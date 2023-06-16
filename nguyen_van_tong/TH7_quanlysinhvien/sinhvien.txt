@@ -1,0 +1,9 @@
+
+Ma sinh vien: 01
+Ho ten sinh vien: Ngyen van A
+Tuoi sinh vien: 19
+Diem trung binh: 9.80
+Ma sinh vien: 02
+Ho ten sinh vien: Le VAn B
+Tuoi sinh vien: 19
+Diem trung binh: 8.70

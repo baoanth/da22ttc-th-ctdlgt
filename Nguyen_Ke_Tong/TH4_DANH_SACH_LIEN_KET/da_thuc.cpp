@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+ 
 typedef struct DonThuc
 {
     int heso;
@@ -95,17 +95,56 @@ void PrintDaThuc(DaThuc &l)
     }
 }
 
+DaThuc CongDaThuc(Dathuc l1, Dathuc l2)
+{
+	Node *p, *q;
+	Dathuc l_kq;
+	Init (l_kq);
+	Donthuc dathuc_tam;
+	p= l1.pHead;
+	q= l2.pHead;
+	while(p!=NULL)
+	{
+		dathuc_tam.hs=p->Info.hs;
+		dathuc_tam.bac=p->Info.bac;
+		while(q!=NULL)
+		{
+			if(p->Info.bac == q->Info.bac)
+			break;
+			q=q->pNext;
+		}
+		if(q!=NULL)
+			dathuc_tam.hs += q->Info.hs;
+			
+		Node* new_ele = GetNode(dathuc_tam);
+		AddTail(l_kq, new_ele);
+		
+		p=p->pNext;
+	}
+	
+	return l_kq;
+}
 
 int main()
 {
-    DaThuc dathuc1;
-       
-    Init(dathuc1);
-    
-    NhapDathuc(dathuc1);
-   
-    PrintDaThuc(dathuc1);
-    
+    DaThuc dt1, dt2, dt3;
+	Init(dt1);
+	Init(dt2);
+	
+	printf("Nhap da thuc 1: \n");
+	NhapDaThuc(dt1);
+	PrintDathuc(dt1);
+	
+	printf("\n\n");
+	 
+	printf("Nhap da thuc 2: \n");
+	NhapDaThuc(dt2);
+	PrintDathuc(dt2);
+	
+	dt3 = CongDaThuc(dt1, dt2);
+	printf("\n\nTong hai da thuc la:  ");
+	PrintDathuc(dt3);
+	
     
     return 0;
 }
