@@ -29,12 +29,12 @@ void insert(int table[], int key) {
     } while (attempt < TABLE_SIZE);
 
     if (attempt == TABLE_SIZE) {
-        printf("Bảng băm đầy. Không thể chèn giá trị %d.\n", key);
+        printf("B?ng bam d?y. Kh�ng th? ch�n gi� tr? %d.\n", key);
     }
 }
 
 void printHashTable(int table[]) {
-    printf("Bảng băm:\n");
+    printf("B?ng bam:\n");
     for (int i = 0; i < TABLE_SIZE; i++) {
         if (table[i] != -1) {
             printf("[%d]: %d\n", i, table[i]);
@@ -44,16 +44,15 @@ void printHashTable(int table[]) {
     }
 }
 
-int main() 
-{
+int main() {
     int hashTable[TABLE_SIZE];
 
-    // Khởi tạo bảng băm
+    // Khoi tao bang bam
     for (int i = 0; i < TABLE_SIZE; i++) {
         hashTable[i] = -1;
     }
 
-    // Chèn giá trị vào bảng băm
+    // Chen gia tri vao bang bam
     insert(hashTable, 10);
     insert(hashTable, 14);
     insert(hashTable, 34);
@@ -61,8 +60,9 @@ int main()
     insert(hashTable, 49);
     insert(hashTable, 45);
 
-    // In bảng băm
+    // In bang bam
     printHashTable(hashTable);
 
     return 0;
 }
+
