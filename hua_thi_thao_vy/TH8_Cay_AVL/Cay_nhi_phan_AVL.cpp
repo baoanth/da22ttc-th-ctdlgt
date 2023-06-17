@@ -1,37 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct AVLNode
+struct AVLNode 
 {
-    int Data;
+    int data;
     struct AVLNode* left;
     struct AVLNode* right;
-    int chieucao;
+    int height;
 };
 
-struct AVLNode* createNode(int data)
+struct AVLNode* createNode(int data) 
 {
     struct AVLNode* newNode = (struct AVLNode*)malloc(sizeof(struct AVLNode));
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
-    newNode->chieucao = 1;
+    newNode->height = 1; 
     return newNode;
 }
 
-int chieucao(struct AVLNode* node)
+int height(struct AVLNode* node) 
 {
     if (node == NULL)
         return 0;
-    return node->chieucao;
+    return node->height;
 }
 
-int max(int a, int b)
+int max(int a, int b) 
 {
-    return (a>b) ? a : b;
+    return (a > b) ? a : b;
 }
 
-struct AVLNode* rightRotate(struct AVLNode* y)
+struct AVLNode* rightRotate(struct AVLNode* y) 
 {
     struct AVLNode* x = y->left;
     struct AVLNode* T2 = x->right;
@@ -39,21 +39,36 @@ struct AVLNode* rightRotate(struct AVLNode* y)
     x->right = y;
     y->left = T2;
 
-    x->chieucao = max(chieucao(x->left), chieucao(x->right)) +1;
-    y->chieucao = max(chieucao(y->left), chieucao(y->right)) +1;
+    y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = max(height(x->left), height(x->right)) + 1;
+
+    return x;
+}
+
+struct AVLNode* leftRotate(struct AVLNode* x) 
+{
+    struct AVLNode* y = x->right;
+    struct AVLNode* T2 = y->left;
+
+    y->left = x;
+    x->right = T2;
+
+    x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = max(height(y->left), height(y->right)) + 1;
 
     return y;
 }
 
-int getBalance(struct AVLNode* node)
+int getBalance(struct AVLNode* node) 
 {
     if (node == NULL)
         return 0;
-    return chieucao(node->left) - chieucao(node->right);
+    return height(node->left) - height(node->right);
 }
 
-struct AVLNode* insert(struct AVLNode* node, int data)
+struct AVLNode* insert(struct AVLNode* node, int data) 
 {
+  
     if (node == NULL)
         return createNode(data);
     if (data < node->data)
@@ -63,24 +78,24 @@ struct AVLNode* insert(struct AVLNode* node, int data)
     else
     return node;
 
-    node->chieucao = 1 + max(chieucao(node->left), chieucao(node->right));
+    node->height = 1 + max(height(node->left), height(node->right));
 
     int balance = getBalance(node);
-    //TH1:LL
-    if(balance > 1 && data < node->left->data)
-        return rightRotate(node)
-    //TH2:RR
-    if(balance < -1 && data > node->right->data)
+    //TH1: Left Left
+    if (balance > 1 && data < node->left->data)
+        return rightRotate(node);
+    // TH2: Right Right
+    if (balance < -1 && data > node->right->data)
         return leftRotate(node);
-    //TH3:LR
-    if(balance > 1 && data > node->left->data)
-    {
+	// TH3: Left Right
+    if (balance > 1 && data > node->left->data) 
+	{
         node->left = leftRotate(node->left);
         return rightRotate(node);
     }
-    //TH4:RL
-    if(balance < -1 && data < node->right->data)
-    {
+    // TH 4: Right Left
+    if (balance < -1 && data < node->right->data) 
+	{
         node->right = rightRotate(node->right);
         return leftRotate(node);
     }
@@ -88,20 +103,19 @@ struct AVLNode* insert(struct AVLNode* node, int data)
     return node;
 }
 
-void inOrderTraversal(struct AVLNode* root)
+void inOrderTraversal(struct AVLNode* root) 
 {
-    if (root != NULL)
-    {
+    if (root != NULL) {
         inOrderTraversal(root->left);
-        printf("%d", root->data);
+        printf("%d ", root->data);
         inOrderTraversal(root->right);
     }
 }
 
-int main()
+int main() 
 {
     struct AVLNode* root = NULL;
-
+    
     root = insert(root, 12);
     root = insert(root, 4);
     root = insert(root, 10);
@@ -113,5 +127,8 @@ int main()
     inOrderTraversal(root);
     printf("\n");
 
-    return 0;
+	return 0;
 }
+
+
+
