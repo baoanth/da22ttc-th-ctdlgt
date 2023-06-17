@@ -1,4 +1,4 @@
-w#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -17,7 +17,8 @@ typedef struct Node
     Node *pNext;
 } Node;
 
-typedef struct List
+typedef struct354+=-09uikl
+	ist
 {
     Node *pHead;
     Node *pTail;

@@ -24,7 +24,7 @@ Node *createNode(SinhVien sv)
     return newNode;
 }
 
-
+//
 Node *addStudent(Node *pHead, SinhVien sv)
 {
     Node *newNode = createNode(sv);
@@ -104,7 +104,7 @@ void displayStudents(Node *pHead)
         printf("Danh sach sinh vien trong.\n");
         return;
     }
-    printf("\nDanh sach sinh vien:\n");
+    printf("Danh sach sinh vien:");
     Node *Root = pHead;
     while (Root != NULL)
     {
