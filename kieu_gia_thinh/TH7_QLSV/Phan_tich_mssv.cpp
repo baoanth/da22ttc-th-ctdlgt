@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 
 #define MAX_LINE_LENGTH 100
-//Khai bao 3 cau truc du lieu
+
 typedef struct Mssv_Ele
 {
-    char ma[MAX_LINE_LENGTH];
-    char ten[MAX_LINE_LENGTH];
+    char ma[2];
+    char ten[20];
+    
 } Mssv_Ele;
 
 typedef struct Node
@@ -19,11 +19,17 @@ typedef struct Node
 
 typedef struct List
 {
-    Node *pHead;
-    Node *pTail;
+    Node* pHead;
+    Node* pTail;
 } List;
 
-//Viet ham GetNode(Person x)
+//Viet ham Init
+void Init(List &l)
+{
+    l.pHead = l.pTail = NULL;
+}
+
+//Ham GetNode
 Node *GetNode(Mssv_Ele x)
 {
     Node *p;
@@ -68,58 +74,39 @@ void AddTail(List &l, Node *new_ele)
     }
 }
 
-//Viet ham Init
-void Init(List &l)
-{
-    l.pHead = l.pTail = NULL;
-}
-
 //Viet ham Load_Data
-int Load_Data(char* filename, List &l )
+void Load_Data(char* filename, List* l)
 {
-    FILE *file;
-    char line[MAX_LINE_LENGTH];
-    char *token;
-    char ma[MAX_LINE_LENGTH];
-    char ten[MAX_LINE_LENGTH];
-    Mssv_Ele ele_tam;
-    Node* node_tam;
-
-    
-    file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Khong the mo tap van ban\n");
-        return 1;
+    FILE* file_name = fopen(filename, "r");
+    if (file_name == NULL)
+    {
+        printf("Khong tim thay file\n");
+        return ;
     }
-
-    
-    while (fgets(line, sizeof(line), file)) 
-	{
-        line[strcspn(line, "\n")] = '\0';       
-
-        token = strtok(line, ",");
-        
-        if (token != NULL) 
-		{
+    else
+    {
+    	char line[MAX_LINE_LENGTH];
+        while (fgets(line, sizeof(line), file_name))
+        {
+            Mssv_Ele ele_tam;
+            char* token = strtok(line, ",");
             strcpy(ele_tam.ma, token);
-            token = strtok(NULL, ",");
-            if (token != NULL)
-			{
-                strcpy(ele_tam.ten, token);
-            }            
-        }
-        node_tam  = GetNode(ele_tam);
-        AddTail(l, node_tam);
-    }
 
-    fclose(file);    
+            token = strtok(NULL, ",");
+            strcpy(ele_tam.ten, token);
+
+            Node* new_ele = GetNode(ele_tam);
+            AddTail(l, new_ele);
+        }
+        fclose(file_name);
+    }
 }
 
 
-//Viet ham Print_List(List &l)
+//Viet ham in
 void Print_List(List &l)
 {
-	if (l.pHead ==NULL)
+	if (l.pHead == NULL)
 	{
 		printf("Danh sach rong\n");
 	}
@@ -135,73 +122,17 @@ void Print_List(List &l)
 	}      
 }
 
-//Viet ham tim kiem
-Node *FindEleByMa(List l, char* ma)
-{
-    Node *p;
-    p = l.pHead;
-
-    while ((p != NULL) && (strcmp(p->Info.ma, ma)))
-        p = p->pNext;
-
-    return p;
-}
-//Ham Sub_String
-char* Sub_String(char scr_str[], int start_pos, int len) 
-{
-    char* res_str = (char*) malloc((len + 1) * sizeof(char));
-    int i;
-    for (i = 0; i < len; i++) 
-	{
-        res_str[i] = scr_str[start_pos + i];
-    }
-    res_str[len] = '\0';
-
-    return res_str;
-}
-
+//Viet ham main
 int main()
 {
-    List list_bac, list_khoa, list_he, list_nganh;
-    Init(list_bac);
-    Init(list_khoa);
-    Init(list_he);
-    Init(list_nganh);
-    
-	
-	Load_Data("bac.txt", list_bac); 
-	Load_Data("he.txt", list_he); 
-	Load_Data("nganh.txt", list_nganh); 
-	Load_Data("khoa.txt", list_khoa); 
-    Print_List(list_bac);
-    Print_List(list_he);
-    Print_List(list_nganh);
-    Print_List(list_khoa);
-    char my_mssv[10];
-    
-    printf("Moi ban nhap vao ma so sinh vien (gom 9 chu so): ");
-	scanf("%s", my_mssv);
-	printf("***Ket qua phan tich mssv %s la: ***\n", my_mssv);    
+    List bac;
+    Init(bac);
 
-    char* sub1 = Sub_String(my_mssv, 0, 1);
-    char* sub2 = Sub_String(my_mssv, 1, 1);
-    char* sub3 = Sub_String(my_mssv, 2, 2);
-    char* sub4 = Sub_String(my_mssv, 4, 2);
-       
-	
-	Node* p  = FindEleByMa(list_bac, sub1);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
-	
-	p = FindEleByMa(list_he, sub2);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
-	
-	p = FindEleByMa(list_nganh, sub3);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
-	
-	p = FindEleByMa(list_khoa, sub4);
-	printf("%5s %20s \n", p->Info.ma, p->Info.ten);	
+    Load_Data("bac.txt", &bac);
 
-	return 0;
+    Print_List(bac);
 
+    return 0;
 }
+
 

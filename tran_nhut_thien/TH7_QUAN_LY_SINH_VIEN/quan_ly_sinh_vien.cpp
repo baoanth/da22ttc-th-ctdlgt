@@ -16,7 +16,7 @@
    
    typedef struct Node 
    {
-   student Info ;
+   Student Info ;
    Node *pNext ;
    }Node ;
     
@@ -26,7 +26,7 @@
    	Node *pTail ;
    }List;
     
-    Node *GetNode(student x)
+    Node *GetNode(Student x)
     {
     	Node  *p;
     	p = new Node ;
@@ -44,7 +44,7 @@
      {
      	l.pHead = l.pTail =NULL ;
      }
-     void AddpTail(List &l ,Node ,*New_ele)
+     void AddpTail(List &l , Node , *New_ele)
 	 { 
 	  if (l.pHead =New  ) ;
 	  {
@@ -111,13 +111,44 @@
 			
 			switch (choice)
 			{
-				case 0:
+			case 0:
 				printf("Cam on ban da su dung chuong trinh!\n");
-				brea;
-				c 
+				break;
+			case 1:
+			    addStudent(head , danh_sach_sv);
+				break;
+			case 2:
+			    printf("NHap ma so sinh vien can xoa:");
+				 scanf("%d" ,&id);
+				kt=deleteStudent(danh_sach_sv ,id);
+				 if (kt==0)
+				  printf("Khong tim thay ma so sinh vien can xoa:");
+				 else
+				  printf("da xoa sinh vien thanh cong!");
+				break;
+			case 3:
+				printf("Nhap ma so sinh vien can sua:");
+				 scanf("%d" ,&id);
+				updateStudent(danh_sach_sv ,id);
+				break;
+			case 4:
+				displayStudent(danh_sach_sv);
+				break;
+			case 5:
+				printf("Nhap FILE de luu danh sach sinh vien:");
+				char filename [100]
+				scanf("%s" , filename);
+				saveStudentTofile(danh_sach_sv ,filename);
+				break;
+			default:
+				printf("Lua chon khong hop le.Vui long thu lai!\n");
+				break;
+				
+				   
 			 } 
 			 
-		}
+		}while (choice!=0);
+		return 0;
     }
      
      

@@ -117,14 +117,24 @@ void inOrder(struct Node *node)
 int main()
 {
     struct Node *root = NULL;
-
-    root = insertNode(root, 10);
+	
+	int i=1, n, a;
+	printf("Nhap so phan tu: ");
+	scanf("%d", &n); 
+	while(i<=n)
+	{
+		printf("Nhap phan tu thu %d: ", i);
+		scanf("%d", &a);
+		root = insertNode(root, a);
+		i++; 
+	} 
+/*  root = insertNode(root, 10);
     root = insertNode(root, 20);
     root = insertNode(root, 30);
     root = insertNode(root, 40);
     root = insertNode(root, 50);
     root = insertNode(root, 25);
-	
+*/	
 	printf("Duyet theo thu tu giua:\n");
     inOrder(root);
 

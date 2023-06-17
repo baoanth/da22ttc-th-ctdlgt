@@ -137,7 +137,7 @@ int main() {
     root = insert(root, 50);
     root = insert(root, 25);
 
-    printf("Cay AVL duyet theo thu tu giua: ");
+    printf("Cay AVL duyet theo thu tu giua: \n");
     preOrder(root);
 
     return 0;
