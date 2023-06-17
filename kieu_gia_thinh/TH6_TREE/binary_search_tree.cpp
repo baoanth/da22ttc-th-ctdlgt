@@ -219,7 +219,8 @@ int main()
     	
 		printf("In theo thu tu sau sau khi xoa %d lan\n", biendem);
     	Print_LRN(my_tree);
-    	
+    
+//
     return 0;
 }
 
