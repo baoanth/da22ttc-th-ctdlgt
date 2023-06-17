@@ -1,0 +1,9 @@
+{
+<<<<<<< HEAD
+=======
+    "files.associations": {
+        "stdio.h": "c"
+    },
+>>>>>>> f32797682247fb39cfca35576af6cbe328d83fe8
+    "C_Cpp.errorSquiggles": "disabled"
+}
