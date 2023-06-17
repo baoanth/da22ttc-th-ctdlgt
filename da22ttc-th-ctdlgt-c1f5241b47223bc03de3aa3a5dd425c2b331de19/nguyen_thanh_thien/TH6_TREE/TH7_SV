@@ -1,0 +1,192 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Khai b�o c?u tr�c d? li?u Sinh vi�n
+typedef struct Student {
+    int id;
+    char name[100];
+    int age;
+    float score;
+    struct Student *next;
+} Student;
+
+// Khai b�o c�c h�m
+void addStudent(Student **head);
+void deleteStudent(Student **head, int id);
+void updateStudent(Student *head, int id);
+void displayStudents(Student *head);
+void saveStudentsToFile(Student *head, const char *filename);
+void freeStudents(Student *head);
+
+int main() {
+    Student *head = NULL;
+    int choice;
+    int id;
+
+    do {
+        printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
+        printf("1. Them sinh vien moi\n");
+        printf("2. Xoa sinh vien\n");
+        printf("3. Sua thong tin sinh vien\n");
+        printf("4. Hien thi danh sach sinh vien\n");
+        printf("5. Luu danh sach sinh vien vao file\n");
+        printf("0. Thoat chuong trinh\n");
+        printf("Nhap lua chon cua ban: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 0:
+                printf("Cam on ban da su dung chuong trinh!\n");
+                break;
+            case 1:
+                addStudent(&head);
+                break;
+            case 2:
+                printf("Nhap ma so sinh vien can xoa: ");
+                scanf("%d", &id);
+                deleteStudent(&head, id);
+                break;
+            case 3:
+                printf("Nhap ma so sinh vien can sua: ");
+                scanf("%d", &id);
+                updateStudent(head, id);
+                break;
+            case 4:
+                displayStudents(head);
+                break;
+            case 5:
+                printf("Nhap ten file de luu du lieu: ");
+                char filename[100];
+                scanf("%s", filename);
+                saveStudentsToFile(head, filename);
+                printf("Luu file thanh cong!\n");
+                break;
+            default:
+                printf("Lua chon khong hop le. Vui long thu lai.\n");
+                break;
+        }
+    } while (choice != 0);
+
+    freeStudents(head);
+    return 0;
+}
+
+// H�m d? th�m sinh vi�n m?i v�o danh s�ch
+void addStudent(Student **head) {
+    // T?o sinh vi�n m?i
+    Student *newStudent = (Student*) malloc(sizeof(Student));
+    
+    // Nh?p th�ng tin t? ngu?i d�ng
+    printf("Nhap ma so sinh vien: ");
+    scanf("%d", &newStudent->id);
+    
+    printf("Nhap ho va ten: ");
+    scanf("%s", newStudent->name);
+    
+    printf("\nNhap tuoi: ");
+    scanf("%d", &newStudent->age);
+    
+    printf("\nNhap diem trung binh: ");
+    scanf("%f", &newStudent->score);
+    
+    // Th�m sinh vi�n v�o d?u danh s�ch
+    newStudent->next = (*head);
+    (*head) = newStudent;
+}
+
+// H�m d? x�a m?t sinh vi�n kh?i danh s�ch
+void deleteStudent(Student **head, int id) {
+    // Khai b�o c�c bi?n c?n thi?t
+    Student *current = (*head);
+    Student *prev = NULL;
+
+    // Duy?t danh s�ch li�n k?t d? t�m sinh vi�n c� m� s? tuong ?ng
+    while (current != NULL && current->id != id) {
+        prev = current;
+        current = current->next;
+    }
+
+    // N?u t�m th?y sinh vi�n c� m� s? tuong ?ng, x�a n�t d� kh?i danh s�ch li�n k?t
+    if (current != NULL) {
+        if (prev == NULL) { // N?u n�t c?n x�a l� n�t d?u ti�n c?a danh s�ch li�n k?t
+            (*head) = current->next; // C?p nh?t head
+        } else {
+            prev->next = current->next;
+        }
+        free(current); // Gi?i ph�ng b? nh? d� c?p ph�t cho n�t c?n x�a
+        printf("Xoa sinh vien co ma so %d thanh cong!\n", id);
+    } else {
+        printf("Khong tim thay sinh vien co ma so %d.\n", id);
+    }
+}
+
+// H�m d? s?a th�ng tin c?a m?t sinh vi�n trong danh s�ch
+void updateStudent(Student *head, int id) {
+    // Khai b�o con tr? current d? duy?t danh s�ch v� t�m sinh vi�n c?n s?a th�ng tin
+    Student *current = head;
+
+    // Duy?t danh s�ch li�n k?t d? t�m sinh vi�n c� m� s? tuong ?ng
+    while (current != NULL && current->id != id) {
+        current = current->next;
+    }
+
+    // N?u t�m th?y sinh vi�n c� m� s? tuong ?ng, cho ph�p ngu?i d�ng s?a th�ng tin
+    if (current != NULL) {
+        printf("Thong tin moi cua sinh vien co ma so %d:\n", id);
+
+        printf("Nhap ho va ten: ");
+        scanf("%s", current->name);
+        
+        printf("Nhap tuoi: ");
+        scanf("%d", &current->age);
+        
+        printf("Nhap diem trung binh: ");
+        scanf("%f", &current->score);
+
+        printf("Sua thong tin sinh vien thanh cong!\n");
+    } else {
+        printf("Khong tim thay sinh vien co ma so %d.\n", id);
+    }
+}
+
+// H�m d? hi?n th? danh s�ch sinh vi�n
+void displayStudents(Student *head) {
+    // N?u danh s�ch li�n k?t r?ng, th�ng b�o cho ngu?i d�ng
+    if (head == NULL) {
+        printf("Danh sach sinh vien rong.\n");
+    } else {
+        // Duy?t danh s�ch li�n k?t v� in ra th�ng tin c�c sinh vi�n
+        printf("%-10s %-30s %-10s %-10s\n", "Ma so", "Ho va ten", "Tuoi", "Diem TB");
+        while (head != NULL) {
+            printf("%-10d %-30s %-10d %-10.2f\n", head->id, head->name, head->age, head->score);
+            head = head->next;
+        }
+    }
+}
+
+// H�m d? luu th�ng tin c�c sinh vi�n v�o file
+void saveStudentsToFile(Student *head, const char *filename) {
+    FILE *file = fopen(filename, "w");
+
+    // N?u m? file th�nh c�ng, duy?t danh s�ch li�n k?t v� ghi th�ng tin c�c sinh vi�n v�o file
+    if (file != NULL) {
+        while (head != NULL) {
+            fprintf(file, "%d %s %d %.2f\n", head->id, head->name, head->age, head->score);
+            head = head->next;
+        }
+        fclose(file);
+    } else {
+        printf("Khong mo duoc file %s.\n", filename);
+    }
+}
+
+// H�m d? gi?i ph�ng b? nh? d� c?p ph�t cho c�c n�t sinh vi�n trong danh s�ch
+void freeStudents(Student *head) {
+    while (head != NULL) {
+        Student *temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
+
