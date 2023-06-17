@@ -67,12 +67,18 @@ int main()
     }
 
     // Chèn giá trị vào bảng băm
+    insert(hashTable, 3);
+    insert(hashTable, 7);
     insert(hashTable, 10);
     insert(hashTable, 14);
+    insert(hashTable, 19);
+    insert(hashTable, 25);
+    insert(hashTable, 30);
     insert(hashTable, 34);
     insert(hashTable, 44);
     insert(hashTable, 49);
     insert(hashTable, 45);
+    insert(hashTable, 56);
 
     // In bảng băm
     printHashTable(hashTable);
