@@ -146,6 +146,9 @@ int main()
 
     printf("thu tu duyet cay nhi phan can bang AVL :\n");
     inOrder(root);
-
+    printf("\n");
+	printf("thu tu duyet cay nhi phan can bang AVL :\n");
+	preOrder(root);
+	
     return 0;
 }
