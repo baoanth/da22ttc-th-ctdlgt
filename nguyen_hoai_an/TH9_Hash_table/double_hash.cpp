@@ -29,17 +29,17 @@ void insert(int table[], int key) {
     } while (attempt < TABLE_SIZE);
 
     if (attempt == TABLE_SIZE) {
-        printf("Bảng băm đầy. Không thể chèn giá trị %d.\n", key);
+        printf("Day roi. Khong chen them duoc dau. %d.\n", key);
     }
 }
 
 void printHashTable(int table[]) {
-    printf("Bảng băm:\n");
+    printf("Bang bam:\n");
     for (int i = 0; i < TABLE_SIZE; i++) {
         if (table[i] != -1) {
             printf("[%d]: %d\n", i, table[i]);
         } else {
-            printf("[%d]: __\n", i);
+            printf("[%d]:   \n", i);
         }
     }
 }
@@ -53,7 +53,7 @@ int main() {
     }
 
     // Chèn giá trị vào bảng băm
-    insert(hashTable, 4);
+    insert(hashTable, 04);
     insert(hashTable, 14);
     insert(hashTable, 24);
     insert(hashTable, 34);
@@ -64,7 +64,6 @@ int main() {
     insert(hashTable, 15);
 
     
-
     // In bảng băm
     printHashTable(hashTable);
 
