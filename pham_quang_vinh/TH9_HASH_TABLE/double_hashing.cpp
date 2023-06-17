@@ -44,8 +44,7 @@ void printHashTable(int table[]) {
     }
 }
 
-int main() 
-{
+int main() {
     int hashTable[TABLE_SIZE];
 
     // Khởi tạo bảng băm
@@ -54,17 +53,12 @@ int main()
     }
 
     // Chèn giá trị vào bảng băm
-    insert(hashTable, 4);
+    insert(hashTable, 10);
     insert(hashTable, 14);
-    insert(hashTable, 24);
     insert(hashTable, 34);
     insert(hashTable, 44);
-    insert(hashTable, 54);
-    insert(hashTable, 64);
-    insert(hashTable, 74);
-    insert(hashTable, 15);
-
-    
+    insert(hashTable, 49);
+    insert(hashTable, 45);
 
     // In bảng băm
     printHashTable(hashTable);

@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-#define TABLE_SIZE 10
+#define TABLE_SIZE 12
 
 int hash1(int key) {
     return key % TABLE_SIZE;
 }
 
 int hash2(int key) {
-    return 7 - (key % 7);
+    return 9 - (key % 9);
 }
 
 int doubleHashing(int key, int attempt) {
@@ -44,8 +44,7 @@ void printHashTable(int table[]) {
     }
 }
 
-int main() 
-{
+int main() {
     int hashTable[TABLE_SIZE];
 
     // Khởi tạo bảng băm
@@ -54,17 +53,16 @@ int main()
     }
 
     // Chèn giá trị vào bảng băm
-    insert(hashTable, 4);
+    insert(hashTable, 10);
     insert(hashTable, 14);
-    insert(hashTable, 24);
     insert(hashTable, 34);
     insert(hashTable, 44);
-    insert(hashTable, 54);
-    insert(hashTable, 64);
-    insert(hashTable, 74);
-    insert(hashTable, 15);
-
-    
+    insert(hashTable, 49);
+    insert(hashTable, 45);
+    insert(hashTable, 79);
+    insert(hashTable, 84);
+    insert(hashTable, 12);
+    insert(hashTable, 3);
 
     // In bảng băm
     printHashTable(hashTable);
