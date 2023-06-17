@@ -1,3 +1,0 @@
-net dep khong nam tren go ma nguoi thieu nu
-ma nam trong mat ke si tinh
-exit
