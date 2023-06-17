@@ -18,7 +18,7 @@ void insert(int table[], int key) {
         index = (hash(key) + i * i) % TABLE_SIZE;
         printf("    Index%d = %d\n",i+1, index);
         if (i >= TABLE_SIZE) {
-            printf("Day roi. Khong chen %d dc nua.\n", key);
+            printf("Bang bam day. Khong the chen gia tri %d.\n", key);
             return;
         }
     }
@@ -32,7 +32,7 @@ void printHashTable(int table[]) {
         if (table[i] != -1) {
             printf("[%d]: %d\n", i, table[i]);
         } else {
-            printf("[%d]:   \n", i);
+            printf("[%d]: __\n", i);
         }
     }
 }
@@ -40,12 +40,12 @@ void printHashTable(int table[]) {
 int main() {
     int hashTable[TABLE_SIZE];
 
-    // Khởi tạo bảng băm
+    // Khoi tao bang bam
     for (int i = 0; i < TABLE_SIZE; i++) {
         hashTable[i] = -1;
     }
 
-    // Chèn giá trị vào bảng băm
+    // Chen gia tri vao bang bam
     insert(hashTable, 6);
     insert(hashTable, 14);
     insert(hashTable, 22);
@@ -54,7 +54,7 @@ int main() {
     insert(hashTable, 32);
     insert(hashTable, 61);
 
-    // In bảng băm
+    // In bang bam
     printHashTable(hashTable);
 
     return 0;

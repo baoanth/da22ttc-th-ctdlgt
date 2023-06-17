@@ -40,12 +40,12 @@ void printHashTable(int table[]) {
 int main() {
     int hashTable[TABLE_SIZE];
 
-    // Khởi tạo bảng băm
+    // Khoi tao bang bam
     for (int i = 0; i < TABLE_SIZE; i++) {
         hashTable[i] = -1;
     }
 
-    // Chèn giá trị vào bảng băm
+    // Chen gia tri vao bang bam
     insert(hashTable, 6);
     insert(hashTable, 14);
     insert(hashTable, 22);
@@ -54,7 +54,7 @@ int main() {
     insert(hashTable, 32);
     insert(hashTable, 61);
 
-    // In bảng băm
+    // In bang bam
     printHashTable(hashTable);
 
     return 0;
