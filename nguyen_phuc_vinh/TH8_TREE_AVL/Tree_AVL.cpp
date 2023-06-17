@@ -100,10 +100,9 @@ void preOrder(Node *root) {
 }
 
 int main() {
-    int n, i, num;
-    Node *root = NULL;
+    
 
-    printf("Nhap so phan tu: ");
+    /*printf("Nhap so phan tu: ");
     scanf("%d", &n);
 
     for (i = 0; i < n; i++) {
@@ -123,7 +122,67 @@ int main() {
 
     printf("\nCac gia tri trong cay AVL theo thu tu sau khi da chen them phan tu: \n");
     preOrder(root);
+	*/
+	while(1)
+	{
+		int n, i, num;
+    	Node *root = NULL;
+		int choice1, choice2;
+		
+		printf("====MENU====\n");
+		printf("1. TREE AVL\n");
+		printf("0. EXIT\n");
+		
+        do
+        {
+            printf("\nNhap lua chon: ");
+            scanf("%d", &choice1);
+            if(choice1!=1)printf("\n*Khong hieu, moi ban nhap lai*\n");
+        }while(choice1!=1 && choice1!=0);
+		system("cls");
 
+		switch(choice1)
+		{
+			case 1:
+				while(1)
+				{
+					printf("====MENU====\n");
+					printf("1. CREATE TREE AVL\n");
+					printf("2. INSERT\n");
+					printf("0. EXIT\n");
+					printf("\nNhap lua chon: ");
+					scanf("%d", &choice2);
+					system("cls");
+				
+					if(choice2==0)
+					{
+						break;
+					}else if(choice2==1)
+					{
+						printf("Nhap so phan tu: ");
+	    				scanf("%d", &n);
+	
+	    				for (i = 0; i < n; i++)
+						{
+	        				printf("Nhap gia tri cua phan tu %d: ", i + 1);
+	        				scanf("%d", &num);
+	        				root = insert(root, num);
+	    				}
+					}else if(choice2==2)
+					{
+						int new_num;
+	    				printf("Nhap gia tri cua phan tu can chen: ");
+	    				scanf("%d", &new_num);
+	    				root = insert(root, new_num);
+					}
+			case 0:
+				printf("EXIT");
+				break;
+		}
     return 0;
+		}
+	}
 }
+
+
 
