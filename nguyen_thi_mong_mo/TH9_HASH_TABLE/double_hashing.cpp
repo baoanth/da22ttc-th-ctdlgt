@@ -44,7 +44,8 @@ void printHashTable(int table[]) {
     }
 }
 
-int main() {
+int main() 
+{
     int hashTable[TABLE_SIZE];
 
     // Khởi tạo bảng băm
