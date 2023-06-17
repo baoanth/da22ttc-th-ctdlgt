@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Cấu trúc của một nút trong cây AVL
+
 struct Node {
     int key;
     struct Node *left;
@@ -9,17 +9,17 @@ struct Node {
     int height;
 };
 
-// Hàm tạo mới một nút với khóa là 'key'
+
 struct Node* newNode(int key) {
     struct Node* node = (struct Node*)malloc(sizeof(struct Node));
     node->key = key;
     node->left = NULL;
     node->right = NULL;
-    node->height = 1; // Khi tạo mới, độ cao là 1
+    node->height = 1; 
     return (node);
 }
 
-// Hàm lấy chiều cao của cây AVL
+
 int height(struct Node *N) {
     if (N == NULL)
         return 0;
@@ -126,7 +126,7 @@ void preOrder(struct Node *root) {
     }
 }
 
-// Hàm main để kiểm tra một số chức năng
+//kiểm tra một số chức năng
 int main() {
     struct Node *root = NULL;
 
