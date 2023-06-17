@@ -35,7 +35,7 @@ struct AVLNode* rightRotate(struct AVLNode* y)
 {
     struct AVLNode* x = y->left;
     struct AVLNode* T2 = x->right;
-
+    
     x->right = y;
     y->left = T2;
 
@@ -45,14 +45,15 @@ struct AVLNode* rightRotate(struct AVLNode* y)
     return x;
 }
 
-struct AVLNode* leftRotate(struct AVLNode* x) 
+struct AVLNode* leftRotate(struct AVLNode* x)
 {
     struct AVLNode* y = x->right;
     struct AVLNode* T2 = y->left;
 
+    
     y->left = x;
     x->right = T2;
-
+    
     x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;
 
@@ -68,44 +69,42 @@ int getBalance(struct AVLNode* node)
 
 struct AVLNode* insert(struct AVLNode* node, int data) 
 {
-  
     if (node == NULL)
         return createNode(data);
     if (data < node->data)
         node->left = insert(node->left, data);
     else if (data > node->data)
         node->right = insert(node->right, data);
-    else
-    return node;
+    else 
+    	return node;
 
     node->height = 1 + max(height(node->left), height(node->right));
-
+    
     int balance = getBalance(node);
-    //TH1: Left Left
+
     if (balance > 1 && data < node->left->data)
         return rightRotate(node);
-    // TH2: Right Right
+
     if (balance < -1 && data > node->right->data)
         return leftRotate(node);
-	// TH3: Left Right
-    if (balance > 1 && data > node->left->data) 
-	{
+
+    if (balance > 1 && data > node->left->data) {
         node->left = leftRotate(node->left);
         return rightRotate(node);
     }
-    // TH 4: Right Left
-    if (balance < -1 && data < node->right->data) 
-	{
+
+    if (balance < -1 && data < node->right->data) {
         node->right = rightRotate(node->right);
         return leftRotate(node);
     }
-
+    
     return node;
 }
 
 void inOrderTraversal(struct AVLNode* root) 
 {
-    if (root != NULL) {
+    if (root != NULL) 
+	{
         inOrderTraversal(root->left);
         printf("%d ", root->data);
         inOrderTraversal(root->right);
@@ -116,19 +115,22 @@ int main()
 {
     struct AVLNode* root = NULL;
     
-    root = insert(root, 12);
-    root = insert(root, 4);
     root = insert(root, 10);
-    root = insert(root, 26);
-    root = insert(root, 97);
-    root = insert(root, 9);
-
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 25);
+    
     printf("Cay AVL sau khi chen: \n");
     inOrderTraversal(root);
+
     printf("\n");
 
 	return 0;
 }
+
+
 
 
 
