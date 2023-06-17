@@ -137,13 +137,8 @@ int main() {
     root = insert(root, 50);
     root = insert(root, 25);
 
-    printf("Cay AVL duyet theo thu tu giua: ");
+    printf("Cay AVL duyet theo thu tu giua: \n");
     preOrder(root);
 
     return 0;
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> a65ffb3d4984ea508b157343156eb146dc44309a
 }
