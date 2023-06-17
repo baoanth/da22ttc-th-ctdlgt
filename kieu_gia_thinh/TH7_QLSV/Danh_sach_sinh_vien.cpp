@@ -173,7 +173,6 @@ void SaveStudentsToFile(List &l, const char *filename)
     fclose(f);
 }
 // void freeStudents(Student *h);
-//Viet ham main
 int main()
 {
     List kgt;
