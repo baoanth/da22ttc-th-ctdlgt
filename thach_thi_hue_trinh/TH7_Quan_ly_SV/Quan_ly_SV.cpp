@@ -103,7 +103,7 @@ void AddStudent(List &l)
 
 }
 
-void DeleteStudent (List &l, int idx)
+int DeleteStudent (List &l, int idx)
 {
 	Node *p = l.pHead;
 	Node *q = NULL;
@@ -115,6 +115,9 @@ void DeleteStudent (List &l, int idx)
 		q = p;
 		p = p->pNext;
 	}
+	
+	if(p==NULL)	return 0;
+	
 	if(q != NULL) 
 	{
 		if(p == l.pTail)
@@ -128,30 +131,13 @@ void DeleteStudent (List &l, int idx)
 		if(l.pHead == NULL)
 			l.pTail = NULL;
 	}
+	return 1;
 }
 
 void Init(List &l)
 {
 	l.pHead = l.pTail = NULL;
 }
-/*
-void PrintNode(Node *p)
-{
-	printf("%10d | %10s | %10s | %10d | %4f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
-}
-
-void PrintList(List &l)
-{
-	Node *p;
-	p = l.pHead;
-	
-	while (p!= NULL)
-	{
-		printf("%10d | %10s | %10s | %10d | %4f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
-		p = p->pNext;
-	}
-}
-*/
 
 int UpdateStudent(List &l, int idx)
 {
@@ -182,6 +168,7 @@ int UpdateStudent(List &l, int idx)
 	}
 	return 1;
 }
+
 void DisplayStudents(List &l)
 {
 	if(l.pHead==NULL)
@@ -191,16 +178,17 @@ void DisplayStudents(List &l)
 		Node *p;
 		p = l.pHead;
 		
-		printf("\n   MSSV   |    HO    |   TEN   |TUOI| DTB ");
+		printf("\n   MSSV   |    HO    |   TEN   | TUOI | DTB ");
 		while (p!= NULL)
 		{
-			printf("%10d|%10s|%9s|%4d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
+			printf("\n%10d|%10s|%9s|%6d|%1.f",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
 			p = p->pNext;
 		}
 		printf("\n");
 	}
 	
 }
+
 void SaveStudentsToFile(List &l, char *file_name)
 {
 	
@@ -214,10 +202,10 @@ void SaveStudentsToFile(List &l, char *file_name)
 		Node *p;
 		p = l.pHead;
 		
-		fprintf(outfile,"\n   MSSV   |    HO    |   TEN   |TUOI| DTB ");
+		fprintf(outfile,"\n   MSSV   |    HO    |   TEN   | TUOI | DTB ");
 		while (p!= NULL)
 		{
-			fprintf(outfile,"%10d|%10s|%9s|%4d|%5f\n",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
+			fprintf(outfile,"\n%10d|%10s|%9s|%6d|%1.f",p->Info.mssv, p->Info.fname, p->Info.lname, p->Info.tuoi, p->Info.diem);
 			p = p->pNext;
 		}
 		fprintf(outfile,"\n");
@@ -228,13 +216,33 @@ void SaveStudentsToFile(List &l, char *file_name)
 		printf("Ghi tep that bai!");
 	fclose(outfile);	
 }
+<<<<<<< HEAD
 void freeStudents(Student *h);
+=======
+
+void FreeStudent(List &l)
+{
+	for(Node* p = l.pHead; p!= NULL; p = p->pNext)
+	{
+		for(Node *q = p->pNext; q != NULL; q = q->pNext)
+		{
+			if(p->Info.mssv > q->Info.mssv)
+			{
+				Student t = p->Info;
+				p->Info = q ->Info;
+				q->Info = t;
+			}
+		}
+	}
+	
+}
+>>>>>>> 527dc8b2f834fca597c72840ab643558b65b2a40
 
 int main()
 {
  	List meo;
  	Init(meo);
- 	int c;
+ 	int c, idx;
     while(1)
 	 {
         printf("\n---- CHUONG TRINH QUAN LY SINH VIEN ----\n");
@@ -247,25 +255,35 @@ int main()
         printf("0. Thoat chuong trinh\n");
         printf("Nhap lua chon cua ban: ");
         scanf("%d", &c);
-
+		printf("\n");
 		if(c==0)
 		{
 			printf("Cam on ban da su dung chuong trinh!\n");
 				break;
 		}
+<<<<<<< HEAD
+=======
+			
+>>>>>>> 527dc8b2f834fca597c72840ab643558b65b2a40
 		else if(c==1)
         {
            AddStudent(meo);
 	    }
 	    else if(c==2)
 	    {
+	    	printf("\nNhap MSSV can xoa: ");
+	    	scanf("%d",&idx);
 	    	printf("Danh sach sau khi xoa:\n");
-	    	DeleteStudent(meo);
+	    	DeleteStudent(meo,idx);	
+			DisplayStudents(meo);
 	    }
     	else if(c==3)
     	{
+    		printf("\nNhap MSSV can sua: ");
+	    	scanf("%d",&idx);
+			UpdateStudent(meo,idx);
     		printf("Danh sach sau khi sua:\n");
-    		UpdateStudent(meo);
+    		DisplayStudents(meo);
     	}
    		else if(c==4)
    		{
@@ -274,10 +292,16 @@ int main()
    		}
    		else if(c==5)
    		{
-   			printf("Nhap ten file de luu Danh sach Sinh vien");
+   			printf("Nhap ten file de luu Danh sach Sinh vien ");
    			char file_name[100];
    			scanf("%s",&file_name);
    			SaveStudentsToFile(meo,file_name);
+   		}
+   		else if(c==6)
+   		{
+   			FreeStudent(meo);
+   			printf("Danh sach sau khi sap xep!\n");
+   			DisplayStudents(meo);
    		}
 	} 
 	return 0;

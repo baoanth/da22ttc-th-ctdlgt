@@ -34,7 +34,7 @@ void AddFirst(queue &l, Node *new_ele)
 	if (l.pHead == NULL)
 	{
 		l.pHead = new_ele;
-		l.pTail = l.pHead;
+		l.pTail = i.pHead;
 	}
 	else 
 	{	
@@ -60,7 +60,7 @@ void RemoveHead(queue &l)
 
 void Init(queue &S)
 { 
-    S.pHead = NULL;
+    S.pHead = NULL
     S.pTail = NULL;
 }
 char IsEmpty(queue &S)
@@ -77,7 +77,7 @@ void Push(queue &S, char x)
     AddFirst(S, new_ele);
 }
 
-char Pop(queue &S)
+char Pop(queue &s)
 {
     char x;
     if(IsEmpty(S)) 
@@ -101,7 +101,7 @@ int main()
     char x;
     int i;
 
-    queue my_queue;
+    queuee my_queue;
     Init (my_queue);
 
     printf("Chuoi goc: %s\n",str);
