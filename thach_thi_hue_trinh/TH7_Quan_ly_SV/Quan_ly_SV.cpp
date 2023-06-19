@@ -228,7 +228,7 @@ void SaveStudentsToFile(List &l, char *file_name)
 		printf("Ghi tep that bai!");
 	fclose(outfile);	
 }
-void freeStudents(Student *h)
+void freeStudents(Student *h);
 
 int main()
 {
@@ -249,8 +249,10 @@ int main()
         scanf("%d", &c);
 
 		if(c==0)
+		{
 			printf("Cam on ban da su dung chuong trinh!\n");
 				break;
+		}
 		else if(c==1)
         {
            AddStudent(meo);
